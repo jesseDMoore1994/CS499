@@ -15,47 +15,47 @@ use Psy\Formatter\CodeFormatter;
 
 class CodeFormatterTest extends \PHPUnit_Framework_TestCase
 {
-    private function ignoreThisMethod($arg)
-    {
-        echo 'whot!';
-    }
+	private function ignoreThisMethod($arg)
+	{
+		echo 'whot!';
+	}
 
-    public function testFormat()
-    {
-        $expected = <<<EOS
+	public function testFormat()
+	{
+		$expected = <<<EOS
   > 18|     private function ignoreThisMethod(\$arg)
     19|     {
     20|         echo 'whot!';
     21|     }
 EOS;
 
-        $formatted = CodeFormatter::format(new \ReflectionMethod($this, 'ignoreThisMethod'));
-        $formattedWithoutColors = preg_replace('#' . chr(27) . '\[\d\d?m#', '', $formatted);
+		$formatted = CodeFormatter::format(new \ReflectionMethod($this, 'ignoreThisMethod'));
+		$formattedWithoutColors = preg_replace('#' . chr(27) . '\[\d\d?m#', '', $formatted);
 
-        $this->assertEquals($expected, rtrim($formattedWithoutColors));
-        $this->assertNotEquals($expected, rtrim($formatted));
-    }
+		$this->assertEquals($expected, rtrim($formattedWithoutColors));
+		$this->assertNotEquals($expected, rtrim($formatted));
+	}
 
-    /**
-     * @dataProvider filenames
-     * @expectedException Psy\Exception\RuntimeException
-     */
-    public function testCodeFormatterThrowsException($filename)
-    {
-        $reflector = $this->getMockBuilder('ReflectionClass')
-            ->disableOriginalConstructor()
-            ->getMock();
+	/**
+	 * @dataProvider filenames
+	 * @expectedException Psy\Exception\RuntimeException
+	 */
+	public function testCodeFormatterThrowsException($filename)
+	{
+		$reflector = $this->getMockBuilder('ReflectionClass')
+			->disableOriginalConstructor()
+			->getMock();
 
-        $reflector
-            ->expects($this->once())
-            ->method('getFileName')
-            ->will($this->returnValue($filename));
+		$reflector
+			->expects($this->once())
+			->method('getFileName')
+			->will($this->returnValue($filename));
 
-        CodeFormatter::format($reflector);
-    }
+		CodeFormatter::format($reflector);
+	}
 
-    public function filenames()
-    {
-        return array(array(null), array('not a file'));
-    }
+	public function filenames()
+	{
+		return array(array(null), array('not a file'));
+	}
 }

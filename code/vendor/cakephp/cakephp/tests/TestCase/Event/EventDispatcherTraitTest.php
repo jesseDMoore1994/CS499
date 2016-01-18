@@ -25,55 +25,55 @@ use Cake\TestSuite\TestCase;
 class EventDispatcherTraitTest extends TestCase
 {
 
-    /**
-     * setup
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
+	/**
+	 * setup
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
 
-        $this->subject = $this->getObjectForTrait('Cake\Event\EventDispatcherTrait');
-    }
+		$this->subject = $this->getObjectForTrait('Cake\Event\EventDispatcherTrait');
+	}
 
-    /**
-     * testIsInitiallyEmpty
-     *
-     * @return void
-     */
-    public function testIsInitiallyEmpty()
-    {
-        $this->assertAttributeEmpty('_eventManager', $this->subject);
-    }
+	/**
+	 * testIsInitiallyEmpty
+	 *
+	 * @return void
+	 */
+	public function testIsInitiallyEmpty()
+	{
+		$this->assertAttributeEmpty('_eventManager', $this->subject);
+	}
 
-    /**
-     * testSettingEventManager
-     *
-     * @covers \Cake\Event\EventDispatcherTrait::eventManager
-     * @return void
-     */
-    public function testSettingEventManager()
-    {
-        $eventManager = new EventManager();
+	/**
+	 * testSettingEventManager
+	 *
+	 * @covers \Cake\Event\EventDispatcherTrait::eventManager
+	 * @return void
+	 */
+	public function testSettingEventManager()
+	{
+		$eventManager = new EventManager();
 
-        $this->subject->eventManager($eventManager);
+		$this->subject->eventManager($eventManager);
 
-        $this->assertSame($eventManager, $this->subject->eventManager());
-    }
+		$this->assertSame($eventManager, $this->subject->eventManager());
+	}
 
-    /**
-     * testDispatchEvent
-     *
-     * @return void
-     */
-    public function testDispatchEvent()
-    {
-        $event = $this->subject->dispatchEvent('some.event', ['foo' => 'bar']);
+	/**
+	 * testDispatchEvent
+	 *
+	 * @return void
+	 */
+	public function testDispatchEvent()
+	{
+		$event = $this->subject->dispatchEvent('some.event', ['foo' => 'bar']);
 
-        $this->assertInstanceOf('Cake\Event\Event', $event);
-        $this->assertSame($this->subject, $event->subject);
-        $this->assertEquals('some.event', $event->name);
-        $this->assertEquals(['foo' => 'bar'], $event->data);
-    }
+		$this->assertInstanceOf('Cake\Event\Event', $event);
+		$this->assertSame($this->subject, $event->subject);
+		$this->assertEquals('some.event', $event->name);
+		$this->assertEquals(['foo' => 'bar'], $event->data);
+	}
 }

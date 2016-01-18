@@ -21,24 +21,24 @@ namespace Migrations\Shell\Task;
 class RollbackTask extends CommandTask
 {
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getOptionParser()
-    {
-        $parser = parent::getOptionParser();
-        $parser
-            ->addOption('target', [
-                'short' => 't',
-                'help' => 'The version number to migrate to',
-                'required' => false
-            ])
-            ->addOption('date', [
-                'short' => 'd',
-                'help' => 'The date to migrate to',
-                'required' => false
-            ]);
+	/**
+	 * {@inheritDoc}
+	 */
+	public function getOptionParser()
+	{
+		$parser = parent::getOptionParser();
+		$parser
+			->addOption('target', [
+				'short' => 't',
+				'help' => 'The version number to migrate to',
+				'required' => false
+			])
+			->addOption('date', [
+				'short' => 'd',
+				'help' => 'The date to migrate to',
+				'required' => false
+			]);
 
-        return $parser;
-    }
+		return $parser;
+	}
 }

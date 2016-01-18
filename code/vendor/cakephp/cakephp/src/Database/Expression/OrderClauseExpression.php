@@ -24,59 +24,59 @@ use Cake\Database\ValueBinder;
  */
 class OrderClauseExpression implements ExpressionInterface, FieldInterface
 {
-    use FieldTrait;
+	use FieldTrait;
 
-    /**
-     * The direction of sorting.
-     *
-     * @var string
-     */
-    protected $_direction;
+	/**
+	 * The direction of sorting.
+	 *
+	 * @var string
+	 */
+	protected $_direction;
 
-    /**
-     * Constructor
-     *
-     * @param \Cake\Database\ExpressionInterface|string $field The field to order on.
-     * @param string $direction The direction to sort on.
-     */
-    public function __construct($field, $direction)
-    {
-        $this->_field = $field;
-        $this->_direction = strtolower($direction) === 'asc' ? 'ASC' : 'DESC';
-    }
+	/**
+	 * Constructor
+	 *
+	 * @param \Cake\Database\ExpressionInterface|string $field The field to order on.
+	 * @param string $direction The direction to sort on.
+	 */
+	public function __construct($field, $direction)
+	{
+		$this->_field = $field;
+		$this->_direction = strtolower($direction) === 'asc' ? 'ASC' : 'DESC';
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function sql(ValueBinder $generator)
-    {
-        $field = $this->_field;
-        if ($field instanceof ExpressionInterface) {
-            $field = $field->sql($generator);
-        }
-        return sprintf("%s %s", $field, $this->_direction);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function sql(ValueBinder $generator)
+	{
+		$field = $this->_field;
+		if ($field instanceof ExpressionInterface) {
+			$field = $field->sql($generator);
+		}
+		return sprintf("%s %s", $field, $this->_direction);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function traverse(callable $visitor)
-    {
-        if ($this->_field instanceof ExpressionInterface) {
-            $visitor($this->_field);
-            $this->_field->traverse($visitor);
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function traverse(callable $visitor)
+	{
+		if ($this->_field instanceof ExpressionInterface) {
+			$visitor($this->_field);
+			$this->_field->traverse($visitor);
+		}
+	}
 
-    /**
-     * Create a deep clone of the order clause.
-     *
-     * @return void
-     */
-    public function __clone()
-    {
-        if ($this->_field instanceof ExpressionInterface) {
-            $this->_field = clone $this->_field;
-        }
-    }
+	/**
+	 * Create a deep clone of the order clause.
+	 *
+	 * @return void
+	 */
+	public function __clone()
+	{
+		if ($this->_field instanceof ExpressionInterface) {
+			$this->_field = clone $this->_field;
+		}
+	}
 }

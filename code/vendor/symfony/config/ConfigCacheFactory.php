@@ -22,33 +22,33 @@ namespace Symfony\Component\Config;
  */
 class ConfigCacheFactory implements ConfigCacheFactoryInterface
 {
-    /**
-     * @var bool Debug flag passed to the ConfigCache
-     */
-    private $debug;
+	/**
+	 * @var bool Debug flag passed to the ConfigCache
+	 */
+	private $debug;
 
-    /**
-     * @param bool $debug The debug flag to pass to ConfigCache
-     */
-    public function __construct($debug)
-    {
-        $this->debug = $debug;
-    }
+	/**
+	 * @param bool $debug The debug flag to pass to ConfigCache
+	 */
+	public function __construct($debug)
+	{
+		$this->debug = $debug;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function cache($file, $callback)
-    {
-        if (!is_callable($callback)) {
-            throw new \InvalidArgumentException(sprintf('Invalid type for callback argument. Expected callable, but got "%s".', gettype($callback)));
-        }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function cache($file, $callback)
+	{
+		if (!is_callable($callback)) {
+			throw new \InvalidArgumentException(sprintf('Invalid type for callback argument. Expected callable, but got "%s".', gettype($callback)));
+		}
 
-        $cache = new ConfigCache($file, $this->debug);
-        if (!$cache->isFresh()) {
-            call_user_func($callback, $cache);
-        }
+		$cache = new ConfigCache($file, $this->debug);
+		if (!$cache->isFresh()) {
+			call_user_func($callback, $cache);
+		}
 
-        return $cache;
-    }
+		return $cache;
+	}
 }

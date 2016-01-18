@@ -24,21 +24,21 @@ use Cake\Event\Event;
 class AppleComponent extends Component
 {
 
-    /**
-     * components property
-     *
-     * @var array
-     */
-    public $components = ['Orange'];
+	/**
+	 * components property
+	 *
+	 * @var array
+	 */
+	public $components = ['Orange'];
 
-    /**
-     * startup method
-     *
-     * @param Event $event
-     * @param mixed $controller
-     * @return void
-     */
-    public function startup(Event $event)
-    {
-    }
+	/**
+	 * startup method
+	 *
+	 * @param Event $event
+	 * @param mixed $controller
+	 * @return void
+	 */
+	public function startup(Event $event)
+	{
+	}
 }

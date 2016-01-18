@@ -19,8 +19,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 interface OutputPager extends OutputInterface
 {
-    /**
-     * Close the current pager process.
-     */
-    public function close();
+	/**
+	 * Close the current pager process.
+	 */
+	public function close();
 }

@@ -22,10 +22,10 @@ use Cake\Controller\Component;
 class ParamTestComponent extends Component
 {
 
-    /**
-     * components property
-     *
-     * @var array
-     */
-    public $components = ['Banana' => ['config' => 'value']];
+	/**
+	 * components property
+	 *
+	 * @var array
+	 */
+	public $components = ['Banana' => ['config' => 'value']];
 }

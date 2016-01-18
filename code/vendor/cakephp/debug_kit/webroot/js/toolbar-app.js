@@ -22,18 +22,18 @@ Toolbar.prototype = {
 		'toolbar'
 	],
 
-	toggle: function() {
+	toggle: function () {
 		var state = this.nextState();
 		this.updateButtons(state);
 		this.updateToolbarState(state);
 		window.parent.postMessage(state, window.location.origin)
 	},
 
-	state: function() {
+	state: function () {
 		return this.states[this._state];
 	},
 
-	nextState: function() {
+	nextState: function () {
 		this._state++;
 		if (this._state == this.states.length) {
 			this._state = 0;
@@ -42,14 +42,14 @@ Toolbar.prototype = {
 		return this.state();
 	},
 
-	saveState: function() {
+	saveState: function () {
 		if (!window.localStorage) {
 			return;
 		}
 		window.localStorage.setItem('toolbar_state', this._state);
 	},
 
-	loadState: function() {
+	loadState: function () {
 		if (!window.localStorage) {
 			return;
 		}
@@ -65,7 +65,7 @@ Toolbar.prototype = {
 		}
 	},
 
-	updateToolbarState: function(state) {
+	updateToolbarState: function (state) {
 		if (state === 'toolbar') {
 			this.button.addClass('open');
 		}
@@ -74,7 +74,7 @@ Toolbar.prototype = {
 		}
 	},
 
-	updateButtons: function(state) {
+	updateButtons: function (state) {
 		if (state === 'toolbar') {
 			this.panelButtons.show();
 		}
@@ -83,11 +83,11 @@ Toolbar.prototype = {
 		}
 	},
 
-	isExpanded: function() {
+	isExpanded: function () {
 		return this.content.hasClass('enabled');
 	},
 
-	hideContent: function() {
+	hideContent: function () {
 		// slide out - css animation
 		this.content.removeClass('enabled');
 		// remove the active state on buttons
@@ -95,13 +95,13 @@ Toolbar.prototype = {
 		var _this = this;
 
 		// Hardcode timer as one does.
-		setTimeout(function() {
+		setTimeout(function () {
 			_this._currentPanel = null;
 			window.parent.postMessage(_this.state(), window.location.origin);
 		}, 250);
 	},
 
-	loadPanel: function(id) {
+	loadPanel: function (id) {
 		var url = baseUrl + 'debug_kit/panels/view/' + id;
 		var contentArea = this.content.find('#panel-content');
 		var _this = this;
@@ -109,7 +109,7 @@ Toolbar.prototype = {
 		var loader = $('#loader');
 
 		if (this._lastPanel != id) {
-			timer = setTimeout(function() {
+			timer = setTimeout(function () {
 				loader.addClass('loading');
 			}, 500);
 		}
@@ -119,7 +119,7 @@ Toolbar.prototype = {
 
 		window.parent.postMessage('expand', window.location.origin);
 
-		$.get(url, function(response) {
+		$.get(url, function (response) {
 			clearTimeout(timer);
 			loader.removeClass('loading');
 
@@ -130,10 +130,10 @@ Toolbar.prototype = {
 		});
 	},
 
-	bindNeatArray: function() {
+	bindNeatArray: function () {
 		var sortButton = this.content.find('.neat-array-sort');
 		var _this = this;
-		sortButton.click(function() {
+		sortButton.click(function () {
 			if ($(this).attr('checked')) {
 				document.cookie = 'debugKit_sort=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=' + _this.baseUrl;
 			} else {
@@ -146,7 +146,7 @@ Toolbar.prototype = {
 		lists.find('ul').hide()
 			.parent().addClass('expandable collapsed');
 
-		lists.on('click', 'li', function(event) {
+		lists.on('click', 'li', function (event) {
 			event.stopPropagation();
 			var el = $(this);
 			el.children('ul').toggle();
@@ -155,17 +155,17 @@ Toolbar.prototype = {
 		});
 	},
 
-	currentPanel: function() {
+	currentPanel: function () {
 		return this._currentPanel;
 	},
 
-	currentPanelButton: function() {
+	currentPanelButton: function () {
 		return this.button.find("[data-id='" + this.currentPanel() + "']");
 	},
 
-	keyboardListener: function() {
+	keyboardListener: function () {
 		var _this = this;
-		this.keyboardScope.keydown(function(event) {
+		this.keyboardScope.keydown(function (event) {
 			// Check for Esc key
 			if (event.keyCode === 27) {
 				// Close active panel
@@ -198,9 +198,9 @@ Toolbar.prototype = {
 		});
 	},
 
-	mouseListener : function() {
+	mouseListener: function () {
 		var _this = this;
-		this.panelButtons.on('click', function(e) {
+		this.panelButtons.on('click', function (e) {
 			_this.panelButtons.removeClass('panel-active');
 			e.preventDefault();
 			e.stopPropagation();
@@ -217,35 +217,35 @@ Toolbar.prototype = {
 			_this.loadPanel(id);
 		});
 
-		this.button.on('click', function(e) {
+		this.button.on('click', function (e) {
 			_this.toggle();
 		});
 
-		toolbar.panelClose.on('click', function(e) {
+		toolbar.panelClose.on('click', function (e) {
 			_this.hideContent();
 			return false;
 		});
 	},
 
-	windowOrigin : function() {
+	windowOrigin: function () {
 		// IE does not have access to window.location.origin
 		if (!window.location.origin) {
-			window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
+			window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
 		}
 	},
 
-	onMessage: function(event) {
+	onMessage: function (event) {
 		if (event.data.indexOf('ajax-completed$$') === 0) {
 			this.onRequest(JSON.parse(event.data.split('$$')[1]))
 		}
 	},
 
-	onRequest: function(request) {
+	onRequest: function (request) {
 		this.ajaxRequests.push(request);
 		$(".panel-summary:contains(xhr)").text("" + this.ajaxRequests.length + ' xhr');
 	},
 
-	initialize: function() {
+	initialize: function () {
 		this.windowOrigin();
 		this.mouseListener();
 		this.keyboardListener();

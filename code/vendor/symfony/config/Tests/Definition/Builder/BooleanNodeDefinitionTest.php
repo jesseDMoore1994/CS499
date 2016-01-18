@@ -15,13 +15,13 @@ use Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition;
 
 class BooleanNodeDefinitionTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @expectedException Symfony\Component\Config\Definition\Exception\InvalidDefinitionException
-     * @expectedExceptionMessage ->cannotBeEmpty() is not applicable to BooleanNodeDefinition.
-     */
-    public function testCannotBeEmptyThrowsAnException()
-    {
-        $def = new BooleanNodeDefinition('foo');
-        $def->cannotBeEmpty();
-    }
+	/**
+	 * @expectedException Symfony\Component\Config\Definition\Exception\InvalidDefinitionException
+	 * @expectedExceptionMessage ->cannotBeEmpty() is not applicable to BooleanNodeDefinition.
+	 */
+	public function testCannotBeEmptyThrowsAnException()
+	{
+		$def = new BooleanNodeDefinition('foo');
+		$def->cannotBeEmpty();
+	}
 }

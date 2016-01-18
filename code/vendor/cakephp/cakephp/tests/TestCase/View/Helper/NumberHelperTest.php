@@ -29,15 +29,15 @@ use Cake\View\View;
 class NumberHelperTestObject extends NumberHelper
 {
 
-    public function attach(NumberMock $cakeNumber)
-    {
-        $this->_engine = $cakeNumber;
-    }
+	public function attach(NumberMock $cakeNumber)
+	{
+		$this->_engine = $cakeNumber;
+	}
 
-    public function engine()
-    {
-        return $this->_engine;
-    }
+	public function engine()
+	{
+		return $this->_engine;
+	}
 }
 
 /**
@@ -54,82 +54,82 @@ class NumberMock
 class NumberHelperTest extends TestCase
 {
 
-    /**
-     * setUp method
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        $this->View = new View();
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		$this->View = new View();
 
-        $this->_appNamespace = Configure::read('App.namespace');
-        Configure::write('App.namespace', 'TestApp');
-    }
+		$this->_appNamespace = Configure::read('App.namespace');
+		Configure::write('App.namespace', 'TestApp');
+	}
 
-    /**
-     * tearDown method
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        parent::tearDown();
-        Configure::write('App.namespace', $this->_appNamespace);
-        unset($this->View);
-    }
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
+	public function tearDown()
+	{
+		parent::tearDown();
+		Configure::write('App.namespace', $this->_appNamespace);
+		unset($this->View);
+	}
 
-    /**
-     * Provider for method proxying.
-     *
-     * @return array
-     */
-    public function methodProvider()
-    {
-        return [
-            ['precision'],
-            ['toReadableSize'],
-            ['toPercentage'],
-            ['currency'],
-            ['format'],
-            ['addFormat'],
-            ['formatDelta'],
-            ['defaultCurrency'],
-            ['ordinal'],
-        ];
-    }
+	/**
+	 * Provider for method proxying.
+	 *
+	 * @return array
+	 */
+	public function methodProvider()
+	{
+		return [
+			['precision'],
+			['toReadableSize'],
+			['toPercentage'],
+			['currency'],
+			['format'],
+			['addFormat'],
+			['formatDelta'],
+			['defaultCurrency'],
+			['ordinal'],
+		];
+	}
 
-    /**
-     * test CakeNumber class methods are called correctly
-     *
-     * @dataProvider methodProvider
-     * @return void
-     */
-    public function testNumberHelperProxyMethodCalls($method)
-    {
-        $number = $this->getMock(__NAMESPACE__ . '\NumberMock', [$method]);
-        $helper = new NumberHelperTestObject($this->View, ['engine' => __NAMESPACE__ . '\NumberMock']);
-        $helper->attach($number);
-        $number->expects($this->at(0))
-            ->method($method)
-            ->with(12.3);
-        $helper->{$method}(12.3, ['options']);
-    }
+	/**
+	 * test CakeNumber class methods are called correctly
+	 *
+	 * @dataProvider methodProvider
+	 * @return void
+	 */
+	public function testNumberHelperProxyMethodCalls($method)
+	{
+		$number = $this->getMock(__NAMESPACE__ . '\NumberMock', [$method]);
+		$helper = new NumberHelperTestObject($this->View, ['engine' => __NAMESPACE__ . '\NumberMock']);
+		$helper->attach($number);
+		$number->expects($this->at(0))
+			->method($method)
+			->with(12.3);
+		$helper->{$method}(12.3, ['options']);
+	}
 
-    /**
-     * test engine override
-     *
-     * @return void
-     */
-    public function testEngineOverride()
-    {
-        $Number = new NumberHelperTestObject($this->View, ['engine' => 'TestAppEngine']);
-        $this->assertInstanceOf('TestApp\Utility\TestAppEngine', $Number->engine());
+	/**
+	 * test engine override
+	 *
+	 * @return void
+	 */
+	public function testEngineOverride()
+	{
+		$Number = new NumberHelperTestObject($this->View, ['engine' => 'TestAppEngine']);
+		$this->assertInstanceOf('TestApp\Utility\TestAppEngine', $Number->engine());
 
-        Plugin::load('TestPlugin');
-        $Number = new NumberHelperTestObject($this->View, ['engine' => 'TestPlugin.TestPluginEngine']);
-        $this->assertInstanceOf('TestPlugin\Utility\TestPluginEngine', $Number->engine());
-        Plugin::unload('TestPlugin');
-    }
+		Plugin::load('TestPlugin');
+		$Number = new NumberHelperTestObject($this->View, ['engine' => 'TestPlugin.TestPluginEngine']);
+		$this->assertInstanceOf('TestPlugin\Utility\TestPluginEngine', $Number->engine());
+		Plugin::unload('TestPlugin');
+	}
 }

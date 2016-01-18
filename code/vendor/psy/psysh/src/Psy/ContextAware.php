@@ -19,10 +19,10 @@ namespace Psy;
  */
 interface ContextAware
 {
-    /**
-     * Set the Context reference.
-     *
-     * @param Context $context
-     */
-    public function setContext(Context $context);
+	/**
+	 * Set the Context reference.
+	 *
+	 * @param Context $context
+	 */
+	public function setContext(Context $context);
 }

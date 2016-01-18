@@ -25,59 +25,59 @@ use Psy\Exception\ErrorException;
  */
 class CalledClassPass extends CodeCleanerPass
 {
-    private $inClass;
+	private $inClass;
 
-    /**
-     * @param array $nodes
-     */
-    public function beforeTraverse(array $nodes)
-    {
-        $this->inClass = false;
-    }
+	/**
+	 * @param array $nodes
+	 */
+	public function beforeTraverse(array $nodes)
+	{
+		$this->inClass = false;
+	}
 
-    /**
-     * @throws ErrorException if get_class or get_called_class is called without an object from outside a class
-     *
-     * @param Node $node
-     */
-    public function enterNode(Node $node)
-    {
-        if ($node instanceof ClassStmt || $node instanceof TraitStmt) {
-            $this->inClass = true;
-        } elseif ($node instanceof FuncCall && !$this->inClass) {
-            // We'll give any args at all (besides null) a pass.
-            // Technically we should be checking whether the args are objects, but this will do for now.
-            //
-            // TODO: switch this to actually validate args when we get context-aware code cleaner passes.
-            if (!empty($node->args) && !$this->isNull($node->args[0])) {
-                return;
-            }
+	/**
+	 * @throws ErrorException if get_class or get_called_class is called without an object from outside a class
+	 *
+	 * @param Node $node
+	 */
+	public function enterNode(Node $node)
+	{
+		if ($node instanceof ClassStmt || $node instanceof TraitStmt) {
+			$this->inClass = true;
+		} elseif ($node instanceof FuncCall && !$this->inClass) {
+			// We'll give any args at all (besides null) a pass.
+			// Technically we should be checking whether the args are objects, but this will do for now.
+			//
+			// TODO: switch this to actually validate args when we get context-aware code cleaner passes.
+			if (!empty($node->args) && !$this->isNull($node->args[0])) {
+				return;
+			}
 
-            // We'll ignore name expressions as well (things like `$foo()`)
-            if (!($node->name instanceof Name)) {
-                return;
-            }
+			// We'll ignore name expressions as well (things like `$foo()`)
+			if (!($node->name instanceof Name)) {
+				return;
+			}
 
-            $name = strtolower($node->name);
-            if (in_array($name, array('get_class', 'get_called_class'))) {
-                $msg = sprintf('%s() called without object from outside a class', $name);
-                throw new ErrorException($msg, 0, E_USER_WARNING, null, $node->getLine());
-            }
-        }
-    }
+			$name = strtolower($node->name);
+			if (in_array($name, array('get_class', 'get_called_class'))) {
+				$msg = sprintf('%s() called without object from outside a class', $name);
+				throw new ErrorException($msg, 0, E_USER_WARNING, null, $node->getLine());
+			}
+		}
+	}
 
-    /**
-     * @param Node $node
-     */
-    public function leaveNode(Node $node)
-    {
-        if ($node instanceof ClassStmt) {
-            $this->inClass = false;
-        }
-    }
+	/**
+	 * @param Node $node
+	 */
+	public function leaveNode(Node $node)
+	{
+		if ($node instanceof ClassStmt) {
+			$this->inClass = false;
+		}
+	}
 
-    private function isNull(Node $node)
-    {
-        return $node->value instanceof ConstFetch && strtolower($node->value->name) === 'null';
-    }
+	private function isNull(Node $node)
+	{
+		return $node->value instanceof ConstFetch && strtolower($node->value->name) === 'null';
+	}
 }

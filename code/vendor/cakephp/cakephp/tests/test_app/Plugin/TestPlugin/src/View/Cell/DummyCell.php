@@ -20,23 +20,23 @@ namespace TestPlugin\View\Cell;
 class DummyCell extends \Cake\View\Cell
 {
 
-    /**
-     * Default cell action.
-     *
-     * @return void
-     */
-    public function display()
-    {
-    }
+	/**
+	 * Default cell action.
+	 *
+	 * @return void
+	 */
+	public function display()
+	{
+	}
 
-    /**
-     * Simple echo.
-     *
-     * @param string $msg
-     * @return void
-     */
-    public function echoThis($msg)
-    {
-        $this->set('msg', $msg);
-    }
+	/**
+	 * Simple echo.
+	 *
+	 * @param string $msg
+	 * @return void
+	 */
+	public function echoThis($msg)
+	{
+		$this->set('msg', $msg);
+	}
 }

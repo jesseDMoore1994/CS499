@@ -22,28 +22,28 @@ use Cake\ORM\TableRegistry;
 trait LocatorAwareTrait
 {
 
-    /**
-     * Table locator instance
-     *
-     * @var \Cake\ORM\Locator\LocatorInterface
-     */
-    protected $_tableLocator;
+	/**
+	 * Table locator instance
+	 *
+	 * @var \Cake\ORM\Locator\LocatorInterface
+	 */
+	protected $_tableLocator;
 
-    /**
-     * Sets the table locator.
-     * If no parameters are passed, it will return the currently used locator.
-     *
-     * @param \Cake\ORM\Locator\LocatorInterface|null $tableLocator LocatorInterface instance.
-     * @return \Cake\ORM\Locator\LocatorInterface
-     */
-    public function tableLocator(LocatorInterface $tableLocator = null)
-    {
-        if ($tableLocator !== null) {
-            $this->_tableLocator = $tableLocator;
-        }
-        if (!$this->_tableLocator) {
-            $this->_tableLocator = TableRegistry::locator();
-        }
-        return $this->_tableLocator;
-    }
+	/**
+	 * Sets the table locator.
+	 * If no parameters are passed, it will return the currently used locator.
+	 *
+	 * @param \Cake\ORM\Locator\LocatorInterface|null $tableLocator LocatorInterface instance.
+	 * @return \Cake\ORM\Locator\LocatorInterface
+	 */
+	public function tableLocator(LocatorInterface $tableLocator = null)
+	{
+		if ($tableLocator !== null) {
+			$this->_tableLocator = $tableLocator;
+		}
+		if (!$this->_tableLocator) {
+			$this->_tableLocator = TableRegistry::locator();
+		}
+		return $this->_tableLocator;
+	}
 }

@@ -33,220 +33,220 @@ use Phinx\Db\Table;
 
 class ForeignKey
 {
-    const CASCADE = 'CASCADE';
-    const RESTRICT = 'RESTRICT';
-    const SET_NULL = 'SET NULL';
-    const NO_ACTION = 'NO ACTION';
+	const CASCADE = 'CASCADE';
+	const RESTRICT = 'RESTRICT';
+	const SET_NULL = 'SET NULL';
+	const NO_ACTION = 'NO ACTION';
 
-    /**
-     * @var array
-     */
-    protected $columns = array();
+	/**
+	 * @var array
+	 */
+	protected $columns = array();
 
-    /**
-     * @var Table
-     */
-    protected $referencedTable;
+	/**
+	 * @var Table
+	 */
+	protected $referencedTable;
 
-    /**
-     * @var array
-     */
-    protected $referencedColumns = array();
+	/**
+	 * @var array
+	 */
+	protected $referencedColumns = array();
 
-    /**
-     * @var string
-     */
-    protected $onDelete;
+	/**
+	 * @var string
+	 */
+	protected $onDelete;
 
-    /**
-     * @var string
-     */
-    protected $onUpdate;
+	/**
+	 * @var string
+	 */
+	protected $onUpdate;
 
-    /**
-     * @var string|boolean
-     */
-    protected $constraint;
+	/**
+	 * @var string|boolean
+	 */
+	protected $constraint;
 
-    /**
-     * Sets the foreign key columns.
-     *
-     * @param array|string $columns
-     * @return ForeignKey
-     */
-    public function setColumns($columns)
-    {
-        if (is_string($columns)) {
-            $columns = array($columns);
-        }
-        $this->columns = $columns;
-        return $this;
-    }
+	/**
+	 * Sets the foreign key columns.
+	 *
+	 * @param array|string $columns
+	 * @return ForeignKey
+	 */
+	public function setColumns($columns)
+	{
+		if (is_string($columns)) {
+			$columns = array($columns);
+		}
+		$this->columns = $columns;
+		return $this;
+	}
 
-    /**
-     * Gets the foreign key columns.
-     *
-     * @return array
-     */
-    public function getColumns()
-    {
-        return $this->columns;
-    }
+	/**
+	 * Gets the foreign key columns.
+	 *
+	 * @return array
+	 */
+	public function getColumns()
+	{
+		return $this->columns;
+	}
 
-    /**
-     * Sets the foreign key referenced table.
-     *
-     * @param Table $table
-     * @return ForeignKey
-     */
-    public function setReferencedTable(Table $table)
-    {
-        $this->referencedTable = $table;
-        return $this;
-    }
+	/**
+	 * Sets the foreign key referenced table.
+	 *
+	 * @param Table $table
+	 * @return ForeignKey
+	 */
+	public function setReferencedTable(Table $table)
+	{
+		$this->referencedTable = $table;
+		return $this;
+	}
 
-    /**
-     * Gets the foreign key referenced table.
-     *
-     * @return Table
-     */
-    public function getReferencedTable()
-    {
-        return $this->referencedTable;
-    }
+	/**
+	 * Gets the foreign key referenced table.
+	 *
+	 * @return Table
+	 */
+	public function getReferencedTable()
+	{
+		return $this->referencedTable;
+	}
 
-    /**
-     * Sets the foreign key referenced columns.
-     *
-     * @param array $referencedColumns
-     * @return ForeignKey
-     */
-    public function setReferencedColumns(array $referencedColumns)
-    {
-        $this->referencedColumns = $referencedColumns;
-        return $this;
-    }
+	/**
+	 * Sets the foreign key referenced columns.
+	 *
+	 * @param array $referencedColumns
+	 * @return ForeignKey
+	 */
+	public function setReferencedColumns(array $referencedColumns)
+	{
+		$this->referencedColumns = $referencedColumns;
+		return $this;
+	}
 
-    /**
-     * Gets the foreign key referenced columns.
-     *
-     * @return array
-     */
-    public function getReferencedColumns()
-    {
-        return $this->referencedColumns;
-    }
+	/**
+	 * Gets the foreign key referenced columns.
+	 *
+	 * @return array
+	 */
+	public function getReferencedColumns()
+	{
+		return $this->referencedColumns;
+	}
 
-    /**
-     * Sets ON DELETE action for the foreign key.
-     *
-     * @param string $onDelete
-     * @return ForeignKey
-     */
-    public function setOnDelete($onDelete)
-    {
-        $this->onDelete = $this->normalizeAction($onDelete);
-        return $this;
-    }
+	/**
+	 * Sets ON DELETE action for the foreign key.
+	 *
+	 * @param string $onDelete
+	 * @return ForeignKey
+	 */
+	public function setOnDelete($onDelete)
+	{
+		$this->onDelete = $this->normalizeAction($onDelete);
+		return $this;
+	}
 
-    /**
-     * Gets ON DELETE action for the foreign key.
-     *
-     * @return string
-     */
-    public function getOnDelete()
-    {
-        return $this->onDelete;
-    }
+	/**
+	 * Gets ON DELETE action for the foreign key.
+	 *
+	 * @return string
+	 */
+	public function getOnDelete()
+	{
+		return $this->onDelete;
+	}
 
-    /**
-     * Gets ON UPDATE action for the foreign key.
-     *
-     * @return string
-     */
-    public function getOnUpdate()
-    {
-        return $this->onUpdate;
-    }
+	/**
+	 * Gets ON UPDATE action for the foreign key.
+	 *
+	 * @return string
+	 */
+	public function getOnUpdate()
+	{
+		return $this->onUpdate;
+	}
 
-    /**
-     * Sets ON UPDATE action for the foreign key.
-     *
-     * @param string $onUpdate
-     * @return ForeignKey
-     */
-    public function setOnUpdate($onUpdate)
-    {
-        $this->onUpdate = $this->normalizeAction($onUpdate);
-        return $this;
-    }
+	/**
+	 * Sets ON UPDATE action for the foreign key.
+	 *
+	 * @param string $onUpdate
+	 * @return ForeignKey
+	 */
+	public function setOnUpdate($onUpdate)
+	{
+		$this->onUpdate = $this->normalizeAction($onUpdate);
+		return $this;
+	}
 
-    /**
-     * Sets constraint for the foreign key.
-     *
-     * @param string $constraint
-     * @return ForeignKey
-     */
-    public function setConstraint($constraint)
-    {
-        $this->constraint = $constraint;
-        return $this;
-    }
+	/**
+	 * Sets constraint for the foreign key.
+	 *
+	 * @param string $constraint
+	 * @return ForeignKey
+	 */
+	public function setConstraint($constraint)
+	{
+		$this->constraint = $constraint;
+		return $this;
+	}
 
-    /**
-     * Gets constraint name for the foreign key.
-     *
-     * @return string
-     */
-    public function getConstraint()
-    {
-        return $this->constraint;
-    }
+	/**
+	 * Gets constraint name for the foreign key.
+	 *
+	 * @return string
+	 */
+	public function getConstraint()
+	{
+		return $this->constraint;
+	}
 
-    /**
-     * Utility method that maps an array of index options to this objects methods.
-     *
-     * @param array $options Options
-     * @throws \RuntimeException
-     * @throws \InvalidArgumentException
-     * @return ForeignKey
-     */
-    public function setOptions($options)
-    {
-        // Valid Options
-        $validOptions = array('delete', 'update', 'constraint');
-        foreach ($options as $option => $value) {
-            if (!in_array($option, $validOptions)) {
-                throw new \RuntimeException('\'' . $option . '\' is not a valid foreign key option.');
-            }
+	/**
+	 * Utility method that maps an array of index options to this objects methods.
+	 *
+	 * @param array $options Options
+	 * @throws \RuntimeException
+	 * @throws \InvalidArgumentException
+	 * @return ForeignKey
+	 */
+	public function setOptions($options)
+	{
+		// Valid Options
+		$validOptions = array('delete', 'update', 'constraint');
+		foreach ($options as $option => $value) {
+			if (!in_array($option, $validOptions)) {
+				throw new \RuntimeException('\'' . $option . '\' is not a valid foreign key option.');
+			}
 
-            // handle $options['delete'] as $options['update']
-            if ('delete' === $option) {
-                $this->setOnDelete($value);
-            } elseif ('update' === $option) {
-                $this->setOnUpdate($value);
-            } else {
-                $method = 'set' . ucfirst($option);
-                $this->$method($value);
-            }
-        }
+			// handle $options['delete'] as $options['update']
+			if ('delete' === $option) {
+				$this->setOnDelete($value);
+			} elseif ('update' === $option) {
+				$this->setOnUpdate($value);
+			} else {
+				$method = 'set' . ucfirst($option);
+				$this->$method($value);
+			}
+		}
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * From passed value checks if it's correct and fixes if needed
-     *
-     * @param string $action
-     * @throws \InvalidArgumentException
-     * @return string
-     */
-    protected function normalizeAction($action)
-    {
-        $constantName = 'static::' . str_replace(' ', '_', strtoupper(trim($action)));
-        if (!defined($constantName)) {
-            throw new \InvalidArgumentException('Unknown action passed: ' . $action);
-        }
-        return constant($constantName);
-    }
+	/**
+	 * From passed value checks if it's correct and fixes if needed
+	 *
+	 * @param string $action
+	 * @throws \InvalidArgumentException
+	 * @return string
+	 */
+	protected function normalizeAction($action)
+	{
+		$constantName = 'static::' . str_replace(' ', '_', strtoupper(trim($action)));
+		if (!defined($constantName)) {
+			throw new \InvalidArgumentException('Unknown action passed: ' . $action);
+		}
+		return constant($constantName);
+	}
 }

@@ -28,74 +28,74 @@ use Traversable;
 class Collection extends IteratorIterator implements CollectionInterface, Serializable
 {
 
-    use CollectionTrait;
+	use CollectionTrait;
 
-    /**
-     * Constructor. You can provide an array or any traversable object
-     *
-     * @param array|\Traversable $items Items.
-     * @throws InvalidArgumentException If passed incorrect type for items.
-     */
-    public function __construct($items)
-    {
-        if (is_array($items)) {
-            $items = new ArrayIterator($items);
-        }
+	/**
+	 * Constructor. You can provide an array or any traversable object
+	 *
+	 * @param array|\Traversable $items Items.
+	 * @throws InvalidArgumentException If passed incorrect type for items.
+	 */
+	public function __construct($items)
+	{
+		if (is_array($items)) {
+			$items = new ArrayIterator($items);
+		}
 
-        if (!($items instanceof Traversable)) {
-            $msg = 'Only an array or \Traversable is allowed for Collection';
-            throw new InvalidArgumentException($msg);
-        }
+		if (!($items instanceof Traversable)) {
+			$msg = 'Only an array or \Traversable is allowed for Collection';
+			throw new InvalidArgumentException($msg);
+		}
 
-        parent::__construct($items);
-    }
+		parent::__construct($items);
+	}
 
-    /**
-     * Returns a string representation of this object that can be used
-     * to reconstruct it
-     *
-     * @return string
-     */
-    public function serialize()
-    {
-        return serialize($this->buffered());
-    }
+	/**
+	 * Returns a string representation of this object that can be used
+	 * to reconstruct it
+	 *
+	 * @return string
+	 */
+	public function serialize()
+	{
+		return serialize($this->buffered());
+	}
 
-    /**
-     * Unserializes the passed string and rebuilds the Collection instance
-     *
-     * @param string $collection The serialized collection
-     * @return void
-     */
-    public function unserialize($collection)
-    {
-        $this->__construct(unserialize($collection));
-    }
+	/**
+	 * Unserializes the passed string and rebuilds the Collection instance
+	 *
+	 * @param string $collection The serialized collection
+	 * @return void
+	 */
+	public function unserialize($collection)
+	{
+		$this->__construct(unserialize($collection));
+	}
 
-    /**
-     * Throws an exception.
-     *
-     * Issuing a count on a Collection can have many side effects, some making the
-     * Collection unusable after the count operation.
-     *
-     * @return void
-     * @throws \LogicException
-     */
-    public function count()
-    {
-        throw new LogicException('You cannot issue a count on a Collection.');
-    }
+	/**
+	 * Throws an exception.
+	 *
+	 * Issuing a count on a Collection can have many side effects, some making the
+	 * Collection unusable after the count operation.
+	 *
+	 * @return void
+	 * @throws \LogicException
+	 */
+	public function count()
+	{
+		throw new LogicException('You cannot issue a count on a Collection.');
+	}
 
-    /**
-     * Returns an array that can be used to describe the internal state of this
-     * object.
-     *
-     * @return array
-     */
-    public function __debugInfo()
-    {
-        return [
-            'count' => iterator_count($this),
-        ];
-    }
+	/**
+	 * Returns an array that can be used to describe the internal state of this
+	 * object.
+	 *
+	 * @return array
+	 */
+	public function __debugInfo()
+	{
+		return [
+			'count' => iterator_count($this),
+		];
+	}
 }

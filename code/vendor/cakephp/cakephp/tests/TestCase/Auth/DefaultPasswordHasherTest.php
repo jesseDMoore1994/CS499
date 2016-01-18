@@ -24,17 +24,17 @@ use Cake\TestSuite\TestCase;
 class DefaultPasswordHasherTest extends TestCase
 {
 
-    /**
-     * Tests that a password not produced by DefaultPasswordHasher needs
-     * to be rehashed
-     *
-     * @return void
-     */
-    public function testNeedsRehash()
-    {
-        $hasher = new DefaultPasswordHasher();
-        $this->assertTrue($hasher->needsRehash(md5('foo')));
-        $password = $hasher->hash('foo');
-        $this->assertFalse($hasher->needsRehash($password));
-    }
+	/**
+	 * Tests that a password not produced by DefaultPasswordHasher needs
+	 * to be rehashed
+	 *
+	 * @return void
+	 */
+	public function testNeedsRehash()
+	{
+		$hasher = new DefaultPasswordHasher();
+		$this->assertTrue($hasher->needsRehash(md5('foo')));
+		$password = $hasher->hash('foo');
+		$this->assertFalse($hasher->needsRehash($password));
+	}
 }

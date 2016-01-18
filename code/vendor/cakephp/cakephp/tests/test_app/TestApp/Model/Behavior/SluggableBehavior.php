@@ -27,20 +27,20 @@ use Cake\Utility\Inflector;
 class SluggableBehavior extends Behavior
 {
 
-    public function beforeFind(Event $event, Query $query, $options = [])
-    {
-        $query->where(['slug' => 'test']);
-        return $query;
-    }
+	public function beforeFind(Event $event, Query $query, $options = [])
+	{
+		$query->where(['slug' => 'test']);
+		return $query;
+	}
 
-    public function findNoSlug(Query $query, $options = [])
-    {
-        $query->where(['slug' => null]);
-        return $query;
-    }
+	public function findNoSlug(Query $query, $options = [])
+	{
+		$query->where(['slug' => null]);
+		return $query;
+	}
 
-    public function slugify($value)
-    {
-        return Inflector::slug($value);
-    }
+	public function slugify($value)
+	{
+		return Inflector::slug($value);
+	}
 }

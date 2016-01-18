@@ -16,5 +16,5 @@ namespace Psy\Exception;
  */
 class DeprecatedException extends RuntimeException
 {
-    // This space intentionally left blank.
+	// This space intentionally left blank.
 }

@@ -20,40 +20,40 @@ use Cake\Controller\Controller;
  */
 class CookieComponentTestController extends Controller
 {
-    /**
-     * @var array
-     */
-    public $components = [
-        'Cookie',
-    ];
+	/**
+	 * @var array
+	 */
+	public $components = [
+		'Cookie',
+	];
 
-    /**
-     * view
-     *
-     * @param string|null $key Encryption key used. By defaults,
-     *   CookieComponent::_config['key'].
-     */
-    public function view($key = null)
-    {
-        if (isset($key)) {
-            $this->Cookie->config('key', $key);
-        }
-        $this->set('ValueFromRequest', $this->request->cookie('NameOfCookie'));
-        $this->set('ValueFromCookieComponent', $this->Cookie->read('NameOfCookie'));
-    }
+	/**
+	 * view
+	 *
+	 * @param string|null $key Encryption key used. By defaults,
+	 *   CookieComponent::_config['key'].
+	 */
+	public function view($key = null)
+	{
+		if (isset($key)) {
+			$this->Cookie->config('key', $key);
+		}
+		$this->set('ValueFromRequest', $this->request->cookie('NameOfCookie'));
+		$this->set('ValueFromCookieComponent', $this->Cookie->read('NameOfCookie'));
+	}
 
-    /**
-     * action to set a cookie
-     *
-     * @param string|null $key Encryption key used. By defaults,
-     *   CookieComponent::_config['key'].
-     */
-    public function set_cookie($key = null)
-    {
-        $this->autoRender = false;
-        if (isset($key)) {
-            $this->Cookie->config('key', $key);
-        }
-        $this->Cookie->write('NameOfCookie', 'abc');
-    }
+	/**
+	 * action to set a cookie
+	 *
+	 * @param string|null $key Encryption key used. By defaults,
+	 *   CookieComponent::_config['key'].
+	 */
+	public function set_cookie($key = null)
+	{
+		$this->autoRender = false;
+		if (isset($key)) {
+			$this->Cookie->config('key', $key);
+		}
+		$this->Cookie->write('NameOfCookie', 'abc');
+	}
 }

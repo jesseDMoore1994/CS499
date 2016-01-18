@@ -44,186 +44,186 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 abstract class AbstractMigration implements MigrationInterface
 {
-    /**
-     * @var float
-     */
-    protected $version;
+	/**
+	 * @var float
+	 */
+	protected $version;
 
-    /**
-     * @var AdapterInterface
-     */
-    protected $adapter;
+	/**
+	 * @var AdapterInterface
+	 */
+	protected $adapter;
 
-    /**
-     * @var OutputInterface
-     */
-    protected $output;
+	/**
+	 * @var OutputInterface
+	 */
+	protected $output;
 
-    /**
-     * Class Constructor.
-     *
-     * @param int $version Migration Version
-     */
-    final public function __construct($version)
-    {
-        $this->version = $version;
-        $this->init();
-    }
+	/**
+	 * Class Constructor.
+	 *
+	 * @param int $version Migration Version
+	 */
+	final public function __construct($version)
+	{
+		$this->version = $version;
+		$this->init();
+	}
 
-    /**
-     * Initialize method.
-     *
-     * @return void
-     */
-    protected function init()
-    {
-    }
+	/**
+	 * Initialize method.
+	 *
+	 * @return void
+	 */
+	protected function init()
+	{
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function up()
-    {
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function up()
+	{
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function down()
-    {
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function down()
+	{
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setAdapter(AdapterInterface $adapter)
-    {
-        $this->adapter = $adapter;
-        return $this;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setAdapter(AdapterInterface $adapter)
+	{
+		$this->adapter = $adapter;
+		return $this;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getAdapter()
-    {
-        return $this->adapter;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getAdapter()
+	{
+		return $this->adapter;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setOutput(OutputInterface $output)
-    {
-        $this->output = $output;
-        return $this;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setOutput(OutputInterface $output)
+	{
+		$this->output = $output;
+		return $this;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getOutput()
-    {
-        return $this->output;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getOutput()
+	{
+		return $this->output;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return get_class($this);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getName()
+	{
+		return get_class($this);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setVersion($version)
-    {
-        $this->version = $version;
-        return $this;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setVersion($version)
+	{
+		$this->version = $version;
+		return $this;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getVersion()
-    {
-        return $this->version;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getVersion()
+	{
+		return $this->version;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function execute($sql)
-    {
-        return $this->getAdapter()->execute($sql);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function execute($sql)
+	{
+		return $this->getAdapter()->execute($sql);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function query($sql)
-    {
-        return $this->getAdapter()->query($sql);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function query($sql)
+	{
+		return $this->getAdapter()->query($sql);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchRow($sql)
-    {
-        return $this->getAdapter()->fetchRow($sql);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function fetchRow($sql)
+	{
+		return $this->getAdapter()->fetchRow($sql);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAll($sql)
-    {
-        return $this->getAdapter()->fetchAll($sql);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function fetchAll($sql)
+	{
+		return $this->getAdapter()->fetchAll($sql);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function createDatabase($name, $options)
-    {
-        $this->getAdapter()->createDatabase($name, $options);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function createDatabase($name, $options)
+	{
+		$this->getAdapter()->createDatabase($name, $options);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function dropDatabase($name)
-    {
-        $this->getAdapter()->dropDatabase($name);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function dropDatabase($name)
+	{
+		$this->getAdapter()->dropDatabase($name);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function hasTable($tableName)
-    {
-        return $this->getAdapter()->hasTable($tableName);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function hasTable($tableName)
+	{
+		return $this->getAdapter()->hasTable($tableName);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function table($tableName, $options = array())
-    {
-        return new Table($tableName, $options, $this->getAdapter());
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function table($tableName, $options = array())
+	{
+		return new Table($tableName, $options, $this->getAdapter());
+	}
 
-    /**
-     * A short-hand method to drop the given database table.
-     *
-     * @param string $tableName Table Name
-     * @return void
-     */
-    public function dropTable($tableName)
-    {
-        $this->table($tableName)->drop();
-    }
+	/**
+	 * A short-hand method to drop the given database table.
+	 *
+	 * @param string $tableName Table Name
+	 * @return void
+	 */
+	public function dropTable($tableName)
+	{
+		$this->table($tableName)->drop();
+	}
 }

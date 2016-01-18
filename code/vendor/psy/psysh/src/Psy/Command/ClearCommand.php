@@ -21,29 +21,29 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ClearCommand extends Command
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
-    {
-        $this
-            ->setName('clear')
-            ->setDefinition(array())
-            ->setDescription('Clear the Psy Shell screen.')
-            ->setHelp(
-                <<<HELP
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function configure()
+	{
+		$this
+			->setName('clear')
+			->setDefinition(array())
+			->setDescription('Clear the Psy Shell screen.')
+			->setHelp(
+				<<<HELP
 Clear the Psy Shell screen.
 
 Pro Tip: If your PHP has readline support, you should be able to use ctrl+l too!
 HELP
-            );
-    }
+			);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $output->write(sprintf('%c[2J%c[0;0f', 27, 27));
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function execute(InputInterface $input, OutputInterface $output)
+	{
+		$output->write(sprintf('%c[2J%c[0;0f', 27, 27));
+	}
 }

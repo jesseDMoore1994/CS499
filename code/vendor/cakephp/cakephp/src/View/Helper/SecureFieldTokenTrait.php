@@ -22,47 +22,47 @@ use Cake\Utility\Security;
  */
 trait SecureFieldTokenTrait
 {
-    /**
-     * Generate the token data for the provided inputs.
-     *
-     * @param string $url The URL the form is being submitted to.
-     * @param array $fields If set specifies the list of fields to use when
-     *    generating the hash.
-     * @param array $unlockedFields The list of fields that are excluded from
-     *    field validation.
-     * @return array The token data.
-     */
-    protected function _buildFieldToken($url, $fields, $unlockedFields = [])
-    {
-        $locked = [];
-        foreach ($fields as $key => $value) {
-            if (is_numeric($value)) {
-                $value = (string)$value;
-            }
-            if (!is_int($key)) {
-                $locked[$key] = $value;
-                unset($fields[$key]);
-            }
-        }
+	/**
+	 * Generate the token data for the provided inputs.
+	 *
+	 * @param string $url The URL the form is being submitted to.
+	 * @param array $fields If set specifies the list of fields to use when
+	 *    generating the hash.
+	 * @param array $unlockedFields The list of fields that are excluded from
+	 *    field validation.
+	 * @return array The token data.
+	 */
+	protected function _buildFieldToken($url, $fields, $unlockedFields = [])
+	{
+		$locked = [];
+		foreach ($fields as $key => $value) {
+			if (is_numeric($value)) {
+				$value = (string)$value;
+			}
+			if (!is_int($key)) {
+				$locked[$key] = $value;
+				unset($fields[$key]);
+			}
+		}
 
-        sort($unlockedFields, SORT_STRING);
-        sort($fields, SORT_STRING);
-        ksort($locked, SORT_STRING);
-        $fields += $locked;
+		sort($unlockedFields, SORT_STRING);
+		sort($fields, SORT_STRING);
+		ksort($locked, SORT_STRING);
+		$fields += $locked;
 
-        $locked = implode(array_keys($locked), '|');
-        $unlocked = implode($unlockedFields, '|');
-        $hashParts = [
-            $url,
-            serialize($fields),
-            $unlocked,
-            Security::salt()
-        ];
-        $fields = Security::hash(implode('', $hashParts), 'sha1');
+		$locked = implode(array_keys($locked), '|');
+		$unlocked = implode($unlockedFields, '|');
+		$hashParts = [
+			$url,
+			serialize($fields),
+			$unlocked,
+			Security::salt()
+		];
+		$fields = Security::hash(implode('', $hashParts), 'sha1');
 
-        return [
-            'fields' => urlencode($fields . ':' . $locked),
-            'unlocked' => urlencode($unlocked),
-        ];
-    }
+		return [
+			'fields' => urlencode($fields . ':' . $locked),
+			'unlocked' => urlencode($unlocked),
+		];
+	}
 }

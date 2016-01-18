@@ -23,58 +23,58 @@ use Cake\Network\Request;
 class MemoryStorage implements StorageInterface
 {
 
-    /**
-     * User record.
-     *
-     * @var array|null
-     */
-    protected $_user;
+	/**
+	 * User record.
+	 *
+	 * @var array|null
+	 */
+	protected $_user;
 
-    /**
-     * Redirect url.
-     *
-     * @var string
-     */
-    protected $_redirectUrl;
+	/**
+	 * Redirect url.
+	 *
+	 * @var string
+	 */
+	protected $_redirectUrl;
 
-    /**
-     * {@inheritDoc}
-     */
-    public function read()
-    {
-        return $this->_user;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function read()
+	{
+		return $this->_user;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function write(array $user)
-    {
-        $this->_user = $user;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function write(array $user)
+	{
+		$this->_user = $user;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function delete()
-    {
-        $this->_user = null;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function delete()
+	{
+		$this->_user = null;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function redirectUrl($url = null)
-    {
-        if ($url === null) {
-            return $this->_redirectUrl;
-        }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function redirectUrl($url = null)
+	{
+		if ($url === null) {
+			return $this->_redirectUrl;
+		}
 
-        if ($url === false) {
-            $this->_redirectUrl = null;
-            return null;
-        }
+		if ($url === false) {
+			$this->_redirectUrl = null;
+			return null;
+		}
 
-        $this->_redirectUrl = $url;
-    }
+		$this->_redirectUrl = $url;
+	}
 }

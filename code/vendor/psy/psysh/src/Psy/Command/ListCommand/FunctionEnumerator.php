@@ -18,95 +18,95 @@ use Symfony\Component\Console\Input\InputInterface;
  */
 class FunctionEnumerator extends Enumerator
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
-    {
-        // only list functions when no Reflector is present.
-        //
-        // TODO: make a NamespaceReflector and pass that in for commands like:
-        //
-        //     ls --functions Foo
-        //
-        // ... for listing functions in the Foo namespace
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+	{
+		// only list functions when no Reflector is present.
+		//
+		// TODO: make a NamespaceReflector and pass that in for commands like:
+		//
+		//     ls --functions Foo
+		//
+		// ... for listing functions in the Foo namespace
 
-        if ($reflector !== null || $target !== null) {
-            return;
-        }
+		if ($reflector !== null || $target !== null) {
+			return;
+		}
 
-        // only list functions if we are specifically asked
-        if (!$input->getOption('functions')) {
-            return;
-        }
+		// only list functions if we are specifically asked
+		if (!$input->getOption('functions')) {
+			return;
+		}
 
-        if ($input->getOption('user')) {
-            $label     = 'User Functions';
-            $functions = $this->getFunctions('user');
-        } elseif ($input->getOption('internal')) {
-            $label     = 'Internal Functions';
-            $functions = $this->getFunctions('internal');
-        } else {
-            $label     = 'Functions';
-            $functions = $this->getFunctions();
-        }
+		if ($input->getOption('user')) {
+			$label = 'User Functions';
+			$functions = $this->getFunctions('user');
+		} elseif ($input->getOption('internal')) {
+			$label = 'Internal Functions';
+			$functions = $this->getFunctions('internal');
+		} else {
+			$label = 'Functions';
+			$functions = $this->getFunctions();
+		}
 
-        $functions = $this->prepareFunctions($functions);
+		$functions = $this->prepareFunctions($functions);
 
-        if (empty($functions)) {
-            return;
-        }
+		if (empty($functions)) {
+			return;
+		}
 
-        $ret = array();
-        $ret[$label] = $functions;
+		$ret = array();
+		$ret[$label] = $functions;
 
-        return $ret;
-    }
+		return $ret;
+	}
 
-    /**
-     * Get defined functions.
-     *
-     * Optionally limit functions to "user" or "internal" functions.
-     *
-     * @param null|string $type "user" or "internal" (default: both)
-     *
-     * @return array
-     */
-    protected function getFunctions($type = null)
-    {
-        $funcs = get_defined_functions();
+	/**
+	 * Get defined functions.
+	 *
+	 * Optionally limit functions to "user" or "internal" functions.
+	 *
+	 * @param null|string $type "user" or "internal" (default: both)
+	 *
+	 * @return array
+	 */
+	protected function getFunctions($type = null)
+	{
+		$funcs = get_defined_functions();
 
-        if ($type) {
-            return $funcs[$type];
-        } else {
-            return array_merge($funcs['internal'], $funcs['user']);
-        }
-    }
+		if ($type) {
+			return $funcs[$type];
+		} else {
+			return array_merge($funcs['internal'], $funcs['user']);
+		}
+	}
 
-    /**
-     * Prepare formatted function array.
-     *
-     * @param array $functions
-     *
-     * @return array
-     */
-    protected function prepareFunctions(array $functions)
-    {
-        natcasesort($functions);
+	/**
+	 * Prepare formatted function array.
+	 *
+	 * @param array $functions
+	 *
+	 * @return array
+	 */
+	protected function prepareFunctions(array $functions)
+	{
+		natcasesort($functions);
 
-        // My kingdom for a generator.
-        $ret = array();
+		// My kingdom for a generator.
+		$ret = array();
 
-        foreach ($functions as $name) {
-            if ($this->showItem($name)) {
-                $ret[$name] = array(
-                    'name'  => $name,
-                    'style' => self::IS_FUNCTION,
-                    'value' => $this->presentSignature($name),
-                );
-            }
-        }
+		foreach ($functions as $name) {
+			if ($this->showItem($name)) {
+				$ret[$name] = array(
+					'name' => $name,
+					'style' => self::IS_FUNCTION,
+					'value' => $this->presentSignature($name),
+				);
+			}
+		}
 
-        return $ret;
-    }
+		return $ret;
+	}
 }

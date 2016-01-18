@@ -26,34 +26,34 @@ use Cake\View\Form\ContextInterface;
 class ButtonWidget extends BasicWidget
 {
 
-    /**
-     * Render a button.
-     *
-     * This method accepts a number of keys:
-     *
-     * - `text` The text of the button. Unlike all other form controls, buttons
-     *   do not escape their contents by default.
-     * - `escape` Set to true to enable escaping on all attributes.
-     * - `type` The button type defaults to 'submit'.
-     *
-     * Any other keys provided in $data will be converted into HTML attributes.
-     *
-     * @param array $data The data to build a button with.
-     * @param \Cake\View\Form\ContextInterface $context The current form context.
-     * @return string
-     */
-    public function render(array $data, ContextInterface $context)
-    {
-        $data += [
-            'text' => '',
-            'type' => 'submit',
-            'escape' => false,
-            'templateVars' => []
-        ];
-        return $this->_templates->format('button', [
-            'text' => $data['escape'] ? h($data['text']) : $data['text'],
-            'templateVars' => $data['templateVars'],
-            'attrs' => $this->_templates->formatAttributes($data, ['text']),
-        ]);
-    }
+	/**
+	 * Render a button.
+	 *
+	 * This method accepts a number of keys:
+	 *
+	 * - `text` The text of the button. Unlike all other form controls, buttons
+	 *   do not escape their contents by default.
+	 * - `escape` Set to true to enable escaping on all attributes.
+	 * - `type` The button type defaults to 'submit'.
+	 *
+	 * Any other keys provided in $data will be converted into HTML attributes.
+	 *
+	 * @param array $data The data to build a button with.
+	 * @param \Cake\View\Form\ContextInterface $context The current form context.
+	 * @return string
+	 */
+	public function render(array $data, ContextInterface $context)
+	{
+		$data += [
+			'text' => '',
+			'type' => 'submit',
+			'escape' => false,
+			'templateVars' => []
+		];
+		return $this->_templates->format('button', [
+			'text' => $data['escape'] ? h($data['text']) : $data['text'],
+			'templateVars' => $data['templateVars'],
+			'attrs' => $this->_templates->formatAttributes($data, ['text']),
+		]);
+	}
 }

@@ -23,62 +23,62 @@ use TestApp\Controller\AppController;
  */
 class PostsController extends AppController
 {
-    /**
-     * Components array
-     *
-     * @var array
-     */
-    public $components = [
-        'Flash',
-        'RequestHandler',
-        'Security',
-    ];
+	/**
+	 * Components array
+	 *
+	 * @var array
+	 */
+	public $components = [
+		'Flash',
+		'RequestHandler',
+		'Security',
+	];
 
-    /**
-     * beforeFilter
-     *
-     * @return void
-     */
-    public function beforeFilter(Event $event)
-    {
-        if ($this->request->param('action') !== 'securePost') {
-            $this->eventManager()->off($this->Security);
-        }
-    }
+	/**
+	 * beforeFilter
+	 *
+	 * @return void
+	 */
+	public function beforeFilter(Event $event)
+	{
+		if ($this->request->param('action') !== 'securePost') {
+			$this->eventManager()->off($this->Security);
+		}
+	}
 
-    /**
-     * Index method.
-     *
-     * @return void
-     */
-    public function index()
-    {
-        $this->Flash->error('An error message');
-        $this->response->cookie([
-            'name' => 'remember_me',
-            'value' => 1
-        ]);
-        $this->set('test', 'value');
-    }
+	/**
+	 * Index method.
+	 *
+	 * @return void
+	 */
+	public function index()
+	{
+		$this->Flash->error('An error message');
+		$this->response->cookie([
+			'name' => 'remember_me',
+			'value' => 1
+		]);
+		$this->set('test', 'value');
+	}
 
-    /**
-     * Stub get method
-     *
-     * @return void
-     */
-    public function get()
-    {
-        // Do nothing.
-    }
+	/**
+	 * Stub get method
+	 *
+	 * @return void
+	 */
+	public function get()
+	{
+		// Do nothing.
+	}
 
-    /**
-     * Post endpoint for integration testing with security component.
-     *
-     * @return void
-     */
-    public function securePost()
-    {
-        $this->response->body('Request was accepted');
-        return $this->response;
-    }
+	/**
+	 * Post endpoint for integration testing with security component.
+	 *
+	 * @return void
+	 */
+	public function securePost()
+	{
+		$this->response->body('Request was accepted');
+		return $this->response;
+	}
 }

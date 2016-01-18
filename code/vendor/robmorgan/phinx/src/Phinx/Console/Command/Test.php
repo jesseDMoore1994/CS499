@@ -38,62 +38,62 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class Test extends AbstractCommand
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
-    {
-        parent::configure();
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function configure()
+	{
+		parent::configure();
 
-        $this->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment');
+		$this->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment');
 
-        $this->setName('test')
-             ->setDescription('Verify the configuration file')
-             ->setHelp(
-<<<EOT
-The <info>test</info> command verifies the YAML configuration file and optionally an environment
+		$this->setName('test')
+			->setDescription('Verify the configuration file')
+			->setHelp(
+				<<<EOT
+				The <info>test</info> command verifies the YAML configuration file and optionally an environment
 
 <info>phinx test</info>
 <info>phinx test -e development</info>
 
 EOT
-             );
-    }
+			);
+	}
 
-    /**
-     * Verify configuration file
-     *
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @throws \RuntimeException
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $this->loadConfig($input, $output);
-        $this->loadManager($output);
+	/**
+	 * Verify configuration file
+	 *
+	 * @param InputInterface $input
+	 * @param OutputInterface $output
+	 * @throws \RuntimeException
+	 * @throws \InvalidArgumentException
+	 * @return void
+	 */
+	protected function execute(InputInterface $input, OutputInterface $output)
+	{
+		$this->loadConfig($input, $output);
+		$this->loadManager($output);
 
-        $this->verifyMigrationDirectory($this->getConfig()->getMigrationPath());
+		$this->verifyMigrationDirectory($this->getConfig()->getMigrationPath());
 
-        $envName = $input->getOption('environment');
-        if ($envName) {
-            if (!$this->getConfig()->hasEnvironment($envName)) {
-                throw new \InvalidArgumentException(sprintf(
-                    'The environment "%s" does not exist',
-                    $envName
-                ));
-            }
+		$envName = $input->getOption('environment');
+		if ($envName) {
+			if (!$this->getConfig()->hasEnvironment($envName)) {
+				throw new \InvalidArgumentException(sprintf(
+					'The environment "%s" does not exist',
+					$envName
+				));
+			}
 
-            $output->writeln(sprintf('<info>validating environment</info> %s', $envName));
-            $environment = new Environment(
-                $envName,
-                $this->getConfig()->getEnvironment($envName)
-            );
-            // validate environment connection
-            $environment->getAdapter()->connect();
-        }
+			$output->writeln(sprintf('<info>validating environment</info> %s', $envName));
+			$environment = new Environment(
+				$envName,
+				$this->getConfig()->getEnvironment($envName)
+			);
+			// validate environment connection
+			$environment->getAdapter()->connect();
+		}
 
-        $output->writeln('<info>success!</info>');
-    }
+		$output->writeln('<info>success!</info>');
+	}
 }

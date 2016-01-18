@@ -23,5 +23,5 @@ use Cake\Core\Exception\Exception;
 class MissingCellException extends Exception
 {
 
-    protected $_messageTemplate = 'Cell class %s is missing.';
+	protected $_messageTemplate = 'Cell class %s is missing.';
 }

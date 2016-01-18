@@ -16,27 +16,27 @@ namespace Psy\Exception;
  */
 class ParseErrorException extends \PhpParser\Error implements Exception
 {
-    /**
-     * Constructor!
-     *
-     * @param string $message (default: "")
-     * @param int    $line    (default: -1)
-     */
-    public function __construct($message = '', $line = -1)
-    {
-        $message = sprintf('PHP Parse error: %s', $message);
-        parent::__construct($message, $line);
-    }
+	/**
+	 * Constructor!
+	 *
+	 * @param string $message (default: "")
+	 * @param int $line (default: -1)
+	 */
+	public function __construct($message = '', $line = -1)
+	{
+		$message = sprintf('PHP Parse error: %s', $message);
+		parent::__construct($message, $line);
+	}
 
-    /**
-     * Create a ParseErrorException from a PhpParser Error.
-     *
-     * @param \PhpParser\Error $e
-     *
-     * @return ParseErrorException
-     */
-    public static function fromParseError(\PhpParser\Error $e)
-    {
-        return new self($e->getRawMessage(), $e->getRawLine());
-    }
+	/**
+	 * Create a ParseErrorException from a PhpParser Error.
+	 *
+	 * @param \PhpParser\Error $e
+	 *
+	 * @return ParseErrorException
+	 */
+	public static function fromParseError(\PhpParser\Error $e)
+	{
+		return new self($e->getRawMessage(), $e->getRawLine());
+	}
 }

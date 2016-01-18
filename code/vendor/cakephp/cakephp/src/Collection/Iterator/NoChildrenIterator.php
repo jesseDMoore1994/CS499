@@ -25,23 +25,23 @@ use RecursiveIterator;
 class NoChildrenIterator extends Collection implements RecursiveIterator
 {
 
-    /**
-     * Returns false as there are no children iterators in this collection
-     *
-     * @return bool
-     */
-    public function hasChildren()
-    {
-        return false;
-    }
+	/**
+	 * Returns false as there are no children iterators in this collection
+	 *
+	 * @return bool
+	 */
+	public function hasChildren()
+	{
+		return false;
+	}
 
-    /**
-     * Returns null as there are no children for this iteration level
-     *
-     * @return null
-     */
-    public function getChildren()
-    {
-        return null;
-    }
+	/**
+	 * Returns null as there are no children for this iteration level
+	 *
+	 * @return null
+	 */
+	public function getChildren()
+	{
+		return null;
+	}
 }

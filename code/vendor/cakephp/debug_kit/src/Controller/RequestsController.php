@@ -23,43 +23,43 @@ use Cake\Network\Exception\NotFoundException;
 class RequestsController extends Controller
 {
 
-    /**
-     * Before filter handler.
-     *
-     * @param \Cake\Event\Event $event The event.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException
-     */
-    public function beforeFilter(Event $event)
-    {
-        // TODO add config override
-        if (!Configure::read('debug')) {
-            throw new NotFoundException();
-        }
+	/**
+	 * Before filter handler.
+	 *
+	 * @param \Cake\Event\Event $event The event.
+	 * @return void
+	 * @throws \Cake\Network\Exception\NotFoundException
+	 */
+	public function beforeFilter(Event $event)
+	{
+		// TODO add config override
+		if (!Configure::read('debug')) {
+			throw new NotFoundException();
+		}
 
-        $this->response->header(['Content-Security-Policy' => '']);
-    }
+		$this->response->header(['Content-Security-Policy' => '']);
+	}
 
-    /**
-     * Before render handler.
-     *
-     * @param \Cake\Event\Event $event The event.
-     * @return void
-     */
-    public function beforeRender(Event $event)
-    {
-        $this->viewBuilder()->layout('DebugKit.toolbar');
-    }
+	/**
+	 * Before render handler.
+	 *
+	 * @param \Cake\Event\Event $event The event.
+	 * @return void
+	 */
+	public function beforeRender(Event $event)
+	{
+		$this->viewBuilder()->layout('DebugKit.toolbar');
+	}
 
-    /**
-     * View a request's data.
-     *
-     * @param string $id The id.
-     * @return void
-     */
-    public function view($id = null)
-    {
-        $toolbar = $this->Requests->get($id, ['contain' => 'Panels']);
-        $this->set('toolbar', $toolbar);
-    }
+	/**
+	 * View a request's data.
+	 *
+	 * @param string $id The id.
+	 * @return void
+	 */
+	public function view($id = null)
+	{
+		$toolbar = $this->Requests->get($id, ['contain' => 'Panels']);
+		$this->set('toolbar', $toolbar);
+	}
 }

@@ -25,59 +25,59 @@ use \PDO;
 class StatemetDecoratorTest extends TestCase
 {
 
-    /**
-     * Tests that calling lastInsertId will proxy it to
-     * the driver's lastInsertId method
-     *
-     * @return void
-     */
-    public function testLastInsertId()
-    {
-        $statement = $this->getMock('\PDOStatement');
-        $driver = $this->getMock('\Cake\Database\Driver');
-        $statement = new StatementDecorator($statement, $driver);
+	/**
+	 * Tests that calling lastInsertId will proxy it to
+	 * the driver's lastInsertId method
+	 *
+	 * @return void
+	 */
+	public function testLastInsertId()
+	{
+		$statement = $this->getMock('\PDOStatement');
+		$driver = $this->getMock('\Cake\Database\Driver');
+		$statement = new StatementDecorator($statement, $driver);
 
-        $driver->expects($this->once())->method('lastInsertId')
-            ->with('users')
-            ->will($this->returnValue(2));
-        $this->assertEquals(2, $statement->lastInsertId('users'));
-    }
+		$driver->expects($this->once())->method('lastInsertId')
+			->with('users')
+			->will($this->returnValue(2));
+		$this->assertEquals(2, $statement->lastInsertId('users'));
+	}
 
-    /**
-     * Tests that calling lastInsertId will get the last insert id by
-     * column name
-     *
-     * @return void
-     */
-    public function testLastInsertIdWithReturning()
-    {
-        $internal = $this->getMock('\PDOStatement');
-        $driver = $this->getMock('\Cake\Database\Driver');
-        $statement = new StatementDecorator($internal, $driver);
+	/**
+	 * Tests that calling lastInsertId will get the last insert id by
+	 * column name
+	 *
+	 * @return void
+	 */
+	public function testLastInsertIdWithReturning()
+	{
+		$internal = $this->getMock('\PDOStatement');
+		$driver = $this->getMock('\Cake\Database\Driver');
+		$statement = new StatementDecorator($internal, $driver);
 
-        $internal->expects($this->once())->method('columnCount')
-            ->will($this->returnValue(1));
-        $internal->expects($this->once())->method('fetch')
-            ->with('assoc')
-            ->will($this->returnValue(['id' => 2]));
-        $driver->expects($this->never())->method('lastInsertId');
-        $this->assertEquals(2, $statement->lastInsertId('users', 'id'));
-    }
+		$internal->expects($this->once())->method('columnCount')
+			->will($this->returnValue(1));
+		$internal->expects($this->once())->method('fetch')
+			->with('assoc')
+			->will($this->returnValue(['id' => 2]));
+		$driver->expects($this->never())->method('lastInsertId');
+		$this->assertEquals(2, $statement->lastInsertId('users', 'id'));
+	}
 
-    /**
-     * Tests that the statement will not be executed twice if the iterator
-     * is requested more than once
-     *
-     * @return void
-     */
-    public function testNoDoubleExecution()
-    {
-        $inner = $this->getMock('\PDOStatement');
-        $driver = $this->getMock('\Cake\Database\Driver');
-        $statement = new StatementDecorator($inner, $driver);
+	/**
+	 * Tests that the statement will not be executed twice if the iterator
+	 * is requested more than once
+	 *
+	 * @return void
+	 */
+	public function testNoDoubleExecution()
+	{
+		$inner = $this->getMock('\PDOStatement');
+		$driver = $this->getMock('\Cake\Database\Driver');
+		$statement = new StatementDecorator($inner, $driver);
 
-        $inner->expects($this->once())->method('execute');
-        $this->assertSame($inner, $statement->getIterator());
-        $this->assertSame($inner, $statement->getIterator());
-    }
+		$inner->expects($this->once())->method('execute');
+		$this->assertSame($inner, $statement->getIterator());
+		$this->assertSame($inner, $statement->getIterator());
+	}
 }

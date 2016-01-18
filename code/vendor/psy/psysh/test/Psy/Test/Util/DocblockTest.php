@@ -15,47 +15,47 @@ use Psy\Util\Docblock;
 
 class DocblockTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @dataProvider comments
-     */
-    public function testDocblockParsing($comment, $body, $tags)
-    {
-        $reflector = $this
-            ->getMockBuilder('ReflectionClass')
-            ->disableOriginalConstructor()
-            ->getMock();
+	/**
+	 * @dataProvider comments
+	 */
+	public function testDocblockParsing($comment, $body, $tags)
+	{
+		$reflector = $this
+			->getMockBuilder('ReflectionClass')
+			->disableOriginalConstructor()
+			->getMock();
 
-        $reflector->expects($this->once())
-            ->method('getDocComment')
-            ->will($this->returnValue($comment));
+		$reflector->expects($this->once())
+			->method('getDocComment')
+			->will($this->returnValue($comment));
 
-        $docblock = new Docblock($reflector);
+		$docblock = new Docblock($reflector);
 
-        $this->assertEquals($body, $docblock->desc);
+		$this->assertEquals($body, $docblock->desc);
 
-        foreach ($tags as $tag => $value) {
-            $this->assertTrue($docblock->hasTag($tag));
-            $this->assertEquals($value, $docblock->tag($tag));
-        }
-    }
+		foreach ($tags as $tag => $value) {
+			$this->assertTrue($docblock->hasTag($tag));
+			$this->assertEquals($value, $docblock->tag($tag));
+		}
+	}
 
-    public function comments()
-    {
-        return array(
-            array('', '', array()),
-            array(
-                '/**
+	public function comments()
+	{
+		return array(
+			array('', '', array()),
+			array(
+				'/**
                  * This is a docblock
                  *
                  * @throws \Exception with a description
                  */',
-                'This is a docblock',
-                array(
-                    'throws' => array(array('type' => '\Exception', 'desc' => 'with a description')),
-                ),
-            ),
-            array(
-                '/**
+				'This is a docblock',
+				array(
+					'throws' => array(array('type' => '\Exception', 'desc' => 'with a description')),
+				),
+			),
+			array(
+				'/**
                  * This is a slightly longer docblock
                  *
                  * @param int         $foo Is a Foo
@@ -64,20 +64,20 @@ class DocblockTest extends \PHPUnit_Framework_TestCase
                  *
                  * @return int At least it isn\'t a string
                  */',
-                'This is a slightly longer docblock',
-                array(
-                    'param' => array(
-                        array('type' => 'int', 'desc' => 'Is a Foo', 'var' => '$foo'),
-                        array('type' => 'string', 'desc' => 'With some sort of description', 'var' => '$bar'),
-                        array('type' => '\ClassName', 'desc' => 'is cool too', 'var' => '$baz'),
-                    ),
-                    'return' => array(
-                        array('type' => 'int', 'desc' => 'At least it isn\'t a string'),
-                    ),
-                ),
-            ),
-            array(
-                '/**
+				'This is a slightly longer docblock',
+				array(
+					'param' => array(
+						array('type' => 'int', 'desc' => 'Is a Foo', 'var' => '$foo'),
+						array('type' => 'string', 'desc' => 'With some sort of description', 'var' => '$bar'),
+						array('type' => '\ClassName', 'desc' => 'is cool too', 'var' => '$baz'),
+					),
+					'return' => array(
+						array('type' => 'int', 'desc' => 'At least it isn\'t a string'),
+					),
+				),
+			),
+			array(
+				'/**
                  * This is a docblock!
                  *
                  * It spans lines, too!
@@ -86,11 +86,11 @@ class DocblockTest extends \PHPUnit_Framework_TestCase
                  *
                  * @return
                  */',
-                "This is a docblock!\n\nIt spans lines, too!",
-                array(
-                    'tagname' => array('plus a description'),
-                ),
-            ),
-        );
-    }
+				"This is a docblock!\n\nIt spans lines, too!",
+				array(
+					'tagname' => array('plus a description'),
+				),
+			),
+		);
+	}
 }

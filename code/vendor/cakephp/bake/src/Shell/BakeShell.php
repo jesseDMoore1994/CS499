@@ -33,285 +33,285 @@ use Cake\Utility\Inflector;
  */
 class BakeShell extends Shell
 {
-    use ConventionsTrait;
+	use ConventionsTrait;
 
-    /**
-     * The connection being used.
-     *
-     * @var string
-     */
-    public $connection = 'default';
+	/**
+	 * The connection being used.
+	 *
+	 * @var string
+	 */
+	public $connection = 'default';
 
-    /**
-     * Assign $this->connection to the active task if a connection param is set.
-     *
-     * @return void
-     */
-    public function startup()
-    {
-        parent::startup();
-        Configure::write('debug', true);
-        Cache::disable();
+	/**
+	 * Assign $this->connection to the active task if a connection param is set.
+	 *
+	 * @return void
+	 */
+	public function startup()
+	{
+		parent::startup();
+		Configure::write('debug', true);
+		Cache::disable();
 
-        $task = $this->_camelize($this->command);
+		$task = $this->_camelize($this->command);
 
-        if (isset($this->{$task}) && !in_array($task, ['Project'])) {
-            if (isset($this->params['connection'])) {
-                $this->{$task}->connection = $this->params['connection'];
-            }
-        }
-        if (isset($this->params['connection'])) {
-            $this->connection = $this->params['connection'];
-        }
-    }
+		if (isset($this->{$task}) && !in_array($task, ['Project'])) {
+			if (isset($this->params['connection'])) {
+				$this->{$task}->connection = $this->params['connection'];
+			}
+		}
+		if (isset($this->params['connection'])) {
+			$this->connection = $this->params['connection'];
+		}
+	}
 
-    /**
-     * Override main() to handle action
-     *
-     * @return mixed
-     */
-    public function main()
-    {
-        if ($this->args && $this->args[0] === 'view') {
-            $this->out('<error>The view command has been renamed.</error>');
-            $this->out('To create template files, please use the template command:', 2);
-            $args = $this->args;
-            array_shift($args);
-            $args = implode($args, ' ');
-            $this->out(sprintf('    <info>`bin/cake bake template %s`</info>', $args), 2);
-            return false;
-        }
+	/**
+	 * Override main() to handle action
+	 *
+	 * @return mixed
+	 */
+	public function main()
+	{
+		if ($this->args && $this->args[0] === 'view') {
+			$this->out('<error>The view command has been renamed.</error>');
+			$this->out('To create template files, please use the template command:', 2);
+			$args = $this->args;
+			array_shift($args);
+			$args = implode($args, ' ');
+			$this->out(sprintf('    <info>`bin/cake bake template %s`</info>', $args), 2);
+			return false;
+		}
 
-        $connections = ConnectionManager::configured();
-        if (empty($connections)) {
-            $this->out('Your database configuration was not found.');
-            $this->out('Add your database connection information to config/app.php.');
-            return false;
-        }
-        $this->out('The following commands can be used to generate skeleton code for your application.', 2);
-        $this->out('<info>Available bake commands:</info>', 2);
-        $this->out('- all');
-        $names = [];
-        foreach ($this->tasks as $task) {
-            list(, $name) = pluginSplit($task);
-            $names[] = Inflector::underscore($name);
-        }
-        sort($names);
-        foreach ($names as $name) {
-            $this->out('- ' . $name);
-        }
-        $this->out('');
-        $this->out('By using <info>`cake bake [name]`</info> you can invoke a specific bake task.');
-        return false;
-    }
+		$connections = ConnectionManager::configured();
+		if (empty($connections)) {
+			$this->out('Your database configuration was not found.');
+			$this->out('Add your database connection information to config/app.php.');
+			return false;
+		}
+		$this->out('The following commands can be used to generate skeleton code for your application.', 2);
+		$this->out('<info>Available bake commands:</info>', 2);
+		$this->out('- all');
+		$names = [];
+		foreach ($this->tasks as $task) {
+			list(, $name) = pluginSplit($task);
+			$names[] = Inflector::underscore($name);
+		}
+		sort($names);
+		foreach ($names as $name) {
+			$this->out('- ' . $name);
+		}
+		$this->out('');
+		$this->out('By using <info>`cake bake [name]`</info> you can invoke a specific bake task.');
+		return false;
+	}
 
-    /**
-     * Locate the tasks bake will use.
-     *
-     * Scans the following paths for tasks that are subclasses of
-     * Cake\Shell\Task\BakeTask:
-     *
-     * - Cake/Shell/Task/
-     * - App/Shell/Task/
-     * - Shell/Task for each loaded plugin
-     *
-     * @return void
-     */
-    public function loadTasks()
-    {
-        $tasks = [];
+	/**
+	 * Locate the tasks bake will use.
+	 *
+	 * Scans the following paths for tasks that are subclasses of
+	 * Cake\Shell\Task\BakeTask:
+	 *
+	 * - Cake/Shell/Task/
+	 * - App/Shell/Task/
+	 * - Shell/Task for each loaded plugin
+	 *
+	 * @return void
+	 */
+	public function loadTasks()
+	{
+		$tasks = [];
 
-        $tasks = $this->_findTasks($tasks, APP, Configure::read('App.namespace'));
-        foreach (Plugin::loaded() as $plugin) {
-            $tasks = $this->_findTasks(
-                $tasks,
-                Plugin::classPath($plugin),
-                $plugin,
-                $plugin
-            );
-        }
+		$tasks = $this->_findTasks($tasks, APP, Configure::read('App.namespace'));
+		foreach (Plugin::loaded() as $plugin) {
+			$tasks = $this->_findTasks(
+				$tasks,
+				Plugin::classPath($plugin),
+				$plugin,
+				$plugin
+			);
+		}
 
-        $this->tasks = array_values($tasks);
-        parent::loadTasks();
-    }
+		$this->tasks = array_values($tasks);
+		parent::loadTasks();
+	}
 
-    /**
-     * Append matching tasks in $path to the $tasks array.
-     *
-     * @param array $tasks The task list to modify and return.
-     * @param string $path The base path to look in.
-     * @param string $namespace The base namespace.
-     * @param string|null $prefix The prefix to append.
-     * @return array Updated tasks.
-     */
-    protected function _findTasks($tasks, $path, $namespace, $prefix = null)
-    {
-        $path .= 'Shell/Task';
-        if (!is_dir($path)) {
-            return $tasks;
-        }
-        $candidates = $this->_findClassFiles($path, $namespace);
-        $classes = $this->_findTaskClasses($candidates);
-        foreach ($classes as $class) {
-            list(, $name) = namespaceSplit($class);
-            $name = substr($name, 0, -4);
-            $fullName = ($prefix ? $prefix . '.' : '') . $name;
-            $tasks[$name] = $fullName;
-        }
-        return $tasks;
-    }
+	/**
+	 * Append matching tasks in $path to the $tasks array.
+	 *
+	 * @param array $tasks The task list to modify and return.
+	 * @param string $path The base path to look in.
+	 * @param string $namespace The base namespace.
+	 * @param string|null $prefix The prefix to append.
+	 * @return array Updated tasks.
+	 */
+	protected function _findTasks($tasks, $path, $namespace, $prefix = null)
+	{
+		$path .= 'Shell/Task';
+		if (!is_dir($path)) {
+			return $tasks;
+		}
+		$candidates = $this->_findClassFiles($path, $namespace);
+		$classes = $this->_findTaskClasses($candidates);
+		foreach ($classes as $class) {
+			list(, $name) = namespaceSplit($class);
+			$name = substr($name, 0, -4);
+			$fullName = ($prefix ? $prefix . '.' : '') . $name;
+			$tasks[$name] = $fullName;
+		}
+		return $tasks;
+	}
 
-    /**
-     * Find task classes in a given path.
-     *
-     * @param string $path The path to scan.
-     * @param string $namespace Namespace.
-     * @return array An array of files that may contain bake tasks.
-     */
-    protected function _findClassFiles($path, $namespace)
-    {
-        $iterator = new \DirectoryIterator($path);
-        $candidates = [];
-        foreach ($iterator as $item) {
-            if ($item->isDot() || $item->isDir()) {
-                continue;
-            }
-            $name = $item->getBasename('.php');
-            $candidates[] = $namespace . '\Shell\Task\\' . $name;
-        }
-        return $candidates;
-    }
+	/**
+	 * Find task classes in a given path.
+	 *
+	 * @param string $path The path to scan.
+	 * @param string $namespace Namespace.
+	 * @return array An array of files that may contain bake tasks.
+	 */
+	protected function _findClassFiles($path, $namespace)
+	{
+		$iterator = new \DirectoryIterator($path);
+		$candidates = [];
+		foreach ($iterator as $item) {
+			if ($item->isDot() || $item->isDir()) {
+				continue;
+			}
+			$name = $item->getBasename('.php');
+			$candidates[] = $namespace . '\Shell\Task\\' . $name;
+		}
+		return $candidates;
+	}
 
-    /**
-     * Find bake tasks in a given set of files.
-     *
-     * @param array $files The array of files.
-     * @return array An array of matching classes.
-     */
-    protected function _findTaskClasses($files)
-    {
-        $classes = [];
-        foreach ($files as $className) {
-            if (!class_exists($className)) {
-                continue;
-            }
-            $reflect = new \ReflectionClass($className);
-            if (!$reflect->isInstantiable()) {
-                continue;
-            }
-            if (!$reflect->isSubclassOf('Bake\Shell\Task\BakeTask')) {
-                continue;
-            }
-            $classes[] = $className;
-        }
-        return $classes;
-    }
+	/**
+	 * Find bake tasks in a given set of files.
+	 *
+	 * @param array $files The array of files.
+	 * @return array An array of matching classes.
+	 */
+	protected function _findTaskClasses($files)
+	{
+		$classes = [];
+		foreach ($files as $className) {
+			if (!class_exists($className)) {
+				continue;
+			}
+			$reflect = new \ReflectionClass($className);
+			if (!$reflect->isInstantiable()) {
+				continue;
+			}
+			if (!$reflect->isSubclassOf('Bake\Shell\Task\BakeTask')) {
+				continue;
+			}
+			$classes[] = $className;
+		}
+		return $classes;
+	}
 
-    /**
-     * Quickly bake the MVC
-     *
-     * @param string|null $name Name.
-     * @return bool
-     */
-    public function all($name = null)
-    {
-        $this->out('Bake All');
-        $this->hr();
+	/**
+	 * Quickly bake the MVC
+	 *
+	 * @param string|null $name Name.
+	 * @return bool
+	 */
+	public function all($name = null)
+	{
+		$this->out('Bake All');
+		$this->hr();
 
-        if (!empty($this->params['connection'])) {
-            $this->connection = $this->params['connection'];
-        }
+		if (!empty($this->params['connection'])) {
+			$this->connection = $this->params['connection'];
+		}
 
-        if (empty($name) && !$this->param('everything')) {
-            $this->Model->connection = $this->connection;
-            $this->out('Possible model names based on your database:');
-            foreach ($this->Model->listUnskipped() as $table) {
-                $this->out('- ' . $table);
-            }
-            $this->out('Run <info>`cake bake all [name]`</info> to generate skeleton files.');
-            return false;
-        }
+		if (empty($name) && !$this->param('everything')) {
+			$this->Model->connection = $this->connection;
+			$this->out('Possible model names based on your database:');
+			foreach ($this->Model->listUnskipped() as $table) {
+				$this->out('- ' . $table);
+			}
+			$this->out('Run <info>`cake bake all [name]`</info> to generate skeleton files.');
+			return false;
+		}
 
-        $allTables = collection([$name]);
-        $filteredTables = $allTables;
+		$allTables = collection([$name]);
+		$filteredTables = $allTables;
 
-        if ($this->param('everything')) {
-            $this->Model->connection = $this->connection;
-            $filteredTables = collection($this->Model->listUnskipped());
-        }
+		if ($this->param('everything')) {
+			$this->Model->connection = $this->connection;
+			$filteredTables = collection($this->Model->listUnskipped());
+		}
 
-        $filteredTables->each(function ($tableName) {
-            foreach (['Model', 'Controller', 'Template'] as $task) {
-                $this->{$task}->connection = $this->connection;
-            }
+		$filteredTables->each(function ($tableName) {
+			foreach (['Model', 'Controller', 'Template'] as $task) {
+				$this->{$task}->connection = $this->connection;
+			}
 
-            $tableName = $this->_camelize($tableName);
+			$tableName = $this->_camelize($tableName);
 
-            $this->Model->main($tableName);
-            $this->Controller->main($tableName);
-            $this->Template->main($tableName);
-        });
+			$this->Model->main($tableName);
+			$this->Controller->main($tableName);
+			$this->Template->main($tableName);
+		});
 
-        $this->out('<success>Bake All complete.</success>', 1, Shell::QUIET);
-        return true;
-    }
+		$this->out('<success>Bake All complete.</success>', 1, Shell::QUIET);
+		return true;
+	}
 
-    /**
-     * Gets the option parser instance and configures it.
-     *
-     * @return \Cake\Console\ConsoleOptionParser
-     */
-    public function getOptionParser()
-    {
-        $parser = parent::getOptionParser();
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return \Cake\Console\ConsoleOptionParser
+	 */
+	public function getOptionParser()
+	{
+		$parser = parent::getOptionParser();
 
-        $bakeThemes = [];
-        foreach (Plugin::loaded() as $plugin) {
-            $path = Plugin::classPath($plugin);
-            if (is_dir($path . 'Template' . DS . 'Bake')) {
-                $bakeThemes[] = $plugin;
-            }
-        }
+		$bakeThemes = [];
+		foreach (Plugin::loaded() as $plugin) {
+			$path = Plugin::classPath($plugin);
+			if (is_dir($path . 'Template' . DS . 'Bake')) {
+				$bakeThemes[] = $plugin;
+			}
+		}
 
-        $parser->description(
-            'The Bake script generates controllers, models and template files for your application.' .
-            ' If run with no command line arguments, Bake guides the user through the class creation process.' .
-            ' You can customize the generation process by telling Bake where different parts of your application' .
-            ' are using command line arguments.'
-        )->addSubcommand('all', [
-            'help' => 'Bake a complete MVC skeleton.',
-        ])->addOption('everything', [
-            'help' => 'Bake a complete MVC skeleton, using all the available tables. ' .
-            'Usage: "bake all --everything"',
-            'default' => false,
-            'boolean' => true,
-        ])->addOption('connection', [
-            'help' => 'Database connection to use in conjunction with `bake all`.',
-            'short' => 'c',
-            'default' => 'default'
-        ])->addOption('force', [
-            'short' => 'f',
-            'boolean' => true,
-            'help' => 'Force overwriting existing files without prompting.'
-        ])->addOption('plugin', [
-            'short' => 'p',
-            'help' => 'Plugin to bake into.'
-        ])->addOption('prefix', [
-            'help' => 'Prefix to bake controllers and templates into.'
-        ])->addOption('theme', [
-            'short' => 't',
-            'help' => 'The theme to use when baking code.',
-            'choices' => $bakeThemes
-        ]);
+		$parser->description(
+			'The Bake script generates controllers, models and template files for your application.' .
+			' If run with no command line arguments, Bake guides the user through the class creation process.' .
+			' You can customize the generation process by telling Bake where different parts of your application' .
+			' are using command line arguments.'
+		)->addSubcommand('all', [
+			'help' => 'Bake a complete MVC skeleton.',
+		])->addOption('everything', [
+			'help' => 'Bake a complete MVC skeleton, using all the available tables. ' .
+				'Usage: "bake all --everything"',
+			'default' => false,
+			'boolean' => true,
+		])->addOption('connection', [
+			'help' => 'Database connection to use in conjunction with `bake all`.',
+			'short' => 'c',
+			'default' => 'default'
+		])->addOption('force', [
+			'short' => 'f',
+			'boolean' => true,
+			'help' => 'Force overwriting existing files without prompting.'
+		])->addOption('plugin', [
+			'short' => 'p',
+			'help' => 'Plugin to bake into.'
+		])->addOption('prefix', [
+			'help' => 'Prefix to bake controllers and templates into.'
+		])->addOption('theme', [
+			'short' => 't',
+			'help' => 'The theme to use when baking code.',
+			'choices' => $bakeThemes
+		]);
 
-        foreach ($this->_taskMap as $task => $config) {
-            $taskParser = $this->{$task}->getOptionParser();
-            $parser->addSubcommand(Inflector::underscore($task), [
-                'help' => $taskParser->description(),
-                'parser' => $taskParser
-            ]);
-        }
+		foreach ($this->_taskMap as $task => $config) {
+			$taskParser = $this->{$task}->getOptionParser();
+			$parser->addSubcommand(Inflector::underscore($task), [
+				'help' => $taskParser->description(),
+				'parser' => $taskParser
+			]);
+		}
 
-        return $parser;
-    }
+		return $parser;
+	}
 }

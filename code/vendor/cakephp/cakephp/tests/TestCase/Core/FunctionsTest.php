@@ -21,25 +21,25 @@ use Cake\TestSuite\TestCase;
  */
 class FunctionsTest extends TestCase
 {
-    /**
-     * Test cases for env()
-     */
-    public function testEnv()
-    {
-        $_ENV['DOES_NOT_EXIST'] = null;
-        $this->assertNull(env('DOES_NOT_EXIST'));
-        $this->assertEquals('default', env('DOES_NOT_EXIST', 'default'));
+	/**
+	 * Test cases for env()
+	 */
+	public function testEnv()
+	{
+		$_ENV['DOES_NOT_EXIST'] = null;
+		$this->assertNull(env('DOES_NOT_EXIST'));
+		$this->assertEquals('default', env('DOES_NOT_EXIST', 'default'));
 
-        $_ENV['DOES_EXIST'] = 'some value';
-        $this->assertEquals('some value', env('DOES_EXIST'));
-        $this->assertEquals('some value', env('DOES_EXIST', 'default'));
+		$_ENV['DOES_EXIST'] = 'some value';
+		$this->assertEquals('some value', env('DOES_EXIST'));
+		$this->assertEquals('some value', env('DOES_EXIST', 'default'));
 
-        $_ENV['EMPTY_VALUE'] = '';
-        $this->assertEquals('', env('EMPTY_VALUE'));
-        $this->assertEquals('', env('EMPTY_VALUE', 'default'));
+		$_ENV['EMPTY_VALUE'] = '';
+		$this->assertEquals('', env('EMPTY_VALUE'));
+		$this->assertEquals('', env('EMPTY_VALUE', 'default'));
 
-        $_ENV['ZERO'] = '0';
-        $this->assertEquals('0', env('ZERO'));
-        $this->assertEquals('0', env('ZERO', '1'));
-    }
+		$_ENV['ZERO'] = '0';
+		$this->assertEquals('0', env('ZERO'));
+		$this->assertEquals('0', env('ZERO', '1'));
+	}
 }

@@ -20,15 +20,15 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class MongoCaster
 {
-    public static function castCursor(\MongoCursorInterface $cursor, array $a, Stub $stub, $isNested)
-    {
-        if ($info = $cursor->info()) {
-            foreach ($info as $k => $v) {
-                $a[Caster::PREFIX_VIRTUAL.$k] = $v;
-            }
-        }
-        $a[Caster::PREFIX_VIRTUAL.'dead'] = $cursor->dead();
+	public static function castCursor(\MongoCursorInterface $cursor, array $a, Stub $stub, $isNested)
+	{
+		if ($info = $cursor->info()) {
+			foreach ($info as $k => $v) {
+				$a[Caster::PREFIX_VIRTUAL . $k] = $v;
+			}
+		}
+		$a[Caster::PREFIX_VIRTUAL . 'dead'] = $cursor->dead();
 
-        return $a;
-    }
+		return $a;
+	}
 }

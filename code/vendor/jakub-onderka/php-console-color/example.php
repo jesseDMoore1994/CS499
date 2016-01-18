@@ -7,32 +7,32 @@ echo "Colors are supported: " . ($consoleColor->isSupported() ? 'Yes' : 'No') . 
 echo "256 colors are supported: " . ($consoleColor->are256ColorsSupported() ? 'Yes' : 'No') . "\n\n";
 
 if ($consoleColor->isSupported()) {
-    foreach ($consoleColor->getPossibleStyles() as $style) {
-        echo $consoleColor->apply($style, $style) . "\n";
-    }
+	foreach ($consoleColor->getPossibleStyles() as $style) {
+		echo $consoleColor->apply($style, $style) . "\n";
+	}
 }
 
 echo "\n";
 
 if ($consoleColor->are256ColorsSupported()) {
-    echo "Foreground colors:\n";
-    for ($i = 1; $i <= 255; $i++) {
-        echo $consoleColor->apply("color_$i", str_pad($i, 6, ' ', STR_PAD_BOTH));
+	echo "Foreground colors:\n";
+	for ($i = 1; $i <= 255; $i++) {
+		echo $consoleColor->apply("color_$i", str_pad($i, 6, ' ', STR_PAD_BOTH));
 
-        if ($i % 15 === 0) {
-            echo "\n";
-        }
-    }
+		if ($i % 15 === 0) {
+			echo "\n";
+		}
+	}
 
-    echo "\nBackground colors:\n";
+	echo "\nBackground colors:\n";
 
-    for ($i = 1; $i <= 255; $i++) {
-        echo $consoleColor->apply("bg_color_$i", str_pad($i, 6, ' ', STR_PAD_BOTH));
+	for ($i = 1; $i <= 255; $i++) {
+		echo $consoleColor->apply("bg_color_$i", str_pad($i, 6, ' ', STR_PAD_BOTH));
 
-        if ($i % 15 === 0) {
-            echo "\n";
-        }
-    }
+		if ($i % 15 === 0) {
+			echo "\n";
+		}
+	}
 
-    echo "\n";
+	echo "\n";
 }

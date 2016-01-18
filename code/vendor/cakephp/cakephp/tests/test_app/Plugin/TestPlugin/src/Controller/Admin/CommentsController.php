@@ -23,19 +23,19 @@ use Cake\Controller\Controller;
 class CommentsController extends Controller
 {
 
-    /**
-     * components
-     *
-     * @var array
-     */
-    public $components = [];
+	/**
+	 * components
+	 *
+	 * @var array
+	 */
+	public $components = [];
 
-    /**
-     * index action
-     *
-     * @return void
-     */
-    public function index()
-    {
-    }
+	/**
+	 * index action
+	 *
+	 * @return void
+	 */
+	public function index()
+	{
+	}
 }

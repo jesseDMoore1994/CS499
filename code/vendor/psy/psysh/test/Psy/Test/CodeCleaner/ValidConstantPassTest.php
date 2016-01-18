@@ -15,52 +15,52 @@ use Psy\CodeCleaner\ValidConstantPass;
 
 class ValidConstantPassTest extends CodeCleanerTestCase
 {
-    public function setUp()
-    {
-        $this->setPass(new ValidConstantPass());
-    }
+	public function setUp()
+	{
+		$this->setPass(new ValidConstantPass());
+	}
 
-    /**
-     * @dataProvider getInvalidReferences
-     * @expectedException \Psy\Exception\FatalErrorException
-     */
-    public function testProcessInvalidConstantReferences($code)
-    {
-        $stmts = $this->parse($code);
-        $this->traverse($stmts);
-    }
+	/**
+	 * @dataProvider getInvalidReferences
+	 * @expectedException \Psy\Exception\FatalErrorException
+	 */
+	public function testProcessInvalidConstantReferences($code)
+	{
+		$stmts = $this->parse($code);
+		$this->traverse($stmts);
+	}
 
-    public function getInvalidReferences()
-    {
-        return array(
-            array('Foo\BAR'),
+	public function getInvalidReferences()
+	{
+		return array(
+			array('Foo\BAR'),
 
-            // class constant fetch
-            array('Psy\Test\CodeCleaner\ValidConstantPassTest::FOO'),
-            array('DateTime::BACON'),
-        );
-    }
+			// class constant fetch
+			array('Psy\Test\CodeCleaner\ValidConstantPassTest::FOO'),
+			array('DateTime::BACON'),
+		);
+	}
 
-    /**
-     * @dataProvider getValidReferences
-     */
-    public function testProcessValidConstantReferences($code)
-    {
-        $stmts = $this->parse($code);
-        $this->traverse($stmts);
-    }
+	/**
+	 * @dataProvider getValidReferences
+	 */
+	public function testProcessValidConstantReferences($code)
+	{
+		$stmts = $this->parse($code);
+		$this->traverse($stmts);
+	}
 
-    public function getValidReferences()
-    {
-        return array(
-            array('PHP_EOL'),
+	public function getValidReferences()
+	{
+		return array(
+			array('PHP_EOL'),
 
-            // class constant fetch
-            array('NotAClass::FOO'),
-            array('DateTime::ATOM'),
-            array('$a = new DateTime; $a::ATOM'),
-            array('DateTime::class'),
-            array('$a = new DateTime; $a::class'),
-        );
-    }
+			// class constant fetch
+			array('NotAClass::FOO'),
+			array('DateTime::ATOM'),
+			array('$a = new DateTime; $a::ATOM'),
+			array('DateTime::class'),
+			array('$a = new DateTime; $a::class'),
+		);
+	}
 }

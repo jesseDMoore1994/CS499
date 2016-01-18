@@ -21,58 +21,58 @@ namespace Symfony\Component\Config\Resource;
  */
 class FileExistenceResource implements SelfCheckingResourceInterface, \Serializable
 {
-    private $resource;
+	private $resource;
 
-    private $exists;
+	private $exists;
 
-    /**
-     * Constructor.
-     *
-     * @param string $resource The file path to the resource
-     */
-    public function __construct($resource)
-    {
-        $this->resource = (string) $resource;
-        $this->exists = file_exists($resource);
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param string $resource The file path to the resource
+	 */
+	public function __construct($resource)
+	{
+		$this->resource = (string)$resource;
+		$this->exists = file_exists($resource);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return $this->resource;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function __toString()
+	{
+		return $this->resource;
+	}
 
-    /**
-     * @return string The file path to the resource
-     */
-    public function getResource()
-    {
-        return $this->resource;
-    }
+	/**
+	 * @return string The file path to the resource
+	 */
+	public function getResource()
+	{
+		return $this->resource;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isFresh($timestamp)
-    {
-        return file_exists($this->resource) === $this->exists;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function isFresh($timestamp)
+	{
+		return file_exists($this->resource) === $this->exists;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function serialize()
-    {
-        return serialize(array($this->resource, $this->exists));
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function serialize()
+	{
+		return serialize(array($this->resource, $this->exists));
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function unserialize($serialized)
-    {
-        list($this->resource, $this->exists) = unserialize($serialized);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function unserialize($serialized)
+	{
+		list($this->resource, $this->exists) = unserialize($serialized);
+	}
 }

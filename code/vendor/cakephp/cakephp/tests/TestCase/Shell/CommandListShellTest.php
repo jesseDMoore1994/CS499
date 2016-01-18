@@ -29,109 +29,109 @@ use Cake\TestSuite\TestCase;
 class CommandListShellTest extends TestCase
 {
 
-    /**
-     * setUp method
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        Plugin::load(['TestPlugin', 'TestPluginTwo']);
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		Plugin::load(['TestPlugin', 'TestPluginTwo']);
 
-        $this->out = new ConsoleOutput();
-        $io = new ConsoleIo($this->out);
+		$this->out = new ConsoleOutput();
+		$io = new ConsoleIo($this->out);
 
-        $this->Shell = $this->getMock(
-            'Cake\Shell\CommandListShell',
-            ['in', 'err', '_stop', 'clear'],
-            [$io]
-        );
+		$this->Shell = $this->getMock(
+			'Cake\Shell\CommandListShell',
+			['in', 'err', '_stop', 'clear'],
+			[$io]
+		);
 
-        $this->Shell->Command = $this->getMock(
-            'Cake\Shell\Task\CommandTask',
-            ['in', '_stop', 'err', 'clear'],
-            [$io]
-        );
-    }
+		$this->Shell->Command = $this->getMock(
+			'Cake\Shell\Task\CommandTask',
+			['in', '_stop', 'err', 'clear'],
+			[$io]
+		);
+	}
 
-    /**
-     * tearDown
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        parent::tearDown();
-        unset($this->Shell);
-        Plugin::unload();
-    }
+	/**
+	 * tearDown
+	 *
+	 * @return void
+	 */
+	public function tearDown()
+	{
+		parent::tearDown();
+		unset($this->Shell);
+		Plugin::unload();
+	}
 
-    /**
-     * test that main finds core shells.
-     *
-     * @return void
-     */
-    public function testMain()
-    {
-        $this->Shell->main();
-        $output = $this->out->messages();
-        $output = implode("\n", $output);
+	/**
+	 * test that main finds core shells.
+	 *
+	 * @return void
+	 */
+	public function testMain()
+	{
+		$this->Shell->main();
+		$output = $this->out->messages();
+		$output = implode("\n", $output);
 
-        $expected = "/\[.*TestPlugin.*\] example/";
-        $this->assertRegExp($expected, $output);
+		$expected = "/\[.*TestPlugin.*\] example/";
+		$this->assertRegExp($expected, $output);
 
-        $expected = "/\[.*TestPluginTwo.*\] example, unique, welcome/";
-        $this->assertRegExp($expected, $output);
+		$expected = "/\[.*TestPluginTwo.*\] example, unique, welcome/";
+		$this->assertRegExp($expected, $output);
 
-        $expected = "/\[.*CORE.*\] i18n, orm_cache, plugin, routes, server/";
-        $this->assertRegExp($expected, $output);
+		$expected = "/\[.*CORE.*\] i18n, orm_cache, plugin, routes, server/";
+		$this->assertRegExp($expected, $output);
 
-        $expected = "/\[.*app.*\] i18m, sample/";
-        $this->assertRegExp($expected, $output);
-    }
+		$expected = "/\[.*app.*\] i18m, sample/";
+		$this->assertRegExp($expected, $output);
+	}
 
-    /**
-     * If there is an app shell with the same name as a core shell,
-     * tests that the app shell is the one displayed and the core one is hidden.
-     *
-     * @return void
-     */
-    public function testMainAppPriority()
-    {
-        rename(APP . 'Shell' . DS . 'I18mShell.php', APP . 'Shell' . DS . 'I18nShell.php');
-        $this->Shell->main();
-        $output = $this->out->messages();
-        $output = implode("\n", $output);
-        rename(APP . 'Shell' . DS . 'I18nShell.php', APP . 'Shell' . DS . 'I18mShell.php');
+	/**
+	 * If there is an app shell with the same name as a core shell,
+	 * tests that the app shell is the one displayed and the core one is hidden.
+	 *
+	 * @return void
+	 */
+	public function testMainAppPriority()
+	{
+		rename(APP . 'Shell' . DS . 'I18mShell.php', APP . 'Shell' . DS . 'I18nShell.php');
+		$this->Shell->main();
+		$output = $this->out->messages();
+		$output = implode("\n", $output);
+		rename(APP . 'Shell' . DS . 'I18nShell.php', APP . 'Shell' . DS . 'I18mShell.php');
 
-        $expected = "/\[.*CORE.*\] orm_cache, plugin, routes, server/";
-        $this->assertRegExp($expected, $output);
+		$expected = "/\[.*CORE.*\] orm_cache, plugin, routes, server/";
+		$this->assertRegExp($expected, $output);
 
-        $expected = "/\[.*app.*\] i18n, sample/";
-        $this->assertRegExp($expected, $output);
-    }
+		$expected = "/\[.*app.*\] i18n, sample/";
+		$this->assertRegExp($expected, $output);
+	}
 
-    /**
-     * test xml output.
-     *
-     * @return void
-     */
-    public function testMainXml()
-    {
-        $this->Shell->params['xml'] = true;
-        $this->Shell->main();
+	/**
+	 * test xml output.
+	 *
+	 * @return void
+	 */
+	public function testMainXml()
+	{
+		$this->Shell->params['xml'] = true;
+		$this->Shell->main();
 
-        $output = $this->out->messages();
-        $output = implode("\n", $output);
+		$output = $this->out->messages();
+		$output = implode("\n", $output);
 
-        $find = '<shell name="sample" call_as="sample" provider="app" help="sample -h"';
-        $this->assertContains($find, $output);
+		$find = '<shell name="sample" call_as="sample" provider="app" help="sample -h"';
+		$this->assertContains($find, $output);
 
-        $find = '<shell name="orm_cache" call_as="orm_cache" provider="CORE" help="orm_cache -h"';
-        $this->assertContains($find, $output);
+		$find = '<shell name="orm_cache" call_as="orm_cache" provider="CORE" help="orm_cache -h"';
+		$this->assertContains($find, $output);
 
-        $find = '<shell name="welcome" call_as="TestPluginTwo.welcome" provider="TestPluginTwo" help="TestPluginTwo.welcome -h"';
-        $this->assertContains($find, $output);
-    }
+		$find = '<shell name="welcome" call_as="TestPluginTwo.welcome" provider="TestPluginTwo" help="TestPluginTwo.welcome -h"';
+		$this->assertContains($find, $output);
+	}
 }

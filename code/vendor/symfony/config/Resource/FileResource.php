@@ -20,56 +20,56 @@ namespace Symfony\Component\Config\Resource;
  */
 class FileResource implements SelfCheckingResourceInterface, \Serializable
 {
-    /**
-     * @var string|false
-     */
-    private $resource;
+	/**
+	 * @var string|false
+	 */
+	private $resource;
 
-    /**
-     * Constructor.
-     *
-     * @param string $resource The file path to the resource
-     */
-    public function __construct($resource)
-    {
-        $this->resource = realpath($resource);
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param string $resource The file path to the resource
+	 */
+	public function __construct($resource)
+	{
+		$this->resource = realpath($resource);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return (string) $this->resource;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function __toString()
+	{
+		return (string)$this->resource;
+	}
 
-    /**
-     * @return string|false The canonicalized, absolute path to the resource or false if the resource does not exist.
-     */
-    public function getResource()
-    {
-        return $this->resource;
-    }
+	/**
+	 * @return string|false The canonicalized, absolute path to the resource or false if the resource does not exist.
+	 */
+	public function getResource()
+	{
+		return $this->resource;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isFresh($timestamp)
-    {
-        if (false === $this->resource || !file_exists($this->resource)) {
-            return false;
-        }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function isFresh($timestamp)
+	{
+		if (false === $this->resource || !file_exists($this->resource)) {
+			return false;
+		}
 
-        return filemtime($this->resource) <= $timestamp;
-    }
+		return filemtime($this->resource) <= $timestamp;
+	}
 
-    public function serialize()
-    {
-        return serialize($this->resource);
-    }
+	public function serialize()
+	{
+		return serialize($this->resource);
+	}
 
-    public function unserialize($serialized)
-    {
-        $this->resource = unserialize($serialized);
-    }
+	public function unserialize($serialized)
+	{
+		$this->resource = unserialize($serialized);
+	}
 }

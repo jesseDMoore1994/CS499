@@ -23,18 +23,18 @@ namespace Cake\Database\Expression;
 interface FieldInterface
 {
 
-    /**
-     * Sets the field name
-     *
-     * @param string $field The field to compare with.
-     * @return void
-     */
-    public function setField($field);
+	/**
+	 * Sets the field name
+	 *
+	 * @param string $field The field to compare with.
+	 * @return void
+	 */
+	public function setField($field);
 
-    /**
-     * Returns the field name
-     *
-     * @return string|\Cake\Database\ExpressionInterface
-     */
-    public function getField();
+	/**
+	 * Returns the field name
+	 *
+	 * @return string|\Cake\Database\ExpressionInterface
+	 */
+	public function getField();
 }

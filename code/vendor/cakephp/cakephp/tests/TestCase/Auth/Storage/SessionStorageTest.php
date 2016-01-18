@@ -26,110 +26,110 @@ use Cake\TestSuite\TestCase;
 class SessionStorageTest extends TestCase
 {
 
-    /**
-     * setup
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
+	/**
+	 * setup
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
 
-        $this->session = $this->getMock('Cake\Network\Session');
-        $this->request = new Request(['session' => $this->session]);
-        $this->response = new Response();
-        $this->storage = new SessionStorage($this->request, $this->response, ['key' => 'Auth.AuthUser']);
-        $this->user = ['id' => 1];
-    }
+		$this->session = $this->getMock('Cake\Network\Session');
+		$this->request = new Request(['session' => $this->session]);
+		$this->response = new Response();
+		$this->storage = new SessionStorage($this->request, $this->response, ['key' => 'Auth.AuthUser']);
+		$this->user = ['id' => 1];
+	}
 
-    /**
-     * Test write
-     *
-     * @return void
-     */
-    public function testWrite()
-    {
-        $this->session->expects($this->once())
-            ->method('write')
-            ->with('Auth.AuthUser', $this->user)
-            ->will($this->returnValue(true));
+	/**
+	 * Test write
+	 *
+	 * @return void
+	 */
+	public function testWrite()
+	{
+		$this->session->expects($this->once())
+			->method('write')
+			->with('Auth.AuthUser', $this->user)
+			->will($this->returnValue(true));
 
-        $this->storage->write($this->user);
-    }
+		$this->storage->write($this->user);
+	}
 
-    /**
-     * Test read
-     *
-     * @return void
-     */
-    public function testRead()
-    {
-        $this->session->expects($this->once())
-            ->method('read')
-            ->with('Auth.AuthUser')
-            ->will($this->returnValue($this->user));
+	/**
+	 * Test read
+	 *
+	 * @return void
+	 */
+	public function testRead()
+	{
+		$this->session->expects($this->once())
+			->method('read')
+			->with('Auth.AuthUser')
+			->will($this->returnValue($this->user));
 
-        $result = $this->storage->read();
-        $this->assertSame($this->user, $result);
-    }
+		$result = $this->storage->read();
+		$this->assertSame($this->user, $result);
+	}
 
-    /**
-     * Test read from local var
-     *
-     * @return void
-     */
-    public function testGetFromLocalVar()
-    {
-        $this->storage->write($this->user);
+	/**
+	 * Test read from local var
+	 *
+	 * @return void
+	 */
+	public function testGetFromLocalVar()
+	{
+		$this->storage->write($this->user);
 
-        $this->session->expects($this->never())
-            ->method('read');
+		$this->session->expects($this->never())
+			->method('read');
 
-        $result = $this->storage->read();
-        $this->assertSame($this->user, $result);
-    }
+		$result = $this->storage->read();
+		$this->assertSame($this->user, $result);
+	}
 
-    /**
-     * Test delete
-     *
-     * @return void
-     */
-    public function testDelete()
-    {
-        $this->session->expects($this->once())
-            ->method('delete')
-            ->with('Auth.AuthUser');
+	/**
+	 * Test delete
+	 *
+	 * @return void
+	 */
+	public function testDelete()
+	{
+		$this->session->expects($this->once())
+			->method('delete')
+			->with('Auth.AuthUser');
 
-        $this->storage->delete();
-    }
+		$this->storage->delete();
+	}
 
-    /**
-     * Test redirectUrl()
-     *
-     * @return void
-     */
-    public function redirectUrl()
-    {
-        $url = '/url';
+	/**
+	 * Test redirectUrl()
+	 *
+	 * @return void
+	 */
+	public function redirectUrl()
+	{
+		$url = '/url';
 
-        $this->session->expects($this->once())
-            ->method('write')
-            ->with('Auth.redirectUrl', $url);
+		$this->session->expects($this->once())
+			->method('write')
+			->with('Auth.redirectUrl', $url);
 
-        $this->storage->redirectUrl($url);
+		$this->storage->redirectUrl($url);
 
-        $this->session->expects($this->once())
-            ->method('read')
-            ->with('Auth.redirectUrl')
-            ->will($this->returnValue($url));
+		$this->session->expects($this->once())
+			->method('read')
+			->with('Auth.redirectUrl')
+			->will($this->returnValue($url));
 
-        $result = $this->storage->redirectUrl();
-        $this->assertEquals($url, $result);
+		$result = $this->storage->redirectUrl();
+		$this->assertEquals($url, $result);
 
-        $this->session->expects($this->once())
-            ->method('delete')
-            ->with('Auth.redirectUrl');
+		$this->session->expects($this->once())
+			->method('delete')
+			->with('Auth.redirectUrl');
 
-        $this->storage->redirectUrl(false);
-    }
+		$this->storage->redirectUrl(false);
+	}
 }

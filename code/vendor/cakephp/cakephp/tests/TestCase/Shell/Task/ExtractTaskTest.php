@@ -28,311 +28,312 @@ use Cake\TestSuite\TestCase;
 class ExtractTaskTest extends TestCase
 {
 
-    /**
-     * setUp method
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        $this->io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
-        $progress = $this->getMock('Cake\Shell\Helper\ProgressHelper', [], [$this->io]);
-        $this->io->method('helper')
-            ->will($this->returnValue($progress));
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		$this->io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
+		$progress = $this->getMock('Cake\Shell\Helper\ProgressHelper', [], [$this->io]);
+		$this->io->method('helper')
+			->will($this->returnValue($progress));
 
-        $this->Task = $this->getMock(
-            'Cake\Shell\Task\ExtractTask',
-            ['in', 'out', 'err', '_stop'],
-            [$this->io]
-        );
-        $this->path = TMP . 'tests/extract_task_test';
-        new Folder($this->path . DS . 'locale', true);
-    }
+		$this->Task = $this->getMock(
+			'Cake\Shell\Task\ExtractTask',
+			['in', 'out', 'err', '_stop'],
+			[$this->io]
+		);
+		$this->path = TMP . 'tests/extract_task_test';
+		new Folder($this->path . DS . 'locale', true);
+	}
 
-    /**
-     * tearDown method
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        parent::tearDown();
-        unset($this->Task);
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
+	public function tearDown()
+	{
+		parent::tearDown();
+		unset($this->Task);
 
-        $Folder = new Folder($this->path);
-        $Folder->delete();
-        Plugin::unload();
-    }
+		$Folder = new Folder($this->path);
+		$Folder->delete();
+		Plugin::unload();
+	}
 
-    /**
-     * testExecute method
-     *
-     * @return void
-     */
-    public function testExecute()
-    {
-        $this->Task->params['paths'] = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Pages';
-        $this->Task->params['output'] = $this->path . DS;
-        $this->Task->params['extract-core'] = 'no';
-        $this->Task->params['merge'] = 'no';
+	/**
+	 * testExecute method
+	 *
+	 * @return void
+	 */
+	public function testExecute()
+	{
+		$this->Task->params['paths'] = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Pages';
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'no';
+		$this->Task->params['merge'] = 'no';
 
-        $this->Task->expects($this->never())->method('err');
-        $this->Task->expects($this->any())->method('in')
-            ->will($this->returnValue('y'));
-        $this->Task->expects($this->never())->method('_stop');
+		$this->Task->expects($this->never())->method('err');
+		$this->Task->expects($this->any())->method('in')
+			->will($this->returnValue('y'));
+		$this->Task->expects($this->never())->method('_stop');
 
-        $this->Task->main();
-        $this->assertTrue(file_exists($this->path . DS . 'default.pot'));
-        $result = file_get_contents($this->path . DS . 'default.pot');
+		$this->Task->main();
+		$this->assertTrue(file_exists($this->path . DS . 'default.pot'));
+		$result = file_get_contents($this->path . DS . 'default.pot');
 
-        $this->assertFalse(file_exists($this->path . DS . 'cake.pot'));
+		$this->assertFalse(file_exists($this->path . DS . 'cake.pot'));
 
-        // extract.ctp
-        $pattern = '/\#: (\\\\|\/)extract\.ctp:\d+;\d+\n';
-        $pattern .= 'msgid "You have %d new message."\nmsgid_plural "You have %d new messages."/';
-        $this->assertRegExp($pattern, $result);
+		// extract.ctp
+		$pattern = '/\#: (\\\\|\/)extract\.ctp:\d+;\d+\n';
+		$pattern .= 'msgid "You have %d new message."\nmsgid_plural "You have %d new messages."/';
+		$this->assertRegExp($pattern, $result);
 
-        $pattern = '/msgid "You have %d new message."\nmsgstr ""/';
-        $this->assertNotRegExp($pattern, $result, 'No duplicate msgid');
+		$pattern = '/msgid "You have %d new message."\nmsgstr ""/';
+		$this->assertNotRegExp($pattern, $result, 'No duplicate msgid');
 
-        $pattern = '/\#: (\\\\|\/)extract\.ctp:\d+\n';
-        $pattern .= 'msgid "You deleted %d message."\nmsgid_plural "You deleted %d messages."/';
-        $this->assertRegExp($pattern, $result);
+		$pattern = '/\#: (\\\\|\/)extract\.ctp:\d+\n';
+		$pattern .= 'msgid "You deleted %d message."\nmsgid_plural "You deleted %d messages."/';
+		$this->assertRegExp($pattern, $result);
 
-        $pattern = '/\#: (\\\\|\/)extract\.ctp:\d+\nmsgid "';
-        $pattern .= 'Hot features!';
-        $pattern .= '\\\n - No Configuration: Set-up the database and let the magic begin';
-        $pattern .= '\\\n - Extremely Simple: Just look at the name...It\'s Cake';
-        $pattern .= '\\\n - Active, Friendly Community: Join us #cakephp on IRC. We\'d love to help you get started';
-        $pattern .= '"\nmsgstr ""/';
-        $this->assertRegExp($pattern, $result);
+		$pattern = '/\#: (\\\\|\/)extract\.ctp:\d+\nmsgid "';
+		$pattern .= 'Hot features!';
+		$pattern .= '\\\n - No Configuration: Set-up the database and let the magic begin';
+		$pattern .= '\\\n - Extremely Simple: Just look at the name...It\'s Cake';
+		$pattern .= '\\\n - Active, Friendly Community: Join us #cakephp on IRC. We\'d love to help you get started';
+		$pattern .= '"\nmsgstr ""/';
+		$this->assertRegExp($pattern, $result);
 
-        $this->assertContains('msgid "double \\"quoted\\""', $result, 'Strings with quotes not handled correctly');
-        $this->assertContains("msgid \"single 'quoted'\"", $result, 'Strings with quotes not handled correctly');
+		$this->assertContains('msgid "double \\"quoted\\""', $result, 'Strings with quotes not handled correctly');
+		$this->assertContains("msgid \"single 'quoted'\"", $result, 'Strings with quotes not handled correctly');
 
-        $pattern = '/\#: (\\\\|\/)extract\.ctp:\d+\n';
-        $pattern .= 'msgctxt "mail"\n';
-        $pattern .= 'msgid "letter"/';
-        $this->assertRegExp($pattern, $result);
+		$pattern = '/\#: (\\\\|\/)extract\.ctp:\d+\n';
+		$pattern .= 'msgctxt "mail"\n';
+		$pattern .= 'msgid "letter"/';
+		$this->assertRegExp($pattern, $result);
 
-        $pattern = '/\#: (\\\\|\/)extract\.ctp:\d+\n';
-        $pattern .= 'msgctxt "alphabet"\n';
-        $pattern .= 'msgid "letter"/';
-        $this->assertRegExp($pattern, $result);
+		$pattern = '/\#: (\\\\|\/)extract\.ctp:\d+\n';
+		$pattern .= 'msgctxt "alphabet"\n';
+		$pattern .= 'msgid "letter"/';
+		$this->assertRegExp($pattern, $result);
 
-        // extract.ctp - reading the domain.pot
-        $result = file_get_contents($this->path . DS . 'domain.pot');
+		// extract.ctp - reading the domain.pot
+		$result = file_get_contents($this->path . DS . 'domain.pot');
 
-        $pattern = '/msgid "You have %d new message."\nmsgid_plural "You have %d new messages."/';
-        $this->assertNotRegExp($pattern, $result);
-        $pattern = '/msgid "You deleted %d message."\nmsgid_plural "You deleted %d messages."/';
-        $this->assertNotRegExp($pattern, $result);
+		$pattern = '/msgid "You have %d new message."\nmsgid_plural "You have %d new messages."/';
+		$this->assertNotRegExp($pattern, $result);
+		$pattern = '/msgid "You deleted %d message."\nmsgid_plural "You deleted %d messages."/';
+		$this->assertNotRegExp($pattern, $result);
 
-        $pattern = '/msgid "You have %d new message \(domain\)."\nmsgid_plural "You have %d new messages \(domain\)."/';
-        $this->assertRegExp($pattern, $result);
-        $pattern = '/msgid "You deleted %d message \(domain\)."\nmsgid_plural "You deleted %d messages \(domain\)."/';
-        $this->assertRegExp($pattern, $result);
-    }
+		$pattern = '/msgid "You have %d new message \(domain\)."\nmsgid_plural "You have %d new messages \(domain\)."/';
+		$this->assertRegExp($pattern, $result);
+		$pattern = '/msgid "You deleted %d message \(domain\)."\nmsgid_plural "You deleted %d messages \(domain\)."/';
+		$this->assertRegExp($pattern, $result);
+	}
 
-    /**
-     * testExecute with merging on method
-     *
-     * @return void
-     */
-    public function testExecuteMerge()
-    {
-        $this->Task->params['paths'] = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Pages';
-        $this->Task->params['output'] = $this->path . DS;
-        $this->Task->params['extract-core'] = 'no';
-        $this->Task->params['merge'] = 'yes';
+	/**
+	 * testExecute with merging on method
+	 *
+	 * @return void
+	 */
+	public function testExecuteMerge()
+	{
+		$this->Task->params['paths'] = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Pages';
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'no';
+		$this->Task->params['merge'] = 'yes';
 
-        $this->Task->expects($this->never())->method('err');
-        $this->Task->expects($this->any())->method('in')
-            ->will($this->returnValue('y'));
-        $this->Task->expects($this->never())->method('_stop');
+		$this->Task->expects($this->never())->method('err');
+		$this->Task->expects($this->any())->method('in')
+			->will($this->returnValue('y'));
+		$this->Task->expects($this->never())->method('_stop');
 
-        $this->Task->main();
-        $this->assertFileExists($this->path . DS . 'default.pot');
-        $this->assertFileNotExists($this->path . DS . 'cake.pot');
-        $this->assertFileNotExists($this->path . DS . 'domain.pot');
-    }
+		$this->Task->main();
+		$this->assertFileExists($this->path . DS . 'default.pot');
+		$this->assertFileNotExists($this->path . DS . 'cake.pot');
+		$this->assertFileNotExists($this->path . DS . 'domain.pot');
+	}
 
-    /**
-     * test exclusions
-     *
-     * @return void
-     */
-    public function testExtractWithExclude()
-    {
-        $this->Task->interactive = false;
+	/**
+	 * test exclusions
+	 *
+	 * @return void
+	 */
+	public function testExtractWithExclude()
+	{
+		$this->Task->interactive = false;
 
-        $this->Task->params['paths'] = TEST_APP . 'TestApp/Template';
-        $this->Task->params['output'] = $this->path . DS;
-        $this->Task->params['exclude'] = 'Pages,Layout';
-        $this->Task->params['extract-core'] = 'no';
+		$this->Task->params['paths'] = TEST_APP . 'TestApp/Template';
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['exclude'] = 'Pages,Layout';
+		$this->Task->params['extract-core'] = 'no';
 
-        $this->Task->expects($this->any())->method('in')
-            ->will($this->returnValue('y'));
+		$this->Task->expects($this->any())->method('in')
+			->will($this->returnValue('y'));
 
-        $this->Task->main();
-        $this->assertTrue(file_exists($this->path . DS . 'default.pot'));
-        $result = file_get_contents($this->path . DS . 'default.pot');
+		$this->Task->main();
+		$this->assertTrue(file_exists($this->path . DS . 'default.pot'));
+		$result = file_get_contents($this->path . DS . 'default.pot');
 
-        $pattern = '/\#: .*extract\.ctp:\d+\n/';
-        $this->assertNotRegExp($pattern, $result);
+		$pattern = '/\#: .*extract\.ctp:\d+\n/';
+		$this->assertNotRegExp($pattern, $result);
 
-        $pattern = '/\#: .*default\.ctp:\d+\n/';
-        $this->assertNotRegExp($pattern, $result);
-    }
-    /**
-     * testExtractWithoutLocations method
-     *
-     * @return void
-     */
-    public function testExtractWithoutLocations()
-    {
-        $this->Task->params['paths'] = TEST_APP . 'TestApp/Template';
-        $this->Task->params['output'] = $this->path . DS;
-        $this->Task->params['exclude'] = 'Pages,Layout';
-        $this->Task->params['extract-core'] = 'no';
-        $this->Task->params['no-location'] = true;
+		$pattern = '/\#: .*default\.ctp:\d+\n/';
+		$this->assertNotRegExp($pattern, $result);
+	}
 
-        $this->Task->expects($this->never())->method('err');
-        $this->Task->expects($this->any())->method('in')
-            ->will($this->returnValue('y'));
+	/**
+	 * testExtractWithoutLocations method
+	 *
+	 * @return void
+	 */
+	public function testExtractWithoutLocations()
+	{
+		$this->Task->params['paths'] = TEST_APP . 'TestApp/Template';
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['exclude'] = 'Pages,Layout';
+		$this->Task->params['extract-core'] = 'no';
+		$this->Task->params['no-location'] = true;
 
-        $this->Task->main();
-        $this->assertTrue(file_exists($this->path . DS . 'default.pot'));
+		$this->Task->expects($this->never())->method('err');
+		$this->Task->expects($this->any())->method('in')
+			->will($this->returnValue('y'));
 
-        $result = file_get_contents($this->path . DS . 'default.pot');
+		$this->Task->main();
+		$this->assertTrue(file_exists($this->path . DS . 'default.pot'));
 
-        $pattern = '/\n\#: .*\n/';
-        $this->assertNotRegExp($pattern, $result);
-    }
+		$result = file_get_contents($this->path . DS . 'default.pot');
 
-    /**
-     * test extract can read more than one path.
-     *
-     * @return void
-     */
-    public function testExtractMultiplePaths()
-    {
-        $this->Task->interactive = false;
+		$pattern = '/\n\#: .*\n/';
+		$this->assertNotRegExp($pattern, $result);
+	}
 
-        $this->Task->params['paths'] =
-            TEST_APP . 'TestApp/Template/Pages,' .
-            TEST_APP . 'TestApp/Template/Posts';
+	/**
+	 * test extract can read more than one path.
+	 *
+	 * @return void
+	 */
+	public function testExtractMultiplePaths()
+	{
+		$this->Task->interactive = false;
 
-        $this->Task->params['output'] = $this->path . DS;
-        $this->Task->params['extract-core'] = 'no';
-        $this->Task->expects($this->never())->method('err');
-        $this->Task->expects($this->never())->method('_stop');
-        $this->Task->main();
+		$this->Task->params['paths'] =
+			TEST_APP . 'TestApp/Template/Pages,' .
+			TEST_APP . 'TestApp/Template/Posts';
 
-        $result = file_get_contents($this->path . DS . 'default.pot');
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'no';
+		$this->Task->expects($this->never())->method('err');
+		$this->Task->expects($this->never())->method('_stop');
+		$this->Task->main();
 
-        $pattern = '/msgid "Add User"/';
-        $this->assertRegExp($pattern, $result);
-    }
+		$result = file_get_contents($this->path . DS . 'default.pot');
 
-    /**
-     * Tests that it is possible to exclude plugin paths by enabling the param option for the ExtractTask
-     *
-     * @return void
-     */
-    public function testExtractExcludePlugins()
-    {
-        Configure::write('App.namespace', 'TestApp');
-        $this->Task = $this->getMock(
-            'Cake\Shell\Task\ExtractTask',
-            ['_isExtractingApp', 'in', 'out', 'err', 'clear', '_stop'],
-            [$this->io]
-        );
-        $this->Task->expects($this->exactly(1))
-            ->method('_isExtractingApp')
-            ->will($this->returnValue(true));
+		$pattern = '/msgid "Add User"/';
+		$this->assertRegExp($pattern, $result);
+	}
 
-        $this->Task->params['paths'] = TEST_APP . 'TestApp/';
-        $this->Task->params['output'] = $this->path . DS;
-        $this->Task->params['exclude-plugins'] = true;
+	/**
+	 * Tests that it is possible to exclude plugin paths by enabling the param option for the ExtractTask
+	 *
+	 * @return void
+	 */
+	public function testExtractExcludePlugins()
+	{
+		Configure::write('App.namespace', 'TestApp');
+		$this->Task = $this->getMock(
+			'Cake\Shell\Task\ExtractTask',
+			['_isExtractingApp', 'in', 'out', 'err', 'clear', '_stop'],
+			[$this->io]
+		);
+		$this->Task->expects($this->exactly(1))
+			->method('_isExtractingApp')
+			->will($this->returnValue(true));
 
-        $this->Task->main();
-        $result = file_get_contents($this->path . DS . 'default.pot');
-        $this->assertNotRegExp('#TestPlugin#', $result);
-    }
+		$this->Task->params['paths'] = TEST_APP . 'TestApp/';
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['exclude-plugins'] = true;
 
-    /**
-     * Test that is possible to extract messages form a single plugin
-     *
-     * @return void
-     */
-    public function testExtractPlugin()
-    {
-        Configure::write('App.namespace', 'TestApp');
+		$this->Task->main();
+		$result = file_get_contents($this->path . DS . 'default.pot');
+		$this->assertNotRegExp('#TestPlugin#', $result);
+	}
 
-        $this->Task = $this->getMock(
-            'Cake\Shell\Task\ExtractTask',
-            ['_isExtractingApp', 'in', 'out', 'err', 'clear', '_stop'],
-            [$this->io]
-        );
+	/**
+	 * Test that is possible to extract messages form a single plugin
+	 *
+	 * @return void
+	 */
+	public function testExtractPlugin()
+	{
+		Configure::write('App.namespace', 'TestApp');
 
-        $this->Task->params['output'] = $this->path . DS;
-        $this->Task->params['plugin'] = 'TestPlugin';
+		$this->Task = $this->getMock(
+			'Cake\Shell\Task\ExtractTask',
+			['_isExtractingApp', 'in', 'out', 'err', 'clear', '_stop'],
+			[$this->io]
+		);
 
-        $this->Task->main();
-        $result = file_get_contents($this->path . DS . 'default.pot');
-        $this->assertNotRegExp('#Pages#', $result);
-        $this->assertRegExp('/translate\.ctp:\d+/', $result);
-        $this->assertContains('This is a translatable string', $result);
-    }
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['plugin'] = 'TestPlugin';
 
-    /**
-     *  Test that the extract shell overwrites existing files with the overwrite parameter
-     *
-     * @return void
-     */
-    public function testExtractOverwrite()
-    {
-        Configure::write('App.namespace', 'TestApp');
-        $this->Task->interactive = false;
+		$this->Task->main();
+		$result = file_get_contents($this->path . DS . 'default.pot');
+		$this->assertNotRegExp('#Pages#', $result);
+		$this->assertRegExp('/translate\.ctp:\d+/', $result);
+		$this->assertContains('This is a translatable string', $result);
+	}
 
-        $this->Task->params['paths'] = TEST_APP . 'TestApp/';
-        $this->Task->params['output'] = $this->path . DS;
-        $this->Task->params['extract-core'] = 'no';
-        $this->Task->params['overwrite'] = true;
+	/**
+	 *  Test that the extract shell overwrites existing files with the overwrite parameter
+	 *
+	 * @return void
+	 */
+	public function testExtractOverwrite()
+	{
+		Configure::write('App.namespace', 'TestApp');
+		$this->Task->interactive = false;
 
-        file_put_contents($this->path . DS . 'default.pot', 'will be overwritten');
-        $this->assertTrue(file_exists($this->path . DS . 'default.pot'));
-        $original = file_get_contents($this->path . DS . 'default.pot');
+		$this->Task->params['paths'] = TEST_APP . 'TestApp/';
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'no';
+		$this->Task->params['overwrite'] = true;
 
-        $this->Task->main();
-        $result = file_get_contents($this->path . DS . 'default.pot');
-        $this->assertNotEquals($original, $result);
-    }
+		file_put_contents($this->path . DS . 'default.pot', 'will be overwritten');
+		$this->assertTrue(file_exists($this->path . DS . 'default.pot'));
+		$original = file_get_contents($this->path . DS . 'default.pot');
 
-    /**
-     *  Test that the extract shell scans the core libs
-     *
-     * @return void
-     */
-    public function testExtractCore()
-    {
-        Configure::write('App.namespace', 'TestApp');
-        $this->Task->interactive = false;
+		$this->Task->main();
+		$result = file_get_contents($this->path . DS . 'default.pot');
+		$this->assertNotEquals($original, $result);
+	}
 
-        $this->Task->params['paths'] = TEST_APP . 'TestApp/';
-        $this->Task->params['output'] = $this->path . DS;
-        $this->Task->params['extract-core'] = 'yes';
+	/**
+	 *  Test that the extract shell scans the core libs
+	 *
+	 * @return void
+	 */
+	public function testExtractCore()
+	{
+		Configure::write('App.namespace', 'TestApp');
+		$this->Task->interactive = false;
 
-        $this->Task->main();
-        $this->assertTrue(file_exists($this->path . DS . 'cake.pot'));
-        $result = file_get_contents($this->path . DS . 'cake.pot');
+		$this->Task->params['paths'] = TEST_APP . 'TestApp/';
+		$this->Task->params['output'] = $this->path . DS;
+		$this->Task->params['extract-core'] = 'yes';
 
-        $pattern = '/#: Console\/Templates\//';
-        $this->assertNotRegExp($pattern, $result);
+		$this->Task->main();
+		$this->assertTrue(file_exists($this->path . DS . 'cake.pot'));
+		$result = file_get_contents($this->path . DS . 'cake.pot');
 
-        $pattern = '/#: Test\//';
-        $this->assertNotRegExp($pattern, $result);
-    }
+		$pattern = '/#: Console\/Templates\//';
+		$this->assertNotRegExp($pattern, $result);
+
+		$pattern = '/#: Test\//';
+		$this->assertNotRegExp($pattern, $result);
+	}
 }

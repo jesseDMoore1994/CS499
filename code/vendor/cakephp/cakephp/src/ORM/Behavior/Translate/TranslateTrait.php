@@ -23,42 +23,42 @@ use Cake\Datasource\EntityInterface;
 trait TranslateTrait
 {
 
-    /**
-     * Returns the entity containing the translated fields for this object and for
-     * the specified language. If the translation for the passed language is not
-     * present, a new empty entity will be created so that values can be added to
-     * it.
-     *
-     * @param string $language Language to return entity for.
-     * @return $this|\Cake\ORM\Entity
-     */
-    public function translation($language)
-    {
-        if ($language === $this->get('_locale')) {
-            return $this;
-        }
+	/**
+	 * Returns the entity containing the translated fields for this object and for
+	 * the specified language. If the translation for the passed language is not
+	 * present, a new empty entity will be created so that values can be added to
+	 * it.
+	 *
+	 * @param string $language Language to return entity for.
+	 * @return $this|\Cake\ORM\Entity
+	 */
+	public function translation($language)
+	{
+		if ($language === $this->get('_locale')) {
+			return $this;
+		}
 
-        $i18n = $this->get('_translations');
-        $created = false;
+		$i18n = $this->get('_translations');
+		$created = false;
 
-        if (empty($i18n)) {
-            $i18n = [];
-            $created = true;
-        }
+		if (empty($i18n)) {
+			$i18n = [];
+			$created = true;
+		}
 
-        if ($created || empty($i18n[$language]) || !($i18n[$language] instanceof EntityInterface)) {
-            $className = get_class($this);
+		if ($created || empty($i18n[$language]) || !($i18n[$language] instanceof EntityInterface)) {
+			$className = get_class($this);
 
-            $i18n[$language] = new $className();
-            $created = true;
-        }
+			$i18n[$language] = new $className();
+			$created = true;
+		}
 
-        if ($created) {
-            $this->set('_translations', $i18n);
-        }
+		if ($created) {
+			$this->set('_translations', $i18n);
+		}
 
-        // Assume the user will modify any of the internal translations, helps with saving
-        $this->dirty('_translations', true);
-        return $i18n[$language];
-    }
+		// Assume the user will modify any of the internal translations, helps with saving
+		$this->dirty('_translations', true);
+		return $i18n[$language];
+	}
 }

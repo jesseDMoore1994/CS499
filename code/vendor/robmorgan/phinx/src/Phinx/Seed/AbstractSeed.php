@@ -44,141 +44,141 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 abstract class AbstractSeed implements SeedInterface
 {
-    /**
-     * @var AdapterInterface
-     */
-    protected $adapter;
+	/**
+	 * @var AdapterInterface
+	 */
+	protected $adapter;
 
-    /**
-     * @var OutputInterface
-     */
-    protected $output;
+	/**
+	 * @var OutputInterface
+	 */
+	protected $output;
 
-    /**
-     * Class Constructor.
-     *
-     * @return void
-     */
-    final public function __construct()
-    {
-        $this->init();
-    }
+	/**
+	 * Class Constructor.
+	 *
+	 * @return void
+	 */
+	final public function __construct()
+	{
+		$this->init();
+	}
 
-    /**
-     * Initialize method.
-     *
-     * @return void
-     */
-    protected function init()
-    {
-    }
+	/**
+	 * Initialize method.
+	 *
+	 * @return void
+	 */
+	protected function init()
+	{
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function run()
-    {
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function run()
+	{
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setAdapter(AdapterInterface $adapter)
-    {
-        $this->adapter = $adapter;
-        return $this;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setAdapter(AdapterInterface $adapter)
+	{
+		$this->adapter = $adapter;
+		return $this;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getAdapter()
-    {
-        return $this->adapter;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getAdapter()
+	{
+		return $this->adapter;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setOutput(OutputInterface $output)
-    {
-        $this->output = $output;
-        return $this;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setOutput(OutputInterface $output)
+	{
+		$this->output = $output;
+		return $this;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getOutput()
-    {
-        return $this->output;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getOutput()
+	{
+		return $this->output;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return get_class($this);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getName()
+	{
+		return get_class($this);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function execute($sql)
-    {
-        return $this->getAdapter()->execute($sql);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function execute($sql)
+	{
+		return $this->getAdapter()->execute($sql);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function query($sql)
-    {
-        return $this->getAdapter()->query($sql);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function query($sql)
+	{
+		return $this->getAdapter()->query($sql);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchRow($sql)
-    {
-        return $this->getAdapter()->fetchRow($sql);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function fetchRow($sql)
+	{
+		return $this->getAdapter()->fetchRow($sql);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function fetchAll($sql)
-    {
-        return $this->getAdapter()->fetchAll($sql);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function fetchAll($sql)
+	{
+		return $this->getAdapter()->fetchAll($sql);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function insert($table, $data)
-    {
-        // convert to table object
-        if (is_string($table)) {
-            $table = new Table($table, array(), $this->getAdapter());
-        }
-        return $table->insert($data)->save();
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function insert($table, $data)
+	{
+		// convert to table object
+		if (is_string($table)) {
+			$table = new Table($table, array(), $this->getAdapter());
+		}
+		return $table->insert($data)->save();
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function hasTable($tableName)
-    {
-        return $this->getAdapter()->hasTable($tableName);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function hasTable($tableName)
+	{
+		return $this->getAdapter()->hasTable($tableName);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function table($tableName, $options = array())
-    {
-        return new Table($tableName, $options, $this->getAdapter());
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function table($tableName, $options = array())
+	{
+		return new Table($tableName, $options, $this->getAdapter());
+	}
 }

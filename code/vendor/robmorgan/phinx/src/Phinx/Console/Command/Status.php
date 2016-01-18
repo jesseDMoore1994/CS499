@@ -34,53 +34,53 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Status extends AbstractCommand
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
-    {
-        parent::configure();
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function configure()
+	{
+		parent::configure();
 
-        $this->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment.');
+		$this->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment.');
 
-        $this->setName('status')
-             ->setDescription('Show migration status')
-             ->addOption('--format', '-f', InputOption::VALUE_REQUIRED, 'The output format: text or json. Defaults to text.')
-             ->setHelp(
-<<<EOT
-The <info>status</info> command prints a list of all migrations, along with their current status
+		$this->setName('status')
+			->setDescription('Show migration status')
+			->addOption('--format', '-f', InputOption::VALUE_REQUIRED, 'The output format: text or json. Defaults to text.')
+			->setHelp(
+				<<<EOT
+				The <info>status</info> command prints a list of all migrations, along with their current status
 
 <info>phinx status -e development</info>
 <info>phinx status -e development -f json</info>
 EOT
-             );
-    }
+			);
+	}
 
-    /**
-     * Show the migration status.
-     *
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return integer 0 if all migrations are up, or an error code
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $this->bootstrap($input, $output);
+	/**
+	 * Show the migration status.
+	 *
+	 * @param InputInterface $input
+	 * @param OutputInterface $output
+	 * @return integer 0 if all migrations are up, or an error code
+	 */
+	protected function execute(InputInterface $input, OutputInterface $output)
+	{
+		$this->bootstrap($input, $output);
 
-        $environment = $input->getOption('environment');
-        $format = $input->getOption('format');
+		$environment = $input->getOption('environment');
+		$format = $input->getOption('format');
 
-        if (null === $environment) {
-            $environment = $this->getConfig()->getDefaultEnvironment();
-            $output->writeln('<comment>warning</comment> no environment specified, defaulting to: ' . $environment);
-        } else {
-            $output->writeln('<info>using environment</info> ' . $environment);
-        }
-        if (null !== $format) {
-            $output->writeln('<info>using format</info> ' . $format);
-        }
+		if (null === $environment) {
+			$environment = $this->getConfig()->getDefaultEnvironment();
+			$output->writeln('<comment>warning</comment> no environment specified, defaulting to: ' . $environment);
+		} else {
+			$output->writeln('<info>using environment</info> ' . $environment);
+		}
+		if (null !== $format) {
+			$output->writeln('<info>using format</info> ' . $format);
+		}
 
-        // print the status
-        return $this->getManager()->printStatus($environment, $format);
-    }
+		// print the status
+		return $this->getManager()->printStatus($environment, $format);
+	}
 }

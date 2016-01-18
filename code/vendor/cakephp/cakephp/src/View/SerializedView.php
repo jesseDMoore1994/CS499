@@ -23,70 +23,71 @@ use Cake\Network\Response;
  */
 class SerializedView extends View
 {
-    /**
-     * Response type.
-     *
-     * @var string
-     */
-    protected $_responseType;
+	/**
+	 * Response type.
+	 *
+	 * @var string
+	 */
+	protected $_responseType;
 
-    /**
-     * Constructor
-     *
-     * @param \Cake\Network\Request $request Request instance.
-     * @param \Cake\Network\Response $response Response instance.
-     * @param \Cake\Event\EventManager $eventManager EventManager instance.
-     * @param array $viewOptions An array of view options
-     */
-    public function __construct(
-        Request $request = null,
-        Response $response = null,
-        EventManager $eventManager = null,
-        array $viewOptions = []
-    ) {
-        parent::__construct($request, $response, $eventManager, $viewOptions);
+	/**
+	 * Constructor
+	 *
+	 * @param \Cake\Network\Request $request Request instance.
+	 * @param \Cake\Network\Response $response Response instance.
+	 * @param \Cake\Event\EventManager $eventManager EventManager instance.
+	 * @param array $viewOptions An array of view options
+	 */
+	public function __construct(
+		Request $request = null,
+		Response $response = null,
+		EventManager $eventManager = null,
+		array $viewOptions = []
+	)
+	{
+		parent::__construct($request, $response, $eventManager, $viewOptions);
 
-        if ($response && $response instanceof Response) {
-            $response->type($this->_responseType);
-        }
-    }
+		if ($response && $response instanceof Response) {
+			$response->type($this->_responseType);
+		}
+	}
 
-    /**
-     * Load helpers only if serialization is disabled.
-     *
-     * @return void
-     */
-    public function loadHelpers()
-    {
-        if (empty($this->viewVars['_serialize'])) {
-            parent::loadHelpers();
-        }
-    }
+	/**
+	 * Load helpers only if serialization is disabled.
+	 *
+	 * @return void
+	 */
+	public function loadHelpers()
+	{
+		if (empty($this->viewVars['_serialize'])) {
+			parent::loadHelpers();
+		}
+	}
 
-    /**
-     * Render view template or return serialized data.
-     *
-     * ### Special parameters
-     * `_serialize` To convert a set of view variables into a serialized form.
-     *   Its value can be a string for single variable name or array for multiple
-     *   names. If true all view variables will be serialized. If unset normal
-     *   view template will be rendered.
-     *
-     * @param string|null $view The view being rendered.
-     * @param string|null $layout The layout being rendered.
-     * @return string|null The rendered view.
-     */
-    public function render($view = null, $layout = null)
-    {
-        $serialize = false;
-        if (isset($this->viewVars['_serialize'])) {
-            $serialize = $this->viewVars['_serialize'];
-        }
+	/**
+	 * Render view template or return serialized data.
+	 *
+	 * ### Special parameters
+	 * `_serialize` To convert a set of view variables into a serialized form.
+	 *   Its value can be a string for single variable name or array for multiple
+	 *   names. If true all view variables will be serialized. If unset normal
+	 *   view template will be rendered.
+	 *
+	 * @param string|null $view The view being rendered.
+	 * @param string|null $layout The layout being rendered.
+	 * @return string|null The rendered view.
+	 */
+	public function render($view = null, $layout = null)
+	{
+		$serialize = false;
+		if (isset($this->viewVars['_serialize'])) {
+			$serialize = $this->viewVars['_serialize'];
+		}
 
-        if ($serialize !== false) {
-            return $this->_serialize($serialize);
-        } elseif ($view !== false && $this->_getViewFileName($view)) {
-            return parent::render($view, false);
-        }
-    }
+		if ($serialize !== false) {
+			return $this->_serialize($serialize);
+		} elseif ($view !== false && $this->_getViewFileName($view)) {
+			return parent::render($view, false);
+		}
+	}
 }

@@ -16,30 +16,30 @@ namespace Psy;
  */
 class Autoloader
 {
-    /**
-     * Register autoload() as an SPL autoloader.
-     *
-     * @see self::autoload
-     */
-    public static function register()
-    {
-        spl_autoload_register(array(__CLASS__, 'autoload'));
-    }
+	/**
+	 * Register autoload() as an SPL autoloader.
+	 *
+	 * @see self::autoload
+	 */
+	public static function register()
+	{
+		spl_autoload_register(array(__CLASS__, 'autoload'));
+	}
 
-    /**
-     * Autoload Psy classes.
-     *
-     * @param string $class
-     */
-    public static function autoload($class)
-    {
-        if (0 !== strpos($class, 'Psy')) {
-            return;
-        }
+	/**
+	 * Autoload Psy classes.
+	 *
+	 * @param string $class
+	 */
+	public static function autoload($class)
+	{
+		if (0 !== strpos($class, 'Psy')) {
+			return;
+		}
 
-        $file = dirname(__DIR__) . '/' . strtr($class, '\\', '/') . '.php';
-        if (is_file($file)) {
-            require $file;
-        }
-    }
+		$file = dirname(__DIR__) . '/' . strtr($class, '\\', '/') . '.php';
+		if (is_file($file)) {
+			require $file;
+		}
+	}
 }

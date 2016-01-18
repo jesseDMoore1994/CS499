@@ -6,11 +6,12 @@ use PhpParser;
 
 class XMLTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @covers PhpParser\Serializer\XML<extended>
-     */
-    public function testSerialize() {
-        $code = <<<CODE
+	/**
+	 * @covers PhpParser\Serializer\XML<extended>
+	 */
+	public function testSerialize()
+	{
+		$code = <<<CODE
 <?php
 // comment
 /** doc comment */
@@ -18,7 +19,7 @@ function functionName(&\$a = 0, \$b = 1.0) {
     echo 'Foo';
 }
 CODE;
-        $xml = <<<XML
+		$xml = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <AST xmlns:node="http://nikic.github.com/PHPParser/XML/node" xmlns:subNode="http://nikic.github.com/PHPParser/XML/subNode" xmlns:attribute="http://nikic.github.com/PHPParser/XML/attribute" xmlns:scalar="http://nikic.github.com/PHPParser/XML/scalar">
  <scalar:array>
@@ -147,20 +148,21 @@ CODE;
 </AST>
 XML;
 
-        $parser     = new PhpParser\Parser\Php7(new PhpParser\Lexer);
-        $serializer = new XML;
+		$parser = new PhpParser\Parser\Php7(new PhpParser\Lexer);
+		$serializer = new XML;
 
-        $code = str_replace("\r\n", "\n", $code);
-        $stmts = $parser->parse($code);
-        $this->assertXmlStringEqualsXmlString($xml, $serializer->serialize($stmts));
-    }
+		$code = str_replace("\r\n", "\n", $code);
+		$stmts = $parser->parse($code);
+		$this->assertXmlStringEqualsXmlString($xml, $serializer->serialize($stmts));
+	}
 
-    /**
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Unexpected node type
-     */
-    public function testError() {
-        $serializer = new XML;
-        $serializer->serialize(array(new \stdClass));
-    }
+	/**
+	 * @expectedException        \InvalidArgumentException
+	 * @expectedExceptionMessage Unexpected node type
+	 */
+	public function testError()
+	{
+		$serializer = new XML;
+		$serializer->serialize(array(new \stdClass));
+	}
 }

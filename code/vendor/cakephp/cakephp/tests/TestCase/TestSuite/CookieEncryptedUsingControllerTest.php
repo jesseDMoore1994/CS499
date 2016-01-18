@@ -26,118 +26,118 @@ use Cake\Utility\Security;
  */
 class CookieEncryptedUsingControllerTest extends IntegrationTestCase
 {
-    /**
-     * reset environment.
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        Configure::write('App.namespace', 'TestApp');
+	/**
+	 * reset environment.
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		Configure::write('App.namespace', 'TestApp');
 
-        Security::salt('abcdabcdabcdabcdabcdabcdabcdabcdabcd');
-        Router::connect('/:controller/:action/*', [], ['routeClass' => 'InflectedRoute']);
-        DispatcherFactory::clear();
-        DispatcherFactory::add('Routing');
-        DispatcherFactory::add('ControllerFactory');
-    }
+		Security::salt('abcdabcdabcdabcdabcdabcdabcdabcdabcd');
+		Router::connect('/:controller/:action/*', [], ['routeClass' => 'InflectedRoute']);
+		DispatcherFactory::clear();
+		DispatcherFactory::add('Routing');
+		DispatcherFactory::add('ControllerFactory');
+	}
 
-    /**
-     * Can encrypt/decrypt the cookie value.
-     */
-    public function testCanEncryptAndDecryptWithAes()
-    {
-        $this->cookieEncrypted('NameOfCookie', 'Value of Cookie', 'aes');
+	/**
+	 * Can encrypt/decrypt the cookie value.
+	 */
+	public function testCanEncryptAndDecryptWithAes()
+	{
+		$this->cookieEncrypted('NameOfCookie', 'Value of Cookie', 'aes');
 
-        $this->get('/cookie_component_test/view/');
-        $this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
-        $this->assertEquals('Value of Cookie', $this->viewVariable('ValueFromCookieComponent'), 'Decrypted');
-    }
+		$this->get('/cookie_component_test/view/');
+		$this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
+		$this->assertEquals('Value of Cookie', $this->viewVariable('ValueFromCookieComponent'), 'Decrypted');
+	}
 
-    /**
-     * Can encrypt/decrypt the cookie value by default.
-     */
-    public function testCanEncryptAndDecryptCookieValue()
-    {
-        $this->cookieEncrypted('NameOfCookie', 'Value of Cookie');
+	/**
+	 * Can encrypt/decrypt the cookie value by default.
+	 */
+	public function testCanEncryptAndDecryptCookieValue()
+	{
+		$this->cookieEncrypted('NameOfCookie', 'Value of Cookie');
 
-        $this->get('/cookie_component_test/view/');
-        $this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
-        $this->assertEquals('Value of Cookie', $this->viewVariable('ValueFromCookieComponent'), 'Decrypted');
-    }
+		$this->get('/cookie_component_test/view/');
+		$this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
+		$this->assertEquals('Value of Cookie', $this->viewVariable('ValueFromCookieComponent'), 'Decrypted');
+	}
 
-    /**
-     * Can encrypt/decrypt even if the cookie value are array.
-     */
-    public function testCanEncryptAndDecryptEvenIfCookieValueIsArray()
-    {
-        $this->cookieEncrypted('NameOfCookie', ['Value1 of Cookie', 'Value2 of Cookie']);
+	/**
+	 * Can encrypt/decrypt even if the cookie value are array.
+	 */
+	public function testCanEncryptAndDecryptEvenIfCookieValueIsArray()
+	{
+		$this->cookieEncrypted('NameOfCookie', ['Value1 of Cookie', 'Value2 of Cookie']);
 
-        $this->get('/cookie_component_test/view/');
-        $this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
-        $this->assertEquals(
-            ['Value1 of Cookie', 'Value2 of Cookie'],
-            $this->viewVariable('ValueFromCookieComponent'),
-            'Decrypted'
-        );
-    }
+		$this->get('/cookie_component_test/view/');
+		$this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
+		$this->assertEquals(
+			['Value1 of Cookie', 'Value2 of Cookie'],
+			$this->viewVariable('ValueFromCookieComponent'),
+			'Decrypted'
+		);
+	}
 
-    /**
-     * Can specify the encryption key.
-     */
-    public function testCanSpecifyEncryptionKey()
-    {
-        $key = 'another salt xxxxxxxxxxxxxxxxxxx';
-        $this->cookieEncrypted('NameOfCookie', 'Value of Cookie', 'aes', $key);
+	/**
+	 * Can specify the encryption key.
+	 */
+	public function testCanSpecifyEncryptionKey()
+	{
+		$key = 'another salt xxxxxxxxxxxxxxxxxxx';
+		$this->cookieEncrypted('NameOfCookie', 'Value of Cookie', 'aes', $key);
 
-        $this->get('/cookie_component_test/view/' . urlencode($key));
-        $this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
-        $this->assertEquals('Value of Cookie', $this->viewVariable('ValueFromCookieComponent'), 'Decrypted');
-    }
+		$this->get('/cookie_component_test/view/' . urlencode($key));
+		$this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
+		$this->assertEquals('Value of Cookie', $this->viewVariable('ValueFromCookieComponent'), 'Decrypted');
+	}
 
-    /**
-     * Can be used Security::salt() as the encryption key.
-     */
-    public function testCanBeUsedSecuritySaltAsEncryptionKey()
-    {
-        $key = 'another salt xxxxxxxxxxxxxxxxxxx';
-        Security::salt($key);
-        $this->cookieEncrypted('NameOfCookie', 'Value of Cookie', 'aes');
+	/**
+	 * Can be used Security::salt() as the encryption key.
+	 */
+	public function testCanBeUsedSecuritySaltAsEncryptionKey()
+	{
+		$key = 'another salt xxxxxxxxxxxxxxxxxxx';
+		Security::salt($key);
+		$this->cookieEncrypted('NameOfCookie', 'Value of Cookie', 'aes');
 
-        $this->get('/cookie_component_test/view/' . urlencode($key));
-        $this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
-        $this->assertEquals('Value of Cookie', $this->viewVariable('ValueFromCookieComponent'), 'Decrypted');
-    }
+		$this->get('/cookie_component_test/view/' . urlencode($key));
+		$this->assertStringStartsWith('Q2FrZQ==.', $this->viewVariable('ValueFromRequest'), 'Encrypted');
+		$this->assertEquals('Value of Cookie', $this->viewVariable('ValueFromCookieComponent'), 'Decrypted');
+	}
 
-    /**
-     * Can AssertCookie even if the value is encrypted by
-     * the CookieComponent.
-     */
-    public function testCanAssertCookieEncrypted()
-    {
-        $this->get('/cookie_component_test/set_cookie');
-        $this->assertCookieEncrypted('abc', 'NameOfCookie');
-    }
+	/**
+	 * Can AssertCookie even if the value is encrypted by
+	 * the CookieComponent.
+	 */
+	public function testCanAssertCookieEncrypted()
+	{
+		$this->get('/cookie_component_test/set_cookie');
+		$this->assertCookieEncrypted('abc', 'NameOfCookie');
+	}
 
-    /**
-     * Can AssertCookie even if encrypted with the aes.
-     */
-    public function testCanAssertCookieEncryptedWithAes()
-    {
-        $this->get('/cookie_component_test/set_cookie');
-        $this->assertCookieEncrypted('abc', 'NameOfCookie', 'aes');
-    }
+	/**
+	 * Can AssertCookie even if encrypted with the aes.
+	 */
+	public function testCanAssertCookieEncryptedWithAes()
+	{
+		$this->get('/cookie_component_test/set_cookie');
+		$this->assertCookieEncrypted('abc', 'NameOfCookie', 'aes');
+	}
 
-    /**
-     * Can AssertCookie even if encrypted with the another
-     * encrypted key.
-     */
-    public function testCanAssertCookieEncryptedWithAnotherEncryptionKey()
-    {
-        $key = 'another salt xxxxxxxxxxxxxxxxxxx';
-        Security::salt($key);
-        $this->get('/cookie_component_test/set_cookie');
-        $this->assertCookieEncrypted('abc', 'NameOfCookie', 'aes', $key);
-    }
+	/**
+	 * Can AssertCookie even if encrypted with the another
+	 * encrypted key.
+	 */
+	public function testCanAssertCookieEncryptedWithAnotherEncryptionKey()
+	{
+		$key = 'another salt xxxxxxxxxxxxxxxxxxx';
+		Security::salt($key);
+		$this->get('/cookie_component_test/set_cookie');
+		$this->assertCookieEncrypted('abc', 'NameOfCookie', 'aes', $key);
+	}
 }

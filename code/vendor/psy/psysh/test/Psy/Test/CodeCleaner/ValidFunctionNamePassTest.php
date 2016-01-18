@@ -15,32 +15,32 @@ use Psy\CodeCleaner\ValidFunctionNamePass;
 
 class ValidFunctionNamePassTest extends CodeCleanerTestCase
 {
-    public function setUp()
-    {
-        $this->setPass(new ValidFunctionNamePass());
-    }
+	public function setUp()
+	{
+		$this->setPass(new ValidFunctionNamePass());
+	}
 
-    /**
-     * @dataProvider getInvalidFunctions
-     * @expectedException \Psy\Exception\FatalErrorException
-     */
-    public function testProcessInvalidFunctionCallsAndDeclarations($code)
-    {
-        $stmts = $this->parse($code);
-        $this->traverse($stmts);
-    }
+	/**
+	 * @dataProvider getInvalidFunctions
+	 * @expectedException \Psy\Exception\FatalErrorException
+	 */
+	public function testProcessInvalidFunctionCallsAndDeclarations($code)
+	{
+		$stmts = $this->parse($code);
+		$this->traverse($stmts);
+	}
 
-    public function getInvalidFunctions()
-    {
-        return array(
-            // function declarations
-            array('function array_merge() {}'),
-            array('function Array_Merge() {}'),
-            array('
+	public function getInvalidFunctions()
+	{
+		return array(
+			// function declarations
+			array('function array_merge() {}'),
+			array('function Array_Merge() {}'),
+			array('
                 function psy_test_codecleaner_validfunctionnamepass_alpha() {}
                 function psy_test_codecleaner_validfunctionnamepass_alpha() {}
             '),
-            array('
+			array('
                 namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
                     function beta() {}
                 }
@@ -49,38 +49,38 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
                 }
             '),
 
-            // function calls
-            array('psy_test_codecleaner_validfunctionnamepass_gamma()'),
-            array('
+			// function calls
+			array('psy_test_codecleaner_validfunctionnamepass_gamma()'),
+			array('
                 namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
                     delta();
                 }
             '),
 
-            // recursion
-            array('function a() { a(); } function a() {}'),
-        );
-    }
+			// recursion
+			array('function a() { a(); } function a() {}'),
+		);
+	}
 
-    /**
-     * @dataProvider getValidFunctions
-     */
-    public function testProcessValidFunctionCallsAndDeclarations($code)
-    {
-        $stmts = $this->parse($code);
-        $this->traverse($stmts);
-    }
+	/**
+	 * @dataProvider getValidFunctions
+	 */
+	public function testProcessValidFunctionCallsAndDeclarations($code)
+	{
+		$stmts = $this->parse($code);
+		$this->traverse($stmts);
+	}
 
-    public function getValidFunctions()
-    {
-        return array(
-            array('function psy_test_codecleaner_validfunctionnamepass_epsilon() {}'),
-            array('
+	public function getValidFunctions()
+	{
+		return array(
+			array('function psy_test_codecleaner_validfunctionnamepass_epsilon() {}'),
+			array('
                 namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
                     function zeta() {}
                 }
             '),
-            array('
+			array('
                 namespace {
                     function psy_test_codecleaner_validfunctionnamepass_eta() {}
                 }
@@ -88,7 +88,7 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
                     function psy_test_codecleaner_validfunctionnamepass_eta() {}
                 }
             '),
-            array('
+			array('
                 namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
                     function psy_test_codecleaner_validfunctionnamepass_eta() {}
                 }
@@ -96,15 +96,15 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
                     function psy_test_codecleaner_validfunctionnamepass_eta() {}
                 }
             '),
-            array('
+			array('
                 namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
                     function array_merge() {}
                 }
             '),
 
-            // function calls
-            array('array_merge();'),
-            array('
+			// function calls
+			array('array_merge();'),
+			array('
                 namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
                     function theta() {}
                 }
@@ -112,9 +112,9 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
                     theta();
                 }
             '),
-            // closures
-            array('$test = function(){};$test()'),
-            array('
+			// closures
+			array('$test = function(){};$test()'),
+			array('
                 namespace Psy\\Test\\CodeCleaner\\ValidFunctionNamePass {
                     function theta() {}
                 }
@@ -123,8 +123,8 @@ class ValidFunctionNamePassTest extends CodeCleanerTestCase
                 }
             '),
 
-            // recursion
-            array('function a() { a(); }'),
-        );
-    }
+			// recursion
+			array('function a() { a(); }'),
+		);
+	}
 }

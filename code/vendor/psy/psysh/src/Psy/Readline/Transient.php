@@ -18,129 +18,129 @@ use Psy\Exception\BreakException;
  */
 class Transient implements Readline
 {
-    private $history;
-    private $historySize;
-    private $eraseDups;
+	private $history;
+	private $historySize;
+	private $eraseDups;
 
-    /**
-     * Transient Readline is always supported.
-     *
-     * {@inheritdoc}
-     */
-    public static function isSupported()
-    {
-        return true;
-    }
+	/**
+	 * Transient Readline is always supported.
+	 *
+	 * {@inheritdoc}
+	 */
+	public static function isSupported()
+	{
+		return true;
+	}
 
-    /**
-     * Transient Readline constructor.
-     */
-    public function __construct($historyFile = null, $historySize = 0, $eraseDups = false)
-    {
-        // don't do anything with the history file...
-        $this->history     = array();
-        $this->historySize = $historySize;
-        $this->eraseDups   = $eraseDups;
-    }
+	/**
+	 * Transient Readline constructor.
+	 */
+	public function __construct($historyFile = null, $historySize = 0, $eraseDups = false)
+	{
+		// don't do anything with the history file...
+		$this->history = array();
+		$this->historySize = $historySize;
+		$this->eraseDups = $eraseDups;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function addHistory($line)
-    {
-        if ($this->eraseDups) {
-            if (($key = array_search($line, $this->history)) !== false) {
-                unset($this->history[$key]);
-            }
-        }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function addHistory($line)
+	{
+		if ($this->eraseDups) {
+			if (($key = array_search($line, $this->history)) !== false) {
+				unset($this->history[$key]);
+			}
+		}
 
-        $this->history[] = $line;
+		$this->history[] = $line;
 
-        if ($this->historySize > 0) {
-            $histsize = count($this->history);
-            if ($histsize > $this->historySize) {
-                $this->history = array_slice($this->history, $histsize - $this->historySize);
-            }
-        }
+		if ($this->historySize > 0) {
+			$histsize = count($this->history);
+			if ($histsize > $this->historySize) {
+				$this->history = array_slice($this->history, $histsize - $this->historySize);
+			}
+		}
 
-        $this->history = array_values($this->history);
+		$this->history = array_values($this->history);
 
-        return true;
-    }
+		return true;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function clearHistory()
-    {
-        $this->history = array();
+	/**
+	 * {@inheritdoc}
+	 */
+	public function clearHistory()
+	{
+		$this->history = array();
 
-        return true;
-    }
+		return true;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function listHistory()
-    {
-        return $this->history;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function listHistory()
+	{
+		return $this->history;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function readHistory()
-    {
-        return true;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function readHistory()
+	{
+		return true;
+	}
 
-    /**
-     * {@inheritdoc}
-     *
-     * @throws BreakException if user hits Ctrl+D
-     *
-     * @return string
-     */
-    public function readline($prompt = null)
-    {
-        echo $prompt;
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @throws BreakException if user hits Ctrl+D
+	 *
+	 * @return string
+	 */
+	public function readline($prompt = null)
+	{
+		echo $prompt;
 
-        return rtrim(fgets($this->getStdin(), 1024));
-    }
+		return rtrim(fgets($this->getStdin(), 1024));
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function redisplay()
-    {
-        // noop
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function redisplay()
+	{
+		// noop
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function writeHistory()
-    {
-        return true;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function writeHistory()
+	{
+		return true;
+	}
 
-    /**
-     * Get a STDIN file handle.
-     *
-     * @throws BreakException if user hits Ctrl+D
-     *
-     * @return resource
-     */
-    private function getStdin()
-    {
-        if (!isset($this->stdin)) {
-            $this->stdin = fopen('php://stdin', 'r');
-        }
+	/**
+	 * Get a STDIN file handle.
+	 *
+	 * @throws BreakException if user hits Ctrl+D
+	 *
+	 * @return resource
+	 */
+	private function getStdin()
+	{
+		if (!isset($this->stdin)) {
+			$this->stdin = fopen('php://stdin', 'r');
+		}
 
-        if (feof($this->stdin)) {
-            throw new BreakException('Ctrl+D');
-        }
+		if (feof($this->stdin)) {
+			throw new BreakException('Ctrl+D');
+		}
 
-        return $this->stdin;
-    }
+		return $this->stdin;
+	}
 }

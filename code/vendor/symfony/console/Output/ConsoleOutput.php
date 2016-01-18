@@ -28,129 +28,129 @@ use Symfony\Component\Console\Formatter\OutputFormatterInterface;
  */
 class ConsoleOutput extends StreamOutput implements ConsoleOutputInterface
 {
-    /**
-     * @var StreamOutput
-     */
-    private $stderr;
+	/**
+	 * @var StreamOutput
+	 */
+	private $stderr;
 
-    /**
-     * Constructor.
-     *
-     * @param int                           $verbosity The verbosity level (one of the VERBOSITY constants in OutputInterface)
-     * @param bool|null                     $decorated Whether to decorate messages (null for auto-guessing)
-     * @param OutputFormatterInterface|null $formatter Output formatter instance (null to use default OutputFormatter)
-     */
-    public function __construct($verbosity = self::VERBOSITY_NORMAL, $decorated = null, OutputFormatterInterface $formatter = null)
-    {
-        parent::__construct($this->openOutputStream(), $verbosity, $decorated, $formatter);
+	/**
+	 * Constructor.
+	 *
+	 * @param int $verbosity The verbosity level (one of the VERBOSITY constants in OutputInterface)
+	 * @param bool|null $decorated Whether to decorate messages (null for auto-guessing)
+	 * @param OutputFormatterInterface|null $formatter Output formatter instance (null to use default OutputFormatter)
+	 */
+	public function __construct($verbosity = self::VERBOSITY_NORMAL, $decorated = null, OutputFormatterInterface $formatter = null)
+	{
+		parent::__construct($this->openOutputStream(), $verbosity, $decorated, $formatter);
 
-        $actualDecorated = $this->isDecorated();
-        $this->stderr = new StreamOutput($this->openErrorStream(), $verbosity, $decorated, $this->getFormatter());
+		$actualDecorated = $this->isDecorated();
+		$this->stderr = new StreamOutput($this->openErrorStream(), $verbosity, $decorated, $this->getFormatter());
 
-        if (null === $decorated) {
-            $this->setDecorated($actualDecorated && $this->stderr->isDecorated());
-        }
-    }
+		if (null === $decorated) {
+			$this->setDecorated($actualDecorated && $this->stderr->isDecorated());
+		}
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setDecorated($decorated)
-    {
-        parent::setDecorated($decorated);
-        $this->stderr->setDecorated($decorated);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setDecorated($decorated)
+	{
+		parent::setDecorated($decorated);
+		$this->stderr->setDecorated($decorated);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setFormatter(OutputFormatterInterface $formatter)
-    {
-        parent::setFormatter($formatter);
-        $this->stderr->setFormatter($formatter);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setFormatter(OutputFormatterInterface $formatter)
+	{
+		parent::setFormatter($formatter);
+		$this->stderr->setFormatter($formatter);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setVerbosity($level)
-    {
-        parent::setVerbosity($level);
-        $this->stderr->setVerbosity($level);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setVerbosity($level)
+	{
+		parent::setVerbosity($level);
+		$this->stderr->setVerbosity($level);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getErrorOutput()
-    {
-        return $this->stderr;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getErrorOutput()
+	{
+		return $this->stderr;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setErrorOutput(OutputInterface $error)
-    {
-        $this->stderr = $error;
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setErrorOutput(OutputInterface $error)
+	{
+		$this->stderr = $error;
+	}
 
-    /**
-     * Returns true if current environment supports writing console output to
-     * STDOUT.
-     *
-     * @return bool
-     */
-    protected function hasStdoutSupport()
-    {
-        return false === $this->isRunningOS400();
-    }
+	/**
+	 * Returns true if current environment supports writing console output to
+	 * STDOUT.
+	 *
+	 * @return bool
+	 */
+	protected function hasStdoutSupport()
+	{
+		return false === $this->isRunningOS400();
+	}
 
-    /**
-     * Returns true if current environment supports writing console output to
-     * STDERR.
-     *
-     * @return bool
-     */
-    protected function hasStderrSupport()
-    {
-        return false === $this->isRunningOS400();
-    }
+	/**
+	 * Returns true if current environment supports writing console output to
+	 * STDERR.
+	 *
+	 * @return bool
+	 */
+	protected function hasStderrSupport()
+	{
+		return false === $this->isRunningOS400();
+	}
 
-    /**
-     * Checks if current executing environment is IBM iSeries (OS400), which
-     * doesn't properly convert character-encodings between ASCII to EBCDIC.
-     *
-     * @return bool
-     */
-    private function isRunningOS400()
-    {
-        $checks = array(
-            function_exists('php_uname') ? php_uname('s') : '',
-            getenv('OSTYPE'),
-            PHP_OS,
-        );
+	/**
+	 * Checks if current executing environment is IBM iSeries (OS400), which
+	 * doesn't properly convert character-encodings between ASCII to EBCDIC.
+	 *
+	 * @return bool
+	 */
+	private function isRunningOS400()
+	{
+		$checks = array(
+			function_exists('php_uname') ? php_uname('s') : '',
+			getenv('OSTYPE'),
+			PHP_OS,
+		);
 
-        return false !== stristr(implode(';', $checks), 'OS400');
-    }
+		return false !== stristr(implode(';', $checks), 'OS400');
+	}
 
-    /**
-     * @return resource
-     */
-    private function openOutputStream()
-    {
-        $outputStream = $this->hasStdoutSupport() ? 'php://stdout' : 'php://output';
+	/**
+	 * @return resource
+	 */
+	private function openOutputStream()
+	{
+		$outputStream = $this->hasStdoutSupport() ? 'php://stdout' : 'php://output';
 
-        return @fopen($outputStream, 'w') ?: fopen('php://output', 'w');
-    }
+		return @fopen($outputStream, 'w') ?: fopen('php://output', 'w');
+	}
 
-    /**
-     * @return resource
-     */
-    private function openErrorStream()
-    {
-        $errorStream = $this->hasStderrSupport() ? 'php://stderr' : 'php://output';
+	/**
+	 * @return resource
+	 */
+	private function openErrorStream()
+	{
+		$errorStream = $this->hasStderrSupport() ? 'php://stderr' : 'php://output';
 
-        return fopen($errorStream, 'w');
-    }
+		return fopen($errorStream, 'w');
+	}
 }

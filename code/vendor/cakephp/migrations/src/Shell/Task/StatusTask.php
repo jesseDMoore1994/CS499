@@ -21,18 +21,18 @@ namespace Migrations\Shell\Task;
 class StatusTask extends CommandTask
 {
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getOptionParser()
-    {
-        $parser = parent::getOptionParser();
-        $parser->addOption('format', [
-            'short' => 'f',
-            'help' => 'The output format: text or json. Defaults to text.',
-            'required' => false
-        ]);
+	/**
+	 * {@inheritDoc}
+	 */
+	public function getOptionParser()
+	{
+		$parser = parent::getOptionParser();
+		$parser->addOption('format', [
+			'short' => 'f',
+			'help' => 'The output format: text or json. Defaults to text.',
+			'required' => false
+		]);
 
-        return $parser;
-    }
+		return $parser;
+	}
 }

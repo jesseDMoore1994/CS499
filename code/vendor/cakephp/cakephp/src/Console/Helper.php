@@ -25,39 +25,39 @@ use Cake\Core\InstanceConfigTrait;
  */
 abstract class Helper
 {
-    use InstanceConfigTrait;
+	use InstanceConfigTrait;
 
-    /**
-     * Default config for this helper.
-     *
-     * @var array
-     */
-    protected $_defaultConfig = [];
+	/**
+	 * Default config for this helper.
+	 *
+	 * @var array
+	 */
+	protected $_defaultConfig = [];
 
-    /**
-     * ConsoleIo instance.
-     *
-     * @var \Cake\Console\ConsoleIo
-     */
-    protected $_io;
+	/**
+	 * ConsoleIo instance.
+	 *
+	 * @var \Cake\Console\ConsoleIo
+	 */
+	protected $_io;
 
-    /**
-     * Constructor.
-     *
-     * @param \Cake\Console\ConsoleIo $io The ConsoleIo instance to use.
-     * @param array $config The settings for this helper.
-     */
-    public function __construct(ConsoleIo $io, array $config = [])
-    {
-        $this->_io = $io;
-        $this->config($config);
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param \Cake\Console\ConsoleIo $io The ConsoleIo instance to use.
+	 * @param array $config The settings for this helper.
+	 */
+	public function __construct(ConsoleIo $io, array $config = [])
+	{
+		$this->_io = $io;
+		$this->config($config);
+	}
 
-    /**
-     * This method should output content using `$this->_io`.
-     *
-     * @param array $args The arguments for the helper.
-     * @return void
-     */
-    abstract public function output($args);
+	/**
+	 * This method should output content using `$this->_io`.
+	 *
+	 * @param array $args The arguments for the helper.
+	 * @return void
+	 */
+	abstract public function output($args);
 }

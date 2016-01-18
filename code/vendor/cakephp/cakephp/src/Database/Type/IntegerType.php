@@ -27,70 +27,70 @@ use PDO;
 class IntegerType extends Type
 {
 
-    /**
-     * Convert integer data into the database format.
-     *
-     * @param mixed $value The value to convert.
-     * @param Driver $driver The driver instance to convert with.
-     * @return int
-     */
-    public function toDatabase($value, Driver $driver)
-    {
-        if ($value === null || $value === '') {
-            return null;
-        }
+	/**
+	 * Convert integer data into the database format.
+	 *
+	 * @param mixed $value The value to convert.
+	 * @param Driver $driver The driver instance to convert with.
+	 * @return int
+	 */
+	public function toDatabase($value, Driver $driver)
+	{
+		if ($value === null || $value === '') {
+			return null;
+		}
 
-        if (!is_scalar($value)) {
-            throw new InvalidArgumentException('Cannot convert value to integer');
-        }
+		if (!is_scalar($value)) {
+			throw new InvalidArgumentException('Cannot convert value to integer');
+		}
 
-        return (int)$value;
-    }
+		return (int)$value;
+	}
 
-    /**
-     * Convert integer values to PHP integers
-     *
-     * @param mixed $value The value to convert.
-     * @param Driver $driver The driver instance to convert with.
-     * @return int
-     */
-    public function toPHP($value, Driver $driver)
-    {
-        if ($value === null) {
-            return null;
-        }
-        return (int)$value;
-    }
+	/**
+	 * Convert integer values to PHP integers
+	 *
+	 * @param mixed $value The value to convert.
+	 * @param Driver $driver The driver instance to convert with.
+	 * @return int
+	 */
+	public function toPHP($value, Driver $driver)
+	{
+		if ($value === null) {
+			return null;
+		}
+		return (int)$value;
+	}
 
-    /**
-     * Get the correct PDO binding type for integer data.
-     *
-     * @param mixed $value The value being bound.
-     * @param Driver $driver The driver.
-     * @return int
-     */
-    public function toStatement($value, Driver $driver)
-    {
-        return PDO::PARAM_INT;
-    }
+	/**
+	 * Get the correct PDO binding type for integer data.
+	 *
+	 * @param mixed $value The value being bound.
+	 * @param Driver $driver The driver.
+	 * @return int
+	 */
+	public function toStatement($value, Driver $driver)
+	{
+		return PDO::PARAM_INT;
+	}
 
-    /**
-     * Marshalls request data into PHP floats.
-     *
-     * @param mixed $value The value to convert.
-     * @return mixed Converted value.
-     */
-    public function marshal($value)
-    {
-        if ($value === null || $value === '') {
-            return null;
-        }
-        if (is_numeric($value) || ctype_digit($value)) {
-            return (int)$value;
-        }
-        if (is_array($value)) {
-            return 1;
-        }
-        return null;
-    }
+	/**
+	 * Marshalls request data into PHP floats.
+	 *
+	 * @param mixed $value The value to convert.
+	 * @return mixed Converted value.
+	 */
+	public function marshal($value)
+	{
+		if ($value === null || $value === '') {
+			return null;
+		}
+		if (is_numeric($value) || ctype_digit($value)) {
+			return (int)$value;
+		}
+		if (is_array($value)) {
+			return 1;
+		}
+		return null;
+	}
 }

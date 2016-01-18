@@ -24,10 +24,10 @@ use Cake\Event\Event;
 class BananaComponent extends Component
 {
 
-    /**
-     * testField property
-     *
-     * @var string
-     */
-    public $testField = 'BananaField';
+	/**
+	 * testField property
+	 *
+	 * @var string
+	 */
+	public $testField = 'BananaField';
 }

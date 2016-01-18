@@ -20,37 +20,37 @@ namespace Psy\TabCompletion\Matcher;
  */
 class FunctionsMatcher extends AbstractMatcher
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getMatches(array $tokens, array $info = array())
-    {
-        $func = $this->getInput($tokens);
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getMatches(array $tokens, array $info = array())
+	{
+		$func = $this->getInput($tokens);
 
-        $functions = get_defined_functions();
-        $allFunctions = array_merge($functions['user'], $functions['internal']);
+		$functions = get_defined_functions();
+		$allFunctions = array_merge($functions['user'], $functions['internal']);
 
-        return array_filter($allFunctions, function ($function) use ($func) {
-            return AbstractMatcher::startsWith($func, $function);
-        });
-    }
+		return array_filter($allFunctions, function ($function) use ($func) {
+			return AbstractMatcher::startsWith($func, $function);
+		});
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function hasMatched(array $tokens)
-    {
-        $token = array_pop($tokens);
-        $prevToken = array_pop($tokens);
+	/**
+	 * {@inheritdoc}
+	 */
+	public function hasMatched(array $tokens)
+	{
+		$token = array_pop($tokens);
+		$prevToken = array_pop($tokens);
 
-        switch (true) {
-            case self::tokenIs($prevToken, self::T_NEW):
-                return false;
-            case self::hasToken(array(self::T_OPEN_TAG, self::T_STRING), $token):
-            case self::isOperator($token):
-                return true;
-        }
+		switch (true) {
+			case self::tokenIs($prevToken, self::T_NEW):
+				return false;
+			case self::hasToken(array(self::T_OPEN_TAG, self::T_STRING), $token):
+			case self::isOperator($token):
+				return true;
+		}
 
-        return false;
-    }
+		return false;
+	}
 }

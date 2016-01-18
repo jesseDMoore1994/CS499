@@ -21,18 +21,18 @@ $prefixNs = '';
 $prefixPath = '';
 
 if (!empty($prefix)) {
-    $prefix = array_map('\Cake\Utility\Inflector::camelize', explode('/', $prefix));
-    $prefixNs = '\\' . implode('\\', $prefix);
-    $prefixPath = implode(DS, $prefix) . DS;
+	$prefix = array_map('\Cake\Utility\Inflector::camelize', explode('/', $prefix));
+	$prefixNs = '\\' . implode('\\', $prefix);
+	$prefixPath = implode(DS, $prefix) . DS;
 }
 
 if (!empty($plugin)) {
-    $namespace = str_replace('/', '\\', $plugin);
+	$namespace = str_replace('/', '\\', $plugin);
 }
 if (empty($plugin)) {
-    $path = APP_DIR . DS . 'Controller' . DS . $prefixPath . h($class) . 'Controller.php' ;
+	$path = APP_DIR . DS . 'Controller' . DS . $prefixPath . h($class) . 'Controller.php';
 } else {
-    $path = Plugin::classPath($plugin) . 'Controller' . DS . $prefixPath . h($class) . 'Controller.php';
+	$path = Plugin::classPath($plugin) . 'Controller' . DS . $prefixPath . h($class) . 'Controller.php';
 }
 
 $this->layout = 'dev_error';
@@ -48,8 +48,8 @@ $this->start('subheading');
 
 <?php $this->start('file') ?>
 <p class="error">
-    <strong>Error: </strong>
-    Create the class <em><?= h($class) ?>Controller</em> below in file: <?= h($path) ?>
+	<strong>Error: </strong>
+	Create the class <em><?= h($class) ?>Controller</em> below in file: <?= h($path) ?>
 </p>
 
 <?php

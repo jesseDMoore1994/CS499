@@ -18,7 +18,7 @@ use Cake\ORM\Behavior;
 class PersisterOneBehavior extends Behavior
 {
 
-    public function persist()
-    {
-    }
+	public function persist()
+	{
+	}
 }

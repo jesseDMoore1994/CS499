@@ -25,34 +25,34 @@ use Symfony\Component\Config\Resource\SelfCheckingResourceChecker;
  */
 class ConfigCache extends ResourceCheckerConfigCache
 {
-    private $debug;
+	private $debug;
 
-    /**
-     * @param string $file  The absolute cache path
-     * @param bool   $debug Whether debugging is enabled or not
-     */
-    public function __construct($file, $debug)
-    {
-        parent::__construct($file, array(
-            new SelfCheckingResourceChecker(),
-        ));
-        $this->debug = (bool) $debug;
-    }
+	/**
+	 * @param string $file The absolute cache path
+	 * @param bool $debug Whether debugging is enabled or not
+	 */
+	public function __construct($file, $debug)
+	{
+		parent::__construct($file, array(
+			new SelfCheckingResourceChecker(),
+		));
+		$this->debug = (bool)$debug;
+	}
 
-    /**
-     * Checks if the cache is still fresh.
-     *
-     * This implementation always returns true when debug is off and the
-     * cache file exists.
-     *
-     * @return bool true if the cache is fresh, false otherwise
-     */
-    public function isFresh()
-    {
-        if (!$this->debug && is_file($this->getPath())) {
-            return true;
-        }
+	/**
+	 * Checks if the cache is still fresh.
+	 *
+	 * This implementation always returns true when debug is off and the
+	 * cache file exists.
+	 *
+	 * @return bool true if the cache is fresh, false otherwise
+	 */
+	public function isFresh()
+	{
+		if (!$this->debug && is_file($this->getPath())) {
+			return true;
+		}
 
-        return parent::isFresh();
-    }
+		return parent::isFresh();
+	}
 }

@@ -1,189 +1,189 @@
 <?php
+
 /**
  * @license     MIT License https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt
  * @link        http://mobiledetect.net
  */
 class UserAgentTest extends PHPUnit_Framework_TestCase
 {
-    protected $detect;
-    protected static $ualist = array();
-    protected static $json;
+	protected $detect;
+	protected static $ualist = array();
+	protected static $json;
 
-    public function setUp()
-    {
-        $this->detect = new Mobile_Detect;
-    }
+	public function setUp()
+	{
+		$this->detect = new Mobile_Detect;
+	}
 
-    public static function generateJson()
-    {
-        //in case this gets run multiple times
-        if (isset(self::$json)) {
-            return self::$json;
-        }
+	public static function generateJson()
+	{
+		//in case this gets run multiple times
+		if (isset(self::$json)) {
+			return self::$json;
+		}
 
-        //the json and PHP formatted files
-        $jsonFile = dirname(__FILE__) . '/ualist.json';
-        $phpFile = dirname(__FILE__) . '/UA_List.inc.php';
+		//the json and PHP formatted files
+		$jsonFile = dirname(__FILE__) . '/ualist.json';
+		$phpFile = dirname(__FILE__) . '/UA_List.inc.php';
 
-        //currently stored as a PHP array
-        $list = include $phpFile;
+		//currently stored as a PHP array
+		$list = include $phpFile;
 
-        //check recency of the file
-        if (file_exists($jsonFile) && is_readable($jsonFile)) {
-            //read the json file
-            $json = json_decode(file_get_contents($jsonFile), true);
+		//check recency of the file
+		if (file_exists($jsonFile) && is_readable($jsonFile)) {
+			//read the json file
+			$json = json_decode(file_get_contents($jsonFile), true);
 
-            //check that the hash matches
-            $hash = isset($json['hash']) ? $json['hash'] : null;
+			//check that the hash matches
+			$hash = isset($json['hash']) ? $json['hash'] : null;
 
-            if ($hash == sha1(serialize($list))) {
-                //file is up to date, just read the json file
-                self::$json = $json['user_agents'];
+			if ($hash == sha1(serialize($list))) {
+				//file is up to date, just read the json file
+				self::$json = $json['user_agents'];
 
-                return self::$json;
-            }
-        }
-
-
-        //uses the UA_List.inc.php to generate a json file
-        if (file_exists($jsonFile) && !is_writable($jsonFile)) {
-            throw new RuntimeException("Need to be able to create/update $jsonFile from UA_List.inc.php.");
-        }
-
-        if (!is_writable(dirname($jsonFile))) {
-            throw new RuntimeException("Insufficient permissions to create this file: $jsonFile");
-        }
+				return self::$json;
+			}
+		}
 
 
+		//uses the UA_List.inc.php to generate a json file
+		if (file_exists($jsonFile) && !is_writable($jsonFile)) {
+			throw new RuntimeException("Need to be able to create/update $jsonFile from UA_List.inc.php.");
+		}
 
-        //print_r($list['Acer']); exit;
+		if (!is_writable(dirname($jsonFile))) {
+			throw new RuntimeException("Insufficient permissions to create this file: $jsonFile");
+		}
 
-        $json = array();
 
-        foreach ($list as $vendor => $vendorList) {
-            foreach ($vendorList as $userAgent => $props) {
-                if (is_int($userAgent)) {
-                    //this means that the user agent is the props
-                    $userAgent = $props;
-                    $props = array();
-                }
+		//print_r($list['Acer']); exit;
 
-                $tmp = array(
-                    'vendor' => $vendor,
-                    'user_agent' => $userAgent
-                );
+		$json = array();
 
-                if (isset($props['isMobile'])) {
-                    $tmp['mobile'] = $props['isMobile'];
-                }
+		foreach ($list as $vendor => $vendorList) {
+			foreach ($vendorList as $userAgent => $props) {
+				if (is_int($userAgent)) {
+					//this means that the user agent is the props
+					$userAgent = $props;
+					$props = array();
+				}
 
-                if (isset($props['isTablet'])) {
-                    $tmp['tablet'] = $props['isTablet'];
-                }
+				$tmp = array(
+					'vendor' => $vendor,
+					'user_agent' => $userAgent
+				);
 
-                if (isset($props['version'])) {
-                    $tmp['version'] = $props['version'];
-                }
+				if (isset($props['isMobile'])) {
+					$tmp['mobile'] = $props['isMobile'];
+				}
 
-                if (isset($props['model'])) {
-                    $tmp['model'] = $props['model'];
-                }
+				if (isset($props['isTablet'])) {
+					$tmp['tablet'] = $props['isTablet'];
+				}
 
-                $json[] = $tmp;
-            }
-        }
+				if (isset($props['version'])) {
+					$tmp['version'] = $props['version'];
+				}
 
-        //save the hash
-        $hash = sha1(serialize($list));
-        $json = array(
-            'hash' => $hash,
-            'user_agents' => $json
-        );
+				if (isset($props['model'])) {
+					$tmp['model'] = $props['model'];
+				}
 
-        if (defined('JSON_PRETTY_PRINT')) {
-            $jsonString = json_encode($json, JSON_PRETTY_PRINT);
-        } else {
-            $jsonString = json_encode($json);
-        }
+				$json[] = $tmp;
+			}
+		}
 
-        file_put_contents($jsonFile, $jsonString);
-        self::$json = $json['user_agents'];
+		//save the hash
+		$hash = sha1(serialize($list));
+		$json = array(
+			'hash' => $hash,
+			'user_agents' => $json
+		);
 
-        return self::$json;
-    }
+		if (defined('JSON_PRETTY_PRINT')) {
+			$jsonString = json_encode($json, JSON_PRETTY_PRINT);
+		} else {
+			$jsonString = json_encode($json);
+		}
 
-    public static function setUpBeforeClass()
-    {
-        //generate json file first
-        self::generateJson();
+		file_put_contents($jsonFile, $jsonString);
+		self::$json = $json['user_agents'];
 
-        //get the generated JSON data
-        $json = self::$json;
+		return self::$json;
+	}
 
-        //make a list that is usable by functions (THE ORDER OF THE KEYS MATTERS!)
-        foreach ($json as $userAgent) {
-            $tmp = array();
-            $tmp[] = isset($userAgent['user_agent']) ? $userAgent['user_agent'] : null;
-            $tmp[] = isset($userAgent['mobile']) ? $userAgent['mobile'] : null;
-            $tmp[] = isset($userAgent['tablet']) ? $userAgent['tablet'] : null;
-            $tmp[] = isset($userAgent['version']) ? $userAgent['version'] : null;
-            $tmp[] = isset($userAgent['model']) ? $userAgent['model'] : null;
-            $tmp[] = isset($userAgent['vendor']) ? $userAgent['vendor'] : null;
+	public static function setUpBeforeClass()
+	{
+		//generate json file first
+		self::generateJson();
 
-            self::$ualist[] = $tmp;
-        }
-    }
+		//get the generated JSON data
+		$json = self::$json;
 
-    public function userAgentData()
-    {
-        if (!count(self::$ualist)) {
-            self::setUpBeforeClass();
-        }
+		//make a list that is usable by functions (THE ORDER OF THE KEYS MATTERS!)
+		foreach ($json as $userAgent) {
+			$tmp = array();
+			$tmp[] = isset($userAgent['user_agent']) ? $userAgent['user_agent'] : null;
+			$tmp[] = isset($userAgent['mobile']) ? $userAgent['mobile'] : null;
+			$tmp[] = isset($userAgent['tablet']) ? $userAgent['tablet'] : null;
+			$tmp[] = isset($userAgent['version']) ? $userAgent['version'] : null;
+			$tmp[] = isset($userAgent['model']) ? $userAgent['model'] : null;
+			$tmp[] = isset($userAgent['vendor']) ? $userAgent['vendor'] : null;
 
-        return self::$ualist;
-    }
+			self::$ualist[] = $tmp;
+		}
+	}
 
-    /**
-     * @medium
-     * @dataProvider userAgentData
-     */
-    public function testUserAgents($userAgent, $isMobile, $isTablet, $version, $model, $vendor)
-    {
-        //make sure we're passed valid data
-        if (!is_string($userAgent) || !is_bool($isMobile) || !is_bool($isTablet)) {
-            $this->markTestIncomplete("The User-Agent $userAgent does not have sufficient information for testing.");
+	public function userAgentData()
+	{
+		if (!count(self::$ualist)) {
+			self::setUpBeforeClass();
+		}
 
-            return;
-        }
+		return self::$ualist;
+	}
 
-        //setup
-        $this->detect->setUserAgent($userAgent);
+	/**
+	 * @medium
+	 * @dataProvider userAgentData
+	 */
+	public function testUserAgents($userAgent, $isMobile, $isTablet, $version, $model, $vendor)
+	{
+		//make sure we're passed valid data
+		if (!is_string($userAgent) || !is_bool($isMobile) || !is_bool($isTablet)) {
+			$this->markTestIncomplete("The User-Agent $userAgent does not have sufficient information for testing.");
 
-        //is mobile?
-        $this->assertEquals($this->detect->isMobile(), $isMobile);
+			return;
+		}
 
-        //is tablet?
-        $this->assertEquals($this->detect->isTablet(), $isTablet, 'FAILED: ' . $userAgent . ' isTablet: ' . $isTablet);
+		//setup
+		$this->detect->setUserAgent($userAgent);
 
-        if (isset($version)) {
-            foreach ($version as $condition => $assertion) {
-                $this->assertEquals($assertion, $this->detect->version($condition), 'FAILED UA (version("'.$condition.'")): '.$userAgent);
-            }
-        }
+		//is mobile?
+		$this->assertEquals($this->detect->isMobile(), $isMobile);
 
-        //version property tests
-        if (isset($version)) {
-            foreach ($version as $property => $stringVersion) {
-                $v = $this->detect->version($property);
-                $this->assertSame($stringVersion, $v);
-            }
-        }
+		//is tablet?
+		$this->assertEquals($this->detect->isTablet(), $isTablet, 'FAILED: ' . $userAgent . ' isTablet: ' . $isTablet);
 
-        //@todo: model test, not sure how exactly yet
-        //@todo: vendor test. The below is theoretical, but fails 50% of the tests...
-        /*if (isset($vendor)) {
-            $method = "is$vendor";
-            $this->assertTrue($this->detect->{$method}(), "Expected Mobile_Detect::{$method}() to be true.");
-        }*/
-    }
+		if (isset($version)) {
+			foreach ($version as $condition => $assertion) {
+				$this->assertEquals($assertion, $this->detect->version($condition), 'FAILED UA (version("' . $condition . '")): ' . $userAgent);
+			}
+		}
+
+		//version property tests
+		if (isset($version)) {
+			foreach ($version as $property => $stringVersion) {
+				$v = $this->detect->version($property);
+				$this->assertSame($stringVersion, $v);
+			}
+		}
+
+		//@todo: model test, not sure how exactly yet
+		//@todo: vendor test. The below is theoretical, but fails 50% of the tests...
+		/*if (isset($vendor)) {
+			$method = "is$vendor";
+			$this->assertTrue($this->detect->{$method}(), "Expected Mobile_Detect::{$method}() to be true.");
+		}*/
+	}
 }

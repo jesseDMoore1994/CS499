@@ -15,30 +15,30 @@ use Psy\Formatter\DocblockFormatter;
 
 class DocblockFormatterTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * This is a docblock!
-     *
-     * @author Justin Hileman <justin@justinhileman.info>
-     *
-     * @throws InvalidArgumentException if $foo is empty.
-     *
-     * @param mixed $foo It's a foo thing.
-     * @param int   $bar This is definitely bar.
-     *
-     * @return string A string of no consequence.
-     */
-    private function methodWithDocblock($foo, $bar = 1)
-    {
-        if (empty($foo)) {
-            throw new \InvalidArgumentException();
-        }
+	/**
+	 * This is a docblock!
+	 *
+	 * @author Justin Hileman <justin@justinhileman.info>
+	 *
+	 * @throws InvalidArgumentException if $foo is empty.
+	 *
+	 * @param mixed $foo It's a foo thing.
+	 * @param int $bar This is definitely bar.
+	 *
+	 * @return string A string of no consequence.
+	 */
+	private function methodWithDocblock($foo, $bar = 1)
+	{
+		if (empty($foo)) {
+			throw new \InvalidArgumentException();
+		}
 
-        return 'method called';
-    }
+		return 'method called';
+	}
 
-    public function testFormat()
-    {
-        $expected = <<<EOS
+	public function testFormat()
+	{
+		$expected = <<<EOS
 <comment>Description:</comment>
   This is a docblock!
 
@@ -55,9 +55,9 @@ class DocblockFormatterTest extends \PHPUnit_Framework_TestCase
 <comment>Author:</comment> Justin Hileman \<justin@justinhileman.info>
 EOS;
 
-        $this->assertEquals(
-            $expected,
-            DocblockFormatter::format(new \ReflectionMethod($this, 'methodWithDocblock'))
-        );
-    }
+		$this->assertEquals(
+			$expected,
+			DocblockFormatter::format(new \ReflectionMethod($this, 'methodWithDocblock'))
+		);
+	}
 }

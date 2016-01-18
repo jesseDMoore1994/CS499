@@ -23,15 +23,15 @@ use Cake\Mailer\Mailer;
 class TestMailer extends Mailer
 {
 
-    public function getEmailForAssertion()
-    {
-        return $this->_email;
-    }
+	public function getEmailForAssertion()
+	{
+		return $this->_email;
+	}
 
-    public function reset()
-    {
-        $this->template = $this->viewBuilder()->template();
+	public function reset()
+	{
+		$this->template = $this->viewBuilder()->template();
 
-        return parent::reset();
-    }
+		return parent::reset();
+	}
 }

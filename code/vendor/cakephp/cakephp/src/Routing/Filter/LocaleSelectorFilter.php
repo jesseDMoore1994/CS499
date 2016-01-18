@@ -27,44 +27,44 @@ use Locale;
 class LocaleSelectorFilter extends DispatcherFilter
 {
 
-    /**
-     * List of valid locales for the request
-     *
-     * @var array
-     */
-    protected $_locales = [];
+	/**
+	 * List of valid locales for the request
+	 *
+	 * @var array
+	 */
+	protected $_locales = [];
 
-    /**
-     * Constructor.
-     *
-     * @param array $config Settings for the filter.
-     * @throws \Cake\Core\Exception\Exception When 'when' conditions are not callable.
-     */
-    public function __construct($config = [])
-    {
-        parent::__construct($config);
-        if (!empty($config['locales'])) {
-            $this->_locales = $config['locales'];
-        }
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param array $config Settings for the filter.
+	 * @throws \Cake\Core\Exception\Exception When 'when' conditions are not callable.
+	 */
+	public function __construct($config = [])
+	{
+		parent::__construct($config);
+		if (!empty($config['locales'])) {
+			$this->_locales = $config['locales'];
+		}
+	}
 
-    /**
-     * Inspects the request for the Accept-Language header and sets the
-     * Locale for the current runtime if it matches the list of valid locales
-     * as passed in the configuration.
-     *
-     * @param \Cake\Event\Event $event The event instance.
-     * @return void
-     */
-    public function beforeDispatch(Event $event)
-    {
-        $request = $event->data['request'];
-        $locale = Locale::acceptFromHttp($request->header('Accept-Language'));
+	/**
+	 * Inspects the request for the Accept-Language header and sets the
+	 * Locale for the current runtime if it matches the list of valid locales
+	 * as passed in the configuration.
+	 *
+	 * @param \Cake\Event\Event $event The event instance.
+	 * @return void
+	 */
+	public function beforeDispatch(Event $event)
+	{
+		$request = $event->data['request'];
+		$locale = Locale::acceptFromHttp($request->header('Accept-Language'));
 
-        if (!$locale || (!empty($this->_locales) && !in_array($locale, $this->_locales))) {
-            return;
-        }
+		if (!$locale || (!empty($this->_locales) && !in_array($locale, $this->_locales))) {
+			return;
+		}
 
-        I18n::locale($locale);
-    }
+		I18n::locale($locale);
+	}
 }

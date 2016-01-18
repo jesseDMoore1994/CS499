@@ -16,47 +16,47 @@ use Psy\CodeCleaner\AssignThisVariablePass;
 
 class AssignThisVariablePassTest extends CodeCleanerTestCase
 {
-    public function setUp()
-    {
-        $this->pass      = new AssignThisVariablePass();
-        $this->traverser = new NodeTraverser();
-        $this->traverser->addVisitor($this->pass);
-    }
+	public function setUp()
+	{
+		$this->pass = new AssignThisVariablePass();
+		$this->traverser = new NodeTraverser();
+		$this->traverser->addVisitor($this->pass);
+	}
 
-    /**
-     * @dataProvider invalidStatements
-     * @expectedException \Psy\Exception\FatalErrorException
-     */
-    public function testProcessStatementFails($code)
-    {
-        $stmts = $this->parse($code);
-        $this->traverser->traverse($stmts);
-    }
+	/**
+	 * @dataProvider invalidStatements
+	 * @expectedException \Psy\Exception\FatalErrorException
+	 */
+	public function testProcessStatementFails($code)
+	{
+		$stmts = $this->parse($code);
+		$this->traverser->traverse($stmts);
+	}
 
-    public function invalidStatements()
-    {
-        return array(
-            array('$this = 3'),
-            array('strtolower($this = "this")'),
-        );
-    }
+	public function invalidStatements()
+	{
+		return array(
+			array('$this = 3'),
+			array('strtolower($this = "this")'),
+		);
+	}
 
-    /**
-     * @dataProvider validStatements
-     */
-    public function testProcessStatementPasses($code)
-    {
-        $stmts = $this->parse($code);
-        $this->traverser->traverse($stmts);
-    }
+	/**
+	 * @dataProvider validStatements
+	 */
+	public function testProcessStatementPasses($code)
+	{
+		$stmts = $this->parse($code);
+		$this->traverser->traverse($stmts);
+	}
 
-    public function validStatements()
-    {
-        return array(
-            array('$this'),
-            array('$a = $this'),
-            array('$a = "this"; $$a = 3'),
-            array('$$this = "b"'),
-        );
-    }
+	public function validStatements()
+	{
+		return array(
+			array('$this'),
+			array('$a = $this'),
+			array('$a = "this"; $$a = 3'),
+			array('$$this = "b"'),
+		);
+	}
 }

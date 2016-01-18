@@ -1,1 +1,3 @@
-{"plugin_load":"\/test_app\/Plugin\/TestPlugin\/Config\/load.json"}
+{
+  "plugin_load": "\/test_app\/Plugin\/TestPlugin\/Config\/load.json"
+}

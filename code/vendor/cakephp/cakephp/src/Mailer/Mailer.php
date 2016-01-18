@@ -113,160 +113,160 @@ use Cake\Mailer\Exception\MissingActionException;
 abstract class Mailer implements EventListenerInterface
 {
 
-    use ModelAwareTrait;
+	use ModelAwareTrait;
 
-    /**
-     * Mailer's name.
-     *
-     * @var string
-     */
-    static public $name;
+	/**
+	 * Mailer's name.
+	 *
+	 * @var string
+	 */
+	static public $name;
 
-    /**
-     * Email instance.
-     *
-     * @var \Cake\Mailer\Email
-     */
-    protected $_email;
+	/**
+	 * Email instance.
+	 *
+	 * @var \Cake\Mailer\Email
+	 */
+	protected $_email;
 
-    /**
-     * Cloned Email instance for restoring instance after email is sent by
-     * mailer action.
-     *
-     * @var string
-     */
-    protected $_clonedEmail;
+	/**
+	 * Cloned Email instance for restoring instance after email is sent by
+	 * mailer action.
+	 *
+	 * @var string
+	 */
+	protected $_clonedEmail;
 
-    /**
-     * Constructor.
-     *
-     * @param \Cake\Mailer\Email|null $email Email instance.
-     */
-    public function __construct(Email $email = null)
-    {
-        if ($email === null) {
-            $email = new Email();
-        }
+	/**
+	 * Constructor.
+	 *
+	 * @param \Cake\Mailer\Email|null $email Email instance.
+	 */
+	public function __construct(Email $email = null)
+	{
+		if ($email === null) {
+			$email = new Email();
+		}
 
-        $this->_email = $email;
-        $this->_clonedEmail = clone $email;
-    }
+		$this->_email = $email;
+		$this->_clonedEmail = clone $email;
+	}
 
-    /**
-     * Returns the mailer's name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        if (!static::$name) {
-            static::$name = str_replace(
-                'Mailer',
-                '',
-                join('', array_slice(explode('\\', get_class($this)), -1))
-            );
-        }
-        return static::$name;
-    }
+	/**
+	 * Returns the mailer's name.
+	 *
+	 * @return string
+	 */
+	public function getName()
+	{
+		if (!static::$name) {
+			static::$name = str_replace(
+				'Mailer',
+				'',
+				join('', array_slice(explode('\\', get_class($this)), -1))
+			);
+		}
+		return static::$name;
+	}
 
-    /**
-     * Sets layout to use.
-     *
-     * @param string $layout Name of the layout to use.
-     * @return $this object.
-     */
-    public function layout($layout)
-    {
-        $this->_email->viewBuilder()->layout($layout);
-        return $this;
-    }
+	/**
+	 * Sets layout to use.
+	 *
+	 * @param string $layout Name of the layout to use.
+	 * @return $this object.
+	 */
+	public function layout($layout)
+	{
+		$this->_email->viewBuilder()->layout($layout);
+		return $this;
+	}
 
-    /**
-     * Get Email instance's view builder.
-     *
-     * @return \Cake\View\ViewBuilder
-     */
-    public function viewBuilder()
-    {
-        return $this->_email->viewBuilder();
-    }
+	/**
+	 * Get Email instance's view builder.
+	 *
+	 * @return \Cake\View\ViewBuilder
+	 */
+	public function viewBuilder()
+	{
+		return $this->_email->viewBuilder();
+	}
 
-    /**
-     * Magic method to forward method class to Email instance.
-     *
-     * @param string $method Method name.
-     * @param array $args Method arguments
-     * @return $this
-     */
-    public function __call($method, $args)
-    {
-        call_user_func_array([$this->_email, $method], $args);
-        return $this;
-    }
+	/**
+	 * Magic method to forward method class to Email instance.
+	 *
+	 * @param string $method Method name.
+	 * @param array $args Method arguments
+	 * @return $this
+	 */
+	public function __call($method, $args)
+	{
+		call_user_func_array([$this->_email, $method], $args);
+		return $this;
+	}
 
-    /**
-     * Sets email view vars.
-     *
-     * @param string|array $key Variable name or hash of view variables.
-     * @param mixed $value View variable value.
-     * @return $this object.
-     */
-    public function set($key, $value = null)
-    {
-        $this->_email->viewVars(is_string($key) ? [$key => $value] : $key);
-        return $this;
-    }
+	/**
+	 * Sets email view vars.
+	 *
+	 * @param string|array $key Variable name or hash of view variables.
+	 * @param mixed $value View variable value.
+	 * @return $this object.
+	 */
+	public function set($key, $value = null)
+	{
+		$this->_email->viewVars(is_string($key) ? [$key => $value] : $key);
+		return $this;
+	}
 
-    /**
-     * Sends email.
-     *
-     * @param string $action The name of the mailer action to trigger.
-     * @param array $args Arguments to pass to the triggered mailer action.
-     * @param array $headers Headers to set.
-     * @return array
-     * @throws \Cake\Mailer\Exception\MissingActionException
-     * @throws \BadMethodCallException
-     */
-    public function send($action, $args = [], $headers = [])
-    {
-        if (!method_exists($this, $action)) {
-            throw new MissingActionException([
-                'mailer' => $this->getName() . 'Mailer',
-                'action' => $action,
-            ]);
-        }
+	/**
+	 * Sends email.
+	 *
+	 * @param string $action The name of the mailer action to trigger.
+	 * @param array $args Arguments to pass to the triggered mailer action.
+	 * @param array $headers Headers to set.
+	 * @return array
+	 * @throws \Cake\Mailer\Exception\MissingActionException
+	 * @throws \BadMethodCallException
+	 */
+	public function send($action, $args = [], $headers = [])
+	{
+		if (!method_exists($this, $action)) {
+			throw new MissingActionException([
+				'mailer' => $this->getName() . 'Mailer',
+				'action' => $action,
+			]);
+		}
 
-        $this->_email->setHeaders($headers);
-        if (!$this->_email->viewBuilder()->template()) {
-            $this->_email->viewBuilder()->template($action);
-        }
+		$this->_email->setHeaders($headers);
+		if (!$this->_email->viewBuilder()->template()) {
+			$this->_email->viewBuilder()->template($action);
+		}
 
-        call_user_func_array([$this, $action], $args);
+		call_user_func_array([$this, $action], $args);
 
-        $result = $this->_email->send();
-        $this->reset();
+		$result = $this->_email->send();
+		$this->reset();
 
-        return $result;
-    }
+		return $result;
+	}
 
-    /**
-     * Reset email instance.
-     *
-     * @return $this
-     */
-    protected function reset()
-    {
-        $this->_email = clone $this->_clonedEmail;
-        return $this;
-    }
+	/**
+	 * Reset email instance.
+	 *
+	 * @return $this
+	 */
+	protected function reset()
+	{
+		$this->_email = clone $this->_clonedEmail;
+		return $this;
+	}
 
-    /**
-     * Implemented events.
-     *
-     * @return array
-     */
-    public function implementedEvents()
-    {
-        return [];
-    }
+	/**
+	 * Implemented events.
+	 *
+	 * @return array
+	 */
+	public function implementedEvents()
+	{
+		return [];
+	}
 }

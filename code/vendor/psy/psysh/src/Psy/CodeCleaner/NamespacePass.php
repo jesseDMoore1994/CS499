@@ -28,52 +28,52 @@ use Psy\CodeCleaner;
  */
 class NamespacePass extends CodeCleanerPass
 {
-    private $namespace = null;
-    private $cleaner;
+	private $namespace = null;
+	private $cleaner;
 
-    /**
-     * @param CodeCleaner $cleaner
-     */
-    public function __construct(CodeCleaner $cleaner)
-    {
-        $this->cleaner = $cleaner;
-    }
+	/**
+	 * @param CodeCleaner $cleaner
+	 */
+	public function __construct(CodeCleaner $cleaner)
+	{
+		$this->cleaner = $cleaner;
+	}
 
-    /**
-     * If this is a standalone namespace line, remember it for later.
-     *
-     * Otherwise, apply remembered namespaces to the code until a new namespace
-     * is encountered.
-     *
-     * @param array $nodes
-     */
-    public function beforeTraverse(array $nodes)
-    {
-        $first = reset($nodes);
-        if (count($nodes) === 1 && $first instanceof NamespaceStmt && empty($first->stmts)) {
-            $this->setNamespace($first->name);
-        } else {
-            foreach ($nodes as $key => $node) {
-                if ($node instanceof NamespaceStmt) {
-                    $this->setNamespace(null);
-                } elseif ($this->namespace !== null) {
-                    $nodes[$key] = new NamespaceStmt($this->namespace, array($node));
-                }
-            }
-        }
+	/**
+	 * If this is a standalone namespace line, remember it for later.
+	 *
+	 * Otherwise, apply remembered namespaces to the code until a new namespace
+	 * is encountered.
+	 *
+	 * @param array $nodes
+	 */
+	public function beforeTraverse(array $nodes)
+	{
+		$first = reset($nodes);
+		if (count($nodes) === 1 && $first instanceof NamespaceStmt && empty($first->stmts)) {
+			$this->setNamespace($first->name);
+		} else {
+			foreach ($nodes as $key => $node) {
+				if ($node instanceof NamespaceStmt) {
+					$this->setNamespace(null);
+				} elseif ($this->namespace !== null) {
+					$nodes[$key] = new NamespaceStmt($this->namespace, array($node));
+				}
+			}
+		}
 
-        return $nodes;
-    }
+		return $nodes;
+	}
 
-    /**
-     * Remember the namespace and (re)set the namespace on the CodeCleaner as
-     * well.
-     *
-     * @param null|Name $namespace
-     */
-    private function setNamespace($namespace)
-    {
-        $this->namespace = $namespace;
-        $this->cleaner->setNamespace($namespace === null ? null : $namespace->parts);
-    }
+	/**
+	 * Remember the namespace and (re)set the namespace on the CodeCleaner as
+	 * well.
+	 *
+	 * @param null|Name $namespace
+	 */
+	private function setNamespace($namespace)
+	{
+		$this->namespace = $namespace;
+		$this->cleaner->setNamespace($namespace === null ? null : $namespace->parts);
+	}
 }

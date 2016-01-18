@@ -25,44 +25,44 @@ use Cake\TestSuite\TestCase;
 class MessagesFileLoaderTest extends TestCase
 {
 
-    /**
-     * Set Up
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        $this->localePaths = Configure::read('App.paths.locales');
-    }
+	/**
+	 * Set Up
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		$this->localePaths = Configure::read('App.paths.locales');
+	}
 
-    /**
-     * Tear down method
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        parent::tearDown();
-        Configure::write('App.paths.locales', $this->localePaths);
-    }
+	/**
+	 * Tear down method
+	 *
+	 * @return void
+	 */
+	public function tearDown()
+	{
+		parent::tearDown();
+		Configure::write('App.paths.locales', $this->localePaths);
+	}
 
-    /**
-     * test reading file from custom locale folder
-     *
-     * @return void
-     */
-    public function testCustomLocalePath()
-    {
-        $loader = new MessagesFileLoader('default', 'en');
-        $package = $loader();
-        $messages = $package->getMessages();
-        $this->assertEquals('Po (translated)', $messages['Plural Rule 1']);
+	/**
+	 * test reading file from custom locale folder
+	 *
+	 * @return void
+	 */
+	public function testCustomLocalePath()
+	{
+		$loader = new MessagesFileLoader('default', 'en');
+		$package = $loader();
+		$messages = $package->getMessages();
+		$this->assertEquals('Po (translated)', $messages['Plural Rule 1']);
 
-        Configure::write('App.paths.locales', [TEST_APP . 'custom_locale' . DS]);
-        $loader = new MessagesFileLoader('default', 'en');
-        $package = $loader();
-        $messages = $package->getMessages();
-        $this->assertEquals('Po (translated) from custom folder', $messages['Plural Rule 1']);
-    }
+		Configure::write('App.paths.locales', [TEST_APP . 'custom_locale' . DS]);
+		$loader = new MessagesFileLoader('default', 'en');
+		$package = $loader();
+		$messages = $package->getMessages();
+		$this->assertEquals('Po (translated) from custom folder', $messages['Plural Rule 1']);
+	}
 }

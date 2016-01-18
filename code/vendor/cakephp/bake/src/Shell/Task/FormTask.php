@@ -19,34 +19,34 @@ namespace Bake\Shell\Task;
  */
 class FormTask extends SimpleBakeTask
 {
-    /**
-     * Task name used in path generation.
-     *
-     * @var string
-     */
-    public $pathFragment = 'Form/';
+	/**
+	 * Task name used in path generation.
+	 *
+	 * @var string
+	 */
+	public $pathFragment = 'Form/';
 
-    /**
-     * {@inheritDoc}
-     */
-    public function name()
-    {
-        return 'form';
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function name()
+	{
+		return 'form';
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function fileName($name)
-    {
-        return $name . 'Form.php';
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function fileName($name)
+	{
+		return $name . 'Form.php';
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function template()
-    {
-        return 'Form/form';
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function template()
+	{
+		return 'Form/form';
+	}
 }

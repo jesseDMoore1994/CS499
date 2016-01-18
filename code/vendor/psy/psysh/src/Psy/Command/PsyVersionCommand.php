@@ -19,23 +19,23 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class PsyVersionCommand extends Command
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
-    {
-        $this
-            ->setName('version')
-            ->setDefinition(array())
-            ->setDescription('Show Psy Shell version.')
-            ->setHelp('Show Psy Shell version.');
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function configure()
+	{
+		$this
+			->setName('version')
+			->setDefinition(array())
+			->setDescription('Show Psy Shell version.')
+			->setHelp('Show Psy Shell version.');
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $output->writeln($this->getApplication()->getVersion());
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function execute(InputInterface $input, OutputInterface $output)
+	{
+		$output->writeln($this->getApplication()->getVersion());
+	}
 }

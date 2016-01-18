@@ -22,63 +22,63 @@ use Cake\Datasource\EntityInterface;
 class IsUnique
 {
 
-    /**
-     * The list of fields to check
-     *
-     * @var array
-     */
-    protected $_fields;
+	/**
+	 * The list of fields to check
+	 *
+	 * @var array
+	 */
+	protected $_fields;
 
-    /**
-     * Constructor.
-     *
-     * @param array $fields The list of fields to check uniqueness for
-     */
-    public function __construct(array $fields)
-    {
-        $this->_fields = $fields;
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param array $fields The list of fields to check uniqueness for
+	 */
+	public function __construct(array $fields)
+	{
+		$this->_fields = $fields;
+	}
 
-    /**
-     * Performs the uniqueness check
-     *
-     * @param \Cake\Datasource\EntityInterface $entity The entity from where to extract the fields
-     * @param array $options Options passed to the check,
-     * where the `repository` key is required.
-     * @return bool
-     */
-    public function __invoke(EntityInterface $entity, array $options)
-    {
-        if (!$entity->extract($this->_fields, true)) {
-            return true;
-        }
+	/**
+	 * Performs the uniqueness check
+	 *
+	 * @param \Cake\Datasource\EntityInterface $entity The entity from where to extract the fields
+	 * @param array $options Options passed to the check,
+	 * where the `repository` key is required.
+	 * @return bool
+	 */
+	public function __invoke(EntityInterface $entity, array $options)
+	{
+		if (!$entity->extract($this->_fields, true)) {
+			return true;
+		}
 
-        $alias = $options['repository']->alias();
-        $conditions = $this->_alias($alias, $entity->extract($this->_fields));
-        if ($entity->isNew() === false) {
-            $keys = (array)$options['repository']->primaryKey();
-            $keys = $this->_alias($alias, $entity->extract($keys));
-            if (array_filter($keys, 'strlen')) {
-                $conditions['NOT'] = $keys;
-            }
-        }
+		$alias = $options['repository']->alias();
+		$conditions = $this->_alias($alias, $entity->extract($this->_fields));
+		if ($entity->isNew() === false) {
+			$keys = (array)$options['repository']->primaryKey();
+			$keys = $this->_alias($alias, $entity->extract($keys));
+			if (array_filter($keys, 'strlen')) {
+				$conditions['NOT'] = $keys;
+			}
+		}
 
-        return !$options['repository']->exists($conditions);
-    }
+		return !$options['repository']->exists($conditions);
+	}
 
-    /**
-     * Add a model alias to all the keys in a set of conditions.
-     *
-     * @param string $alias The alias to add.
-     * @param array $conditions The conditions to alias.
-     * @return array
-     */
-    protected function _alias($alias, $conditions)
-    {
-        $aliased = [];
-        foreach ($conditions as $key => $value) {
-            $aliased["$alias.$key"] = $value;
-        }
-        return $aliased;
-    }
+	/**
+	 * Add a model alias to all the keys in a set of conditions.
+	 *
+	 * @param string $alias The alias to add.
+	 * @param array $conditions The conditions to alias.
+	 * @return array
+	 */
+	protected function _alias($alias, $conditions)
+	{
+		$aliased = [];
+		foreach ($conditions as $key => $value) {
+			$aliased["$alias.$key"] = $value;
+		}
+		return $aliased;
+	}
 }

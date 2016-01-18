@@ -20,39 +20,39 @@ use Symfony\Component\Config\Definition\EnumNode;
  */
 class EnumNodeDefinition extends ScalarNodeDefinition
 {
-    private $values;
+	private $values;
 
-    /**
-     * @param array $values
-     *
-     * @return EnumNodeDefinition|$this
-     */
-    public function values(array $values)
-    {
-        $values = array_unique($values);
+	/**
+	 * @param array $values
+	 *
+	 * @return EnumNodeDefinition|$this
+	 */
+	public function values(array $values)
+	{
+		$values = array_unique($values);
 
-        if (count($values) <= 1) {
-            throw new \InvalidArgumentException('->values() must be called with at least two distinct values.');
-        }
+		if (count($values) <= 1) {
+			throw new \InvalidArgumentException('->values() must be called with at least two distinct values.');
+		}
 
-        $this->values = $values;
+		$this->values = $values;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Instantiate a Node.
-     *
-     * @return EnumNode The node
-     *
-     * @throws \RuntimeException
-     */
-    protected function instantiateNode()
-    {
-        if (null === $this->values) {
-            throw new \RuntimeException('You must call ->values() on enum nodes.');
-        }
+	/**
+	 * Instantiate a Node.
+	 *
+	 * @return EnumNode The node
+	 *
+	 * @throws \RuntimeException
+	 */
+	protected function instantiateNode()
+	{
+		if (null === $this->values) {
+			throw new \RuntimeException('You must call ->values() on enum nodes.');
+		}
 
-        return new EnumNode($this->name, $this->parent, $this->values);
-    }
+		return new EnumNode($this->name, $this->parent, $this->values);
+	}
 }

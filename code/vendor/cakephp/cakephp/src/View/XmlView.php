@@ -61,89 +61,89 @@ use Cake\Utility\Xml;
 class XmlView extends SerializedView
 {
 
-    /**
-     * XML layouts are located in the xml sub directory of `Layouts/`
-     *
-     * @var string
-     */
-    public $layoutPath = 'xml';
+	/**
+	 * XML layouts are located in the xml sub directory of `Layouts/`
+	 *
+	 * @var string
+	 */
+	public $layoutPath = 'xml';
 
-    /**
-     * XML views are located in the 'xml' sub directory for controllers' views.
-     *
-     * @var string
-     */
-    public $subDir = 'xml';
+	/**
+	 * XML views are located in the 'xml' sub directory for controllers' views.
+	 *
+	 * @var string
+	 */
+	public $subDir = 'xml';
 
-    /**
-     * Response type.
-     *
-     * @var string
-     */
-    protected $_responseType = 'xml';
+	/**
+	 * Response type.
+	 *
+	 * @var string
+	 */
+	protected $_responseType = 'xml';
 
-    /**
-     * List of special view vars.
-     *
-     * @var array
-     */
-    protected $_specialVars = ['_serialize', '_rootNode', '_xmlOptions'];
+	/**
+	 * List of special view vars.
+	 *
+	 * @var array
+	 */
+	protected $_specialVars = ['_serialize', '_rootNode', '_xmlOptions'];
 
-    /**
-     * Serialize view vars.
-     *
-     * ### Special parameters
-     * `_xmlOptions` You can set an array of custom options for Xml::fromArray() this way, e.g.
-     *   'format' as 'attributes' instead of 'tags'.
-     *
-     * @param array|string $serialize The name(s) of the view variable(s) that need(s) to be serialized
-     * @return string The serialized data
-     */
-    protected function _serialize($serialize)
-    {
-        $rootNode = isset($this->viewVars['_rootNode']) ? $this->viewVars['_rootNode'] : 'response';
+	/**
+	 * Serialize view vars.
+	 *
+	 * ### Special parameters
+	 * `_xmlOptions` You can set an array of custom options for Xml::fromArray() this way, e.g.
+	 *   'format' as 'attributes' instead of 'tags'.
+	 *
+	 * @param array|string $serialize The name(s) of the view variable(s) that need(s) to be serialized
+	 * @return string The serialized data
+	 */
+	protected function _serialize($serialize)
+	{
+		$rootNode = isset($this->viewVars['_rootNode']) ? $this->viewVars['_rootNode'] : 'response';
 
-        if ($serialize === true) {
-            $serialize = array_diff(
-                array_keys($this->viewVars),
-                $this->_specialVars
-            );
+		if ($serialize === true) {
+			$serialize = array_diff(
+				array_keys($this->viewVars),
+				$this->_specialVars
+			);
 
-            if (empty($serialize)) {
-                $serialize = null;
-            } elseif (count($serialize) === 1) {
-                $serialize = current($serialize);
-            }
-        }
+			if (empty($serialize)) {
+				$serialize = null;
+			} elseif (count($serialize) === 1) {
+				$serialize = current($serialize);
+			}
+		}
 
-        if (is_array($serialize)) {
-            $data = [$rootNode => []];
-            foreach ($serialize as $alias => $key) {
-                if (is_numeric($alias)) {
-                    $alias = $key;
-                }
-                if (array_key_exists($key, $this->viewVars)) {
-                    $data[$rootNode][$alias] = $this->viewVars[$key];
-                }
-            }
-        } else {
-            $data = isset($this->viewVars[$serialize]) ? $this->viewVars[$serialize] : null;
-            if (is_array($data) && Hash::numeric(array_keys($data))) {
-                $data = [$rootNode => [$serialize => $data]];
-            }
-        }
+		if (is_array($serialize)) {
+			$data = [$rootNode => []];
+			foreach ($serialize as $alias => $key) {
+				if (is_numeric($alias)) {
+					$alias = $key;
+				}
+				if (array_key_exists($key, $this->viewVars)) {
+					$data[$rootNode][$alias] = $this->viewVars[$key];
+				}
+			}
+		} else {
+			$data = isset($this->viewVars[$serialize]) ? $this->viewVars[$serialize] : null;
+			if (is_array($data) && Hash::numeric(array_keys($data))) {
+				$data = [$rootNode => [$serialize => $data]];
+			}
+		}
 
-        $options = [];
-        if (isset($this->viewVars['_xmlOptions'])) {
-            $options = $this->viewVars['_xmlOptions'];
-        }
-        if (Configure::read('debug')) {
-            $options['pretty'] = true;
-        }
+		$options = [];
+		if (isset($this->viewVars['_xmlOptions'])) {
+			$options = $this->viewVars['_xmlOptions'];
+		}
+		if (Configure::read('debug')) {
+			$options['pretty'] = true;
+		}
 
-        if (isset($options['return']) && strtolower($options['return']) === 'domdocument') {
-            return Xml::fromArray($data, $options)->saveXML();
-        }
-        return Xml::fromArray($data, $options)->asXML();
-    }
+		if (isset($options['return']) && strtolower($options['return']) === 'domdocument') {
+			return Xml::fromArray($data, $options)->saveXML();
+		}
+		return Xml::fromArray($data, $options)->asXML();
+	}
 }

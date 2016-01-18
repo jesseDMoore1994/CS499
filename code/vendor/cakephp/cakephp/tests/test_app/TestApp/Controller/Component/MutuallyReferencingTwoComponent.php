@@ -22,10 +22,10 @@ use Cake\Controller\Component;
 class MutuallyReferencingTwoComponent extends Component
 {
 
-    /**
-     * components property
-     *
-     * @var array
-     */
-    public $components = ['MutuallyReferencingOne'];
+	/**
+	 * components property
+	 *
+	 * @var array
+	 */
+	public $components = ['MutuallyReferencingOne'];
 }

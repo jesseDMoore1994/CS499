@@ -23,33 +23,33 @@ use Symfony\Component\Config\Exception\FileLoaderLoadException;
  */
 class DelegatingLoader extends Loader
 {
-    /**
-     * Constructor.
-     *
-     * @param LoaderResolverInterface $resolver A LoaderResolverInterface instance
-     */
-    public function __construct(LoaderResolverInterface $resolver)
-    {
-        $this->resolver = $resolver;
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param LoaderResolverInterface $resolver A LoaderResolverInterface instance
+	 */
+	public function __construct(LoaderResolverInterface $resolver)
+	{
+		$this->resolver = $resolver;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function load($resource, $type = null)
-    {
-        if (false === $loader = $this->resolver->resolve($resource, $type)) {
-            throw new FileLoaderLoadException($resource);
-        }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function load($resource, $type = null)
+	{
+		if (false === $loader = $this->resolver->resolve($resource, $type)) {
+			throw new FileLoaderLoadException($resource);
+		}
 
-        return $loader->load($resource, $type);
-    }
+		return $loader->load($resource, $type);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function supports($resource, $type = null)
-    {
-        return false !== $this->resolver->resolve($resource, $type);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function supports($resource, $type = null)
+	{
+		return false !== $this->resolver->resolve($resource, $type);
+	}
 }

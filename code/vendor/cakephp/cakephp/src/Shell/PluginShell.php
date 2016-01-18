@@ -22,39 +22,39 @@ use Cake\Console\Shell;
  */
 class PluginShell extends Shell
 {
-    /**
-     * Tasks to load
-     *
-     * @var array
-     */
-    public $tasks = [
-        'Assets',
-        'Load',
-        'Unload',
-    ];
+	/**
+	 * Tasks to load
+	 *
+	 * @var array
+	 */
+	public $tasks = [
+		'Assets',
+		'Load',
+		'Unload',
+	];
 
-    /**
-     * Gets the option parser instance and configures it.
-     *
-     * @return \Cake\Console\ConsoleOptionParser
-     */
-    public function getOptionParser()
-    {
-        $parser = parent::getOptionParser();
-        
-        $parser->description('Plugin Shell perform various tasks related to plugin.')
-                ->addSubcommand('assets', [
-                    'help' => 'Symlink / copy plugin assets to app\'s webroot',
-                    'parser' => $this->Assets->getOptionParser()
-                ])->addSubcommand('load', [
-                    'help' => 'Loads a plugin',
-                    'parser' => $this->Load->getOptionParser(),
-                ])
-                ->addSubcommand('unload', [
-                    'help' => 'Unloads a plugin',
-                    'parser' => $this->Unload->getOptionParser(),
-                ]);
+	/**
+	 * Gets the option parser instance and configures it.
+	 *
+	 * @return \Cake\Console\ConsoleOptionParser
+	 */
+	public function getOptionParser()
+	{
+		$parser = parent::getOptionParser();
 
-        return $parser;
-    }
+		$parser->description('Plugin Shell perform various tasks related to plugin.')
+			->addSubcommand('assets', [
+				'help' => 'Symlink / copy plugin assets to app\'s webroot',
+				'parser' => $this->Assets->getOptionParser()
+			])->addSubcommand('load', [
+				'help' => 'Loads a plugin',
+				'parser' => $this->Load->getOptionParser(),
+			])
+			->addSubcommand('unload', [
+				'help' => 'Unloads a plugin',
+				'parser' => $this->Unload->getOptionParser(),
+			]);
+
+		return $parser;
+	}
 }

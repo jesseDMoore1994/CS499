@@ -23,23 +23,23 @@ use Cake\TestSuite\Fixture\TestFixture;
 class MembersFixture extends TestFixture
 {
 
-    /**
-     * fields property
-     *
-     * @var array
-     */
-    public $fields = [
-        'id' => ['type' => 'integer'],
-        'group_count' => ['type' => 'integer'],
-        '_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
-    ];
+	/**
+	 * fields property
+	 *
+	 * @var array
+	 */
+	public $fields = [
+		'id' => ['type' => 'integer'],
+		'group_count' => ['type' => 'integer'],
+		'_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
+	];
 
-    /**
-     * records property
-     *
-     * @var array
-     */
-    public $records = [
-        ['group_count' => 2],
-    ];
+	/**
+	 * records property
+	 *
+	 * @var array
+	 */
+	public $records = [
+		['group_count' => 2],
+	];
 }

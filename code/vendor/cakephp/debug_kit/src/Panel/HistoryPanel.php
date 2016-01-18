@@ -24,27 +24,27 @@ use DebugKit\DebugPanel;
 class HistoryPanel extends DebugPanel
 {
 
-    /**
-     * Get the data for the panel.
-     *
-     * @return array
-     */
-    public function data()
-    {
-        $table = TableRegistry::get('DebugKit.Requests');
-        $recent = $table->find('recent');
-        return [
-            'requests' => $recent->toArray(),
-        ];
-    }
+	/**
+	 * Get the data for the panel.
+	 *
+	 * @return array
+	 */
+	public function data()
+	{
+		$table = TableRegistry::get('DebugKit.Requests');
+		$recent = $table->find('recent');
+		return [
+			'requests' => $recent->toArray(),
+		];
+	}
 
-    /**
-     * Gets the initial text for the history summary
-     *
-     * @return string
-     */
-    public function summary()
-    {
-        return '0 xhr';
-    }
+	/**
+	 * Gets the initial text for the history summary
+	 *
+	 * @return string
+	 */
+	public function summary()
+	{
+		return '0 xhr';
+	}
 }

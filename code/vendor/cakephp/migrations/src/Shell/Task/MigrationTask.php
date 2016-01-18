@@ -25,103 +25,103 @@ use Migrations\Util\ColumnParser;
 class MigrationTask extends SimpleMigrationTask
 {
 
-    /**
-     * {@inheritDoc}
-     */
-    public function bake($name)
-    {
-        EventManager::instance()->on('Bake.initialize', function (Event $event) {
-            $event->subject->loadHelper('Migrations.Migration');
-        });
+	/**
+	 * {@inheritDoc}
+	 */
+	public function bake($name)
+	{
+		EventManager::instance()->on('Bake.initialize', function (Event $event) {
+			$event->subject->loadHelper('Migrations.Migration');
+		});
 
-        return parent::bake($name);
-    }
+		return parent::bake($name);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function template()
-    {
-        return 'Migrations.config/skeleton';
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function template()
+	{
+		return 'Migrations.config/skeleton';
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function templateData()
-    {
-        $className = $this->BakeTemplate->viewVars['name'];
-        $namespace = Configure::read('App.namespace');
-        $pluginPath = '';
-        if ($this->plugin) {
-            $namespace = $this->_pluginNamespace($this->plugin);
-            $pluginPath = $this->plugin . '.';
-        }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function templateData()
+	{
+		$className = $this->BakeTemplate->viewVars['name'];
+		$namespace = Configure::read('App.namespace');
+		$pluginPath = '';
+		if ($this->plugin) {
+			$namespace = $this->_pluginNamespace($this->plugin);
+			$pluginPath = $this->plugin . '.';
+		}
 
-        $action = $this->detectAction($className);
+		$action = $this->detectAction($className);
 
-        if (empty($action)) {
-            return [
-                'plugin' => $this->plugin,
-                'pluginPath' => $pluginPath,
-                'namespace' => $namespace,
-                'tables' => [],
-                'action' => null,
-                'name' => $className
-            ];
-        }
+		if (empty($action)) {
+			return [
+				'plugin' => $this->plugin,
+				'pluginPath' => $pluginPath,
+				'namespace' => $namespace,
+				'tables' => [],
+				'action' => null,
+				'name' => $className
+			];
+		}
 
-        $arguments = $this->args;
-        unset($arguments[0]);
-        $columnParser = new ColumnParser;
-        $fields = $columnParser->parseFields($arguments);
-        $indexes = $columnParser->parseIndexes($arguments);
-        $primaryKey = $columnParser->parsePrimaryKey($arguments);
+		$arguments = $this->args;
+		unset($arguments[0]);
+		$columnParser = new ColumnParser;
+		$fields = $columnParser->parseFields($arguments);
+		$indexes = $columnParser->parseIndexes($arguments);
+		$primaryKey = $columnParser->parsePrimaryKey($arguments);
 
-        if (in_array($action[0], ['alter_table', 'add_field']) && !empty($primaryKey)) {
-            $this->error('Adding a primary key to an already existing table is not supported.');
-        }
+		if (in_array($action[0], ['alter_table', 'add_field']) && !empty($primaryKey)) {
+			$this->error('Adding a primary key to an already existing table is not supported.');
+		}
 
-        list($action, $table) = $action;
-        return [
-            'plugin' => $this->plugin,
-            'pluginPath' => $pluginPath,
-            'namespace' => $namespace,
-            'tables' => [$table],
-            'action' => $action,
-            'columns' => [
-                'fields' => $fields,
-                'indexes' => $indexes,
-                'primaryKey' => $primaryKey
-            ],
-            'name' => $className
-        ];
-    }
+		list($action, $table) = $action;
+		return [
+			'plugin' => $this->plugin,
+			'pluginPath' => $pluginPath,
+			'namespace' => $namespace,
+			'tables' => [$table],
+			'action' => $action,
+			'columns' => [
+				'fields' => $fields,
+				'indexes' => $indexes,
+				'primaryKey' => $primaryKey
+			],
+			'name' => $className
+		];
+	}
 
-    /**
-     * Detects the action and table from the name of a migration
-     *
-     * @param string $name Name of migration
-     * @return array
-     **/
-    public function detectAction($name)
-    {
-        if (preg_match('/^(Create|Drop)(.*)/', $name, $matches)) {
-            $action = strtolower($matches[1]) . '_table';
-            $table = Inflector::tableize(Inflector::pluralize($matches[2]));
-        } elseif (preg_match('/^(Add).+?(?:To)(.*)/', $name, $matches)) {
-            $action = 'add_field';
-            $table = Inflector::tableize(Inflector::pluralize($matches[2]));
-        } elseif (preg_match('/^(Remove).+?(?:From)(.*)/', $name, $matches)) {
-            $action = 'drop_field';
-            $table = Inflector::tableize(Inflector::pluralize($matches[2]));
-        } elseif (preg_match('/^(Alter)(.*)/', $name, $matches)) {
-            $action = 'alter_table';
-            $table = Inflector::tableize(Inflector::pluralize($matches[2]));
-        } else {
-            return [];
-        }
+	/**
+	 * Detects the action and table from the name of a migration
+	 *
+	 * @param string $name Name of migration
+	 * @return array
+	 **/
+	public function detectAction($name)
+	{
+		if (preg_match('/^(Create|Drop)(.*)/', $name, $matches)) {
+			$action = strtolower($matches[1]) . '_table';
+			$table = Inflector::tableize(Inflector::pluralize($matches[2]));
+		} elseif (preg_match('/^(Add).+?(?:To)(.*)/', $name, $matches)) {
+			$action = 'add_field';
+			$table = Inflector::tableize(Inflector::pluralize($matches[2]));
+		} elseif (preg_match('/^(Remove).+?(?:From)(.*)/', $name, $matches)) {
+			$action = 'drop_field';
+			$table = Inflector::tableize(Inflector::pluralize($matches[2]));
+		} elseif (preg_match('/^(Alter)(.*)/', $name, $matches)) {
+			$action = 'alter_table';
+			$table = Inflector::tableize(Inflector::pluralize($matches[2]));
+		} else {
+			return [];
+		}
 
-        return [$action, $table];
-    }
+		return [$action, $table];
+	}
 }

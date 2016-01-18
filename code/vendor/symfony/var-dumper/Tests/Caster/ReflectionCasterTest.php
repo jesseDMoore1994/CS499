@@ -19,14 +19,14 @@ use Symfony\Component\VarDumper\Tests\Fixtures\GeneratorDemo;
  */
 class ReflectionCasterTest extends \PHPUnit_Framework_TestCase
 {
-    use VarDumperTestTrait;
+	use VarDumperTestTrait;
 
-    public function testReflectionCaster()
-    {
-        $var = new \ReflectionClass('ReflectionClass');
+	public function testReflectionCaster()
+	{
+		$var = new \ReflectionClass('ReflectionClass');
 
-        $this->assertDumpMatchesFormat(
-            <<<'EOTXT'
+		$this->assertDumpMatchesFormat(
+			<<<'EOTXT'
 ReflectionClass {
   +name: "ReflectionClass"
 %Aimplements: array:%d [
@@ -55,17 +55,18 @@ ReflectionClass {
 %A
 }
 EOTXT
-            , $var
-        );
-    }
+			, $var
+		);
+	}
 
-    public function testClosureCaster()
-    {
-        $a = $b = 123;
-        $var = function ($x) use ($a, &$b) {};
+	public function testClosureCaster()
+	{
+		$a = $b = 123;
+		$var = function ($x) use ($a, &$b) {
+		};
 
-        $this->assertDumpMatchesFormat(
-            <<<EOTXT
+		$this->assertDumpMatchesFormat(
+			<<<EOTXT
 Closure {
 %Aparameters: {
     \$x: {}
@@ -78,16 +79,16 @@ Closure {
   line: "65 to 65"
 }
 EOTXT
-            , $var
-        );
-    }
+			, $var
+		);
+	}
 
-    public function testReflectionParameter()
-    {
-        $var = new \ReflectionParameter(__NAMESPACE__.'\reflectionParameterFixture', 0);
+	public function testReflectionParameter()
+	{
+		$var = new \ReflectionParameter(__NAMESPACE__ . '\reflectionParameterFixture', 0);
 
-        $this->assertDumpMatchesFormat(
-            <<<'EOTXT'
+		$this->assertDumpMatchesFormat(
+			<<<'EOTXT'
 ReflectionParameter {
   +name: "arg1"
   position: 0
@@ -95,40 +96,40 @@ ReflectionParameter {
   default: null
 }
 EOTXT
-            , $var
-        );
-    }
+			, $var
+		);
+	}
 
-    /**
-     * @requires PHP 7.0
-     */
-    public function testReflectionParameterScalar()
-    {
-        $f = eval('return function (int $a) {};');
-        $var = new \ReflectionParameter($f, 0);
+	/**
+	 * @requires PHP 7.0
+	 */
+	public function testReflectionParameterScalar()
+	{
+		$f = eval('return function (int $a) {};');
+		$var = new \ReflectionParameter($f, 0);
 
-        $this->assertDumpMatchesFormat(
-            <<<'EOTXT'
+		$this->assertDumpMatchesFormat(
+			<<<'EOTXT'
 ReflectionParameter {
   +name: "a"
   position: 0
   typeHint: "int"
 }
 EOTXT
-            , $var
-        );
-    }
+			, $var
+		);
+	}
 
-    /**
-     * @requires PHP 7.0
-     */
-    public function testReturnType()
-    {
-        $f = eval('return function ():int {};');
-        $line = __LINE__ - 1;
+	/**
+	 * @requires PHP 7.0
+	 */
+	public function testReturnType()
+	{
+		$f = eval('return function ():int {};');
+		$line = __LINE__ - 1;
 
-        $this->assertDumpMatchesFormat(
-            <<<EOTXT
+		$this->assertDumpMatchesFormat(
+			<<<EOTXT
 Closure {
   returnType: "int"
   class: "Symfony\Component\VarDumper\Tests\Caster\ReflectionCasterTest"
@@ -137,20 +138,20 @@ Closure {
   line: "1 to 1"
 }
 EOTXT
-            , $f
-        );
-    }
+			, $f
+		);
+	}
 
-    /**
-     * @requires PHP 7.0
-     */
-    public function testGenerator()
-    {
-        $g = new GeneratorDemo();
-        $g = $g->baz();
-        $r = new \ReflectionGenerator($g);
+	/**
+	 * @requires PHP 7.0
+	 */
+	public function testGenerator()
+	{
+		$g = new GeneratorDemo();
+		$g = $g->baz();
+		$r = new \ReflectionGenerator($g);
 
-        $xDump = <<<'EODUMP'
+		$xDump = <<<'EODUMP'
 Generator {
   this: Symfony\Component\VarDumper\Tests\Fixtures\GeneratorDemo { …}
   executing: {
@@ -165,13 +166,13 @@ Generator {
 }
 EODUMP;
 
-        $this->assertDumpMatchesFormat($xDump, $g);
+		$this->assertDumpMatchesFormat($xDump, $g);
 
-        foreach ($g as $v) {
-            break;
-        }
+		foreach ($g as $v) {
+			break;
+		}
 
-        $xDump = <<<'EODUMP'
+		$xDump = <<<'EODUMP'
 array:2 [
   0 => ReflectionGenerator {
     this: Symfony\Component\VarDumper\Tests\Fixtures\GeneratorDemo { …}
@@ -219,8 +220,8 @@ array:2 [
 ]
 EODUMP;
 
-        $this->assertDumpMatchesFormat($xDump, array($r, $r->getExecutingGenerator()));
-    }
+		$this->assertDumpMatchesFormat($xDump, array($r, $r->getExecutingGenerator()));
+	}
 }
 
 function reflectionParameterFixture(NotExistingClass $arg1 = null, $arg2)

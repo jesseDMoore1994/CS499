@@ -23,40 +23,40 @@ use Cake\Event\Event;
 class TestAuthComponent extends AuthComponent
 {
 
-    public function authCheck(Event $event)
-    {
-        if (isset($this->earlyAuthTest)) {
-            if ($this->_config['checkAuthIn'] !== $event->name()) {
-                return;
-            }
-            $this->authCheckCalledFrom = $event->name();
-            return;
-        }
+	public function authCheck(Event $event)
+	{
+		if (isset($this->earlyAuthTest)) {
+			if ($this->_config['checkAuthIn'] !== $event->name()) {
+				return;
+			}
+			$this->authCheckCalledFrom = $event->name();
+			return;
+		}
 
-        return parent::authCheck($event);
-    }
+		return parent::authCheck($event);
+	}
 
-    /**
-     * Helper method to add/set an authenticate object instance
-     *
-     * @param int $index The index at which to add/set the object
-     * @param Object $object The object to add/set
-     * @return void
-     */
-    public function setAuthenticateObject($index, $object)
-    {
-        $this->_authenticateObjects[$index] = $object;
-    }
+	/**
+	 * Helper method to add/set an authenticate object instance
+	 *
+	 * @param int $index The index at which to add/set the object
+	 * @param Object $object The object to add/set
+	 * @return void
+	 */
+	public function setAuthenticateObject($index, $object)
+	{
+		$this->_authenticateObjects[$index] = $object;
+	}
 
-    /**
-     * Helper method to add/set an authorize object instance
-     *
-     * @param int $index The index at which to add/set the object
-     * @param Object $object The object to add/set
-     * @return void
-     */
-    public function setAuthorizeObject($index, $object)
-    {
-        $this->_authorizeObjects[$index] = $object;
-    }
+	/**
+	 * Helper method to add/set an authorize object instance
+	 *
+	 * @param int $index The index at which to add/set the object
+	 * @param Object $object The object to add/set
+	 * @return void
+	 */
+	public function setAuthorizeObject($index, $object)
+	{
+		$this->_authorizeObjects[$index] = $object;
+	}
 }

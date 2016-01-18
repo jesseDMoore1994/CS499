@@ -11,16 +11,16 @@ use Cake\TestSuite\IntegrationTestCase;
 class AssertIntegrationTestCase extends IntegrationTestCase
 {
 
-    /**
-     * testBadAssertNoRedirect
-     *
-     * @return void
-     */
-    public function testBadAssertNoRedirect()
-    {
-        $this->_response = new Response();
-        $this->_response->header('Location', 'http://localhost/tasks/index');
+	/**
+	 * testBadAssertNoRedirect
+	 *
+	 * @return void
+	 */
+	public function testBadAssertNoRedirect()
+	{
+		$this->_response = new Response();
+		$this->_response->header('Location', 'http://localhost/tasks/index');
 
-        $this->assertNoRedirect();
-    }
+		$this->assertNoRedirect();
+	}
 }

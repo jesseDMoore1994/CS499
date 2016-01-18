@@ -17,62 +17,62 @@ use Psy\Exception\FatalErrorException;
 
 class FunctionReturnInWriteContextPassTest extends CodeCleanerTestCase
 {
-    public function setUp()
-    {
-        $this->pass      = new FunctionReturnInWriteContextPass();
-        $this->traverser = new NodeTraverser();
-        $this->traverser->addVisitor($this->pass);
-    }
+	public function setUp()
+	{
+		$this->pass = new FunctionReturnInWriteContextPass();
+		$this->traverser = new NodeTraverser();
+		$this->traverser->addVisitor($this->pass);
+	}
 
-    /**
-     * @dataProvider invalidStatements
-     * @expectedException \Psy\Exception\FatalErrorException
-     * @expectedExceptionMessage Can't use function return value in write context
-     */
-    public function testProcessStatementFails($code)
-    {
-        $stmts = $this->parse($code);
-        $this->traverser->traverse($stmts);
-    }
+	/**
+	 * @dataProvider invalidStatements
+	 * @expectedException \Psy\Exception\FatalErrorException
+	 * @expectedExceptionMessage Can't use function return value in write context
+	 */
+	public function testProcessStatementFails($code)
+	{
+		$stmts = $this->parse($code);
+		$this->traverser->traverse($stmts);
+	}
 
-    public function invalidStatements()
-    {
-        return array(
-            array('f(&g())'),
-            array('array(& $object->method())'),
-            array('$a->method(& $closure())'),
-            array('array(& A::b())'),
-            array('f() = 5'),
-        );
-    }
+	public function invalidStatements()
+	{
+		return array(
+			array('f(&g())'),
+			array('array(& $object->method())'),
+			array('$a->method(& $closure())'),
+			array('array(& A::b())'),
+			array('f() = 5'),
+		);
+	}
 
-    public function testIsset()
-    {
-        try {
-            $this->traverser->traverse($this->parse('isset(strtolower("A"))'));
-            $this->fail();
-        } catch (FatalErrorException $e) {
-            if (version_compare(PHP_VERSION, '5.5', '>=')) {
-                $this->assertContains(
-                    'Cannot use isset() on the result of a function call (you can use "null !== func()" instead)',
-                    $e->getMessage()
-                );
-            } else {
-                $this->assertContains("Can't use function return value in write context", $e->getMessage());
-            }
-        }
-    }
+	public function testIsset()
+	{
+		try {
+			$this->traverser->traverse($this->parse('isset(strtolower("A"))'));
+			$this->fail();
+		} catch (FatalErrorException $e) {
+			if (version_compare(PHP_VERSION, '5.5', '>=')) {
+				$this->assertContains(
+					'Cannot use isset() on the result of a function call (you can use "null !== func()" instead)',
+					$e->getMessage()
+				);
+			} else {
+				$this->assertContains("Can't use function return value in write context", $e->getMessage());
+			}
+		}
+	}
 
-    /**
-     * @expectedException \Psy\Exception\FatalErrorException
-     * @expectedExceptionMessage Can't use function return value in write context
-     */
-    public function testEmpty()
-    {
-        if (version_compare(PHP_VERSION, '5.5', '>=')) {
-            $this->markTestSkipped();
-        }
+	/**
+	 * @expectedException \Psy\Exception\FatalErrorException
+	 * @expectedExceptionMessage Can't use function return value in write context
+	 */
+	public function testEmpty()
+	{
+		if (version_compare(PHP_VERSION, '5.5', '>=')) {
+			$this->markTestSkipped();
+		}
 
-        $this->traverser->traverse($this->parse('empty(strtolower("A"))'));
-    }
+		$this->traverser->traverse($this->parse('empty(strtolower("A"))'));
+	}
 }

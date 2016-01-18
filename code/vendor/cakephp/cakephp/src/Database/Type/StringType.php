@@ -27,71 +27,71 @@ use PDO;
 class StringType extends Type
 {
 
-    /**
-     * Convert string data into the database format.
-     *
-     * @param mixed $value The value to convert.
-     * @param Driver $driver The driver instance to convert with.
-     * @return string|null
-     */
-    public function toDatabase($value, Driver $driver)
-    {
-        if ($value === null || is_string($value)) {
-            return $value;
-        }
+	/**
+	 * Convert string data into the database format.
+	 *
+	 * @param mixed $value The value to convert.
+	 * @param Driver $driver The driver instance to convert with.
+	 * @return string|null
+	 */
+	public function toDatabase($value, Driver $driver)
+	{
+		if ($value === null || is_string($value)) {
+			return $value;
+		}
 
-        if (is_object($value) && method_exists($value, '__toString')) {
-            return $value->__toString();
-        }
+		if (is_object($value) && method_exists($value, '__toString')) {
+			return $value->__toString();
+		}
 
-        if (is_scalar($value)) {
-            return (string)$value;
-        }
+		if (is_scalar($value)) {
+			return (string)$value;
+		}
 
-        throw new InvalidArgumentException('Cannot convert value to string');
-    }
+		throw new InvalidArgumentException('Cannot convert value to string');
+	}
 
-    /**
-     * Convert string values to PHP strings.
-     *
-     * @param mixed $value The value to convert.
-     * @param Driver $driver The driver instance to convert with.
-     * @return string|null
-     */
-    public function toPHP($value, Driver $driver)
-    {
-        if ($value === null) {
-            return null;
-        }
-        return (string)$value;
-    }
+	/**
+	 * Convert string values to PHP strings.
+	 *
+	 * @param mixed $value The value to convert.
+	 * @param Driver $driver The driver instance to convert with.
+	 * @return string|null
+	 */
+	public function toPHP($value, Driver $driver)
+	{
+		if ($value === null) {
+			return null;
+		}
+		return (string)$value;
+	}
 
-    /**
-     * Get the correct PDO binding type for string data.
-     *
-     * @param mixed $value The value being bound.
-     * @param Driver $driver The driver.
-     * @return int
-     */
-    public function toStatement($value, Driver $driver)
-    {
-        return PDO::PARAM_STR;
-    }
+	/**
+	 * Get the correct PDO binding type for string data.
+	 *
+	 * @param mixed $value The value being bound.
+	 * @param Driver $driver The driver.
+	 * @return int
+	 */
+	public function toStatement($value, Driver $driver)
+	{
+		return PDO::PARAM_STR;
+	}
 
-    /**
-     * Marshalls request data into PHP strings.
-     *
-     * @param mixed $value The value to convert.
-     * @return mixed Converted value.
-     */
-    public function marshal($value)
-    {
-        if ($value === null) {
-            return null;
-        }
-        if (is_array($value)) {
-            return '';
-        }
-        return (string)$value;
-    }
+	/**
+	 * Marshalls request data into PHP strings.
+	 *
+	 * @param mixed $value The value to convert.
+	 * @return mixed Converted value.
+	 */
+	public function marshal($value)
+	{
+		if ($value === null) {
+			return null;
+		}
+		if (is_array($value)) {
+			return '';
+		}
+		return (string)$value;
+	}
 }

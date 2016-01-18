@@ -4,29 +4,29 @@ use Phinx\Migration\AbstractMigration;
 
 class RenameInfoTableToStatusesTable extends AbstractMigration
 {
-    /**
-     * Change.
-     */
-    public function change()
-    {
-        // users table
-        $table = $this->table('info');
-        $table->rename('statuses');
-    }
+	/**
+	 * Change.
+	 */
+	public function change()
+	{
+		// users table
+		$table = $this->table('info');
+		$table->rename('statuses');
+	}
 
-    /**
-     * Migrate Up.
-     */
-    public function up()
-    {
+	/**
+	 * Migrate Up.
+	 */
+	public function up()
+	{
 
-    }
+	}
 
-    /**
-     * Migrate Down.
-     */
-    public function down()
-    {
+	/**
+	 * Migrate Down.
+	 */
+	public function down()
+	{
 
-    }
+	}
 }

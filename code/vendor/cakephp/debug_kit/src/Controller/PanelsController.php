@@ -23,71 +23,71 @@ use Cake\Network\Exception\NotFoundException;
 class PanelsController extends Controller
 {
 
-    /**
-     * components
-     *
-     * @var array
-     */
-    public $components = ['RequestHandler', 'Cookie'];
+	/**
+	 * components
+	 *
+	 * @var array
+	 */
+	public $components = ['RequestHandler', 'Cookie'];
 
-    /**
-     * Before filter handler.
-     *
-     * @param \Cake\Event\Event $event The event.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException
-     */
-    public function beforeFilter(Event $event)
-    {
-        // TODO add config override.
-        if (!Configure::read('debug')) {
-            throw new NotFoundException();
-        }
-    }
+	/**
+	 * Before filter handler.
+	 *
+	 * @param \Cake\Event\Event $event The event.
+	 * @return void
+	 * @throws \Cake\Network\Exception\NotFoundException
+	 */
+	public function beforeFilter(Event $event)
+	{
+		// TODO add config override.
+		if (!Configure::read('debug')) {
+			throw new NotFoundException();
+		}
+	}
 
-    /**
-     * Before render handler.
-     *
-     * @param \Cake\Event\Event $event The event.
-     * @return void
-     */
-    public function beforeRender(Event $event)
-    {
-        $this->viewBuilder()->layout('DebugKit.panel');
-    }
+	/**
+	 * Before render handler.
+	 *
+	 * @param \Cake\Event\Event $event The event.
+	 * @return void
+	 */
+	public function beforeRender(Event $event)
+	{
+		$this->viewBuilder()->layout('DebugKit.panel');
+	}
 
-    /**
-     * Index method that lets you get requests by panelid.
-     *
-     * @param string $requestId Request id
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException
-     */
-    public function index($requestId = null)
-    {
-        $query = $this->Panels->find('byRequest', ['requestId' => $requestId]);
-        $panels = $query->toArray();
-        if (empty($panels)) {
-            throw new NotFoundException();
-        }
-        $this->set([
-            '_serialize' => ['panels'],
-            'panels' => $panels
-        ]);
-    }
+	/**
+	 * Index method that lets you get requests by panelid.
+	 *
+	 * @param string $requestId Request id
+	 * @return void
+	 * @throws \Cake\Network\Exception\NotFoundException
+	 */
+	public function index($requestId = null)
+	{
+		$query = $this->Panels->find('byRequest', ['requestId' => $requestId]);
+		$panels = $query->toArray();
+		if (empty($panels)) {
+			throw new NotFoundException();
+		}
+		$this->set([
+			'_serialize' => ['panels'],
+			'panels' => $panels
+		]);
+	}
 
-    /**
-     * View a panel's data.
-     *
-     * @param string $id The id.
-     * @return void
-     */
-    public function view($id = null)
-    {
-        $this->Cookie->configKey('debugKit_sort', 'encryption', false);
-        $this->set('sort', $this->Cookie->read('debugKit_sort'));
-        $panel = $this->Panels->get($id);
-        $this->set('panel', $panel);
-        $this->set(unserialize($panel->content));
-    }
+	/**
+	 * View a panel's data.
+	 *
+	 * @param string $id The id.
+	 * @return void
+	 */
+	public function view($id = null)
+	{
+		$this->Cookie->configKey('debugKit_sort', 'encryption', false);
+		$this->set('sort', $this->Cookie->read('debugKit_sort'));
+		$panel = $this->Panels->get($id);
+		$this->set('panel', $panel);
+		$this->set(unserialize($panel->content));
+	}
 }

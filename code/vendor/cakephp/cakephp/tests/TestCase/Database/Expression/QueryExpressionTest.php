@@ -24,113 +24,113 @@ use Cake\TestSuite\TestCase;
  */
 class QueryExpressionTest extends TestCase
 {
-    /**
-     * Test and() and or() calls work transparently
-     *
-     * @return void
-     */
-    public function testAndOrCalls()
-    {
-        $expr = new QueryExpression();
-        $expected = '\Cake\Database\Expression\QueryExpression';
-        $this->assertInstanceOf($expected, $expr->and([]));
-        $this->assertInstanceOf($expected, $expr->or([]));
-    }
+	/**
+	 * Test and() and or() calls work transparently
+	 *
+	 * @return void
+	 */
+	public function testAndOrCalls()
+	{
+		$expr = new QueryExpression();
+		$expected = '\Cake\Database\Expression\QueryExpression';
+		$this->assertInstanceOf($expected, $expr->and([]));
+		$this->assertInstanceOf($expected, $expr->or([]));
+	}
 
-    /**
-     * Test SQL generation with one element
-     *
-     * @return void
-     */
-    public function testSqlGenerationOneClause()
-    {
-        $expr = new QueryExpression();
-        $binder = new ValueBinder();
-        $expr->add(['Users.username' => 'sally'], ['Users.username' => 'string']);
+	/**
+	 * Test SQL generation with one element
+	 *
+	 * @return void
+	 */
+	public function testSqlGenerationOneClause()
+	{
+		$expr = new QueryExpression();
+		$binder = new ValueBinder();
+		$expr->add(['Users.username' => 'sally'], ['Users.username' => 'string']);
 
-        $result = $expr->sql($binder);
-        $this->assertEquals('Users.username = :c0', $result);
-    }
+		$result = $expr->sql($binder);
+		$this->assertEquals('Users.username = :c0', $result);
+	}
 
-    /**
-     * Test SQL generation with many elements
-     *
-     * @return void
-     */
-    public function testSqlGenerationMultipleClauses()
-    {
-        $expr = new QueryExpression();
-        $binder = new ValueBinder();
-        $expr->add(
-            [
-                'Users.username' => 'sally',
-                'Users.active' => 1,
-            ],
-            [
-                'Users.username' => 'string',
-                'Users.active' => 'boolean'
-            ]
-        );
+	/**
+	 * Test SQL generation with many elements
+	 *
+	 * @return void
+	 */
+	public function testSqlGenerationMultipleClauses()
+	{
+		$expr = new QueryExpression();
+		$binder = new ValueBinder();
+		$expr->add(
+			[
+				'Users.username' => 'sally',
+				'Users.active' => 1,
+			],
+			[
+				'Users.username' => 'string',
+				'Users.active' => 'boolean'
+			]
+		);
 
-        $result = $expr->sql($binder);
-        $this->assertEquals('(Users.username = :c0 AND Users.active = :c1)', $result);
-    }
+		$result = $expr->sql($binder);
+		$this->assertEquals('(Users.username = :c0 AND Users.active = :c1)', $result);
+	}
 
-    /**
-     * Test that empty expressions don't emit invalid SQL.
-     *
-     * @return void
-     */
-    public function testSqlWhenEmpty()
-    {
-        $expr = new QueryExpression();
-        $binder = new ValueBinder();
-        $result = $expr->sql($binder);
-        $this->assertEquals('', $result);
-    }
+	/**
+	 * Test that empty expressions don't emit invalid SQL.
+	 *
+	 * @return void
+	 */
+	public function testSqlWhenEmpty()
+	{
+		$expr = new QueryExpression();
+		$binder = new ValueBinder();
+		$result = $expr->sql($binder);
+		$this->assertEquals('', $result);
+	}
 
-    /**
-     * Test deep cloning of expression trees.
-     *
-     * @return void
-     */
-    public function testDeepCloning()
-    {
-        $expr = new QueryExpression();
-        $expr = $expr->add(new QueryExpression('1 + 1'))
-            ->isNull('deleted')
-            ->like('title', 'things%');
+	/**
+	 * Test deep cloning of expression trees.
+	 *
+	 * @return void
+	 */
+	public function testDeepCloning()
+	{
+		$expr = new QueryExpression();
+		$expr = $expr->add(new QueryExpression('1 + 1'))
+			->isNull('deleted')
+			->like('title', 'things%');
 
-        $dupe = clone $expr;
-        $this->assertEquals($dupe, $expr);
-        $this->assertNotSame($dupe, $expr);
-        $originalParts = [];
-        $expr->iterateParts(function ($part) use (&$originalParts) {
-            $originalParts[] = $part;
-        });
-        $dupe->iterateParts(function ($part, $i) use ($originalParts) {
-            $this->assertNotSame($originalParts[$i], $part);
-        });
-    }
+		$dupe = clone $expr;
+		$this->assertEquals($dupe, $expr);
+		$this->assertNotSame($dupe, $expr);
+		$originalParts = [];
+		$expr->iterateParts(function ($part) use (&$originalParts) {
+			$originalParts[] = $part;
+		});
+		$dupe->iterateParts(function ($part, $i) use ($originalParts) {
+			$this->assertNotSame($originalParts[$i], $part);
+		});
+	}
 
-    /**
-     * Tests the hasNestedExpression() function
-     *
-     * @return void
-     */
-    public function testHasNestedExpression()
-    {
-        $expr = new QueryExpression();
-        $this->assertFalse($expr->hasNestedExpression());
+	/**
+	 * Tests the hasNestedExpression() function
+	 *
+	 * @return void
+	 */
+	public function testHasNestedExpression()
+	{
+		$expr = new QueryExpression();
+		$this->assertFalse($expr->hasNestedExpression());
 
-        $expr->add(['a' => 'b']);
-        $this->assertTrue($expr->hasNestedExpression());
+		$expr->add(['a' => 'b']);
+		$this->assertTrue($expr->hasNestedExpression());
 
-        $expr = new QueryExpression();
-        $expr->add('a = b');
-        $this->assertFalse($expr->hasNestedExpression());
+		$expr = new QueryExpression();
+		$expr->add('a = b');
+		$this->assertFalse($expr->hasNestedExpression());
 
-        $expr->add(new QueryExpression('1 = 1'));
-        $this->assertTrue($expr->hasNestedExpression());
-    }
+		$expr->add(new QueryExpression('1 = 1'));
+		$this->assertTrue($expr->hasNestedExpression());
+	}
 }

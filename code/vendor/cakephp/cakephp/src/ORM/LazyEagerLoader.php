@@ -27,137 +27,137 @@ use Cake\Datasource\EntityInterface;
 class LazyEagerLoader
 {
 
-    /**
-     * Loads the specified associations in the passed entity or list of entities
-     * by executing extra queries in the database and merging the results in the
-     * appropriate properties.
-     *
-     * The properties for the associations to be loaded will be overwritten on each entity.
-     *
-     * @param \Cake\Datasource\EntityInterface|array $entities a single entity or list of entities
-     * @param array $contain A `contain()` compatible array.
-     * @see Cake\ORM\Query\contain()
-     * @param \Cake\ORM\Table $source The table to use for fetching the top level entities
-     * @return \Cake\Datasource\EntityInterface|array
-     */
-    public function loadInto($entities, array $contain, Table $source)
-    {
-        $returnSingle = false;
+	/**
+	 * Loads the specified associations in the passed entity or list of entities
+	 * by executing extra queries in the database and merging the results in the
+	 * appropriate properties.
+	 *
+	 * The properties for the associations to be loaded will be overwritten on each entity.
+	 *
+	 * @param \Cake\Datasource\EntityInterface|array $entities a single entity or list of entities
+	 * @param array $contain A `contain()` compatible array.
+	 * @see Cake\ORM\Query\contain()
+	 * @param \Cake\ORM\Table $source The table to use for fetching the top level entities
+	 * @return \Cake\Datasource\EntityInterface|array
+	 */
+	public function loadInto($entities, array $contain, Table $source)
+	{
+		$returnSingle = false;
 
-        if ($entities instanceof EntityInterface) {
-            $entities = [$entities];
-            $returnSingle = true;
-        }
+		if ($entities instanceof EntityInterface) {
+			$entities = [$entities];
+			$returnSingle = true;
+		}
 
-        $entities = new Collection($entities);
-        $query = $this->_getQuery($entities, $contain, $source);
-        $associations = array_keys($query->contain());
+		$entities = new Collection($entities);
+		$query = $this->_getQuery($entities, $contain, $source);
+		$associations = array_keys($query->contain());
 
-        $entities = $this->_injectResults($entities, $query, $associations, $source);
-        return $returnSingle ? array_shift($entities) : $entities;
-    }
+		$entities = $this->_injectResults($entities, $query, $associations, $source);
+		return $returnSingle ? array_shift($entities) : $entities;
+	}
 
-    /**
-     * Builds a query for loading the passed list of entity objects along with the
-     * associations specified in $contain.
-     *
-     * @param \Cake\Collection\CollectionInterface $objects The original entitites
-     * @param array $contain The associations to be loaded
-     * @param \Cake\ORM\Table $source The table to use for fetching the top level entities
-     * @return \Cake\ORM\Query
-     */
-    protected function _getQuery($objects, $contain, $source)
-    {
-        $primaryKey = $source->primaryKey();
-        $method = is_string($primaryKey) ? 'get' : 'extract';
+	/**
+	 * Builds a query for loading the passed list of entity objects along with the
+	 * associations specified in $contain.
+	 *
+	 * @param \Cake\Collection\CollectionInterface $objects The original entitites
+	 * @param array $contain The associations to be loaded
+	 * @param \Cake\ORM\Table $source The table to use for fetching the top level entities
+	 * @return \Cake\ORM\Query
+	 */
+	protected function _getQuery($objects, $contain, $source)
+	{
+		$primaryKey = $source->primaryKey();
+		$method = is_string($primaryKey) ? 'get' : 'extract';
 
-        $keys = $objects->map(function ($entity) use ($primaryKey, $method) {
-            return $entity->{$method}($primaryKey);
-        });
+		$keys = $objects->map(function ($entity) use ($primaryKey, $method) {
+			return $entity->{$method}($primaryKey);
+		});
 
-        $query = $source
-            ->find()
-            ->select((array)$primaryKey)
-            ->where(function ($exp, $q) use ($primaryKey, $keys, $source) {
-                if (is_array($primaryKey) && count($primaryKey) === 1) {
-                    $primaryKey = current($primaryKey);
-                }
+		$query = $source
+			->find()
+			->select((array)$primaryKey)
+			->where(function ($exp, $q) use ($primaryKey, $keys, $source) {
+				if (is_array($primaryKey) && count($primaryKey) === 1) {
+					$primaryKey = current($primaryKey);
+				}
 
-                if (is_string($primaryKey)) {
-                    return $exp->in($source->aliasField($primaryKey), $keys->toList());
-                }
+				if (is_string($primaryKey)) {
+					return $exp->in($source->aliasField($primaryKey), $keys->toList());
+				}
 
-                $types = array_intersect_key($q->defaultTypes(), array_flip($primaryKey));
-                $primaryKey = array_map([$source, 'aliasField'], $primaryKey);
-                return new TupleComparison($primaryKey, $keys->toList(), $types, 'IN');
-            })
-            ->contain($contain);
+				$types = array_intersect_key($q->defaultTypes(), array_flip($primaryKey));
+				$primaryKey = array_map([$source, 'aliasField'], $primaryKey);
+				return new TupleComparison($primaryKey, $keys->toList(), $types, 'IN');
+			})
+			->contain($contain);
 
 
-        foreach ($query->eagerLoader()->attachableAssociations($source) as $loadable) {
-            $config = $loadable->config();
-            $config['includeFields'] = true;
-            $loadable->config($config);
-        }
+		foreach ($query->eagerLoader()->attachableAssociations($source) as $loadable) {
+			$config = $loadable->config();
+			$config['includeFields'] = true;
+			$loadable->config($config);
+		}
 
-        return $query;
-    }
+		return $query;
+	}
 
-    /**
-     * Returns a map of property names where the association results should be injected
-     * in the top level entities.
-     *
-     * @param \Cake\ORM\Table $source The table having the top level associations
-     * @param array $associations The name of the top level associations
-     * @return array
-     */
-    protected function _getPropertyMap($source, $associations)
-    {
-        $map = [];
-        $container = $source->associations();
-        foreach ($associations as $assoc) {
-            $map[$assoc] = $container->get($assoc)->property();
-        }
-        return $map;
-    }
+	/**
+	 * Returns a map of property names where the association results should be injected
+	 * in the top level entities.
+	 *
+	 * @param \Cake\ORM\Table $source The table having the top level associations
+	 * @param array $associations The name of the top level associations
+	 * @return array
+	 */
+	protected function _getPropertyMap($source, $associations)
+	{
+		$map = [];
+		$container = $source->associations();
+		foreach ($associations as $assoc) {
+			$map[$assoc] = $container->get($assoc)->property();
+		}
+		return $map;
+	}
 
-    /**
-     * Injects the results of the eager loader query into the original list of
-     * entities.
-     *
-     * @param array|\Traversable $objects The original list of entities
-     * @param \Cake\Collection\CollectionInterface|\Cake\Database\Query $results The loaded results
-     * @param array $associations The top level associations that were loaded
-     * @param \Cake\ORM\Table $source The table where the entities came from
-     * @return array
-     */
-    protected function _injectResults($objects, $results, $associations, $source)
-    {
-        $injected = [];
-        $properties = $this->_getPropertyMap($source, $associations);
-        $primaryKey = (array)$source->primaryKey();
-        $results = $results
-            ->indexBy(function ($e) use ($primaryKey) {
-                return implode(';', $e->extract($primaryKey));
-            })
-            ->toArray();
+	/**
+	 * Injects the results of the eager loader query into the original list of
+	 * entities.
+	 *
+	 * @param array|\Traversable $objects The original list of entities
+	 * @param \Cake\Collection\CollectionInterface|\Cake\Database\Query $results The loaded results
+	 * @param array $associations The top level associations that were loaded
+	 * @param \Cake\ORM\Table $source The table where the entities came from
+	 * @return array
+	 */
+	protected function _injectResults($objects, $results, $associations, $source)
+	{
+		$injected = [];
+		$properties = $this->_getPropertyMap($source, $associations);
+		$primaryKey = (array)$source->primaryKey();
+		$results = $results
+			->indexBy(function ($e) use ($primaryKey) {
+				return implode(';', $e->extract($primaryKey));
+			})
+			->toArray();
 
-        foreach ($objects as $k => $object) {
-            $key = implode(';', $object->extract($primaryKey));
-            if (!isset($results[$key])) {
-                $injected[$k] = $object;
-                continue;
-            }
+		foreach ($objects as $k => $object) {
+			$key = implode(';', $object->extract($primaryKey));
+			if (!isset($results[$key])) {
+				$injected[$k] = $object;
+				continue;
+			}
 
-            $loaded = $results[$key];
-            foreach ($associations as $assoc) {
-                $property = $properties[$assoc];
-                $object->set($property, $loaded->get($property), ['useSetters' => false]);
-                $object->dirty($property, false);
-            }
-            $injected[$k] = $object;
-        }
+			$loaded = $results[$key];
+			foreach ($associations as $assoc) {
+				$property = $properties[$assoc];
+				$object->set($property, $loaded->get($property), ['useSetters' => false]);
+				$object->dirty($property, false);
+			}
+			$injected[$k] = $object;
+		}
 
-        return $injected;
-    }
+		return $injected;
+	}
 }

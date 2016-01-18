@@ -28,13 +28,13 @@ use Cake\Error\ExceptionRenderer;
 class TestPluginExceptionRenderer extends ExceptionRenderer
 {
 
-    /**
-     * Renders the response for the exception.
-     *
-     * @return string
-     */
-    public function render()
-    {
-        return 'Rendered by test plugin';
-    }
+	/**
+	 * Renders the response for the exception.
+	 *
+	 * @return string
+	 */
+	public function render()
+	{
+		return 'Rendered by test plugin';
+	}
 }

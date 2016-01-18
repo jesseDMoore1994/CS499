@@ -21,30 +21,30 @@ use DebugKit\Routing\Filter\DebugBarFilter;
 $debugBar = new DebugBarFilter(EventManager::instance(), (array)Configure::read('DebugKit'));
 
 if (!$debugBar->isEnabled() || php_sapi_name() === 'cli') {
-    return;
+	return;
 }
 
 $hasDebugKitConfig = ConnectionManager::config('debug_kit');
 if (!$hasDebugKitConfig && !in_array('sqlite', PDO::getAvailableDrivers())) {
-    $msg = 'DebugKit not enabled. You need to either install pdo_sqlite, ' .
-        'or define the "debug_kit" connection name.';
-    Log::warning($msg);
-    return;
+	$msg = 'DebugKit not enabled. You need to either install pdo_sqlite, ' .
+		'or define the "debug_kit" connection name.';
+	Log::warning($msg);
+	return;
 }
 
 if (!$hasDebugKitConfig) {
-    ConnectionManager::config('debug_kit', [
-        'className' => 'Cake\Database\Connection',
-        'driver' => 'Cake\Database\Driver\Sqlite',
-        'database' => TMP . 'debug_kit.sqlite',
-        'encoding' => 'utf8',
-        'cacheMetadata' => true,
-        'quoteIdentifiers' => false,
-    ]);
+	ConnectionManager::config('debug_kit', [
+		'className' => 'Cake\Database\Connection',
+		'driver' => 'Cake\Database\Driver\Sqlite',
+		'database' => TMP . 'debug_kit.sqlite',
+		'encoding' => 'utf8',
+		'cacheMetadata' => true,
+		'quoteIdentifiers' => false,
+	]);
 }
 
 if (Plugin::routes('DebugKit') === false) {
-    require __DIR__ . DS . 'routes.php';
+	require __DIR__ . DS . 'routes.php';
 }
 
 // Setup toolbar

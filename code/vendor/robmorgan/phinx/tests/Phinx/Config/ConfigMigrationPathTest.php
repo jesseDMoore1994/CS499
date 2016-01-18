@@ -12,21 +12,21 @@ use \Phinx\Config\Config;
  */
 class ConfigMigrationPathTest extends AbstractConfigTest
 {
-    /**
-     * @expectedException \UnexpectedValueException
-     */
-    public function testGetMigrationPathThrowsExceptionForNoPath()
-    {
-        $config = new Config(array());
-        $config->getMigrationPath();
-    }
+	/**
+	 * @expectedException \UnexpectedValueException
+	 */
+	public function testGetMigrationPathThrowsExceptionForNoPath()
+	{
+		$config = new Config(array());
+		$config->getMigrationPath();
+	}
 
-    /**
-     * Normal behavior
-     */
-    public function testGetMigrationPath()
-    {
-        $config = new Config($this->getConfigArray());
-        $this->assertEquals($this->getMigrationPath(), $config->getMigrationPath());
-    }
+	/**
+	 * Normal behavior
+	 */
+	public function testGetMigrationPath()
+	{
+		$config = new Config($this->getConfigArray());
+		$this->assertEquals($this->getMigrationPath(), $config->getMigrationPath());
+	}
 }

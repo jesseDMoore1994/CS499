@@ -35,26 +35,26 @@ namespace Phinx\Db\Adapter;
  */
 interface WrapperInterface
 {
-    /**
-     * Class constructor, must always wrap another adapter.
-     *
-     * @param  AdapterInterface $adapter
-     */
-    public function __construct(AdapterInterface $adapter);
+	/**
+	 * Class constructor, must always wrap another adapter.
+	 *
+	 * @param  AdapterInterface $adapter
+	 */
+	public function __construct(AdapterInterface $adapter);
 
-    /**
-     * Sets the database adapter to proxy commands to.
-     *
-     * @param  AdapterInterface $adapter
-     * @return AdapterInterface
-     */
-    public function setAdapter(AdapterInterface $adapter);
+	/**
+	 * Sets the database adapter to proxy commands to.
+	 *
+	 * @param  AdapterInterface $adapter
+	 * @return AdapterInterface
+	 */
+	public function setAdapter(AdapterInterface $adapter);
 
-    /**
-     * Gets the database adapter.
-     *
-     * @throws \RuntimeException if the adapter has not been set
-     * @return AdapterInterface
-     */
-    public function getAdapter();
+	/**
+	 * Gets the database adapter.
+	 *
+	 * @throws \RuntimeException if the adapter has not been set
+	 * @return AdapterInterface
+	 */
+	public function getAdapter();
 }

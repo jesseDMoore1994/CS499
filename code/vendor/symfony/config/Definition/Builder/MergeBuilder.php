@@ -18,55 +18,55 @@ namespace Symfony\Component\Config\Definition\Builder;
  */
 class MergeBuilder
 {
-    protected $node;
-    public $allowFalse = false;
-    public $allowOverwrite = true;
+	protected $node;
+	public $allowFalse = false;
+	public $allowOverwrite = true;
 
-    /**
-     * Constructor.
-     *
-     * @param NodeDefinition $node The related node
-     */
-    public function __construct(NodeDefinition $node)
-    {
-        $this->node = $node;
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param NodeDefinition $node The related node
+	 */
+	public function __construct(NodeDefinition $node)
+	{
+		$this->node = $node;
+	}
 
-    /**
-     * Sets whether the node can be unset.
-     *
-     * @param bool $allow
-     *
-     * @return MergeBuilder
-     */
-    public function allowUnset($allow = true)
-    {
-        $this->allowFalse = $allow;
+	/**
+	 * Sets whether the node can be unset.
+	 *
+	 * @param bool $allow
+	 *
+	 * @return MergeBuilder
+	 */
+	public function allowUnset($allow = true)
+	{
+		$this->allowFalse = $allow;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Sets whether the node can be overwritten.
-     *
-     * @param bool $deny Whether the overwriting is forbidden or not
-     *
-     * @return MergeBuilder
-     */
-    public function denyOverwrite($deny = true)
-    {
-        $this->allowOverwrite = !$deny;
+	/**
+	 * Sets whether the node can be overwritten.
+	 *
+	 * @param bool $deny Whether the overwriting is forbidden or not
+	 *
+	 * @return MergeBuilder
+	 */
+	public function denyOverwrite($deny = true)
+	{
+		$this->allowOverwrite = !$deny;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Returns the related node.
-     *
-     * @return NodeDefinition
-     */
-    public function end()
-    {
-        return $this->node;
-    }
+	/**
+	 * Returns the related node.
+	 *
+	 * @return NodeDefinition
+	 */
+	public function end()
+	{
+		return $this->node;
+	}
 }

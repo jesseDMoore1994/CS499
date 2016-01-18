@@ -25,89 +25,89 @@ use Cake\TestSuite\TestCase;
 class HelperRegistryTest extends TestCase
 {
 
-    /**
-     * setUp
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        Configure::write('App.namespace', 'TestApp');
-        $io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
-        $this->helpers = new HelperRegistry();
-        $this->helpers->setIo($io);
-    }
+	/**
+	 * setUp
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		Configure::write('App.namespace', 'TestApp');
+		$io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
+		$this->helpers = new HelperRegistry();
+		$this->helpers->setIo($io);
+	}
 
-    /**
-     * tearDown
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        unset($this->helpers);
-        parent::tearDown();
-    }
+	/**
+	 * tearDown
+	 *
+	 * @return void
+	 */
+	public function tearDown()
+	{
+		unset($this->helpers);
+		parent::tearDown();
+	}
 
-    /**
-     * test loading helpers.
-     *
-     * @return void
-     */
-    public function testLoad()
-    {
-        $result = $this->helpers->load('Simple');
-        $this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $result);
-        $this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $this->helpers->Simple);
+	/**
+	 * test loading helpers.
+	 *
+	 * @return void
+	 */
+	public function testLoad()
+	{
+		$result = $this->helpers->load('Simple');
+		$this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $result);
+		$this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $this->helpers->Simple);
 
-        $result = $this->helpers->loaded();
-        $this->assertEquals(['Simple'], $result, 'loaded() results are wrong.');
-    }
+		$result = $this->helpers->loaded();
+		$this->assertEquals(['Simple'], $result, 'loaded() results are wrong.');
+	}
 
-    /**
-     * test triggering callbacks on loaded helpers
-     *
-     * @return void
-     */
-    public function testLoadWithConfig()
-    {
-        $result = $this->helpers->load('Simple', ['key' => 'value']);
-        $this->assertEquals('value', $result->config('key'));
-    }
+	/**
+	 * test triggering callbacks on loaded helpers
+	 *
+	 * @return void
+	 */
+	public function testLoadWithConfig()
+	{
+		$result = $this->helpers->load('Simple', ['key' => 'value']);
+		$this->assertEquals('value', $result->config('key'));
+	}
 
-    /**
-     * test missing helper exception
-     *
-     * @expectedException \Cake\Console\Exception\MissingHelperException
-     * @return void
-     */
-    public function testLoadMissingHelper()
-    {
-        $this->helpers->load('ThisTaskShouldAlwaysBeMissing');
-    }
+	/**
+	 * test missing helper exception
+	 *
+	 * @expectedException \Cake\Console\Exception\MissingHelperException
+	 * @return void
+	 */
+	public function testLoadMissingHelper()
+	{
+		$this->helpers->load('ThisTaskShouldAlwaysBeMissing');
+	}
 
-    /**
-     * Tests loading as an alias
-     *
-     * @return void
-     */
-    public function testLoadWithAlias()
-    {
-        Plugin::load('TestPlugin');
+	/**
+	 * Tests loading as an alias
+	 *
+	 * @return void
+	 */
+	public function testLoadWithAlias()
+	{
+		Plugin::load('TestPlugin');
 
-        $result = $this->helpers->load('SimpleAliased', ['className' => 'Simple']);
-        $this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $result);
-        $this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $this->helpers->SimpleAliased);
+		$result = $this->helpers->load('SimpleAliased', ['className' => 'Simple']);
+		$this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $result);
+		$this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $this->helpers->SimpleAliased);
 
-        $result = $this->helpers->loaded();
-        $this->assertEquals(['SimpleAliased'], $result, 'loaded() results are wrong.');
+		$result = $this->helpers->loaded();
+		$this->assertEquals(['SimpleAliased'], $result, 'loaded() results are wrong.');
 
-        $result = $this->helpers->load('SomeHelper', ['className' => 'TestPlugin.Example']);
-        $this->assertInstanceOf('TestPlugin\Shell\Helper\ExampleHelper', $result);
-        $this->assertInstanceOf('TestPlugin\Shell\Helper\ExampleHelper', $this->helpers->SomeHelper);
+		$result = $this->helpers->load('SomeHelper', ['className' => 'TestPlugin.Example']);
+		$this->assertInstanceOf('TestPlugin\Shell\Helper\ExampleHelper', $result);
+		$this->assertInstanceOf('TestPlugin\Shell\Helper\ExampleHelper', $this->helpers->SomeHelper);
 
-        $result = $this->helpers->loaded();
-        $this->assertEquals(['SimpleAliased', 'SomeHelper'], $result, 'loaded() results are wrong.');
-    }
+		$result = $this->helpers->loaded();
+		$this->assertEquals(['SimpleAliased', 'SomeHelper'], $result, 'loaded() results are wrong.');
+	}
 }

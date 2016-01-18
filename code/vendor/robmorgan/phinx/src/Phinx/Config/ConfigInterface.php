@@ -36,83 +36,83 @@ namespace Phinx\Config;
  */
 interface ConfigInterface extends \ArrayAccess
 {
-    /**
-     * Class Constructor
-     *
-     * @param array $configArray Config Array
-     * @param string $configFilePath Optional File Path
-     */
-    public function __construct(array $configArray, $configFilePath = null);
+	/**
+	 * Class Constructor
+	 *
+	 * @param array $configArray Config Array
+	 * @param string $configFilePath Optional File Path
+	 */
+	public function __construct(array $configArray, $configFilePath = null);
 
-    /**
-     * Returns the configuration for each environment.
-     *
-     * This method returns <code>null</code> if no environments exist.
-     *
-     * @return array|null
-     */
-    public function getEnvironments();
+	/**
+	 * Returns the configuration for each environment.
+	 *
+	 * This method returns <code>null</code> if no environments exist.
+	 *
+	 * @return array|null
+	 */
+	public function getEnvironments();
 
-    /**
-     * Returns the configuration for a given environment.
-     *
-     * This method returns <code>null</code> if the specified environment
-     * doesn't exist.
-     *
-     * @param string $name
-     * @return array|null
-     */
-    public function getEnvironment($name);
+	/**
+	 * Returns the configuration for a given environment.
+	 *
+	 * This method returns <code>null</code> if the specified environment
+	 * doesn't exist.
+	 *
+	 * @param string $name
+	 * @return array|null
+	 */
+	public function getEnvironment($name);
 
-    /**
-     * Does the specified environment exist in the configuration file?
-     *
-     * @param string $name Environment Name
-     * @return boolean
-     */
-    public function hasEnvironment($name);
+	/**
+	 * Does the specified environment exist in the configuration file?
+	 *
+	 * @param string $name Environment Name
+	 * @return boolean
+	 */
+	public function hasEnvironment($name);
 
-    /**
-     * Gets the default environment name.
-     *
-     * @throws \RuntimeException
-     * @return string
-     */
-    public function getDefaultEnvironment();
+	/**
+	 * Gets the default environment name.
+	 *
+	 * @throws \RuntimeException
+	 * @return string
+	 */
+	public function getDefaultEnvironment();
 
-    /**
-     * Gets the config file path.
-     *
-     * @return string
-     */
-    public function getConfigFilePath();
+	/**
+	 * Gets the config file path.
+	 *
+	 * @return string
+	 */
+	public function getConfigFilePath();
 
-    /**
-     * Gets the path of the migration files.
-     *
-     * @return string
-     */
-    public function getMigrationPath();
+	/**
+	 * Gets the path of the migration files.
+	 *
+	 * @return string
+	 */
+	public function getMigrationPath();
 
-    /**
-     * Gets the path of the seed files.
-     *
-     * @return string
-     */
-    public function getSeedPath();
+	/**
+	 * Gets the path of the seed files.
+	 *
+	 * @return string
+	 */
+	public function getSeedPath();
 
-     /**
-     * Get the template file name.
-     *
-     * @return string|false
-     */
-     public function getTemplateFile();
+	/**
+	 * Get the template file name.
+	 *
+	 * @return string|false
+	 */
+	public function getTemplateFile();
 
-     /**
-     * Get the template class name.
-     *
-     * @return string|false
-     */
-     public function getTemplateClass();
+	/**
+	 * Get the template class name.
+	 *
+	 * @return string|false
+	 */
+	public function getTemplateClass();
 
 }

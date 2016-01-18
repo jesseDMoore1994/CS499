@@ -19,34 +19,34 @@ namespace Bake\Shell\Task;
  */
 class ShellHelperTask extends SimpleBakeTask
 {
-    /**
-     * Task name used in path generation.
-     *
-     * @var string
-     */
-    public $pathFragment = 'Shell/Helper/';
+	/**
+	 * Task name used in path generation.
+	 *
+	 * @var string
+	 */
+	public $pathFragment = 'Shell/Helper/';
 
-    /**
-     * {@inheritDoc}
-     */
-    public function name()
-    {
-        return 'shell_helper';
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function name()
+	{
+		return 'shell_helper';
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function fileName($name)
-    {
-        return $name . 'Helper.php';
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function fileName($name)
+	{
+		return $name . 'Helper.php';
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function template()
-    {
-        return 'Shell/helper';
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function template()
+	{
+		return 'Shell/helper';
+	}
 }

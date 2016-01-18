@@ -20,17 +20,17 @@ use Psy\Exception\RuntimeException;
  */
 class LeavePsyshAlonePass extends CodeCleanerPass
 {
-    /**
-     * Validate that the user input does not reference the `$__psysh__` variable.
-     *
-     * @throws RuntimeException if the user is messing with $__psysh__.
-     *
-     * @param Node $node
-     */
-    public function enterNode(Node $node)
-    {
-        if ($node instanceof Variable && $node->name === '__psysh__') {
-            throw new RuntimeException('Don\'t mess with $__psysh__. Bad things will happen.');
-        }
-    }
+	/**
+	 * Validate that the user input does not reference the `$__psysh__` variable.
+	 *
+	 * @throws RuntimeException if the user is messing with $__psysh__.
+	 *
+	 * @param Node $node
+	 */
+	public function enterNode(Node $node)
+	{
+		if ($node instanceof Variable && $node->name === '__psysh__') {
+			throw new RuntimeException('Don\'t mess with $__psysh__. Bad things will happen.');
+		}
+	}
 }

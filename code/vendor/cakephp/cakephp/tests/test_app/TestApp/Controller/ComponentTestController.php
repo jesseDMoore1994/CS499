@@ -22,10 +22,10 @@ use Cake\Controller\Controller;
 class ComponentTestController extends Controller
 {
 
-    /**
-     * uses property
-     *
-     * @var array
-     */
-    public $uses = [];
+	/**
+	 * uses property
+	 *
+	 * @var array
+	 */
+	public $uses = [];
 }

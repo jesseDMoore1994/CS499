@@ -23,180 +23,180 @@ use Cake\TestSuite\TestCase;
  */
 class RulesCheckerTest extends TestCase
 {
-    /**
-     * Test adding rule for update mode
-     *
-     * @return void
-     */
-    public function testAddingRuleDeleteMode()
-    {
-        $entity = new Entity([
-            'name' => 'larry'
-        ]);
+	/**
+	 * Test adding rule for update mode
+	 *
+	 * @return void
+	 */
+	public function testAddingRuleDeleteMode()
+	{
+		$entity = new Entity([
+			'name' => 'larry'
+		]);
 
-        $rules = new RulesChecker();
-        $rules->addDelete(
-            function () {
-                return false;
-            },
-            'ruleName',
-            ['errorField' => 'name']
-        );
+		$rules = new RulesChecker();
+		$rules->addDelete(
+			function () {
+				return false;
+			},
+			'ruleName',
+			['errorField' => 'name']
+		);
 
-        $this->assertTrue($rules->check($entity, RulesChecker::CREATE));
-        $this->assertEmpty($entity->errors());
-        $this->assertTrue($rules->check($entity, RulesChecker::UPDATE));
-        $this->assertEmpty($entity->errors());
+		$this->assertTrue($rules->check($entity, RulesChecker::CREATE));
+		$this->assertEmpty($entity->errors());
+		$this->assertTrue($rules->check($entity, RulesChecker::UPDATE));
+		$this->assertEmpty($entity->errors());
 
-        $this->assertFalse($rules->check($entity, RulesChecker::DELETE));
-        $this->assertEquals(['ruleName' => 'invalid'], $entity->errors('name'));
-    }
+		$this->assertFalse($rules->check($entity, RulesChecker::DELETE));
+		$this->assertEquals(['ruleName' => 'invalid'], $entity->errors('name'));
+	}
 
-    /**
-     * Test adding rule for update mode
-     *
-     * @return void
-     */
-    public function testAddingRuleUpdateMode()
-    {
-        $entity = new Entity([
-            'name' => 'larry'
-        ]);
+	/**
+	 * Test adding rule for update mode
+	 *
+	 * @return void
+	 */
+	public function testAddingRuleUpdateMode()
+	{
+		$entity = new Entity([
+			'name' => 'larry'
+		]);
 
-        $rules = new RulesChecker();
-        $rules->addUpdate(
-            function () {
-                return false;
-            },
-            'ruleName',
-            ['errorField' => 'name']
-        );
+		$rules = new RulesChecker();
+		$rules->addUpdate(
+			function () {
+				return false;
+			},
+			'ruleName',
+			['errorField' => 'name']
+		);
 
-        $this->assertTrue($rules->check($entity, RulesChecker::CREATE));
-        $this->assertEmpty($entity->errors());
-        $this->assertTrue($rules->check($entity, RulesChecker::DELETE));
-        $this->assertEmpty($entity->errors());
+		$this->assertTrue($rules->check($entity, RulesChecker::CREATE));
+		$this->assertEmpty($entity->errors());
+		$this->assertTrue($rules->check($entity, RulesChecker::DELETE));
+		$this->assertEmpty($entity->errors());
 
-        $this->assertFalse($rules->check($entity, RulesChecker::UPDATE));
-        $this->assertEquals(['ruleName' => 'invalid'], $entity->errors('name'));
-    }
+		$this->assertFalse($rules->check($entity, RulesChecker::UPDATE));
+		$this->assertEquals(['ruleName' => 'invalid'], $entity->errors('name'));
+	}
 
-    /**
-     * Test adding rule for create mode
-     *
-     * @return void
-     */
-    public function testAddingRuleCreateMode()
-    {
-        $entity = new Entity([
-            'name' => 'larry'
-        ]);
+	/**
+	 * Test adding rule for create mode
+	 *
+	 * @return void
+	 */
+	public function testAddingRuleCreateMode()
+	{
+		$entity = new Entity([
+			'name' => 'larry'
+		]);
 
-        $rules = new RulesChecker();
-        $rules->addCreate(
-            function () {
-                return false;
-            },
-            'ruleName',
-            ['errorField' => 'name']
-        );
+		$rules = new RulesChecker();
+		$rules->addCreate(
+			function () {
+				return false;
+			},
+			'ruleName',
+			['errorField' => 'name']
+		);
 
-        $this->assertTrue($rules->check($entity, RulesChecker::UPDATE));
-        $this->assertEmpty($entity->errors());
-        $this->assertTrue($rules->check($entity, RulesChecker::DELETE));
-        $this->assertEmpty($entity->errors());
+		$this->assertTrue($rules->check($entity, RulesChecker::UPDATE));
+		$this->assertEmpty($entity->errors());
+		$this->assertTrue($rules->check($entity, RulesChecker::DELETE));
+		$this->assertEmpty($entity->errors());
 
-        $this->assertFalse($rules->check($entity, RulesChecker::CREATE));
-        $this->assertEquals(['ruleName' => 'invalid'], $entity->errors('name'));
-    }
+		$this->assertFalse($rules->check($entity, RulesChecker::CREATE));
+		$this->assertEquals(['ruleName' => 'invalid'], $entity->errors('name'));
+	}
 
-    /**
-     * Test adding rule with name
-     *
-     * @return void
-     */
-    public function testAddingRuleWithName()
-    {
-        $entity = new Entity([
-            'name' => 'larry'
-        ]);
+	/**
+	 * Test adding rule with name
+	 *
+	 * @return void
+	 */
+	public function testAddingRuleWithName()
+	{
+		$entity = new Entity([
+			'name' => 'larry'
+		]);
 
-        $rules = new RulesChecker();
-        $rules->add(
-            function () {
-                return false;
-            },
-            'ruleName',
-            ['errorField' => 'name']
-        );
+		$rules = new RulesChecker();
+		$rules->add(
+			function () {
+				return false;
+			},
+			'ruleName',
+			['errorField' => 'name']
+		);
 
-        $this->assertFalse($rules->check($entity, RulesChecker::CREATE));
-        $this->assertEquals(['ruleName' => 'invalid'], $entity->errors('name'));
-    }
+		$this->assertFalse($rules->check($entity, RulesChecker::CREATE));
+		$this->assertEquals(['ruleName' => 'invalid'], $entity->errors('name'));
+	}
 
-    /**
-     * Test that returnned error messages work.
-     *
-     * @return void
-     */
-    public function testAddWithErrorMessage()
-    {
-        $entity = new Entity([
-            'name' => 'larry'
-        ]);
+	/**
+	 * Test that returnned error messages work.
+	 *
+	 * @return void
+	 */
+	public function testAddWithErrorMessage()
+	{
+		$entity = new Entity([
+			'name' => 'larry'
+		]);
 
-        $rules = new RulesChecker();
-        $rules->add(
-            function () {
-                return 'worst thing ever';
-            },
-            ['errorField' => 'name']
-        );
+		$rules = new RulesChecker();
+		$rules->add(
+			function () {
+				return 'worst thing ever';
+			},
+			['errorField' => 'name']
+		);
 
-        $this->assertFalse($rules->check($entity, RulesChecker::CREATE));
-        $this->assertEquals(['worst thing ever'], $entity->errors('name'));
-    }
+		$this->assertFalse($rules->check($entity, RulesChecker::CREATE));
+		$this->assertEquals(['worst thing ever'], $entity->errors('name'));
+	}
 
-    /**
-     * Test that returnned error messages work.
-     *
-     * @return void
-     */
-    public function testAddWithMessageOption()
-    {
-        $entity = new Entity([
-            'name' => 'larry'
-        ]);
+	/**
+	 * Test that returnned error messages work.
+	 *
+	 * @return void
+	 */
+	public function testAddWithMessageOption()
+	{
+		$entity = new Entity([
+			'name' => 'larry'
+		]);
 
-        $rules = new RulesChecker();
-        $rules->add(
-            function () {
-                return false;
-            },
-            ['message' => 'this is bad', 'errorField' => 'name']
-        );
+		$rules = new RulesChecker();
+		$rules->add(
+			function () {
+				return false;
+			},
+			['message' => 'this is bad', 'errorField' => 'name']
+		);
 
-        $this->assertFalse($rules->check($entity, RulesChecker::CREATE));
-        $this->assertEquals(['this is bad'], $entity->errors('name'));
-    }
+		$this->assertFalse($rules->check($entity, RulesChecker::CREATE));
+		$this->assertEquals(['this is bad'], $entity->errors('name'));
+	}
 
-    /**
-     * Test that returnned error messages work.
-     *
-     * @return void
-     */
-    public function testAddWithoutFields()
-    {
-        $entity = new Entity([
-            'name' => 'larry'
-        ]);
+	/**
+	 * Test that returnned error messages work.
+	 *
+	 * @return void
+	 */
+	public function testAddWithoutFields()
+	{
+		$entity = new Entity([
+			'name' => 'larry'
+		]);
 
-        $rules = new RulesChecker();
-        $rules->add(function () {
-            return false;
-        });
+		$rules = new RulesChecker();
+		$rules->add(function () {
+			return false;
+		});
 
-        $this->assertFalse($rules->check($entity, RulesChecker::CREATE));
-        $this->assertEmpty($entity->errors());
-    }
+		$this->assertFalse($rules->check($entity, RulesChecker::CREATE));
+		$this->assertEmpty($entity->errors());
+	}
 }

@@ -25,37 +25,37 @@ use Cake\Routing\Router;
 class ErrorController extends Controller
 {
 
-    /**
-     * Constructor
-     *
-     * @param \Cake\Network\Request|null $request Request instance.
-     * @param \Cake\Network\Response|null $response Response instance.
-     */
-    public function __construct($request = null, $response = null)
-    {
-        parent::__construct($request, $response);
-        if (count(Router::extensions()) &&
-            !isset($this->RequestHandler)
-        ) {
-            $this->loadComponent('RequestHandler');
-        }
-        $eventManager = $this->eventManager();
-        if (isset($this->Auth)) {
-            $eventManager->off($this->Auth);
-        }
-        if (isset($this->Security)) {
-            $eventManager->off($this->Security);
-        }
-    }
+	/**
+	 * Constructor
+	 *
+	 * @param \Cake\Network\Request|null $request Request instance.
+	 * @param \Cake\Network\Response|null $response Response instance.
+	 */
+	public function __construct($request = null, $response = null)
+	{
+		parent::__construct($request, $response);
+		if (count(Router::extensions()) &&
+			!isset($this->RequestHandler)
+		) {
+			$this->loadComponent('RequestHandler');
+		}
+		$eventManager = $this->eventManager();
+		if (isset($this->Auth)) {
+			$eventManager->off($this->Auth);
+		}
+		if (isset($this->Security)) {
+			$eventManager->off($this->Security);
+		}
+	}
 
-    /**
-     * beforeRender callback.
-     *
-     * @param \Cake\Event\Event $event Event.
-     * @return void
-     */
-    public function beforeRender(Event $event)
-    {
-        $this->viewBuilder()->templatePath('Error');
-    }
+	/**
+	 * beforeRender callback.
+	 *
+	 * @param \Cake\Event\Event $event Event.
+	 * @return void
+	 */
+	public function beforeRender(Event $event)
+	{
+		$this->viewBuilder()->templatePath('Error');
+	}
 }

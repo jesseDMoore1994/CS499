@@ -21,9 +21,9 @@ use Cake\ORM\Table;
 class ArticlesTagsTable extends Table
 {
 
-    public function initialize(array $config)
-    {
-        $this->belongsTo('articles');
-        $this->belongsTo('tags');
-    }
+	public function initialize(array $config)
+	{
+		$this->belongsTo('articles');
+		$this->belongsTo('tags');
+	}
 }

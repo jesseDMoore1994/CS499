@@ -25,38 +25,38 @@ use Cake\Controller\Controller;
 class RequestHandlerTestController extends Controller
 {
 
-    /**
-     * test method for ajax redirection
-     *
-     * @return void
-     */
-    public function destination()
-    {
-        $this->viewBuilder()->templatePath('Posts');
-        $this->render('index');
-    }
+	/**
+	 * test method for ajax redirection
+	 *
+	 * @return void
+	 */
+	public function destination()
+	{
+		$this->viewBuilder()->templatePath('Posts');
+		$this->render('index');
+	}
 
-    /**
-     * test method for ajax redirection + parameter parsing
-     *
-     * @param string|null $one
-     * @param string|null $two
-     * @return void
-     */
-    public function param_method($one = null, $two = null)
-    {
-        echo "one: $one two: $two";
-        $this->autoRender = false;
-    }
+	/**
+	 * test method for ajax redirection + parameter parsing
+	 *
+	 * @param string|null $one
+	 * @param string|null $two
+	 * @return void
+	 */
+	public function param_method($one = null, $two = null)
+	{
+		echo "one: $one two: $two";
+		$this->autoRender = false;
+	}
 
-    /**
-     * test method for testing layout rendering when isAjax()
-     *
-     * @return void
-     */
-    public function ajax2_layout()
-    {
-        $this->viewBuilder()->layout('ajax2');
-        $this->destination();
-    }
+	/**
+	 * test method for testing layout rendering when isAjax()
+	 *
+	 * @return void
+	 */
+	public function ajax2_layout()
+	{
+		$this->viewBuilder()->layout('ajax2');
+		$this->destination();
+	}
 }

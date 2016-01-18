@@ -25,7 +25,7 @@ use Cake\TestSuite\TestCase;
 class NumberTree extends Entity
 {
 
-    use TranslateTrait;
+	use TranslateTrait;
 }
 
 /**
@@ -33,35 +33,35 @@ class NumberTree extends Entity
  */
 class BehaviorRegressionTest extends TestCase
 {
-    /**
-     * fixtures
-     *
-     * @var array
-     */
-    public $fixtures = [
-        'core.number_trees',
-        'core.translates'
-    ];
+	/**
+	 * fixtures
+	 *
+	 * @var array
+	 */
+	public $fixtures = [
+		'core.number_trees',
+		'core.translates'
+	];
 
-    /**
-     * Tests that the tree behavior and the translations behavior play together
-     *
-     * @see https://github.com/cakephp/cakephp/issues/5982
-     * @return void
-     */
-    public function testTreeAndTranslateIntegration()
-    {
-        $table = TableRegistry::get('NumberTrees');
-        $table->primaryKey(['id']);
-        $table->addBehavior('Tree');
-        $table->addBehavior('Translate', ['fields' => ['name']]);
-        $table->entityClass(__NAMESPACE__ . '\\NumberTree');
+	/**
+	 * Tests that the tree behavior and the translations behavior play together
+	 *
+	 * @see https://github.com/cakephp/cakephp/issues/5982
+	 * @return void
+	 */
+	public function testTreeAndTranslateIntegration()
+	{
+		$table = TableRegistry::get('NumberTrees');
+		$table->primaryKey(['id']);
+		$table->addBehavior('Tree');
+		$table->addBehavior('Translate', ['fields' => ['name']]);
+		$table->entityClass(__NAMESPACE__ . '\\NumberTree');
 
-        $all = $table->find('threaded')->find('translations');
-        $results = [];
-        foreach ($all as $node) {
-            $results[] = $node->translation('dan')->name;
-        }
-        $this->assertEquals(['Elektroniker', 'Alien Tingerne'], $results);
-    }
+		$all = $table->find('threaded')->find('translations');
+		$results = [];
+		foreach ($all as $node) {
+			$results[] = $node->translation('dan')->name;
+		}
+		$this->assertEquals(['Elektroniker', 'Alien Tingerne'], $results);
+	}
 }

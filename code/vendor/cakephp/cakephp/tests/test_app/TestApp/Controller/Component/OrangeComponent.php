@@ -24,33 +24,33 @@ use Cake\Event\Event;
 class OrangeComponent extends Component
 {
 
-    /**
-     * components property
-     *
-     * @var array
-     */
-    public $components = ['Banana'];
+	/**
+	 * components property
+	 *
+	 * @var array
+	 */
+	public $components = ['Banana'];
 
-    /**
-     * initialize method
-     *
-     * @param array $config
-     * @return void
-     */
-    public function initialize(array $config)
-    {
-        $this->Controller = $this->_registry->getController();
-        $this->Banana->testField = 'OrangeField';
-    }
+	/**
+	 * initialize method
+	 *
+	 * @param array $config
+	 * @return void
+	 */
+	public function initialize(array $config)
+	{
+		$this->Controller = $this->_registry->getController();
+		$this->Banana->testField = 'OrangeField';
+	}
 
-    /**
-     * startup method
-     *
-     * @param Event $event
-     * @return string
-     */
-    public function startup(Event $event)
-    {
-        $this->Controller->foo = 'pass';
-    }
+	/**
+	 * startup method
+	 *
+	 * @param Event $event
+	 * @return string
+	 */
+	public function startup(Event $event)
+	{
+		$this->Controller->foo = 'pass';
+	}
 }

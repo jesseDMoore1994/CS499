@@ -26,115 +26,115 @@ use Cake\Utility\Hash;
 class FormContext implements ContextInterface
 {
 
-    /**
-     * The request object.
-     *
-     * @var \Cake\Network\Request
-     */
-    protected $_request;
+	/**
+	 * The request object.
+	 *
+	 * @var \Cake\Network\Request
+	 */
+	protected $_request;
 
-    /**
-     * Constructor.
-     *
-     * @param \Cake\Network\Request $request The request object.
-     * @param array $context Context info.
-     */
-    public function __construct(Request $request, array $context)
-    {
-        $this->_request = $request;
-        $context += [
-            'entity' => null,
-        ];
-        $this->_form = $context['entity'];
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param \Cake\Network\Request $request The request object.
+	 * @param array $context Context info.
+	 */
+	public function __construct(Request $request, array $context)
+	{
+		$this->_request = $request;
+		$context += [
+			'entity' => null,
+		];
+		$this->_form = $context['entity'];
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function primaryKey()
-    {
-        return [];
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function primaryKey()
+	{
+		return [];
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function isPrimaryKey($field)
-    {
-        return false;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function isPrimaryKey($field)
+	{
+		return false;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function isCreate()
-    {
-        return true;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function isCreate()
+	{
+		return true;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function val($field)
-    {
-        return $this->_request->data($field);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function val($field)
+	{
+		return $this->_request->data($field);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function isRequired($field)
-    {
-        $validator = $this->_form->validator();
-        if (!$validator->hasField($field)) {
-            return false;
-        }
-        if ($this->type($field) !== 'boolean') {
-            return $validator->isEmptyAllowed($field, $this->isCreate()) === false;
-        }
-        return false;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function isRequired($field)
+	{
+		$validator = $this->_form->validator();
+		if (!$validator->hasField($field)) {
+			return false;
+		}
+		if ($this->type($field) !== 'boolean') {
+			return $validator->isEmptyAllowed($field, $this->isCreate()) === false;
+		}
+		return false;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function fieldNames()
-    {
-        return $this->_form->schema()->fields();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function fieldNames()
+	{
+		return $this->_form->schema()->fields();
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function type($field)
-    {
-        return $this->_form->schema()->fieldType($field);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function type($field)
+	{
+		return $this->_form->schema()->fieldType($field);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function attributes($field)
-    {
-        $column = (array)$this->_form->schema()->field($field);
-        $whitelist = ['length' => null, 'precision' => null];
-        return array_intersect_key($column, $whitelist);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function attributes($field)
+	{
+		$column = (array)$this->_form->schema()->field($field);
+		$whitelist = ['length' => null, 'precision' => null];
+		return array_intersect_key($column, $whitelist);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function hasError($field)
-    {
-        $errors = $this->error($field);
-        return count($errors) > 0;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function hasError($field)
+	{
+		$errors = $this->error($field);
+		return count($errors) > 0;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function error($field)
-    {
-        return array_values(Hash::get($this->_form->errors(), $field, []));
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function error($field)
+	{
+		return array_values(Hash::get($this->_form->errors(), $field, []));
+	}
 }

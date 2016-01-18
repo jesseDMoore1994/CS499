@@ -16,24 +16,24 @@ namespace Psy\Exception;
  */
 class BreakException extends \Exception implements Exception
 {
-    private $rawMessage;
+	private $rawMessage;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function __construct($message = '', $code = 0, \Exception $previous = null)
-    {
-        $this->rawMessage = $message;
-        parent::__construct(sprintf('Exit:  %s', $message), $code, $previous);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function __construct($message = '', $code = 0, \Exception $previous = null)
+	{
+		$this->rawMessage = $message;
+		parent::__construct(sprintf('Exit:  %s', $message), $code, $previous);
+	}
 
-    /**
-     * Return a raw (unformatted) version of the error message.
-     *
-     * @return string
-     */
-    public function getRawMessage()
-    {
-        return $this->rawMessage;
-    }
+	/**
+	 * Return a raw (unformatted) version of the error message.
+	 *
+	 * @return string
+	 */
+	public function getRawMessage()
+	{
+		return $this->rawMessage;
+	}
 }

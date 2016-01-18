@@ -24,108 +24,108 @@ use Cake\View\Widget\LabelWidget;
 class LabelWidgetTest extends TestCase
 {
 
-    /**
-     * setup method.
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        $templates = [
-            'label' => '<label{{attrs}}>{{text}}</label>',
-        ];
-        $this->templates = new StringTemplate($templates);
-        $this->context = $this->getMock('Cake\View\Form\ContextInterface');
-    }
+	/**
+	 * setup method.
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		$templates = [
+			'label' => '<label{{attrs}}>{{text}}</label>',
+		];
+		$this->templates = new StringTemplate($templates);
+		$this->context = $this->getMock('Cake\View\Form\ContextInterface');
+	}
 
-    /**
-     * test render
-     *
-     * @return void
-     */
-    public function testRender()
-    {
-        $label = new LabelWidget($this->templates);
-        $data = [
-            'text' => 'My text',
-        ];
-        $result = $label->render($data, $this->context);
-        $expected = [
-            'label' => [],
-            'My text',
-            '/label'
-        ];
-        $this->assertHtml($expected, $result);
-    }
+	/**
+	 * test render
+	 *
+	 * @return void
+	 */
+	public function testRender()
+	{
+		$label = new LabelWidget($this->templates);
+		$data = [
+			'text' => 'My text',
+		];
+		$result = $label->render($data, $this->context);
+		$expected = [
+			'label' => [],
+			'My text',
+			'/label'
+		];
+		$this->assertHtml($expected, $result);
+	}
 
-    /**
-     * test render escape
-     *
-     * @return void
-     */
-    public function testRenderEscape()
-    {
-        $label = new LabelWidget($this->templates);
-        $data = [
-            'text' => 'My > text',
-            'for' => 'Some > value',
-            'escape' => false,
-        ];
-        $result = $label->render($data, $this->context);
-        $expected = [
-            'label' => ['for' => 'Some > value'],
-            'My > text',
-            '/label'
-        ];
-        $this->assertHtml($expected, $result);
-    }
+	/**
+	 * test render escape
+	 *
+	 * @return void
+	 */
+	public function testRenderEscape()
+	{
+		$label = new LabelWidget($this->templates);
+		$data = [
+			'text' => 'My > text',
+			'for' => 'Some > value',
+			'escape' => false,
+		];
+		$result = $label->render($data, $this->context);
+		$expected = [
+			'label' => ['for' => 'Some > value'],
+			'My > text',
+			'/label'
+		];
+		$this->assertHtml($expected, $result);
+	}
 
-    /**
-     * test render escape
-     *
-     * @return void
-     */
-    public function testRenderAttributes()
-    {
-        $label = new LabelWidget($this->templates);
-        $data = [
-            'text' => 'My > text',
-            'for' => 'some-id',
-            'id' => 'some-id',
-            'data-foo' => 'value',
-        ];
-        $result = $label->render($data, $this->context);
-        $expected = [
-            'label' => ['id' => 'some-id', 'data-foo' => 'value', 'for' => 'some-id'],
-            'My &gt; text',
-            '/label'
-        ];
-        $this->assertHtml($expected, $result);
-    }
+	/**
+	 * test render escape
+	 *
+	 * @return void
+	 */
+	public function testRenderAttributes()
+	{
+		$label = new LabelWidget($this->templates);
+		$data = [
+			'text' => 'My > text',
+			'for' => 'some-id',
+			'id' => 'some-id',
+			'data-foo' => 'value',
+		];
+		$result = $label->render($data, $this->context);
+		$expected = [
+			'label' => ['id' => 'some-id', 'data-foo' => 'value', 'for' => 'some-id'],
+			'My &gt; text',
+			'/label'
+		];
+		$this->assertHtml($expected, $result);
+	}
 
-    /**
-     * Ensure templateVars option is hooked up.
-     *
-     * @return void
-     */
-    public function testRenderTemplateVars()
-    {
-        $this->templates->add([
-            'label' => '<label custom="{{custom}}" {{attrs}}>{{text}}</label>',
-        ]);
+	/**
+	 * Ensure templateVars option is hooked up.
+	 *
+	 * @return void
+	 */
+	public function testRenderTemplateVars()
+	{
+		$this->templates->add([
+			'label' => '<label custom="{{custom}}" {{attrs}}>{{text}}</label>',
+		]);
 
-        $label = new LabelWidget($this->templates);
-        $data = [
-            'templateVars' => ['custom' => 'value'],
-            'text' => 'Label Text',
-        ];
-        $result = $label->render($data, $this->context);
-        $expected = [
-            'label' => ['custom' => 'value'],
-            'Label Text',
-            '/label'
-        ];
-        $this->assertHtml($expected, $result);
-    }
+		$label = new LabelWidget($this->templates);
+		$data = [
+			'templateVars' => ['custom' => 'value'],
+			'text' => 'Label Text',
+		];
+		$result = $label->render($data, $this->context);
+		$expected = [
+			'label' => ['custom' => 'value'],
+			'Label Text',
+			'/label'
+		];
+		$this->assertHtml($expected, $result);
+	}
 }

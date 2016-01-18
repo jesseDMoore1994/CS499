@@ -28,22 +28,22 @@ use \DOMDocument as DomDocument;
 class HelpFormatterTest extends TestCase
 {
 
-    /**
-     * test that the console max width is respected when generating help.
-     *
-     * @return void
-     */
-    public function testWidthFormatting()
-    {
-        $parser = new ConsoleOptionParser('test', false);
-        $parser->description('This is fifteen This is fifteen This is fifteen')
-            ->addOption('four', ['help' => 'this is help text this is help text'])
-            ->addArgument('four', ['help' => 'this is help text this is help text'])
-            ->addSubcommand('four', ['help' => 'this is help text this is help text']);
+	/**
+	 * test that the console max width is respected when generating help.
+	 *
+	 * @return void
+	 */
+	public function testWidthFormatting()
+	{
+		$parser = new ConsoleOptionParser('test', false);
+		$parser->description('This is fifteen This is fifteen This is fifteen')
+			->addOption('four', ['help' => 'this is help text this is help text'])
+			->addArgument('four', ['help' => 'this is help text this is help text'])
+			->addSubcommand('four', ['help' => 'this is help text this is help text']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->text(30);
-        $expected = <<<txt
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->text(30);
+		$expected = <<<txt
 This is fifteen This is
 fifteen This is fifteen
 
@@ -70,28 +70,28 @@ four  this is help text this
       <comment>(optional)</comment>
 
 txt;
-        $this->assertTextEquals($expected, $result, 'Generated help is too wide');
-    }
+		$this->assertTextEquals($expected, $result, 'Generated help is too wide');
+	}
 
-    /**
-     * test help() with options and arguments that have choices.
-     *
-     * @return void
-     */
-    public function testHelpWithChoices()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', ['help' => 'A test option.', 'choices' => ['one', 'two']])
-            ->addArgument('type', [
-                'help' => 'Resource type.',
-                'choices' => ['aco', 'aro'],
-                'required' => true
-            ])
-            ->addArgument('other_longer', ['help' => 'Another argument.']);
+	/**
+	 * test help() with options and arguments that have choices.
+	 *
+	 * @return void
+	 */
+	public function testHelpWithChoices()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->addOption('test', ['help' => 'A test option.', 'choices' => ['one', 'two']])
+			->addArgument('type', [
+				'help' => 'Resource type.',
+				'choices' => ['aco', 'aro'],
+				'required' => true
+			])
+			->addArgument('other_longer', ['help' => 'Another argument.']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->text();
-        $expected = <<<txt
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->text();
+		$expected = <<<txt
 <info>Usage:</info>
 cake mycommand [-h] [--test one|two] <aco|aro> [<other_longer>]
 
@@ -106,25 +106,25 @@ type          Resource type. <comment>(choices: aco|aro)</comment>
 other_longer  Another argument. <comment>(optional)</comment>
 
 txt;
-        $this->assertTextEquals($expected, $result, 'Help does not match');
-    }
+		$this->assertTextEquals($expected, $result, 'Help does not match');
+	}
 
-    /**
-     * test description and epilog in the help
-     *
-     * @return void
-     */
-    public function testHelpDescriptionAndEpilog()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->description('Description text')
-            ->epilog('epilog text')
-            ->addOption('test', ['help' => 'A test option.'])
-            ->addArgument('model', ['help' => 'The model to make.', 'required' => true]);
+	/**
+	 * test description and epilog in the help
+	 *
+	 * @return void
+	 */
+	public function testHelpDescriptionAndEpilog()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->description('Description text')
+			->epilog('epilog text')
+			->addOption('test', ['help' => 'A test option.'])
+			->addArgument('model', ['help' => 'The model to make.', 'required' => true]);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->text();
-        $expected = <<<txt
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->text();
+		$expected = <<<txt
 Description text
 
 <info>Usage:</info>
@@ -142,26 +142,26 @@ model  The model to make.
 epilog text
 
 txt;
-        $this->assertTextEquals($expected, $result, 'Help is wrong.');
-    }
+		$this->assertTextEquals($expected, $result, 'Help is wrong.');
+	}
 
-    /**
-     * test that help() outputs subcommands.
-     *
-     * @return void
-     */
-    public function testHelpSubcommand()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addSubcommand('method', ['help' => 'This is another command'])
-            ->addOption('test', ['help' => 'A test option.']);
-        $parser->addSubcommand('plugin', ['help' =>
-            'Create the directory structure, AppController class and testing setup for a new plugin. ' .
-            'Can create plugins in any of your bootstrapped plugin paths.']);
+	/**
+	 * test that help() outputs subcommands.
+	 *
+	 * @return void
+	 */
+	public function testHelpSubcommand()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->addSubcommand('method', ['help' => 'This is another command'])
+			->addOption('test', ['help' => 'A test option.']);
+		$parser->addSubcommand('plugin', ['help' =>
+			'Create the directory structure, AppController class and testing setup for a new plugin. ' .
+			'Can create plugins in any of your bootstrapped plugin paths.']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->text();
-        $expected = <<<txt
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->text();
+		$expected = <<<txt
 <info>Usage:</info>
 cake mycommand [subcommand] [-h] [--test]
 
@@ -180,25 +180,25 @@ To see help on a subcommand use <info>`cake mycommand [subcommand] --help`</info
 --test      A test option.
 
 txt;
-        $this->assertTextEquals($expected, $result, 'Help is not correct.');
-    }
+		$this->assertTextEquals($expected, $result, 'Help is not correct.');
+	}
 
-    /**
-     * test getting help with defined options.
-     *
-     * @return void
-     */
-    public function testHelpWithOptions()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', ['help' => 'A test option.'])
-            ->addOption('connection', [
-                'short' => 'c', 'help' => 'The connection to use.', 'default' => 'default'
-            ]);
+	/**
+	 * test getting help with defined options.
+	 *
+	 * @return void
+	 */
+	public function testHelpWithOptions()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->addOption('test', ['help' => 'A test option.'])
+			->addOption('connection', [
+				'short' => 'c', 'help' => 'The connection to use.', 'default' => 'default'
+			]);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->text();
-        $expected = <<<txt
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->text();
+		$expected = <<<txt
 <info>Usage:</info>
 cake mycommand [-h] [--test] [-c default]
 
@@ -210,24 +210,24 @@ cake mycommand [-h] [--test] [-c default]
                   default)</comment>
 
 txt;
-        $this->assertTextEquals($expected, $result, 'Help does not match');
-    }
+		$this->assertTextEquals($expected, $result, 'Help does not match');
+	}
 
-    /**
-     * test getting help with defined options.
-     *
-     * @return void
-     */
-    public function testHelpWithOptionsAndArguments()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', ['help' => 'A test option.'])
-            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
-            ->addArgument('other_longer', ['help' => 'Another argument.']);
+	/**
+	 * test getting help with defined options.
+	 *
+	 * @return void
+	 */
+	public function testHelpWithOptionsAndArguments()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->addOption('test', ['help' => 'A test option.'])
+			->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+			->addArgument('other_longer', ['help' => 'Another argument.']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->text();
-        $expected = <<<xml
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->text();
+		$expected = <<<xml
 <info>Usage:</info>
 cake mycommand [-h] [--test] <model> [<other_longer>]
 
@@ -242,78 +242,78 @@ model         The model to make.
 other_longer  Another argument. <comment>(optional)</comment>
 
 xml;
-        $this->assertTextEquals($expected, $result, 'Help does not match');
-    }
+		$this->assertTextEquals($expected, $result, 'Help does not match');
+	}
 
-    /**
-     * Test that a long set of options doesn't make useless output.
-     *
-     * @return void
-     */
-    public function testHelpWithLotsOfOptions()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser
-            ->addOption('test', ['help' => 'A test option.'])
-            ->addOption('test2', ['help' => 'A test option.'])
-            ->addOption('test3', ['help' => 'A test option.'])
-            ->addOption('test4', ['help' => 'A test option.'])
-            ->addOption('test5', ['help' => 'A test option.'])
-            ->addOption('test6', ['help' => 'A test option.'])
-            ->addOption('test7', ['help' => 'A test option.'])
-            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
-            ->addArgument('other_longer', ['help' => 'Another argument.']);
+	/**
+	 * Test that a long set of options doesn't make useless output.
+	 *
+	 * @return void
+	 */
+	public function testHelpWithLotsOfOptions()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser
+			->addOption('test', ['help' => 'A test option.'])
+			->addOption('test2', ['help' => 'A test option.'])
+			->addOption('test3', ['help' => 'A test option.'])
+			->addOption('test4', ['help' => 'A test option.'])
+			->addOption('test5', ['help' => 'A test option.'])
+			->addOption('test6', ['help' => 'A test option.'])
+			->addOption('test7', ['help' => 'A test option.'])
+			->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+			->addArgument('other_longer', ['help' => 'Another argument.']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->text();
-        $expected = 'cake mycommand [options] <model> [<other_longer>]';
-        $this->assertContains($expected, $result);
-    }
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->text();
+		$expected = 'cake mycommand [options] <model> [<other_longer>]';
+		$this->assertContains($expected, $result);
+	}
 
-    /**
-     * Test that a long set of arguments doesn't make useless output.
-     *
-     * @return void
-     */
-    public function testHelpWithLotsOfArguments()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser
-            ->addArgument('test', ['help' => 'A test option.'])
-            ->addArgument('test2', ['help' => 'A test option.'])
-            ->addArgument('test3', ['help' => 'A test option.'])
-            ->addArgument('test4', ['help' => 'A test option.'])
-            ->addArgument('test5', ['help' => 'A test option.'])
-            ->addArgument('test6', ['help' => 'A test option.'])
-            ->addArgument('test7', ['help' => 'A test option.'])
-            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
-            ->addArgument('other_longer', ['help' => 'Another argument.']);
+	/**
+	 * Test that a long set of arguments doesn't make useless output.
+	 *
+	 * @return void
+	 */
+	public function testHelpWithLotsOfArguments()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser
+			->addArgument('test', ['help' => 'A test option.'])
+			->addArgument('test2', ['help' => 'A test option.'])
+			->addArgument('test3', ['help' => 'A test option.'])
+			->addArgument('test4', ['help' => 'A test option.'])
+			->addArgument('test5', ['help' => 'A test option.'])
+			->addArgument('test6', ['help' => 'A test option.'])
+			->addArgument('test7', ['help' => 'A test option.'])
+			->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+			->addArgument('other_longer', ['help' => 'Another argument.']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->text();
-        $expected = 'cake mycommand [-h] [arguments]';
-        $this->assertContains($expected, $result);
-    }
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->text();
+		$expected = 'cake mycommand [-h] [arguments]';
+		$this->assertContains($expected, $result);
+	}
 
-    /**
-     * test help() with options and arguments that have choices.
-     *
-     * @return void
-     */
-    public function testXmlHelpWithChoices()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', ['help' => 'A test option.', 'choices' => ['one', 'two']])
-            ->addArgument('type', [
-                'help' => 'Resource type.',
-                'choices' => ['aco', 'aro'],
-                'required' => true
-            ])
-            ->addArgument('other_longer', ['help' => 'Another argument.']);
+	/**
+	 * test help() with options and arguments that have choices.
+	 *
+	 * @return void
+	 */
+	public function testXmlHelpWithChoices()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->addOption('test', ['help' => 'A test option.', 'choices' => ['one', 'two']])
+			->addArgument('type', [
+				'help' => 'Resource type.',
+				'choices' => ['aco', 'aro'],
+				'required' => true
+			])
+			->addArgument('other_longer', ['help' => 'Another argument.']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->xml();
-        $expected = <<<xml
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->xml();
+		$expected = <<<xml
 <?xml version="1.0"?>
 <shell>
 <name>mycommand</name>
@@ -343,25 +343,25 @@ xml;
 <epilog>epilog text</epilog>
 </shell>
 xml;
-        $this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
-    }
+		$this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
+	}
 
-    /**
-     * test description and epilog in the help
-     *
-     * @return void
-     */
-    public function testXmlHelpDescriptionAndEpilog()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->description('Description text')
-            ->epilog('epilog text')
-            ->addOption('test', ['help' => 'A test option.'])
-            ->addArgument('model', ['help' => 'The model to make.', 'required' => true]);
+	/**
+	 * test description and epilog in the help
+	 *
+	 * @return void
+	 */
+	public function testXmlHelpDescriptionAndEpilog()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->description('Description text')
+			->epilog('epilog text')
+			->addOption('test', ['help' => 'A test option.'])
+			->addArgument('model', ['help' => 'The model to make.', 'required' => true]);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->xml();
-        $expected = <<<xml
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->xml();
+		$expected = <<<xml
 <?xml version="1.0"?>
 <shell>
 <name>mycommand</name>
@@ -385,23 +385,23 @@ xml;
 <epilog>epilog text</epilog>
 </shell>
 xml;
-        $this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
-    }
+		$this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
+	}
 
-    /**
-     * test that help() outputs subcommands.
-     *
-     * @return void
-     */
-    public function testXmlHelpSubcommand()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addSubcommand('method', ['help' => 'This is another command'])
-            ->addOption('test', ['help' => 'A test option.']);
+	/**
+	 * test that help() outputs subcommands.
+	 *
+	 * @return void
+	 */
+	public function testXmlHelpSubcommand()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->addSubcommand('method', ['help' => 'This is another command'])
+			->addOption('test', ['help' => 'A test option.']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->xml();
-        $expected = <<<xml
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->xml();
+		$expected = <<<xml
 <?xml version="1.0"?>
 <shell>
 <name>mycommand</name>
@@ -423,25 +423,25 @@ xml;
 <epilog/>
 </shell>
 xml;
-        $this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
-    }
+		$this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
+	}
 
-    /**
-     * test getting help with defined options.
-     *
-     * @return void
-     */
-    public function testXmlHelpWithOptions()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', ['help' => 'A test option.'])
-            ->addOption('connection', [
-                'short' => 'c', 'help' => 'The connection to use.', 'default' => 'default'
-            ]);
+	/**
+	 * test getting help with defined options.
+	 *
+	 * @return void
+	 */
+	public function testXmlHelpWithOptions()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->addOption('test', ['help' => 'A test option.'])
+			->addOption('connection', [
+				'short' => 'c', 'help' => 'The connection to use.', 'default' => 'default'
+			]);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->xml();
-        $expected = <<<xml
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->xml();
+		$expected = <<<xml
 <?xml version="1.0"?>
 <shell>
 <name>mycommand</name>
@@ -465,24 +465,24 @@ xml;
 <epilog/>
 </shell>
 xml;
-        $this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
-    }
+		$this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
+	}
 
-    /**
-     * test getting help with defined options.
-     *
-     * @return void
-     */
-    public function testXmlHelpWithOptionsAndArguments()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', ['help' => 'A test option.'])
-            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
-            ->addArgument('other_longer', ['help' => 'Another argument.']);
+	/**
+	 * test getting help with defined options.
+	 *
+	 * @return void
+	 */
+	public function testXmlHelpWithOptionsAndArguments()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->addOption('test', ['help' => 'A test option.'])
+			->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+			->addArgument('other_longer', ['help' => 'Another argument.']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->xml();
-        $expected = <<<xml
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->xml();
+		$expected = <<<xml
 <?xml version="1.0"?>
 <shell>
 	<name>mycommand</name>
@@ -509,23 +509,23 @@ xml;
 	<epilog/>
 </shell>
 xml;
-        $this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
-    }
+		$this->assertXmlStringNotEqualsXmlString($expected, $result, 'Help does not match');
+	}
 
-    /**
-     * Test xml help as object
-     *
-     * @return void
-     */
-    public function testXmlHelpAsObject()
-    {
-        $parser = new ConsoleOptionParser('mycommand', false);
-        $parser->addOption('test', ['help' => 'A test option.'])
-            ->addArgument('model', ['help' => 'The model to make.', 'required' => true])
-            ->addArgument('other_longer', ['help' => 'Another argument.']);
+	/**
+	 * Test xml help as object
+	 *
+	 * @return void
+	 */
+	public function testXmlHelpAsObject()
+	{
+		$parser = new ConsoleOptionParser('mycommand', false);
+		$parser->addOption('test', ['help' => 'A test option.'])
+			->addArgument('model', ['help' => 'The model to make.', 'required' => true])
+			->addArgument('other_longer', ['help' => 'Another argument.']);
 
-        $formatter = new HelpFormatter($parser);
-        $result = $formatter->xml(false);
-        $this->assertInstanceOf('SimpleXmlElement', $result);
-    }
+		$formatter = new HelpFormatter($parser);
+		$result = $formatter->xml(false);
+		$this->assertInstanceOf('SimpleXmlElement', $result);
+	}
 }

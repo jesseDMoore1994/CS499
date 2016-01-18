@@ -23,24 +23,24 @@ use Cake\TestSuite\Fixture\TestFixture;
 class UuidportfoliosFixture extends TestFixture
 {
 
-    /**
-     * fields property
-     *
-     * @var array
-     */
-    public $fields = [
-        'id' => ['type' => 'uuid'],
-        'name' => ['type' => 'string', 'null' => false],
-        '_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
-    ];
+	/**
+	 * fields property
+	 *
+	 * @var array
+	 */
+	public $fields = [
+		'id' => ['type' => 'uuid'],
+		'name' => ['type' => 'string', 'null' => false],
+		'_constraints' => ['primary' => ['type' => 'primary', 'columns' => ['id']]]
+	];
 
-    /**
-     * records property
-     *
-     * @var array
-     */
-    public $records = [
-        ['id' => '4806e091-6940-4d2b-b227-303740cf8569', 'name' => 'Portfolio 1'],
-        ['id' => '480af662-eb8c-47d3-886b-230540cf8569', 'name' => 'Portfolio 2'],
-    ];
+	/**
+	 * records property
+	 *
+	 * @var array
+	 */
+	public $records = [
+		['id' => '4806e091-6940-4d2b-b227-303740cf8569', 'name' => 'Portfolio 1'],
+		['id' => '480af662-eb8c-47d3-886b-230540cf8569', 'name' => 'Portfolio 2'],
+	];
 }

@@ -20,23 +20,23 @@ use Symfony\Component\VarDumper\Cloner\VarCloner;
  */
 class Cloner extends VarCloner
 {
-    private $filter = 0;
+	private $filter = 0;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function cloneVar($var, $filter = 0)
-    {
-        $this->filter = $filter;
+	/**
+	 * {@inheritdoc}
+	 */
+	public function cloneVar($var, $filter = 0)
+	{
+		$this->filter = $filter;
 
-        return parent::cloneVar($var, $filter);
-    }
+		return parent::cloneVar($var, $filter);
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function castResource(Stub $stub, $isNested)
-    {
-        return Caster::EXCLUDE_VERBOSE & $this->filter ? array() : parent::castResource($stub, $isNested);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function castResource(Stub $stub, $isNested)
+	{
+		return Caster::EXCLUDE_VERBOSE & $this->filter ? array() : parent::castResource($stub, $isNested);
+	}
 }

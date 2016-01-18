@@ -18,68 +18,68 @@ use Symfony\Component\Console\Input\InputInterface;
  */
 class TraitEnumerator extends Enumerator
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
-    {
-        // bail early if current PHP doesn't know about traits.
-        if (!function_exists('trait_exists')) {
-            return;
-        }
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+	{
+		// bail early if current PHP doesn't know about traits.
+		if (!function_exists('trait_exists')) {
+			return;
+		}
 
-        // only list traits when no Reflector is present.
-        //
-        // TODO: make a NamespaceReflector and pass that in for commands like:
-        //
-        //     ls --traits Foo
-        //
-        // ... for listing traits in the Foo namespace
+		// only list traits when no Reflector is present.
+		//
+		// TODO: make a NamespaceReflector and pass that in for commands like:
+		//
+		//     ls --traits Foo
+		//
+		// ... for listing traits in the Foo namespace
 
-        if ($reflector !== null || $target !== null) {
-            return;
-        }
+		if ($reflector !== null || $target !== null) {
+			return;
+		}
 
-        // only list traits if we are specifically asked
-        if (!$input->getOption('traits')) {
-            return;
-        }
+		// only list traits if we are specifically asked
+		if (!$input->getOption('traits')) {
+			return;
+		}
 
-        $traits = $this->prepareTraits(get_declared_traits());
+		$traits = $this->prepareTraits(get_declared_traits());
 
-        if (empty($traits)) {
-            return;
-        }
+		if (empty($traits)) {
+			return;
+		}
 
-        return array(
-            'Traits' => $traits,
-        );
-    }
+		return array(
+			'Traits' => $traits,
+		);
+	}
 
-    /**
-     * Prepare formatted trait array.
-     *
-     * @param array $traits
-     *
-     * @return array
-     */
-    protected function prepareTraits(array $traits)
-    {
-        natcasesort($traits);
+	/**
+	 * Prepare formatted trait array.
+	 *
+	 * @param array $traits
+	 *
+	 * @return array
+	 */
+	protected function prepareTraits(array $traits)
+	{
+		natcasesort($traits);
 
-        // My kingdom for a generator.
-        $ret = array();
+		// My kingdom for a generator.
+		$ret = array();
 
-        foreach ($traits as $name) {
-            if ($this->showItem($name)) {
-                $ret[$name] = array(
-                    'name'  => $name,
-                    'style' => self::IS_CLASS,
-                    'value' => $this->presentSignature($name),
-                );
-            }
-        }
+		foreach ($traits as $name) {
+			if ($this->showItem($name)) {
+				$ret[$name] = array(
+					'name' => $name,
+					'style' => self::IS_CLASS,
+					'value' => $this->presentSignature($name),
+				);
+			}
+		}
 
-        return $ret;
-    }
+		return $ret;
+	}
 }

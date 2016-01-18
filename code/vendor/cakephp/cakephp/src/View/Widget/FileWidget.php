@@ -25,60 +25,60 @@ use Cake\View\Form\ContextInterface;
 class FileWidget implements WidgetInterface
 {
 
-    /**
-     * Constructor
-     *
-     * @param \Cake\View\StringTemplate $templates Templates list.
-     */
-    public function __construct($templates)
-    {
-        $this->_templates = $templates;
-    }
+	/**
+	 * Constructor
+	 *
+	 * @param \Cake\View\StringTemplate $templates Templates list.
+	 */
+	public function __construct($templates)
+	{
+		$this->_templates = $templates;
+	}
 
-    /**
-     * Render a file upload form widget.
-     *
-     * Data supports the following keys:
-     *
-     * - `name` - Set the input name.
-     * - `escape` - Set to false to disable HTML escaping.
-     *
-     * All other keys will be converted into HTML attributes.
-     * Unlike other input objects the `val` property will be specifically
-     * ignored.
-     *
-     * @param array $data The data to build a file input with.
-     * @param \Cake\View\Form\ContextInterface $context The current form context.
-     * @return string HTML elements.
-     */
-    public function render(array $data, ContextInterface $context)
-    {
-        $data += [
-            'name' => '',
-            'escape' => true,
-            'templateVars' => [],
-        ];
-        unset($data['val']);
+	/**
+	 * Render a file upload form widget.
+	 *
+	 * Data supports the following keys:
+	 *
+	 * - `name` - Set the input name.
+	 * - `escape` - Set to false to disable HTML escaping.
+	 *
+	 * All other keys will be converted into HTML attributes.
+	 * Unlike other input objects the `val` property will be specifically
+	 * ignored.
+	 *
+	 * @param array $data The data to build a file input with.
+	 * @param \Cake\View\Form\ContextInterface $context The current form context.
+	 * @return string HTML elements.
+	 */
+	public function render(array $data, ContextInterface $context)
+	{
+		$data += [
+			'name' => '',
+			'escape' => true,
+			'templateVars' => [],
+		];
+		unset($data['val']);
 
-        return $this->_templates->format('file', [
-            'name' => $data['name'],
-            'templateVars' => $data['templateVars'],
-            'attrs' => $this->_templates->formatAttributes(
-                $data,
-                ['name', 'val']
-            )
-        ]);
-    }
+		return $this->_templates->format('file', [
+			'name' => $data['name'],
+			'templateVars' => $data['templateVars'],
+			'attrs' => $this->_templates->formatAttributes(
+				$data,
+				['name', 'val']
+			)
+		]);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public function secureFields(array $data)
-    {
-        $fields = [];
-        foreach (['name', 'type', 'tmp_name', 'error', 'size'] as $suffix) {
-            $fields[] = $data['name'] . '[' . $suffix . ']';
-        }
-        return $fields;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function secureFields(array $data)
+	{
+		$fields = [];
+		foreach (['name', 'type', 'tmp_name', 'error', 'size'] as $suffix) {
+			$fields[] = $data['name'] . '[' . $suffix . ']';
+		}
+		return $fields;
+	}
 }

@@ -40,45 +40,45 @@ use Phinx\Console\Command;
  */
 class PhinxApplication extends Application
 {
-    /**
-     * Class Constructor.
-     *
-     * Initialize the Phinx console application.
-     *
-     * @param string $version The Application Version
-     */
-    public function __construct($version = '0.5.1')
-    {
-        parent::__construct('Phinx by Rob Morgan - https://phinx.org.', $version);
+	/**
+	 * Class Constructor.
+	 *
+	 * Initialize the Phinx console application.
+	 *
+	 * @param string $version The Application Version
+	 */
+	public function __construct($version = '0.5.1')
+	{
+		parent::__construct('Phinx by Rob Morgan - https://phinx.org.', $version);
 
-        $this->addCommands(array(
-            new Command\Init(),
-            new Command\Create(),
-            new Command\Migrate(),
-            new Command\Rollback(),
-            new Command\Status(),
-            new Command\Test(),
-            new Command\SeedCreate(),
-            new Command\SeedRun(),
-        ));
-    }
+		$this->addCommands(array(
+			new Command\Init(),
+			new Command\Create(),
+			new Command\Migrate(),
+			new Command\Rollback(),
+			new Command\Status(),
+			new Command\Test(),
+			new Command\SeedCreate(),
+			new Command\SeedRun(),
+		));
+	}
 
-    /**
-     * Runs the current application.
-     *
-     * @param InputInterface $input An Input instance
-     * @param OutputInterface $output An Output instance
-     * @return integer 0 if everything went fine, or an error code
-     */
-    public function doRun(InputInterface $input, OutputInterface $output)
-    {
-        // always show the version information except when the user invokes the help
-        // command as that already does it
-        if (false === $input->hasParameterOption(array('--help', '-h')) && null !== $input->getFirstArgument()) {
-            $output->writeln($this->getLongVersion());
-            $output->writeln('');
-        }
+	/**
+	 * Runs the current application.
+	 *
+	 * @param InputInterface $input An Input instance
+	 * @param OutputInterface $output An Output instance
+	 * @return integer 0 if everything went fine, or an error code
+	 */
+	public function doRun(InputInterface $input, OutputInterface $output)
+	{
+		// always show the version information except when the user invokes the help
+		// command as that already does it
+		if (false === $input->hasParameterOption(array('--help', '-h')) && null !== $input->getFirstArgument()) {
+			$output->writeln($this->getLongVersion());
+			$output->writeln('');
+		}
 
-        return parent::doRun($input, $output);
-    }
+		return parent::doRun($input, $output);
+	}
 }

@@ -31,40 +31,40 @@ use Cake\Console\ConsoleOutput as ConsoleOutputBase;
  */
 class ConsoleOutput extends ConsoleOutputBase
 {
-    /**
-     * Buffered messages.
-     *
-     * @var array
-     */
-    protected $_out = [];
+	/**
+	 * Buffered messages.
+	 *
+	 * @var array
+	 */
+	protected $_out = [];
 
-    /**
-     * Write output to the buffer.
-     *
-     * @param string|array $message A string or an array of strings to output
-     * @param int $newlines Number of newlines to append
-     * @return void
-     */
-    public function write($message, $newlines = 1)
-    {
-        foreach ((array)$message as $line) {
-            $this->_out[] = $line;
-        }
+	/**
+	 * Write output to the buffer.
+	 *
+	 * @param string|array $message A string or an array of strings to output
+	 * @param int $newlines Number of newlines to append
+	 * @return void
+	 */
+	public function write($message, $newlines = 1)
+	{
+		foreach ((array)$message as $line) {
+			$this->_out[] = $line;
+		}
 
-        $newlines--;
-        while ($newlines > 0) {
-            $this->_out[] = '';
-            $newlines--;
-        }
-    }
+		$newlines--;
+		while ($newlines > 0) {
+			$this->_out[] = '';
+			$newlines--;
+		}
+	}
 
-    /**
-     * Get the buffered output.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return $this->_out;
-    }
+	/**
+	 * Get the buffered output.
+	 *
+	 * @return array
+	 */
+	public function messages()
+	{
+		return $this->_out;
+	}
 }

@@ -20,34 +20,34 @@ namespace Cake\Auth\Storage;
  */
 interface StorageInterface
 {
-    /**
-     * Read user record.
-     *
-     * @return array|null
-     */
-    public function read();
+	/**
+	 * Read user record.
+	 *
+	 * @return array|null
+	 */
+	public function read();
 
-    /**
-     * Write user record.
-     *
-     * @param array $user User record.
-     * @return void
-     */
-    public function write(array $user);
+	/**
+	 * Write user record.
+	 *
+	 * @param array $user User record.
+	 * @return void
+	 */
+	public function write(array $user);
 
-    /**
-     * Delete user record.
-     *
-     * @return void
-     */
-    public function delete();
+	/**
+	 * Delete user record.
+	 *
+	 * @return void
+	 */
+	public function delete();
 
-    /**
-     * Get/set redirect URL.
-     *
-     * @param mixed $url Redirect URL. If `null` returns current URL. If `false`
-     *   deletes currently set URL.
-     * @return mixed
-     */
-    public function redirectUrl($url = null);
+	/**
+	 * Get/set redirect URL.
+	 *
+	 * @param mixed $url Redirect URL. If `null` returns current URL. If `false`
+	 *   deletes currently set URL.
+	 * @return mixed
+	 */
+	public function redirectUrl($url = null);
 }

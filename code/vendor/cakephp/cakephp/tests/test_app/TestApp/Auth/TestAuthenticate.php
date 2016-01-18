@@ -25,35 +25,35 @@ use Cake\Network\Response;
 class TestAuthenticate extends BaseAuthenticate
 {
 
-    public $callStack = [];
+	public $callStack = [];
 
-    public $authenticationProvider;
+	public $authenticationProvider;
 
-    public function implementedEvents()
-    {
-        return [
-            'Auth.afterIdentify' => 'afterIdentify',
-            'Auth.logout' => 'logout'
-        ];
-    }
+	public function implementedEvents()
+	{
+		return [
+			'Auth.afterIdentify' => 'afterIdentify',
+			'Auth.logout' => 'logout'
+		];
+	}
 
-    public function authenticate(Request $request, Response $response)
-    {
-        return ['id' => 1, 'username' => 'admad'];
-    }
+	public function authenticate(Request $request, Response $response)
+	{
+		return ['id' => 1, 'username' => 'admad'];
+	}
 
-    public function afterIdentify(Event $event, array $user)
-    {
-        $this->callStack[] = __FUNCTION__;
-        $this->authenticationProvider = $event->data[1];
+	public function afterIdentify(Event $event, array $user)
+	{
+		$this->callStack[] = __FUNCTION__;
+		$this->authenticationProvider = $event->data[1];
 
-        if (!empty($this->modifiedUser)) {
-            return $user + ['extra' => 'foo'];
-        }
-    }
+		if (!empty($this->modifiedUser)) {
+			return $user + ['extra' => 'foo'];
+		}
+	}
 
-    public function logout(Event $event, array $user)
-    {
-        $this->callStack[] = __FUNCTION__;
-    }
+	public function logout(Event $event, array $user)
+	{
+		$this->callStack[] = __FUNCTION__;
+	}
 }

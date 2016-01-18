@@ -20,12 +20,12 @@ namespace Cake\Validation;
 interface ValidatableInterface
 {
 
-    /**
-     * Validates the internal properties using a validator object and returns any
-     * validation errors found.
-     *
-     * @param \Cake\Validation\Validator $validator The validator to use when validating the entity.
-     * @return array
-     */
-    public function validate(Validator $validator);
+	/**
+	 * Validates the internal properties using a validator object and returns any
+	 * validation errors found.
+	 *
+	 * @param \Cake\Validation\Validator $validator The validator to use when validating the entity.
+	 * @return array
+	 */
+	public function validate(Validator $validator);
 }

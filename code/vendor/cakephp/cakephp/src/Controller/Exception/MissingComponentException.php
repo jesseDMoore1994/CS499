@@ -21,5 +21,5 @@ use Cake\Core\Exception\Exception;
 class MissingComponentException extends Exception
 {
 
-    protected $_messageTemplate = 'Component class %s could not be found.';
+	protected $_messageTemplate = 'Component class %s could not be found.';
 }

@@ -25,69 +25,69 @@ use Cake\TestSuite\TestCase;
 class I18nShellTest extends TestCase
 {
 
-    /**
-     * setup method
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        $this->io = $this->getMock('Cake\Console\ConsoleIo');
-        $this->shell = new I18nShell($this->io);
+	/**
+	 * setup method
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		$this->io = $this->getMock('Cake\Console\ConsoleIo');
+		$this->shell = new I18nShell($this->io);
 
-        $this->localeDir = TMP . 'Locale' . DS;
-    }
+		$this->localeDir = TMP . 'Locale' . DS;
+	}
 
-    /**
-     * Teardown
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        parent::tearDown();
+	/**
+	 * Teardown
+	 *
+	 * @return void
+	 */
+	public function tearDown()
+	{
+		parent::tearDown();
 
-        $deDir = $this->localeDir . 'de_DE' . DS;
+		$deDir = $this->localeDir . 'de_DE' . DS;
 
-        unlink($this->localeDir . 'default.pot');
-        unlink($this->localeDir . 'cake.pot');
+		unlink($this->localeDir . 'default.pot');
+		unlink($this->localeDir . 'cake.pot');
 
-        unlink($deDir . 'default.po');
-        unlink($deDir . 'cake.po');
-    }
+		unlink($deDir . 'default.po');
+		unlink($deDir . 'cake.po');
+	}
 
-    /**
-     * Tests that init() creates the PO files from POT files.
-     *
-     * @return void
-     */
-    public function testInit()
-    {
-        $deDir = $this->localeDir . 'de_DE' . DS;
-        if (!is_dir($deDir)) {
-            mkdir($deDir, 0770, true);
-        }
-        file_put_contents($this->localeDir . 'default.pot', 'Testing POT file.');
-        file_put_contents($this->localeDir . 'cake.pot', 'Testing POT file.');
-        if (file_exists($deDir . 'default.po')) {
-            unlink($deDir . 'default.po');
-        }
-        if (file_exists($deDir . 'default.po')) {
-            unlink($deDir . 'cake.po');
-        }
+	/**
+	 * Tests that init() creates the PO files from POT files.
+	 *
+	 * @return void
+	 */
+	public function testInit()
+	{
+		$deDir = $this->localeDir . 'de_DE' . DS;
+		if (!is_dir($deDir)) {
+			mkdir($deDir, 0770, true);
+		}
+		file_put_contents($this->localeDir . 'default.pot', 'Testing POT file.');
+		file_put_contents($this->localeDir . 'cake.pot', 'Testing POT file.');
+		if (file_exists($deDir . 'default.po')) {
+			unlink($deDir . 'default.po');
+		}
+		if (file_exists($deDir . 'default.po')) {
+			unlink($deDir . 'cake.po');
+		}
 
-        $this->shell->io()->expects($this->at(0))
-            ->method('ask')
-            ->will($this->returnValue('de_DE'));
-        $this->shell->io()->expects($this->at(1))
-            ->method('ask')
-            ->will($this->returnValue($this->localeDir));
+		$this->shell->io()->expects($this->at(0))
+			->method('ask')
+			->will($this->returnValue('de_DE'));
+		$this->shell->io()->expects($this->at(1))
+			->method('ask')
+			->will($this->returnValue($this->localeDir));
 
-        $this->shell->params['verbose'] = true;
-        $this->shell->init();
+		$this->shell->params['verbose'] = true;
+		$this->shell->init();
 
-        $this->assertFileExists($deDir . 'default.po');
-        $this->assertFileExists($deDir . 'cake.po');
-    }
+		$this->assertFileExists($deDir . 'default.po');
+		$this->assertFileExists($deDir . 'cake.po');
+	}
 }

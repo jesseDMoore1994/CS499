@@ -1,16 +1,16 @@
 var __debug_kit_id, __debug_kit_base_url;
 var elem = document.getElementById("__debug_kit");
 if (elem) {
-    __debug_kit_id = elem.getAttribute("data-id");
-    __debug_kit_base_url = elem.getAttribute("data-url");
-    elem = null;
+	__debug_kit_id = elem.getAttribute("data-id");
+	__debug_kit_base_url = elem.getAttribute("data-url");
+	elem = null;
 }
 
-(function(win, doc) {
+(function (win, doc) {
 	var iframe;
 	var bodyOverflow;
 
-	var onMessage = function(event) {
+	var onMessage = function (event) {
 		if (event.data === 'collapse') {
 			iframe.height = 40;
 			iframe.width = 40;
@@ -31,7 +31,7 @@ if (elem) {
 		}
 	};
 
-	var onReady = function() {
+	var onReady = function () {
 		if (!win.__debug_kit_id) {
 			return;
 		}
@@ -56,8 +56,8 @@ if (elem) {
 		window.addEventListener('message', onMessage, false);
 	};
 
-	var logAjaxRequest = function(original) {
-		return function() {
+	var logAjaxRequest = function (original) {
+		return function () {
 			if (this.readyState === 4 && this.getResponseHeader('X-DEBUGKIT-ID')) {
 				var params = {
 					requestId: this.getResponseHeader('X-DEBUGKIT-ID'),
@@ -75,17 +75,17 @@ if (elem) {
 		};
 	};
 
-	var proxyAjaxOpen = function() {
+	var proxyAjaxOpen = function () {
 		var proxied = window.XMLHttpRequest.prototype.open;
-		window.XMLHttpRequest.prototype.open = function() {
+		window.XMLHttpRequest.prototype.open = function () {
 			this._arguments = arguments;
 			return proxied.apply(this, [].slice.call(arguments));
 		};
 	};
 
-	var proxyAjaxSend = function() {
+	var proxyAjaxSend = function () {
 		var proxied = window.XMLHttpRequest.prototype.send;
-		window.XMLHttpRequest.prototype.send = function() {
+		window.XMLHttpRequest.prototype.send = function () {
 			this.onreadystatechange = logAjaxRequest(this.onreadystatechange);
 			return proxied.apply(this, [].slice.call(arguments));
 		};

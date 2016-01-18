@@ -13,15 +13,16 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 use Cake\Core\Configure;
+
 ?>
 <h2><?= __d('cake', 'An Internal Error Has Occurred.') ?></h2>
 <p class="error">
-    <strong><?= __d('cake', 'Error') ?>: </strong>
-    <?= h($message) ?>
+	<strong><?= __d('cake', 'Error') ?>: </strong>
+	<?= h($message) ?>
 </p>
 <?php
 if (Configure::read('debug')):
-    echo $this->element('auto_table_warning');
-    echo $this->element('exception_stack_trace');
+	echo $this->element('auto_table_warning');
+	echo $this->element('exception_stack_trace');
 endif;
 ?>

@@ -1,1 +1,1 @@
-Right now: <?= $this->Time->toAtom($time); ?>
+Right now:<?= $this->Time->toAtom($time); ?>

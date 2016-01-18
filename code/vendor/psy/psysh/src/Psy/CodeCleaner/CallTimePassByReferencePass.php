@@ -26,27 +26,27 @@ use Psy\Exception\FatalErrorException;
  */
 class CallTimePassByReferencePass extends CodeCleanerPass
 {
-    /**
-     * Validate of use call-time pass-by-reference.
-     *
-     * @throws RuntimeException if the user used call-time pass-by-reference in PHP >= 5.4.0
-     *
-     * @param Node $node
-     */
-    public function enterNode(Node $node)
-    {
-        if (version_compare(PHP_VERSION, '5.4', '<')) {
-            return;
-        }
+	/**
+	 * Validate of use call-time pass-by-reference.
+	 *
+	 * @throws RuntimeException if the user used call-time pass-by-reference in PHP >= 5.4.0
+	 *
+	 * @param Node $node
+	 */
+	public function enterNode(Node $node)
+	{
+		if (version_compare(PHP_VERSION, '5.4', '<')) {
+			return;
+		}
 
-        if (!$node instanceof FunctionCall && !$node instanceof MethodCall && !$node instanceof StaticCall) {
-            return;
-        }
+		if (!$node instanceof FunctionCall && !$node instanceof MethodCall && !$node instanceof StaticCall) {
+			return;
+		}
 
-        foreach ($node->args as $arg) {
-            if ($arg->byRef) {
-                throw new FatalErrorException('Call-time pass-by-reference has been removed');
-            }
-        }
-    }
+		foreach ($node->args as $arg) {
+			if ($arg->byRef) {
+				throw new FatalErrorException('Call-time pass-by-reference has been removed');
+			}
+		}
+	}
 }

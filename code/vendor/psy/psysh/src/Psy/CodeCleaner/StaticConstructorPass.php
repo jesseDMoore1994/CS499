@@ -29,59 +29,59 @@ use Psy\Exception\FatalErrorException;
  */
 class StaticConstructorPass extends CodeCleanerPass
 {
-    private $isPHP533;
-    private $namespace;
+	private $isPHP533;
+	private $namespace;
 
-    public function __construct()
-    {
-        $this->isPHP533 = version_compare(PHP_VERSION, '5.3.3', '>=');
-    }
+	public function __construct()
+	{
+		$this->isPHP533 = version_compare(PHP_VERSION, '5.3.3', '>=');
+	}
 
-    public function beforeTraverse(array $nodes)
-    {
-        $this->namespace = array();
-    }
+	public function beforeTraverse(array $nodes)
+	{
+		$this->namespace = array();
+	}
 
-    /**
-     * Validate that the old-style constructor function is not static.
-     *
-     * @throws FatalErrorException if the old-style constructor function is static.
-     *
-     * @param Node $node
-     */
-    public function enterNode(Node $node)
-    {
-        if ($node instanceof NamespaceStmt) {
-            $this->namespace = isset($node->name) ? $node->name->parts : array();
-        } elseif ($node instanceof ClassStmt) {
-            // Bail early if this is PHP 5.3.3 and we have a namespaced class
-            if (!empty($this->namespace) && $this->isPHP533) {
-                return;
-            }
+	/**
+	 * Validate that the old-style constructor function is not static.
+	 *
+	 * @throws FatalErrorException if the old-style constructor function is static.
+	 *
+	 * @param Node $node
+	 */
+	public function enterNode(Node $node)
+	{
+		if ($node instanceof NamespaceStmt) {
+			$this->namespace = isset($node->name) ? $node->name->parts : array();
+		} elseif ($node instanceof ClassStmt) {
+			// Bail early if this is PHP 5.3.3 and we have a namespaced class
+			if (!empty($this->namespace) && $this->isPHP533) {
+				return;
+			}
 
-            $constructor = null;
-            foreach ($node->stmts as $stmt) {
-                if ($stmt instanceof ClassMethod) {
-                    // Bail early if we find a new-style constructor
-                    if ('__construct' === strtolower($stmt->name)) {
-                        return;
-                    }
+			$constructor = null;
+			foreach ($node->stmts as $stmt) {
+				if ($stmt instanceof ClassMethod) {
+					// Bail early if we find a new-style constructor
+					if ('__construct' === strtolower($stmt->name)) {
+						return;
+					}
 
-                    // We found a possible old-style constructor
-                    // (unless there is also a __construct method)
-                    if (strtolower($node->name) === strtolower($stmt->name)) {
-                        $constructor = $stmt;
-                    }
-                }
-            }
+					// We found a possible old-style constructor
+					// (unless there is also a __construct method)
+					if (strtolower($node->name) === strtolower($stmt->name)) {
+						$constructor = $stmt;
+					}
+				}
+			}
 
-            if ($constructor && $constructor->isStatic()) {
-                throw new FatalErrorException(sprintf(
-                    'Constructor %s::%s() cannot be static',
-                    implode('\\', array_merge($this->namespace, (array) $node->name)),
-                    $constructor->name
-                ));
-            }
-        }
-    }
+			if ($constructor && $constructor->isStatic()) {
+				throw new FatalErrorException(sprintf(
+					'Constructor %s::%s() cannot be static',
+					implode('\\', array_merge($this->namespace, (array)$node->name)),
+					$constructor->name
+				));
+			}
+		}
+	}
 }

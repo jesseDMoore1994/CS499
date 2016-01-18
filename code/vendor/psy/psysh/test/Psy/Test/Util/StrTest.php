@@ -15,17 +15,17 @@ use Psy\Util\Str;
 
 class StrTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @dataProvider testUnvisProvider
-     */
-    public function testUnvis($input, $expected)
-    {
-        $this->assertEquals($expected, Str::unvis($input));
-    }
+	/**
+	 * @dataProvider testUnvisProvider
+	 */
+	public function testUnvis($input, $expected)
+	{
+		$this->assertEquals($expected, Str::unvis($input));
+	}
 
-    public function testUnvisProvider()
-    {
-        //return require_once(__DIR__.'/../../../fixtures/unvis_fixtures.php');
-        return json_decode(file_get_contents(__DIR__ . '/../../../fixtures/unvis_fixtures.json'));
-    }
+	public function testUnvisProvider()
+	{
+		//return require_once(__DIR__.'/../../../fixtures/unvis_fixtures.php');
+		return json_decode(file_get_contents(__DIR__ . '/../../../fixtures/unvis_fixtures.json'));
+	}
 }

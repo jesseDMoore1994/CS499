@@ -24,35 +24,35 @@ use Cake\Validation\RulesProvider;
 class RulesProviderTest extends TestCase
 {
 
-    /**
-     * Tests that RulesProvider proxies the method correctly and removes the
-     * extra arguments that are passed according to the signature of validation
-     * methods.
-     *
-     * @return void
-     */
-    public function testProxyToValidation()
-    {
-        $provider = new RulesProvider;
-        $this->assertTrue($provider->extension('foo.jpg', compact('provider')));
-        $this->assertFalse($provider->extension('foo.jpg', ['png'], compact('provider')));
-    }
+	/**
+	 * Tests that RulesProvider proxies the method correctly and removes the
+	 * extra arguments that are passed according to the signature of validation
+	 * methods.
+	 *
+	 * @return void
+	 */
+	public function testProxyToValidation()
+	{
+		$provider = new RulesProvider;
+		$this->assertTrue($provider->extension('foo.jpg', compact('provider')));
+		$this->assertFalse($provider->extension('foo.jpg', ['png'], compact('provider')));
+	}
 
-    /**
-     * Tests that it is possible to use a custom object as the provider to
-     * be decorated
-     *
-     * @return void
-     */
-    public function testCustomObject()
-    {
-        $mock = $this->getMock('\Cake\Validation\Validator', ['field']);
-        $mock->expects($this->once())
-            ->method('field')
-            ->with('first', null)
-            ->will($this->returnValue(true));
+	/**
+	 * Tests that it is possible to use a custom object as the provider to
+	 * be decorated
+	 *
+	 * @return void
+	 */
+	public function testCustomObject()
+	{
+		$mock = $this->getMock('\Cake\Validation\Validator', ['field']);
+		$mock->expects($this->once())
+			->method('field')
+			->with('first', null)
+			->will($this->returnValue(true));
 
-        $provider = new RulesProvider($mock);
-        $provider->field('first', compact('provider'));
-    }
+		$provider = new RulesProvider($mock);
+		$provider->field('first', compact('provider'));
+	}
 }

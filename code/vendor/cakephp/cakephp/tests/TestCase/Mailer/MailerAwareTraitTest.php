@@ -23,7 +23,7 @@ use Cake\TestSuite\TestCase;
 class Stub
 {
 
-    use MailerAwareTrait;
+	use MailerAwareTrait;
 }
 
 /**
@@ -32,29 +32,29 @@ class Stub
 class MailerAwareTraitTest extends TestCase
 {
 
-    /**
-     * Test getMailer
-     *
-     * @return void
-     */
-    public function testGetMailer()
-    {
-        $originalAppNamespace = Configure::read('App.namespace');
-        Configure::write('App.namespace', 'TestApp');
-        $stub = new Stub();
-        $this->assertInstanceOf('TestApp\Mailer\TestMailer', $stub->getMailer('Test'));
-        Configure::write('App.namespace', $originalAppNamespace);
-    }
+	/**
+	 * Test getMailer
+	 *
+	 * @return void
+	 */
+	public function testGetMailer()
+	{
+		$originalAppNamespace = Configure::read('App.namespace');
+		Configure::write('App.namespace', 'TestApp');
+		$stub = new Stub();
+		$this->assertInstanceOf('TestApp\Mailer\TestMailer', $stub->getMailer('Test'));
+		Configure::write('App.namespace', $originalAppNamespace);
+	}
 
-    /**
-     * Test exception thrown by getMailer.
-     *
-     * @expectedException Cake\Mailer\Exception\MissingMailerException
-     * @expectedExceptionMessage Mailer class "Test" could not be found.
-     */
-    public function testGetMailerThrowsException()
-    {
-        $stub = new Stub();
-        $stub->getMailer('Test');
-    }
+	/**
+	 * Test exception thrown by getMailer.
+	 *
+	 * @expectedException Cake\Mailer\Exception\MissingMailerException
+	 * @expectedExceptionMessage Mailer class "Test" could not be found.
+	 */
+	public function testGetMailerThrowsException()
+	{
+		$stub = new Stub();
+		$stub->getMailer('Test');
+	}
 }

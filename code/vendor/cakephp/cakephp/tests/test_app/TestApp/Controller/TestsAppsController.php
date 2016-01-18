@@ -23,47 +23,47 @@ namespace TestApp\Controller;
 
 class TestsAppsController extends AppController
 {
-    public $components = ['RequestHandler'];
+	public $components = ['RequestHandler'];
 
-    public function index()
-    {
-        $var = '';
-        if (isset($this->request->query['var'])) {
-            $var = $this->request->query['var'];
-        }
-        $this->set('var', $var);
-    }
+	public function index()
+	{
+		$var = '';
+		if (isset($this->request->query['var'])) {
+			$var = $this->request->query['var'];
+		}
+		$this->set('var', $var);
+	}
 
-    public function some_method()
-    {
-        $this->response->body(5);
-        return $this->response;
-    }
+	public function some_method()
+	{
+		$this->response->body(5);
+		return $this->response;
+	}
 
-    public function set_action()
-    {
-        $this->set('var', 'string');
-        $this->render('index');
-    }
+	public function set_action()
+	{
+		$this->set('var', 'string');
+		$this->render('index');
+	}
 
-    public function redirect_to()
-    {
-        return $this->redirect('http://cakephp.org');
-    }
+	public function redirect_to()
+	{
+		return $this->redirect('http://cakephp.org');
+	}
 
-    public function redirect_to_permanent()
-    {
-        return $this->redirect('http://cakephp.org', 301);
-    }
+	public function redirect_to_permanent()
+	{
+		return $this->redirect('http://cakephp.org', 301);
+	}
 
-    public function set_type()
-    {
-        $this->response->type('json');
-        return $this->response;
-    }
+	public function set_type()
+	{
+		$this->response->type('json');
+		return $this->response;
+	}
 
-    public function throw_exception()
-    {
-        throw new \RuntimeException('Foo');
-    }
+	public function throw_exception()
+	{
+		throw new \RuntimeException('Foo');
+	}
 }

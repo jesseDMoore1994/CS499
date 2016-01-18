@@ -24,17 +24,17 @@ use PDO;
 class MysqlStatement extends PDOStatement
 {
 
-    use BufferResultsTrait;
+	use BufferResultsTrait;
 
-    /**
-     * {@inheritDoc}
-     *
-     */
-    public function execute($params = null)
-    {
-        $this->_driver->connection()->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, $this->_bufferResults);
-        $result = $this->_statement->execute($params);
-        $this->_driver->connection()->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-        return $result;
-    }
+	/**
+	 * {@inheritDoc}
+	 *
+	 */
+	public function execute($params = null)
+	{
+		$this->_driver->connection()->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, $this->_bufferResults);
+		$result = $this->_statement->execute($params);
+		$this->_driver->connection()->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+		return $result;
+	}
 }

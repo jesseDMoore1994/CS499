@@ -34,22 +34,22 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Rollback extends AbstractCommand
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
-    {
-        parent::configure();
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function configure()
+	{
+		parent::configure();
 
-        $this->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment');
+		$this->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment');
 
-        $this->setName('rollback')
-             ->setDescription('Rollback the last or to a specific migration')
-             ->addOption('--target', '-t', InputOption::VALUE_REQUIRED, 'The version number to rollback to')
-             ->addOption('--date', '-d', InputOption::VALUE_REQUIRED, 'The date to rollback to')
-             ->setHelp(
-<<<EOT
-The <info>rollback</info> command reverts the last migration, or optionally up to a specific version
+		$this->setName('rollback')
+			->setDescription('Rollback the last or to a specific migration')
+			->addOption('--target', '-t', InputOption::VALUE_REQUIRED, 'The version number to rollback to')
+			->addOption('--date', '-d', InputOption::VALUE_REQUIRED, 'The date to rollback to')
+			->setHelp(
+				<<<EOT
+				The <info>rollback</info> command reverts the last migration, or optionally up to a specific version
 
 <info>phinx rollback -e development</info>
 <info>phinx rollback -e development -t 20111018185412</info>
@@ -57,54 +57,54 @@ The <info>rollback</info> command reverts the last migration, or optionally up t
 <info>phinx rollback -e development -v</info>
 
 EOT
-             );
-    }
+			);
+	}
 
-    /**
-     * Rollback the migration.
-     *
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return void
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $this->bootstrap($input, $output);
+	/**
+	 * Rollback the migration.
+	 *
+	 * @param InputInterface $input
+	 * @param OutputInterface $output
+	 * @return void
+	 */
+	protected function execute(InputInterface $input, OutputInterface $output)
+	{
+		$this->bootstrap($input, $output);
 
-        $environment = $input->getOption('environment');
-        $version     = $input->getOption('target');
-        $date        = $input->getOption('date');
+		$environment = $input->getOption('environment');
+		$version = $input->getOption('target');
+		$date = $input->getOption('date');
 
-        if (null === $environment) {
-            $environment = $this->getConfig()->getDefaultEnvironment();
-            $output->writeln('<comment>warning</comment> no environment specified, defaulting to: ' . $environment);
-        } else {
-            $output->writeln('<info>using environment</info> ' . $environment);
-        }
+		if (null === $environment) {
+			$environment = $this->getConfig()->getDefaultEnvironment();
+			$output->writeln('<comment>warning</comment> no environment specified, defaulting to: ' . $environment);
+		} else {
+			$output->writeln('<info>using environment</info> ' . $environment);
+		}
 
-        $envOptions = $this->getConfig()->getEnvironment($environment);
-        if (isset($envOptions['adapter'])) {
-            $output->writeln('<info>using adapter</info> ' . $envOptions['adapter']);
-        }
+		$envOptions = $this->getConfig()->getEnvironment($environment);
+		if (isset($envOptions['adapter'])) {
+			$output->writeln('<info>using adapter</info> ' . $envOptions['adapter']);
+		}
 
-        if (isset($envOptions['wrapper'])) {
-            $output->writeln('<info>using wrapper</info> ' . $envOptions['wrapper']);
-        }
+		if (isset($envOptions['wrapper'])) {
+			$output->writeln('<info>using wrapper</info> ' . $envOptions['wrapper']);
+		}
 
-        if (isset($envOptions['name'])) {
-            $output->writeln('<info>using database</info> ' . $envOptions['name']);
-        }
+		if (isset($envOptions['name'])) {
+			$output->writeln('<info>using database</info> ' . $envOptions['name']);
+		}
 
-        // rollback the specified environment
-        $start = microtime(true);
-        if (null !== $date) {
-            $this->getManager()->rollbackToDateTime($environment, new \DateTime($date));
-        } else {
-            $this->getManager()->rollback($environment, $version);
-        }
-        $end = microtime(true);
+		// rollback the specified environment
+		$start = microtime(true);
+		if (null !== $date) {
+			$this->getManager()->rollbackToDateTime($environment, new \DateTime($date));
+		} else {
+			$this->getManager()->rollback($environment, $version);
+		}
+		$end = microtime(true);
 
-        $output->writeln('');
-        $output->writeln('<comment>All Done. Took ' . sprintf('%.4fs', $end - $start) . '</comment>');
-    }
+		$output->writeln('');
+		$output->writeln('<comment>All Done. Took ' . sprintf('%.4fs', $end - $start) . '</comment>');
+	}
 }

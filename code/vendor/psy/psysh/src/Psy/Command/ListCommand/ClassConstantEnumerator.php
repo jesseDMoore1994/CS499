@@ -19,100 +19,100 @@ use Symfony\Component\Console\Input\InputInterface;
  */
 class ClassConstantEnumerator extends Enumerator
 {
-    /**
-     * {@inheritdoc}
-     */
-    protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
-    {
-        // only list constants when a Reflector is present.
+	/**
+	 * {@inheritdoc}
+	 */
+	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
+	{
+		// only list constants when a Reflector is present.
 
-        if ($reflector === null) {
-            return;
-        }
+		if ($reflector === null) {
+			return;
+		}
 
-        // We can only list constants on actual class (or object) reflectors.
-        if (!$reflector instanceof \ReflectionClass) {
-            // TODO: handle ReflectionExtension as well
-            return;
-        }
+		// We can only list constants on actual class (or object) reflectors.
+		if (!$reflector instanceof \ReflectionClass) {
+			// TODO: handle ReflectionExtension as well
+			return;
+		}
 
-        // only list constants if we are specifically asked
-        if (!$input->getOption('constants')) {
-            return;
-        }
+		// only list constants if we are specifically asked
+		if (!$input->getOption('constants')) {
+			return;
+		}
 
-        $constants = $this->prepareConstants($this->getConstants($reflector));
+		$constants = $this->prepareConstants($this->getConstants($reflector));
 
-        if (empty($constants)) {
-            return;
-        }
+		if (empty($constants)) {
+			return;
+		}
 
-        $ret = array();
-        $ret[$this->getKindLabel($reflector)] = $constants;
+		$ret = array();
+		$ret[$this->getKindLabel($reflector)] = $constants;
 
-        return $ret;
-    }
+		return $ret;
+	}
 
-    /**
-     * Get defined constants for the given class or object Reflector.
-     *
-     * @param \Reflector $reflector
-     *
-     * @return array
-     */
-    protected function getConstants(\Reflector $reflector)
-    {
-        $constants = array();
-        foreach ($reflector->getConstants() as $name => $constant) {
-            $constants[$name] = new ReflectionConstant($reflector, $name);
-        }
+	/**
+	 * Get defined constants for the given class or object Reflector.
+	 *
+	 * @param \Reflector $reflector
+	 *
+	 * @return array
+	 */
+	protected function getConstants(\Reflector $reflector)
+	{
+		$constants = array();
+		foreach ($reflector->getConstants() as $name => $constant) {
+			$constants[$name] = new ReflectionConstant($reflector, $name);
+		}
 
-        // TODO: this should be natcasesort
-        ksort($constants);
+		// TODO: this should be natcasesort
+		ksort($constants);
 
-        return $constants;
-    }
+		return $constants;
+	}
 
-    /**
-     * Prepare formatted constant array.
-     *
-     * @param array $constants
-     *
-     * @return array
-     */
-    protected function prepareConstants(array $constants)
-    {
-        // My kingdom for a generator.
-        $ret = array();
+	/**
+	 * Prepare formatted constant array.
+	 *
+	 * @param array $constants
+	 *
+	 * @return array
+	 */
+	protected function prepareConstants(array $constants)
+	{
+		// My kingdom for a generator.
+		$ret = array();
 
-        foreach ($constants as $name => $constant) {
-            if ($this->showItem($name)) {
-                $ret[$name] = array(
-                    'name'  => $name,
-                    'style' => self::IS_CONSTANT,
-                    'value' => $this->presentRef($constant->getValue()),
-                );
-            }
-        }
+		foreach ($constants as $name => $constant) {
+			if ($this->showItem($name)) {
+				$ret[$name] = array(
+					'name' => $name,
+					'style' => self::IS_CONSTANT,
+					'value' => $this->presentRef($constant->getValue()),
+				);
+			}
+		}
 
-        return $ret;
-    }
+		return $ret;
+	}
 
-    /**
-     * Get a label for the particular kind of "class" represented.
-     *
-     * @param \ReflectionClass $reflector
-     *
-     * @return string
-     */
-    protected function getKindLabel(\ReflectionClass $reflector)
-    {
-        if ($reflector->isInterface()) {
-            return 'Interface Constants';
-        } elseif (method_exists($reflector, 'isTrait') && $reflector->isTrait()) {
-            return 'Trait Constants';
-        } else {
-            return 'Class Constants';
-        }
-    }
+	/**
+	 * Get a label for the particular kind of "class" represented.
+	 *
+	 * @param \ReflectionClass $reflector
+	 *
+	 * @return string
+	 */
+	protected function getKindLabel(\ReflectionClass $reflector)
+	{
+		if ($reflector->isInterface()) {
+			return 'Interface Constants';
+		} elseif (method_exists($reflector, 'isTrait') && $reflector->isTrait()) {
+			return 'Trait Constants';
+		} else {
+			return 'Class Constants';
+		}
+	}
 }

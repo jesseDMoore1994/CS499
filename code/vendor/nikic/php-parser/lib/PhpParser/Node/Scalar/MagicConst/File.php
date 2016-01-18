@@ -6,7 +6,8 @@ use PhpParser\Node\Scalar\MagicConst;
 
 class File extends MagicConst
 {
-    public function getName() {
-        return '__FILE__';
-    }
+	public function getName()
+	{
+		return '__FILE__';
+	}
 }

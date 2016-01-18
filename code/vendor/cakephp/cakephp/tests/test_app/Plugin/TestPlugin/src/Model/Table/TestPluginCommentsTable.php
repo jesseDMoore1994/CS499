@@ -23,8 +23,8 @@ use Cake\ORM\Table;
 class TestPluginCommentsTable extends Table
 {
 
-    public function initialize(array $config)
-    {
-        $this->table('test_plugin_comments');
-    }
+	public function initialize(array $config)
+	{
+		$this->table('test_plugin_comments');
+	}
 }

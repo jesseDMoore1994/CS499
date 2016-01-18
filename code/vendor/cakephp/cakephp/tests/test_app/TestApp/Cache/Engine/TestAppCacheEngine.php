@@ -26,34 +26,34 @@ use Cake\Cache\CacheEngine;
 class TestAppCacheEngine extends CacheEngine
 {
 
-    public function write($key, $value)
-    {
-        if ($key === 'fail') {
-            return false;
-        }
-    }
+	public function write($key, $value)
+	{
+		if ($key === 'fail') {
+			return false;
+		}
+	}
 
-    public function read($key)
-    {
-    }
+	public function read($key)
+	{
+	}
 
-    public function increment($key, $offset = 1)
-    {
-    }
+	public function increment($key, $offset = 1)
+	{
+	}
 
-    public function decrement($key, $offset = 1)
-    {
-    }
+	public function decrement($key, $offset = 1)
+	{
+	}
 
-    public function delete($key)
-    {
-    }
+	public function delete($key)
+	{
+	}
 
-    public function clear($check)
-    {
-    }
+	public function clear($check)
+	{
+	}
 
-    public function clearGroup($group)
-    {
-    }
+	public function clearGroup($group)
+	{
+	}
 }

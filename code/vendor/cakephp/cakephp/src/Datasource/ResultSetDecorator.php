@@ -26,21 +26,21 @@ use Countable;
 class ResultSetDecorator extends Collection implements ResultSetInterface
 {
 
-    /**
-     * Make this object countable.
-     *
-     * Part of the Countable interface. Calling this method
-     * will convert the underlying traversable object into an array and
-     * get the count of the underlying data.
-     *
-     * @return int
-     */
-    public function count()
-    {
-        if ($this->getInnerIterator() instanceof Countable) {
-            return $this->getInnerIterator()->count();
-        }
+	/**
+	 * Make this object countable.
+	 *
+	 * Part of the Countable interface. Calling this method
+	 * will convert the underlying traversable object into an array and
+	 * get the count of the underlying data.
+	 *
+	 * @return int
+	 */
+	public function count()
+	{
+		if ($this->getInnerIterator() instanceof Countable) {
+			return $this->getInnerIterator()->count();
+		}
 
-        return count($this->toArray());
-    }
+		return count($this->toArray());
+	}
 }

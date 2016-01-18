@@ -23,27 +23,27 @@ namespace Cake\TestSuite;
 trait StringCompareTrait
 {
 
-    /**
-     * The base path for output comparisons
-     *
-     * Must be initialized before use
-     *
-     * @var string
-     */
-    protected $_compareBasePath = '';
+	/**
+	 * The base path for output comparisons
+	 *
+	 * Must be initialized before use
+	 *
+	 * @var string
+	 */
+	protected $_compareBasePath = '';
 
-    /**
-     * Compare the result to the contents of the file
-     *
-     * @param string $path partial path to test comparison file
-     * @param string $result test result as a string
-     * @return void
-     */
-    public function assertSameAsFile($path, $result)
-    {
-        $path = $this->_compareBasePath . $path;
+	/**
+	 * Compare the result to the contents of the file
+	 *
+	 * @param string $path partial path to test comparison file
+	 * @param string $result test result as a string
+	 * @return void
+	 */
+	public function assertSameAsFile($path, $result)
+	{
+		$path = $this->_compareBasePath . $path;
 
-        $expected = file_get_contents($path);
-        $this->assertTextEquals($expected, $result);
-    }
+		$expected = file_get_contents($path);
+		$this->assertTextEquals($expected, $result);
+	}
 }

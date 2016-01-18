@@ -22,61 +22,61 @@ use Cake\View\Form\ContextInterface;
 class CheckboxWidget extends BasicWidget
 {
 
-    /**
-     * Render a checkbox element.
-     *
-     * Data supports the following keys:
-     *
-     * - `name` - The name of the input.
-     * - `value` - The value attribute. Defaults to '1'.
-     * - `val` - The current value. If it matches `value` the checkbox will be checked.
-     *   You can also use the 'checked' attribute to make the checkbox checked.
-     * - `disabled` - Whether or not the checkbox should be disabled.
-     *
-     * Any other attributes passed in will be treated as HTML attributes.
-     *
-     * @param array $data The data to create a checkbox with.
-     * @param \Cake\View\Form\ContextInterface $context The current form context.
-     * @return string Generated HTML string.
-     */
-    public function render(array $data, ContextInterface $context)
-    {
-        $data += [
-            'name' => '',
-            'value' => 1,
-            'val' => null,
-            'disabled' => false,
-            'templateVars' => []
-        ];
-        if ($this->_isChecked($data)) {
-            $data['checked'] = true;
-        }
-        unset($data['val']);
+	/**
+	 * Render a checkbox element.
+	 *
+	 * Data supports the following keys:
+	 *
+	 * - `name` - The name of the input.
+	 * - `value` - The value attribute. Defaults to '1'.
+	 * - `val` - The current value. If it matches `value` the checkbox will be checked.
+	 *   You can also use the 'checked' attribute to make the checkbox checked.
+	 * - `disabled` - Whether or not the checkbox should be disabled.
+	 *
+	 * Any other attributes passed in will be treated as HTML attributes.
+	 *
+	 * @param array $data The data to create a checkbox with.
+	 * @param \Cake\View\Form\ContextInterface $context The current form context.
+	 * @return string Generated HTML string.
+	 */
+	public function render(array $data, ContextInterface $context)
+	{
+		$data += [
+			'name' => '',
+			'value' => 1,
+			'val' => null,
+			'disabled' => false,
+			'templateVars' => []
+		];
+		if ($this->_isChecked($data)) {
+			$data['checked'] = true;
+		}
+		unset($data['val']);
 
-        $attrs = $this->_templates->formatAttributes(
-            $data,
-            ['name', 'value']
-        );
+		$attrs = $this->_templates->formatAttributes(
+			$data,
+			['name', 'value']
+		);
 
-        return $this->_templates->format('checkbox', [
-            'name' => $data['name'],
-            'value' => $data['value'],
-            'templateVars' => $data['templateVars'],
-            'attrs' => $attrs
-        ]);
-    }
+		return $this->_templates->format('checkbox', [
+			'name' => $data['name'],
+			'value' => $data['value'],
+			'templateVars' => $data['templateVars'],
+			'attrs' => $attrs
+		]);
+	}
 
-    /**
-     * Check whether or not the checkbox should be checked.
-     *
-     * @param array $data Data to look at and determine checked state.
-     * @return bool
-     */
-    protected function _isChecked($data)
-    {
-        if (array_key_exists('checked', $data)) {
-            return (bool)$data['checked'];
-        }
-        return (string)$data['val'] === (string)$data['value'];
-    }
+	/**
+	 * Check whether or not the checkbox should be checked.
+	 *
+	 * @param array $data Data to look at and determine checked state.
+	 * @return bool
+	 */
+	protected function _isChecked($data)
+	{
+		if (array_key_exists('checked', $data)) {
+			return (bool)$data['checked'];
+		}
+		return (string)$data['val'] === (string)$data['value'];
+	}
 }

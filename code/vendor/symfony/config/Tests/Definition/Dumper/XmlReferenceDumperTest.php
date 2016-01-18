@@ -16,25 +16,25 @@ use Symfony\Component\Config\Tests\Fixtures\Configuration\ExampleConfiguration;
 
 class XmlReferenceDumperTest extends \PHPUnit_Framework_TestCase
 {
-    public function testDumper()
-    {
-        $configuration = new ExampleConfiguration();
+	public function testDumper()
+	{
+		$configuration = new ExampleConfiguration();
 
-        $dumper = new XmlReferenceDumper();
-        $this->assertEquals($this->getConfigurationAsString(), $dumper->dump($configuration));
-    }
+		$dumper = new XmlReferenceDumper();
+		$this->assertEquals($this->getConfigurationAsString(), $dumper->dump($configuration));
+	}
 
-    public function testNamespaceDumper()
-    {
-        $configuration = new ExampleConfiguration();
+	public function testNamespaceDumper()
+	{
+		$configuration = new ExampleConfiguration();
 
-        $dumper = new XmlReferenceDumper();
-        $this->assertEquals(str_replace('http://example.org/schema/dic/acme_root', 'http://symfony.com/schema/dic/symfony', $this->getConfigurationAsString()), $dumper->dump($configuration, 'http://symfony.com/schema/dic/symfony'));
-    }
+		$dumper = new XmlReferenceDumper();
+		$this->assertEquals(str_replace('http://example.org/schema/dic/acme_root', 'http://symfony.com/schema/dic/symfony', $this->getConfigurationAsString()), $dumper->dump($configuration, 'http://symfony.com/schema/dic/symfony'));
+	}
 
-    private function getConfigurationAsString()
-    {
-        return str_replace("\n", PHP_EOL, <<<EOL
+	private function getConfigurationAsString()
+	{
+		return str_replace("\n", PHP_EOL, <<<EOL
 <!-- Namespace: http://example.org/schema/dic/acme_root -->
 <!-- scalar-required: Required -->
 <!-- enum-with-default: One of "this"; "that" -->
@@ -78,6 +78,6 @@ class XmlReferenceDumperTest extends \PHPUnit_Framework_TestCase
 </config>
 
 EOL
-        );
-    }
+		);
+	}
 }

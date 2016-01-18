@@ -2,10 +2,10 @@
 <?php
 
 foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php'] as $file) {
-    if (file_exists($file)) {
-        require $file;
-        break;
-    }
+	if (file_exists($file)) {
+		require $file;
+		break;
+	}
 }
 
 ini_set('xdebug.max_nesting_level', 3000);
@@ -19,15 +19,15 @@ list($operations, $files, $attributes) = parseArgs($argv);
 
 /* Dump nodes by default */
 if (empty($operations)) {
-    $operations[] = 'dump';
+	$operations[] = 'dump';
 }
 
 if (empty($files)) {
-    showHelp("Must specify at least one file.");
+	showHelp("Must specify at least one file.");
 }
 
 $lexer = new PhpParser\Lexer\Emulative(array('usedAttributes' => array(
-    'startLine', 'endLine', 'startFilePos', 'endFilePos'
+	'startLine', 'endLine', 'startFilePos', 'endFilePos'
 )));
 $parser = (new PhpParser\ParserFactory)->create(PhpParser\ParserFactory::PREFER_PHP7, $lexer);
 $dumper = new PhpParser\NodeDumper;
@@ -38,57 +38,58 @@ $traverser = new PhpParser\NodeTraverser();
 $traverser->addVisitor(new PhpParser\NodeVisitor\NameResolver);
 
 foreach ($files as $file) {
-    if (strpos($file, '<?php') === 0) {
-        $code = $file;
-        echo "====> Code $code\n";
-    } else {
-        if (!file_exists($file)) {
-            die("File $file does not exist.\n");
-        }
+	if (strpos($file, '<?php') === 0) {
+		$code = $file;
+		echo "====> Code $code\n";
+	} else {
+		if (!file_exists($file)) {
+			die("File $file does not exist.\n");
+		}
 
-        $code = file_get_contents($file);
-        echo "====> File $file:\n";
-    }
+		$code = file_get_contents($file);
+		echo "====> File $file:\n";
+	}
 
-    try {
-        $stmts = $parser->parse($code);
-    } catch (PhpParser\Error $e) {
-        if ($attributes['with-column-info'] && $e->hasColumnInfo()) {
-            $startLine = $e->getStartLine();
-            $endLine = $e->getEndLine();
-            $startColumn = $e->getStartColumn($code);
-            $endColumn   = $e->getEndColumn($code);
-            $message .= $e->getRawMessage() . " from $startLine:$startColumn to $endLine:$endColumn";
-        } else {
-            $message = $e->getMessage();
-        }
+	try {
+		$stmts = $parser->parse($code);
+	} catch (PhpParser\Error $e) {
+		if ($attributes['with-column-info'] && $e->hasColumnInfo()) {
+			$startLine = $e->getStartLine();
+			$endLine = $e->getEndLine();
+			$startColumn = $e->getStartColumn($code);
+			$endColumn = $e->getEndColumn($code);
+			$message .= $e->getRawMessage() . " from $startLine:$startColumn to $endLine:$endColumn";
+		} else {
+			$message = $e->getMessage();
+		}
 
-        die($message . "\n");
-    }
+		die($message . "\n");
+	}
 
-    foreach ($operations as $operation) {
-        if ('dump' === $operation) {
-            echo "==> Node dump:\n";
-            echo $dumper->dump($stmts), "\n";
-        } elseif ('pretty-print' === $operation) {
-            echo "==> Pretty print:\n";
-            echo $prettyPrinter->prettyPrintFile($stmts), "\n";
-        } elseif ('serialize-xml' === $operation) {
-            echo "==> Serialized XML:\n";
-            echo $serializer->serialize($stmts), "\n";
-        } elseif ('var-dump' === $operation) {
-            echo "==> var_dump():\n";
-            var_dump($stmts);
-        } elseif ('resolve-names' === $operation) {
-            echo "==> Resolved names.\n";
-            $stmts = $traverser->traverse($stmts);
-        }
-    }
+	foreach ($operations as $operation) {
+		if ('dump' === $operation) {
+			echo "==> Node dump:\n";
+			echo $dumper->dump($stmts), "\n";
+		} elseif ('pretty-print' === $operation) {
+			echo "==> Pretty print:\n";
+			echo $prettyPrinter->prettyPrintFile($stmts), "\n";
+		} elseif ('serialize-xml' === $operation) {
+			echo "==> Serialized XML:\n";
+			echo $serializer->serialize($stmts), "\n";
+		} elseif ('var-dump' === $operation) {
+			echo "==> var_dump():\n";
+			var_dump($stmts);
+		} elseif ('resolve-names' === $operation) {
+			echo "==> Resolved names.\n";
+			$stmts = $traverser->traverse($stmts);
+		}
+	}
 }
 
-function showHelp($error) {
-    die($error . "\n\n" .
-        <<<OUTPUT
+function showHelp($error)
+{
+	die($error . "\n\n" .
+		<<<OUTPUT
 Usage: php-parse [operations] file1.php [file2.php ...]
    or: php-parse [operations] "<?php code"
 Turn PHP source code into an abstract syntax tree.
@@ -109,58 +110,59 @@ Example:
 
 
 OUTPUT
-    );
+	);
 }
 
-function parseArgs($args) {
-    $operations = array();
-    $files = array();
-    $attributes = array(
-        'with-column-info' => false,
-    );
+function parseArgs($args)
+{
+	$operations = array();
+	$files = array();
+	$attributes = array(
+		'with-column-info' => false,
+	);
 
-    array_shift($args);
-    $parseOptions = true;
-    foreach ($args as $arg) {
-        if (!$parseOptions) {
-            $files[] = $arg;
-            continue;
-        }
+	array_shift($args);
+	$parseOptions = true;
+	foreach ($args as $arg) {
+		if (!$parseOptions) {
+			$files[] = $arg;
+			continue;
+		}
 
-        switch ($arg) {
-            case '--dump':
-            case '-d':
-                $operations[] = 'dump';
-                break;
-            case '--pretty-print':
-            case '-p':
-                $operations[] = 'pretty-print';
-                break;
-            case '--serialize-xml':
-                $operations[] = 'serialize-xml';
-                break;
-            case '--var-dump':
-                $operations[] = 'var-dump';
-                break;
-            case '--resolve-names':
-            case '-N';
-                $operations[] = 'resolve-names';
-                break;
-            case '--with-column-info':
-            case '-c';
-                $attributes['with-column-info'] = true;
-                break;
-            case '--':
-                $parseOptions = false;
-                break;
-            default:
-                if ($arg[0] === '-') {
-                    showHelp("Invalid operation $arg.");
-                } else {
-                    $files[] = $arg;
-                }
-        }
-    }
+		switch ($arg) {
+			case '--dump':
+			case '-d':
+				$operations[] = 'dump';
+				break;
+			case '--pretty-print':
+			case '-p':
+				$operations[] = 'pretty-print';
+				break;
+			case '--serialize-xml':
+				$operations[] = 'serialize-xml';
+				break;
+			case '--var-dump':
+				$operations[] = 'var-dump';
+				break;
+			case '--resolve-names':
+			case '-N';
+				$operations[] = 'resolve-names';
+				break;
+			case '--with-column-info':
+			case '-c';
+				$attributes['with-column-info'] = true;
+				break;
+			case '--':
+				$parseOptions = false;
+				break;
+			default:
+				if ($arg[0] === '-') {
+					showHelp("Invalid operation $arg.");
+				} else {
+					$files[] = $arg;
+				}
+		}
+	}
 
-    return array($operations, $files, $attributes);
+	return array($operations, $files, $attributes);
 }

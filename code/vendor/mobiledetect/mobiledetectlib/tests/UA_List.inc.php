@@ -15,13 +15,13 @@ $list = array();
 // Scan.
 $dir = new DirectoryIterator($includeBasePath);
 foreach ($dir as $fileInfo) {
-    if ($fileInfo->isDot()) {
-        continue;
-    }
-    $listNew = include $includeBasePath . '/' . $fileInfo->getFilename();
-    if (is_array($listNew)) {
-        $list = array_merge($list, $listNew);
-    }
+	if ($fileInfo->isDot()) {
+		continue;
+	}
+	$listNew = include $includeBasePath . '/' . $fileInfo->getFilename();
+	if (is_array($listNew)) {
+		$list = array_merge($list, $listNew);
+	}
 }
 
 return $list;

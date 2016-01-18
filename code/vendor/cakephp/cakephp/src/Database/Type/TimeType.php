@@ -22,19 +22,19 @@ namespace Cake\Database\Type;
 class TimeType extends DateTimeType
 {
 
-    /**
-     * Time format for DateTime object
-     *
-     * @var string
-     */
-    protected $_format = 'H:i:s';
+	/**
+	 * Time format for DateTime object
+	 *
+	 * @var string
+	 */
+	protected $_format = 'H:i:s';
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function _parseValue($value)
-    {
-        $class = static::$dateTimeClass;
-        return $class::parseTime($value, $this->_localeFormat);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	protected function _parseValue($value)
+	{
+		$class = static::$dateTimeClass;
+		return $class::parseTime($value, $this->_localeFormat);
+	}
 }

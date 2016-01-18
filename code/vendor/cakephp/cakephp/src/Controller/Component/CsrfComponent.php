@@ -40,123 +40,123 @@ use Cake\Utility\Text;
 class CsrfComponent extends Component
 {
 
-    /**
-     * Default config for the CSRF handling.
-     *
-     *  - cookieName = The name of the cookie to send.
-     *  - expiry = How long the CSRF token should last. Defaults to browser session.
-     *  - secure = Whether or not the cookie will be set with the Secure flag. Defaults to false.
-     *  - httpOnly = Whether or not the cookie will be set with the HttpOnly flag. Defaults to false.
-     *  - field = The form field to check. Changing this will also require configuring
-     *    FormHelper.
-     *
-     * @var array
-     */
-    protected $_defaultConfig = [
-        'cookieName' => 'csrfToken',
-        'expiry' => 0,
-        'secure' => false,
-        'httpOnly' => false,
-        'field' => '_csrfToken',
-    ];
+	/**
+	 * Default config for the CSRF handling.
+	 *
+	 *  - cookieName = The name of the cookie to send.
+	 *  - expiry = How long the CSRF token should last. Defaults to browser session.
+	 *  - secure = Whether or not the cookie will be set with the Secure flag. Defaults to false.
+	 *  - httpOnly = Whether or not the cookie will be set with the HttpOnly flag. Defaults to false.
+	 *  - field = The form field to check. Changing this will also require configuring
+	 *    FormHelper.
+	 *
+	 * @var array
+	 */
+	protected $_defaultConfig = [
+		'cookieName' => 'csrfToken',
+		'expiry' => 0,
+		'secure' => false,
+		'httpOnly' => false,
+		'field' => '_csrfToken',
+	];
 
-    /**
-     * Startup callback.
-     *
-     * Validates the CSRF token for POST data. If
-     * the request is a GET request, and the cookie value is absent a cookie will be set.
-     *
-     * Once a cookie is set it will be copied into request->params['_csrfToken']
-     * so that application and framework code can easily access the csrf token.
-     *
-     * RequestAction requests do not get checked, nor will
-     * they set a cookie should it be missing.
-     *
-     * @param \Cake\Event\Event $event Event instance.
-     * @return void
-     */
-    public function startup(Event $event)
-    {
-        $controller = $event->subject();
-        $request = $controller->request;
-        $response = $controller->response;
-        $cookieName = $this->_config['cookieName'];
+	/**
+	 * Startup callback.
+	 *
+	 * Validates the CSRF token for POST data. If
+	 * the request is a GET request, and the cookie value is absent a cookie will be set.
+	 *
+	 * Once a cookie is set it will be copied into request->params['_csrfToken']
+	 * so that application and framework code can easily access the csrf token.
+	 *
+	 * RequestAction requests do not get checked, nor will
+	 * they set a cookie should it be missing.
+	 *
+	 * @param \Cake\Event\Event $event Event instance.
+	 * @return void
+	 */
+	public function startup(Event $event)
+	{
+		$controller = $event->subject();
+		$request = $controller->request;
+		$response = $controller->response;
+		$cookieName = $this->_config['cookieName'];
 
-        $cookieData = $request->cookie($cookieName);
-        if ($cookieData) {
-            $request->params['_csrfToken'] = $cookieData;
-        }
+		$cookieData = $request->cookie($cookieName);
+		if ($cookieData) {
+			$request->params['_csrfToken'] = $cookieData;
+		}
 
-        if ($request->is('requested')) {
-            return;
-        }
+		if ($request->is('requested')) {
+			return;
+		}
 
-        if ($request->is('get') && $cookieData === null) {
-            $this->_setCookie($request, $response);
-        }
-        if (!$request->is(['head', 'get', 'options'])) {
-            $this->_validateToken($request);
-            unset($request->data[$this->_config['field']]);
-        }
-    }
+		if ($request->is('get') && $cookieData === null) {
+			$this->_setCookie($request, $response);
+		}
+		if (!$request->is(['head', 'get', 'options'])) {
+			$this->_validateToken($request);
+			unset($request->data[$this->_config['field']]);
+		}
+	}
 
-    /**
-     * Events supported by this component.
-     *
-     * @return array
-     */
-    public function implementedEvents()
-    {
-        return [
-            'Controller.startup' => 'startup',
-        ];
-    }
+	/**
+	 * Events supported by this component.
+	 *
+	 * @return array
+	 */
+	public function implementedEvents()
+	{
+		return [
+			'Controller.startup' => 'startup',
+		];
+	}
 
-    /**
-     * Set the cookie in the response.
-     *
-     * Also sets the request->params['_csrfToken'] so the newly minted
-     * token is available in the request data.
-     *
-     * @param \Cake\Network\Request $request The request object.
-     * @param \Cake\Network\Response $response The response object.
-     * @return void
-     */
-    protected function _setCookie(Request $request, Response $response)
-    {
-        $expiry = new Time($this->_config['expiry']);
-        $value = Security::hash(Text::uuid(), 'sha1', true);
+	/**
+	 * Set the cookie in the response.
+	 *
+	 * Also sets the request->params['_csrfToken'] so the newly minted
+	 * token is available in the request data.
+	 *
+	 * @param \Cake\Network\Request $request The request object.
+	 * @param \Cake\Network\Response $response The response object.
+	 * @return void
+	 */
+	protected function _setCookie(Request $request, Response $response)
+	{
+		$expiry = new Time($this->_config['expiry']);
+		$value = Security::hash(Text::uuid(), 'sha1', true);
 
-        $request->params['_csrfToken'] = $value;
-        $response->cookie([
-            'name' => $this->_config['cookieName'],
-            'value' => $value,
-            'expire' => $expiry->format('U'),
-            'path' => $request->webroot,
-            'secure' => $this->_config['secure'],
-            'httpOnly' => $this->_config['httpOnly'],
-        ]);
-    }
+		$request->params['_csrfToken'] = $value;
+		$response->cookie([
+			'name' => $this->_config['cookieName'],
+			'value' => $value,
+			'expire' => $expiry->format('U'),
+			'path' => $request->webroot,
+			'secure' => $this->_config['secure'],
+			'httpOnly' => $this->_config['httpOnly'],
+		]);
+	}
 
-    /**
-     * Validate the request data against the cookie token.
-     *
-     * @param \Cake\Network\Request $request The request to validate against.
-     * @throws \Cake\Network\Exception\InvalidCsrfTokenException when the CSRF token is invalid or missing.
-     * @return void
-     */
-    protected function _validateToken(Request $request)
-    {
-        $cookie = $request->cookie($this->_config['cookieName']);
-        $post = $request->data($this->_config['field']);
-        $header = $request->header('X-CSRF-Token');
+	/**
+	 * Validate the request data against the cookie token.
+	 *
+	 * @param \Cake\Network\Request $request The request to validate against.
+	 * @throws \Cake\Network\Exception\InvalidCsrfTokenException when the CSRF token is invalid or missing.
+	 * @return void
+	 */
+	protected function _validateToken(Request $request)
+	{
+		$cookie = $request->cookie($this->_config['cookieName']);
+		$post = $request->data($this->_config['field']);
+		$header = $request->header('X-CSRF-Token');
 
-        if (empty($cookie)) {
-            throw new InvalidCsrfTokenException(__d('cake', 'Missing CSRF token cookie'));
-        }
+		if (empty($cookie)) {
+			throw new InvalidCsrfTokenException(__d('cake', 'Missing CSRF token cookie'));
+		}
 
-        if ($post !== $cookie && $header !== $cookie) {
-            throw new InvalidCsrfTokenException(__d('cake', 'CSRF token mismatch.'));
-        }
-    }
+		if ($post !== $cookie && $header !== $cookie) {
+			throw new InvalidCsrfTokenException(__d('cake', 'CSRF token mismatch.'));
+		}
+	}
 }

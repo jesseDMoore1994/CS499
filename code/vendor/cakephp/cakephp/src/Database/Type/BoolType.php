@@ -27,77 +27,77 @@ use PDO;
 class BoolType extends Type
 {
 
-    /**
-     * Convert bool data into the database format.
-     *
-     * @param mixed $value The value to convert.
-     * @param Driver $driver The driver instance to convert with.
-     * @return bool|null
-     */
-    public function toDatabase($value, Driver $driver)
-    {
-        if ($value === true || $value === false || $value === null) {
-            return $value;
-        }
+	/**
+	 * Convert bool data into the database format.
+	 *
+	 * @param mixed $value The value to convert.
+	 * @param Driver $driver The driver instance to convert with.
+	 * @return bool|null
+	 */
+	public function toDatabase($value, Driver $driver)
+	{
+		if ($value === true || $value === false || $value === null) {
+			return $value;
+		}
 
-        if (in_array($value, [1, 0, '1', '0'], true)) {
-            return (bool)$value;
-        }
+		if (in_array($value, [1, 0, '1', '0'], true)) {
+			return (bool)$value;
+		}
 
-        throw new InvalidArgumentException('Cannot convert value to bool');
-    }
+		throw new InvalidArgumentException('Cannot convert value to bool');
+	}
 
-    /**
-     * Convert bool values to PHP booleans
-     *
-     * @param mixed $value The value to convert.
-     * @param Driver $driver The driver instance to convert with.
-     * @return bool|null
-     */
-    public function toPHP($value, Driver $driver)
-    {
-        if ($value === null) {
-            return null;
-        }
-        if (is_string($value) && !is_numeric($value)) {
-            return strtolower($value) === 'true' ? true : false;
-        }
-        return !empty($value);
-    }
+	/**
+	 * Convert bool values to PHP booleans
+	 *
+	 * @param mixed $value The value to convert.
+	 * @param Driver $driver The driver instance to convert with.
+	 * @return bool|null
+	 */
+	public function toPHP($value, Driver $driver)
+	{
+		if ($value === null) {
+			return null;
+		}
+		if (is_string($value) && !is_numeric($value)) {
+			return strtolower($value) === 'true' ? true : false;
+		}
+		return !empty($value);
+	}
 
-    /**
-     * Get the correct PDO binding type for bool data.
-     *
-     * @param mixed $value The value being bound.
-     * @param Driver $driver The driver.
-     * @return int
-     */
-    public function toStatement($value, Driver $driver)
-    {
-        if ($value === null) {
-            return PDO::PARAM_NULL;
-        }
+	/**
+	 * Get the correct PDO binding type for bool data.
+	 *
+	 * @param mixed $value The value being bound.
+	 * @param Driver $driver The driver.
+	 * @return int
+	 */
+	public function toStatement($value, Driver $driver)
+	{
+		if ($value === null) {
+			return PDO::PARAM_NULL;
+		}
 
-        return PDO::PARAM_BOOL;
-    }
+		return PDO::PARAM_BOOL;
+	}
 
-    /**
-     * Marshalls request data into PHP booleans.
-     *
-     * @param mixed $value The value to convert.
-     * @return mixed Converted value.
-     */
-    public function marshal($value)
-    {
-        if ($value === null) {
-            return null;
-        }
-        if ($value === 'true') {
-            return true;
-        }
-        if ($value === 'false') {
-            return false;
-        }
-        return !empty($value);
-    }
+	/**
+	 * Marshalls request data into PHP booleans.
+	 *
+	 * @param mixed $value The value to convert.
+	 * @return mixed Converted value.
+	 */
+	public function marshal($value)
+	{
+		if ($value === null) {
+			return null;
+		}
+		if ($value === 'true') {
+			return true;
+		}
+		if ($value === 'false') {
+			return false;
+		}
+		return !empty($value);
+	}
 }

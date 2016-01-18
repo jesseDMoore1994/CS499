@@ -20,13 +20,13 @@ use Cake\Console\Shell;
 class SampleTask extends Shell
 {
 
-    public function getOptionParser()
-    {
-        $parser = parent::getOptionParser();
-        $parser->addOption('sample', [
-            'short' => 's',
-            'help' => 'This is a sample option for the sample task.',
-        ]);
-        return $parser;
-    }
+	public function getOptionParser()
+	{
+		$parser = parent::getOptionParser();
+		$parser->addOption('sample', [
+			'short' => 's',
+			'help' => 'This is a sample option for the sample task.',
+		]);
+		return $parser;
+	}
 }

@@ -25,173 +25,173 @@ use Cake\TestSuite\TestCase;
 class DateTypeTest extends TestCase
 {
 
-    /**
-     * Setup
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        $this->type = Type::build('date');
-        $this->driver = $this->getMock('Cake\Database\Driver');
-    }
+	/**
+	 * Setup
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		$this->type = Type::build('date');
+		$this->driver = $this->getMock('Cake\Database\Driver');
+	}
 
-    /**
-     * Test toPHP
-     *
-     * @return void
-     */
-    public function testToPHP()
-    {
-        $this->assertNull($this->type->toPHP(null, $this->driver));
-        $this->assertNull($this->type->toPHP('0000-00-00', $this->driver));
+	/**
+	 * Test toPHP
+	 *
+	 * @return void
+	 */
+	public function testToPHP()
+	{
+		$this->assertNull($this->type->toPHP(null, $this->driver));
+		$this->assertNull($this->type->toPHP('0000-00-00', $this->driver));
 
-        $result = $this->type->toPHP('2001-01-04', $this->driver);
-        $this->assertInstanceOf('DateTime', $result);
-        $this->assertEquals('2001', $result->format('Y'));
-        $this->assertEquals('01', $result->format('m'));
-        $this->assertEquals('04', $result->format('d'));
-    }
+		$result = $this->type->toPHP('2001-01-04', $this->driver);
+		$this->assertInstanceOf('DateTime', $result);
+		$this->assertEquals('2001', $result->format('Y'));
+		$this->assertEquals('01', $result->format('m'));
+		$this->assertEquals('04', $result->format('d'));
+	}
 
-    /**
-     * Test converting to database format
-     *
-     * @return void
-     */
-    public function testToDatabase()
-    {
-        $value = '2001-01-04';
-        $result = $this->type->toDatabase($value, $this->driver);
-        $this->assertEquals($value, $result);
+	/**
+	 * Test converting to database format
+	 *
+	 * @return void
+	 */
+	public function testToDatabase()
+	{
+		$value = '2001-01-04';
+		$result = $this->type->toDatabase($value, $this->driver);
+		$this->assertEquals($value, $result);
 
-        $date = new Time('2013-08-12');
-        $result = $this->type->toDatabase($date, $this->driver);
-        $this->assertEquals('2013-08-12', $result);
+		$date = new Time('2013-08-12');
+		$result = $this->type->toDatabase($date, $this->driver);
+		$this->assertEquals('2013-08-12', $result);
 
-        $date = new Time('2013-08-12 15:16:18');
-        $result = $this->type->toDatabase($date, $this->driver);
-        $this->assertEquals('2013-08-12', $result);
-    }
+		$date = new Time('2013-08-12 15:16:18');
+		$result = $this->type->toDatabase($date, $this->driver);
+		$this->assertEquals('2013-08-12', $result);
+	}
 
-    /**
-     * Data provider for marshal()
-     *
-     * @return array
-     */
-    public function marshalProvider()
-    {
-        $date = new Time('@1392387900');
-        $date->setTime(0, 0, 0);
+	/**
+	 * Data provider for marshal()
+	 *
+	 * @return array
+	 */
+	public function marshalProvider()
+	{
+		$date = new Time('@1392387900');
+		$date->setTime(0, 0, 0);
 
-        return [
-            // invalid types.
-            [null, null],
-            [false, null],
-            [true, null],
-            ['', null],
-            ['derpy', 'derpy'],
-            ['2013-nope!', '2013-nope!'],
-            ['14-02-14', '14-02-14'],
-            ['2014-02-14 13:14:15', '2014-02-14 13:14:15'],
+		return [
+			// invalid types.
+			[null, null],
+			[false, null],
+			[true, null],
+			['', null],
+			['derpy', 'derpy'],
+			['2013-nope!', '2013-nope!'],
+			['14-02-14', '14-02-14'],
+			['2014-02-14 13:14:15', '2014-02-14 13:14:15'],
 
-            // valid string types
-            ['1392387900', $date],
-            [1392387900, $date],
-            ['2014-02-14', new Time('2014-02-14')],
+			// valid string types
+			['1392387900', $date],
+			[1392387900, $date],
+			['2014-02-14', new Time('2014-02-14')],
 
-            // valid array types
-            [
-                ['year' => '', 'month' => '', 'day' => ''],
-                null,
-            ],
-            [
-                ['year' => 2014, 'month' => 2, 'day' => 14, 'hour' => 13, 'minute' => 14, 'second' => 15],
-                new Time('2014-02-14 00:00:00')
-            ],
-            [
-                [
-                    'year' => 2014, 'month' => 2, 'day' => 14,
-                    'hour' => 1, 'minute' => 14, 'second' => 15,
-                    'meridian' => 'am'
-                ],
-                new Time('2014-02-14 00:00:00')
-            ],
-            [
-                [
-                    'year' => 2014, 'month' => 2, 'day' => 14,
-                    'hour' => 1, 'minute' => 14, 'second' => 15,
-                    'meridian' => 'pm'
-                ],
-                new Time('2014-02-14 00:00:00')
-            ],
-            [
-                [
-                    'year' => 2014, 'month' => 2, 'day' => 14,
-                ],
-                new Time('2014-02-14 00:00:00')
-            ],
+			// valid array types
+			[
+				['year' => '', 'month' => '', 'day' => ''],
+				null,
+			],
+			[
+				['year' => 2014, 'month' => 2, 'day' => 14, 'hour' => 13, 'minute' => 14, 'second' => 15],
+				new Time('2014-02-14 00:00:00')
+			],
+			[
+				[
+					'year' => 2014, 'month' => 2, 'day' => 14,
+					'hour' => 1, 'minute' => 14, 'second' => 15,
+					'meridian' => 'am'
+				],
+				new Time('2014-02-14 00:00:00')
+			],
+			[
+				[
+					'year' => 2014, 'month' => 2, 'day' => 14,
+					'hour' => 1, 'minute' => 14, 'second' => 15,
+					'meridian' => 'pm'
+				],
+				new Time('2014-02-14 00:00:00')
+			],
+			[
+				[
+					'year' => 2014, 'month' => 2, 'day' => 14,
+				],
+				new Time('2014-02-14 00:00:00')
+			],
 
-            // Invalid array types
-            [
-                ['year' => 'farts', 'month' => 'derp'],
-                new Time(date('Y-m-d 00:00:00'))
-            ],
-            [
-                ['year' => 'farts', 'month' => 'derp', 'day' => 'farts'],
-                new Time(date('Y-m-d 00:00:00'))
-            ],
-            [
-                [
-                    'year' => '2014', 'month' => '02', 'day' => '14',
-                    'hour' => 'farts', 'minute' => 'farts'
-                ],
-                new Time('2014-02-14 00:00:00')
-            ],
-        ];
-    }
+			// Invalid array types
+			[
+				['year' => 'farts', 'month' => 'derp'],
+				new Time(date('Y-m-d 00:00:00'))
+			],
+			[
+				['year' => 'farts', 'month' => 'derp', 'day' => 'farts'],
+				new Time(date('Y-m-d 00:00:00'))
+			],
+			[
+				[
+					'year' => '2014', 'month' => '02', 'day' => '14',
+					'hour' => 'farts', 'minute' => 'farts'
+				],
+				new Time('2014-02-14 00:00:00')
+			],
+		];
+	}
 
-    /**
-     * test marshaling data.
-     *
-     * @dataProvider marshalProvider
-     * @return void
-     */
-    public function testMarshal($value, $expected)
-    {
-        $result = $this->type->marshal($value);
-        if (is_object($expected)) {
-            $this->assertEquals($expected, $result);
-        } else {
-            $this->assertSame($expected, $result);
-        }
-    }
+	/**
+	 * test marshaling data.
+	 *
+	 * @dataProvider marshalProvider
+	 * @return void
+	 */
+	public function testMarshal($value, $expected)
+	{
+		$result = $this->type->marshal($value);
+		if (is_object($expected)) {
+			$this->assertEquals($expected, $result);
+		} else {
+			$this->assertSame($expected, $result);
+		}
+	}
 
-    /**
-     * Tests marshalling dates using the locale aware parser
-     *
-     * @return void
-     */
-    public function testMarshalWithLocaleParsing()
-    {
-        $this->type->useLocaleParser();
-        $expected = new Time('13-10-2013');
-        $result = $this->type->marshal('10/13/2013');
-        $this->assertEquals($expected->format('Y-m-d'), $result->format('Y-m-d'));
+	/**
+	 * Tests marshalling dates using the locale aware parser
+	 *
+	 * @return void
+	 */
+	public function testMarshalWithLocaleParsing()
+	{
+		$this->type->useLocaleParser();
+		$expected = new Time('13-10-2013');
+		$result = $this->type->marshal('10/13/2013');
+		$this->assertEquals($expected->format('Y-m-d'), $result->format('Y-m-d'));
 
-        $this->assertNull($this->type->marshal('11/derp/2013'));
-    }
+		$this->assertNull($this->type->marshal('11/derp/2013'));
+	}
 
-    /**
-     * Tests marshalling dates using the locale aware parser and custom format
-     *
-     * @return void
-     */
-    public function testMarshalWithLocaleParsingWithFormat()
-    {
-        $this->type->useLocaleParser()->setLocaleFormat('dd MMM, y');
-        $expected = new Time('13-10-2013');
-        $result = $this->type->marshal('13 Oct, 2013');
-        $this->assertEquals($expected->format('Y-m-d'), $result->format('Y-m-d'));
-    }
+	/**
+	 * Tests marshalling dates using the locale aware parser and custom format
+	 *
+	 * @return void
+	 */
+	public function testMarshalWithLocaleParsingWithFormat()
+	{
+		$this->type->useLocaleParser()->setLocaleFormat('dd MMM, y');
+		$expected = new Time('13-10-2013');
+		$result = $this->type->marshal('13 Oct, 2013');
+		$this->assertEquals($expected->format('Y-m-d'), $result->format('Y-m-d'));
+	}
 }

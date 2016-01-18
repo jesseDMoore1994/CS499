@@ -26,27 +26,27 @@ use Cake\TestSuite\TestCase;
 class IdentifierExpressionTest extends TestCase
 {
 
-    /**
-     * Tests getting and setting the field
-     *
-     * @return void
-     */
-    public function testGetAndSet()
-    {
-        $expression = new IdentifierExpression('foo');
-        $this->assertEquals('foo', $expression->getIdentifier());
-        $expression->setIdentifier('bar');
-        $this->assertEquals('bar', $expression->getIdentifier());
-    }
+	/**
+	 * Tests getting and setting the field
+	 *
+	 * @return void
+	 */
+	public function testGetAndSet()
+	{
+		$expression = new IdentifierExpression('foo');
+		$this->assertEquals('foo', $expression->getIdentifier());
+		$expression->setIdentifier('bar');
+		$this->assertEquals('bar', $expression->getIdentifier());
+	}
 
-    /**
-     * Tests converting to sql
-     *
-     * @return void
-     */
-    public function testSQL()
-    {
-        $expression = new IdentifierExpression('foo');
-        $this->assertEquals('foo', $expression->sql(new ValueBinder));
-    }
+	/**
+	 * Tests converting to sql
+	 *
+	 * @return void
+	 */
+	public function testSQL()
+	{
+		$expression = new IdentifierExpression('foo');
+		$this->assertEquals('foo', $expression->sql(new ValueBinder));
+	}
 }

@@ -13,8 +13,8 @@ namespace Psy\Test\CodeCleaner\Fixtures;
 
 class ClassWithStatic
 {
-    public static function doStuff()
-    {
-        // Don't actually do stuff.
-    }
+	public static function doStuff()
+	{
+		// Don't actually do stuff.
+	}
 }

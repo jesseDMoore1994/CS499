@@ -25,94 +25,94 @@ use Cake\Core\Configure;
 class TestingDispatchShell extends Shell
 {
 
-    protected function _welcome()
-    {
-        $this->out('<info>Welcome to CakePHP Console</info>');
-    }
+	protected function _welcome()
+	{
+		$this->out('<info>Welcome to CakePHP Console</info>');
+	}
 
-    public function out($message = null, $newlines = 1, $level = Shell::NORMAL)
-    {
-        echo $message . "\n";
-    }
+	public function out($message = null, $newlines = 1, $level = Shell::NORMAL)
+	{
+		echo $message . "\n";
+	}
 
-    public function testTask()
-    {
-        $this->out('I am a test task, I dispatch another Shell');
-        Configure::write('App.namespace', 'TestApp');
-        $this->dispatchShell('testing_dispatch dispatch_test_task');
-    }
+	public function testTask()
+	{
+		$this->out('I am a test task, I dispatch another Shell');
+		Configure::write('App.namespace', 'TestApp');
+		$this->dispatchShell('testing_dispatch dispatch_test_task');
+	}
 
-    public function testTaskDispatchArray()
-    {
-        $this->out('I am a test task, I dispatch another Shell');
-        Configure::write('App.namespace', 'TestApp');
-        $this->dispatchShell('testing_dispatch', 'dispatch_test_task');
-    }
+	public function testTaskDispatchArray()
+	{
+		$this->out('I am a test task, I dispatch another Shell');
+		Configure::write('App.namespace', 'TestApp');
+		$this->dispatchShell('testing_dispatch', 'dispatch_test_task');
+	}
 
-    public function testTaskDispatchCommandString()
-    {
-        $this->out('I am a test task, I dispatch another Shell');
-        Configure::write('App.namespace', 'TestApp');
-        $this->dispatchShell(['command' => 'testing_dispatch dispatch_test_task']);
-    }
+	public function testTaskDispatchCommandString()
+	{
+		$this->out('I am a test task, I dispatch another Shell');
+		Configure::write('App.namespace', 'TestApp');
+		$this->dispatchShell(['command' => 'testing_dispatch dispatch_test_task']);
+	}
 
-    public function testTaskDispatchCommandArray()
-    {
-        $this->out('I am a test task, I dispatch another Shell');
-        Configure::write('App.namespace', 'TestApp');
-        $this->dispatchShell(['command' => ['testing_dispatch', 'dispatch_test_task']]);
-    }
+	public function testTaskDispatchCommandArray()
+	{
+		$this->out('I am a test task, I dispatch another Shell');
+		Configure::write('App.namespace', 'TestApp');
+		$this->dispatchShell(['command' => ['testing_dispatch', 'dispatch_test_task']]);
+	}
 
-    public function testTaskDispatchWithParam()
-    {
-        $this->out('I am a test task, I dispatch another Shell');
-        Configure::write('App.namespace', 'TestApp');
-        $this->dispatchShell([
-            'command' => ['testing_dispatch', 'dispatch_test_task_param'],
-            'extra' => [
-                'foo' => 'bar'
-            ]
-        ]);
-    }
+	public function testTaskDispatchWithParam()
+	{
+		$this->out('I am a test task, I dispatch another Shell');
+		Configure::write('App.namespace', 'TestApp');
+		$this->dispatchShell([
+			'command' => ['testing_dispatch', 'dispatch_test_task_param'],
+			'extra' => [
+				'foo' => 'bar'
+			]
+		]);
+	}
 
-    public function testTaskDispatchWithMultipleParams()
-    {
-        $this->out('I am a test task, I dispatch another Shell');
-        Configure::write('App.namespace', 'TestApp');
-        $this->dispatchShell([
-            'command' => 'testing_dispatch dispatch_test_task_params',
-            'extra' => [
-                'foo' => 'bar',
-                'fooz' => 'baz'
-            ]
-        ]);
-    }
+	public function testTaskDispatchWithMultipleParams()
+	{
+		$this->out('I am a test task, I dispatch another Shell');
+		Configure::write('App.namespace', 'TestApp');
+		$this->dispatchShell([
+			'command' => 'testing_dispatch dispatch_test_task_params',
+			'extra' => [
+				'foo' => 'bar',
+				'fooz' => 'baz'
+			]
+		]);
+	}
 
-    public function testTaskDispatchWithRequestedOff()
-    {
-        $this->out('I am a test task, I dispatch another Shell');
-        Configure::write('App.namespace', 'TestApp');
-        $this->dispatchShell([
-            'command' => ['testing_dispatch', 'dispatch_test_task'],
-            'extra' => [
-                'requested' => false
-            ]
-        ]);
-    }
+	public function testTaskDispatchWithRequestedOff()
+	{
+		$this->out('I am a test task, I dispatch another Shell');
+		Configure::write('App.namespace', 'TestApp');
+		$this->dispatchShell([
+			'command' => ['testing_dispatch', 'dispatch_test_task'],
+			'extra' => [
+				'requested' => false
+			]
+		]);
+	}
 
-    public function dispatchTestTask()
-    {
-        $this->out('I am a dispatched Shell');
-    }
+	public function dispatchTestTask()
+	{
+		$this->out('I am a dispatched Shell');
+	}
 
-    public function dispatchTestTaskParam()
-    {
-        $this->out('I am a dispatched Shell. My param `foo` has the value `' . $this->param('foo') . '`');
-    }
+	public function dispatchTestTaskParam()
+	{
+		$this->out('I am a dispatched Shell. My param `foo` has the value `' . $this->param('foo') . '`');
+	}
 
-    public function dispatchTestTaskParams()
-    {
-        $this->out('I am a dispatched Shell. My param `foo` has the value `' . $this->param('foo') . '`');
-        $this->out('My param `fooz` has the value `' . $this->param('fooz') . '`');
-    }
+	public function dispatchTestTaskParams()
+	{
+		$this->out('I am a dispatched Shell. My param `foo` has the value `' . $this->param('foo') . '`');
+		$this->out('My param `fooz` has the value `' . $this->param('fooz') . '`');
+	}
 }

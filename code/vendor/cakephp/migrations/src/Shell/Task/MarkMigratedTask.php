@@ -21,27 +21,27 @@ namespace Migrations\Shell\Task;
 class MarkMigratedTask extends CommandTask
 {
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getOptionParser()
-    {
-        $parser = parent::getOptionParser();
-        $parser
-            ->addArgument('version', [
-                'help' => 'What is the version of the migration?'
-            ])
-            ->addOption('exclude', [
-                'short' => 'x',
-                'help' => 'If present it will mark migrations from beginning until the given version, excluding it',
-                'required' => false
-            ])
-            ->addOption('only', [
-                'short' => 'o',
-                'help' => 'If present it will only mark the given migration version',
-                'required' => false
-            ]);
+	/**
+	 * {@inheritDoc}
+	 */
+	public function getOptionParser()
+	{
+		$parser = parent::getOptionParser();
+		$parser
+			->addArgument('version', [
+				'help' => 'What is the version of the migration?'
+			])
+			->addOption('exclude', [
+				'short' => 'x',
+				'help' => 'If present it will mark migrations from beginning until the given version, excluding it',
+				'required' => false
+			])
+			->addOption('only', [
+				'short' => 'o',
+				'help' => 'If present it will only mark the given migration version',
+				'required' => false
+			]);
 
-        return $parser;
-    }
+		return $parser;
+	}
 }

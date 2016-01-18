@@ -22,20 +22,20 @@ use Cake\ORM\Behavior;
 class DuplicateBehavior extends Behavior
 {
 
-    protected $_defaultConfig = [
-        'implementedFinders' => [
-            'children' => 'findChildren',
-        ],
-        'implementedMethods' => [
-            'slugify' => 'slugify',
-        ]
-    ];
+	protected $_defaultConfig = [
+		'implementedFinders' => [
+			'children' => 'findChildren',
+		],
+		'implementedMethods' => [
+			'slugify' => 'slugify',
+		]
+	];
 
-    public function findChildren()
-    {
-    }
+	public function findChildren()
+	{
+	}
 
-    public function slugify()
-    {
-    }
+	public function slugify()
+	{
+	}
 }

@@ -16,61 +16,61 @@ namespace Psy\Readline;
  */
 interface Readline
 {
-    /**
-     * Check whether this Readline class is supported by the current system.
-     *
-     * @return bool
-     */
-    public static function isSupported();
+	/**
+	 * Check whether this Readline class is supported by the current system.
+	 *
+	 * @return bool
+	 */
+	public static function isSupported();
 
-    /**
-     * Add a line to the command history.
-     *
-     * @param string $line
-     *
-     * @return bool Success
-     */
-    public function addHistory($line);
+	/**
+	 * Add a line to the command history.
+	 *
+	 * @param string $line
+	 *
+	 * @return bool Success
+	 */
+	public function addHistory($line);
 
-    /**
-     * Clear the command history.
-     *
-     * @return bool Success
-     */
-    public function clearHistory();
+	/**
+	 * Clear the command history.
+	 *
+	 * @return bool Success
+	 */
+	public function clearHistory();
 
-    /**
-     * List the command history.
-     *
-     * @return array
-     */
-    public function listHistory();
+	/**
+	 * List the command history.
+	 *
+	 * @return array
+	 */
+	public function listHistory();
 
-    /**
-     * Read the command history.
-     *
-     * @return bool Success
-     */
-    public function readHistory();
+	/**
+	 * Read the command history.
+	 *
+	 * @return bool Success
+	 */
+	public function readHistory();
 
-    /**
-     * Read a single line of input from the user.
-     *
-     * @param null|string $prompt
-     *
-     * @return false|string
-     */
-    public function readline($prompt = null);
+	/**
+	 * Read a single line of input from the user.
+	 *
+	 * @param null|string $prompt
+	 *
+	 * @return false|string
+	 */
+	public function readline($prompt = null);
 
-    /**
-     * Redraw readline to redraw the display.
-     */
-    public function redisplay();
+	/**
+	 * Redraw readline to redraw the display.
+	 */
+	public function redisplay();
 
-    /**
-     * Write the command history to a file.
-     *
-     * @return bool Success
-     */
-    public function writeHistory();
+	/**
+	 * Write the command history to a file.
+	 *
+	 * @return bool Success
+	 */
+	public function writeHistory();
 }

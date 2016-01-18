@@ -24,147 +24,147 @@ use Cake\TestSuite\TestCase;
 class LoadTaskTest extends TestCase
 {
 
-    /**
-     * setUp method
-     *
-     * @return void
-     */
-    public function setUp()
-    {
-        parent::setUp();
+	/**
+	 * setUp method
+	 *
+	 * @return void
+	 */
+	public function setUp()
+	{
+		parent::setUp();
 
-        $this->io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
+		$this->io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
 
-        $this->Task = $this->getMock('Cake\Shell\Task\LoadTask', ['in', 'out', 'err', '_stop'], [$this->io]);
+		$this->Task = $this->getMock('Cake\Shell\Task\LoadTask', ['in', 'out', 'err', '_stop'], [$this->io]);
 
-        $this->bootstrap = ROOT . DS . 'config' . DS . 'bootstrap.php';
+		$this->bootstrap = ROOT . DS . 'config' . DS . 'bootstrap.php';
 
-        $bootstrap = new File($this->bootstrap, false);
-        $this->originalBootstrapContent = $bootstrap->read();
-    }
+		$bootstrap = new File($this->bootstrap, false);
+		$this->originalBootstrapContent = $bootstrap->read();
+	}
 
-    /**
-     * tearDown method
-     *
-     * @return void
-     */
-    public function tearDown()
-    {
-        parent::tearDown();
-        unset($this->shell);
-        Plugin::unload();
+	/**
+	 * tearDown method
+	 *
+	 * @return void
+	 */
+	public function tearDown()
+	{
+		parent::tearDown();
+		unset($this->shell);
+		Plugin::unload();
 
-        $bootstrap = new File($this->bootstrap, false);
-        $bootstrap->write($this->originalBootstrapContent);
-    }
+		$bootstrap = new File($this->bootstrap, false);
+		$bootstrap->write($this->originalBootstrapContent);
+	}
 
-    /**
-     * testLoad
-     *
-     * @return void
-     */
-    public function testLoad()
-    {
-        $this->Task->params = [
-            'bootstrap' => false,
-            'routes' => false,
-            'autoload' => true,
-        ];
+	/**
+	 * testLoad
+	 *
+	 * @return void
+	 */
+	public function testLoad()
+	{
+		$this->Task->params = [
+			'bootstrap' => false,
+			'routes' => false,
+			'autoload' => true,
+		];
 
-        $action = $this->Task->main('TestPlugin');
+		$action = $this->Task->main('TestPlugin');
 
-        $this->assertTrue($action);
+		$this->assertTrue($action);
 
-        $expected = "Plugin::load('TestPlugin', ['autoload' => true]);";
-        $bootstrap = new File($this->bootstrap, false);
-        $this->assertContains($expected, $bootstrap->read());
-    }
+		$expected = "Plugin::load('TestPlugin', ['autoload' => true]);";
+		$bootstrap = new File($this->bootstrap, false);
+		$this->assertContains($expected, $bootstrap->read());
+	}
 
-    /**
-     * testLoadWithBootstrap
-     *
-     * @return void
-     */
-    public function testLoadWithBootstrap()
-    {
-        $this->Task->params = [
-            'bootstrap' => true,
-            'routes' => false,
-            'autoload' => true,
-        ];
+	/**
+	 * testLoadWithBootstrap
+	 *
+	 * @return void
+	 */
+	public function testLoadWithBootstrap()
+	{
+		$this->Task->params = [
+			'bootstrap' => true,
+			'routes' => false,
+			'autoload' => true,
+		];
 
-        $action = $this->Task->main('TestPlugin');
+		$action = $this->Task->main('TestPlugin');
 
-        $this->assertTrue($action);
+		$this->assertTrue($action);
 
-        $expected = "Plugin::load('TestPlugin', ['autoload' => true, 'bootstrap' => true]);";
-        $bootstrap = new File($this->bootstrap, false);
-        $this->assertContains($expected, $bootstrap->read());
-    }
+		$expected = "Plugin::load('TestPlugin', ['autoload' => true, 'bootstrap' => true]);";
+		$bootstrap = new File($this->bootstrap, false);
+		$this->assertContains($expected, $bootstrap->read());
+	}
 
-    /**
-     * testLoadWithRoutes
-     *
-     * @return void
-     */
-    public function testLoadWithRoutes()
-    {
-        $this->Task->params = [
-            'bootstrap' => false,
-            'routes' => true,
-            'autoload' => true,
-        ];
+	/**
+	 * testLoadWithRoutes
+	 *
+	 * @return void
+	 */
+	public function testLoadWithRoutes()
+	{
+		$this->Task->params = [
+			'bootstrap' => false,
+			'routes' => true,
+			'autoload' => true,
+		];
 
-        $action = $this->Task->main('TestPlugin');
+		$action = $this->Task->main('TestPlugin');
 
-        $this->assertTrue($action);
+		$this->assertTrue($action);
 
-        $expected = "Plugin::load('TestPlugin', ['autoload' => true, 'routes' => true]);";
-        $bootstrap = new File($this->bootstrap, false);
-        $this->assertContains($expected, $bootstrap->read());
-    }
+		$expected = "Plugin::load('TestPlugin', ['autoload' => true, 'routes' => true]);";
+		$bootstrap = new File($this->bootstrap, false);
+		$this->assertContains($expected, $bootstrap->read());
+	}
 
-    /**
-     * test load no autoload
-     *
-     * @return void
-     */
-    public function testLoadNoAutoload()
-    {
-        $this->Task->params = [
-            'bootstrap' => false,
-            'routes' => true,
-            'autoload' => false,
-        ];
+	/**
+	 * test load no autoload
+	 *
+	 * @return void
+	 */
+	public function testLoadNoAutoload()
+	{
+		$this->Task->params = [
+			'bootstrap' => false,
+			'routes' => true,
+			'autoload' => false,
+		];
 
-        $action = $this->Task->main('TestPlugin');
+		$action = $this->Task->main('TestPlugin');
 
-        $this->assertTrue($action);
+		$this->assertTrue($action);
 
-        $expected = "Plugin::load('TestPlugin', ['routes' => true]);";
-        $bootstrap = new File($this->bootstrap, false);
-        $this->assertContains($expected, $bootstrap->read());
-    }
+		$expected = "Plugin::load('TestPlugin', ['routes' => true]);";
+		$bootstrap = new File($this->bootstrap, false);
+		$this->assertContains($expected, $bootstrap->read());
+	}
 
-    /**
-     * testLoad
-     *
-     * @return void
-     */
-    public function testLoadNothing()
-    {
-        $this->Task->params = [
-            'bootstrap' => false,
-            'routes' => false,
-            'autoload' => false,
-        ];
+	/**
+	 * testLoad
+	 *
+	 * @return void
+	 */
+	public function testLoadNothing()
+	{
+		$this->Task->params = [
+			'bootstrap' => false,
+			'routes' => false,
+			'autoload' => false,
+		];
 
-        $action = $this->Task->main('TestPlugin');
+		$action = $this->Task->main('TestPlugin');
 
-        $this->assertTrue($action);
+		$this->assertTrue($action);
 
-        $expected = "Plugin::load('TestPlugin');";
-        $bootstrap = new File($this->bootstrap, false);
-        $this->assertContains($expected, $bootstrap->read());
-    }
+		$expected = "Plugin::load('TestPlugin');";
+		$bootstrap = new File($this->bootstrap, false);
+		$this->assertContains($expected, $bootstrap->read());
+	}
 }

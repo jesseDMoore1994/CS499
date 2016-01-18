@@ -1,5 +1,5 @@
 .. index::
-   single: Writing Migrations
+single: Writing Migrations
 
 Writing Migrations
 ==================

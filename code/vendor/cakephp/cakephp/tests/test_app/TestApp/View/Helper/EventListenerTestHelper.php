@@ -20,25 +20,25 @@ use Cake\View\Helper;
 class EventListenerTestHelper extends Helper
 {
 
-    /**
-     * Before render callback. Stub.
-     *
-     * @param \Cake\Event\Event $event The event instance.
-     * @param string $viewFile The view file being rendered.
-     * @return void
-     */
-    public function beforeRender(Event $event, $viewFile)
-    {
-        $this->config('options.foo', 'bar');
-    }
+	/**
+	 * Before render callback. Stub.
+	 *
+	 * @param \Cake\Event\Event $event The event instance.
+	 * @param string $viewFile The view file being rendered.
+	 * @return void
+	 */
+	public function beforeRender(Event $event, $viewFile)
+	{
+		$this->config('options.foo', 'bar');
+	}
 
-    /**
-     * Event listeners.
-     *
-     * @return array
-     */
-    public function implementedEvents()
-    {
-        return ['View.beforeRender' => 'beforeRender'];
-    }
+	/**
+	 * Event listeners.
+	 *
+	 * @return array
+	 */
+	public function implementedEvents()
+	{
+		return ['View.beforeRender' => 'beforeRender'];
+	}
 }

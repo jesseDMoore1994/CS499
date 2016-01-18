@@ -28,58 +28,58 @@ use Cake\View\View;
 class SessionHelper extends Helper
 {
 
-    /**
-     *  Constructor
-     *
-     * @param \Cake\View\View $View The View this helper is being attached to.
-     * @param array $config Configuration settings for the helper.
-     */
-    public function __construct(View $View, array $config = [])
-    {
-        trigger_error('SessionHelper has been deprecated. Use request->session() instead.', E_USER_DEPRECATED);
-        parent::__construct($View, $config);
-    }
+	/**
+	 *  Constructor
+	 *
+	 * @param \Cake\View\View $View The View this helper is being attached to.
+	 * @param array $config Configuration settings for the helper.
+	 */
+	public function __construct(View $View, array $config = [])
+	{
+		trigger_error('SessionHelper has been deprecated. Use request->session() instead.', E_USER_DEPRECATED);
+		parent::__construct($View, $config);
+	}
 
-    /**
-     * Reads a session value for a key or returns values for all keys.
-     *
-     * In your view:
-     * ```
-     * $this->Session->read('Controller.sessKey');
-     * ```
-     * Calling the method without a param will return all session vars
-     *
-     * @param string|null $name The name of the session key you want to read
-     * @return mixed Values from the session vars
-     */
-    public function read($name = null)
-    {
-        return $this->request->session()->read($name);
-    }
+	/**
+	 * Reads a session value for a key or returns values for all keys.
+	 *
+	 * In your view:
+	 * ```
+	 * $this->Session->read('Controller.sessKey');
+	 * ```
+	 * Calling the method without a param will return all session vars
+	 *
+	 * @param string|null $name The name of the session key you want to read
+	 * @return mixed Values from the session vars
+	 */
+	public function read($name = null)
+	{
+		return $this->request->session()->read($name);
+	}
 
-    /**
-     * Checks if a session key has been set.
-     *
-     * In your view:
-     * ```
-     * $this->Session->check('Controller.sessKey');
-     * ```
-     *
-     * @param string $name Session key to check.
-     * @return bool
-     */
-    public function check($name)
-    {
-        return $this->request->session()->check($name);
-    }
+	/**
+	 * Checks if a session key has been set.
+	 *
+	 * In your view:
+	 * ```
+	 * $this->Session->check('Controller.sessKey');
+	 * ```
+	 *
+	 * @param string $name Session key to check.
+	 * @return bool
+	 */
+	public function check($name)
+	{
+		return $this->request->session()->check($name);
+	}
 
-    /**
-     * Event listeners.
-     *
-     * @return array
-     */
-    public function implementedEvents()
-    {
-        return [];
-    }
+	/**
+	 * Event listeners.
+	 *
+	 * @return array
+	 */
+	public function implementedEvents()
+	{
+		return [];
+	}
 }

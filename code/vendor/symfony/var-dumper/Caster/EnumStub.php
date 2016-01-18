@@ -20,8 +20,8 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  */
 class EnumStub extends Stub
 {
-    public function __construct(array $values)
-    {
-        $this->value = $values;
-    }
+	public function __construct(array $values)
+	{
+		$this->value = $values;
+	}
 }

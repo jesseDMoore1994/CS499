@@ -19,7 +19,7 @@ define('TIME_START', microtime(true));
 
 // @deprecated Backward compatibility with 2.x series
 if (PHP_VERSION_ID < 70000) {
-    class_alias('Cake\Utility\Text', 'Cake\Utility\String');
+	class_alias('Cake\Utility\Text', 'Cake\Utility\String');
 }
 
 // @deprecated Backward compatibility with 2.x, 3.0.x

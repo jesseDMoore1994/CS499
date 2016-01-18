@@ -16,19 +16,19 @@ use Symfony\Component\Config\Tests\Fixtures\Configuration\ExampleConfiguration;
 
 class YamlReferenceDumperTest extends \PHPUnit_Framework_TestCase
 {
-    public function testDumper()
-    {
-        $configuration = new ExampleConfiguration();
+	public function testDumper()
+	{
+		$configuration = new ExampleConfiguration();
 
-        $dumper = new YamlReferenceDumper();
+		$dumper = new YamlReferenceDumper();
 
-        $this->markTestIncomplete('The Yaml Dumper currently does not support prototyped arrays');
-        $this->assertEquals($this->getConfigurationAsString(), $dumper->dump($configuration));
-    }
+		$this->markTestIncomplete('The Yaml Dumper currently does not support prototyped arrays');
+		$this->assertEquals($this->getConfigurationAsString(), $dumper->dump($configuration));
+	}
 
-    private function getConfigurationAsString()
-    {
-        return <<<EOL
+	private function getConfigurationAsString()
+	{
+		return <<<EOL
 acme_root:
     boolean:              true
     scalar_empty:         ~
@@ -64,5 +64,5 @@ acme_root:
         - { user: ~, pass: ~ }
 
 EOL;
-    }
+	}
 }

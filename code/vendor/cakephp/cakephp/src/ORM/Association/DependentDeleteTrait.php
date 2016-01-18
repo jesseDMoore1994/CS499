@@ -24,33 +24,33 @@ use Cake\Datasource\EntityInterface;
 trait DependentDeleteTrait
 {
 
-    /**
-     * Cascade a delete to remove dependent records.
-     *
-     * This method does nothing if the association is not dependent.
-     *
-     * @param \Cake\Datasource\EntityInterface $entity The entity that started the cascaded delete.
-     * @param array $options The options for the original delete.
-     * @return bool Success.
-     */
-    public function cascadeDelete(EntityInterface $entity, array $options = [])
-    {
-        if (!$this->dependent()) {
-            return true;
-        }
-        $table = $this->target();
-        $foreignKey = (array)$this->foreignKey();
-        $bindingKey = (array)$this->bindingKey();
-        $conditions = array_combine($foreignKey, $entity->extract($bindingKey));
+	/**
+	 * Cascade a delete to remove dependent records.
+	 *
+	 * This method does nothing if the association is not dependent.
+	 *
+	 * @param \Cake\Datasource\EntityInterface $entity The entity that started the cascaded delete.
+	 * @param array $options The options for the original delete.
+	 * @return bool Success.
+	 */
+	public function cascadeDelete(EntityInterface $entity, array $options = [])
+	{
+		if (!$this->dependent()) {
+			return true;
+		}
+		$table = $this->target();
+		$foreignKey = (array)$this->foreignKey();
+		$bindingKey = (array)$this->bindingKey();
+		$conditions = array_combine($foreignKey, $entity->extract($bindingKey));
 
-        if ($this->_cascadeCallbacks) {
-            foreach ($this->find()->where($conditions)->toList() as $related) {
-                $table->delete($related, $options);
-            }
-            return true;
-        }
+		if ($this->_cascadeCallbacks) {
+			foreach ($this->find()->where($conditions)->toList() as $related) {
+				$table->delete($related, $options);
+			}
+			return true;
+		}
 
-        $conditions = array_merge($conditions, $this->conditions());
-        return $table->deleteAll($conditions);
-    }
+		$conditions = array_merge($conditions, $this->conditions());
+		return $table->deleteAll($conditions);
+	}
 }

@@ -21,5 +21,5 @@ use Cake\Core\Exception\Exception;
 class MissingShellException extends Exception
 {
 
-    protected $_messageTemplate = 'Shell class for "%s" could not be found.';
+	protected $_messageTemplate = 'Shell class for "%s" could not be found.';
 }

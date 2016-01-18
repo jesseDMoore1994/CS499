@@ -22,10 +22,10 @@ use Cake\Controller\Component;
 class SomethingWithCookieComponent extends Component
 {
 
-    /**
-     * components property
-     *
-     * @var array
-     */
-    public $components = ['Cookie'];
+	/**
+	 * components property
+	 *
+	 * @var array
+	 */
+	public $components = ['Cookie'];
 }

@@ -26,52 +26,52 @@ use Traversable;
 class NestIterator extends Collection implements RecursiveIterator
 {
 
-    /**
-     * The name of the property that contains the nested items for each element
-     *
-     * @var string|callable
-     */
-    protected $_nestKey;
+	/**
+	 * The name of the property that contains the nested items for each element
+	 *
+	 * @var string|callable
+	 */
+	protected $_nestKey;
 
-    /**
-     * Constructor
-     *
-     * @param array|\Traversable $items Collection items.
-     * @param string|callable $nestKey the property that contains the nested items
-     * If a callable is passed, it should return the childrens for the passed item
-     */
-    public function __construct($items, $nestKey)
-    {
-        parent::__construct($items);
-        $this->_nestKey = $nestKey;
-    }
+	/**
+	 * Constructor
+	 *
+	 * @param array|\Traversable $items Collection items.
+	 * @param string|callable $nestKey the property that contains the nested items
+	 * If a callable is passed, it should return the childrens for the passed item
+	 */
+	public function __construct($items, $nestKey)
+	{
+		parent::__construct($items);
+		$this->_nestKey = $nestKey;
+	}
 
-    /**
-     * Returns a traversable containing the children for the current item
-     *
-     * @return \Traversable
-     */
-    public function getChildren()
-    {
-        $property = $this->_propertyExtractor($this->_nestKey);
-        return new self($property($this->current()), $this->_nestKey);
-    }
+	/**
+	 * Returns a traversable containing the children for the current item
+	 *
+	 * @return \Traversable
+	 */
+	public function getChildren()
+	{
+		$property = $this->_propertyExtractor($this->_nestKey);
+		return new self($property($this->current()), $this->_nestKey);
+	}
 
-    /**
-     * Returns true if there is an array or a traversable object stored under the
-     * configured nestKey for the current item
-     *
-     * @return bool
-     */
-    public function hasChildren()
-    {
-        $property = $this->_propertyExtractor($this->_nestKey);
-        $children = $property($this->current());
+	/**
+	 * Returns true if there is an array or a traversable object stored under the
+	 * configured nestKey for the current item
+	 *
+	 * @return bool
+	 */
+	public function hasChildren()
+	{
+		$property = $this->_propertyExtractor($this->_nestKey);
+		$children = $property($this->current());
 
-        if (is_array($children)) {
-            return !empty($children);
-        }
+		if (is_array($children)) {
+			return !empty($children);
+		}
 
-        return $children instanceof Traversable;
-    }
+		return $children instanceof Traversable;
+	}
 }

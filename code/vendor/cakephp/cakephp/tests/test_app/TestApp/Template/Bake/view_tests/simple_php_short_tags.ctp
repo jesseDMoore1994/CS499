@@ -1,1 +1,1 @@
-The value of aVariable is: <%= $aVariable %>. Not <?= $aVariable ?>.
+The value of aVariable is: <%= $aVariable %>. Not<?= $aVariable ?>.
