@@ -14,8 +14,7 @@ namespace Symfony\Component\VarDumper\Cloner;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class Data
-{
+class Data {
 	private $data;
 	private $maxDepth = 20;
 	private $maxItemsPerDepth = -1;
@@ -24,16 +23,14 @@ class Data
 	/**
 	 * @param array $data A array as returned by ClonerInterface::cloneVar().
 	 */
-	public function __construct(array $data)
-	{
+	public function __construct(array $data) {
 		$this->data = $data;
 	}
 
 	/**
 	 * @return array The raw data structure.
 	 */
-	public function getRawData()
-	{
+	public function getRawData() {
 		return $this->data;
 	}
 
@@ -44,8 +41,7 @@ class Data
 	 *
 	 * @return self A clone of $this.
 	 */
-	public function withMaxDepth($maxDepth)
-	{
+	public function withMaxDepth($maxDepth) {
 		$data = clone $this;
 		$data->maxDepth = (int)$maxDepth;
 
@@ -59,8 +55,7 @@ class Data
 	 *
 	 * @return self A clone of $this.
 	 */
-	public function withMaxItemsPerDepth($maxItemsPerDepth)
-	{
+	public function withMaxItemsPerDepth($maxItemsPerDepth) {
 		$data = clone $this;
 		$data->maxItemsPerDepth = (int)$maxItemsPerDepth;
 
@@ -74,8 +69,7 @@ class Data
 	 *
 	 * @return self A clone of $this.
 	 */
-	public function withRefHandles($useRefHandles)
-	{
+	public function withRefHandles($useRefHandles) {
 		$data = clone $this;
 		$data->useRefHandles = $useRefHandles ? -1 : 0;
 
@@ -85,8 +79,7 @@ class Data
 	/**
 	 * Dumps data with a DumperInterface dumper.
 	 */
-	public function dump(DumperInterface $dumper)
-	{
+	public function dump(DumperInterface $dumper) {
 		$refs = array(0);
 		$this->dumpItem($dumper, new Cursor(), $refs, $this->data[0][0]);
 	}
@@ -99,8 +92,7 @@ class Data
 	 * @param array &$refs A map of all references discovered while dumping.
 	 * @param mixed $item A Stub object or the original value being dumped.
 	 */
-	private function dumpItem($dumper, $cursor, &$refs, $item)
-	{
+	private function dumpItem($dumper, $cursor, &$refs, $item) {
 		$cursor->refIndex = 0;
 		$cursor->softRefTo = $cursor->softRefHandle = $cursor->softRefCount = 0;
 		$cursor->hardRefTo = $cursor->hardRefHandle = $cursor->hardRefCount = 0;
@@ -194,8 +186,7 @@ class Data
 	 *
 	 * @return int The final number of removed items.
 	 */
-	private function dumpChildren($dumper, $parentCursor, &$refs, $children, $hashCut, $hashType)
-	{
+	private function dumpChildren($dumper, $parentCursor, &$refs, $children, $hashCut, $hashType) {
 		$cursor = clone $parentCursor;
 		++$cursor->depth;
 		$cursor->hashType = $hashType;

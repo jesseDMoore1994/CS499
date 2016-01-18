@@ -26,8 +26,7 @@ use InvalidArgumentException;
  * Gives an easy to use way to build routes and append them
  * into a route collection.
  */
-class RouteBuilder
-{
+class RouteBuilder {
 
 	/**
 	 * Regular expression for auto increment IDs
@@ -112,8 +111,7 @@ class RouteBuilder
 	 * @param array $params The scope's routing parameters.
 	 * @param array $options Options list.
 	 */
-	public function __construct(RouteCollection $collection, $path, array $params = [], array $options = [])
-	{
+	public function __construct(RouteCollection $collection, $path, array $params = [], array $options = []) {
 		$this->_collection = $collection;
 		$this->_path = $path;
 		$this->_params = $params;
@@ -134,8 +132,7 @@ class RouteBuilder
 	 * @param string|null $routeClass Class name.
 	 * @return string|null
 	 */
-	public function routeClass($routeClass = null)
-	{
+	public function routeClass($routeClass = null) {
 		if ($routeClass === null) {
 			return $this->_routeClass;
 		}
@@ -151,8 +148,7 @@ class RouteBuilder
 	 * @param null|string|array $extensions Either the extensions to use or null.
 	 * @return array|null
 	 */
-	public function extensions($extensions = null)
-	{
+	public function extensions($extensions = null) {
 		if ($extensions === null) {
 			return $this->_extensions;
 		}
@@ -165,8 +161,7 @@ class RouteBuilder
 	 * @param string|array $extensions One or more extensions to add
 	 * @return void
 	 */
-	public function addExtensions($extensions)
-	{
+	public function addExtensions($extensions) {
 		$extensions = array_merge($this->_extensions, (array)$extensions);
 		$this->_extensions = array_unique($extensions);
 	}
@@ -176,8 +171,7 @@ class RouteBuilder
 	 *
 	 * @return string
 	 */
-	public function path()
-	{
+	public function path() {
 		$routeKey = strpos($this->_path, ':');
 		if ($routeKey !== false) {
 			return substr($this->_path, 0, $routeKey);
@@ -190,8 +184,7 @@ class RouteBuilder
 	 *
 	 * @return string
 	 */
-	public function params()
-	{
+	public function params() {
 		return $this->_params;
 	}
 
@@ -204,8 +197,7 @@ class RouteBuilder
 	 * @param string|null $value Either the value to set or null.
 	 * @return string
 	 */
-	public function namePrefix($value = null)
-	{
+	public function namePrefix($value = null) {
 		if ($value !== null) {
 			$this->_namePrefix = $value;
 		}
@@ -286,8 +278,7 @@ class RouteBuilder
 	 *   scopes inherit the existing path and 'id' parameter.
 	 * @return void
 	 */
-	public function resources($name, $options = [], $callback = null)
-	{
+	public function resources($name, $options = [], $callback = null) {
 		if (is_callable($options) && $callback === null) {
 			$callback = $options;
 			$options = [];
@@ -312,7 +303,7 @@ class RouteBuilder
 
 		$connectOptions = $options['connectOptions'];
 		$urlName = Inflector::{
-		$options['inflect']}($name);
+			$options['inflect']}($name);
         $resourceMap = array_merge(static::$_resourceMap, $options['map']);
 
         $only = (array)$options['only'];
@@ -427,8 +418,7 @@ class RouteBuilder
 	 * @throws \InvalidArgumentException
 	 * @throws \BadMethodCallException
 	 */
-	public function connect($route, array $defaults = [], array $options = [])
-	{
+	public function connect($route, array $defaults = [], array $options = []) {
 		if (empty($options['action'])) {
 			$defaults += ['action' => 'index'];
 		}
@@ -458,8 +448,7 @@ class RouteBuilder
 	 * @throws \InvalidArgumentException when route class or route object is invalid.
 	 * @throws \BadMethodCallException when the route to make conflicts with the current scope
 	 */
-	protected function _makeRoute($route, $defaults, $options)
-	{
+	protected function _makeRoute($route, $defaults, $options) {
 		if (is_string($route)) {
 			$routeClass = App::className($options['routeClass'], 'Routing/Route');
 			if ($routeClass === false) {
@@ -534,8 +523,7 @@ class RouteBuilder
 	 *   shifted into the passed arguments. As well as supplying patterns for routing parameters.
 	 * @return void
 	 */
-	public function redirect($route, $url, array $options = [])
-	{
+	public function redirect($route, $url, array $options = []) {
 		$options['routeClass'] = 'Cake\Routing\Route\RedirectRoute';
 		if (is_string($url)) {
 			$url = ['redirect' => $url];
@@ -561,8 +549,7 @@ class RouteBuilder
 	 * @param callable $callback The callback to invoke that builds the prefixed routes.
 	 * @return void
 	 */
-	public function prefix($name, callable $callback)
-	{
+	public function prefix($name, callable $callback) {
 		$name = Inflector::underscore($name);
 		$path = '/' . $name;
 		if (isset($this->_params['prefix'])) {
@@ -590,8 +577,7 @@ class RouteBuilder
 	 *   Only required when $options is defined.
 	 * @return void
 	 */
-	public function plugin($name, $options = [], $callback = null)
-	{
+	public function plugin($name, $options = [], $callback = null) {
 		if ($callback === null) {
 			$callback = $options;
 			$options = [];
@@ -617,8 +603,7 @@ class RouteBuilder
 	 * @return void
 	 * @throws \InvalidArgumentException when there is no callable parameter.
 	 */
-	public function scope($path, $params, $callback = null)
-	{
+	public function scope($path, $params, $callback = null) {
 		if ($callback === null) {
 			$callback = $params;
 			$params = [];
@@ -655,8 +640,7 @@ class RouteBuilder
 	 *   if not specified
 	 * @return void
 	 */
-	public function fallbacks($routeClass = null)
-	{
+	public function fallbacks($routeClass = null) {
 		$routeClass = $routeClass ?: $this->_routeClass;
 		$this->connect('/:controller', ['action' => 'index'], compact('routeClass'));
 		$this->connect('/:controller/:action/*', [], compact('routeClass'));

@@ -20,8 +20,7 @@ use Symfony\Component\Console\Exception\LogicException;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Саша Стаменковић <umpirsky@gmail.com>
  */
-class TableStyle
-{
+class TableStyle {
 	private $paddingChar = ' ';
 	private $horizontalBorderChar = '-';
 	private $verticalBorderChar = '|';
@@ -39,8 +38,7 @@ class TableStyle
 	 *
 	 * @return TableStyle
 	 */
-	public function setPaddingChar($paddingChar)
-	{
+	public function setPaddingChar($paddingChar) {
 		if (!$paddingChar) {
 			throw new LogicException('The padding char must not be empty');
 		}
@@ -55,8 +53,7 @@ class TableStyle
 	 *
 	 * @return string
 	 */
-	public function getPaddingChar()
-	{
+	public function getPaddingChar() {
 		return $this->paddingChar;
 	}
 
@@ -67,8 +64,7 @@ class TableStyle
 	 *
 	 * @return TableStyle
 	 */
-	public function setHorizontalBorderChar($horizontalBorderChar)
-	{
+	public function setHorizontalBorderChar($horizontalBorderChar) {
 		$this->horizontalBorderChar = $horizontalBorderChar;
 
 		return $this;
@@ -79,8 +75,7 @@ class TableStyle
 	 *
 	 * @return string
 	 */
-	public function getHorizontalBorderChar()
-	{
+	public function getHorizontalBorderChar() {
 		return $this->horizontalBorderChar;
 	}
 
@@ -91,8 +86,7 @@ class TableStyle
 	 *
 	 * @return TableStyle
 	 */
-	public function setVerticalBorderChar($verticalBorderChar)
-	{
+	public function setVerticalBorderChar($verticalBorderChar) {
 		$this->verticalBorderChar = $verticalBorderChar;
 
 		return $this;
@@ -103,8 +97,7 @@ class TableStyle
 	 *
 	 * @return string
 	 */
-	public function getVerticalBorderChar()
-	{
+	public function getVerticalBorderChar() {
 		return $this->verticalBorderChar;
 	}
 
@@ -115,8 +108,7 @@ class TableStyle
 	 *
 	 * @return TableStyle
 	 */
-	public function setCrossingChar($crossingChar)
-	{
+	public function setCrossingChar($crossingChar) {
 		$this->crossingChar = $crossingChar;
 
 		return $this;
@@ -127,8 +119,7 @@ class TableStyle
 	 *
 	 * @return string $crossingChar
 	 */
-	public function getCrossingChar()
-	{
+	public function getCrossingChar() {
 		return $this->crossingChar;
 	}
 
@@ -139,8 +130,7 @@ class TableStyle
 	 *
 	 * @return TableStyle
 	 */
-	public function setCellHeaderFormat($cellHeaderFormat)
-	{
+	public function setCellHeaderFormat($cellHeaderFormat) {
 		$this->cellHeaderFormat = $cellHeaderFormat;
 
 		return $this;
@@ -151,8 +141,7 @@ class TableStyle
 	 *
 	 * @return string
 	 */
-	public function getCellHeaderFormat()
-	{
+	public function getCellHeaderFormat() {
 		return $this->cellHeaderFormat;
 	}
 
@@ -163,8 +152,7 @@ class TableStyle
 	 *
 	 * @return TableStyle
 	 */
-	public function setCellRowFormat($cellRowFormat)
-	{
+	public function setCellRowFormat($cellRowFormat) {
 		$this->cellRowFormat = $cellRowFormat;
 
 		return $this;
@@ -175,8 +163,7 @@ class TableStyle
 	 *
 	 * @return string
 	 */
-	public function getCellRowFormat()
-	{
+	public function getCellRowFormat() {
 		return $this->cellRowFormat;
 	}
 
@@ -187,8 +174,7 @@ class TableStyle
 	 *
 	 * @return TableStyle
 	 */
-	public function setCellRowContentFormat($cellRowContentFormat)
-	{
+	public function setCellRowContentFormat($cellRowContentFormat) {
 		$this->cellRowContentFormat = $cellRowContentFormat;
 
 		return $this;
@@ -199,8 +185,7 @@ class TableStyle
 	 *
 	 * @return string
 	 */
-	public function getCellRowContentFormat()
-	{
+	public function getCellRowContentFormat() {
 		return $this->cellRowContentFormat;
 	}
 
@@ -211,8 +196,7 @@ class TableStyle
 	 *
 	 * @return TableStyle
 	 */
-	public function setBorderFormat($borderFormat)
-	{
+	public function setBorderFormat($borderFormat) {
 		$this->borderFormat = $borderFormat;
 
 		return $this;
@@ -223,8 +207,7 @@ class TableStyle
 	 *
 	 * @return string
 	 */
-	public function getBorderFormat()
-	{
+	public function getBorderFormat() {
 		return $this->borderFormat;
 	}
 
@@ -235,8 +218,7 @@ class TableStyle
 	 *
 	 * @return TableStyle
 	 */
-	public function setPadType($padType)
-	{
+	public function setPadType($padType) {
 		if (!in_array($padType, array(STR_PAD_LEFT, STR_PAD_RIGHT, STR_PAD_BOTH), true)) {
 			throw new InvalidArgumentException('Invalid padding type. Expected one of (STR_PAD_LEFT, STR_PAD_RIGHT, STR_PAD_BOTH).');
 		}
@@ -251,8 +233,7 @@ class TableStyle
 	 *
 	 * @return int
 	 */
-	public function getPadType()
-	{
+	public function getPadType() {
 		return $this->padType;
 	}
 }

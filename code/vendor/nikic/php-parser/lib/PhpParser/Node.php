@@ -2,8 +2,7 @@
 
 namespace PhpParser;
 
-interface Node
-{
+interface Node {
 	/**
 	 * Gets the type of the node.
 	 *

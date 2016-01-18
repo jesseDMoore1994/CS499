@@ -58,8 +58,7 @@ use Cake\Utility\Xml;
  * If you don't use the `_serialize` key, you will need a view. You can use extended
  * views to provide layout like functionality.
  */
-class XmlView extends SerializedView
-{
+class XmlView extends SerializedView {
 
 	/**
 	 * XML layouts are located in the xml sub directory of `Layouts/`
@@ -99,8 +98,7 @@ class XmlView extends SerializedView
 	 * @param array|string $serialize The name(s) of the view variable(s) that need(s) to be serialized
 	 * @return string The serialized data
 	 */
-	protected function _serialize($serialize)
-	{
+	protected function _serialize($serialize) {
 		$rootNode = isset($this->viewVars['_rootNode']) ? $this->viewVars['_rootNode'] : 'response';
 
 		if ($serialize === true) {

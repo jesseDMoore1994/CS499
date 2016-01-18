@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-class FormatterLocator
-{
+class FormatterLocator {
 	/**
 	 *
 	 * A registry to retain formatter objects.
@@ -46,8 +45,7 @@ class FormatterLocator
 	 * formatter name the value is a callable that returns a formatter object.
 	 *
 	 */
-	public function __construct(array $registry = [])
-	{
+	public function __construct(array $registry = []) {
 		foreach ($registry as $name => $spec) {
 			$this->set($name, $spec);
 		}
@@ -64,8 +62,7 @@ class FormatterLocator
 	 * @return void
 	 *
 	 */
-	public function set($name, $spec)
-	{
+	public function set($name, $spec) {
 		$this->registry[$name] = $spec;
 		$this->converted[$name] = false;
 	}
@@ -79,8 +76,7 @@ class FormatterLocator
 	 * @return FormatterInterface A formatter object.
 	 *
 	 */
-	public function get($name)
-	{
+	public function get($name) {
 		if (!isset($this->registry[$name])) {
 			throw new Exception\FormatterNotMapped($name);
 		}

@@ -21,11 +21,9 @@ use Cake\View\Widget\ButtonWidget;
 /**
  * Basic input test.
  */
-class ButtonWidgetTest extends TestCase
-{
+class ButtonWidgetTest extends TestCase {
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$templates = [
 			'button' => '<button{{attrs}}>{{text}}</button>',
@@ -39,8 +37,7 @@ class ButtonWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSimple()
-	{
+	public function testRenderSimple() {
 		$button = new ButtonWidget($this->templates);
 		$result = $button->render(['name' => 'my_input'], $this->context);
 		$expected = [
@@ -55,8 +52,7 @@ class ButtonWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderType()
-	{
+	public function testRenderType() {
 		$button = new ButtonWidget($this->templates);
 		$data = [
 			'name' => 'my_input',
@@ -77,8 +73,7 @@ class ButtonWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderWithText()
-	{
+	public function testRenderWithText() {
 		$button = new ButtonWidget($this->templates);
 		$data = [
 			'text' => 'Some <value>'
@@ -106,8 +101,7 @@ class ButtonWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderAttributes()
-	{
+	public function testRenderAttributes() {
 		$button = new ButtonWidget($this->templates);
 		$data = [
 			'name' => 'my_input',
@@ -134,8 +128,7 @@ class ButtonWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderTemplateVars()
-	{
+	public function testRenderTemplateVars() {
 		$this->templates->add([
 			'button' => '<button {{attrs}} custom="{{custom}}">{{text}}</button>',
 		]);

@@ -22,8 +22,7 @@ use Cake\Collection\Collection;
  * when you have two separate collections and want to merge them together by placing
  * each of the values from one collection into a property inside the other collection.
  */
-class InsertIterator extends Collection
-{
+class InsertIterator extends Collection {
 
 	/**
 	 * The collection from which to extract the values to be inserted
@@ -65,8 +64,7 @@ class InsertIterator extends Collection
 	 * @param array|\Traversable $values The source collection from which the values will
 	 * be inserted at the specified path.
 	 */
-	public function __construct($into, $path, $values)
-	{
+	public function __construct($into, $path, $values) {
 		parent::__construct($into);
 
 		if (!($values instanceof Collection)) {
@@ -85,8 +83,7 @@ class InsertIterator extends Collection
 	 *
 	 * @return void
 	 */
-	public function next()
-	{
+	public function next() {
 		parent::next();
 		if ($this->_validValues) {
 			$this->_values->next();
@@ -100,8 +97,7 @@ class InsertIterator extends Collection
 	 *
 	 * @return mixed
 	 */
-	public function current()
-	{
+	public function current() {
 		$row = parent::current();
 
 		if (!$this->_validValues) {
@@ -125,8 +121,7 @@ class InsertIterator extends Collection
 	 *
 	 * @return void
 	 */
-	public function rewind()
-	{
+	public function rewind() {
 		parent::rewind();
 		$this->_values->rewind();
 		$this->_validValues = $this->_values->valid();

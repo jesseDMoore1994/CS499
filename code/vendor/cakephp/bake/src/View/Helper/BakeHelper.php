@@ -10,8 +10,7 @@ use Cake\View\Helper;
 /**
  * Bake helper
  */
-class BakeHelper extends Helper
-{
+class BakeHelper extends Helper {
 	use ConventionsTrait;
 
 	/**
@@ -36,8 +35,7 @@ class BakeHelper extends Helper
 	 * @param array $options extra options to be passed to the element
 	 * @return string
 	 */
-	public function arrayProperty($name, array $value = [], array $options = [])
-	{
+	public function arrayProperty($name, array $value = [], array $options = []) {
 		if (!$value) {
 			return '';
 		}
@@ -59,8 +57,7 @@ class BakeHelper extends Helper
 	 * @param array $options options to use
 	 * @return string
 	 */
-	public function stringifyList(array $list, array $options = [])
-	{
+	public function stringifyList(array $list, array $options = []) {
 		$options += [
 			'indent' => 2,
 			'tab' => '    ',
@@ -102,8 +99,7 @@ class BakeHelper extends Helper
 	 * @param string $assoc association to extract
 	 * @return array
 	 */
-	public function aliasExtractor($table, $assoc)
-	{
+	public function aliasExtractor($table, $assoc) {
 		$extractor = function ($val) {
 			return $val->target()->alias();
 		};
@@ -132,8 +128,7 @@ class BakeHelper extends Helper
 	 * @param string $suffix Class name suffix
 	 * @return array Class info
 	 */
-	public function classInfo($class, $type, $suffix)
-	{
+	public function classInfo($class, $type, $suffix) {
 		list($plugin, $name) = \pluginSplit($class);
 
 		$base = Configure::read('App.namespace');
@@ -164,8 +159,7 @@ class BakeHelper extends Helper
 	 * @param \Cake\ORM\Table $table Table
 	 * @param array $aliases array of aliases
 	 */
-	protected function _filterHasManyAssociationsAliases($table, $aliases)
-	{
+	protected function _filterHasManyAssociationsAliases($table, $aliases) {
 		if (is_null($this->_associationFilter)) {
 			$this->_associationFilter = new AssociationFilter();
 		}

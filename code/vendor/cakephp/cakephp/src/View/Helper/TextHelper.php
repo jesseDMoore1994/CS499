@@ -28,8 +28,7 @@ use Cake\View\View;
  * @link http://book.cakephp.org/3.0/en/views/helpers/text.html
  * @see \Cake\Utility\Text
  */
-class TextHelper extends Helper
-{
+class TextHelper extends Helper {
 
 	/**
 	 * helpers
@@ -74,8 +73,7 @@ class TextHelper extends Helper
 	 * @param array $config Settings array Settings array
 	 * @throws \Cake\Core\Exception\Exception when the engine class could not be found.
 	 */
-	public function __construct(View $View, array $config = [])
-	{
+	public function __construct(View $View, array $config = []) {
 		parent::__construct($View, $config);
 
 		$config = $this->_config;
@@ -94,8 +92,7 @@ class TextHelper extends Helper
 	 * @param array $params Array of params for the method.
 	 * @return mixed Whatever is returned by called method, or false on failure
 	 */
-	public function __call($method, $params)
-	{
+	public function __call($method, $params) {
 		return call_user_func_array([$this->_engine, $method], $params);
 	}
 
@@ -112,8 +109,7 @@ class TextHelper extends Helper
 	 * @return string The text with links
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#linking-urls
 	 */
-	public function autoLinkUrls($text, array $options = [])
-	{
+	public function autoLinkUrls($text, array $options = []) {
 		$this->_placeholders = [];
 		$options += ['escape' => true];
 
@@ -144,8 +140,7 @@ class TextHelper extends Helper
 	 * @param array $matches An array of regexp matches.
 	 * @return string Replaced values.
 	 */
-	protected function _insertPlaceHolder($matches)
-	{
+	protected function _insertPlaceHolder($matches) {
 		$key = md5($matches[0]);
 		$this->_placeholders[$key] = $matches[0];
 		return $key;
@@ -158,8 +153,7 @@ class TextHelper extends Helper
 	 * @param array $htmlOptions The options for the generated links.
 	 * @return string The text with links inserted.
 	 */
-	protected function _linkUrls($text, $htmlOptions)
-	{
+	protected function _linkUrls($text, $htmlOptions) {
 		$replace = [];
 		foreach ($this->_placeholders as $hash => $url) {
 			$link = $url;
@@ -179,8 +173,7 @@ class TextHelper extends Helper
 	 * @return string
 	 * @see TextHelper::autoLinkEmails()
 	 */
-	protected function _linkEmails($text, $options)
-	{
+	protected function _linkEmails($text, $options) {
 		$replace = [];
 		foreach ($this->_placeholders as $hash => $url) {
 			$replace[$hash] = $this->Html->link($url, 'mailto:' . $url, $options);
@@ -200,8 +193,7 @@ class TextHelper extends Helper
 	 * @return string The text with links
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#linking-email-addresses
 	 */
-	public function autoLinkEmails($text, array $options = [])
-	{
+	public function autoLinkEmails($text, array $options = []) {
 		$options += ['escape' => true];
 		$this->_placeholders = [];
 
@@ -229,8 +221,7 @@ class TextHelper extends Helper
 	 * @return string The text with links
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#linking-both-urls-and-email-addresses
 	 */
-	public function autoLink($text, array $options = [])
-	{
+	public function autoLink($text, array $options = []) {
 		$text = $this->autoLinkUrls($text, $options);
 		return $this->autoLinkEmails($text, ['escape' => false] + $options);
 	}
@@ -246,8 +237,7 @@ class TextHelper extends Helper
 	 * @see \Cake\Utility\Text::highlight()
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#highlighting-substrings
 	 */
-	public function highlight($text, $phrase, array $options = [])
-	{
+	public function highlight($text, $phrase, array $options = []) {
 		return $this->_engine->highlight($text, $phrase, $options);
 	}
 
@@ -260,8 +250,7 @@ class TextHelper extends Helper
 	 * @return string The text with proper <p> and <br /> tags
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#converting-text-into-paragraphs
 	 */
-	public function autoParagraph($text)
-	{
+	public function autoParagraph($text) {
 		if (trim($text) !== '') {
 			$text = preg_replace('|<br[^>]*>\s*<br[^>]*>|i', "\n\n", $text . "\n");
 			$text = preg_replace("/\n\n+/", "\n\n", str_replace(["\r\n", "\r"], "\n", $text));
@@ -283,8 +272,7 @@ class TextHelper extends Helper
 	 * @see \Cake\Utility\Text::stripLinks()
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#removing-links
 	 */
-	public function stripLinks($text)
-	{
+	public function stripLinks($text) {
 		return $this->_engine->stripLinks($text);
 	}
 
@@ -307,8 +295,7 @@ class TextHelper extends Helper
 	 * @see \Cake\Utility\Text::truncate()
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#truncating-text
 	 */
-	public function truncate($text, $length = 100, array $options = [])
-	{
+	public function truncate($text, $length = 100, array $options = []) {
 		return $this->_engine->truncate($text, $length, $options);
 	}
 
@@ -330,8 +317,7 @@ class TextHelper extends Helper
 	 * @see \Cake\Utility\Text::tail()
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#truncating-the-tail-of-a-string
 	 */
-	public function tail($text, $length = 100, array $options = [])
-	{
+	public function tail($text, $length = 100, array $options = []) {
 		return $this->_engine->tail($text, $length, $options);
 	}
 
@@ -347,8 +333,7 @@ class TextHelper extends Helper
 	 * @see \Cake\Utility\Text::excerpt()
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#extracting-an-excerpt
 	 */
-	public function excerpt($text, $phrase, $radius = 100, $ending = '...')
-	{
+	public function excerpt($text, $phrase, $radius = 100, $ending = '...') {
 		return $this->_engine->excerpt($text, $phrase, $radius, $ending);
 	}
 
@@ -362,8 +347,7 @@ class TextHelper extends Helper
 	 * @see \Cake\Utility\Text::toList()
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/text.html#converting-an-array-to-sentence-form
 	 */
-	public function toList($list, $and = null, $separator = ', ')
-	{
+	public function toList($list, $and = null, $separator = ', ') {
 		return $this->_engine->toList($list, $and, $separator);
 	}
 
@@ -372,8 +356,7 @@ class TextHelper extends Helper
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 }

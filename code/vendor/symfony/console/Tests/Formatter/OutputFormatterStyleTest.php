@@ -13,10 +13,8 @@ namespace Symfony\Component\Console\Tests\Formatter;
 
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 
-class OutputFormatterStyleTest extends \PHPUnit_Framework_TestCase
-{
-	public function testConstructor()
-	{
+class OutputFormatterStyleTest extends \PHPUnit_Framework_TestCase {
+	public function testConstructor() {
 		$style = new OutputFormatterStyle('green', 'black', array('bold', 'underscore'));
 		$this->assertEquals("\033[32;40;1;4mfoo\033[39;49;22;24m", $style->apply('foo'));
 
@@ -27,8 +25,7 @@ class OutputFormatterStyleTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals("\033[47mfoo\033[49m", $style->apply('foo'));
 	}
 
-	public function testForeground()
-	{
+	public function testForeground() {
 		$style = new OutputFormatterStyle();
 
 		$style->setForeground('black');
@@ -44,8 +41,7 @@ class OutputFormatterStyleTest extends \PHPUnit_Framework_TestCase
 		$style->setForeground('undefined-color');
 	}
 
-	public function testBackground()
-	{
+	public function testBackground() {
 		$style = new OutputFormatterStyle();
 
 		$style->setBackground('black');
@@ -61,8 +57,7 @@ class OutputFormatterStyleTest extends \PHPUnit_Framework_TestCase
 		$style->setBackground('undefined-color');
 	}
 
-	public function testOptions()
-	{
+	public function testOptions() {
 		$style = new OutputFormatterStyle();
 
 		$style->setOptions(array('reverse', 'conceal'));

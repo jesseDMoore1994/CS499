@@ -19,8 +19,7 @@ use Cake\ORM\TableRegistry;
 /**
  * Contains method for setting and accessing LocatorInterface instance
  */
-trait LocatorAwareTrait
-{
+trait LocatorAwareTrait {
 
 	/**
 	 * Table locator instance
@@ -36,8 +35,7 @@ trait LocatorAwareTrait
 	 * @param \Cake\ORM\Locator\LocatorInterface|null $tableLocator LocatorInterface instance.
 	 * @return \Cake\ORM\Locator\LocatorInterface
 	 */
-	public function tableLocator(LocatorInterface $tableLocator = null)
-	{
+	public function tableLocator(LocatorInterface $tableLocator = null) {
 		if ($tableLocator !== null) {
 			$this->_tableLocator = $tableLocator;
 		}

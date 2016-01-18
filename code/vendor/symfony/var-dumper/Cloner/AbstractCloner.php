@@ -19,8 +19,7 @@ use Symfony\Component\VarDumper\Exception\ThrowingCasterException;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-abstract class AbstractCloner implements ClonerInterface
-{
+abstract class AbstractCloner implements ClonerInterface {
 	public static $defaultCasters = array(
 		'Symfony\Component\VarDumper\Caster\CutStub' => 'Symfony\Component\VarDumper\Caster\StubCaster::castStub',
 		'Symfony\Component\VarDumper\Caster\CutArrayStub' => 'Symfony\Component\VarDumper\Caster\StubCaster::castCutArray',
@@ -129,8 +128,7 @@ abstract class AbstractCloner implements ClonerInterface
 	 *
 	 * @see addCasters
 	 */
-	public function __construct(array $casters = null)
-	{
+	public function __construct(array $casters = null) {
 		if (null === $casters) {
 			$casters = static::$defaultCasters;
 		}
@@ -148,8 +146,7 @@ abstract class AbstractCloner implements ClonerInterface
 	 *
 	 * @param callable[] $casters A map of casters.
 	 */
-	public function addCasters(array $casters)
-	{
+	public function addCasters(array $casters) {
 		foreach ($casters as $type => $callback) {
 			$this->casters[strtolower($type)][] = $callback;
 		}
@@ -160,8 +157,7 @@ abstract class AbstractCloner implements ClonerInterface
 	 *
 	 * @param int $maxItems
 	 */
-	public function setMaxItems($maxItems)
-	{
+	public function setMaxItems($maxItems) {
 		$this->maxItems = (int)$maxItems;
 	}
 
@@ -170,8 +166,7 @@ abstract class AbstractCloner implements ClonerInterface
 	 *
 	 * @param int $maxString
 	 */
-	public function setMaxString($maxString)
-	{
+	public function setMaxString($maxString) {
 		$this->maxString = (int)$maxString;
 	}
 
@@ -183,8 +178,7 @@ abstract class AbstractCloner implements ClonerInterface
 	 *
 	 * @return Data The cloned variable represented by a Data object.
 	 */
-	public function cloneVar($var, $filter = 0)
-	{
+	public function cloneVar($var, $filter = 0) {
 		$this->prevErrorHandler = set_error_handler(function ($type, $msg, $file, $line, $context) {
 			if (E_RECOVERABLE_ERROR === $type || E_USER_ERROR === $type) {
 				// Cloner never dies
@@ -230,8 +224,7 @@ abstract class AbstractCloner implements ClonerInterface
 	 *
 	 * @return array The object casted as array.
 	 */
-	protected function castObject(Stub $stub, $isNested)
-	{
+	protected function castObject(Stub $stub, $isNested) {
 		$obj = $stub->value;
 		$class = $stub->class;
 
@@ -270,8 +263,7 @@ abstract class AbstractCloner implements ClonerInterface
 	 *
 	 * @return array The resource casted as array.
 	 */
-	protected function castResource(Stub $stub, $isNested)
-	{
+	protected function castResource(Stub $stub, $isNested) {
 		$a = array();
 		$res = $stub->value;
 		$type = $stub->class;
@@ -296,8 +288,7 @@ abstract class AbstractCloner implements ClonerInterface
 	 *
 	 * @return array The casted object/resource.
 	 */
-	private function callCaster($callback, $obj, $a, $stub, $isNested)
-	{
+	private function callCaster($callback, $obj, $a, $stub, $isNested) {
 		try {
 			$cast = call_user_func($callback, $obj, $a, $stub, $isNested, $this->filter);
 

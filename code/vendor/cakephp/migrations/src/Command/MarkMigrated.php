@@ -19,8 +19,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 
-class MarkMigrated extends AbstractCommand
-{
+class MarkMigrated extends AbstractCommand {
 
 	use ConfigurationTrait;
 
@@ -35,8 +34,7 @@ class MarkMigrated extends AbstractCommand
 	 * @param \Symfony\Component\Console\Output\OutputInterface $output
 	 * @return mixed
 	 */
-	public function output(OutputInterface $output = null)
-	{
+	public function output(OutputInterface $output = null) {
 		if ($output !== null) {
 			$this->output = $output;
 		}
@@ -46,8 +44,7 @@ class MarkMigrated extends AbstractCommand
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this->setName('mark_migrated')
 			->setDescription('Mark a migration as migrated')
 			->addArgument(
@@ -98,8 +95,7 @@ class MarkMigrated extends AbstractCommand
 	 * @param \Symfony\Component\Console\Output\OutputInterface $output the output object
 	 * @return void
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->setInput($input);
 		$this->bootstrap($input, $output);
 		$this->output($output);
@@ -140,8 +136,7 @@ class MarkMigrated extends AbstractCommand
 	 * @param array $versions Versions which should be marked
 	 * @return void
 	 */
-	protected function markVersionsAsMigrated($path, $versions)
-	{
+	protected function markVersionsAsMigrated($path, $versions) {
 		$manager = $this->getManager();
 		$adapter = $manager->getEnvironment('default')->getAdapter();
 		$output = $this->output();
@@ -185,8 +180,7 @@ class MarkMigrated extends AbstractCommand
 	 * @throws \InvalidArgumentException If the `--exclude` or `--only` options are used without `--target`
 	 * or version not found
 	 */
-	protected function getVersionsToMark()
-	{
+	protected function getVersionsToMark() {
 		$migrations = $this->getManager()->getMigrations();
 		$versions = array_keys($migrations);
 
@@ -219,8 +213,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return string Version found as target
 	 */
-	protected function getTarget()
-	{
+	protected function getTarget() {
 		$target = $this->input->getOption('target');
 		return $target ? $target : $this->input->getArgument('version');
 	}
@@ -230,8 +223,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return bool Returns true if it should try to mark all versions
 	 */
-	protected function isAllVersion()
-	{
+	protected function isAllVersion() {
 		if ($this->isUsingDeprecatedVersion()) {
 			return false;
 		}
@@ -244,8 +236,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return bool Returns true if it is using the deprecated `all` otherwise false
 	 */
-	protected function isUsingDeprecatedAll()
-	{
+	protected function isUsingDeprecatedAll() {
 		$version = $this->input->getArgument('version');
 		return $version === 'all' || $version === '*';
 	}
@@ -255,8 +246,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return bool Returns true when it is trying to mark only one migration
 	 */
-	protected function isOnly()
-	{
+	protected function isOnly() {
 
 		return $this->hasOnly() || $this->isUsingDeprecatedVersion();
 	}
@@ -266,8 +256,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return bool Returns true if `--exclude` option gets passed in otherwise false
 	 */
-	protected function hasExclude()
-	{
+	protected function hasExclude() {
 		return $this->input->getOption('exclude');
 	}
 
@@ -276,8 +265,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return bool Returns true if `--only` option gets passed in otherwise false
 	 */
-	protected function hasOnly()
-	{
+	protected function hasOnly() {
 		return $this->input->getOption('only');
 	}
 
@@ -286,8 +274,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return bool True if it is using VERSION argument otherwise false
 	 */
-	protected function isUsingDeprecatedVersion()
-	{
+	protected function isUsingDeprecatedVersion() {
 		$version = $this->input->getArgument('version');
 		return $version && $version !== 'all' && $version !== '*';
 	}
@@ -297,8 +284,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return bool Returns true when it is an invalid use of `--exclude` or `--only` otherwise false
 	 */
-	protected function invalidOnlyOrExclude()
-	{
+	protected function invalidOnlyOrExclude() {
 		return ($this->hasExclude() && $this->hasOnly()) ||
 		($this->hasExclude() || $this->hasOnly()) &&
 		$this->input->getOption('target') === null;
@@ -309,8 +295,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return void Just outputs the message
 	 */
-	protected function outputDeprecatedAllMessage()
-	{
+	protected function outputDeprecatedAllMessage() {
 		$msg = "DEPRECATED: `all` or `*` as version is deprecated. Use `bin/cake migrations mark_migrated` instead";
 		$output = $this->output();
 		$output->writeln(sprintf("<comment>%s</comment>", $msg));
@@ -321,8 +306,7 @@ class MarkMigrated extends AbstractCommand
 	 *
 	 * @return void Just outputs the message
 	 */
-	protected function outputDeprecatedVersionMessage()
-	{
+	protected function outputDeprecatedVersionMessage() {
 		$msg = 'DEPRECATED: VERSION as argument is deprecated. Use: ' .
 			'`bin/cake migrations mark_migrated --target=VERSION --only`';
 		$output = $this->output();

@@ -22,8 +22,7 @@ use Psr\Log\AbstractLogger;
  * Base log engine class.
  *
  */
-abstract class BaseLog extends AbstractLogger
-{
+abstract class BaseLog extends AbstractLogger {
 
 	use InstanceConfigTrait;
 
@@ -42,8 +41,7 @@ abstract class BaseLog extends AbstractLogger
 	 *
 	 * @param array $config Configuration array
 	 */
-	public function __construct(array $config = [])
-	{
+	public function __construct(array $config = []) {
 		$this->config($config);
 
 		if (!is_array($this->_config['scopes']) && $this->_config['scopes'] !== false) {
@@ -64,8 +62,7 @@ abstract class BaseLog extends AbstractLogger
 	 *
 	 * @return array
 	 */
-	public function levels()
-	{
+	public function levels() {
 		return $this->_config['levels'];
 	}
 
@@ -74,8 +71,7 @@ abstract class BaseLog extends AbstractLogger
 	 *
 	 * @return array
 	 */
-	public function scopes()
-	{
+	public function scopes() {
 		return $this->_config['scopes'];
 	}
 
@@ -88,8 +84,7 @@ abstract class BaseLog extends AbstractLogger
 	 * @param array $context Additional logging information for the message.
 	 * @return string
 	 */
-	protected function _format($data, array $context = [])
-	{
+	protected function _format($data, array $context = []) {
 		if (is_string($data)) {
 			return $data;
 		}

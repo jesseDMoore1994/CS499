@@ -24,8 +24,7 @@ use Cake\TestSuite\TestCase;
  * class to the Table class
  *
  */
-class AssociationProxyTest extends TestCase
-{
+class AssociationProxyTest extends TestCase {
 
 	/**
 	 * Fixtures to be loaded
@@ -41,8 +40,7 @@ class AssociationProxyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -52,8 +50,7 @@ class AssociationProxyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssociationAsProperty()
-	{
+	public function testAssociationAsProperty() {
 		$articles = TableRegistry::get('articles');
 		$articles->hasMany('comments');
 		$articles->belongsTo('authors');
@@ -71,8 +68,7 @@ class AssociationProxyTest extends TestCase
 	 * @expectedExceptionMessage Table "Cake\ORM\Table" is not associated with "posts"
 	 * @return void
 	 */
-	public function testGetBadAssociation()
-	{
+	public function testGetBadAssociation() {
 		$articles = TableRegistry::get('articles');
 		$articles->posts;
 	}
@@ -82,8 +78,7 @@ class AssociationProxyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindEmptyConditions()
-	{
+	public function testFindEmptyConditions() {
 		$table = TableRegistry::get('Users');
 		$table->hasMany('Articles', [
 			'foreignKey' => 'author_id',
@@ -98,8 +93,7 @@ class AssociationProxyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUpdateAllFromAssociation()
-	{
+	public function testUpdateAllFromAssociation() {
 		$articles = TableRegistry::get('articles');
 		$comments = TableRegistry::get('comments');
 		$articles->hasMany('comments', ['conditions' => ['published' => 'Y']]);
@@ -113,8 +107,7 @@ class AssociationProxyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteAllFromAssociation()
-	{
+	public function testDeleteAllFromAssociation() {
 		$articles = TableRegistry::get('articles');
 		$comments = TableRegistry::get('comments');
 		$articles->hasMany('comments', ['conditions' => ['published' => 'Y']]);
@@ -128,8 +121,7 @@ class AssociationProxyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssociationAsPropertyProxy()
-	{
+	public function testAssociationAsPropertyProxy() {
 		$articles = TableRegistry::get('articles');
 		$authors = TableRegistry::get('authors');
 		$articles->belongsTo('authors');
@@ -143,8 +135,7 @@ class AssociationProxyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssociationMethodProxy()
-	{
+	public function testAssociationMethodProxy() {
 		$articles = TableRegistry::get('articles');
 		$mock = $this->getMock('Cake\ORM\Table', ['crazy']);
 		$articles->belongsTo('authors', [

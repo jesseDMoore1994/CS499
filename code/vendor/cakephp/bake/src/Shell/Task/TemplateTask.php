@@ -26,8 +26,7 @@ use Cake\Utility\Inflector;
  * Task class for creating and updating view template files.
  *
  */
-class TemplateTask extends BakeTask
-{
+class TemplateTask extends BakeTask {
 	/**
 	 * Tasks to be loaded by this Task
 	 *
@@ -100,8 +99,7 @@ class TemplateTask extends BakeTask
 	 *
 	 * @return void
 	 */
-	public function initialize()
-	{
+	public function initialize() {
 		$this->path = current(App::path('Template'));
 	}
 
@@ -113,8 +111,7 @@ class TemplateTask extends BakeTask
 	 * @param string|null $action The action to bake with.
 	 * @return mixed
 	 */
-	public function main($name = null, $template = null, $action = null)
-	{
+	public function main($name = null, $template = null, $action = null) {
 		parent::main();
 
 		if (empty($name)) {
@@ -161,8 +158,7 @@ class TemplateTask extends BakeTask
 	 * @param string $table The table/model that is being baked.
 	 * @return void
 	 */
-	public function model($table)
-	{
+	public function model($table) {
 		$tableName = $this->_camelize($table);
 		$plugin = null;
 		if (!empty($this->params['plugin'])) {
@@ -178,8 +174,7 @@ class TemplateTask extends BakeTask
 	 * @param string|null $controller The controller name if specified.
 	 * @return void
 	 */
-	public function controller($table, $controller = null)
-	{
+	public function controller($table, $controller = null) {
 		$tableName = $this->_camelize($table);
 		if (empty($controller)) {
 			$controller = $tableName;
@@ -202,8 +197,7 @@ class TemplateTask extends BakeTask
 	 *
 	 * @return string
 	 */
-	public function getPath()
-	{
+	public function getPath() {
 		$path = parent::getPath();
 		$path .= $this->controllerName . DS;
 		return $path;
@@ -214,8 +208,7 @@ class TemplateTask extends BakeTask
 	 *
 	 * @return array Array of action names that should be baked
 	 */
-	protected function _methodsToBake()
-	{
+	protected function _methodsToBake() {
 		$base = Configure::read('App.namespace');
 
 		$methods = [];
@@ -247,8 +240,7 @@ class TemplateTask extends BakeTask
 	 *
 	 * @return void
 	 */
-	public function all()
-	{
+	public function all() {
 		$this->Model->connection = $this->connection;
 		$tables = $this->Model->listUnskipped();
 
@@ -275,8 +267,7 @@ class TemplateTask extends BakeTask
 	 *
 	 * @return array Returns variables to be made available to a view template
 	 */
-	protected function _loadController()
-	{
+	protected function _loadController() {
 		$modelObject = TableRegistry::get($this->modelName);
 
 		$primaryKey = (array)$modelObject->primaryKey();
@@ -320,8 +311,7 @@ class TemplateTask extends BakeTask
 	 * @param array $vars The context for generating views.
 	 * @return void
 	 */
-	public function bakeActions(array $actions, $vars)
-	{
+	public function bakeActions(array $actions, $vars) {
 		foreach ($actions as $action) {
 			$content = $this->getContent($action, $vars);
 			$this->bake($action, $content);
@@ -333,8 +323,7 @@ class TemplateTask extends BakeTask
 	 *
 	 * @return void
 	 */
-	public function customAction()
-	{
+	public function customAction() {
 		$action = '';
 		while (!$action) {
 			$action = $this->in('Action Name? (use lowercase_underscored function name)');
@@ -368,8 +357,7 @@ class TemplateTask extends BakeTask
 	 * @param string $content Content to write.
 	 * @return string Generated file content.
 	 */
-	public function bake($action, $content = '')
-	{
+	public function bake($action, $content = '') {
 		if ($content === true) {
 			$content = $this->getContent($action);
 		}
@@ -391,8 +379,7 @@ class TemplateTask extends BakeTask
 	 * @param array|null $vars passed for use in templates
 	 * @return string content from template
 	 */
-	public function getContent($action, $vars = null)
-	{
+	public function getContent($action, $vars = null) {
 		if (!$vars) {
 			$vars = $this->_loadController();
 		}
@@ -413,8 +400,7 @@ class TemplateTask extends BakeTask
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->description(
@@ -443,8 +429,7 @@ class TemplateTask extends BakeTask
 	 * @param \Cake\ORM\Table $model Table
 	 * @return array associations
 	 */
-	protected function _filteredAssociations(Table $model)
-	{
+	protected function _filteredAssociations(Table $model) {
 		if (is_null($this->_associationFilter)) {
 			$this->_associationFilter = new AssociationFilter();
 		}

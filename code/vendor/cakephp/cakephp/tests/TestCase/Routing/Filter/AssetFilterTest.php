@@ -25,16 +25,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Asset filter test case.
  */
-class AssetFilterTest extends TestCase
-{
+class AssetFilterTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Plugin::load(['TestTheme']);
 	}
@@ -44,8 +42,7 @@ class AssetFilterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Plugin::unload();
 	}
@@ -58,8 +55,7 @@ class AssetFilterTest extends TestCase
 	 * @triggers DispatcherTest $this, compact('request', 'response')
 	 * @triggers DispatcherTest $this, compact('request', 'response')
 	 */
-	public function testNotModified()
-	{
+	public function testNotModified() {
 		$filter = new AssetFilter();
 		$time = filemtime(Plugin::path('TestTheme') . 'webroot/img/cake.power.gif');
 		$time = new \DateTime('@' . $time);
@@ -97,8 +93,7 @@ class AssetFilterTest extends TestCase
 	 * @return void
 	 * @triggers Dispatcher.beforeRequest $this, compact('request', 'response')
 	 */
-	public function test404OnDoubleSlash()
-	{
+	public function test404OnDoubleSlash() {
 		$filter = new AssetFilter();
 
 		$response = $this->getMock('Response', ['_sendHeader']);
@@ -116,8 +111,7 @@ class AssetFilterTest extends TestCase
 	 * @triggers Dispatcher.beforeRequest $this, compact('request', 'response')
 	 * @triggers Dispatcher.beforeRequest $this, compact('request', 'response')
 	 */
-	public function test404OnDoubleDot()
-	{
+	public function test404OnDoubleDot() {
 		$filter = new AssetFilter();
 
 		$response = $this->getMock('Response', ['_sendHeader']);
@@ -144,8 +138,7 @@ class AssetFilterTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function assetProvider()
-	{
+	public static function assetProvider() {
 		return [
 			[
 				'test_theme/flash/theme_test.swf',
@@ -229,8 +222,7 @@ class AssetFilterTest extends TestCase
 	 * @return void
 	 * @triggers Dispatcher.beforeDispatch $this, compact('request', 'response')
 	 */
-	public function testAsset($url, $file)
-	{
+	public function testAsset($url, $file) {
 		Plugin::load(['Company/TestPluginThree', 'TestPlugin', 'PluginJs']);
 
 		$filter = new AssetFilter();

@@ -20,8 +20,7 @@ use Cake\Collection\Collection;
  * Creates an iterator from another iterator that extract the requested column
  * or property based on a path
  */
-class ExtractIterator extends Collection
-{
+class ExtractIterator extends Collection {
 
 	/**
 	 * A callable responsible for extracting a single value for each
@@ -51,8 +50,7 @@ class ExtractIterator extends Collection
 	 * @param string $path a dot separated string symbolizing the path to follow
 	 * inside the hierarchy of each value so that the column can be extracted.
 	 */
-	public function __construct($items, $path)
-	{
+	public function __construct($items, $path) {
 		$this->_extractor = $this->_propertyExtractor($path);
 		parent::__construct($items);
 	}
@@ -63,8 +61,7 @@ class ExtractIterator extends Collection
 	 *
 	 * @return mixed
 	 */
-	public function current()
-	{
+	public function current() {
 		$extractor = $this->_extractor;
 		return $extractor(parent::current());
 	}

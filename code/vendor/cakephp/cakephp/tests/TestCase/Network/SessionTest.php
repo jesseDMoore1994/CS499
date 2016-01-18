@@ -27,11 +27,9 @@ use Cake\TestSuite\TestCase;
  * Class TestCacheSession
  *
  */
-class TestCacheSession extends CacheSession
-{
+class TestCacheSession extends CacheSession {
 
-	protected function _writeSession()
-	{
+	protected function _writeSession() {
 		return true;
 	}
 }
@@ -40,11 +38,9 @@ class TestCacheSession extends CacheSession
  * Class TestDatabaseSession
  *
  */
-class TestDatabaseSession extends DatabaseSession
-{
+class TestDatabaseSession extends DatabaseSession {
 
-	protected function _writeSession()
-	{
+	protected function _writeSession() {
 		return true;
 	}
 }
@@ -53,8 +49,7 @@ class TestDatabaseSession extends DatabaseSession
  * SessionTest class
  *
  */
-class SessionTest extends TestCase
-{
+class SessionTest extends TestCase {
 
 	protected static $_gcDivisor;
 
@@ -70,8 +65,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public static function setupBeforeClass()
-	{
+	public static function setupBeforeClass() {
 		// Make sure garbage collector will be called
 		static::$_gcDivisor = ini_get('session.gc_divisor');
 		ini_set('session.gc_divisor', '1');
@@ -82,8 +76,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public static function teardownAfterClass()
-	{
+	public static function teardownAfterClass() {
 		// Revert to the default setting
 		ini_set('session.gc_divisor', static::$_gcDivisor);
 	}
@@ -93,8 +86,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 	}
 
@@ -103,8 +95,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($_SESSION);
 		parent::tearDown();
 	}
@@ -114,8 +105,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSessionConfigIniSetting()
-	{
+	public function testSessionConfigIniSetting() {
 		$_SESSION = null;
 
 		$config = [
@@ -139,8 +129,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCookiePath()
-	{
+	public function testCookiePath() {
 		ini_set('session.cookie_path', '/foo');
 
 		$session = new Session();
@@ -155,8 +144,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheck()
-	{
+	public function testCheck() {
 		$session = new Session();
 		$session->write('SessionTestCase', 'value');
 		$this->assertTrue($session->check('SessionTestCase'));
@@ -172,8 +160,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSimpleRead()
-	{
+	public function testSimpleRead() {
 		$session = new Session();
 		$session->write('testing', '1,2,3');
 		$result = $session->read('testing');
@@ -199,8 +186,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadEmpty()
-	{
+	public function testReadEmpty() {
 		$session = new Session();
 		$this->assertNull($session->read(''));
 	}
@@ -210,8 +196,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWriteArray()
-	{
+	public function testWriteArray() {
 		$session = new Session();
 		$session->write([
 			'one' => 1,
@@ -229,8 +214,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWriteOverwriteStringValue()
-	{
+	public function testWriteOverwriteStringValue() {
 		$session = new Session();
 		$session->write('Some.string', 'value');
 		$this->assertEquals('value', $session->read('Some.string'));
@@ -244,8 +228,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConsume()
-	{
+	public function testConsume() {
 		$session = new Session();
 		$session->write('Some.string', 'value');
 		$session->write('Some.array', ['key1' => 'value1', 'key2' => 'value2']);
@@ -273,8 +256,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testId()
-	{
+	public function testId() {
 		$session = new Session();
 		$result = $session->id();
 		$expected = session_id();
@@ -293,8 +275,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStarted()
-	{
+	public function testStarted() {
 		$session = new Session();
 		$this->assertFalse($session->started());
 		$this->assertTrue($session->start());
@@ -306,8 +287,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClear()
-	{
+	public function testClear() {
 		$session = new Session();
 		$session->write('Delete.me', 'Clearing out');
 
@@ -321,8 +301,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDelete()
-	{
+	public function testDelete() {
 		$session = new Session();
 		$session->write('Delete.me', 'Clearing out');
 		$session->delete('Delete.me');
@@ -345,8 +324,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDestroy()
-	{
+	public function testDestroy() {
 		$session = new Session();
 		$session->start();
 		$session->write('bulletProof', 'invincible');
@@ -361,8 +339,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckingSavedEmpty()
-	{
+	public function testCheckingSavedEmpty() {
 		$session = new Session();
 		$session->write('SessionTestCase', 0);
 		$this->assertTrue($session->check('SessionTestCase'));
@@ -382,8 +359,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckKeyWithSpaces()
-	{
+	public function testCheckKeyWithSpaces() {
 		$session = new Session();
 		$session->write('Session Test', "test");
 		$this->assertTrue($session->check('Session Test'));
@@ -398,8 +374,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckEmpty()
-	{
+	public function testCheckEmpty() {
 		$session = new Session();
 		$this->assertFalse($session->check());
 	}
@@ -409,8 +384,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testKeyExploit()
-	{
+	public function testKeyExploit() {
 		$session = new Session();
 		$key = "a'] = 1; phpinfo(); \$_SESSION['a";
 		$session->write($key, 'haxored');
@@ -424,8 +398,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadingSavedEmpty()
-	{
+	public function testReadingSavedEmpty() {
 		$session = new Session();
 		$session->write('SessionTestCase', 0);
 		$this->assertEquals(0, $session->read('SessionTestCase'));
@@ -446,8 +419,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUsingAppLibsHandler()
-	{
+	public function testUsingAppLibsHandler() {
 		Configure::write('App.namespace', 'TestApp');
 		$config = [
 			'defaults' => 'cake',
@@ -469,8 +441,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUsingPluginHandler()
-	{
+	public function testUsingPluginHandler() {
 		Configure::write('App.namespace', 'TestApp');
 		\Cake\Core\Plugin::load('TestPlugin');
 
@@ -491,8 +462,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEngineWithPreMadeInstance()
-	{
+	public function testEngineWithPreMadeInstance() {
 		Configure::write('App.namespace', 'TestApp');
 		$engine = new \TestApp\Network\Session\TestAppLibSession;
 		$session = new Session(['handler' => ['engine' => $engine]]);
@@ -510,8 +480,7 @@ class SessionTest extends TestCase
 	 * @expectedExceptionMessage The class "Derp" does not exist and cannot be used as a session engine
 	 * @return void
 	 */
-	public function testBadEngine()
-	{
+	public function testBadEngine() {
 		$session = new Session();
 		$session->engine('Derp');
 	}
@@ -521,8 +490,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCookieTimeoutFallback()
-	{
+	public function testCookieTimeoutFallback() {
 		$config = [
 			'defaults' => 'cake',
 			'timeout' => 400,
@@ -538,8 +506,7 @@ class SessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSessionName()
-	{
+	public function testSessionName() {
 		new Session(['cookie' => 'made_up_name']);
 		$this->assertEquals('made_up_name', session_name());
 	}

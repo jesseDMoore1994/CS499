@@ -26,8 +26,7 @@ use Cake\View\View;
  * TimeHelperTest class
  *
  */
-class TimeHelperTest extends TestCase
-{
+class TimeHelperTest extends TestCase {
 
 	public $Time = null;
 
@@ -36,8 +35,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->View = new View();
 		$this->Time = new TimeHelper($this->View);
@@ -49,8 +47,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTimeAgoInWords()
-	{
+	public function testTimeAgoInWords() {
 		$Time = new TimeHelper($this->View);
 		$timestamp = strtotime('+8 years, +4 months +2 weeks +3 days');
 		$result = $Time->timeAgoInWords($timestamp, [
@@ -106,8 +103,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToQuarter()
-	{
+	public function testToQuarter() {
 		$this->assertEquals(4, $this->Time->toQuarter('2007-12-25'));
 		$this->assertEquals(['2007-10-01', '2007-12-31'], $this->Time->toQuarter('2007-12-25', true));
 	}
@@ -117,8 +113,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNice()
-	{
+	public function testNice() {
 		$time = '2014-04-20 20:00';
 		$this->assertTimeFormat('Apr 20, 2014, 8:00 PM', $this->Time->nice($time));
 
@@ -131,8 +126,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToUnix()
-	{
+	public function testToUnix() {
 		$this->assertEquals(1397980800, $this->Time->toUnix('2014-04-20 08:00:00'));
 	}
 
@@ -141,8 +135,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToAtom()
-	{
+	public function testToAtom() {
 		$dateTime = new \DateTime;
 		$this->assertEquals($dateTime->format($dateTime::ATOM), $this->Time->toAtom($dateTime->getTimestamp()));
 	}
@@ -152,8 +145,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToRss()
-	{
+	public function testToRss() {
 		$date = '2012-08-12 12:12:45';
 		$time = strtotime($date);
 		$this->assertEquals(date('r', $time), $this->Time->toRss($time));
@@ -172,8 +164,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGmt()
-	{
+	public function testGmt() {
 		$this->assertEquals(1397980800, $this->Time->gmt('2014-04-20 08:00:00'));
 	}
 
@@ -182,8 +173,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsToday()
-	{
+	public function testIsToday() {
 		$result = $this->Time->isToday('+1 day');
 		$this->assertFalse($result);
 		$result = $this->Time->isToday('+1 days');
@@ -199,8 +189,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsFuture()
-	{
+	public function testIsFuture() {
 		$this->assertTrue($this->Time->isFuture('+1 month'));
 		$this->assertTrue($this->Time->isFuture('+1 days'));
 		$this->assertTrue($this->Time->isFuture('+1 minute'));
@@ -217,8 +206,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsPast()
-	{
+	public function testIsPast() {
 		$this->assertFalse($this->Time->isPast('+1 month'));
 		$this->assertFalse($this->Time->isPast('+1 days'));
 		$this->assertFalse($this->Time->isPast('+1 minute'));
@@ -235,8 +223,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsThisWeek()
-	{
+	public function testIsThisWeek() {
 		// A map of days which goes from -1 day of week to +1 day of week
 		$map = [
 			'Mon' => [-1, 7], 'Tue' => [-2, 6], 'Wed' => [-3, 5],
@@ -257,8 +244,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsThisMonth()
-	{
+	public function testIsThisMonth() {
 		$result = $this->Time->isThisMonth('+0 day');
 		$this->assertTrue($result);
 		$result = $this->Time->isThisMonth($time = mktime(0, 0, 0, date('m'), mt_rand(1, 28), date('Y')));
@@ -274,8 +260,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsThisYear()
-	{
+	public function testIsThisYear() {
 		$result = $this->Time->isThisYear('+0 day');
 		$this->assertTrue($result);
 		$result = $this->Time->isThisYear(mktime(0, 0, 0, mt_rand(1, 12), mt_rand(1, 28), date('Y')));
@@ -287,8 +272,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWasYesterday()
-	{
+	public function testWasYesterday() {
 		$result = $this->Time->wasYesterday('+1 day');
 		$this->assertFalse($result);
 		$result = $this->Time->wasYesterday('+1 days');
@@ -308,8 +292,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsTomorrow()
-	{
+	public function testIsTomorrow() {
 		$result = $this->Time->isTomorrow('+1 day');
 		$this->assertTrue($result);
 		$result = $this->Time->isTomorrow('+1 days');
@@ -325,8 +308,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWasWithinLast()
-	{
+	public function testWasWithinLast() {
 		$this->assertTrue($this->Time->wasWithinLast('1 day', '-1 day'));
 		$this->assertTrue($this->Time->wasWithinLast('1 week', '-1 week'));
 		$this->assertTrue($this->Time->wasWithinLast('1 year', '-1 year'));
@@ -371,8 +353,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsWithinNext()
-	{
+	public function testIsWithinNext() {
 		$this->assertFalse($this->Time->isWithinNext('1 day', '-1 day'));
 		$this->assertFalse($this->Time->isWithinNext('1 week', '-1 week'));
 		$this->assertFalse($this->Time->isWithinNext('1 year', '-1 year'));
@@ -417,8 +398,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormat()
-	{
+	public function testFormat() {
 		$time = strtotime('Thu Jan 14 13:59:28 2010');
 
 		$result = $this->Time->format($time);
@@ -439,8 +419,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatString()
-	{
+	public function testFormatString() {
 		$time = '2010-01-14 13:59:28';
 		$result = $this->Time->format($time);
 		$this->assertTimeFormat('1/14/10 1:59 PM', $result);
@@ -454,8 +433,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatTimeInstance()
-	{
+	public function testFormatTimeInstance() {
 		$time = new Time('2010-01-14 13:59:28', 'America/New_York');
 		$result = $this->Time->format($time, 'HH:mm', null, 'America/New_York');
 		$this->assertTimeFormat('13:59', $result);
@@ -473,8 +451,7 @@ class TimeHelperTest extends TestCase
 	 * @param string $result
 	 * @return void
 	 */
-	public function assertTimeFormat($expected, $result)
-	{
+	public function assertTimeFormat($expected, $result) {
 		return $this->assertEquals(
 			str_replace([',', '(', ')', ' at'], '', $expected),
 			str_replace([',', '(', ')', ' at'], '', $result)
@@ -486,8 +463,7 @@ class TimeHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNullDateFormat()
-	{
+	public function testNullDateFormat() {
 		$result = $this->Time->format(null);
 		$this->assertSame(false, $result);
 

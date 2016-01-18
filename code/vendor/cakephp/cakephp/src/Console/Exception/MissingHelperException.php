@@ -18,8 +18,7 @@ use Cake\Core\Exception\Exception;
  * Used when a Helper cannot be found.
  *
  */
-class MissingHelperException extends Exception
-{
+class MissingHelperException extends Exception {
 
 	protected $_messageTemplate = 'Helper class %s could not be found.';
 }

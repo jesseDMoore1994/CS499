@@ -19,8 +19,7 @@ use Cake\Console\Shell;
 /**
  * Provide command completion shells such as bash.
  */
-class CompletionShell extends Shell
-{
+class CompletionShell extends Shell {
 
 	/**
 	 * Contains tasks to load and instantiate
@@ -34,8 +33,7 @@ class CompletionShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function startup()
-	{
+	public function startup() {
 	}
 
 	/**
@@ -43,8 +41,7 @@ class CompletionShell extends Shell
 	 *
 	 * @return int|bool Returns the number of bytes returned from writing to stdout.
 	 */
-	public function main()
-	{
+	public function main() {
 		return $this->out($this->getOptionParser()->help());
 	}
 
@@ -53,8 +50,7 @@ class CompletionShell extends Shell
 	 *
 	 * @return int|bool|null Returns the number of bytes returned from writing to stdout.
 	 */
-	public function commands()
-	{
+	public function commands() {
 		$options = $this->Command->commands();
 		return $this->_output($options);
 	}
@@ -64,8 +60,7 @@ class CompletionShell extends Shell
 	 *
 	 * @return int|bool|null Returns the number of bytes returned from writing to stdout.
 	 */
-	public function options()
-	{
+	public function options() {
 		$commandName = $subCommandName = '';
 		if (!empty($this->args[0])) {
 			$commandName = $this->args[0];
@@ -83,8 +78,7 @@ class CompletionShell extends Shell
 	 *
 	 * @return int|bool|null Returns the number of bytes returned from writing to stdout.
 	 */
-	public function subcommands()
-	{
+	public function subcommands() {
 		if (!$this->args) {
 			return $this->_output();
 		}
@@ -98,8 +92,7 @@ class CompletionShell extends Shell
 	 *
 	 * @return int|bool|null Returns the number of bytes returned from writing to stdout.
 	 */
-	public function fuzzy()
-	{
+	public function fuzzy() {
 		return $this->_output();
 	}
 
@@ -108,8 +101,7 @@ class CompletionShell extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->description(
@@ -160,8 +152,7 @@ class CompletionShell extends Shell
 	 * @param array $options The options to output
 	 * @return int|bool|null Returns the number of bytes returned from writing to stdout.
 	 */
-	protected function _output($options = [])
-	{
+	protected function _output($options = []) {
 		if ($options) {
 			return $this->out(implode($options, ' '));
 		}

@@ -38,8 +38,7 @@ class <%= $name %> extends AbstractMigration
 	 * http://docs.phinx.org/en/latest/migrations.html#the-change-method
 	 * @return void
 	 */
-    public function change()
-{
+    public function change() {
 	<%
 	foreach ($tables as $table): %>
 		$table = $this->table('<%= $table%>');

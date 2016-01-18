@@ -6,8 +6,7 @@ use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\FunctionLike;
 
-class Closure extends Expr implements FunctionLike
-{
+class Closure extends Expr implements FunctionLike {
 	/** @var bool Whether the closure is static */
 	public $static;
 	/** @var bool Whether to return by reference */
@@ -33,8 +32,7 @@ class Closure extends Expr implements FunctionLike
 	 *                          'stmts'      => array(): Statements
 	 * @param array $attributes Additional attributes
 	 */
-	public function __construct(array $subNodes = array(), array $attributes = array())
-	{
+	public function __construct(array $subNodes = array(), array $attributes = array()) {
 		parent::__construct($attributes);
 		$this->static = isset($subNodes['static']) ? $subNodes['static'] : false;
 		$this->byRef = isset($subNodes['byRef']) ? $subNodes['byRef'] : false;
@@ -44,28 +42,23 @@ class Closure extends Expr implements FunctionLike
 		$this->stmts = isset($subNodes['stmts']) ? $subNodes['stmts'] : array();
 	}
 
-	public function getSubNodeNames()
-	{
+	public function getSubNodeNames() {
 		return array('static', 'byRef', 'params', 'uses', 'returnType', 'stmts');
 	}
 
-	public function returnsByRef()
-	{
+	public function returnsByRef() {
 		return $this->byRef;
 	}
 
-	public function getParams()
-	{
+	public function getParams() {
 		return $this->params;
 	}
 
-	public function getReturnType()
-	{
+	public function getReturnType() {
 		return $this->returnType;
 	}
 
-	public function getStmts()
-	{
+	public function getStmts() {
 		return $this->stmts;
 	}
 }

@@ -2,21 +2,18 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class DuplicateMigrationName extends AbstractMigration
-{
+class DuplicateMigrationName extends AbstractMigration {
 	/**
 	 * Migrate Up.
 	 */
-	public function up()
-	{
+	public function up() {
 		// do nothing
 	}
 
 	/**
 	 * Migrate Down.
 	 */
-	public function down()
-	{
+	public function down() {
 		// do nothing
 	}
 }

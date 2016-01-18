@@ -38,8 +38,7 @@ use PHPUnit_Exception;
  * more of your code easily and avoid some of the maintenance pitfalls
  * that mock objects create.
  */
-abstract class IntegrationTestCase extends TestCase
-{
+abstract class IntegrationTestCase extends TestCase {
 	use CookieCryptTrait;
 	use SecureFieldTokenTrait;
 
@@ -134,8 +133,7 @@ abstract class IntegrationTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		$this->_request = [];
 		$this->_session = [];
@@ -157,8 +155,7 @@ abstract class IntegrationTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function enableSecurityToken()
-	{
+	public function enableSecurityToken() {
 		$this->_securityToken = true;
 	}
 
@@ -170,8 +167,7 @@ abstract class IntegrationTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function enableCsrfToken()
-	{
+	public function enableCsrfToken() {
 		$this->_csrfToken = true;
 	}
 
@@ -186,8 +182,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param array $data The request data to use.
 	 * @return void
 	 */
-	public function configRequest(array $data)
-	{
+	public function configRequest(array $data) {
 		$this->_request = $data + $this->_request;
 	}
 
@@ -204,8 +199,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param array $data The session data to use.
 	 * @return void
 	 */
-	public function session(array $data)
-	{
+	public function session(array $data) {
 		$this->_session = $data + $this->_session;
 	}
 
@@ -223,8 +217,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param mixed $value The value of the cookie.
 	 * @return void
 	 */
-	public function cookie($name, $value)
-	{
+	public function cookie($name, $value) {
 		$this->_cookie[$name] = $value;
 	}
 
@@ -233,8 +226,7 @@ abstract class IntegrationTestCase extends TestCase
 	 *
 	 * @return string
 	 */
-	protected function _getCookieEncryptionKey()
-	{
+	protected function _getCookieEncryptionKey() {
 		if (isset($this->_cookieEncriptionKey)) {
 			return $this->_cookieEncriptionKey;
 		}
@@ -255,8 +247,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @return void
 	 * @see CookieCryptTrait::_encrypt
 	 */
-	public function cookieEncrypted($name, $value, $encrypt = 'aes', $key = null)
-	{
+	public function cookieEncrypted($name, $value, $encrypt = 'aes', $key = null) {
 		$this->_cookieEncriptionKey = $key;
 		$this->_cookie[$name] = $this->_encrypt($value, $encrypt);
 	}
@@ -271,8 +262,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string|array $url The URL to request.
 	 * @return void
 	 */
-	public function get($url)
-	{
+	public function get($url) {
 		$this->_sendRequest($url, 'GET');
 	}
 
@@ -287,8 +277,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param array $data The data for the request.
 	 * @return void
 	 */
-	public function post($url, $data = [])
-	{
+	public function post($url, $data = []) {
 		$this->_sendRequest($url, 'POST', $data);
 	}
 
@@ -303,8 +292,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param array $data The data for the request.
 	 * @return void
 	 */
-	public function patch($url, $data = [])
-	{
+	public function patch($url, $data = []) {
 		$this->_sendRequest($url, 'PATCH', $data);
 	}
 
@@ -319,8 +307,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param array $data The data for the request.
 	 * @return void
 	 */
-	public function put($url, $data = [])
-	{
+	public function put($url, $data = []) {
 		$this->_sendRequest($url, 'PUT', $data);
 	}
 
@@ -334,8 +321,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string|array $url The URL to request.
 	 * @return void
 	 */
-	public function delete($url)
-	{
+	public function delete($url) {
 		$this->_sendRequest($url, 'DELETE');
 	}
 
@@ -350,8 +336,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @return void
 	 * @throws \Exception
 	 */
-	protected function _sendRequest($url, $method, $data = [])
-	{
+	protected function _sendRequest($url, $method, $data = []) {
 		$request = $this->_buildRequest($url, $method, $data);
 		$response = new Response();
 		$dispatcher = DispatcherFactory::create();
@@ -380,8 +365,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param \Cake\Event\Event $event A dispatcher event.
 	 * @return void
 	 */
-	public function controllerSpy($event)
-	{
+	public function controllerSpy($event) {
 		if (empty($event->data['controller'])) {
 			return;
 		}
@@ -407,8 +391,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @return void
 	 * @throws \Exception
 	 */
-	protected function _handleError($exception)
-	{
+	protected function _handleError($exception) {
 		$class = Configure::read('Error.exceptionRenderer');
 		if (empty($class) || !class_exists($class)) {
 			$class = 'Cake\Error\ExceptionRenderer';
@@ -425,8 +408,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param array|null $data The request data.
 	 * @return \Cake\Network\Request The built request.
 	 */
-	protected function _buildRequest($url, $method, $data)
-	{
+	protected function _buildRequest($url, $method, $data) {
 		$sessionConfig = (array)Configure::read('Session') + [
 				'defaults' => 'php',
 			];
@@ -464,8 +446,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param array $data The request body data.
 	 * @return array The request body with tokens added.
 	 */
-	protected function _addTokens($url, $data)
-	{
+	protected function _addTokens($url, $data) {
 		if ($this->_securityToken === true) {
 			$keys = array_map(function ($field) {
 				return preg_replace('/(\.\d+)+$/', '', $field);
@@ -491,8 +472,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string|array $url The URL
 	 * @return array Qualified URL and the query parameters
 	 */
-	protected function _url($url)
-	{
+	protected function _url($url) {
 		$url = Router::url($url);
 		$query = [];
 
@@ -512,8 +492,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $name The view variable to get.
 	 * @return mixed The view variable if set.
 	 */
-	public function viewVariable($name)
-	{
+	public function viewVariable($name) {
 		if (empty($this->_controller->viewVars)) {
 			$this->fail('There are no view variables, perhaps you need to run a request?');
 		}
@@ -528,8 +507,7 @@ abstract class IntegrationTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function assertResponseOk()
-	{
+	public function assertResponseOk() {
 		$this->_assertStatus(200, 204, 'Status code is not between 200 and 204');
 	}
 
@@ -538,8 +516,7 @@ abstract class IntegrationTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function assertResponseSuccess()
-	{
+	public function assertResponseSuccess() {
 		$this->_assertStatus(200, 308, 'Status code is not between 200 and 308');
 	}
 
@@ -548,8 +525,7 @@ abstract class IntegrationTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function assertResponseError()
-	{
+	public function assertResponseError() {
 		$this->_assertStatus(400, 417, 'Status code is not between 400 and 417');
 	}
 
@@ -558,8 +534,7 @@ abstract class IntegrationTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function assertResponseFailure()
-	{
+	public function assertResponseFailure() {
 		$this->_assertStatus(500, 505, 'Status code is not between 500 and 505');
 	}
 
@@ -569,8 +544,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param int $code Status code to assert.
 	 * @return void
 	 */
-	public function assertResponseCode($code)
-	{
+	public function assertResponseCode($code) {
 		$actual = $this->_response->statusCode();
 		$this->_assertStatus($code, $code, 'Status code is not ' . $code . ' but ' . $actual);
 	}
@@ -583,8 +557,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The error message.
 	 * @return void
 	 */
-	protected function _assertStatus($min, $max, $message)
-	{
+	protected function _assertStatus($min, $max, $message) {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert status code.');
 		}
@@ -607,8 +580,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertRedirect($url = null, $message = '')
-	{
+	public function assertRedirect($url = null, $message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert location header. ' . $message);
 		}
@@ -630,8 +602,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertRedirectContains($url, $message = '')
-	{
+	public function assertRedirectContains($url, $message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert location header. ' . $message);
 		}
@@ -648,8 +619,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertNoRedirect($message = '')
-	{
+	public function assertNoRedirect($message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert location header. ' . $message);
 		}
@@ -671,8 +641,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertHeader($header, $content, $message = '')
-	{
+	public function assertHeader($header, $content, $message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert headers. ' . $message);
 		}
@@ -690,8 +659,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertContentType($type, $message = '')
-	{
+	public function assertContentType($type, $message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert content-type. ' . $message);
 		}
@@ -710,8 +678,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertResponseEquals($content, $message = '')
-	{
+	public function assertResponseEquals($content, $message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert content. ' . $message);
 		}
@@ -725,8 +692,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertResponseContains($content, $message = '')
-	{
+	public function assertResponseContains($content, $message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert content. ' . $message);
 		}
@@ -740,8 +706,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertResponseNotContains($content, $message = '')
-	{
+	public function assertResponseNotContains($content, $message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert content. ' . $message);
 		}
@@ -754,8 +719,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertResponseNotEmpty($message = '')
-	{
+	public function assertResponseNotEmpty($message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert content. ' . $message);
 		}
@@ -768,8 +732,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertResponseEmpty($message = '')
-	{
+	public function assertResponseEmpty($message = '') {
 		if (!$this->_response) {
 			$this->fail('No response set, cannot assert content. ' . $message);
 		}
@@ -783,8 +746,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertTemplate($content, $message = '')
-	{
+	public function assertTemplate($content, $message = '') {
 		if (!$this->_viewName) {
 			$this->fail('No view name stored. ' . $message);
 		}
@@ -798,8 +760,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertLayout($content, $message = '')
-	{
+	public function assertLayout($content, $message = '') {
 		if (!$this->_layoutName) {
 			$this->fail('No layout name stored. ' . $message);
 		}
@@ -814,8 +775,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertSession($expected, $path, $message = '')
-	{
+	public function assertSession($expected, $path, $message = '') {
 		if (empty($this->_requestSession)) {
 			$this->fail('There is no stored session data. Perhaps you need to run a request?');
 		}
@@ -831,8 +791,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @param string $message The failure message that will be appended to the generated message.
 	 * @return void
 	 */
-	public function assertCookie($expected, $name, $message = '')
-	{
+	public function assertCookie($expected, $name, $message = '') {
 		if (empty($this->_response)) {
 			$this->fail('Not response set, cannot assert cookies.');
 		}
@@ -856,8 +815,7 @@ abstract class IntegrationTestCase extends TestCase
 	 * @return void
 	 * @see CookieCryptTrait::_encrypt
 	 */
-	public function assertCookieEncrypted($expected, $name, $encrypt = 'aes', $key = null, $message = '')
-	{
+	public function assertCookieEncrypted($expected, $name, $encrypt = 'aes', $key = null, $message = '') {
 		if (empty($this->_response)) {
 			$this->fail('Not response set, cannot assert cookies.');
 		}

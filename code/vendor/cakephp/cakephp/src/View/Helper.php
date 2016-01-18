@@ -39,8 +39,7 @@ use Cake\Event\EventListenerInterface;
  *   If a listener returns a non-null value, the output of the rendered file will be set to that.
  *
  */
-class Helper implements EventListenerInterface
-{
+class Helper implements EventListenerInterface {
 
 	use InstanceConfigTrait;
 
@@ -114,8 +113,7 @@ class Helper implements EventListenerInterface
 	 * @param \Cake\View\View $View The View this helper is being attached to.
 	 * @param array $config Configuration settings for the helper.
 	 */
-	public function __construct(View $View, array $config = [])
-	{
+	public function __construct(View $View, array $config = []) {
 		$this->_View = $View;
 		$this->request = $View->request;
 
@@ -133,8 +131,7 @@ class Helper implements EventListenerInterface
 	 * @param array $params Array of params for the method.
 	 * @return void
 	 */
-	public function __call($method, $params)
-	{
+	public function __call($method, $params) {
 		trigger_error(sprintf('Method %1$s::%2$s does not exist', get_class($this), $method), E_USER_WARNING);
 	}
 
@@ -144,8 +141,7 @@ class Helper implements EventListenerInterface
 	 * @param string $name Name of the property being accessed.
 	 * @return \Cake\View\Helper|null Helper instance if helper with provided name exists
 	 */
-	public function __get($name)
-	{
+	public function __get($name) {
 		if (isset($this->_helperMap[$name]) && !isset($this->{$name})) {
 			$config = ['enabled' => false] + (array)$this->_helperMap[$name]['config'];
 			$this->{$name} = $this->_View->loadHelper($this->_helperMap[$name]['class'], $config);
@@ -162,8 +158,7 @@ class Helper implements EventListenerInterface
 	 * @param array $options Array of options
 	 * @return string onclick JS code
 	 */
-	protected function _confirm($message, $okCode, $cancelCode = '', $options = [])
-	{
+	protected function _confirm($message, $okCode, $cancelCode = '', $options = []) {
 		$message = json_encode($message);
 		$confirm = "if (confirm({$message})) { {$okCode} } {$cancelCode}";
 		if (isset($options['escape']) && $options['escape'] === false) {
@@ -180,8 +175,7 @@ class Helper implements EventListenerInterface
 	 * @param string $key the key to use for class.
 	 * @return array Array of options with $key set.
 	 */
-	public function addClass(array $options = [], $class = null, $key = 'class')
-	{
+	public function addClass(array $options = [], $class = null, $key = 'class') {
 		if (isset($options[$key]) && trim($options[$key])) {
 			$options[$key] .= ' ' . $class;
 		} else {
@@ -201,8 +195,7 @@ class Helper implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		$eventMap = [
 			'View.beforeRenderFile' => 'beforeRenderFile',
 			'View.afterRenderFile' => 'afterRenderFile',
@@ -226,8 +219,7 @@ class Helper implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		return [
 			'helpers' => $this->helpers,
 			'theme' => $this->theme,

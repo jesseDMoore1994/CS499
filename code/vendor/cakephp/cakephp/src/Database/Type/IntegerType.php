@@ -24,8 +24,7 @@ use PDO;
  *
  * Use to convert integer data between PHP and the database types.
  */
-class IntegerType extends Type
-{
+class IntegerType extends Type {
 
 	/**
 	 * Convert integer data into the database format.
@@ -34,8 +33,7 @@ class IntegerType extends Type
 	 * @param Driver $driver The driver instance to convert with.
 	 * @return int
 	 */
-	public function toDatabase($value, Driver $driver)
-	{
+	public function toDatabase($value, Driver $driver) {
 		if ($value === null || $value === '') {
 			return null;
 		}
@@ -54,8 +52,7 @@ class IntegerType extends Type
 	 * @param Driver $driver The driver instance to convert with.
 	 * @return int
 	 */
-	public function toPHP($value, Driver $driver)
-	{
+	public function toPHP($value, Driver $driver) {
 		if ($value === null) {
 			return null;
 		}
@@ -69,8 +66,7 @@ class IntegerType extends Type
 	 * @param Driver $driver The driver.
 	 * @return int
 	 */
-	public function toStatement($value, Driver $driver)
-	{
+	public function toStatement($value, Driver $driver) {
 		return PDO::PARAM_INT;
 	}
 
@@ -80,8 +76,7 @@ class IntegerType extends Type
 	 * @param mixed $value The value to convert.
 	 * @return mixed Converted value.
 	 */
-	public function marshal($value)
-	{
+	public function marshal($value) {
 		if ($value === null || $value === '') {
 			return null;
 		}

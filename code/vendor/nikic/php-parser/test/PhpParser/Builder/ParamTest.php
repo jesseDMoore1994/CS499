@@ -6,18 +6,15 @@ use PhpParser\Node;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 
-class ParamTest extends \PHPUnit_Framework_TestCase
-{
-	public function createParamBuilder($name)
-	{
+class ParamTest extends \PHPUnit_Framework_TestCase {
+	public function createParamBuilder($name) {
 		return new Param($name);
 	}
 
 	/**
 	 * @dataProvider provideTestDefaultValues
 	 */
-	public function testDefaultValues($value, $expectedValueNode)
-	{
+	public function testDefaultValues($value, $expectedValueNode) {
 		$node = $this->createParamBuilder('test')
 			->setDefault($value)
 			->getNode();
@@ -25,8 +22,7 @@ class ParamTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($expectedValueNode, $node->default);
 	}
 
-	public function provideTestDefaultValues()
-	{
+	public function provideTestDefaultValues() {
 		return array(
 			array(
 				null,
@@ -80,8 +76,7 @@ class ParamTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testTypeHints()
-	{
+	public function testTypeHints() {
 		$node = $this->createParamBuilder('test')
 			->setTypeHint('array')
 			->getNode();
@@ -110,8 +105,7 @@ class ParamTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testByRef()
-	{
+	public function testByRef() {
 		$node = $this->createParamBuilder('test')
 			->makeByRef()
 			->getNode();

@@ -27,8 +27,7 @@ use Exception;
  * Cake TestFixture is responsible for building and destroying tables to be used
  * during testing.
  */
-class TestFixture implements FixtureInterface
-{
+class TestFixture implements FixtureInterface {
 
 	/**
 	 * Fixture Datasource
@@ -92,8 +91,7 @@ class TestFixture implements FixtureInterface
 	 *
 	 * @throws \Cake\Core\Exception\Exception on invalid datasource usage.
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		if (!empty($this->connection)) {
 			$connection = $this->connection;
 			if (strpos($connection, 'test') !== 0) {
@@ -111,16 +109,14 @@ class TestFixture implements FixtureInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function connection()
-	{
+	public function connection() {
 		return $this->connection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function sourceName()
-	{
+	public function sourceName() {
 		return $this->table;
 	}
 
@@ -130,8 +126,7 @@ class TestFixture implements FixtureInterface
 	 * @return void
 	 * @throws \Cake\ORM\Exception\MissingTableClassException When importing from a table that does not exist.
 	 */
-	public function init()
-	{
+	public function init() {
 		if ($this->table === null) {
 			list(, $class) = namespaceSplit(get_class($this));
 			preg_match('/^(.*)Fixture$/', $class, $matches);
@@ -156,8 +151,7 @@ class TestFixture implements FixtureInterface
 	 *
 	 * @return void
 	 */
-	protected function _schemaFromFields()
-	{
+	protected function _schemaFromFields() {
 		$connection = ConnectionManager::get($this->connection());
 		$this->_schema = new Table($this->table);
 		foreach ($this->fields as $field => $data) {
@@ -191,8 +185,7 @@ class TestFixture implements FixtureInterface
 	 * @return void
 	 * @throws \Cake\Core\Exception\Exception when trying to import from an empty table.
 	 */
-	protected function _schemaFromImport()
-	{
+	protected function _schemaFromImport() {
 		if (!is_array($this->import)) {
 			return;
 		}
@@ -219,8 +212,7 @@ class TestFixture implements FixtureInterface
 	 * @param \Cake\Database\Schema\Table $schema The table to set.
 	 * @return \Cake\Database\Schema\Table|null
 	 */
-	public function schema(Table $schema = null)
-	{
+	public function schema(Table $schema = null) {
 		if ($schema) {
 			$this->_schema = $schema;
 			return null;
@@ -231,8 +223,7 @@ class TestFixture implements FixtureInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function create(ConnectionInterface $db)
-	{
+	public function create(ConnectionInterface $db) {
 		if (empty($this->_schema)) {
 			return false;
 		}
@@ -260,8 +251,7 @@ class TestFixture implements FixtureInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function drop(ConnectionInterface $db)
-	{
+	public function drop(ConnectionInterface $db) {
 		if (empty($this->_schema)) {
 			return false;
 		}
@@ -279,8 +269,7 @@ class TestFixture implements FixtureInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function insert(ConnectionInterface $db)
-	{
+	public function insert(ConnectionInterface $db) {
 		if (isset($this->records) && !empty($this->records)) {
 			list($fields, $values, $types) = $this->_getRecords();
 			$query = $db->newQuery()
@@ -301,8 +290,7 @@ class TestFixture implements FixtureInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function createConstraints(ConnectionInterface $db)
-	{
+	public function createConstraints(ConnectionInterface $db) {
 		if (empty($this->_constraints)) {
 			return true;
 		}
@@ -327,8 +315,7 @@ class TestFixture implements FixtureInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function dropConstraints(ConnectionInterface $db)
-	{
+	public function dropConstraints(ConnectionInterface $db) {
 		if (empty($this->_constraints)) {
 			return true;
 		}
@@ -354,8 +341,7 @@ class TestFixture implements FixtureInterface
 	 *
 	 * @return array
 	 */
-	protected function _getRecords()
-	{
+	protected function _getRecords() {
 		$fields = $values = $types = [];
 		$columns = $this->_schema->columns();
 		foreach ($this->records as $record) {
@@ -375,8 +361,7 @@ class TestFixture implements FixtureInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function truncate(ConnectionInterface $db)
-	{
+	public function truncate(ConnectionInterface $db) {
 		$sql = $this->_schema->truncateSql($db);
 		foreach ($sql as $stmt) {
 			$db->execute($stmt)->closeCursor();

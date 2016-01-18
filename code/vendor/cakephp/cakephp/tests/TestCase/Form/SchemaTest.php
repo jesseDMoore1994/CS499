@@ -20,16 +20,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Form schema test case.
  */
-class SchemaTest extends TestCase
-{
+class SchemaTest extends TestCase {
 
 	/**
 	 * Test adding multiple fields.
 	 *
 	 * @return void
 	 */
-	public function testAddingMultipleFields()
-	{
+	public function testAddingMultipleFields() {
 		$schema = new Schema();
 		$schema->addFields([
 			'email' => 'string',
@@ -45,8 +43,7 @@ class SchemaTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddingFields()
-	{
+	public function testAddingFields() {
 		$schema = new Schema();
 
 		$res = $schema->addField('name', ['type' => 'string']);
@@ -71,8 +68,7 @@ class SchemaTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddingFieldsWhitelist()
-	{
+	public function testAddingFieldsWhitelist() {
 		$schema = new Schema();
 
 		$schema->addField('name', ['derp' => 'derp', 'type' => 'string']);
@@ -85,8 +81,7 @@ class SchemaTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemovingFields()
-	{
+	public function testRemovingFields() {
 		$schema = new Schema();
 
 		$schema->addField('name', ['type' => 'string']);
@@ -103,8 +98,7 @@ class SchemaTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFieldType()
-	{
+	public function testFieldType() {
 		$schema = new Schema();
 
 		$schema->addField('name', 'string')
@@ -122,8 +116,7 @@ class SchemaTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDebugInfo()
-	{
+	public function testDebugInfo() {
 		$schema = new Schema();
 
 		$schema->addField('name', 'string')

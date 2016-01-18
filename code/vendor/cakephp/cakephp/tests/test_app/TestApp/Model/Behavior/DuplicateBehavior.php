@@ -19,8 +19,7 @@ use Cake\ORM\Behavior;
 /**
  * Test class for trigging duplicate method errors.
  */
-class DuplicateBehavior extends Behavior
-{
+class DuplicateBehavior extends Behavior {
 
 	protected $_defaultConfig = [
 		'implementedFinders' => [
@@ -31,11 +30,9 @@ class DuplicateBehavior extends Behavior
 		]
 	];
 
-	public function findChildren()
-	{
+	public function findChildren() {
 	}
 
-	public function slugify()
-	{
+	public function slugify() {
 	}
 }

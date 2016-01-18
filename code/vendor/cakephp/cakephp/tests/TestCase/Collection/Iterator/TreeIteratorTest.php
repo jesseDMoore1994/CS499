@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
  * TreeIterator Test
  *
  */
-class TreeIteratorTest extends TestCase
-{
+class TreeIteratorTest extends TestCase {
 
 	/**
 	 * Tests the printer function with defaults
 	 *
 	 * @return void
 	 */
-	public function testPrinter()
-	{
+	public function testPrinter() {
 		$items = [
 			[
 				'id' => 1,
@@ -59,8 +57,7 @@ class TreeIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrinterCustomKeyAndSpacer()
-	{
+	public function testPrinterCustomKeyAndSpacer() {
 		$items = [
 			[
 				'id' => 1,
@@ -88,8 +85,7 @@ class TreeIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrinterWithClosure()
-	{
+	public function testPrinterWithClosure() {
 		$items = [
 			[
 				'id' => 1,

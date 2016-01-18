@@ -20,14 +20,12 @@ use Cake\Console\Shell;
  * It implements the getOptionParser method that defines the common options
  * for all subcommands.
  */
-class CommandTask extends Shell
-{
+class CommandTask extends Shell {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser
 			->addOption('plugin', [

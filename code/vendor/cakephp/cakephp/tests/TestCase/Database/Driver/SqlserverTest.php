@@ -24,16 +24,14 @@ use \PDO;
 /**
  * Tests Sqlserver driver
  */
-class SqlserverTest extends TestCase
-{
+class SqlserverTest extends TestCase {
 
 	/**
 	 * Set up
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->missingExtension = !defined('PDO::SQLSRV_ENCODING_UTF8');
 	}
@@ -43,8 +41,7 @@ class SqlserverTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectionConfigCustom()
-	{
+	public function testConnectionConfigCustom() {
 		$this->skipIf($this->missingExtension, 'pdo_sqlsrv is not installed.');
 		$config = [
 			'persistent' => false,
@@ -100,8 +97,7 @@ class SqlserverTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectLimitVersion12()
-	{
+	public function testSelectLimitVersion12() {
 		$driver = $this->getMock(
 			'Cake\Database\Driver\Sqlserver',
 			['_connect', 'connection', '_version'],
@@ -155,8 +151,7 @@ class SqlserverTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectLimitOldServer()
-	{
+	public function testSelectLimitOldServer() {
 		$driver = $this->getMock(
 			'Cake\Database\Driver\Sqlserver',
 			['_connect', 'connection', '_version'],
@@ -221,8 +216,7 @@ class SqlserverTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsertUsesOutput()
-	{
+	public function testInsertUsesOutput() {
 		$driver = $this->getMock(
 			'Cake\Database\Driver\Sqlserver',
 			['_connect', 'connection'],

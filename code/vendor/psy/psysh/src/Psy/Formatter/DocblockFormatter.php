@@ -17,8 +17,7 @@ use Symfony\Component\Console\Formatter\OutputFormatter;
 /**
  * A pretty-printer for docblocks.
  */
-class DocblockFormatter implements Formatter
-{
+class DocblockFormatter implements Formatter {
 	private static $vectorParamTemplates = array(
 		'type' => 'info',
 		'var' => 'strong',
@@ -31,8 +30,7 @@ class DocblockFormatter implements Formatter
 	 *
 	 * @return string Formatted docblock
 	 */
-	public static function format(\Reflector $reflector)
-	{
+	public static function format(\Reflector $reflector) {
 		$docblock = new Docblock($reflector);
 		$chunks = array();
 
@@ -71,8 +69,7 @@ class DocblockFormatter implements Formatter
 	 *
 	 * @return string
 	 */
-	private static function formatVector(array $vector, array $lines)
-	{
+	private static function formatVector(array $vector, array $lines) {
 		$template = array(' ');
 		foreach ($vector as $type) {
 			$max = 0;
@@ -103,8 +100,7 @@ class DocblockFormatter implements Formatter
 	 *
 	 * @return string formatted tags
 	 */
-	private static function formatTags(array $skip, array $tags)
-	{
+	private static function formatTags(array $skip, array $tags) {
 		$chunks = array();
 
 		foreach ($tags as $name => $values) {
@@ -130,8 +126,7 @@ class DocblockFormatter implements Formatter
 	 *
 	 * @return string
 	 */
-	private static function getVectorParamTemplate($type, $max)
-	{
+	private static function getVectorParamTemplate($type, $max) {
 		if (!isset(self::$vectorParamTemplates[$type])) {
 			return sprintf('%%-%ds', $max);
 		}
@@ -147,8 +142,7 @@ class DocblockFormatter implements Formatter
 	 *
 	 * @return string
 	 */
-	private static function indent($text, $indent = '  ')
-	{
+	private static function indent($text, $indent = '  ') {
 		return $indent . str_replace("\n", "\n" . $indent, $text);
 	}
 
@@ -159,8 +153,7 @@ class DocblockFormatter implements Formatter
 	 *
 	 * @return string
 	 */
-	private static function inflect($text)
-	{
+	private static function inflect($text) {
 		$words = trim(preg_replace('/[\s_-]+/', ' ', preg_replace('/([a-z])([A-Z])/', '$1 $2', $text)));
 
 		return implode(' ', array_map('ucfirst', explode(' ', $words)));

@@ -23,8 +23,7 @@ use \PHPUnit_Framework_TestResult;
  * All tests related to database
  *
  */
-class DatabaseSuite extends TestSuite
-{
+class DatabaseSuite extends TestSuite {
 
 	/**
 	 * Returns a suite containing all tests requiring a database connection,
@@ -32,8 +31,7 @@ class DatabaseSuite extends TestSuite
 	 *
 	 * @return void
 	 */
-	public static function suite()
-	{
+	public static function suite() {
 		$suite = new self('Database related tests');
 		$suite->addTestFile(__DIR__ . DS . 'Database' . DS . 'ConnectionTest.php');
 		$suite->addTestDirectoryRecursive(__DIR__ . DS . 'Database');
@@ -41,8 +39,7 @@ class DatabaseSuite extends TestSuite
 		return $suite;
 	}
 
-	public function count()
-	{
+	public function count() {
 		return parent::count() * 2;
 	}
 
@@ -52,8 +49,7 @@ class DatabaseSuite extends TestSuite
 	 * @param \PHPUnit_Framework_TestResult $result
 	 * @return \PHPUnit_Framework_TestResult
 	 */
-	public function run(PHPUnit_Framework_TestResult $result = null, $filter = false, array $groups = [], array $excludeGroups = [], $processIsolation = false)
-	{
+	public function run(PHPUnit_Framework_TestResult $result = null, $filter = false, array $groups = [], array $excludeGroups = [], $processIsolation = false) {
 		$permutations = [
 			'Identifier Quoting' => function () {
 				ConnectionManager::get('test')->driver()->autoQuoting(true);

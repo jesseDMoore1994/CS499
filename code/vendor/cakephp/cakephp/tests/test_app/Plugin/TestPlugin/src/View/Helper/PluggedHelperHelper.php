@@ -21,8 +21,7 @@ namespace TestPlugin\View\Helper;
 
 use Cake\View\Helper;
 
-class PluggedHelperHelper extends Helper
-{
+class PluggedHelperHelper extends Helper {
 
 	public $helpers = ['TestPlugin.OtherHelper'];
 }

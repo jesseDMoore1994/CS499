@@ -14,10 +14,8 @@ namespace Symfony\Component\Config\Tests\Definition\Dumper;
 use Symfony\Component\Config\Definition\Dumper\YamlReferenceDumper;
 use Symfony\Component\Config\Tests\Fixtures\Configuration\ExampleConfiguration;
 
-class YamlReferenceDumperTest extends \PHPUnit_Framework_TestCase
-{
-	public function testDumper()
-	{
+class YamlReferenceDumperTest extends \PHPUnit_Framework_TestCase {
+	public function testDumper() {
 		$configuration = new ExampleConfiguration();
 
 		$dumper = new YamlReferenceDumper();
@@ -26,8 +24,7 @@ class YamlReferenceDumperTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($this->getConfigurationAsString(), $dumper->dump($configuration));
 	}
 
-	private function getConfigurationAsString()
-	{
+	private function getConfigurationAsString() {
 		return <<<EOL
 acme_root:
     boolean:              true

@@ -17,6 +17,5 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-class Exception extends \Exception
-{
+class Exception extends \Exception {
 }

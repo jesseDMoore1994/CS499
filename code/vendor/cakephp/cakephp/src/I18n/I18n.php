@@ -25,8 +25,7 @@ use Locale;
 /**
  * I18n handles translation of Text and time format strings.
  */
-class I18n
-{
+class I18n {
 
 	/**
 	 * Default locale
@@ -56,8 +55,7 @@ class I18n
 	 *
 	 * @return \Aura\Intl\TranslatorLocator The translators collection.
 	 */
-	public static function translators()
-	{
+	public static function translators() {
 		if (static::$_collection !== null) {
 			return static::$_collection;
 		}
@@ -122,8 +120,7 @@ class I18n
 	 * constructing a translations package instance.
 	 * @return \Aura\Intl\Translator|null The configured translator.
 	 */
-	public static function translator($name = 'default', $locale = null, callable $loader = null)
-	{
+	public static function translator($name = 'default', $locale = null, callable $loader = null) {
 		if ($loader !== null) {
 			$locale = $locale ?: static::locale();
 
@@ -193,8 +190,7 @@ class I18n
 	 * instance to be used for assembling a new translator.
 	 * @return void
 	 */
-	public static function config($name, callable $loader)
-	{
+	public static function config($name, callable $loader) {
 		static::translators()->registerLoader($name, $loader);
 	}
 
@@ -208,8 +204,7 @@ class I18n
 	 * @param string|null $locale The name of the locale to set as default.
 	 * @return string|null The name of the default locale.
 	 */
-	public static function locale($locale = null)
-	{
+	public static function locale($locale = null) {
 		static::defaultLocale();
 
 		if (!empty($locale)) {
@@ -236,8 +231,7 @@ class I18n
 	 *
 	 * @return string
 	 */
-	public static function defaultLocale()
-	{
+	public static function defaultLocale() {
 		if (static::$_defaultLocale === null) {
 			static::$_defaultLocale = Locale::getDefault() ?: static::DEFAULT_LOCALE;
 		}
@@ -254,8 +248,7 @@ class I18n
 	 * @param string|null $name The name of the formatter to use.
 	 * @return string The name of the formatter.
 	 */
-	public static function defaultFormatter($name = null)
-	{
+	public static function defaultFormatter($name = null) {
 		return static::translators()->defaultFormatter($name);
 	}
 
@@ -265,8 +258,7 @@ class I18n
 	 * @param bool $enable flag to enable or disable fallback
 	 * @return void
 	 */
-	public static function useFallback($enable = true)
-	{
+	public static function useFallback($enable = true) {
 		static::translators()->useFallback($enable);
 	}
 
@@ -276,8 +268,7 @@ class I18n
 	 *
 	 * @return void
 	 */
-	public static function clear()
-	{
+	public static function clear() {
 		static::$_collection = null;
 	}
 }

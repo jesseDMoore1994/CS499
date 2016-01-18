@@ -31,8 +31,7 @@ namespace Phinx\Db\Table;
 
 use Phinx\Db\Table;
 
-class ForeignKey
-{
+class ForeignKey {
 	const CASCADE = 'CASCADE';
 	const RESTRICT = 'RESTRICT';
 	const SET_NULL = 'SET NULL';
@@ -74,8 +73,7 @@ class ForeignKey
 	 * @param array|string $columns
 	 * @return ForeignKey
 	 */
-	public function setColumns($columns)
-	{
+	public function setColumns($columns) {
 		if (is_string($columns)) {
 			$columns = array($columns);
 		}
@@ -88,8 +86,7 @@ class ForeignKey
 	 *
 	 * @return array
 	 */
-	public function getColumns()
-	{
+	public function getColumns() {
 		return $this->columns;
 	}
 
@@ -99,8 +96,7 @@ class ForeignKey
 	 * @param Table $table
 	 * @return ForeignKey
 	 */
-	public function setReferencedTable(Table $table)
-	{
+	public function setReferencedTable(Table $table) {
 		$this->referencedTable = $table;
 		return $this;
 	}
@@ -110,8 +106,7 @@ class ForeignKey
 	 *
 	 * @return Table
 	 */
-	public function getReferencedTable()
-	{
+	public function getReferencedTable() {
 		return $this->referencedTable;
 	}
 
@@ -121,8 +116,7 @@ class ForeignKey
 	 * @param array $referencedColumns
 	 * @return ForeignKey
 	 */
-	public function setReferencedColumns(array $referencedColumns)
-	{
+	public function setReferencedColumns(array $referencedColumns) {
 		$this->referencedColumns = $referencedColumns;
 		return $this;
 	}
@@ -132,8 +126,7 @@ class ForeignKey
 	 *
 	 * @return array
 	 */
-	public function getReferencedColumns()
-	{
+	public function getReferencedColumns() {
 		return $this->referencedColumns;
 	}
 
@@ -143,8 +136,7 @@ class ForeignKey
 	 * @param string $onDelete
 	 * @return ForeignKey
 	 */
-	public function setOnDelete($onDelete)
-	{
+	public function setOnDelete($onDelete) {
 		$this->onDelete = $this->normalizeAction($onDelete);
 		return $this;
 	}
@@ -154,8 +146,7 @@ class ForeignKey
 	 *
 	 * @return string
 	 */
-	public function getOnDelete()
-	{
+	public function getOnDelete() {
 		return $this->onDelete;
 	}
 
@@ -164,8 +155,7 @@ class ForeignKey
 	 *
 	 * @return string
 	 */
-	public function getOnUpdate()
-	{
+	public function getOnUpdate() {
 		return $this->onUpdate;
 	}
 
@@ -175,8 +165,7 @@ class ForeignKey
 	 * @param string $onUpdate
 	 * @return ForeignKey
 	 */
-	public function setOnUpdate($onUpdate)
-	{
+	public function setOnUpdate($onUpdate) {
 		$this->onUpdate = $this->normalizeAction($onUpdate);
 		return $this;
 	}
@@ -187,8 +176,7 @@ class ForeignKey
 	 * @param string $constraint
 	 * @return ForeignKey
 	 */
-	public function setConstraint($constraint)
-	{
+	public function setConstraint($constraint) {
 		$this->constraint = $constraint;
 		return $this;
 	}
@@ -198,8 +186,7 @@ class ForeignKey
 	 *
 	 * @return string
 	 */
-	public function getConstraint()
-	{
+	public function getConstraint() {
 		return $this->constraint;
 	}
 
@@ -211,8 +198,7 @@ class ForeignKey
 	 * @throws \InvalidArgumentException
 	 * @return ForeignKey
 	 */
-	public function setOptions($options)
-	{
+	public function setOptions($options) {
 		// Valid Options
 		$validOptions = array('delete', 'update', 'constraint');
 		foreach ($options as $option => $value) {
@@ -241,8 +227,7 @@ class ForeignKey
 	 * @throws \InvalidArgumentException
 	 * @return string
 	 */
-	protected function normalizeAction($action)
-	{
+	protected function normalizeAction($action) {
 		$constantName = 'static::' . str_replace(' ', '_', strtoupper(trim($action)));
 		if (!defined($constantName)) {
 			throw new \InvalidArgumentException('Unknown action passed: ' . $action);

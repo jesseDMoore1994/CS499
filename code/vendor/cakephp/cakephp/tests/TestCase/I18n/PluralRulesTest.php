@@ -21,8 +21,7 @@ use Cake\TestSuite\TestCase;
  * PluralRules tests
  *
  */
-class PluralRulesTest extends TestCase
-{
+class PluralRulesTest extends TestCase {
 
 	/**
 	 * Returns the notable combinations for locales and numbers
@@ -30,8 +29,7 @@ class PluralRulesTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function localesProvider()
-	{
+	public function localesProvider() {
 		return [
 			['jp', 0, 0],
 			['jp', 1, 0],
@@ -122,8 +120,7 @@ class PluralRulesTest extends TestCase
 	 * @dataProvider localesProvider
 	 * @return void
 	 */
-	public function testCalculate($locale, $number, $expected)
-	{
+	public function testCalculate($locale, $number, $expected) {
 		$this->assertEquals($expected, PluralRules::calculate($locale, $number));
 	}
 }

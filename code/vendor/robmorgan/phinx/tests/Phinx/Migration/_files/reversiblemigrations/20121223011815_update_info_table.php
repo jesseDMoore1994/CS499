@@ -2,13 +2,11 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class UpdateInfoTable extends AbstractMigration
-{
+class UpdateInfoTable extends AbstractMigration {
 	/**
 	 * Change.
 	 */
-	public function change()
-	{
+	public function change() {
 		// info table
 		$info = $this->table('info');
 		$info->addColumn('password', 'string', array('limit' => 40))
@@ -18,16 +16,14 @@ class UpdateInfoTable extends AbstractMigration
 	/**
 	 * Migrate Up.
 	 */
-	public function up()
-	{
+	public function up() {
 
 	}
 
 	/**
 	 * Migrate Down.
 	 */
-	public function down()
-	{
+	public function down() {
 
 	}
 }

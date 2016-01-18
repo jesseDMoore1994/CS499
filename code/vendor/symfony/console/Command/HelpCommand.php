@@ -22,15 +22,13 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class HelpCommand extends Command
-{
+class HelpCommand extends Command {
 	private $command;
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this->ignoreValidationErrors();
 
 		$this
@@ -60,16 +58,14 @@ EOF
 	 *
 	 * @param Command $command The command to set
 	 */
-	public function setCommand(Command $command)
-	{
+	public function setCommand(Command $command) {
 		$this->command = $command;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		if (null === $this->command) {
 			$this->command = $this->getApplication()->find($input->getArgument('command_name'));
 		}

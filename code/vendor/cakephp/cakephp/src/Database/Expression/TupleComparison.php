@@ -23,8 +23,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class TupleComparison extends Comparison
-{
+class TupleComparison extends Comparison {
 
 	/**
 	 * Constructor
@@ -35,8 +34,7 @@ class TupleComparison extends Comparison
 	 * one type per position in the value array in needed
 	 * @param string $conjunction the operator used for comparing field and value
 	 */
-	public function __construct($fields, $values, $types = [], $conjunction = '=')
-	{
+	public function __construct($fields, $values, $types = [], $conjunction = '=') {
 		parent::__construct($fields, $values, $types, $conjunction);
 		$this->_type = (array)$types;
 	}
@@ -47,8 +45,7 @@ class TupleComparison extends Comparison
 	 * @param \Cake\Database\ValueBinder $generator Placeholder generator object
 	 * @return string
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		$template = '(%s) %s (%s)';
 		$fields = [];
 		$originalFields = $this->getField();
@@ -74,8 +71,7 @@ class TupleComparison extends Comparison
 	 * @param \Cake\Database\ValueBinder $generator The value binder to convert expressions with.
 	 * @return string
 	 */
-	protected function _stringifyValues($generator)
-	{
+	protected function _stringifyValues($generator) {
 		$values = [];
 		$parts = $this->getValue();
 
@@ -122,8 +118,7 @@ class TupleComparison extends Comparison
 	 * @param string $type The type to use
 	 * @return string generated placeholder
 	 */
-	protected function _bindValue($generator, $value, $type)
-	{
+	protected function _bindValue($generator, $value, $type) {
 		$placeholder = $generator->placeholder('tuple');
 		$generator->bind($placeholder, $value, $type);
 		return $placeholder;
@@ -138,8 +133,7 @@ class TupleComparison extends Comparison
 	 * @param callable $callable The callable to apply to sub-expressions
 	 * @return void
 	 */
-	public function traverse(callable $callable)
-	{
+	public function traverse(callable $callable) {
 		foreach ($this->getField() as $field) {
 			$this->_traverseValue($field, $callable);
 		}
@@ -170,8 +164,7 @@ class TupleComparison extends Comparison
 	 * @param callable $callable The callable to use when traversing
 	 * @return void
 	 */
-	protected function _traverseValue($value, $callable)
-	{
+	protected function _traverseValue($value, $callable) {
 		if ($value instanceof ExpressionInterface) {
 			$callable($value);
 			$value->traverse($callable);
@@ -184,8 +177,7 @@ class TupleComparison extends Comparison
 	 *
 	 * @return bool
 	 */
-	public function isMulti()
-	{
+	public function isMulti() {
 		return in_array(strtolower($this->_operator), ['in', 'not in']);
 	}
 }

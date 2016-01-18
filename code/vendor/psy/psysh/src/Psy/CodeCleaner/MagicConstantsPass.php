@@ -21,8 +21,7 @@ use PhpParser\Node\Scalar\String_ as StringNode;
 /**
  * Swap out __DIR__ and __FILE__ magic constants with our best guess?
  */
-class MagicConstantsPass extends CodeCleanerPass
-{
+class MagicConstantsPass extends CodeCleanerPass {
 	/**
 	 * Swap out __DIR__ and __FILE__ constants, because the default ones when
 	 * calling eval() don't make sense.
@@ -31,8 +30,7 @@ class MagicConstantsPass extends CodeCleanerPass
 	 *
 	 * @return null|FuncCall|StringNode
 	 */
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		if ($node instanceof Dir) {
 			return new FuncCall(new Name('getcwd'), array(), $node->getAttributes());
 		} elseif ($node instanceof File) {

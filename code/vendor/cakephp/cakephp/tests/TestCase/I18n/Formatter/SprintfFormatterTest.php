@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * SprintfFormatter tests
  *
  */
-class SprintfFormatterTest extends TestCase
-{
+class SprintfFormatterTest extends TestCase {
 
 	/**
 	 * Tests that variables are interpolated correctly
 	 *
 	 * @return void
 	 */
-	public function testFormatSimple()
-	{
+	public function testFormatSimple() {
 		$formatter = new SprintfFormatter();
 		$this->assertEquals('Hello José', $formatter->format('en_US', 'Hello %s', ['José']));
 		$this->assertEquals('1 Orange', $formatter->format('en_US', '%d %s', [1, 'Orange']));
@@ -41,8 +39,7 @@ class SprintfFormatterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatPlural()
-	{
+	public function testFormatPlural() {
 		$formatter = new SprintfFormatter();
 		$messages = ['%d is 0', '%d is 1', '%d is 2', '%d is 3', '%d > 11'];
 		$this->assertEquals('1 is 1', $formatter->format('ar', $messages, ['_count' => 1]));
@@ -55,8 +52,7 @@ class SprintfFormatterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatWithContext()
-	{
+	public function testFormatWithContext() {
 		$messages = [
 			'simple' => [
 				'_context' => [
@@ -106,8 +102,7 @@ class SprintfFormatterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSingularFallback()
-	{
+	public function testSingularFallback() {
 		$formatter = new SprintfFormatter();
 		$singular = 'one thing';
 		$plural = 'many things';

@@ -17,10 +17,8 @@ use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class HtmlDumperTest extends \PHPUnit_Framework_TestCase
-{
-	public function testGet()
-	{
+class HtmlDumperTest extends \PHPUnit_Framework_TestCase {
+	public function testGet() {
 		require __DIR__ . '/Fixtures/dumb-var.php';
 
 		$dumper = new HtmlDumper('php://output');
@@ -113,8 +111,7 @@ EOTXT
 		);
 	}
 
-	public function testCharset()
-	{
+	public function testCharset() {
 		$var = mb_convert_encoding('Словарь', 'CP1251', 'UTF-8');
 
 		$dumper = new HtmlDumper('php://output', 'CP1251');

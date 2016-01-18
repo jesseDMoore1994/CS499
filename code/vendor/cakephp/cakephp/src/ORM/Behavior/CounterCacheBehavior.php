@@ -77,8 +77,7 @@ use Cake\ORM\Entity;
  * ```
  *
  */
-class CounterCacheBehavior extends Behavior
-{
+class CounterCacheBehavior extends Behavior {
 
 	/**
 	 * afterSave callback.
@@ -89,8 +88,7 @@ class CounterCacheBehavior extends Behavior
 	 * @param \Cake\Datasource\EntityInterface $entity The entity that was saved.
 	 * @return void
 	 */
-	public function afterSave(Event $event, EntityInterface $entity)
-	{
+	public function afterSave(Event $event, EntityInterface $entity) {
 		$this->_processAssociations($event, $entity);
 	}
 
@@ -103,8 +101,7 @@ class CounterCacheBehavior extends Behavior
 	 * @param \Cake\Datasource\EntityInterface $entity The entity that was deleted.
 	 * @return void
 	 */
-	public function afterDelete(Event $event, EntityInterface $entity)
-	{
+	public function afterDelete(Event $event, EntityInterface $entity) {
 		$this->_processAssociations($event, $entity);
 	}
 
@@ -115,8 +112,7 @@ class CounterCacheBehavior extends Behavior
 	 * @param \Cake\Datasource\EntityInterface $entity Entity.
 	 * @return void
 	 */
-	protected function _processAssociations(Event $event, EntityInterface $entity)
-	{
+	protected function _processAssociations(Event $event, EntityInterface $entity) {
 		foreach ($this->_config as $assoc => $settings) {
 			$assoc = $this->_table->association($assoc);
 			$this->_processAssociation($event, $entity, $assoc, $settings);
@@ -132,8 +128,7 @@ class CounterCacheBehavior extends Behavior
 	 * @param array $settings The settings for for counter cache for this association
 	 * @return void
 	 */
-	protected function _processAssociation(Event $event, EntityInterface $entity, Association $assoc, array $settings)
-	{
+	protected function _processAssociation(Event $event, EntityInterface $entity, Association $assoc, array $settings) {
 		$foreignKeys = (array)$assoc->foreignKey();
 		$primaryKeys = (array)$assoc->bindingKey();
 		$countConditions = $entity->extract($foreignKeys);
@@ -176,8 +171,7 @@ class CounterCacheBehavior extends Behavior
 	 * @param array $conditions Additional conditions given to the query
 	 * @return int The number of relations matching the given config and conditions
 	 */
-	protected function _getCount(array $config, array $conditions)
-	{
+	protected function _getCount(array $config, array $conditions) {
 		$finder = 'all';
 		if (!empty($config['finder'])) {
 			$finder = $config['finder'];

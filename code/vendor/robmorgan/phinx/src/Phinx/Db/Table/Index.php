@@ -28,8 +28,7 @@
  */
 namespace Phinx\Db\Table;
 
-class Index
-{
+class Index {
 	/**
 	 * @var string
 	 */
@@ -61,8 +60,7 @@ class Index
 	 * @param array $columns
 	 * @return Column
 	 */
-	public function setColumns($columns)
-	{
+	public function setColumns($columns) {
 		$this->columns = $columns;
 		return $this;
 	}
@@ -72,8 +70,7 @@ class Index
 	 *
 	 * @return array
 	 */
-	public function getColumns()
-	{
+	public function getColumns() {
 		return $this->columns;
 	}
 
@@ -83,8 +80,7 @@ class Index
 	 * @param string $type
 	 * @return Index
 	 */
-	public function setType($type)
-	{
+	public function setType($type) {
 		$this->type = $type;
 		return $this;
 	}
@@ -94,8 +90,7 @@ class Index
 	 *
 	 * @return string
 	 */
-	public function getType()
-	{
+	public function getType() {
 		return $this->type;
 	}
 
@@ -104,8 +99,7 @@ class Index
 	 *
 	 * @return string
 	 */
-	public function setName($name)
-	{
+	public function setName($name) {
 		$this->name = $name;
 		return $this;
 	}
@@ -115,8 +109,7 @@ class Index
 	 *
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->name;
 	}
 
@@ -127,8 +120,7 @@ class Index
 	 * @throws \RuntimeException
 	 * @return Index
 	 */
-	public function setOptions($options)
-	{
+	public function setOptions($options) {
 		// Valid Options
 		$validOptions = array('type', 'unique', 'name');
 		foreach ($options as $option => $value) {

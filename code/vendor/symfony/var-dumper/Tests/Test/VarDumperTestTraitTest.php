@@ -13,12 +13,10 @@ namespace Symfony\Component\VarDumper\Tests\Test;
 
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 
-class VarDumperTestTraitTest extends \PHPUnit_Framework_TestCase
-{
+class VarDumperTestTraitTest extends \PHPUnit_Framework_TestCase {
 	use VarDumperTestTrait;
 
-	public function testItComparesLargeData()
-	{
+	public function testItComparesLargeData() {
 		$howMany = 700;
 		$data = array_fill_keys(range(0, $howMany), array('a', 'b', 'c', 'd'));
 

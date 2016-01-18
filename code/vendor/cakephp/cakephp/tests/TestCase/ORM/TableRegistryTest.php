@@ -21,8 +21,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Test case for TableRegistry
  */
-class TableRegistryTest extends TestCase
-{
+class TableRegistryTest extends TestCase {
 
 	/**
 	 * Original TableLocator.
@@ -37,8 +36,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->_originalLocator = TableRegistry::locator();
 	}
@@ -48,8 +46,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::locator($this->_originalLocator);
 	}
@@ -59,8 +56,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return Cake\ORM\Locator\LocatorInterface
 	 */
-	protected function _setMockLocator()
-	{
+	protected function _setMockLocator() {
 		$locator = $this->getMock('Cake\ORM\Locator\LocatorInterface');
 		TableRegistry::locator($locator);
 
@@ -72,8 +68,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLocator()
-	{
+	public function testLocator() {
 		$this->assertInstanceOf('Cake\ORM\Locator\LocatorInterface', TableRegistry::locator());
 
 		$locator = $this->_setMockLocator();
@@ -86,8 +81,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLocatorDefault()
-	{
+	public function testLocatorDefault() {
 		$locator = TableRegistry::locator();
 		$this->assertInstanceOf('Cake\ORM\Locator\TableLocator', $locator);
 	}
@@ -97,8 +91,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfig()
-	{
+	public function testConfig() {
 		$locator = $this->_setMockLocator();
 		$locator->expects($this->once())->method('config')->with('Test', []);
 
@@ -110,8 +103,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGet()
-	{
+	public function testGet() {
 		$locator = $this->_setMockLocator();
 		$locator->expects($this->once())->method('get')->with('Test', []);
 
@@ -123,8 +115,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSet()
-	{
+	public function testSet() {
 		$table = $this->getMock('Cake\ORM\Table');
 
 		$locator = $this->_setMockLocator();
@@ -138,8 +129,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemove()
-	{
+	public function testRemove() {
 		$locator = $this->_setMockLocator();
 		$locator->expects($this->once())->method('remove')->with('Test');
 
@@ -151,8 +141,7 @@ class TableRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClear()
-	{
+	public function testClear() {
 		$locator = $this->_setMockLocator();
 		$locator->expects($this->once())->method('clear');
 

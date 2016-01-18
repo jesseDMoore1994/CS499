@@ -33,8 +33,7 @@ use SessionHandlerInterface;
  * values from the `session.*` directives in php.ini. This class will also alter such
  * directives when configuration values are provided.
  */
-class Session
-{
+class Session {
 
 	/**
 	 * The Session handler instance used as an engine for persisting the session data.
@@ -91,8 +90,7 @@ class Session
 	 * @return \Cake\Network\Session
 	 * @see Session::__construct()
 	 */
-	public static function create($sessionConfig = [])
-	{
+	public static function create($sessionConfig = []) {
 		if (isset($sessionConfig['defaults'])) {
 			$defaults = static::_defaultConfig($sessionConfig['defaults']);
 			if ($defaults) {
@@ -125,8 +123,7 @@ class Session
 	 * @param string $name Config name.
 	 * @return bool|array
 	 */
-	protected static function _defaultConfig($name)
-	{
+	protected static function _defaultConfig($name) {
 		$defaults = [
 			'php' => [
 				'cookie' => 'CAKEPHP',
@@ -193,8 +190,7 @@ class Session
 	 *
 	 * @param array $config The Configuration to apply to this session object
 	 */
-	public function __construct(array $config = [])
-	{
+	public function __construct(array $config = []) {
 		if (isset($config['timeout'])) {
 			$config['ini']['session.gc_maxlifetime'] = 60 * $config['timeout'];
 		}
@@ -240,8 +236,7 @@ class Session
 	 * @return \SessionHandlerInterface|null
 	 * @throws \InvalidArgumentException
 	 */
-	public function engine($class = null, array $options = [])
-	{
+	public function engine($class = null, array $options = []) {
 		if ($class instanceof SessionHandlerInterface) {
 			return $this->_engine = $class;
 		}
@@ -281,8 +276,7 @@ class Session
 	 * @return void
 	 * @throws \RuntimeException if any directive could not be set
 	 */
-	public function options(array $options)
-	{
+	public function options(array $options) {
 		if (session_status() === \PHP_SESSION_ACTIVE) {
 			return;
 		}
@@ -302,8 +296,7 @@ class Session
 	 * @return bool True if session was started
 	 * @throws \RuntimeException if the session was already started
 	 */
-	public function start()
-	{
+	public function start() {
 		if ($this->_started) {
 			return true;
 		}
@@ -340,8 +333,7 @@ class Session
 	 *
 	 * @return bool True if session has been started.
 	 */
-	public function started()
-	{
+	public function started() {
 		return $this->_started || session_status() === \PHP_SESSION_ACTIVE;
 	}
 
@@ -351,8 +343,7 @@ class Session
 	 * @param string|null $name Variable name to check for
 	 * @return bool True if variable is there
 	 */
-	public function check($name = null)
-	{
+	public function check($name = null) {
 		if (empty($name)) {
 			return false;
 		}
@@ -375,8 +366,7 @@ class Session
 	 * @return mixed The value of the session variable, null if session not available,
 	 *   session not started, or provided name not found in the session.
 	 */
-	public function read($name = null)
-	{
+	public function read($name = null) {
 		if (empty($name) && $name !== null) {
 			return null;
 		}
@@ -403,8 +393,7 @@ class Session
 	 * @return mixed The value of the session variable, null if session not available,
 	 *   session not started, or provided name not found in the session.
 	 */
-	public function consume($name)
-	{
+	public function consume($name) {
 		if (empty($name)) {
 			return null;
 		}
@@ -422,8 +411,7 @@ class Session
 	 * @param string|null $value Value to write
 	 * @return void
 	 */
-	public function write($name, $value = null)
-	{
+	public function write($name, $value = null) {
 		if (empty($name)) {
 			return;
 		}
@@ -459,8 +447,7 @@ class Session
 	 * @param string|null $id Id to replace the current session id
 	 * @return string Session id
 	 */
-	public function id($id = null)
-	{
+	public function id($id = null) {
 		if ($id !== null) {
 			session_id($id);
 		}
@@ -474,8 +461,7 @@ class Session
 	 * @param string $name Session variable to remove
 	 * @return void
 	 */
-	public function delete($name)
-	{
+	public function delete($name) {
 		if ($this->check($name)) {
 			$this->_overwrite($_SESSION, Hash::remove($_SESSION, $name));
 		}
@@ -488,8 +474,7 @@ class Session
 	 * @param array $new New set of variable => value
 	 * @return void
 	 */
-	protected function _overwrite(&$old, $new)
-	{
+	protected function _overwrite(&$old, $new) {
 		if (!empty($old)) {
 			foreach ($old as $key => $var) {
 				if (!isset($new[$key])) {
@@ -507,8 +492,7 @@ class Session
 	 *
 	 * @return void
 	 */
-	public function destroy()
-	{
+	public function destroy() {
 		if ($this->_hasSession() && !$this->started()) {
 			$this->start();
 		}
@@ -529,8 +513,7 @@ class Session
 	 * @param bool $renew If session should be renewed, as well. Defaults to false.
 	 * @return void
 	 */
-	public function clear($renew = false)
-	{
+	public function clear($renew = false) {
 		$_SESSION = [];
 		if ($renew) {
 			$this->renew();
@@ -542,8 +525,7 @@ class Session
 	 *
 	 * @return bool
 	 */
-	protected function _hasSession()
-	{
+	protected function _hasSession() {
 		return !ini_get('session.use_cookies')
 		|| isset($_COOKIE[session_name()])
 		|| $this->_isCLI;
@@ -554,8 +536,7 @@ class Session
 	 *
 	 * @return void
 	 */
-	public function renew()
-	{
+	public function renew() {
 		if (!$this->_hasSession() || $this->_isCLI) {
 			return;
 		}
@@ -583,8 +564,7 @@ class Session
 	 *
 	 * @return bool
 	 */
-	protected function _timedOut()
-	{
+	protected function _timedOut() {
 		$time = $this->read('Config.time');
 		$result = false;
 

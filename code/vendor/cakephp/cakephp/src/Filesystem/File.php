@@ -20,8 +20,7 @@ use finfo;
  * Convenience class for reading, writing and appending to files.
  *
  */
-class File
-{
+class File {
 
 	/**
 	 * Folder object of the file
@@ -81,8 +80,7 @@ class File
 	 * @param int $mode Mode to apply to the folder holding the file
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/file-folder.html#file-api
 	 */
-	public function __construct($path, $create = false, $mode = 0755)
-	{
+	public function __construct($path, $create = false, $mode = 0755) {
 		$this->Folder = new Folder(dirname($path), $create, $mode);
 		if (!is_dir($path)) {
 			$this->name = basename($path);
@@ -94,8 +92,7 @@ class File
 	/**
 	 * Closes the current file if it is opened
 	 */
-	public function __destruct()
-	{
+	public function __destruct() {
 		$this->close();
 	}
 
@@ -104,8 +101,7 @@ class File
 	 *
 	 * @return bool Success
 	 */
-	public function create()
-	{
+	public function create() {
 		$dir = $this->Folder->pwd();
 		if (is_dir($dir) && is_writable($dir) && !$this->exists()) {
 			if (touch($this->path)) {
@@ -122,8 +118,7 @@ class File
 	 * @param bool $force If true then the file will be re-opened even if its already opened, otherwise it won't
 	 * @return bool True on success, false on failure
 	 */
-	public function open($mode = 'r', $force = false)
-	{
+	public function open($mode = 'r', $force = false) {
 		if (!$force && is_resource($this->handle)) {
 			return true;
 		}
@@ -145,8 +140,7 @@ class File
 	 * @param bool $force If true then the file will be re-opened even if its already opened, otherwise it won't
 	 * @return mixed string on success, false on failure
 	 */
-	public function read($bytes = false, $mode = 'rb', $force = false)
-	{
+	public function read($bytes = false, $mode = 'rb', $force = false) {
 		if ($bytes === false && $this->lock === null) {
 			return file_get_contents($this->path);
 		}
@@ -181,8 +175,7 @@ class File
 	 * @param int $seek PHP Constant SEEK_SET | SEEK_CUR | SEEK_END determining what the $offset is relative to
 	 * @return mixed True on success, false on failure (set mode), false on failure or integer offset on success (get mode)
 	 */
-	public function offset($offset = false, $seek = SEEK_SET)
-	{
+	public function offset($offset = false, $seek = SEEK_SET) {
 		if ($offset === false) {
 			if (is_resource($this->handle)) {
 				return ftell($this->handle);
@@ -202,8 +195,7 @@ class File
 	 * @param bool $forceWindows If true forces Windows new line string.
 	 * @return string The with converted line endings.
 	 */
-	public static function prepare($data, $forceWindows = false)
-	{
+	public static function prepare($data, $forceWindows = false) {
 		$lineBreak = "\n";
 		if (DIRECTORY_SEPARATOR === '\\' || $forceWindows === true) {
 			$lineBreak = "\r\n";
@@ -219,8 +211,7 @@ class File
 	 * @param bool $force Force the file to open
 	 * @return bool Success
 	 */
-	public function write($data, $mode = 'w', $force = false)
-	{
+	public function write($data, $mode = 'w', $force = false) {
 		$success = false;
 		if ($this->open($mode, $force) === true) {
 			if ($this->lock !== null) {
@@ -246,8 +237,7 @@ class File
 	 * @param bool $force Force the file to open
 	 * @return bool Success
 	 */
-	public function append($data, $force = false)
-	{
+	public function append($data, $force = false) {
 		return $this->write($data, 'a', $force);
 	}
 
@@ -256,8 +246,7 @@ class File
 	 *
 	 * @return bool True if closing was successful or file was already closed, otherwise false
 	 */
-	public function close()
-	{
+	public function close() {
 		if (!is_resource($this->handle)) {
 			return true;
 		}
@@ -269,8 +258,7 @@ class File
 	 *
 	 * @return bool Success
 	 */
-	public function delete()
-	{
+	public function delete() {
 		if (is_resource($this->handle)) {
 			fclose($this->handle);
 			$this->handle = null;
@@ -293,8 +281,7 @@ class File
 	 *
 	 * @return array File information.
 	 */
-	public function info()
-	{
+	public function info() {
 		if (!$this->info) {
 			$this->info = pathinfo($this->path);
 		}
@@ -315,8 +302,7 @@ class File
 	 *
 	 * @return string|false The file extension, false if extension cannot be extracted.
 	 */
-	public function ext()
-	{
+	public function ext() {
 		if (!$this->info) {
 			$this->info();
 		}
@@ -331,8 +317,7 @@ class File
 	 *
 	 * @return string|false The file name without extension, false if name cannot be extracted.
 	 */
-	public function name()
-	{
+	public function name() {
 		if (!$this->info) {
 			$this->info();
 		}
@@ -351,8 +336,7 @@ class File
 	 * @param string|null $ext The name of the extension to make safe if different from $this->ext
 	 * @return string The extension of the file
 	 */
-	public function safe($name = null, $ext = null)
-	{
+	public function safe($name = null, $ext = null) {
 		if (!$name) {
 			$name = $this->name;
 		}
@@ -368,8 +352,7 @@ class File
 	 * @param int|bool $maxsize in MB or true to force
 	 * @return string|false md5 Checksum {@link http://php.net/md5_file See md5_file()}, or false in case of an error
 	 */
-	public function md5($maxsize = 5)
-	{
+	public function md5($maxsize = 5) {
 		if ($maxsize === true) {
 			return md5_file($this->path);
 		}
@@ -387,8 +370,7 @@ class File
 	 *
 	 * @return string Full path to the file
 	 */
-	public function pwd()
-	{
+	public function pwd() {
 		if ($this->path === null) {
 			$dir = $this->Folder->pwd();
 			if (is_dir($dir)) {
@@ -403,8 +385,7 @@ class File
 	 *
 	 * @return bool True if it exists, false otherwise
 	 */
-	public function exists()
-	{
+	public function exists() {
 		$this->clearStatCache();
 		return (file_exists($this->path) && is_file($this->path));
 	}
@@ -414,8 +395,7 @@ class File
 	 *
 	 * @return string|false Permissions for the file, or false in case of an error
 	 */
-	public function perms()
-	{
+	public function perms() {
 		if ($this->exists()) {
 			return substr(sprintf('%o', fileperms($this->path)), -4);
 		}
@@ -427,8 +407,7 @@ class File
 	 *
 	 * @return int|false Size of the file in bytes, or false in case of an error
 	 */
-	public function size()
-	{
+	public function size() {
 		if ($this->exists()) {
 			return filesize($this->path);
 		}
@@ -440,8 +419,7 @@ class File
 	 *
 	 * @return bool True if it's writable, false otherwise
 	 */
-	public function writable()
-	{
+	public function writable() {
 		return is_writable($this->path);
 	}
 
@@ -450,8 +428,7 @@ class File
 	 *
 	 * @return bool True if it's executable, false otherwise
 	 */
-	public function executable()
-	{
+	public function executable() {
 		return is_executable($this->path);
 	}
 
@@ -460,8 +437,7 @@ class File
 	 *
 	 * @return bool True if file is readable, false otherwise
 	 */
-	public function readable()
-	{
+	public function readable() {
 		return is_readable($this->path);
 	}
 
@@ -470,8 +446,7 @@ class File
 	 *
 	 * @return int|false The file owner, or false in case of an error
 	 */
-	public function owner()
-	{
+	public function owner() {
 		if ($this->exists()) {
 			return fileowner($this->path);
 		}
@@ -483,8 +458,7 @@ class File
 	 *
 	 * @return int|false The file group, or false in case of an error
 	 */
-	public function group()
-	{
+	public function group() {
 		if ($this->exists()) {
 			return filegroup($this->path);
 		}
@@ -496,8 +470,7 @@ class File
 	 *
 	 * @return int|false Timestamp of last access time, or false in case of an error
 	 */
-	public function lastAccess()
-	{
+	public function lastAccess() {
 		if ($this->exists()) {
 			return fileatime($this->path);
 		}
@@ -509,8 +482,7 @@ class File
 	 *
 	 * @return int|false Timestamp of last modification, or false in case of an error
 	 */
-	public function lastChange()
-	{
+	public function lastChange() {
 		if ($this->exists()) {
 			return filemtime($this->path);
 		}
@@ -522,8 +494,7 @@ class File
 	 *
 	 * @return \Cake\Filesystem\Folder Current folder
 	 */
-	public function folder()
-	{
+	public function folder() {
 		return $this->Folder;
 	}
 
@@ -534,8 +505,7 @@ class File
 	 * @param bool $overwrite Overwrite $dest if exists
 	 * @return bool Success
 	 */
-	public function copy($dest, $overwrite = true)
-	{
+	public function copy($dest, $overwrite = true) {
 		if (!$this->exists() || is_file($dest) && !$overwrite) {
 			return false;
 		}
@@ -548,8 +518,7 @@ class File
 	 *
 	 * @return false|string The mimetype of the file, or false if reading fails.
 	 */
-	public function mime()
-	{
+	public function mime() {
 		if (!$this->exists()) {
 			return false;
 		}
@@ -575,8 +544,7 @@ class File
 	 *   the stat cache for the current path only.
 	 * @return void
 	 */
-	public function clearStatCache($all = false)
-	{
+	public function clearStatCache($all = false) {
 		if ($all === false) {
 			clearstatcache(true, $this->path);
 		}
@@ -591,8 +559,7 @@ class File
 	 * @param string|array $replace Text(s) to replace with.
 	 * @return bool Success
 	 */
-	public function replaceText($search, $replace)
-	{
+	public function replaceText($search, $replace) {
 		if (!$this->open('r+')) {
 			return false;
 		}

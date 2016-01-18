@@ -17,8 +17,7 @@ namespace TestApp\View\Helper;
 use Cake\Event\Event;
 use Cake\View\Helper;
 
-class EventListenerTestHelper extends Helper
-{
+class EventListenerTestHelper extends Helper {
 
 	/**
 	 * Before render callback. Stub.
@@ -27,8 +26,7 @@ class EventListenerTestHelper extends Helper
 	 * @param string $viewFile The view file being rendered.
 	 * @return void
 	 */
-	public function beforeRender(Event $event, $viewFile)
-	{
+	public function beforeRender(Event $event, $viewFile) {
 		$this->config('options.foo', 'bar');
 	}
 
@@ -37,8 +35,7 @@ class EventListenerTestHelper extends Helper
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return ['View.beforeRender' => 'beforeRender'];
 	}
 }

@@ -22,15 +22,13 @@ use Cake\TestSuite\TestCase;
 /**
  * Tests QueryExpression class
  */
-class QueryExpressionTest extends TestCase
-{
+class QueryExpressionTest extends TestCase {
 	/**
 	 * Test and() and or() calls work transparently
 	 *
 	 * @return void
 	 */
-	public function testAndOrCalls()
-	{
+	public function testAndOrCalls() {
 		$expr = new QueryExpression();
 		$expected = '\Cake\Database\Expression\QueryExpression';
 		$this->assertInstanceOf($expected, $expr->and([]));
@@ -42,8 +40,7 @@ class QueryExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSqlGenerationOneClause()
-	{
+	public function testSqlGenerationOneClause() {
 		$expr = new QueryExpression();
 		$binder = new ValueBinder();
 		$expr->add(['Users.username' => 'sally'], ['Users.username' => 'string']);
@@ -57,8 +54,7 @@ class QueryExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSqlGenerationMultipleClauses()
-	{
+	public function testSqlGenerationMultipleClauses() {
 		$expr = new QueryExpression();
 		$binder = new ValueBinder();
 		$expr->add(
@@ -81,8 +77,7 @@ class QueryExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSqlWhenEmpty()
-	{
+	public function testSqlWhenEmpty() {
 		$expr = new QueryExpression();
 		$binder = new ValueBinder();
 		$result = $expr->sql($binder);
@@ -94,8 +89,7 @@ class QueryExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeepCloning()
-	{
+	public function testDeepCloning() {
 		$expr = new QueryExpression();
 		$expr = $expr->add(new QueryExpression('1 + 1'))
 			->isNull('deleted')
@@ -118,8 +112,7 @@ class QueryExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHasNestedExpression()
-	{
+	public function testHasNestedExpression() {
 		$expr = new QueryExpression();
 		$this->assertFalse($expr->hasNestedExpression());
 

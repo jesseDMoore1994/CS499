@@ -9,13 +9,11 @@ use Cake\Datasource\EntityTrait;
  * Tests entity class used for asserting correct loading
  *
  */
-class NonExtending implements EntityInterface
-{
+class NonExtending implements EntityInterface {
 
 	use EntityTrait;
 
-	public function __construct(array $properties = [], array $options = [])
-	{
+	public function __construct(array $properties = [], array $options = []) {
 		$options += [
 			'useSetters' => true,
 			'markClean' => false,

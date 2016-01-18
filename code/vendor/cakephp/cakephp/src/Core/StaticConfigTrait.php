@@ -24,8 +24,7 @@ use InvalidArgumentException;
  *
  * Implementing objects are expected to declare a static `$_dsnClassMap` property.
  */
-trait StaticConfigTrait
-{
+trait StaticConfigTrait {
 
 	/**
 	 * Configuration sets.
@@ -77,8 +76,7 @@ trait StaticConfigTrait
 	 * @return array|null Null when adding configuration or an array of configuration data when reading.
 	 * @throws \BadMethodCallException When trying to modify an existing config.
 	 */
-	public static function config($key, $config = null)
-	{
+	public static function config($key, $config = null) {
 		if ($config === null) {
 			// Read config.
 			if (is_string($key)) {
@@ -126,8 +124,7 @@ trait StaticConfigTrait
 	 * @param string $config An existing configuration you wish to remove.
 	 * @return bool Success of the removal, returns false when the config does not exist.
 	 */
-	public static function drop($config)
-	{
+	public static function drop($config) {
 		if (!isset(static::$_config[$config])) {
 			return false;
 		}
@@ -143,8 +140,7 @@ trait StaticConfigTrait
 	 *
 	 * @return array Array of configurations.
 	 */
-	public static function configured()
-	{
+	public static function configured() {
 		return array_keys(static::$_config);
 	}
 
@@ -180,8 +176,7 @@ trait StaticConfigTrait
 	 * @return array The configuration array to be stored after parsing the DSN
 	 * @throws \InvalidArgumentException If not passed a string
 	 */
-	public static function parseDsn($dsn)
-	{
+	public static function parseDsn($dsn) {
 		if (empty($dsn)) {
 			return [];
 		}
@@ -250,8 +245,7 @@ trait StaticConfigTrait
 	 * @param array|null $map Additions/edits to the class map to apply
 	 * @return array
 	 */
-	public static function dsnClassMap(array $map = null)
-	{
+	public static function dsnClassMap(array $map = null) {
 		if ($map !== null) {
 			static::$_dsnClassMap = $map + static::$_dsnClassMap;
 		}

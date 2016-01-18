@@ -19,8 +19,7 @@ namespace Cake\Database;
  *
  * @internal
  */
-class QueryCompiler
-{
+class QueryCompiler {
 
 	/**
 	 * List of sprintf templates that will be used for compiling the SQL for
@@ -89,8 +88,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return \Closure
 	 */
-	public function compile(Query $query, ValueBinder $generator)
-	{
+	public function compile(Query $query, ValueBinder $generator) {
 		$sql = '';
 		$type = $query->type();
 		$query->traverse(
@@ -109,8 +107,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator The placeholder and value binder object
 	 * @return \Closure
 	 */
-	protected function _sqlCompiler(&$sql, $query, $generator)
-	{
+	protected function _sqlCompiler(&$sql, $query, $generator) {
 		return function ($parts, $name) use (&$sql, $query, $generator) {
 			if (!count($parts)) {
 				return;
@@ -137,8 +134,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return string
 	 */
-	protected function _buildSelectPart($parts, $query, $generator)
-	{
+	protected function _buildSelectPart($parts, $query, $generator) {
 		$driver = $query->connection()->driver();
 		$select = 'SELECT %s%s%s';
 		if ($this->_orderedUnion && $query->clause('union')) {
@@ -182,8 +178,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return string
 	 */
-	protected function _buildFromPart($parts, $query, $generator)
-	{
+	protected function _buildFromPart($parts, $query, $generator) {
 		$select = ' FROM %s';
 		$normalized = [];
 		$parts = $this->_stringifyExpressions($parts, $generator);
@@ -207,8 +202,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return string
 	 */
-	protected function _buildJoinPart($parts, $query, $generator)
-	{
+	protected function _buildJoinPart($parts, $query, $generator) {
 		$joins = '';
 		foreach ($parts as $join) {
 			if ($join['table'] instanceof ExpressionInterface) {
@@ -232,8 +226,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return string
 	 */
-	protected function _buildSetPart($parts, $query, $generator)
-	{
+	protected function _buildSetPart($parts, $query, $generator) {
 		$set = [];
 		foreach ($parts as $part) {
 			if ($part instanceof ExpressionInterface) {
@@ -257,8 +250,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return string
 	 */
-	protected function _buildUnionPart($parts, $query, $generator)
-	{
+	protected function _buildUnionPart($parts, $query, $generator) {
 		$parts = array_map(function ($p) use ($generator) {
 			$p['query'] = $p['query']->sql($generator);
 			$p['query'] = $p['query'][0] === '(' ? trim($p['query'], '()') : $p['query'];
@@ -283,8 +275,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return string SQL fragment.
 	 */
-	protected function _buildInsertPart($parts, $query, $generator)
-	{
+	protected function _buildInsertPart($parts, $query, $generator) {
 		$table = $parts[0];
 		$columns = $this->_stringifyExpressions($parts[1], $generator);
 		return sprintf('INSERT INTO %s (%s)', $table, implode(', ', $columns));
@@ -298,8 +289,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return string SQL fragment.
 	 */
-	protected function _buildValuesPart($parts, $query, $generator)
-	{
+	protected function _buildValuesPart($parts, $query, $generator) {
 		return implode('', $this->_stringifyExpressions($parts, $generator));
 	}
 
@@ -311,8 +301,7 @@ class QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return array
 	 */
-	protected function _stringifyExpressions($expressions, $generator)
-	{
+	protected function _stringifyExpressions($expressions, $generator) {
 		$result = [];
 		foreach ($expressions as $k => $expression) {
 			if ($expression instanceof ExpressionInterface) {

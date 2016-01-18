@@ -17,8 +17,7 @@ use Psy\Reflection\ReflectionConstant;
 /**
  * A utility class for getting Reflectors.
  */
-class Mirror
-{
+class Mirror {
 	const CONSTANT = 1;
 	const METHOD = 2;
 	const STATIC_PROPERTY = 4;
@@ -41,8 +40,7 @@ class Mirror
 	 *
 	 * @return Reflector
 	 */
-	public static function get($value, $member = null, $filter = 15)
-	{
+	public static function get($value, $member = null, $filter = 15) {
 		if ($member === null && is_string($value) && function_exists($value)) {
 			return new \ReflectionFunction($value);
 		}
@@ -77,8 +75,7 @@ class Mirror
 	 *
 	 * @return \ReflectionClass
 	 */
-	private static function getClass($value)
-	{
+	private static function getClass($value) {
 		if (is_object($value)) {
 			return new \ReflectionObject($value);
 		}

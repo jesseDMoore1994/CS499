@@ -16,8 +16,7 @@ namespace Symfony\Component\Config\Definition\Builder;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class NormalizationBuilder
-{
+class NormalizationBuilder {
 	protected $node;
 	public $before = array();
 	public $remappings = array();
@@ -27,8 +26,7 @@ class NormalizationBuilder
 	 *
 	 * @param NodeDefinition $node The related node
 	 */
-	public function __construct(NodeDefinition $node)
-	{
+	public function __construct(NodeDefinition $node) {
 		$this->node = $node;
 	}
 
@@ -40,8 +38,7 @@ class NormalizationBuilder
 	 *
 	 * @return NormalizationBuilder
 	 */
-	public function remap($key, $plural = null)
-	{
+	public function remap($key, $plural = null) {
 		$this->remappings[] = array($key, null === $plural ? $key . 's' : $plural);
 
 		return $this;
@@ -54,8 +51,7 @@ class NormalizationBuilder
 	 *
 	 * @return ExprBuilder|NormalizationBuilder
 	 */
-	public function before(\Closure $closure = null)
-	{
+	public function before(\Closure $closure = null) {
 		if (null !== $closure) {
 			$this->before[] = $closure;
 

@@ -30,8 +30,7 @@ use RuntimeException;
  * required.
  *
  */
-class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
-{
+class Query extends DatabaseQuery implements JsonSerializable, QueryInterface {
 
 	use QueryTrait {
 		cache as private _cache;
@@ -122,8 +121,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @param \Cake\Database\Connection $connection The connection object
 	 * @param \Cake\ORM\Table $table The table this query is starting on
 	 */
-	public function __construct($connection, $table)
-	{
+	public function __construct($connection, $table) {
 		parent::__construct($connection);
 		$this->repository($table);
 
@@ -143,8 +141,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * to be added to the list.
 	 * @param bool $overwrite whether to reset fields with passed list or not
 	 */
-	public function select($fields = [], $overwrite = false)
-	{
+	public function select($fields = [], $overwrite = false) {
 		if ($fields instanceof Association) {
 			$fields = $fields->target();
 		}
@@ -167,8 +164,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @param \Cake\ORM\Table $table The table to pull types from
 	 * @return $this
 	 */
-	public function addDefaultTypes(Table $table)
-	{
+	public function addDefaultTypes(Table $table) {
 		$alias = $table->alias();
 		$map = $table->schema()->typeMap();
 		$fields = [];
@@ -189,8 +185,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *   to get the current eagerloader.
 	 * @return \Cake\ORM\EagerLoader|$this
 	 */
-	public function eagerLoader(EagerLoader $instance = null)
-	{
+	public function eagerLoader(EagerLoader $instance = null) {
 		if ($instance === null) {
 			if ($this->_eagerLoader === null) {
 				$this->_eagerLoader = new EagerLoader;
@@ -295,8 +290,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * defaults to merging previous list with the new one.
 	 * @return array|$this
 	 */
-	public function contain($associations = null, $override = false)
-	{
+	public function contain($associations = null, $override = false) {
 		$loader = $this->eagerLoader();
 		if ($override === true) {
 			$loader->clearContain();
@@ -322,8 +316,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @param array $associations The nested tree of associations to walk.
 	 * @return void
 	 */
-	protected function _addAssociationsToTypeMap($table, $typeMap, $associations)
-	{
+	protected function _addAssociationsToTypeMap($table, $typeMap, $associations) {
 		foreach ($associations as $name => $nested) {
 			$association = $table->association($name);
 			if (!$association) {
@@ -390,8 +383,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * that can be used to add custom conditions or selecting some fields
 	 * @return $this
 	 */
-	public function matching($assoc, callable $builder = null)
-	{
+	public function matching($assoc, callable $builder = null) {
 		$this->eagerLoader()->matching($assoc, $builder);
 		$this->_dirty();
 		return $this;
@@ -460,8 +452,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * that can be used to add custom conditions or selecting some fields
 	 * @return $this
 	 */
-	public function leftJoinWith($assoc, callable $builder = null)
-	{
+	public function leftJoinWith($assoc, callable $builder = null) {
 		$this->eagerLoader()->matching($assoc, $builder, [
 			'joinType' => 'LEFT',
 			'fields' => false
@@ -505,8 +496,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @return $this
 	 * @see \Cake\ORM\Query::matching()
 	 */
-	public function innerJoinWith($assoc, callable $builder = null)
-	{
+	public function innerJoinWith($assoc, callable $builder = null) {
 		$this->eagerLoader()->matching($assoc, $builder, [
 			'joinType' => 'INNER',
 			'fields' => false
@@ -565,8 +555,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * that can be used to add custom conditions or selecting some fields
 	 * @return $this
 	 */
-	public function notMatching($assoc, callable $builder = null)
-	{
+	public function notMatching($assoc, callable $builder = null) {
 		$this->eagerLoader()->matching($assoc, $builder, [
 			'joinType' => 'LEFT',
 			'fields' => false,
@@ -614,8 +603,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *  ->limit(10)
 	 * ```
 	 */
-	public function applyOptions(array $options)
-	{
+	public function applyOptions(array $options) {
 		$valid = [
 			'fields' => 'select',
 			'conditions' => 'where',
@@ -658,8 +646,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @return \Cake\ORM\Query
 	 */
-	public function cleanCopy()
-	{
+	public function cleanCopy() {
 		$clone = clone $this;
 		$clone->triggerBeforeFind();
 		$clone->autoFields(false);
@@ -678,8 +665,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @return void
 	 */
-	public function __clone()
-	{
+	public function __clone() {
 		parent::__clone();
 		if ($this->_eagerLoader) {
 			$this->_eagerLoader = clone $this->_eagerLoader;
@@ -693,8 +679,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * modified, and the count has already been performed the cached
 	 * value is returned
 	 */
-	public function count()
-	{
+	public function count() {
 		if ($this->_resultsCount === null) {
 			$this->_resultsCount = $this->_performCount();
 		}
@@ -707,8 +692,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @return int
 	 */
-	protected function _performCount()
-	{
+	protected function _performCount() {
 		$query = $this->cleanCopy();
 		$counter = $this->_counter;
 		if ($counter) {
@@ -776,8 +760,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @param callable|null $counter The counter value
 	 * @return $this
 	 */
-	public function counter($counter)
-	{
+	public function counter($counter) {
 		$this->_counter = $counter;
 		return $this;
 	}
@@ -791,8 +774,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *   Null will fetch the current hydration mode.
 	 * @return bool|$this A boolean when reading, and $this when setting the mode.
 	 */
-	public function hydrate($enable = null)
-	{
+	public function hydrate($enable = null) {
 		if ($enable === null) {
 			return $this->_hydrate;
 		}
@@ -808,8 +790,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @return $this
 	 * @throws \RuntimeException When you attempt to cache a non-select query.
 	 */
-	public function cache($key, $config = 'default')
-	{
+	public function cache($key, $config = 'default') {
 		if ($this->_type !== 'select' && $this->_type !== null) {
 			throw new RuntimeException('You cannot cache the results of non-select queries.');
 		}
@@ -821,8 +802,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @throws \RuntimeException if this method is called on a non-select Query.
 	 */
-	public function all()
-	{
+	public function all() {
 		if ($this->_type !== 'select' && $this->_type !== null) {
 			throw new RuntimeException(
 				'You cannot call all() on a non-select query. Use execute() instead.'
@@ -838,8 +818,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @return void
 	 */
-	public function triggerBeforeFind()
-	{
+	public function triggerBeforeFind() {
 		if (!$this->_beforeFindFired && $this->_type === 'select') {
 			$table = $this->repository();
 			$this->_beforeFindFired = true;
@@ -854,8 +833,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function sql(ValueBinder $binder = null)
-	{
+	public function sql(ValueBinder $binder = null) {
 		$this->triggerBeforeFind();
 
 		$this->_transformQuery();
@@ -870,8 +848,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @return \Cake\ORM\ResultSet
 	 */
-	protected function _execute()
-	{
+	protected function _execute() {
 		$this->triggerBeforeFind();
 		if ($this->_results) {
 			$decorator = $this->_decoratorClass();
@@ -891,8 +868,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @see \Cake\Database\Query::execute()
 	 * @return void
 	 */
-	protected function _transformQuery()
-	{
+	protected function _transformQuery() {
 		if (!$this->_dirty) {
 			return;
 		}
@@ -912,8 +888,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @return void
 	 */
-	protected function _addDefaultFields()
-	{
+	protected function _addDefaultFields() {
 		$select = $this->clause('select');
 		$this->_hasFields = true;
 
@@ -932,8 +907,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @see \Cake\ORM\Table::find()
 	 */
-	public function find($finder, array $options = [])
-	{
+	public function find($finder, array $options = []) {
 		return $this->repository()->callFinder($finder, $this, $options);
 	}
 
@@ -943,8 +917,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @return void
 	 */
-	protected function _dirty()
-	{
+	protected function _dirty() {
 		$this->_results = null;
 		$this->_resultsCount = null;
 		parent::_dirty();
@@ -959,8 +932,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @param string|null $table Unused parameter.
 	 * @return $this
 	 */
-	public function update($table = null)
-	{
+	public function update($table = null) {
 		$table = $table ?: $this->repository()->table();
 		return parent::update($table);
 	}
@@ -974,8 +946,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @param string|null $table Unused parameter.
 	 * @return $this
 	 */
-	public function delete($table = null)
-	{
+	public function delete($table = null) {
 		$repo = $this->repository();
 		$this->from([$repo->alias() => $repo->table()]);
 		return parent::delete();
@@ -994,8 +965,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @param array $types A map between columns & their datatypes.
 	 * @return $this
 	 */
-	public function insert(array $columns, array $types = [])
-	{
+	public function insert(array $columns, array $types = []) {
 		$table = $this->repository()->table();
 		$this->into($table);
 		return parent::insert($columns, $types);
@@ -1006,8 +976,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @throws \BadMethodCallException if the method is called for a non-select query
 	 */
-	public function __call($method, $arguments)
-	{
+	public function __call($method, $arguments) {
 		if ($this->type() === 'select') {
 			return $this->_call($method, $arguments);
 		}
@@ -1020,8 +989,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		$eagerLoader = $this->eagerLoader();
 		return parent::__debugInfo() + [
 			'hydrate' => $this->_hydrate,
@@ -1042,8 +1010,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 *
 	 * @return \Cake\Datasource\ResultSetInterface The data to convert to JSON.
 	 */
-	public function jsonSerialize()
-	{
+	public function jsonSerialize() {
 		return $this->all();
 	}
 
@@ -1056,8 +1023,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @param bool|null $value The value to set or null to read the current value.
 	 * @return bool|$this Either the current value or the query object.
 	 */
-	public function autoFields($value = null)
-	{
+	public function autoFields($value = null) {
 		if ($value === null) {
 			return $this->_autoFields;
 		}
@@ -1071,8 +1037,7 @@ class Query extends DatabaseQuery implements JsonSerializable, QueryInterface
 	 * @param \Traversable $result Original results
 	 * @return \Cake\Datasource\ResultSetInterface
 	 */
-	protected function _decorateResults($result)
-	{
+	protected function _decorateResults($result) {
 		$result = $this->_applyDecorators($result);
 
 		if (!($result instanceof ResultSet) && $this->bufferResults()) {

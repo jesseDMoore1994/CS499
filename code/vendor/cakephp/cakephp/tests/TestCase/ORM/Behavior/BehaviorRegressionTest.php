@@ -22,8 +22,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Stub entity class
  */
-class NumberTree extends Entity
-{
+class NumberTree extends Entity {
 
 	use TranslateTrait;
 }
@@ -31,8 +30,7 @@ class NumberTree extends Entity
 /**
  * Behavior regression tests
  */
-class BehaviorRegressionTest extends TestCase
-{
+class BehaviorRegressionTest extends TestCase {
 	/**
 	 * fixtures
 	 *
@@ -49,8 +47,7 @@ class BehaviorRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/5982
 	 * @return void
 	 */
-	public function testTreeAndTranslateIntegration()
-	{
+	public function testTreeAndTranslateIntegration() {
 		$table = TableRegistry::get('NumberTrees');
 		$table->primaryKey(['id']);
 		$table->addBehavior('Tree');

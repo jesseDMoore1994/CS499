@@ -28,8 +28,7 @@ use Cake\View\ViewVarsTrait;
 /**
  * Used by other tasks to generate templated output, Acts as an interface to BakeView
  */
-class BakeTemplateTask extends Shell
-{
+class BakeTemplateTask extends Shell {
 	use ConventionsTrait;
 
 	use ViewVarsTrait;
@@ -47,8 +46,7 @@ class BakeTemplateTask extends Shell
 	 * @return \Cake\View\View
 	 * @triggers Bake.initialize $view
 	 */
-	public function getView()
-	{
+	public function getView() {
 		if ($this->View) {
 			return $this->View;
 		}
@@ -77,8 +75,7 @@ class BakeTemplateTask extends Shell
 	 * @param array|null $vars Additional vars to set to template scope.
 	 * @return string contents of generated code template
 	 */
-	public function generate($template, $vars = null)
-	{
+	public function generate($template, $vars = null) {
 		if ($vars !== null) {
 			$this->set($vars);
 		}

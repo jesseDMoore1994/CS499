@@ -24,8 +24,7 @@ use SimpleXmlElement;
  * Shows a list of commands available from the console.
  *
  */
-class CommandListShell extends Shell
-{
+class CommandListShell extends Shell {
 
 	/**
 	 * Contains tasks to load and instantiate
@@ -39,8 +38,7 @@ class CommandListShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function startup()
-	{
+	public function startup() {
 		if (empty($this->params['xml'])) {
 			parent::startup();
 		}
@@ -51,8 +49,7 @@ class CommandListShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		if (empty($this->params['xml'])) {
 			$this->out("<info>Current Paths:</info>", 2);
 			$this->out("* app:  " . APP_DIR);
@@ -81,8 +78,7 @@ class CommandListShell extends Shell
 	 * @param array $shellList The shell list.
 	 * @return void
 	 */
-	protected function _asText($shellList)
-	{
+	protected function _asText($shellList) {
 		foreach ($shellList as $plugin => $commands) {
 			sort($commands);
 			$this->out(sprintf('[<info>%s</info>] %s', $plugin, implode(', ', $commands)));
@@ -100,8 +96,7 @@ class CommandListShell extends Shell
 	 * @param array $shellList The shell list.
 	 * @return void
 	 */
-	protected function _asXml($shellList)
-	{
+	protected function _asXml($shellList) {
 		$plugins = Plugin::loaded();
 		$shells = new SimpleXmlElement('<shells></shells>');
 		foreach ($shellList as $plugin => $commands) {
@@ -127,8 +122,7 @@ class CommandListShell extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->description(

@@ -18,11 +18,9 @@ use Cake\ORM\Table;
  * Article table class
  *
  */
-class ArticlesTable extends Table
-{
+class ArticlesTable extends Table {
 
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		$this->belongsTo('authors');
 		$this->belongsToMany('tags');
 		$this->hasMany('ArticlesTags');
@@ -34,8 +32,7 @@ class ArticlesTable extends Table
 	 * @param \Cake\ORM\Query $query The query
 	 * @return \Cake\ORM\Query
 	 */
-	public function findPublished($query)
-	{
+	public function findPublished($query) {
 		return $query->where(['published' => 'Y']);
 	}
 
@@ -44,8 +41,7 @@ class ArticlesTable extends Table
 	 *
 	 * @return void
 	 */
-	public function doSomething()
-	{
+	public function doSomething() {
 	}
 
 	/**
@@ -53,8 +49,7 @@ class ArticlesTable extends Table
 	 *
 	 * @return void
 	 */
-	public function doSomethingElse()
-	{
+	public function doSomethingElse() {
 	}
 
 	/**
@@ -62,7 +57,6 @@ class ArticlesTable extends Table
 	 *
 	 * @return void
 	 */
-	protected function _innerMethod()
-	{
+	protected function _innerMethod() {
 	}
 }

@@ -24,8 +24,7 @@ use Symfony\Component\Config\Resource\ResourceInterface;
  * @author Matthias Pigulla <mp@webfactory.de>
  * @author Benjamin Klotz <bk@webfactory.de>
  */
-interface ResourceCheckerInterface
-{
+interface ResourceCheckerInterface {
 	/**
 	 * Queries the ResourceChecker whether it can validate a given
 	 * resource or not.

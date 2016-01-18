@@ -26,16 +26,14 @@ use Cake\View\View;
  * UrlHelperTest class
  *
  */
-class UrlHelperTest extends TestCase
-{
+class UrlHelperTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		Router::reload();
@@ -52,8 +50,7 @@ class UrlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Configure::delete('Asset');
 
@@ -66,8 +63,7 @@ class UrlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUrlConversion()
-	{
+	public function testUrlConversion() {
 		Router::connect('/:controller/:action/*');
 
 		$result = $this->Helper->build('/controller/action/1');
@@ -105,8 +101,7 @@ class UrlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssetTimestamp()
-	{
+	public function testAssetTimestamp() {
 		Configure::write('Foo.bar', 'test');
 		Configure::write('Asset.timestamp', false);
 		$result = $this->Helper->assetTimestamp(Configure::read('App.cssBaseUrl') . 'cake.generic.css');
@@ -144,8 +139,7 @@ class UrlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssetUrl()
-	{
+	public function testAssetUrl() {
 		Router::connect('/:controller/:action/*');
 
 		$this->Helper->webroot = '';
@@ -183,8 +177,7 @@ class UrlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssetUrlNoRewrite()
-	{
+	public function testAssetUrlNoRewrite() {
 		$this->Helper->request->addPaths([
 			'base' => '/cake_dev/index.php',
 			'webroot' => '/cake_dev/app/webroot/',
@@ -200,8 +193,7 @@ class UrlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssetUrlPlugin()
-	{
+	public function testAssetUrlPlugin() {
 		$this->Helper->webroot = '';
 		Plugin::load('TestPlugin');
 
@@ -219,8 +211,7 @@ class UrlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssetUrlTimestampForce()
-	{
+	public function testAssetUrlTimestampForce() {
 		$this->Helper->webroot = '';
 		Configure::write('Asset.timestamp', 'force');
 
@@ -233,8 +224,7 @@ class UrlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssetTimestampPluginsAndThemes()
-	{
+	public function testAssetTimestampPluginsAndThemes() {
 		Configure::write('Asset.timestamp', 'force');
 		Plugin::load(['TestPlugin']);
 
@@ -256,8 +246,7 @@ class UrlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWebrootPaths()
-	{
+	public function testWebrootPaths() {
 		$this->Helper->request->webroot = '/';
 		$result = $this->Helper->webroot('/img/cake.power.gif');
 		$expected = '/img/cake.power.gif';

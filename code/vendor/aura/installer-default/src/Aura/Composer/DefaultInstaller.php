@@ -10,13 +10,11 @@ use Composer\Installer\LibraryInstaller;
  * It installs like any other library package for Composer.
  *
  */
-class DefaultInstaller extends LibraryInstaller
-{
+class DefaultInstaller extends LibraryInstaller {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function supports($packageType)
-	{
+	public function supports($packageType) {
 		return $packageType == 'aura-package';
 	}
 }

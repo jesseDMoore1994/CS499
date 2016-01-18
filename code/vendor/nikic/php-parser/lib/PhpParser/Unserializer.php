@@ -2,8 +2,7 @@
 
 namespace PhpParser;
 
-interface Unserializer
-{
+interface Unserializer {
 	/**
 	 * Unserializes a string in some format into a node tree.
 	 *

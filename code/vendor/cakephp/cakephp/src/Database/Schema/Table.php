@@ -29,8 +29,7 @@ use Cake\Datasource\ConnectionInterface;
  * Schema\Collection objects. They can also be converted into SQL using the
  * createSql(), dropSql() and truncateSql() methods.
  */
-class Table
-{
+class Table {
 
 	/**
 	 * The name of the table
@@ -247,8 +246,7 @@ class Table
 	 * @param string $table The table name.
 	 * @param array $columns The list of columns for the schema.
 	 */
-	public function __construct($table, array $columns = [])
-	{
+	public function __construct($table, array $columns = []) {
 		$this->_table = $table;
 		foreach ($columns as $field => $definition) {
 			$this->addColumn($field, $definition);
@@ -260,8 +258,7 @@ class Table
 	 *
 	 * @return string
 	 */
-	public function name()
-	{
+	public function name() {
 		return $this->_table;
 	}
 
@@ -293,8 +290,7 @@ class Table
 	 * @param array $attrs The attributes for the column.
 	 * @return $this
 	 */
-	public function addColumn($name, $attrs)
-	{
+	public function addColumn($name, $attrs) {
 		if (is_string($attrs)) {
 			$attrs = ['type' => $attrs];
 		}
@@ -313,8 +309,7 @@ class Table
 	 *
 	 * @return array
 	 */
-	public function columns()
-	{
+	public function columns() {
 		return array_keys($this->_columns);
 	}
 
@@ -324,8 +319,7 @@ class Table
 	 * @param string $name The column name.
 	 * @return array|null Column data or null.
 	 */
-	public function column($name)
-	{
+	public function column($name) {
 		if (!isset($this->_columns[$name])) {
 			return null;
 		}
@@ -342,8 +336,7 @@ class Table
 	 * @param string $type The type to set the column to.
 	 * @return string|null Either the column type or null.
 	 */
-	public function columnType($name, $type = null)
-	{
+	public function columnType($name, $type = null) {
 		if (!isset($this->_columns[$name])) {
 			return null;
 		}
@@ -362,8 +355,7 @@ class Table
 	 * @param string $column The column name to get the base type from
 	 * @return string The base type name
 	 */
-	public function baseColumnType($column)
-	{
+	public function baseColumnType($column) {
 		if (isset($this->_columns[$column]['baseType'])) {
 			return $this->_columns[$column]['baseType'];
 		}
@@ -386,8 +378,7 @@ class Table
 	 *
 	 * @return array
 	 */
-	public function typeMap()
-	{
+	public function typeMap() {
 		return $this->_typeMap;
 	}
 
@@ -399,8 +390,7 @@ class Table
 	 * @param string $name The column to get the type of.
 	 * @return bool Whether or not the field is nullable.
 	 */
-	public function isNullable($name)
-	{
+	public function isNullable($name) {
 		if (!isset($this->_columns[$name])) {
 			return true;
 		}
@@ -412,8 +402,7 @@ class Table
 	 *
 	 * @return array
 	 */
-	public function defaultValues()
-	{
+	public function defaultValues() {
 		$defaults = [];
 		foreach ($this->_columns as $name => $data) {
 			if (!array_key_exists('default', $data)) {
@@ -443,8 +432,7 @@ class Table
 	 * @return $this
 	 * @throws \Cake\Database\Exception
 	 */
-	public function addIndex($name, $attrs)
-	{
+	public function addIndex($name, $attrs) {
 		if (is_string($attrs)) {
 			$attrs = ['type' => $attrs];
 		}
@@ -480,8 +468,7 @@ class Table
 	 *
 	 * @return array
 	 */
-	public function indexes()
-	{
+	public function indexes() {
 		return array_keys($this->_indexes);
 	}
 
@@ -491,8 +478,7 @@ class Table
 	 * @param string $name The name of the index.
 	 * @return array|null Array of index data, or null
 	 */
-	public function index($name)
-	{
+	public function index($name) {
 		if (!isset($this->_indexes[$name])) {
 			return null;
 		}
@@ -505,8 +491,7 @@ class Table
 	 * @return array Column name(s) for the primary key. An
 	 *   empty list will be returned when the table has no primary key.
 	 */
-	public function primaryKey()
-	{
+	public function primaryKey() {
 		foreach ($this->_constraints as $name => $data) {
 			if ($data['type'] === static::CONSTRAINT_PRIMARY) {
 				return $data['columns'];
@@ -536,8 +521,7 @@ class Table
 	 * @return $this
 	 * @throws \Cake\Database\Exception
 	 */
-	public function addConstraint($name, $attrs)
-	{
+	public function addConstraint($name, $attrs) {
 		if (is_string($attrs)) {
 			$attrs = ['type' => $attrs];
 		}
@@ -591,8 +575,7 @@ class Table
 	 * @param string $name Name of the constraint to remove
 	 * @return void
 	 */
-	public function dropConstraint($name)
-	{
+	public function dropConstraint($name) {
 		if (isset($this->_constraints[$name])) {
 			unset($this->_constraints[$name]);
 		}
@@ -603,8 +586,7 @@ class Table
 	 *
 	 * @return bool
 	 */
-	public function hasAutoincrement()
-	{
+	public function hasAutoincrement() {
 		foreach ($this->_columns as $column) {
 			if (isset($column['autoIncrement']) && $column['autoIncrement']) {
 				return true;
@@ -620,8 +602,7 @@ class Table
 	 * @return array
 	 * @throws \Cake\Database\Exception When foreign key definition is not valid.
 	 */
-	protected function _checkForeignKey($attrs)
-	{
+	protected function _checkForeignKey($attrs) {
 		if (count($attrs['references']) < 2) {
 			throw new Exception('References must contain a table and column.');
 		}
@@ -639,8 +620,7 @@ class Table
 	 *
 	 * @return array
 	 */
-	public function constraints()
-	{
+	public function constraints() {
 		return array_keys($this->_constraints);
 	}
 
@@ -650,8 +630,7 @@ class Table
 	 * @param string $name The name of the constraint.
 	 * @return array|null Array of constraint data, or null
 	 */
-	public function constraint($name)
-	{
+	public function constraint($name) {
 		if (!isset($this->_constraints[$name])) {
 			return null;
 		}
@@ -667,8 +646,7 @@ class Table
 	 * @param array|null $options The options to set, or null to read options.
 	 * @return $this|array Either the table instance, or an array of options when reading.
 	 */
-	public function options($options = null)
-	{
+	public function options($options = null) {
 		if ($options === null) {
 			return $this->_options;
 		}
@@ -682,8 +660,7 @@ class Table
 	 * @param bool|null $set whether or not the table is to be temporary
 	 * @return $this|bool Either the table instance, the current temporary setting
 	 */
-	public function temporary($set = null)
-	{
+	public function temporary($set = null) {
 		if ($set === null) {
 			return $this->_temporary;
 		}
@@ -701,8 +678,7 @@ class Table
 	 * @return array List of SQL statements to create the table and the
 	 *    required indexes.
 	 */
-	public function createSql(ConnectionInterface $connection)
-	{
+	public function createSql(ConnectionInterface $connection) {
 		$dialect = $connection->driver()->schemaDialect();
 		$columns = $constraints = $indexes = [];
 		foreach (array_keys($this->_columns) as $name) {
@@ -726,8 +702,7 @@ class Table
 	 * @param \Cake\Datasource\ConnectionInterface $connection The connection to generate SQL for.
 	 * @return array SQL to drop a table.
 	 */
-	public function dropSql(ConnectionInterface $connection)
-	{
+	public function dropSql(ConnectionInterface $connection) {
 		$dialect = $connection->driver()->schemaDialect();
 		return $dialect->dropTableSql($this);
 	}
@@ -738,8 +713,7 @@ class Table
 	 * @param \Cake\Datasource\ConnectionInterface $connection The connection to generate SQL for.
 	 * @return array SQL to truncate a table.
 	 */
-	public function truncateSql(ConnectionInterface $connection)
-	{
+	public function truncateSql(ConnectionInterface $connection) {
 		$dialect = $connection->driver()->schemaDialect();
 		return $dialect->truncateTableSql($this);
 	}
@@ -750,8 +724,7 @@ class Table
 	 * @param \Cake\Datasource\ConnectionInterface $connection The connection to generate SQL for.
 	 * @return array SQL to drop a table.
 	 */
-	public function addConstraintSql(ConnectionInterface $connection)
-	{
+	public function addConstraintSql(ConnectionInterface $connection) {
 		$dialect = $connection->driver()->schemaDialect();
 		return $dialect->addConstraintSql($this);
 	}
@@ -762,8 +735,7 @@ class Table
 	 * @param \Cake\Datasource\ConnectionInterface $connection The connection to generate SQL for.
 	 * @return array SQL to drop a table.
 	 */
-	public function dropConstraintSql(ConnectionInterface $connection)
-	{
+	public function dropConstraintSql(ConnectionInterface $connection) {
 		$dialect = $connection->driver()->schemaDialect();
 		return $dialect->dropConstraintSql($this);
 	}

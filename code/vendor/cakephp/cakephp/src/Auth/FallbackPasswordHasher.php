@@ -20,8 +20,7 @@ namespace Cake\Auth;
  * existing database of users from one password type to another.
  *
  */
-class FallbackPasswordHasher extends AbstractPasswordHasher
-{
+class FallbackPasswordHasher extends AbstractPasswordHasher {
 
 	/**
 	 * Default config for this object.
@@ -46,8 +45,7 @@ class FallbackPasswordHasher extends AbstractPasswordHasher
 	 * `hashers` key to be present in the array with a list of other hashers to be
 	 * used
 	 */
-	public function __construct(array $config = [])
-	{
+	public function __construct(array $config = []) {
 		parent::__construct($config);
 		foreach ($this->_config['hashers'] as $key => $hasher) {
 			if (!is_string($hasher)) {
@@ -67,8 +65,7 @@ class FallbackPasswordHasher extends AbstractPasswordHasher
 	 * @param string $password Plain text password to hash.
 	 * @return string Password hash
 	 */
-	public function hash($password)
-	{
+	public function hash($password) {
 		return $this->_hashers[0]->hash($password);
 	}
 
@@ -82,8 +79,7 @@ class FallbackPasswordHasher extends AbstractPasswordHasher
 	 * @param string $hashedPassword Existing hashed password.
 	 * @return bool True if hashes match else false.
 	 */
-	public function check($password, $hashedPassword)
-	{
+	public function check($password, $hashedPassword) {
 		foreach ($this->_hashers as $hasher) {
 			if ($hasher->check($password, $hashedPassword)) {
 				return true;
@@ -99,8 +95,7 @@ class FallbackPasswordHasher extends AbstractPasswordHasher
 	 * @param string $password The password to verify
 	 * @return bool
 	 */
-	public function needsRehash($password)
-	{
+	public function needsRehash($password) {
 		return $this->_hashers[0]->needsRehash($password);
 	}
 }

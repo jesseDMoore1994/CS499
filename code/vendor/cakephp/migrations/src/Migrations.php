@@ -21,8 +21,7 @@ use Symfony\Component\Console\Output\NullOutput;
  * The Migrations class is responsible for handling migrations command
  * within an none-shell application.
  */
-class Migrations
-{
+class Migrations {
 
 	use ConfigurationTrait;
 
@@ -56,8 +55,7 @@ class Migrations
 	 * - `source` The folder where migrations are in
 	 * - `plugin` The plugin containing the migrations
 	 */
-	public function __construct(array $default = [])
-	{
+	public function __construct(array $default = []) {
 		$this->output = new NullOutput();
 
 		if (!empty($default)) {
@@ -78,8 +76,7 @@ class Migrations
 	 *
 	 * @return array The migrations list and their statuses
 	 */
-	public function status($options = [])
-	{
+	public function status($options = []) {
 		$input = $this->getInput('Status', [], $options);
 		$params = ['default', $input->getOption('format')];
 
@@ -101,8 +98,7 @@ class Migrations
 	 *
 	 * @return bool Success
 	 */
-	public function migrate($options = [])
-	{
+	public function migrate($options = []) {
 		$input = $this->getInput('Migrate', [], $options);
 		$method = 'migrate';
 		$params = ['default', $input->getOption('target')];
@@ -131,8 +127,7 @@ class Migrations
 	 *
 	 * @return bool Success
 	 */
-	public function rollback($options = [])
-	{
+	public function rollback($options = []) {
 		$input = $this->getInput('Rollback', [], $options);
 		$method = 'rollback';
 		$params = ['default', $input->getOption('target')];
@@ -159,8 +154,7 @@ class Migrations
 	 *
 	 * @return bool Success
 	 */
-	public function markMigrated($version, $options = [])
-	{
+	public function markMigrated($version, $options = []) {
 		$input = $this->getInput('MarkMigrated', ['version' => $version], $options);
 		$params = [$version];
 
@@ -185,8 +179,7 @@ class Migrations
 	 *
 	 * @return mixed The result of the CakeManager::$method() call
 	 */
-	protected function run($method, $params, $input)
-	{
+	protected function run($method, $params, $input) {
 		if ($this->configuration instanceof Config) {
 			$migrationPath = $this->getConfig()->getMigrationPath();
 		}
@@ -208,8 +201,7 @@ class Migrations
 	 * @param \Phinx\Config\ConfigInterface|null $config ConfigInterface the Manager needs to run
 	 * @return \Migrations\CakeManager Instance of CakeManager
 	 */
-	public function getManager($config = null)
-	{
+	public function getManager($config = null) {
 		if (!($this->manager instanceof CakeManager)) {
 			if (!($config instanceof ConfigInterface)) {
 				throw new \RuntimeException(
@@ -232,8 +224,7 @@ class Migrations
 	 *
 	 * @return void
 	 */
-	public function setAdapter()
-	{
+	public function setAdapter() {
 		if ($this->input !== null) {
 			$connectionName = 'default';
 			if ($this->input->getOption('connection')) {
@@ -260,8 +251,7 @@ class Migrations
 	 * @return \Symfony\Component\Console\Input\InputInterface InputInterface needed for the
 	 * Manager to properly run
 	 */
-	public function getInput($command, $arguments, $options)
-	{
+	public function getInput($command, $arguments, $options) {
 		$className = '\Migrations\Command\\' . $command;
 		$options = $arguments + $this->prepareOptions($options);
 		$definition = (new $className())->getDefinition();
@@ -274,8 +264,7 @@ class Migrations
 	 * @param array $options Simple key-values array to pass to the InputInterface
 	 * @return array Prepared $options
 	 */
-	protected function prepareOptions($options = [])
-	{
+	protected function prepareOptions($options = []) {
 		$options = array_merge($this->default, $options);
 		if (empty($options)) {
 			return $options;

@@ -21,8 +21,7 @@ use Cake\I18n\PluralRules;
  * A formatter that will interpolate variables using sprintf and
  * select the correct plural form when required
  */
-class SprintfFormatter implements FormatterInterface
-{
+class SprintfFormatter implements FormatterInterface {
 
 	/**
 	 * Returns a string with all passed variables interpolated into the original
@@ -37,8 +36,7 @@ class SprintfFormatter implements FormatterInterface
 	 * @param array $vars The list of values to interpolate in the message
 	 * @return string The formatted message
 	 */
-	public function format($locale, $message, array $vars)
-	{
+	public function format($locale, $message, array $vars) {
 		if (is_string($message) && isset($vars['_singular'])) {
 			$message = [$vars['_singular'], $message];
 			unset($vars['_singular']);

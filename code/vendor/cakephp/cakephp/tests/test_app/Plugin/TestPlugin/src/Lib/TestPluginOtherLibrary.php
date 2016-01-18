@@ -21,6 +21,5 @@
  */
 namespace TestPlugin\Lib;
 
-class TestPluginOtherLibrary
-{
+class TestPluginOtherLibrary {
 }

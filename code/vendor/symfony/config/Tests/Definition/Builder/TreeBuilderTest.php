@@ -18,10 +18,8 @@ require __DIR__ . '/../../Fixtures/Builder/NodeBuilder.php';
 require __DIR__ . '/../../Fixtures/Builder/BarNodeDefinition.php';
 require __DIR__ . '/../../Fixtures/Builder/VariableNodeDefinition.php';
 
-class TreeBuilderTest extends \PHPUnit_Framework_TestCase
-{
-	public function testUsingACustomNodeBuilder()
-	{
+class TreeBuilderTest extends \PHPUnit_Framework_TestCase {
+	public function testUsingACustomNodeBuilder() {
 		$builder = new TreeBuilder();
 		$root = $builder->root('custom', 'array', new CustomNodeBuilder());
 
@@ -34,8 +32,7 @@ class TreeBuilderTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf('Symfony\Component\Config\Tests\Definition\Builder\NodeBuilder', $nodeBuilder);
 	}
 
-	public function testOverrideABuiltInNodeType()
-	{
+	public function testOverrideABuiltInNodeType() {
 		$builder = new TreeBuilder();
 		$root = $builder->root('override', 'array', new CustomNodeBuilder());
 
@@ -44,8 +41,7 @@ class TreeBuilderTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf('Symfony\Component\Config\Tests\Definition\Builder\VariableNodeDefinition', $definition);
 	}
 
-	public function testAddANodeType()
-	{
+	public function testAddANodeType() {
 		$builder = new TreeBuilder();
 		$root = $builder->root('override', 'array', new CustomNodeBuilder());
 
@@ -54,8 +50,7 @@ class TreeBuilderTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf('Symfony\Component\Config\Tests\Definition\Builder\BarNodeDefinition', $definition);
 	}
 
-	public function testCreateABuiltInNodeTypeWithACustomNodeBuilder()
-	{
+	public function testCreateABuiltInNodeTypeWithACustomNodeBuilder() {
 		$builder = new TreeBuilder();
 		$root = $builder->root('builtin', 'array', new CustomNodeBuilder());
 
@@ -64,16 +59,14 @@ class TreeBuilderTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf('Symfony\Component\Config\Definition\Builder\BooleanNodeDefinition', $definition);
 	}
 
-	public function testPrototypedArrayNodeUseTheCustomNodeBuilder()
-	{
+	public function testPrototypedArrayNodeUseTheCustomNodeBuilder() {
 		$builder = new TreeBuilder();
 		$root = $builder->root('override', 'array', new CustomNodeBuilder());
 
 		$root->prototype('bar')->end();
 	}
 
-	public function testAnExtendedNodeBuilderGetsPropagatedToTheChildren()
-	{
+	public function testAnExtendedNodeBuilderGetsPropagatedToTheChildren() {
 		$builder = new TreeBuilder();
 
 		$builder->root('propagation')
@@ -89,8 +82,7 @@ class TreeBuilderTest extends \PHPUnit_Framework_TestCase
 			->end();
 	}
 
-	public function testDefinitionInfoGetsTransferredToNode()
-	{
+	public function testDefinitionInfoGetsTransferredToNode() {
 		$builder = new TreeBuilder();
 
 		$builder->root('test')->info('root info')
@@ -106,8 +98,7 @@ class TreeBuilderTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('child info', $children['child']->getInfo());
 	}
 
-	public function testDefinitionExampleGetsTransferredToNode()
-	{
+	public function testDefinitionExampleGetsTransferredToNode() {
 		$builder = new TreeBuilder();
 
 		$builder->root('test')

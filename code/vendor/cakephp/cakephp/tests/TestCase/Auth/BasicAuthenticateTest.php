@@ -27,8 +27,7 @@ use Cake\Utility\Security;
  * Test case for BasicAuthentication
  *
  */
-class BasicAuthenticateTest extends TestCase
-{
+class BasicAuthenticateTest extends TestCase {
 
 	/**
 	 * Fixtures
@@ -42,8 +41,7 @@ class BasicAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->Collection = $this->getMock('Cake\Controller\ComponentRegistry');
@@ -63,8 +61,7 @@ class BasicAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructor()
-	{
+	public function testConstructor() {
 		$object = new BasicAuthenticate($this->Collection, [
 			'userModel' => 'AuthUser',
 			'fields' => ['username' => 'user', 'password' => 'password']
@@ -78,8 +75,7 @@ class BasicAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateNoData()
-	{
+	public function testAuthenticateNoData() {
 		$request = new Request('posts/index');
 
 		$this->response->expects($this->never())
@@ -93,8 +89,7 @@ class BasicAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateNoUsername()
-	{
+	public function testAuthenticateNoUsername() {
 		$request = new Request([
 			'url' => 'posts/index',
 			'environment' => ['PHP_AUTH_PW' => 'foobar']
@@ -108,8 +103,7 @@ class BasicAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateNoPassword()
-	{
+	public function testAuthenticateNoPassword() {
 		$request = new Request([
 			'url' => 'posts/index',
 			'environment' => ['PHP_AUTH_USER' => 'mariano']
@@ -123,8 +117,7 @@ class BasicAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateInjection()
-	{
+	public function testAuthenticateInjection() {
 		$request = new Request([
 			'url' => 'posts/index',
 			'environment' => [
@@ -143,8 +136,7 @@ class BasicAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateUsernameZero()
-	{
+	public function testAuthenticateUsernameZero() {
 		$User = TableRegistry::get('Users');
 		$User->updateAll(['username' => '0'], ['username' => 'mariano']);
 
@@ -170,8 +162,7 @@ class BasicAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateChallenge()
-	{
+	public function testAuthenticateChallenge() {
 		$request = new Request('posts/index');
 		$request->addParams(['pass' => []]);
 
@@ -191,8 +182,7 @@ class BasicAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateSuccess()
-	{
+	public function testAuthenticateSuccess() {
 		$request = new Request([
 			'url' => 'posts/index',
 			'environment' => [
@@ -219,8 +209,7 @@ class BasicAuthenticateTest extends TestCase
 	 * @expectedExceptionCode 401
 	 * @return void
 	 */
-	public function testAuthenticateFailReChallenge()
-	{
+	public function testAuthenticateFailReChallenge() {
 		$this->auth->config('scope.username', 'nate');
 		$request = new Request([
 			'url' => 'posts/index',

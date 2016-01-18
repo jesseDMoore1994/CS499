@@ -22,8 +22,7 @@ use \PDO;
  * Tests StatementDecorator class
  *
  */
-class StatemetDecoratorTest extends TestCase
-{
+class StatemetDecoratorTest extends TestCase {
 
 	/**
 	 * Tests that calling lastInsertId will proxy it to
@@ -31,8 +30,7 @@ class StatemetDecoratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLastInsertId()
-	{
+	public function testLastInsertId() {
 		$statement = $this->getMock('\PDOStatement');
 		$driver = $this->getMock('\Cake\Database\Driver');
 		$statement = new StatementDecorator($statement, $driver);
@@ -49,8 +47,7 @@ class StatemetDecoratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLastInsertIdWithReturning()
-	{
+	public function testLastInsertIdWithReturning() {
 		$internal = $this->getMock('\PDOStatement');
 		$driver = $this->getMock('\Cake\Database\Driver');
 		$statement = new StatementDecorator($internal, $driver);
@@ -70,8 +67,7 @@ class StatemetDecoratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNoDoubleExecution()
-	{
+	public function testNoDoubleExecution() {
 		$inner = $this->getMock('\PDOStatement');
 		$driver = $this->getMock('\Cake\Database\Driver');
 		$statement = new StatementDecorator($inner, $driver);

@@ -25,8 +25,7 @@ use Cake\Routing\Route\Route;
  *
  * @internal
  */
-class RouteCollection
-{
+class RouteCollection {
 
 	/**
 	 * The routes connected to this collection.
@@ -71,8 +70,7 @@ class RouteCollection
 	 *   `_name` option, which enables named routes.
 	 * @return void
 	 */
-	public function add(Route $route, array $options = [])
-	{
+	public function add(Route $route, array $options = []) {
 		$this->_routes[] = $route;
 
 		// Explicit names
@@ -108,8 +106,7 @@ class RouteCollection
 	 * @return array An array of request parameters parsed from the URL.
 	 * @throws \Cake\Routing\Exception\MissingRouteException When a URL has no matching route.
 	 */
-	public function parse($url)
-	{
+	public function parse($url) {
 		$decoded = urldecode($url);
 		foreach (array_keys($this->_paths) as $path) {
 			if (strpos($decoded, $path) !== 0) {
@@ -142,8 +139,7 @@ class RouteCollection
 	 * @param array $url The url to match.
 	 * @return array The set of names of the url
 	 */
-	protected function _getNames($url)
-	{
+	protected function _getNames($url) {
 		$plugin = false;
 		if (isset($url['plugin']) && $url['plugin'] !== false) {
 			$plugin = strtolower($url['plugin']);
@@ -227,8 +223,7 @@ class RouteCollection
 	 * @return string|false Either a string on match, or false on failure.
 	 * @throws \Cake\Routing\Exception\MissingRouteException when a route cannot be matched.
 	 */
-	public function match($url, $context)
-	{
+	public function match($url, $context) {
 		// Named routes support optimization.
 		if (isset($url['_name'])) {
 			$name = $url['_name'];
@@ -263,8 +258,7 @@ class RouteCollection
 	 *
 	 * @return array
 	 */
-	public function routes()
-	{
+	public function routes() {
 		return $this->_routes;
 	}
 
@@ -273,8 +267,7 @@ class RouteCollection
 	 *
 	 * @return array
 	 */
-	public function named()
-	{
+	public function named() {
 		return $this->_named;
 	}
 
@@ -287,8 +280,7 @@ class RouteCollection
 	 *   Defaults to `true`.
 	 * @return array The valid extensions.
 	 */
-	public function extensions($extensions = null, $merge = true)
-	{
+	public function extensions($extensions = null, $merge = true) {
 		if ($extensions === null) {
 			return $this->_extensions;
 		}

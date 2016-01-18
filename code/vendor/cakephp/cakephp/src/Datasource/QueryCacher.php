@@ -26,8 +26,7 @@ use Traversable;
  *
  * @see \Cake\Datasource\QueryTrait::cache() for the public interface.
  */
-class QueryCacher
-{
+class QueryCacher {
 
 	/**
 	 * Constructor.
@@ -36,8 +35,7 @@ class QueryCacher
 	 * @param string|CacheEngine $config The cache config name or cache engine instance.
 	 * @throws \RuntimeException
 	 */
-	public function __construct($key, $config)
-	{
+	public function __construct($key, $config) {
 		if (!is_string($key) && !is_callable($key)) {
 			throw new RuntimeException('Cache keys must be strings or callables.');
 		}
@@ -55,8 +53,7 @@ class QueryCacher
 	 * @param object $query The query the cache read is for.
 	 * @return \Cake\ORM\ResultSet|null Either the cached results or null.
 	 */
-	public function fetch($query)
-	{
+	public function fetch($query) {
 		$key = $this->_resolveKey($query);
 		$storage = $this->_resolveCacher();
 		$result = $storage->read($key);
@@ -73,8 +70,7 @@ class QueryCacher
 	 * @param \Traversable $results The result set to store.
 	 * @return bool True if the data was successfully cached, false on failure
 	 */
-	public function store($query, Traversable $results)
-	{
+	public function store($query, Traversable $results) {
 		$key = $this->_resolveKey($query);
 		$storage = $this->_resolveCacher();
 		return $storage->write($key, $results);
@@ -87,8 +83,7 @@ class QueryCacher
 	 * @return string
 	 * @throws \RuntimeException
 	 */
-	protected function _resolveKey($query)
-	{
+	protected function _resolveKey($query) {
 		if (is_string($this->_key)) {
 			return $this->_key;
 		}
@@ -106,8 +101,7 @@ class QueryCacher
 	 *
 	 * @return \Cake\Cache\CacheEngine
 	 */
-	protected function _resolveCacher()
-	{
+	protected function _resolveCacher() {
 		if (is_string($this->_config)) {
 			return Cache::engine($this->_config);
 		}

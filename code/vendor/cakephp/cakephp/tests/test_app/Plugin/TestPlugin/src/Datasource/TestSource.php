@@ -1,8 +1,7 @@
 <?php
 namespace TestPlugin\Datasource;
 
-class TestSource
-{
+class TestSource {
 
 	/**
 	 * Config
@@ -14,8 +13,7 @@ class TestSource
 	/**
 	 * Constructor
 	 */
-	public function __construct(array $config)
-	{
+	public function __construct(array $config) {
 		$this->_config = $config;
 	}
 
@@ -24,8 +22,7 @@ class TestSource
 	 *
 	 * @return array
 	 */
-	public function config()
-	{
+	public function config() {
 		return $this->_config;
 	}
 }

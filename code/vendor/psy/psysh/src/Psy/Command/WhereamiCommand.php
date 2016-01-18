@@ -21,10 +21,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Show the context of where you opened the debugger.
  */
-class WhereamiCommand extends Command
-{
-	public function __construct()
-	{
+class WhereamiCommand extends Command {
+	public function __construct() {
 		if (version_compare(PHP_VERSION, '5.3.6', '>=')) {
 			$this->backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
 		} else {
@@ -37,8 +35,7 @@ class WhereamiCommand extends Command
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('whereami')
 			->setDefinition(array(
@@ -63,8 +60,7 @@ HELP
 	 *
 	 * @return array
 	 */
-	protected function trace()
-	{
+	protected function trace() {
 		foreach ($this->backtrace as $i => $backtrace) {
 			if (!isset($backtrace['class'], $backtrace['function'])) {
 				continue;
@@ -84,8 +80,7 @@ HELP
 	 *
 	 * @return array
 	 */
-	protected function fileInfo()
-	{
+	protected function fileInfo() {
 		$backtrace = $this->trace();
 		if (preg_match('/eval\(/', $backtrace['file'])) {
 			preg_match_all('/([^\(]+)\((\d+)/', $backtrace['file'], $matches);
@@ -102,8 +97,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$info = $this->fileInfo();
 		$num = $input->getOption('num');
 		$colors = new ConsoleColor();

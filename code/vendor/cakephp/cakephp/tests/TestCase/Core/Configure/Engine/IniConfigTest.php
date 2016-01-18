@@ -23,8 +23,7 @@ use Cake\TestSuite\TestCase;
  * Class IniConfigTest
  *
  */
-class IniConfigTest extends TestCase
-{
+class IniConfigTest extends TestCase {
 
 	/**
 	 * Test data to serialize and unserialize.
@@ -51,8 +50,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->path = CONFIG;
 	}
@@ -62,8 +60,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstruct()
-	{
+	public function testConstruct() {
 		$engine = new IniConfig($this->path);
 		$config = $engine->read('acl');
 
@@ -77,8 +74,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRead()
-	{
+	public function testRead() {
 		$engine = new IniConfig($this->path);
 		$config = $engine->read('nested');
 		$this->assertTrue($config['bools']['test_on']);
@@ -92,8 +88,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadOnlyOneSection()
-	{
+	public function testReadOnlyOneSection() {
 		$engine = new IniConfig($this->path, 'admin');
 		$config = $engine->read('acl');
 
@@ -106,8 +101,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadWithoutSection()
-	{
+	public function testReadWithoutSection() {
 		$engine = new IniConfig($this->path);
 		$config = $engine->read('no_section');
 
@@ -123,8 +117,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadValuesWithDots()
-	{
+	public function testReadValuesWithDots() {
 		$engine = new IniConfig($this->path);
 		$config = $engine->read('nested');
 
@@ -140,8 +133,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBooleanReading()
-	{
+	public function testBooleanReading() {
 		$engine = new IniConfig($this->path);
 		$config = $engine->read('nested');
 
@@ -163,8 +155,7 @@ class IniConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadWithExistentFileWithoutExtension()
-	{
+	public function testReadWithExistentFileWithoutExtension() {
 		$engine = new IniConfig($this->path);
 		$engine->read('no_ini_extension');
 	}
@@ -175,8 +166,7 @@ class IniConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadWithNonExistentFile()
-	{
+	public function testReadWithNonExistentFile() {
 		$engine = new IniConfig($this->path);
 		$engine->read('fake_values');
 	}
@@ -186,8 +176,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadEmptyFile()
-	{
+	public function testReadEmptyFile() {
 		$engine = new IniConfig($this->path);
 		$config = $engine->read('empty');
 		$this->assertEquals([], $config);
@@ -199,8 +188,7 @@ class IniConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadWithDots()
-	{
+	public function testReadWithDots() {
 		$engine = new IniConfig($this->path);
 		$engine->read('../empty');
 	}
@@ -210,8 +198,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadPluginValue()
-	{
+	public function testReadPluginValue() {
 		Plugin::load('TestPlugin');
 		$engine = new IniConfig($this->path);
 		$result = $engine->read('TestPlugin.nested');
@@ -231,8 +218,7 @@ class IniConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDump()
-	{
+	public function testDump() {
 		$engine = new IniConfig(TMP);
 		$result = $engine->dump('test', $this->testData);
 		$this->assertTrue($result > 0);
@@ -267,8 +253,7 @@ INI;
 	 *
 	 * @return void
 	 */
-	public function testDumpRead()
-	{
+	public function testDumpRead() {
 		$engine = new IniConfig(TMP);
 		$engine->dump('test', $this->testData);
 		$result = $engine->read('test');

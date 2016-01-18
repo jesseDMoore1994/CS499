@@ -22,16 +22,14 @@ use Cake\View\Widget\MultiCheckboxWidget;
 /**
  * MultiCheckbox test case.
  */
-class MultiCheckboxWidgetTest extends TestCase
-{
+class MultiCheckboxWidgetTest extends TestCase {
 
 	/**
 	 * setup method.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$templates = [
 			'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
@@ -47,8 +45,7 @@ class MultiCheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSimple()
-	{
+	public function testRenderSimple() {
 		$label = new LabelWidget($this->templates);
 		$input = new MultiCheckboxWidget($this->templates, $label);
 		$data = [
@@ -91,8 +88,7 @@ class MultiCheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderComplex()
-	{
+	public function testRenderComplex() {
 		$label = new LabelWidget($this->templates);
 		$input = new MultiCheckboxWidget($this->templates, $label);
 		$data = [
@@ -141,8 +137,7 @@ class MultiCheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderEscaping()
-	{
+	public function testRenderEscaping() {
 		$label = new LabelWidget($this->templates);
 		$input = new MultiCheckboxWidget($this->templates, $label);
 		$data = [
@@ -173,8 +168,7 @@ class MultiCheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSelected()
-	{
+	public function testRenderSelected() {
 		$label = new LabelWidget($this->templates);
 		$input = new MultiCheckboxWidget($this->templates, $label);
 		$data = [
@@ -228,8 +222,7 @@ class MultiCheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderDisabled()
-	{
+	public function testRenderDisabled() {
 		$label = new LabelWidget($this->templates);
 		$input = new MultiCheckboxWidget($this->templates, $label);
 		$data = [
@@ -318,8 +311,7 @@ class MultiCheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderTemplateVars()
-	{
+	public function testRenderTemplateVars() {
 		$templates = [
 			'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}" data-var="{{inputVar}}" {{attrs}}>',
 			'label' => '<label{{attrs}}>{{text}} {{inputVar}}</label>',

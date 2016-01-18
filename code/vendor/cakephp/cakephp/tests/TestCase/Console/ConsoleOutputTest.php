@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
  * Class ConsoleOutputTest
  *
  */
-class ConsoleOutputTest extends TestCase
-{
+class ConsoleOutputTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->output = $this->getMock('Cake\Console\ConsoleOutput', ['_write']);
 		$this->output->outputAs(ConsoleOutput::COLOR);
@@ -43,8 +41,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->output);
 	}
@@ -54,8 +51,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWriteNoNewLine()
-	{
+	public function testWriteNoNewLine() {
 		$this->output->expects($this->once())->method('_write')
 			->with('Some output');
 
@@ -67,8 +63,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWriteNewLine()
-	{
+	public function testWriteNewLine() {
 		$this->output->expects($this->once())->method('_write')
 			->with('Some output' . PHP_EOL);
 
@@ -80,8 +75,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWriteMultipleNewLines()
-	{
+	public function testWriteMultipleNewLines() {
 		$this->output->expects($this->once())->method('_write')
 			->with('Some output' . PHP_EOL . PHP_EOL . PHP_EOL . PHP_EOL);
 
@@ -93,8 +87,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWriteArray()
-	{
+	public function testWriteArray() {
 		$this->output->expects($this->once())->method('_write')
 			->with('Line' . PHP_EOL . 'Line' . PHP_EOL . 'Line' . PHP_EOL);
 
@@ -106,8 +99,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStylesGet()
-	{
+	public function testStylesGet() {
 		$result = $this->output->styles('error');
 		$expected = ['text' => 'red'];
 		$this->assertEquals($expected, $result);
@@ -124,8 +116,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStylesAdding()
-	{
+	public function testStylesAdding() {
 		$this->output->styles('test', ['text' => 'red', 'background' => 'black']);
 		$result = $this->output->styles('test');
 		$expected = ['text' => 'red', 'background' => 'black'];
@@ -140,8 +131,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormattingSimple()
-	{
+	public function testFormattingSimple() {
 		$this->output->expects($this->once())->method('_write')
 			->with("\033[91mError:\033[0m Something bad");
 
@@ -153,8 +143,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormattingNotEatingTags()
-	{
+	public function testFormattingNotEatingTags() {
 		$this->output->expects($this->once())->method('_write')
 			->with("<red> Something bad");
 
@@ -166,8 +155,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormattingCustom()
-	{
+	public function testFormattingCustom() {
 		$this->output->styles('annoying', [
 			'text' => 'magenta',
 			'background' => 'cyan',
@@ -186,8 +174,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormattingMissingStyleName()
-	{
+	public function testFormattingMissingStyleName() {
 		$this->output->expects($this->once())->method('_write')
 			->with("<not_there>Error:</not_there> Something bad");
 
@@ -199,8 +186,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormattingMultipleStylesName()
-	{
+	public function testFormattingMultipleStylesName() {
 		$this->output->expects($this->once())->method('_write')
 			->with("\033[91mBad\033[0m \033[33mWarning\033[0m Regular");
 
@@ -212,8 +198,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormattingMultipleSameTags()
-	{
+	public function testFormattingMultipleSameTags() {
 		$this->output->expects($this->once())->method('_write')
 			->with("\033[91mBad\033[0m \033[91mWarning\033[0m Regular");
 
@@ -225,8 +210,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputAsRaw()
-	{
+	public function testOutputAsRaw() {
 		$this->output->outputAs(ConsoleOutput::RAW);
 		$this->output->expects($this->once())->method('_write')
 			->with('<error>Bad</error> Regular');
@@ -239,8 +223,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputAsPlain()
-	{
+	public function testOutputAsPlain() {
 		$this->output->outputAs(ConsoleOutput::PLAIN);
 		$this->output->expects($this->once())->method('_write')
 			->with('Bad Regular');
@@ -253,8 +236,7 @@ class ConsoleOutputTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputAsPlainSelectiveTagRemoval()
-	{
+	public function testOutputAsPlainSelectiveTagRemoval() {
 		$this->output->outputAs(ConsoleOutput::PLAIN);
 		$this->output->expects($this->once())->method('_write')
 			->with('Bad Regular <b>Left</b> <i>behind</i> <name>');

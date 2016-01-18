@@ -2,10 +2,8 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class GSeeder extends AbstractSeed
-{
-	public function run()
-	{
+class GSeeder extends AbstractSeed {
+	public function run() {
 		$data = array(
 			array(
 				'body' => 'foo',

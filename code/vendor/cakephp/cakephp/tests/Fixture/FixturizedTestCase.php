@@ -8,8 +8,7 @@ use Exception;
  * This class helps in testing the life-cycle of fixtures inside a CakeTestCase
  *
  */
-class FixturizedTestCase extends TestCase
-{
+class FixturizedTestCase extends TestCase {
 
 	/**
 	 * Fixtures to use in this test
@@ -22,8 +21,7 @@ class FixturizedTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFixturePresent()
-	{
+	public function testFixturePresent() {
 		$this->assertInstanceOf('Cake\TestSuite\Fixture\FixtureManager', $this->fixtureManager);
 	}
 
@@ -32,8 +30,7 @@ class FixturizedTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFixtureLoadOnDemand()
-	{
+	public function testFixtureLoadOnDemand() {
 		$this->loadFixtures('Categories');
 	}
 
@@ -42,8 +39,7 @@ class FixturizedTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSkipIfTrue()
-	{
+	public function testSkipIfTrue() {
 		$this->skipIf(true);
 	}
 
@@ -52,8 +48,7 @@ class FixturizedTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSkipIfFalse()
-	{
+	public function testSkipIfFalse() {
 		$this->skipIf(false);
 	}
 
@@ -63,8 +58,7 @@ class FixturizedTestCase extends TestCase
 	 * @return void
 	 * @throws \Exception
 	 */
-	public function testThrowException()
-	{
+	public function testThrowException() {
 		throw new Exception();
 	}
 }

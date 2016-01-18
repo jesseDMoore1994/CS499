@@ -22,16 +22,14 @@ use Cake\View\Form\ContextInterface;
  * This class is intended as an internal implementation detail
  * of Cake\View\Helper\FormHelper and is not intended for direct use.
  */
-class FileWidget implements WidgetInterface
-{
+class FileWidget implements WidgetInterface {
 
 	/**
 	 * Constructor
 	 *
 	 * @param \Cake\View\StringTemplate $templates Templates list.
 	 */
-	public function __construct($templates)
-	{
+	public function __construct($templates) {
 		$this->_templates = $templates;
 	}
 
@@ -51,8 +49,7 @@ class FileWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string HTML elements.
 	 */
-	public function render(array $data, ContextInterface $context)
-	{
+	public function render(array $data, ContextInterface $context) {
 		$data += [
 			'name' => '',
 			'escape' => true,
@@ -73,8 +70,7 @@ class FileWidget implements WidgetInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function secureFields(array $data)
-	{
+	public function secureFields(array $data) {
 		$fields = [];
 		foreach (['name', 'type', 'tmp_name', 'error', 'size'] as $suffix) {
 			$fields[] = $data['name'] . '[' . $suffix . ']';

@@ -18,16 +18,14 @@ use Psy\Context;
 use Psy\ContextAware;
 use Psy\TabCompletion\Matcher;
 
-class AutoCompleterTest extends \PHPUnit_Framework_TestCase
-{
+class AutoCompleterTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @param $line
 	 * @param $mustContain
 	 * @param $mustNotContain
 	 * @dataProvider classesInput
 	 */
-	public function testClassesCompletion($line, $mustContain, $mustNotContain)
-	{
+	public function testClassesCompletion($line, $mustContain, $mustNotContain) {
 		$context = new Context();
 
 		$commands = array(
@@ -90,8 +88,7 @@ class AutoCompleterTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return array
 	 */
-	public function classesInput()
-	{
+	public function classesInput() {
 		return array(
 			// input, must had, must not had
 			array('T_OPE', array('T_OPEN_TAG'), array()),

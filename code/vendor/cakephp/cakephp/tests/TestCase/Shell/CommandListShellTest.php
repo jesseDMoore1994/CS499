@@ -26,16 +26,14 @@ use Cake\TestSuite\TestCase;
  * Class CommandListShellTest
  *
  */
-class CommandListShellTest extends TestCase
-{
+class CommandListShellTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Plugin::load(['TestPlugin', 'TestPluginTwo']);
 
@@ -60,8 +58,7 @@ class CommandListShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->Shell);
 		Plugin::unload();
@@ -72,8 +69,7 @@ class CommandListShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMain()
-	{
+	public function testMain() {
 		$this->Shell->main();
 		$output = $this->out->messages();
 		$output = implode("\n", $output);
@@ -97,8 +93,7 @@ class CommandListShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMainAppPriority()
-	{
+	public function testMainAppPriority() {
 		rename(APP . 'Shell' . DS . 'I18mShell.php', APP . 'Shell' . DS . 'I18nShell.php');
 		$this->Shell->main();
 		$output = $this->out->messages();
@@ -117,8 +112,7 @@ class CommandListShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMainXml()
-	{
+	public function testMainXml() {
 		$this->Shell->params['xml'] = true;
 		$this->Shell->main();
 

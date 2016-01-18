@@ -20,8 +20,7 @@ use ReflectionClass;
  * A Proxy class used to remove any extra arguments when the user intended to call
  * a method in another class that is not aware of validation providers signature
  */
-class RulesProvider
-{
+class RulesProvider {
 	/**
 	 * The class/object to proxy.
 	 *
@@ -41,8 +40,7 @@ class RulesProvider
 	 *
 	 * @param string $class the default class to proxy
 	 */
-	public function __construct($class = '\Cake\Validation\Validation')
-	{
+	public function __construct($class = '\Cake\Validation\Validation') {
 		$this->_class = $class;
 		$this->_reflection = new ReflectionClass($class);
 	}
@@ -59,8 +57,7 @@ class RulesProvider
 	 * @param array $arguments the list of arguments to pass to the method
 	 * @return bool whether or not the validation rule passed
 	 */
-	public function __call($method, $arguments)
-	{
+	public function __call($method, $arguments) {
 		$method = $this->_reflection->getMethod($method);
 		$argumentList = $method->getParameters();
 		if (array_pop($argumentList)->getName() !== 'context') {

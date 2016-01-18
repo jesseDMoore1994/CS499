@@ -23,8 +23,7 @@ use Psy\Exception\FatalErrorException;
  *
  * @author Martin Hasoň <martin.hason@gmail.com>
  */
-class InstanceOfPass extends CodeCleanerPass
-{
+class InstanceOfPass extends CodeCleanerPass {
 	/**
 	 * Validate that the instanceof statement does not receive a scalar value or a non-class constant.
 	 *
@@ -32,8 +31,7 @@ class InstanceOfPass extends CodeCleanerPass
 	 *
 	 * @param Node $node
 	 */
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		if (!$node instanceof InstanceofStmt) {
 			return;
 		}

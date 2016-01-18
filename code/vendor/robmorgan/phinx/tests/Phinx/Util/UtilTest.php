@@ -4,15 +4,12 @@ namespace Test\Phinx\Util;
 
 use Phinx\Util\Util;
 
-class UtilTest extends \PHPUnit_Framework_TestCase
-{
-	private function getCorrectedPath($path)
-	{
+class UtilTest extends \PHPUnit_Framework_TestCase {
+	private function getCorrectedPath($path) {
 		return str_replace('/', DIRECTORY_SEPARATOR, $path);
 	}
 
-	public function testGetExistingMigrationClassNames()
-	{
+	public function testGetExistingMigrationClassNames() {
 		$expectedResults = array(
 			'TestMigration',
 			'TestMigration2',
@@ -25,15 +22,13 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testGetExistingMigrationClassNamesWithFile()
-	{
+	public function testGetExistingMigrationClassNamesWithFile() {
 		$file = $this->getCorrectedPath(__DIR__ . '/_files/migrations/20120111235330_test_migration.php');
 		$existingClassNames = Util::getExistingMigrationClassNames($file);
 		$this->assertCount(0, $existingClassNames);
 	}
 
-	public function testGetCurrentTimestamp()
-	{
+	public function testGetCurrentTimestamp() {
 		$dt = new \DateTime('now', new \DateTimeZone('UTC'));
 		$expected = $dt->format(Util::DATE_FORMAT);
 
@@ -46,8 +41,7 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 		$this->assertLessThanOrEqual($expected + 2, $current);
 	}
 
-	public function testMapClassNameToFileName()
-	{
+	public function testMapClassNameToFileName() {
 		$expectedResults = array(
 			'CamelCase87afterSomeBooze' => '/^\d{14}_camel_case87after_some_booze\.php$/',
 			'CreateUserTable' => '/^\d{14}_create_user_table\.php$/',
@@ -59,8 +53,7 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testMapFileNameToClassName()
-	{
+	public function testMapFileNameToClassName() {
 		$expectedResults = array(
 			'20150902094024_create_user_table.php' => 'CreateUserTable',
 			'20150902102548_my_first_migration2.php' => 'MyFirstMigration2',
@@ -71,8 +64,7 @@ class UtilTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testisValidPhinxClassName()
-	{
+	public function testisValidPhinxClassName() {
 		$expectedResults = array(
 			'CAmelCase' => false,
 			'CreateUserTable' => true,

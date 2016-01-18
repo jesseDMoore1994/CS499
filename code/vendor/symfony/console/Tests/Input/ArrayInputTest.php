@@ -16,10 +16,8 @@ use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class ArrayInputTest extends \PHPUnit_Framework_TestCase
-{
-	public function testGetFirstArgument()
-	{
+class ArrayInputTest extends \PHPUnit_Framework_TestCase {
+	public function testGetFirstArgument() {
 		$input = new ArrayInput(array());
 		$this->assertNull($input->getFirstArgument(), '->getFirstArgument() returns null if no argument were passed');
 		$input = new ArrayInput(array('name' => 'Fabien'));
@@ -28,8 +26,7 @@ class ArrayInputTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('Fabien', $input->getFirstArgument(), '->getFirstArgument() returns the first passed argument');
 	}
 
-	public function testHasParameterOption()
-	{
+	public function testHasParameterOption() {
 		$input = new ArrayInput(array('name' => 'Fabien', '--foo' => 'bar'));
 		$this->assertTrue($input->hasParameterOption('--foo'), '->hasParameterOption() returns true if an option is present in the passed parameters');
 		$this->assertFalse($input->hasParameterOption('--bar'), '->hasParameterOption() returns false if an option is not present in the passed parameters');
@@ -42,8 +39,7 @@ class ArrayInputTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($input->hasParameterOption('--bar', true), '->hasParameterOption() returns false if an option is present in the passed parameters after an end of options signal');
 	}
 
-	public function testGetParameterOption()
-	{
+	public function testGetParameterOption() {
 		$input = new ArrayInput(array('name' => 'Fabien', '--foo' => 'bar'));
 		$this->assertEquals('bar', $input->getParameterOption('--foo'), '->getParameterOption() returns the option of specified name');
 		$this->assertFalse($input->getParameterOption('--bar'), '->getParameterOption() returns the default if an option is not present in the passed parameters');
@@ -56,8 +52,7 @@ class ArrayInputTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($input->getParameterOption('--bar', false, true), '->getParameterOption() returns false if an option is present in the passed parameters after an end of options signal');
 	}
 
-	public function testParseArguments()
-	{
+	public function testParseArguments() {
 		$input = new ArrayInput(array('name' => 'foo'), new InputDefinition(array(new InputArgument('name'))));
 
 		$this->assertEquals(array('name' => 'foo'), $input->getArguments(), '->parse() parses required arguments');
@@ -66,15 +61,13 @@ class ArrayInputTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider provideOptions
 	 */
-	public function testParseOptions($input, $options, $expectedOptions, $message)
-	{
+	public function testParseOptions($input, $options, $expectedOptions, $message) {
 		$input = new ArrayInput($input, new InputDefinition($options));
 
 		$this->assertEquals($expectedOptions, $input->getOptions(), $message);
 	}
 
-	public function provideOptions()
-	{
+	public function provideOptions() {
 		return array(
 			array(
 				array('--foo' => 'bar'),
@@ -118,15 +111,13 @@ class ArrayInputTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider provideInvalidInput
 	 */
-	public function testParseInvalidInput($parameters, $definition, $expectedExceptionMessage)
-	{
+	public function testParseInvalidInput($parameters, $definition, $expectedExceptionMessage) {
 		$this->setExpectedException('InvalidArgumentException', $expectedExceptionMessage);
 
 		new ArrayInput($parameters, $definition);
 	}
 
-	public function provideInvalidInput()
-	{
+	public function provideInvalidInput() {
 		return array(
 			array(
 				array('foo' => 'foo'),
@@ -151,8 +142,7 @@ class ArrayInputTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testToString()
-	{
+	public function testToString() {
 		$input = new ArrayInput(array('-f' => null, '-b' => 'bar', '--foo' => 'b a z', '--lala' => null, 'test' => 'Foo', 'test2' => "A\nB'C"));
 		$this->assertEquals('-f -b=bar --foo=' . escapeshellarg('b a z') . ' --lala Foo ' . escapeshellarg("A\nB'C"), (string)$input);
 	}

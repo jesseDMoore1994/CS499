@@ -19,6 +19,5 @@ use Aura\Intl\Exception;
  * @package Aura.Intl
  *
  */
-class CannotFormat extends \Exception
-{
+class CannotFormat extends \Exception {
 }

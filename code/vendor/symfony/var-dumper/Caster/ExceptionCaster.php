@@ -19,8 +19,7 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ExceptionCaster
-{
+class ExceptionCaster {
 	public static $srcContext = 1;
 	public static $traceArgs = true;
 	public static $errorTypes = array(
@@ -41,18 +40,15 @@ class ExceptionCaster
 		E_STRICT => 'E_STRICT',
 	);
 
-	public static function castError(\Error $e, array $a, Stub $stub, $isNested, $filter = 0)
-	{
+	public static function castError(\Error $e, array $a, Stub $stub, $isNested, $filter = 0) {
 		return self::filterExceptionArray($stub->class, $a, "\0Error\0", $filter);
 	}
 
-	public static function castException(\Exception $e, array $a, Stub $stub, $isNested, $filter = 0)
-	{
+	public static function castException(\Exception $e, array $a, Stub $stub, $isNested, $filter = 0) {
 		return self::filterExceptionArray($stub->class, $a, "\0Exception\0", $filter);
 	}
 
-	public static function castErrorException(\ErrorException $e, array $a, Stub $stub, $isNested)
-	{
+	public static function castErrorException(\ErrorException $e, array $a, Stub $stub, $isNested) {
 		if (isset($a[$s = Caster::PREFIX_PROTECTED . 'severity'], self::$errorTypes[$a[$s]])) {
 			$a[$s] = new ConstStub(self::$errorTypes[$a[$s]], $a[$s]);
 		}
@@ -60,8 +56,7 @@ class ExceptionCaster
 		return $a;
 	}
 
-	public static function castThrowingCasterException(ThrowingCasterException $e, array $a, Stub $stub, $isNested)
-	{
+	public static function castThrowingCasterException(ThrowingCasterException $e, array $a, Stub $stub, $isNested) {
 		$prefix = Caster::PREFIX_PROTECTED;
 		$xPrefix = "\0Exception\0";
 
@@ -80,8 +75,7 @@ class ExceptionCaster
 		return $a;
 	}
 
-	public static function castTraceStub(TraceStub $trace, array $a, Stub $stub, $isNested)
-	{
+	public static function castTraceStub(TraceStub $trace, array $a, Stub $stub, $isNested) {
 		if (!$isNested) {
 			return $a;
 		}
@@ -132,8 +126,7 @@ class ExceptionCaster
 		return $a;
 	}
 
-	public static function castFrameStub(FrameStub $frame, array $a, Stub $stub, $isNested)
-	{
+	public static function castFrameStub(FrameStub $frame, array $a, Stub $stub, $isNested) {
 		if (!$isNested) {
 			return $a;
 		}
@@ -183,8 +176,7 @@ class ExceptionCaster
 		return $a;
 	}
 
-	private static function filterExceptionArray($xClass, array $a, $xPrefix, $filter)
-	{
+	private static function filterExceptionArray($xClass, array $a, $xPrefix, $filter) {
 		if (isset($a[$xPrefix . 'trace'])) {
 			$trace = $a[$xPrefix . 'trace'];
 			unset($a[$xPrefix . 'trace']); // Ensures the trace is always last
@@ -208,8 +200,7 @@ class ExceptionCaster
 		return $a;
 	}
 
-	private static function extractSource(array $srcArray, $line, $srcContext)
-	{
+	private static function extractSource(array $srcArray, $line, $srcContext) {
 		$src = array();
 
 		for ($i = $line - 1 - $srcContext; $i <= $line - 1 + $srcContext; ++$i) {

@@ -18,8 +18,7 @@ use Cake\Controller\Controller;
 /**
  * CookieComponentTestController class
  */
-class CookieComponentTestController extends Controller
-{
+class CookieComponentTestController extends Controller {
 	/**
 	 * @var array
 	 */
@@ -33,8 +32,7 @@ class CookieComponentTestController extends Controller
 	 * @param string|null $key Encryption key used. By defaults,
 	 *   CookieComponent::_config['key'].
 	 */
-	public function view($key = null)
-	{
+	public function view($key = null) {
 		if (isset($key)) {
 			$this->Cookie->config('key', $key);
 		}
@@ -48,8 +46,7 @@ class CookieComponentTestController extends Controller
 	 * @param string|null $key Encryption key used. By defaults,
 	 *   CookieComponent::_config['key'].
 	 */
-	public function set_cookie($key = null)
-	{
+	public function set_cookie($key = null) {
 		$this->autoRender = false;
 		if (isset($key)) {
 			$this->Cookie->config('key', $key);

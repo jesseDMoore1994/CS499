@@ -18,8 +18,7 @@ use Cake\Core\Exception\Exception;
  * Exception raised when a URL cannot be reverse routed
  * or when a URL cannot be parsed.
  */
-class MissingRouteException extends Exception
-{
+class MissingRouteException extends Exception {
 
 	/**
 	 * {@inheritDoc}
@@ -29,8 +28,7 @@ class MissingRouteException extends Exception
 	/**
 	 * {@inheritDoc}
 	 */
-	public function __construct($message, $code = 404)
-	{
+	public function __construct($message, $code = 404) {
 		parent::__construct($message, $code);
 	}
 }

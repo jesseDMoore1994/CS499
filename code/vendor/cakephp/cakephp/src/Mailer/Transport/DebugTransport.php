@@ -24,8 +24,7 @@ use Cake\Mailer\Email;
  * email message before actually send it during development
  *
  */
-class DebugTransport extends AbstractTransport
-{
+class DebugTransport extends AbstractTransport {
 
 	/**
 	 * Send mail
@@ -33,8 +32,7 @@ class DebugTransport extends AbstractTransport
 	 * @param \Cake\Mailer\Email $email Cake Email
 	 * @return array
 	 */
-	public function send(Email $email)
-	{
+	public function send(Email $email) {
 		$headers = $email->getHeaders(['from', 'sender', 'replyTo', 'readReceipt', 'returnPath', 'to', 'cc', 'subject']);
 		$headers = $this->_headersToString($headers);
 		$message = implode("\r\n", (array)$email->message());

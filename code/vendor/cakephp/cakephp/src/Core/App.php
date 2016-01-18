@@ -38,8 +38,7 @@ namespace Cake\Core;
  *
  * @link http://book.cakephp.org/3.0/en/core-libraries/app.html
  */
-class App
-{
+class App {
 
 	/**
 	 * Return the class name namespaced. This method checks if the class is defined on the
@@ -50,8 +49,7 @@ class App
 	 * @param string $suffix Class name suffix
 	 * @return bool|string False if the class is not found or namespaced class name
 	 */
-	public static function className($class, $type = '', $suffix = '')
-	{
+	public static function className($class, $type = '', $suffix = '') {
 		if (strpos($class, '\\') !== false) {
 			return $class;
 		}
@@ -82,8 +80,7 @@ class App
 	 * @param string $namespace Namespace.
 	 * @return bool
 	 */
-	protected static function _classExistsInBase($name, $namespace)
-	{
+	protected static function _classExistsInBase($name, $namespace) {
 		return class_exists($namespace . $name);
 	}
 
@@ -110,8 +107,7 @@ class App
 	 * @return array
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/app.html#finding-paths-to-namespaces
 	 */
-	public static function path($type, $plugin = null)
-	{
+	public static function path($type, $plugin = null) {
 		if ($type === 'Plugin') {
 			return (array)Configure::read('App.paths.plugins');
 		}
@@ -141,8 +137,7 @@ class App
 	 * @param string $type Package type.
 	 * @return array Full path to package
 	 */
-	public static function core($type)
-	{
+	public static function core($type) {
 		return [CAKE . str_replace('/', DS, $type) . DS];
 	}
 }

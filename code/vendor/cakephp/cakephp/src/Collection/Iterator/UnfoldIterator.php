@@ -24,8 +24,7 @@ use RecursiveIterator;
  * @internal
  * @see Collection::unfold()
  */
-class UnfoldIterator extends IteratorIterator implements RecursiveIterator
-{
+class UnfoldIterator extends IteratorIterator implements RecursiveIterator {
 
 	/**
 	 * A function that is passed each element in this iterator and
@@ -51,8 +50,7 @@ class UnfoldIterator extends IteratorIterator implements RecursiveIterator
 	 * current item and key. It must return an array or Traversable object
 	 * out of which the nested iterators will be yielded.
 	 */
-	public function __construct($items, callable $unfolder)
-	{
+	public function __construct($items, callable $unfolder) {
 		$this->_unfolder = $unfolder;
 		parent::__construct($items);
 		$this->_innerIterator = $this->getInnerIterator();
@@ -64,8 +62,7 @@ class UnfoldIterator extends IteratorIterator implements RecursiveIterator
 	 *
 	 * @return bool
 	 */
-	public function hasChildren()
-	{
+	public function hasChildren() {
 		return true;
 	}
 
@@ -75,8 +72,7 @@ class UnfoldIterator extends IteratorIterator implements RecursiveIterator
 	 *
 	 * @return \RecursiveIterator
 	 */
-	public function getChildren()
-	{
+	public function getChildren() {
 		$current = $this->current();
 		$key = $this->key();
 		$unfolder = $this->_unfolder;

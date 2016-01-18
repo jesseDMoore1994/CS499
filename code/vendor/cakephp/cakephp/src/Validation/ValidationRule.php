@@ -24,8 +24,7 @@ use InvalidArgumentException;
  * ValidationRule object. Represents a validation method, error message and
  * rules for applying such method to a field.
  */
-class ValidationRule
-{
+class ValidationRule {
 
 	/**
 	 * The method to be called for a given scope
@@ -75,8 +74,7 @@ class ValidationRule
 	 *
 	 * @param array $validator [optional] The validator properties
 	 */
-	public function __construct(array $validator = [])
-	{
+	public function __construct(array $validator = []) {
 		$this->_addValidatorProps($validator);
 	}
 
@@ -86,8 +84,7 @@ class ValidationRule
 	 *
 	 * @return bool
 	 */
-	public function isLast()
-	{
+	public function isLast() {
 		return (bool)$this->_last;
 	}
 
@@ -109,8 +106,7 @@ class ValidationRule
 	 * @throws \InvalidArgumentException when the supplied rule is not a valid
 	 * callable for the configured scope
 	 */
-	public function process($value, array $providers, array $context = [])
-	{
+	public function process($value, array $providers, array $context = []) {
 		$context += ['data' => [], 'newRecord' => true, 'providers' => $providers];
 
 		if ($this->_skip($context)) {
@@ -158,8 +154,7 @@ class ValidationRule
 	 *   be passed as the last argument for the validation method
 	 * @return bool True if the ValidationRule should be skipped
 	 */
-	protected function _skip($context)
-	{
+	protected function _skip($context) {
 		if (!is_string($this->_on) && is_callable($this->_on)) {
 			$function = $this->_on;
 			return !$function($context);
@@ -180,8 +175,7 @@ class ValidationRule
 	 * @param array $validator [optional]
 	 * @return void
 	 */
-	protected function _addValidatorProps($validator = [])
-	{
+	protected function _addValidatorProps($validator = []) {
 		foreach ($validator as $key => $value) {
 			if (!isset($value) || empty($value)) {
 				continue;
@@ -202,8 +196,7 @@ class ValidationRule
 	 * @param string $property The name of the property to retrieve.
 	 * @return mixed
 	 */
-	public function get($property)
-	{
+	public function get($property) {
 		$property = '_' . $property;
 		if (isset($this->{$property})) {
 			return $this->{$property};

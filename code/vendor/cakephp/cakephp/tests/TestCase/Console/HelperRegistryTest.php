@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
  * Class HelperRegistryTest
  *
  */
-class HelperRegistryTest extends TestCase
-{
+class HelperRegistryTest extends TestCase {
 
 	/**
 	 * setUp
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 		$io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
@@ -44,8 +42,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($this->helpers);
 		parent::tearDown();
 	}
@@ -55,8 +52,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoad()
-	{
+	public function testLoad() {
 		$result = $this->helpers->load('Simple');
 		$this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $result);
 		$this->assertInstanceOf('TestApp\Shell\Helper\SimpleHelper', $this->helpers->Simple);
@@ -70,8 +66,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithConfig()
-	{
+	public function testLoadWithConfig() {
 		$result = $this->helpers->load('Simple', ['key' => 'value']);
 		$this->assertEquals('value', $result->config('key'));
 	}
@@ -82,8 +77,7 @@ class HelperRegistryTest extends TestCase
 	 * @expectedException \Cake\Console\Exception\MissingHelperException
 	 * @return void
 	 */
-	public function testLoadMissingHelper()
-	{
+	public function testLoadMissingHelper() {
 		$this->helpers->load('ThisTaskShouldAlwaysBeMissing');
 	}
 
@@ -92,8 +86,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithAlias()
-	{
+	public function testLoadWithAlias() {
 		Plugin::load('TestPlugin');
 
 		$result = $this->helpers->load('SimpleAliased', ['className' => 'Simple']);

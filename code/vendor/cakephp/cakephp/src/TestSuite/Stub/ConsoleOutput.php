@@ -29,8 +29,7 @@ use Cake\Console\ConsoleOutput as ConsoleOutputBase;
  * $io = new ConsoleIo($output);
  * ```
  */
-class ConsoleOutput extends ConsoleOutputBase
-{
+class ConsoleOutput extends ConsoleOutputBase {
 	/**
 	 * Buffered messages.
 	 *
@@ -45,8 +44,7 @@ class ConsoleOutput extends ConsoleOutputBase
 	 * @param int $newlines Number of newlines to append
 	 * @return void
 	 */
-	public function write($message, $newlines = 1)
-	{
+	public function write($message, $newlines = 1) {
 		foreach ((array)$message as $line) {
 			$this->_out[] = $line;
 		}
@@ -63,8 +61,7 @@ class ConsoleOutput extends ConsoleOutputBase
 	 *
 	 * @return array
 	 */
-	public function messages()
-	{
+	public function messages() {
 		return $this->_out;
 	}
 }

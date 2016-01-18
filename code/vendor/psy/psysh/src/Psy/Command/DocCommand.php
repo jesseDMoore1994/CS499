@@ -20,13 +20,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Read the documentation for an object, class, constant, method or property.
  */
-class DocCommand extends ReflectingCommand
-{
+class DocCommand extends ReflectingCommand {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('doc')
 			->setAliases(array('rtfm', 'man'))
@@ -53,8 +51,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		list($value, $reflector) = $this->getTargetAndReflector($input->getArgument('value'));
 
 		$doc = $this->getManualDoc($reflector) ?: DocblockFormatter::format($reflector);
@@ -74,8 +71,7 @@ HELP
 		});
 	}
 
-	private function getManualDoc($reflector)
-	{
+	private function getManualDoc($reflector) {
 		switch (get_class($reflector)) {
 			case 'ReflectionFunction':
 				$id = $reflector->name;

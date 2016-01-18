@@ -2,13 +2,11 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class RenameInfoTableToStatusesTable extends AbstractMigration
-{
+class RenameInfoTableToStatusesTable extends AbstractMigration {
 	/**
 	 * Change.
 	 */
-	public function change()
-	{
+	public function change() {
 		// users table
 		$table = $this->table('info');
 		$table->rename('statuses');
@@ -17,16 +15,14 @@ class RenameInfoTableToStatusesTable extends AbstractMigration
 	/**
 	 * Migrate Up.
 	 */
-	public function up()
-	{
+	public function up() {
 
 	}
 
 	/**
 	 * Migrate Down.
 	 */
-	public function down()
-	{
+	public function down() {
 
 	}
 }

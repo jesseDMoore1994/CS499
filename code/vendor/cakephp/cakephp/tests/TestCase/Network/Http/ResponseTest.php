@@ -19,16 +19,14 @@ use Cake\TestSuite\TestCase;
 /**
  * HTTP response test.
  */
-class ResponseTest extends TestCase
-{
+class ResponseTest extends TestCase {
 
 	/**
 	 * Test parsing headers and capturing content
 	 *
 	 * @return void
 	 */
-	public function testHeaderParsing()
-	{
+	public function testHeaderParsing() {
 		$headers = [
 			'HTTP/1.0 200 OK',
 			'Content-Type : text/html;charset="UTF-8"',
@@ -67,8 +65,7 @@ class ResponseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBody()
-	{
+	public function testBody() {
 		$data = [
 			'property' => 'value'
 		];
@@ -88,8 +85,7 @@ class ResponseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBodyJson()
-	{
+	public function testBodyJson() {
 		$data = [
 			'property' => 'value'
 		];
@@ -108,8 +104,7 @@ class ResponseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBodyXml()
-	{
+	public function testBodyXml() {
 		$data = <<<XML
 <?xml version="1.0" encoding="utf-8"?>
 <root>
@@ -130,8 +125,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testIsOk()
-	{
+	public function testIsOk() {
 		$headers = [
 			'HTTP/1.1 200 OK',
 			'Content-Type: text/html'
@@ -173,8 +167,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testIsRedirect()
-	{
+	public function testIsRedirect() {
 		$headers = [
 			'HTTP/1.1 200 OK',
 			'Content-Type: text/html'
@@ -203,8 +196,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testCookie()
-	{
+	public function testCookie() {
 		$headers = [
 			'HTTP/1.0 200 Ok',
 			'Set-Cookie: test=value',
@@ -240,8 +232,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testStatusCode()
-	{
+	public function testStatusCode() {
 		$headers = [
 			'HTTP/1.0 404 Not Found',
 			'Content-Type: text/html'
@@ -258,8 +249,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testEncoding()
-	{
+	public function testEncoding() {
 		$headers = [
 			'HTTP/1.0 200 Ok',
 		];
@@ -293,8 +283,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testAutoDecodeGzipBody()
-	{
+	public function testAutoDecodeGzipBody() {
 		$headers = [
 			'HTTP/1.0 200 OK',
 			'Content-Encoding: gzip',

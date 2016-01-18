@@ -82,8 +82,7 @@ use Exception;
  *
  * @see ExceptionRenderer for more information on how to customize exception rendering.
  */
-class ErrorHandler extends BaseErrorHandler
-{
+class ErrorHandler extends BaseErrorHandler {
 
 	/**
 	 * Options to use for the Error handling.
@@ -97,8 +96,7 @@ class ErrorHandler extends BaseErrorHandler
 	 *
 	 * @param array $options The options for error handling.
 	 */
-	public function __construct($options = [])
-	{
+	public function __construct($options = []) {
 		$defaults = [
 			'log' => true,
 			'trace' => false,
@@ -118,8 +116,7 @@ class ErrorHandler extends BaseErrorHandler
 	 * @param bool $debug Whether or not the app is in debug mode.
 	 * @return void
 	 */
-	protected function _displayError($error, $debug)
-	{
+	protected function _displayError($error, $debug) {
 		if (!$debug) {
 			return;
 		}
@@ -133,8 +130,7 @@ class ErrorHandler extends BaseErrorHandler
 	 * @return void
 	 * @throws \Exception When the chosen exception renderer is invalid.
 	 */
-	protected function _displayException($exception)
-	{
+	protected function _displayException($exception) {
 		$renderer = App::className($this->_options['exceptionRenderer'], 'Error');
 		try {
 			if (!$renderer) {
@@ -164,8 +160,7 @@ class ErrorHandler extends BaseErrorHandler
 	 *
 	 * @return void
 	 */
-	protected function _clearOutput()
-	{
+	protected function _clearOutput() {
 		while (ob_get_level()) {
 			ob_end_clean();
 		}
@@ -177,8 +172,7 @@ class ErrorHandler extends BaseErrorHandler
 	 * @param string|\Cake\Network\Response $response Either the message or response object.
 	 * @return void
 	 */
-	protected function _sendResponse($response)
-	{
+	protected function _sendResponse($response) {
 		if (is_string($response)) {
 			echo $response;
 			return;

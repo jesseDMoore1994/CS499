@@ -17,8 +17,7 @@ namespace Cake\Database\Type;
 use Cake\Database\Driver;
 use DateTime;
 
-class DateType extends DateTimeType
-{
+class DateType extends DateTimeType {
 
 	/**
 	 * Date format for DateTime object
@@ -33,8 +32,7 @@ class DateType extends DateTimeType
 	 * @param mixed $value Request data
 	 * @return \DateTime
 	 */
-	public function marshal($value)
-	{
+	public function marshal($value) {
 		$date = parent::marshal($value);
 		if ($date instanceof DateTime) {
 			$date->setTime(0, 0, 0);
@@ -49,8 +47,7 @@ class DateType extends DateTimeType
 	 * @param Driver $driver The driver instance to convert with.
 	 * @return \Carbon\Carbon
 	 */
-	public function toPHP($value, Driver $driver)
-	{
+	public function toPHP($value, Driver $driver) {
 		$date = parent::toPHP($value, $driver);
 		if ($date instanceof DateTime) {
 			$date->setTime(0, 0, 0);
@@ -61,8 +58,7 @@ class DateType extends DateTimeType
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function _parseValue($value)
-	{
+	protected function _parseValue($value) {
 		$class = static::$dateTimeClass;
 		return $class::parseDate($value, $this->_localeFormat);
 	}

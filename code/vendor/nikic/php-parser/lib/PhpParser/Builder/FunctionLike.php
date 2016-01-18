@@ -6,8 +6,7 @@ use PhpParser;
 use PhpParser\Node;
 use PhpParser\Node\Stmt;
 
-abstract class FunctionLike extends Declaration
-{
+abstract class FunctionLike extends Declaration {
 	protected $returnByRef = false;
 	protected $params = array();
 
@@ -16,8 +15,7 @@ abstract class FunctionLike extends Declaration
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function makeReturnByRef()
-	{
+	public function makeReturnByRef() {
 		$this->returnByRef = true;
 
 		return $this;
@@ -30,8 +28,7 @@ abstract class FunctionLike extends Declaration
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function addParam($param)
-	{
+	public function addParam($param) {
 		$param = $this->normalizeNode($param);
 
 		if (!$param instanceof Node\Param) {
@@ -50,8 +47,7 @@ abstract class FunctionLike extends Declaration
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function addParams(array $params)
-	{
+	public function addParams(array $params) {
 		foreach ($params as $param) {
 			$this->addParam($param);
 		}

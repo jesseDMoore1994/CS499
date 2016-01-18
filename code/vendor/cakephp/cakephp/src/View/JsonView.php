@@ -56,8 +56,7 @@ use Cake\Network\Response;
  * string to specify custom query string parameter name which will contain the
  * callback function name.
  */
-class JsonView extends SerializedView
-{
+class JsonView extends SerializedView {
 
 	/**
 	 * JSON layouts are located in the json sub directory of `Layouts/`
@@ -105,8 +104,7 @@ class JsonView extends SerializedView
 	 * @param string|null $layout The layout being rendered.
 	 * @return string|null The rendered view.
 	 */
-	public function render($view = null, $layout = null)
-	{
+	public function render($view = null, $layout = null) {
 		$return = parent::render($view, $layout);
 
 		if (!empty($this->viewVars['_jsonp'])) {
@@ -134,8 +132,7 @@ class JsonView extends SerializedView
 	 *   that need(s) to be serialized. If true all available view variables.
 	 * @return string The serialized data
 	 */
-	protected function _serialize($serialize)
-	{
+	protected function _serialize($serialize) {
 		$data = $this->_dataToSerialize($serialize);
 
 		$jsonOptions = JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT;
@@ -160,8 +157,7 @@ class JsonView extends SerializedView
 	 *   need(s) to be serialized. If true all available view variables will be used.
 	 * @return mixed The data to serialize.
 	 */
-	protected function _dataToSerialize($serialize = true)
-	{
+	protected function _dataToSerialize($serialize = true) {
 		if ($serialize === true) {
 			$data = array_diff_key(
 				$this->viewVars,

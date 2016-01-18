@@ -19,14 +19,12 @@ use Cake\Database\Exception;
 /**
  * Schema management/reflection features for Postgres.
  */
-class PostgresSchema extends BaseSchema
-{
+class PostgresSchema extends BaseSchema {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function listTablesSql($config)
-	{
+	public function listTablesSql($config) {
 		$sql = 'SELECT table_name as name FROM information_schema.tables WHERE table_schema = ? ORDER BY name';
 		$schema = empty($config['schema']) ? 'public' : $config['schema'];
 		return [$sql, [$schema]];
@@ -35,8 +33,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeColumnSql($tableName, $config)
-	{
+	public function describeColumnSql($tableName, $config) {
 		$sql = 'SELECT DISTINCT table_schema AS schema,
             column_name AS name,
             data_type AS type,
@@ -68,8 +65,7 @@ class PostgresSchema extends BaseSchema
 	 * @throws \Cake\Database\Exception when column cannot be parsed.
 	 * @return array Array of column information.
 	 */
-	protected function _convertColumn($column)
-	{
+	protected function _convertColumn($column) {
 		preg_match('/([a-z\s]+)(?:\(([0-9,]+)\))?/i', $column, $matches);
 		if (empty($matches)) {
 			throw new Exception(sprintf('Unable to parse column type from "%s"', $column));
@@ -135,8 +131,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function convertColumnDescription(Table $table, $row)
-	{
+	public function convertColumnDescription(Table $table, $row) {
 		$field = $this->_convertColumn($row['type']);
 
 		if ($field['type'] === 'boolean') {
@@ -168,8 +163,7 @@ class PostgresSchema extends BaseSchema
 	 * @param string|null $default The default value.
 	 * @return string|null
 	 */
-	protected function _defaultValue($default)
-	{
+	protected function _defaultValue($default) {
 		if (is_numeric($default) || $default === null) {
 			return $default;
 		}
@@ -189,8 +183,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeIndexSql($tableName, $config)
-	{
+	public function describeIndexSql($tableName, $config) {
 		$sql = 'SELECT
             c2.relname,
             a.attname,
@@ -223,8 +216,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function convertIndexDescription(Table $table, $row)
-	{
+	public function convertIndexDescription(Table $table, $row) {
 		$type = Table::INDEX_INDEX;
 		$name = $row['relname'];
 		if ($row['indisprimary']) {
@@ -257,8 +249,7 @@ class PostgresSchema extends BaseSchema
 	 * @param array $row The metadata record to update with.
 	 * @return void
 	 */
-	protected function _convertConstraint($table, $name, $type, $row)
-	{
+	protected function _convertConstraint($table, $name, $type, $row) {
 		$constraint = $table->constraint($name);
 		if (!$constraint) {
 			$constraint = [
@@ -273,8 +264,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeForeignKeySql($tableName, $config)
-	{
+	public function describeForeignKeySql($tableName, $config) {
 		$sql = "SELECT
             rc.constraint_name AS name,
             tc.constraint_type AS type,
@@ -315,8 +305,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function convertForeignKeyDescription(Table $table, $row)
-	{
+	public function convertForeignKeyDescription(Table $table, $row) {
 		$data = [
 			'type' => Table::CONSTRAINT_FOREIGN,
 			'columns' => $row['column_name'],
@@ -330,8 +319,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function _convertOnClause($clause)
-	{
+	protected function _convertOnClause($clause) {
 		if ($clause === 'RESTRICT') {
 			return Table::ACTION_RESTRICT;
 		}
@@ -347,8 +335,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function columnSql(Table $table, $name)
-	{
+	public function columnSql(Table $table, $name) {
 		$data = $table->column($name);
 		$out = $this->_driver->quoteIdentifier($name);
 		$typeMap = [
@@ -419,8 +406,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function addConstraintSql(Table $table)
-	{
+	public function addConstraintSql(Table $table) {
 		$sqlPattern = 'ALTER TABLE %s ADD %s;';
 		$sql = [];
 
@@ -438,8 +424,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function dropConstraintSql(Table $table)
-	{
+	public function dropConstraintSql(Table $table) {
 		$sqlPattern = 'ALTER TABLE %s DROP CONSTRAINT %s;';
 		$sql = [];
 
@@ -458,8 +443,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function indexSql(Table $table, $name)
-	{
+	public function indexSql(Table $table, $name) {
 		$data = $table->index($name);
 		$columns = array_map(
 			[$this->_driver, 'quoteIdentifier'],
@@ -476,8 +460,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function constraintSql(Table $table, $name)
-	{
+	public function constraintSql(Table $table, $name) {
 		$data = $table->constraint($name);
 		$out = 'CONSTRAINT ' . $this->_driver->quoteIdentifier($name);
 		if ($data['type'] === Table::CONSTRAINT_PRIMARY) {
@@ -496,8 +479,7 @@ class PostgresSchema extends BaseSchema
 	 * @param array $data Key data.
 	 * @return string
 	 */
-	protected function _keySql($prefix, $data)
-	{
+	protected function _keySql($prefix, $data) {
 		$columns = array_map(
 			[$this->_driver, 'quoteIdentifier'],
 			$data['columns']
@@ -518,8 +500,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function createTableSql(Table $table, $columns, $constraints, $indexes)
-	{
+	public function createTableSql(Table $table, $columns, $constraints, $indexes) {
 		$content = array_merge($columns, $constraints);
 		$content = implode(",\n", array_filter($content));
 		$tableName = $this->_driver->quoteIdentifier($table->name());
@@ -546,8 +527,7 @@ class PostgresSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function truncateTableSql(Table $table)
-	{
+	public function truncateTableSql(Table $table) {
 		$name = $this->_driver->quoteIdentifier($table->name());
 		return [
 			sprintf('TRUNCATE %s RESTART IDENTITY CASCADE', $name)
@@ -560,8 +540,7 @@ class PostgresSchema extends BaseSchema
 	 * @param \Cake\Database\Schema\Table $table Table instance
 	 * @return array SQL statements to drop a table.
 	 */
-	public function dropTableSql(Table $table)
-	{
+	public function dropTableSql(Table $table) {
 		$sql = sprintf(
 			'DROP TABLE %s CASCADE',
 			$this->_driver->quoteIdentifier($table->name())

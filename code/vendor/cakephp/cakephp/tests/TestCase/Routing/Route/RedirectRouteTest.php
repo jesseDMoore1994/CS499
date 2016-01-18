@@ -25,16 +25,14 @@ use Cake\TestSuite\TestCase;
  * test case for RedirectRoute
  *
  */
-class RedirectRouteTest extends TestCase
-{
+class RedirectRouteTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('Routing', ['admin' => null, 'prefixes' => []]);
 		Router::reload();
@@ -45,8 +43,7 @@ class RedirectRouteTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParsing()
-	{
+	public function testParsing() {
 		Router::connect('/:controller', ['action' => 'index']);
 		Router::connect('/:controller/:action/*');
 

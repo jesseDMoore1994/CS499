@@ -19,8 +19,7 @@ use Cake\ORM\Table;
 /**
  * Registries for Table objects should implement this interface.
  */
-interface LocatorInterface
-{
+interface LocatorInterface {
 
 	/**
 	 * Stores a list of options to be used when instantiating an object

@@ -21,15 +21,12 @@ use Symfony\Component\Config\ResourceCheckerInterface;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class SelfCheckingResourceChecker implements ResourceCheckerInterface
-{
-	public function supports(ResourceInterface $metadata)
-	{
+class SelfCheckingResourceChecker implements ResourceCheckerInterface {
+	public function supports(ResourceInterface $metadata) {
 		return $metadata instanceof SelfCheckingResourceInterface;
 	}
 
-	public function isFresh(ResourceInterface $resource, $timestamp)
-	{
+	public function isFresh(ResourceInterface $resource, $timestamp) {
 		/* @var SelfCheckingResourceInterface $resource */
 		return $resource->isFresh($timestamp);
 	}

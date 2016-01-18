@@ -27,8 +27,7 @@ use SimpleXMLElement;
  * The methods in these classes enable the datasources that use XML to work.
  *
  */
-class Xml
-{
+class Xml {
 
 	/**
 	 * Initialize SimpleXMLElement or DOMDocument from a given XML string, file path, URL or array.
@@ -100,8 +99,7 @@ class Xml
 	 * @return \SimpleXMLElement|\DOMDocument SimpleXMLElement or DOMDocument
 	 * @throws \Cake\Utility\Exception\XmlException
 	 */
-	public static function build($input, array $options = [])
-	{
+	public static function build($input, array $options = []) {
 		$defaults = [
 			'return' => 'simplexml',
 			'loadEntities' => false,
@@ -136,8 +134,7 @@ class Xml
 	 * @return \SimpleXmlElement|\DOMDocument
 	 * @throws \Cake\Utility\Exception\XmlException
 	 */
-	protected static function _loadXml($input, $options)
-	{
+	protected static function _loadXml($input, $options) {
 		$hasDisable = function_exists('libxml_disable_entity_loader');
 		$internalErrors = libxml_use_internal_errors(true);
 		if ($hasDisable && !$options['loadEntities']) {
@@ -201,8 +198,7 @@ class Xml
 	 * @return \SimpleXMLElement|\DOMDocument SimpleXMLElement or DOMDocument
 	 * @throws \Cake\Utility\Exception\XmlException
 	 */
-	public static function fromArray($input, $options = [])
-	{
+	public static function fromArray($input, $options = []) {
 		if (method_exists($input, 'toArray')) {
 			$input = $input->toArray();
 		}
@@ -249,8 +245,7 @@ class Xml
 	 * @return void
 	 * @throws \Cake\Utility\Exception\XmlException
 	 */
-	protected static function _fromArray($dom, $node, &$data, $format)
-	{
+	protected static function _fromArray($dom, $node, &$data, $format) {
 		if (empty($data) || !is_array($data)) {
 			return;
 		}
@@ -318,8 +313,7 @@ class Xml
 	 * @param array $data Array with informations to create childs
 	 * @return void
 	 */
-	protected static function _createChild($data)
-	{
+	protected static function _createChild($data) {
 		extract($data);
 		$childNS = $childValue = null;
 		if (method_exists($value, 'toArray')) {
@@ -357,8 +351,7 @@ class Xml
 	 * @return array Array representation of the XML structure.
 	 * @throws \Cake\Utility\Exception\XmlException
 	 */
-	public static function toArray($obj)
-	{
+	public static function toArray($obj) {
 		if ($obj instanceof DOMNode) {
 			$obj = simplexml_import_dom($obj);
 		}
@@ -380,8 +373,7 @@ class Xml
 	 * @param array $namespaces List of namespaces in XML
 	 * @return void
 	 */
-	protected static function _toArray($xml, &$parentData, $ns, $namespaces)
-	{
+	protected static function _toArray($xml, &$parentData, $ns, $namespaces) {
 		$data = [];
 
 		foreach ($namespaces as $namespace) {

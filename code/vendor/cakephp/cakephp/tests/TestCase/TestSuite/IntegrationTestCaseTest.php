@@ -26,16 +26,14 @@ use Cake\Utility\Security;
 /**
  * Self test of the IntegrationTestCase
  */
-class IntegrationTestCaseTest extends IntegrationTestCase
-{
+class IntegrationTestCaseTest extends IntegrationTestCase {
 
 	/**
 	 * Setup method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 
@@ -50,8 +48,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestBuilding()
-	{
+	public function testRequestBuilding() {
 		$this->configRequest([
 			'headers' => ['X-CSRF-Token' => 'abc123'],
 			'base' => '',
@@ -79,8 +76,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestBuildingCsrfTokens()
-	{
+	public function testRequestBuildingCsrfTokens() {
 		$this->enableCsrfToken();
 		$request = $this->_buildRequest('/tasks/add', 'POST', ['title' => 'First post']);
 
@@ -103,8 +99,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testEnableCsrfMultipleRequests()
-	{
+	public function testEnableCsrfMultipleRequests() {
 		$this->enableCsrfToken();
 		$first = $this->_buildRequest('/tasks/add', 'POST', ['title' => 'First post']);
 		$second = $this->_buildRequest('/tasks/add', 'POST', ['title' => 'Second post']);
@@ -121,8 +116,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testEnableCsrfPredeterminedCookie()
-	{
+	public function testEnableCsrfPredeterminedCookie() {
 		$this->enableCsrfToken();
 		$value = 'I am a teapot';
 		$this->cookie('csrfToken', $value);
@@ -136,8 +130,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestBuildingQueryParameters()
-	{
+	public function testRequestBuildingQueryParameters() {
 		$request = $this->_buildRequest('/tasks/view?archived=yes', 'GET', []);
 
 		$this->assertEquals('/tasks/view?archived=yes', $request->here());
@@ -149,8 +142,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @see CookieComponentControllerTest
 	 */
-	public function testCookieEncrypted()
-	{
+	public function testCookieEncrypted() {
 		Security::salt('abcdabcdabcdabcdabcdabcdabcdabcdabcd');
 		$this->cookieEncrypted('KeyOfCookie', 'Encrypted with aes by default');
 		$request = $this->_buildRequest('/tasks/view', 'GET', []);
@@ -162,8 +154,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testGet()
-	{
+	public function testGet() {
 		$this->assertNull($this->_response);
 
 		$this->get('/request_action/test_request_action');
@@ -177,8 +168,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestSetsProperties()
-	{
+	public function testRequestSetsProperties() {
 		$this->post('/posts/index');
 		$this->assertInstanceOf('Cake\Controller\Controller', $this->_controller);
 		$this->assertContains('Template' . DS . 'Posts' . DS . 'index.ctp', $this->_viewName);
@@ -194,8 +184,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertTemplateAfterCellRender()
-	{
+	public function testAssertTemplateAfterCellRender() {
 		$this->get('/posts/get');
 		$this->assertContains('Template' . DS . 'Posts' . DS . 'get.ctp', $this->_viewName);
 		$this->assertTemplate('get');
@@ -207,8 +196,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testArrayUrls()
-	{
+	public function testArrayUrls() {
 		$this->post(['controller' => 'Posts', 'action' => 'index']);
 		$this->assertEquals('value', $this->viewVariable('test'));
 	}
@@ -218,8 +206,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testFlashSessionAndCookieAsserts()
-	{
+	public function testFlashSessionAndCookieAsserts() {
 		$this->post('/posts/index');
 
 		$this->assertSession('An error message', 'Flash.flash.0.message');
@@ -231,8 +218,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testPostAndErrorHandling()
-	{
+	public function testPostAndErrorHandling() {
 		$this->post('/request_action/error_method');
 		$this->assertResponseNotEmpty();
 		$this->assertResponseContains('Not there or here');
@@ -244,8 +230,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testPostSecuredForm()
-	{
+	public function testPostSecuredForm() {
 		$this->enableSecurityToken();
 		$data = [
 			'title' => 'Some title',
@@ -261,8 +246,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testPostSecuredFormNestedData()
-	{
+	public function testPostSecuredFormNestedData() {
 		$this->enableSecurityToken();
 		$data = [
 			'title' => 'New post',
@@ -281,8 +265,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testPostSecuredFormFailure()
-	{
+	public function testPostSecuredFormFailure() {
 		$data = [
 			'title' => 'Some title',
 			'body' => 'Some text'
@@ -296,8 +279,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testWithExpectedException()
-	{
+	public function testWithExpectedException() {
 		$this->get('/tests_apps/throw_exception');
 		$this->assertResponseCode(500);
 	}
@@ -308,8 +290,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 * @expectedException PHPUnit_Framework_AssertionFailedError
 	 * @return void
 	 */
-	public function testWithUnexpectedException()
-	{
+	public function testWithUnexpectedException() {
 		$this->get('/tests_apps/throw_exception');
 		$this->assertResponseCode(501);
 	}
@@ -319,8 +300,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testRedirect()
-	{
+	public function testRedirect() {
 		$this->post('/tests_apps/redirect_to');
 		$this->assertResponseSuccess();
 		$this->assertResponseCode(302);
@@ -331,8 +311,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testRedirectPermanent()
-	{
+	public function testRedirectPermanent() {
 		$this->post('/tests_apps/redirect_to_permanent');
 		$this->assertResponseSuccess();
 		$this->assertResponseCode(301);
@@ -343,8 +322,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertResponseStatusCodes()
-	{
+	public function testAssertResponseStatusCodes() {
 		$this->_response = new Response();
 
 		$this->_response->statusCode(200);
@@ -383,8 +361,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertRedirect()
-	{
+	public function testAssertRedirect() {
 		$this->_response = new Response();
 		$this->_response->header('Location', 'http://localhost/tasks/index');
 
@@ -400,8 +377,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertNoRedirect()
-	{
+	public function testAssertNoRedirect() {
 		$this->_response = new Response();
 
 		$this->assertNoRedirect();
@@ -412,8 +388,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertNoRedirectFail()
-	{
+	public function testAssertNoRedirectFail() {
 		$test = new AssertIntegrationTestCase('testBadAssertNoRedirect');
 		$result = $test->run();
 		ob_start();
@@ -426,8 +401,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertRedirectContains()
-	{
+	public function testAssertRedirectContains() {
 		$this->_response = new Response();
 		$this->_response->header('Location', 'http://localhost/tasks/index');
 
@@ -439,8 +413,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertHeader()
-	{
+	public function testAssertHeader() {
 		$this->_response = new Response();
 		$this->_response->header('Etag', 'abc123');
 
@@ -452,8 +425,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertContentType()
-	{
+	public function testAssertContentType() {
 		$this->_response = new Response();
 		$this->_response->type('json');
 
@@ -466,8 +438,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testContentTypeInAction()
-	{
+	public function testContentTypeInAction() {
 		$this->get('/tests_apps/set_type');
 		$this->assertHeader('Content-Type', 'application/json; charset=UTF-8');
 		$this->assertContentType('json');
@@ -479,8 +450,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertResponseContains()
-	{
+	public function testAssertResponseContains() {
 		$this->_response = new Response();
 		$this->_response->body('Some content');
 
@@ -492,8 +462,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertResponseNotContains()
-	{
+	public function testAssertResponseNotContains() {
 		$this->_response = new Response();
 		$this->_response->body('Some content');
 
@@ -509,8 +478,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 *
 	 * @return \Cake\Event\EventManager
 	 */
-	public function testEventManagerReset1()
-	{
+	public function testEventManagerReset1() {
 		return EventManager::instance();
 	}
 
@@ -520,8 +488,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase
 	 * @depends testEventManagerReset1
 	 * @return void
 	 */
-	public function testEventManagerReset2($prevEventManager)
-	{
+	public function testEventManagerReset2($prevEventManager) {
 		$this->assertNotSame($prevEventManager, EventManager::instance());
 	}
 }

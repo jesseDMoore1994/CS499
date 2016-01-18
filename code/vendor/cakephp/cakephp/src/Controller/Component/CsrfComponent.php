@@ -37,8 +37,7 @@ use Cake\Utility\Text;
  * used together your forms will have CSRF tokens automatically added
  * when `$this->Form->create(...)` is used in a view.
  */
-class CsrfComponent extends Component
-{
+class CsrfComponent extends Component {
 
 	/**
 	 * Default config for the CSRF handling.
@@ -75,8 +74,7 @@ class CsrfComponent extends Component
 	 * @param \Cake\Event\Event $event Event instance.
 	 * @return void
 	 */
-	public function startup(Event $event)
-	{
+	public function startup(Event $event) {
 		$controller = $event->subject();
 		$request = $controller->request;
 		$response = $controller->response;
@@ -105,8 +103,7 @@ class CsrfComponent extends Component
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [
 			'Controller.startup' => 'startup',
 		];
@@ -122,8 +119,7 @@ class CsrfComponent extends Component
 	 * @param \Cake\Network\Response $response The response object.
 	 * @return void
 	 */
-	protected function _setCookie(Request $request, Response $response)
-	{
+	protected function _setCookie(Request $request, Response $response) {
 		$expiry = new Time($this->_config['expiry']);
 		$value = Security::hash(Text::uuid(), 'sha1', true);
 
@@ -145,8 +141,7 @@ class CsrfComponent extends Component
 	 * @throws \Cake\Network\Exception\InvalidCsrfTokenException when the CSRF token is invalid or missing.
 	 * @return void
 	 */
-	protected function _validateToken(Request $request)
-	{
+	protected function _validateToken(Request $request) {
 		$cookie = $request->cookie($this->_config['cookieName']);
 		$post = $request->data($this->_config['field']);
 		$header = $request->header('X-CSRF-Token');

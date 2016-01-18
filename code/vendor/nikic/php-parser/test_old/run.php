@@ -7,8 +7,7 @@ if ('cli' !== php_sapi_name()) {
 	die('This script is designed for running on the command line.');
 }
 
-function showHelp($error)
-{
+function showHelp($error) {
 	die($error . "\n\n" .
 		<<<OUTPUT
 		This script has to be called with the following signature:

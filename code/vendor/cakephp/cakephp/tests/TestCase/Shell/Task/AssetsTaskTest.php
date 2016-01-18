@@ -25,16 +25,14 @@ use Cake\TestSuite\TestCase;
  * AssetsTaskTest class
  *
  */
-class AssetsTaskTest extends TestCase
-{
+class AssetsTaskTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->skipIf(
@@ -56,8 +54,7 @@ class AssetsTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->Task);
 		Plugin::unload();
@@ -68,8 +65,7 @@ class AssetsTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSymlink()
-	{
+	public function testSymlink() {
 		Plugin::load('TestPlugin');
 		Plugin::load('Company/TestPluginThree');
 
@@ -103,8 +99,7 @@ class AssetsTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSymlinkWhenVendorDirectoryExits()
-	{
+	public function testSymlinkWhenVendorDirectoryExits() {
 		Plugin::load('Company/TestPluginThree');
 
 		mkdir(WWW_ROOT . 'company');
@@ -127,8 +122,7 @@ class AssetsTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSymlinkWhenTargetAlreadyExits()
-	{
+	public function testSymlinkWhenTargetAlreadyExits() {
 		Plugin::load('TestTheme');
 
 		$shell = $this->getMock(
@@ -149,8 +143,7 @@ class AssetsTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testForPluginWithoutWebroot()
-	{
+	public function testForPluginWithoutWebroot() {
 		Plugin::load('TestPluginTwo');
 
 		$this->Task->symlink();
@@ -162,8 +155,7 @@ class AssetsTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSymlinkingSpecifiedPlugin()
-	{
+	public function testSymlinkingSpecifiedPlugin() {
 		Plugin::load('TestPlugin');
 		Plugin::load('Company/TestPluginThree');
 
@@ -185,8 +177,7 @@ class AssetsTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCopy()
-	{
+	public function testCopy() {
 		Plugin::load('TestPlugin');
 		Plugin::load('Company/TestPluginThree');
 

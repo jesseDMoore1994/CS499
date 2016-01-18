@@ -39,7 +39,6 @@ class <%= $name %>Cell extends Cell
 	 * @return void
 	 */
 	public
-	function display()
-	{
+	function display() {
 	}
 }

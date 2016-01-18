@@ -13,10 +13,8 @@ namespace Symfony\Component\Console\Tests\Helper;
 
 use Symfony\Component\Console\Helper\FormatterHelper;
 
-class FormatterHelperTest extends \PHPUnit_Framework_TestCase
-{
-	public function testFormatSection()
-	{
+class FormatterHelperTest extends \PHPUnit_Framework_TestCase {
+	public function testFormatSection() {
 		$formatter = new FormatterHelper();
 
 		$this->assertEquals(
@@ -26,8 +24,7 @@ class FormatterHelperTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testFormatBlock()
-	{
+	public function testFormatBlock() {
 		$formatter = new FormatterHelper();
 
 		$this->assertEquals(
@@ -52,8 +49,7 @@ class FormatterHelperTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testFormatBlockWithDiacriticLetters()
-	{
+	public function testFormatBlockWithDiacriticLetters() {
 		$formatter = new FormatterHelper();
 
 		$this->assertEquals(
@@ -65,8 +61,7 @@ class FormatterHelperTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testFormatBlockWithDoubleWidthDiacriticLetters()
-	{
+	public function testFormatBlockWithDoubleWidthDiacriticLetters() {
 		$formatter = new FormatterHelper();
 		$this->assertEquals(
 			'<error>                    </error>' . "\n" .
@@ -77,8 +72,7 @@ class FormatterHelperTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testFormatBlockLGEscaping()
-	{
+	public function testFormatBlockLGEscaping() {
 		$formatter = new FormatterHelper();
 
 		$this->assertEquals(

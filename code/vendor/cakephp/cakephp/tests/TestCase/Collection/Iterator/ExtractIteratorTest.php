@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
  * ExtractIterator Test
  *
  */
-class ExtractIteratorTest extends TestCase
-{
+class ExtractIteratorTest extends TestCase {
 
 	/**
 	 * Tests it is possible to extract a column in the first level of an array
 	 *
 	 * @return void
 	 */
-	public function testExtractFromArrayShallow()
-	{
+	public function testExtractFromArrayShallow() {
 		$items = [
 			['a' => 1, 'b' => 2],
 			['a' => 3, 'b' => 4]
@@ -51,8 +49,7 @@ class ExtractIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractFromObjectShallow()
-	{
+	public function testExtractFromObjectShallow() {
 		$items = [
 			new ArrayObject(['a' => 1, 'b' => 2]),
 			new ArrayObject(['a' => 3, 'b' => 4])
@@ -72,8 +69,7 @@ class ExtractIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractFromArrayDeep()
-	{
+	public function testExtractFromArrayDeep() {
 		$items = [
 			['a' => ['b' => ['c' => 10]], 'b' => 2],
 			['a' => ['b' => ['d' => 15]], 'b' => 4],
@@ -89,8 +85,7 @@ class ExtractIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractWithCallable()
-	{
+	public function testExtractWithCallable() {
 		$items = [
 			['a' => 1, 'b' => 2],
 			['a' => 3, 'b' => 4]

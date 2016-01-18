@@ -23,8 +23,7 @@ use DirectoryIterator;
  * Shell for I18N management.
  *
  */
-class I18nShell extends Shell
-{
+class I18nShell extends Shell {
 
 	/**
 	 * Contains tasks to load and instantiate
@@ -38,8 +37,7 @@ class I18nShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		$this->out('<info>I18n Shell</info>');
 		$this->hr();
 		$this->out('[E]xtract POT file from sources');
@@ -74,8 +72,7 @@ class I18nShell extends Shell
 	 * @param string|null $language Language code to use.
 	 * @return int|null
 	 */
-	public function init($language = null)
-	{
+	public function init($language = null) {
 		if (!$language) {
 			$language = $this->in('Please specify language code, e.g. `en`, `eng`, `en_US` etc.');
 		}
@@ -118,8 +115,7 @@ class I18nShell extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$initParser = [
 			'options' => [

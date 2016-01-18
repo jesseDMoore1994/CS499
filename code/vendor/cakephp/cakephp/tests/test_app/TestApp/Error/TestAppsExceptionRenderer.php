@@ -10,14 +10,12 @@ use Cake\Network\Response;
 use Cake\Routing\Router;
 use TestApp\Controller\TestAppsErrorController;
 
-class TestAppsExceptionRenderer extends ExceptionRenderer
-{
+class TestAppsExceptionRenderer extends ExceptionRenderer {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function _getController()
-	{
+	protected function _getController() {
 		if (!$request = Router::getRequest(true)) {
 			$request = new Request();
 		}

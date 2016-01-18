@@ -18,8 +18,7 @@ namespace Cake\Auth;
  * Default password hashing class.
  *
  */
-class DefaultPasswordHasher extends AbstractPasswordHasher
-{
+class DefaultPasswordHasher extends AbstractPasswordHasher {
 
 	/**
 	 * Default config for this object.
@@ -45,8 +44,7 @@ class DefaultPasswordHasher extends AbstractPasswordHasher
 	 * @return bool|string Password hash or false on failure
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/components/authentication.html#hashing-passwords
 	 */
-	public function hash($password)
-	{
+	public function hash($password) {
 		return password_hash(
 			$password,
 			$this->_config['hashType'],
@@ -61,8 +59,7 @@ class DefaultPasswordHasher extends AbstractPasswordHasher
 	 * @param string $hashedPassword Existing hashed password.
 	 * @return bool True if hashes match else false.
 	 */
-	public function check($password, $hashedPassword)
-	{
+	public function check($password, $hashedPassword) {
 		return password_verify($password, $hashedPassword);
 	}
 
@@ -73,8 +70,7 @@ class DefaultPasswordHasher extends AbstractPasswordHasher
 	 * @param string $password The password to verify
 	 * @return bool
 	 */
-	public function needsRehash($password)
-	{
+	public function needsRehash($password) {
 		return password_needs_rehash($password, $this->_config['hashType']);
 	}
 }

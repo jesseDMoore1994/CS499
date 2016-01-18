@@ -18,15 +18,13 @@ use Symfony\Component\VarDumper\Cloner\VarCloner;
 /**
  * A PsySH-specialized VarCloner.
  */
-class Cloner extends VarCloner
-{
+class Cloner extends VarCloner {
 	private $filter = 0;
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function cloneVar($var, $filter = 0)
-	{
+	public function cloneVar($var, $filter = 0) {
 		$this->filter = $filter;
 
 		return parent::cloneVar($var, $filter);
@@ -35,8 +33,7 @@ class Cloner extends VarCloner
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function castResource(Stub $stub, $isNested)
-	{
+	protected function castResource(Stub $stub, $isNested) {
 		return Caster::EXCLUDE_VERBOSE & $this->filter ? array() : parent::castResource($stub, $isNested);
 	}
 }

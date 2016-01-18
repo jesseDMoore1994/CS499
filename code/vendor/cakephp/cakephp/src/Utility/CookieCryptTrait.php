@@ -23,8 +23,7 @@ use RuntimeException;
  *
  * @link http://book.cakephp.org/3.0/en/controllers/components/cookie.html
  */
-trait CookieCryptTrait
-{
+trait CookieCryptTrait {
 	/**
 	 * Valid cipher names for encrypted cookies.
 	 *
@@ -48,8 +47,7 @@ trait CookieCryptTrait
 	 * @param string|null $key Used as the security salt only in this time for tests if specified.
 	 * @return string Encoded values
 	 */
-	protected function _encrypt($value, $encrypt, $key = null)
-	{
+	protected function _encrypt($value, $encrypt, $key = null) {
 		if (is_array($value)) {
 			$value = $this->_implode($value);
 		}
@@ -78,8 +76,7 @@ trait CookieCryptTrait
 	 * @return void
 	 * @throws RuntimeException When an invalid cipher is provided.
 	 */
-	protected function _checkCipher($encrypt)
-	{
+	protected function _checkCipher($encrypt) {
 		if (!in_array($encrypt, $this->_validCiphers)) {
 			$msg = sprintf(
 				'Invalid encryption cipher. Must be one of %s.',
@@ -96,8 +93,7 @@ trait CookieCryptTrait
 	 * @param string|bool $mode Encryption mode
 	 * @return string decrypted string
 	 */
-	protected function _decrypt($values, $mode)
-	{
+	protected function _decrypt($values, $mode) {
 		if (is_string($values)) {
 			return $this->_decode($values, $mode);
 		}
@@ -116,8 +112,7 @@ trait CookieCryptTrait
 	 * @param string|false $encrypt The encryption cipher to use.
 	 * @return string Decoded value.
 	 */
-	protected function _decode($value, $encrypt)
-	{
+	protected function _decode($value, $encrypt) {
 		if (!$encrypt) {
 			return $this->_explode($value);
 		}
@@ -139,8 +134,7 @@ trait CookieCryptTrait
 	 * @param array $array Map of key and values
 	 * @return string A json encoded string.
 	 */
-	protected function _implode(array $array)
-	{
+	protected function _implode(array $array) {
 		return json_encode($array);
 	}
 
@@ -151,8 +145,7 @@ trait CookieCryptTrait
 	 * @param string $string A string containing JSON encoded data, or a bare string.
 	 * @return array Map of key and values
 	 */
-	protected function _explode($string)
-	{
+	protected function _explode($string) {
 		$first = substr($string, 0, 1);
 		if ($first === '{' || $first === '[') {
 			$ret = json_decode($string, true);

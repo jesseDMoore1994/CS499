@@ -24,8 +24,7 @@ use Cake\Database\SqlDialectTrait;
  *
  * @internal
  */
-trait PostgresDialectTrait
-{
+trait PostgresDialectTrait {
 
 	use SqlDialectTrait;
 
@@ -56,8 +55,7 @@ trait PostgresDialectTrait
 	 * @param \Cake\Database\Query $query The query to be transformed
 	 * @return \Cake\Database\Query
 	 */
-	protected function _transformDistinct($query)
-	{
+	protected function _transformDistinct($query) {
 		return $query;
 	}
 
@@ -68,8 +66,7 @@ trait PostgresDialectTrait
 	 * @param \Cake\Database\Query $query The query to translate.
 	 * @return \Cake\Database\Query
 	 */
-	protected function _insertQueryTranslator($query)
-	{
+	protected function _insertQueryTranslator($query) {
 		if (!$query->clause('epilog')) {
 			$query->epilog('RETURNING *');
 		}
@@ -82,8 +79,7 @@ trait PostgresDialectTrait
 	 *
 	 * @return array
 	 */
-	protected function _expressionTranslators()
-	{
+	protected function _expressionTranslators() {
 		$namespace = 'Cake\Database\Expression';
 		return [
 			$namespace . '\FunctionExpression' => '_transformFunctionExpression'
@@ -98,8 +94,7 @@ trait PostgresDialectTrait
 	 *   to postgres SQL.
 	 * @return void
 	 */
-	protected function _transformFunctionExpression(FunctionExpression $expression)
-	{
+	protected function _transformFunctionExpression(FunctionExpression $expression) {
 		switch ($expression->name()) {
 			case 'CONCAT':
 				// CONCAT function is expressed as exp1 || exp2
@@ -159,8 +154,7 @@ trait PostgresDialectTrait
 	 *
 	 * @return \Cake\Database\Schema\PostgresSchema
 	 */
-	public function schemaDialect()
-	{
+	public function schemaDialect() {
 		if (!$this->_schemaDialect) {
 			$this->_schemaDialect = new PostgresSchema($this);
 		}
@@ -170,16 +164,14 @@ trait PostgresDialectTrait
 	/**
 	 * {@inheritDoc}
 	 */
-	public function disableForeignKeySQL()
-	{
+	public function disableForeignKeySQL() {
 		return 'SET CONSTRAINTS ALL DEFERRED';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function enableForeignKeySQL()
-	{
+	public function enableForeignKeySQL() {
 		return 'SET CONSTRAINTS ALL IMMEDIATE';
 	}
 }

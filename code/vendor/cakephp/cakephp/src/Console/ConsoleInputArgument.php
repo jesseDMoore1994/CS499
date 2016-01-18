@@ -23,8 +23,7 @@ use SimpleXmlElement;
  *
  * @see ConsoleOptionParser::addArgument()
  */
-class ConsoleInputArgument
-{
+class ConsoleInputArgument {
 
 	/**
 	 * Name of the argument.
@@ -62,8 +61,7 @@ class ConsoleInputArgument
 	 * @param bool $required Whether this argument is required. Missing required args will trigger exceptions
 	 * @param array $choices Valid choices for this option.
 	 */
-	public function __construct($name, $help = '', $required = false, $choices = [])
-	{
+	public function __construct($name, $help = '', $required = false, $choices = []) {
 		if (is_array($name) && isset($name['name'])) {
 			foreach ($name as $key => $value) {
 				$this->{'_' . $key} = $value;
@@ -81,8 +79,7 @@ class ConsoleInputArgument
 	 *
 	 * @return string Value of this->_name.
 	 */
-	public function name()
-	{
+	public function name() {
 		return $this->_name;
 	}
 
@@ -92,8 +89,7 @@ class ConsoleInputArgument
 	 * @param \Cake\Console\ConsoleInputArgument $argument ConsoleInputArgument to compare to.
 	 * @return bool
 	 */
-	public function isEqualTo(ConsoleInputArgument $argument)
-	{
+	public function isEqualTo(ConsoleInputArgument $argument) {
 		return $this->usage() === $argument->usage();
 	}
 
@@ -103,8 +99,7 @@ class ConsoleInputArgument
 	 * @param int $width The width to make the name of the option.
 	 * @return string
 	 */
-	public function help($width = 0)
-	{
+	public function help($width = 0) {
 		$name = $this->_name;
 		if (strlen($name) < $width) {
 			$name = str_pad($name, $width, ' ');
@@ -124,8 +119,7 @@ class ConsoleInputArgument
 	 *
 	 * @return string
 	 */
-	public function usage()
-	{
+	public function usage() {
 		$name = $this->_name;
 		if (!empty($this->_choices)) {
 			$name = implode('|', $this->_choices);
@@ -142,8 +136,7 @@ class ConsoleInputArgument
 	 *
 	 * @return bool
 	 */
-	public function isRequired()
-	{
+	public function isRequired() {
 		return (bool)$this->_required;
 	}
 
@@ -154,8 +147,7 @@ class ConsoleInputArgument
 	 * @return bool
 	 * @throws \Cake\Console\Exception\ConsoleException
 	 */
-	public function validChoice($value)
-	{
+	public function validChoice($value) {
 		if (empty($this->_choices)) {
 			return true;
 		}
@@ -178,8 +170,7 @@ class ConsoleInputArgument
 	 * @param \SimpleXmlElement $parent The parent element.
 	 * @return \SimpleXmlElement The parent with this argument appended.
 	 */
-	public function xml(SimpleXmlElement $parent)
-	{
+	public function xml(SimpleXmlElement $parent) {
 		$option = $parent->addChild('argument');
 		$option->addAttribute('name', $this->_name);
 		$option->addAttribute('help', $this->_help);

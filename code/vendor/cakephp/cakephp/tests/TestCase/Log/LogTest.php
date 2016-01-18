@@ -24,17 +24,14 @@ use Cake\TestSuite\TestCase;
  * LogTest class
  *
  */
-class LogTest extends TestCase
-{
+class LogTest extends TestCase {
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Log::reset();
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Log::reset();
 	}
@@ -44,8 +41,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImportingLoggers()
-	{
+	public function testImportingLoggers() {
 		Configure::write('App.namespace', 'TestApp');
 		Plugin::load('TestPlugin');
 
@@ -76,8 +72,7 @@ class LogTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testImportingLoggerFailure()
-	{
+	public function testImportingLoggerFailure() {
 		Log::config('fail', []);
 		Log::engine('fail');
 	}
@@ -87,8 +82,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValidKeyName()
-	{
+	public function testValidKeyName() {
 		Log::config('valid', ['engine' => 'File']);
 		$stream = Log::engine('valid');
 		$this->assertInstanceOf('Cake\Log\Engine\FileLog', $stream);
@@ -100,8 +94,7 @@ class LogTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testNotImplementingInterface()
-	{
+	public function testNotImplementingInterface() {
 		Log::config('fail', ['engine' => '\stdClass']);
 		Log::engine('fail');
 	}
@@ -111,8 +104,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDrop()
-	{
+	public function testDrop() {
 		Log::config('file', [
 			'engine' => 'File',
 			'path' => LOGS
@@ -133,8 +125,7 @@ class LogTest extends TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @return void
 	 */
-	public function testInvalidLevel()
-	{
+	public function testInvalidLevel() {
 		Log::config('myengine', ['engine' => 'File']);
 		Log::write('invalid', 'This will not be logged');
 	}
@@ -144,8 +135,7 @@ class LogTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function configProvider()
-	{
+	public static function configProvider() {
 		return [
 			'Array of data using engine key.' => [[
 				'engine' => 'File',
@@ -165,8 +155,7 @@ class LogTest extends TestCase
 	 * @dataProvider configProvider
 	 * @return void
 	 */
-	public function testConfigVariants($settings)
-	{
+	public function testConfigVariants($settings) {
 		Log::config('test', $settings);
 		$this->assertContains('test', Log::configured());
 		$this->assertInstanceOf('Cake\Log\Engine\FileLog', Log::engine('test'));
@@ -180,8 +169,7 @@ class LogTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testConfigInjectErrorOnWrongType()
-	{
+	public function testConfigInjectErrorOnWrongType() {
 		Log::config('test', new \StdClass);
 		Log::info('testing');
 	}
@@ -191,8 +179,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfigRead()
-	{
+	public function testConfigRead() {
 		$config = [
 			'engine' => 'File',
 			'path' => LOGS
@@ -211,8 +198,7 @@ class LogTest extends TestCase
 	 * @expectedException \BadMethodCallException
 	 * @return void
 	 */
-	public function testConfigErrorOnReconfigure()
-	{
+	public function testConfigErrorOnReconfigure() {
 		Log::config('tests', ['engine' => 'File', 'path' => TMP]);
 		Log::config('tests', ['engine' => 'Apc']);
 	}
@@ -222,8 +208,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLogFileWriting()
-	{
+	public function testLogFileWriting() {
 		$this->_resetLogConfig();
 		if (file_exists(LOGS . 'error.log')) {
 			unlink(LOGS . 'error.log');
@@ -246,8 +231,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectiveLoggingByLevel()
-	{
+	public function testSelectiveLoggingByLevel() {
 		if (file_exists(LOGS . 'spam.log')) {
 			unlink(LOGS . 'spam.log');
 		}
@@ -289,8 +273,7 @@ class LogTest extends TestCase
 		}
 	}
 
-	protected function _resetLogConfig()
-	{
+	protected function _resetLogConfig() {
 		Log::config('debug', [
 			'engine' => 'File',
 			'path' => LOGS,
@@ -305,8 +288,7 @@ class LogTest extends TestCase
 		]);
 	}
 
-	protected function _deleteLogs()
-	{
+	protected function _deleteLogs() {
 		if (file_exists(LOGS . 'shops.log')) {
 			unlink(LOGS . 'shops.log');
 		}
@@ -332,8 +314,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScopedLogging()
-	{
+	public function testScopedLogging() {
 		$this->_deleteLogs();
 		$this->_resetLogConfig();
 		Log::config('shops', [
@@ -373,8 +354,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScopedLoggingStrict()
-	{
+	public function testScopedLoggingStrict() {
 		$this->_deleteLogs();
 
 		Log::config('debug', [
@@ -410,8 +390,7 @@ class LogTest extends TestCase
 	/**
 	 * test scoped logging with convenience methods
 	 */
-	public function testConvenienceScopedLogging()
-	{
+	public function testConvenienceScopedLogging() {
 		if (file_exists(LOGS . 'shops.log')) {
 			unlink(LOGS . 'shops.log');
 		}
@@ -460,8 +439,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScopedLoggingExclusive()
-	{
+	public function testScopedLoggingExclusive() {
 		$this->_deleteLogs();
 
 		Log::config('shops', [
@@ -493,8 +471,7 @@ class LogTest extends TestCase
 	/**
 	 * testPassingScopeToEngine method
 	 */
-	public function testPassingScopeToEngine()
-	{
+	public function testPassingScopeToEngine() {
 		Configure::write('App.namespace', 'TestApp');
 
 		Log::reset();
@@ -522,8 +499,7 @@ class LogTest extends TestCase
 	/**
 	 * test convenience methods
 	 */
-	public function testConvenienceMethods()
-	{
+	public function testConvenienceMethods() {
 		$this->_deleteLogs();
 
 		Log::config('debug', [
@@ -601,8 +577,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWriteUnhandled()
-	{
+	public function testWriteUnhandled() {
 		Log::drop('error');
 		Log::drop('debug');
 
@@ -615,8 +590,7 @@ class LogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateLoggerWithCallable()
-	{
+	public function testCreateLoggerWithCallable() {
 		$instance = new FileLog;
 		Log::config('default', function () use ($instance) {
 			return $instance;

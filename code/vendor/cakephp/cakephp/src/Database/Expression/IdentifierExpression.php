@@ -22,8 +22,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class IdentifierExpression implements ExpressionInterface
-{
+class IdentifierExpression implements ExpressionInterface {
 
 	/**
 	 * Holds the identifier string
@@ -37,8 +36,7 @@ class IdentifierExpression implements ExpressionInterface
 	 *
 	 * @param string $identifier The identifier this expression represents
 	 */
-	public function __construct($identifier)
-	{
+	public function __construct($identifier) {
 		$this->_identifier = $identifier;
 	}
 
@@ -48,8 +46,7 @@ class IdentifierExpression implements ExpressionInterface
 	 * @param string $identifier The identifier
 	 * @return void
 	 */
-	public function setIdentifier($identifier)
-	{
+	public function setIdentifier($identifier) {
 		$this->_identifier = $identifier;
 	}
 
@@ -58,8 +55,7 @@ class IdentifierExpression implements ExpressionInterface
 	 *
 	 * @return string
 	 */
-	public function getIdentifier()
-	{
+	public function getIdentifier() {
 		return $this->_identifier;
 	}
 
@@ -69,8 +65,7 @@ class IdentifierExpression implements ExpressionInterface
 	 * @param \Cake\Database\ValueBinder $generator Placeholder generator object
 	 * @return string
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		return $this->_identifier;
 	}
 
@@ -81,7 +76,6 @@ class IdentifierExpression implements ExpressionInterface
 	 * @param callable $callable The callable to traverse with.
 	 * @return void
 	 */
-	public function traverse(callable $callable)
-	{
+	public function traverse(callable $callable) {
 	}
 }

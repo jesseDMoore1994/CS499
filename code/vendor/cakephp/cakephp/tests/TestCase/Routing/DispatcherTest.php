@@ -29,11 +29,9 @@ use Cake\Utility\Inflector;
 /**
  * A testing stub that doesn't send headers.
  */
-class DispatcherMockResponse extends Response
-{
+class DispatcherMockResponse extends Response {
 
-	protected function _sendHeader($name, $value = null)
-	{
+	protected function _sendHeader($name, $value = null) {
 		return $name . ' ' . $value;
 	}
 }
@@ -41,8 +39,7 @@ class DispatcherMockResponse extends Response
 /**
  * TestDispatcher class
  */
-class TestDispatcher extends Dispatcher
-{
+class TestDispatcher extends Dispatcher {
 
 	/**
 	 * Controller instance, made publicly available for testing
@@ -57,8 +54,7 @@ class TestDispatcher extends Dispatcher
 	 * @param \Cake\Controller\Controller $controller
 	 * @return \Cake\Network\Response $response
 	 */
-	protected function _invoke(Controller $controller)
-	{
+	protected function _invoke(Controller $controller) {
 		$this->controller = $controller;
 		return parent::_invoke($controller);
 	}
@@ -68,12 +64,10 @@ class TestDispatcher extends Dispatcher
  * MyPluginAppController class
  *
  */
-class MyPluginAppController extends Controller
-{
+class MyPluginAppController extends Controller {
 }
 
-interface DispatcherTestInterfaceController
-{
+interface DispatcherTestInterfaceController {
 
 	public function index();
 }
@@ -82,8 +76,7 @@ interface DispatcherTestInterfaceController
  * MyPluginController class
  *
  */
-class MyPluginController extends MyPluginAppController
-{
+class MyPluginController extends MyPluginAppController {
 
 	/**
 	 * name property
@@ -97,8 +90,7 @@ class MyPluginController extends MyPluginAppController
 	 *
 	 * @return void
 	 */
-	public function index()
-	{
+	public function index() {
 		return true;
 	}
 
@@ -107,8 +99,7 @@ class MyPluginController extends MyPluginAppController
 	 *
 	 * @return void
 	 */
-	public function add()
-	{
+	public function add() {
 		return true;
 	}
 
@@ -118,8 +109,7 @@ class MyPluginController extends MyPluginAppController
 	 * @param mixed $id
 	 * @return void
 	 */
-	public function admin_add($id = null)
-	{
+	public function admin_add($id = null) {
 		return $id;
 	}
 }
@@ -128,8 +118,7 @@ class MyPluginController extends MyPluginAppController
  * OtherPagesController class
  *
  */
-class OtherPagesController extends MyPluginAppController
-{
+class OtherPagesController extends MyPluginAppController {
 
 	/**
 	 * name property
@@ -144,8 +133,7 @@ class OtherPagesController extends MyPluginAppController
 	 * @param string $page
 	 * @return void
 	 */
-	public function display($page = null)
-	{
+	public function display($page = null) {
 		return $page;
 	}
 
@@ -154,8 +142,7 @@ class OtherPagesController extends MyPluginAppController
 	 *
 	 * @return void
 	 */
-	public function index()
-	{
+	public function index() {
 		return true;
 	}
 }
@@ -164,16 +151,14 @@ class OtherPagesController extends MyPluginAppController
  * ArticlesTestAppController class
  *
  */
-class ArticlesTestAppController extends Controller
-{
+class ArticlesTestAppController extends Controller {
 }
 
 /**
  * ArticlesTestController class
  *
  */
-class ArticlesTestController extends ArticlesTestAppController
-{
+class ArticlesTestController extends ArticlesTestAppController {
 
 	/**
 	 * name property
@@ -187,8 +172,7 @@ class ArticlesTestController extends ArticlesTestAppController
 	 *
 	 * @return void
 	 */
-	public function admin_index()
-	{
+	public function admin_index() {
 		return true;
 	}
 
@@ -197,8 +181,7 @@ class ArticlesTestController extends ArticlesTestAppController
 	 *
 	 * @return void
 	 */
-	public function index()
-	{
+	public function index() {
 		return true;
 	}
 }
@@ -207,16 +190,14 @@ class ArticlesTestController extends ArticlesTestAppController
  * DispatcherTest class
  *
  */
-class DispatcherTest extends TestCase
-{
+class DispatcherTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$_GET = [];
 
@@ -235,8 +216,7 @@ class DispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Plugin::unload();
 	}
@@ -248,8 +228,7 @@ class DispatcherTest extends TestCase
 	 * @expectedExceptionMessage Controller class SomeController could not be found.
 	 * @return void
 	 */
-	public function testMissingController()
-	{
+	public function testMissingController() {
 		$request = new Request([
 			'url' => 'some_controller/home',
 			'params' => [
@@ -268,8 +247,7 @@ class DispatcherTest extends TestCase
 	 * @expectedExceptionMessage Controller class DispatcherTestInterface could not be found.
 	 * @return void
 	 */
-	public function testMissingControllerInterface()
-	{
+	public function testMissingControllerInterface() {
 		$request = new Request([
 			'url' => 'dispatcher_test_interface/index',
 			'params' => [
@@ -289,8 +267,7 @@ class DispatcherTest extends TestCase
 	 * @expectedExceptionMessage Controller class Abstract could not be found.
 	 * @return void
 	 */
-	public function testMissingControllerAbstract()
-	{
+	public function testMissingControllerAbstract() {
 		$request = new Request([
 			'url' => 'abstract/index',
 			'params' => [
@@ -307,8 +284,7 @@ class DispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDispatchBasic()
-	{
+	public function testDispatchBasic() {
 		$url = new Request([
 			'url' => 'pages/home',
 			'params' => [
@@ -330,8 +306,7 @@ class DispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDispatchActionReturnsResponse()
-	{
+	public function testDispatchActionReturnsResponse() {
 		$request = new Request([
 			'url' => 'some_pages/responseGenerator',
 			'params' => [
@@ -354,8 +329,7 @@ class DispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrefixDispatch()
-	{
+	public function testPrefixDispatch() {
 		$request = new Request([
 			'url' => 'admin/posts/index',
 			'params' => [
@@ -383,8 +357,7 @@ class DispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrefixDispatchPlugin()
-	{
+	public function testPrefixDispatchPlugin() {
 		Plugin::load('TestPlugin');
 
 		$request = new Request([
@@ -415,8 +388,7 @@ class DispatcherTest extends TestCase
 	 * @expectedExceptionMessage Controller class TestPlugin.Tests could not be found.
 	 * @return void
 	 */
-	public function testDispatchBadPluginName()
-	{
+	public function testDispatchBadPluginName() {
 		Plugin::load('TestPlugin');
 
 		$request = new Request([
@@ -440,8 +412,7 @@ class DispatcherTest extends TestCase
 	 * @expectedExceptionMessage Controller class TestApp\Controller\PostsController could not be found.
 	 * @return void
 	 */
-	public function testDispatchBadName()
-	{
+	public function testDispatchBadName() {
 		$request = new Request([
 			'url' => 'TestApp%5CController%5CPostsController/index',
 			'params' => [
@@ -461,8 +432,7 @@ class DispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDispatcherFilter()
-	{
+	public function testDispatcherFilter() {
 		$filter = $this->getMock(
 			'Cake\Routing\DispatcherFilter',
 			['beforeDispatch', 'afterDispatch']
@@ -492,8 +462,7 @@ class DispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBeforeDispatchAbortDispatch()
-	{
+	public function testBeforeDispatchAbortDispatch() {
 		$response = $this->getMock('Cake\Network\Response', ['send']);
 		$response->expects($this->once())
 			->method('send');
@@ -520,8 +489,7 @@ class DispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAfterDispatchReplaceResponse()
-	{
+	public function testAfterDispatchReplaceResponse() {
 		$response = $this->getMock('Cake\Network\Response', ['_sendHeader', 'send']);
 		$response->expects($this->once())
 			->method('send');

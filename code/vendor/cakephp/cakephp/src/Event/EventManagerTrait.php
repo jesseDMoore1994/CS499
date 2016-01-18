@@ -19,8 +19,7 @@ namespace Cake\Event;
  *
  * @deprecated 3.0.10 Use Cake\Event\EventDispatcherTrait instead.
  */
-trait EventManagerTrait
-{
+trait EventManagerTrait {
 
 	use EventDispatcherTrait;
 }

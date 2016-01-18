@@ -16,13 +16,11 @@ use Symfony\Component\Console\Input\InputInterface;
 /**
  * Trait Enumerator class.
  */
-class TraitEnumerator extends Enumerator
-{
+class TraitEnumerator extends Enumerator {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
-	{
+	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null) {
 		// bail early if current PHP doesn't know about traits.
 		if (!function_exists('trait_exists')) {
 			return;
@@ -63,8 +61,7 @@ class TraitEnumerator extends Enumerator
 	 *
 	 * @return array
 	 */
-	protected function prepareTraits(array $traits)
-	{
+	protected function prepareTraits(array $traits) {
 		natcasesort($traits);
 
 		// My kingdom for a generator.

@@ -28,8 +28,7 @@ use LogicException;
  *
  * This class also provides method for checking and dispatching behavior methods.
  */
-class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterface
-{
+class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterface {
 
 	use EventDispatcherTrait;
 
@@ -59,8 +58,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 *
 	 * @param \Cake\ORM\Table|null $table The table this registry is attached to.
 	 */
-	public function __construct($table = null)
-	{
+	public function __construct($table = null) {
 		if ($table !== null) {
 			$this->setTable($table);
 		}
@@ -72,8 +70,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 * @param \Cake\ORM\Table $table The table this registry is attached to.
 	 * @return void
 	 */
-	public function setTable(Table $table)
-	{
+	public function setTable(Table $table) {
 		$this->_table = $table;
 		$this->eventManager($table->eventManager());
 	}
@@ -86,8 +83,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 * @param string $class Partial classname to resolve.
 	 * @return string|false Either the correct classname or false.
 	 */
-	protected function _resolveClassName($class)
-	{
+	protected function _resolveClassName($class) {
 		$result = App::className($class, 'Model/Behavior', 'Behavior');
 		if (!$result) {
 			$result = App::className($class, 'ORM/Behavior', 'Behavior');
@@ -105,8 +101,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 * @return void
 	 * @throws \Cake\ORM\Exception\MissingBehaviorException
 	 */
-	protected function _throwMissingClassError($class, $plugin)
-	{
+	protected function _throwMissingClassError($class, $plugin) {
 		throw new MissingBehaviorException([
 			'class' => $class . 'Behavior',
 			'plugin' => $plugin
@@ -124,8 +119,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 * @param array $config An array of config to use for the behavior.
 	 * @return Behavior The constructed behavior class.
 	 */
-	protected function _create($class, $alias, $config)
-	{
+	protected function _create($class, $alias, $config) {
 		$instance = new $class($this->_table, $config);
 		$enable = isset($config['enabled']) ? $config['enabled'] : true;
 		if ($enable) {
@@ -150,8 +144,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 * @return array A list of implemented finders and methods.
 	 * @throws \LogicException when duplicate methods are connected.
 	 */
-	protected function _getMethods(Behavior $instance, $class, $alias)
-	{
+	protected function _getMethods(Behavior $instance, $class, $alias) {
 		$finders = array_change_key_case($instance->implementedFinders());
 		$methods = array_change_key_case($instance->implementedMethods());
 
@@ -195,8 +188,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 * @param string $method The method to check for.
 	 * @return bool
 	 */
-	public function hasMethod($method)
-	{
+	public function hasMethod($method) {
 		$method = strtolower($method);
 		return isset($this->_methodMap[$method]);
 	}
@@ -210,8 +202,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 * @param string $method The method to check for.
 	 * @return bool
 	 */
-	public function hasFinder($method)
-	{
+	public function hasFinder($method) {
 		$method = strtolower($method);
 		return isset($this->_finderMap[$method]);
 	}
@@ -224,8 +215,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 * @return mixed The return value depends on the underlying behavior method.
 	 * @throws \BadMethodCallException When the method is unknown.
 	 */
-	public function call($method, array $args = [])
-	{
+	public function call($method, array $args = []) {
 		$method = strtolower($method);
 		if ($this->hasMethod($method) && $this->has($this->_methodMap[$method][0])) {
 			list($behavior, $callMethod) = $this->_methodMap[$method];
@@ -245,8 +235,7 @@ class BehaviorRegistry extends ObjectRegistry implements EventDispatcherInterfac
 	 * @return mixed The return value depends on the underlying behavior method.
 	 * @throws \BadMethodCallException When the method is unknown.
 	 */
-	public function callFinder($type, array $args = [])
-	{
+	public function callFinder($type, array $args = []) {
 		$type = strtolower($type);
 
 		if ($this->hasFinder($type) && $this->has($this->_finderMap[$type][0])) {

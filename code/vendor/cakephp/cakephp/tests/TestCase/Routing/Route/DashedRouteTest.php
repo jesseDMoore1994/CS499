@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Test case for DashedRoute
  */
-class DashedRouteTest extends TestCase
-{
+class DashedRouteTest extends TestCase {
 
 	/**
 	 * test that routes match their pattern.
 	 *
 	 * @return void
 	 */
-	public function testMatchBasic()
-	{
+	public function testMatchBasic() {
 		$route = new DashedRoute('/:controller/:action/:id', ['plugin' => null]);
 		$result = $route->match(['controller' => 'Posts', 'action' => 'myView', 'plugin' => null]);
 		$this->assertFalse($result);
@@ -142,8 +140,7 @@ class DashedRouteTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParse()
-	{
+	public function testParse() {
 		$route = new DashedRoute('/:controller/:action/:id', [], ['id' => Router::ID]);
 		$route->compile();
 		$result = $route->parse('/my-posts/my-view/1');
@@ -196,8 +193,7 @@ class DashedRouteTest extends TestCase
 	/**
 	 * @return void
 	 */
-	public function testMatchThenParse()
-	{
+	public function testMatchThenParse() {
 		$route = new DashedRoute('/plugin/:controller/:action', [
 			'plugin' => 'Vendor/PluginName'
 		]);

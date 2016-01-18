@@ -24,16 +24,14 @@ use Cake\TestSuite\TestCase;
  * Class RoutesShellTest
  *
  */
-class RoutesShellTest extends TestCase
-{
+class RoutesShellTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->io = $this->getMock('Cake\Console\ConsoleIo', ['helper', 'out', 'err']);
 		$this->table = $this->getMock('Cake\Shell\Helper\TableHelper', [], [$this->io]);
@@ -53,8 +51,7 @@ class RoutesShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Router::reload();
 		unset($this->io, $this->shell);
@@ -65,8 +62,7 @@ class RoutesShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMain()
-	{
+	public function testMain() {
 		$this->table->expects($this->once())
 			->method('output')
 			->with(
@@ -97,8 +93,7 @@ class RoutesShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheck()
-	{
+	public function testCheck() {
 		$this->table->expects($this->once())
 			->method('output')
 			->with(
@@ -119,8 +114,7 @@ class RoutesShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckWithNamedRoute()
-	{
+	public function testCheckWithNamedRoute() {
 		$this->table->expects($this->once())
 			->method('output')
 			->with(
@@ -141,8 +135,7 @@ class RoutesShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckNotFound()
-	{
+	public function testCheckNotFound() {
 		$this->io->expects($this->at(0))
 			->method('err')
 			->with($this->stringContains('did not match'));
@@ -154,8 +147,7 @@ class RoutesShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGenerate()
-	{
+	public function testGenerate() {
 		$this->io->expects($this->never())
 			->method('err');
 		$this->io->expects($this->at(0))
@@ -177,8 +169,7 @@ class RoutesShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGenerateMissing()
-	{
+	public function testGenerateMissing() {
 		$this->io->expects($this->at(0))
 			->method('err')
 			->with($this->stringContains('do not match'));

@@ -18,8 +18,7 @@ use Symfony\Component\Console\Formatter\OutputFormatter;
 /**
  * An abstract representation of a function, class or property signature.
  */
-class SignatureFormatter implements Formatter
-{
+class SignatureFormatter implements Formatter {
 	/**
 	 * Format a signature for the given reflector.
 	 *
@@ -29,8 +28,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string Formatted signature.
 	 */
-	public static function format(\Reflector $reflector)
-	{
+	public static function format(\Reflector $reflector) {
 		switch (true) {
 			case $reflector instanceof \ReflectionFunction:
 				return self::formatFunction($reflector);
@@ -60,8 +58,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string Formatted name.
 	 */
-	public static function formatName(\Reflector $reflector)
-	{
+	public static function formatName(\Reflector $reflector) {
 		return $reflector->getName();
 	}
 
@@ -74,8 +71,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string Formatted modifiers.
 	 */
-	private static function formatModifiers(\Reflector $reflector)
-	{
+	private static function formatModifiers(\Reflector $reflector) {
 		return implode(' ', array_map(function ($modifier) {
 			return sprintf('<keyword>%s</keyword>', $modifier);
 		}, \Reflection::getModifierNames($reflector->getModifiers())));
@@ -88,8 +84,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string Formatted signature.
 	 */
-	private static function formatClass(\ReflectionClass $reflector)
-	{
+	private static function formatClass(\ReflectionClass $reflector) {
 		$chunks = array();
 
 		if ($modifiers = self::formatModifiers($reflector)) {
@@ -129,8 +124,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string Formatted signature.
 	 */
-	private static function formatConstant(ReflectionConstant $reflector)
-	{
+	private static function formatConstant(ReflectionConstant $reflector) {
 		$value = $reflector->getValue();
 		$style = self::getTypeStyle($value);
 
@@ -150,8 +144,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string
 	 */
-	private static function getTypeStyle($value)
-	{
+	private static function getTypeStyle($value) {
 		if (is_int($value) || is_float($value)) {
 			return 'number';
 		} elseif (is_string($value)) {
@@ -170,8 +163,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string Formatted signature.
 	 */
-	private static function formatProperty(\ReflectionProperty $reflector)
-	{
+	private static function formatProperty(\ReflectionProperty $reflector) {
 		return sprintf(
 			'%s <strong>$%s</strong>',
 			self::formatModifiers($reflector),
@@ -186,8 +178,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string Formatted signature.
 	 */
-	private static function formatFunction(\ReflectionFunctionAbstract $reflector)
-	{
+	private static function formatFunction(\ReflectionFunctionAbstract $reflector) {
 		return sprintf(
 			'<keyword>function</keyword> %s<function>%s</function>(%s)',
 			$reflector->returnsReference() ? '&' : '',
@@ -203,8 +194,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string Formatted signature.
 	 */
-	private static function formatMethod(\ReflectionMethod $reflector)
-	{
+	private static function formatMethod(\ReflectionMethod $reflector) {
 		return sprintf(
 			'%s %s',
 			self::formatModifiers($reflector),
@@ -219,8 +209,7 @@ class SignatureFormatter implements Formatter
 	 *
 	 * @return string
 	 */
-	private static function formatFunctionParams(\ReflectionFunctionAbstract $reflector)
-	{
+	private static function formatFunctionParams(\ReflectionFunctionAbstract $reflector) {
 		$params = array();
 		foreach ($reflector->getParameters() as $param) {
 			$hint = '';

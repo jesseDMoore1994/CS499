@@ -20,8 +20,7 @@ use DebugKit\Model\Table\LazyTableTrait;
 /**
  * The requests table tracks basic information about each request.
  */
-class RequestsTable extends Table
-{
+class RequestsTable extends Table {
 
 	use LazyTableTrait;
 
@@ -31,8 +30,7 @@ class RequestsTable extends Table
 	 * @param array $config Config data.
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		$this->hasMany('DebugKit.Panels', [
 			'sort' => ['Panels.title' => 'ASC'],
 		]);
@@ -49,8 +47,7 @@ class RequestsTable extends Table
 	 *
 	 * @return string
 	 */
-	public static function defaultConnectionName()
-	{
+	public static function defaultConnectionName() {
 		return 'debug_kit';
 	}
 
@@ -61,8 +58,7 @@ class RequestsTable extends Table
 	 * @param array $options The options
 	 * @return Query The query.
 	 */
-	public function findRecent(Query $query, array $options)
-	{
+	public function findRecent(Query $query, array $options) {
 		return $query->order(['Requests.requested_at' => 'DESC'])
 			->limit(10);
 	}
@@ -75,8 +71,7 @@ class RequestsTable extends Table
 	 *
 	 * @return void
 	 */
-	public function gc()
-	{
+	public function gc() {
 		if (time() % 100 !== 0) {
 			return;
 		}

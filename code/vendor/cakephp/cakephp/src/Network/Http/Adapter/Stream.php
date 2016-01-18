@@ -24,8 +24,7 @@ use Cake\Network\Http\Response;
  *
  * This approach and implementation is partly inspired by Aura.Http
  */
-class Stream
-{
+class Stream {
 
 	/**
 	 * Context resource used by the stream API.
@@ -69,8 +68,7 @@ class Stream
 	 * @param array $options Array of options for the stream.
 	 * @return array Array of populated Response objects
 	 */
-	public function send(Request $request, array $options)
-	{
+	public function send(Request $request, array $options) {
 		$this->_stream = null;
 		$this->_context = [];
 		$this->_contextOptions = [];
@@ -91,8 +89,7 @@ class Stream
 	 * @param string $content The response content.
 	 * @return array The list of responses from the request(s)
 	 */
-	public function createResponses($headers, $content)
-	{
+	public function createResponses($headers, $content) {
 		$indexes = $responses = [];
 		foreach ($headers as $i => $header) {
 			if (strtoupper(substr($header, 0, 5)) === 'HTTP/') {
@@ -116,8 +113,7 @@ class Stream
 	 * @param array $options Additional request options.
 	 * @return void
 	 */
-	protected function _buildContext(Request $request, $options)
-	{
+	protected function _buildContext(Request $request, $options) {
 		$this->_buildContent($request, $options);
 		$this->_buildHeaders($request, $options);
 		$this->_buildOptions($request, $options);
@@ -142,8 +138,7 @@ class Stream
 	 * @param array $options Array of options to use.
 	 * @return void
 	 */
-	protected function _buildHeaders(Request $request, $options)
-	{
+	protected function _buildHeaders(Request $request, $options) {
 		$headers = [];
 		foreach ($request->headers() as $name => $value) {
 			$headers[] = "$name: $value";
@@ -169,8 +164,7 @@ class Stream
 	 * @param array $options Array of options to use.
 	 * @return void
 	 */
-	protected function _buildContent(Request $request, $options)
-	{
+	protected function _buildContent(Request $request, $options) {
 		$content = $request->body();
 		if (empty($content)) {
 			return;
@@ -197,8 +191,7 @@ class Stream
 	 * @param array $options Array of options to use.
 	 * @return void
 	 */
-	protected function _buildOptions(Request $request, $options)
-	{
+	protected function _buildOptions(Request $request, $options) {
 		$this->_contextOptions['method'] = $request->method();
 		$this->_contextOptions['protocol_version'] = $request->version();
 		$this->_contextOptions['ignore_errors'] = true;
@@ -221,8 +214,7 @@ class Stream
 	 * @param array $options Array of options to use.
 	 * @return void
 	 */
-	protected function _buildSslContext(Request $request, $options)
-	{
+	protected function _buildSslContext(Request $request, $options) {
 		$sslOptions = [
 			'ssl_verify_peer',
 			'ssl_verify_depth',
@@ -254,8 +246,7 @@ class Stream
 	 * @return array Array of populated Response objects
 	 * @throws \Cake\Core\Exception\Exception
 	 */
-	protected function _send(Request $request)
-	{
+	protected function _send(Request $request) {
 		$url = $request->url();
 		$this->_open($url);
 		$content = '';
@@ -282,8 +273,7 @@ class Stream
 	 * @return void
 	 * @throws \Cake\Core\Exception\Exception
 	 */
-	protected function _open($url)
-	{
+	protected function _open($url) {
 		set_error_handler([$this, '_connectionErrorHandler']);
 		$this->_stream = fopen($url, 'rb', false, $this->_context);
 		restore_error_handler();
@@ -301,8 +291,7 @@ class Stream
 	 * @param string $message Error message.
 	 * @return void
 	 */
-	protected function _connectionErrorHandler($code, $message)
-	{
+	protected function _connectionErrorHandler($code, $message) {
 		$this->_connectionErrors[] = $message;
 	}
 
@@ -313,8 +302,7 @@ class Stream
 	 *
 	 * @return array
 	 */
-	public function contextOptions()
-	{
+	public function contextOptions() {
 		return array_merge($this->_contextOptions, $this->_sslContextOptions);
 	}
 }

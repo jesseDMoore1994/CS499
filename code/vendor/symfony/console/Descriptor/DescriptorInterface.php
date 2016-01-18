@@ -18,8 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-interface DescriptorInterface
-{
+interface DescriptorInterface {
 	/**
 	 * Describes an InputArgument instance.
 	 *

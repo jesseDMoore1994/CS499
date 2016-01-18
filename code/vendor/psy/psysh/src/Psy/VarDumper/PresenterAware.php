@@ -15,8 +15,7 @@ namespace Psy\VarDumper;
  * Presenter injects itself as a dependency to all objects which
  * implement PresenterAware.
  */
-interface PresenterAware
-{
+interface PresenterAware {
 	/**
 	 * Set a reference to the Presenter.
 	 *

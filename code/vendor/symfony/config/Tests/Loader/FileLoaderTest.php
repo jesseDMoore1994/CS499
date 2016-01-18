@@ -14,10 +14,8 @@ namespace Symfony\Component\Config\Tests\Loader;
 use Symfony\Component\Config\Loader\FileLoader;
 use Symfony\Component\Config\Loader\LoaderResolver;
 
-class FileLoaderTest extends \PHPUnit_Framework_TestCase
-{
-	public function testImportWithFileLocatorDelegation()
-	{
+class FileLoaderTest extends \PHPUnit_Framework_TestCase {
+	public function testImportWithFileLocatorDelegation() {
 		$locatorMock = $this->getMock('Symfony\Component\Config\FileLocatorInterface');
 
 		$locatorMockForAdditionalLoader = $this->getMock('Symfony\Component\Config\FileLocatorInterface');
@@ -67,37 +65,30 @@ class FileLoaderTest extends \PHPUnit_Framework_TestCase
 	}
 }
 
-class TestFileLoader extends FileLoader
-{
+class TestFileLoader extends FileLoader {
 	private $supports = true;
 
-	public function load($resource, $type = null)
-	{
+	public function load($resource, $type = null) {
 		return $resource;
 	}
 
-	public function supports($resource, $type = null)
-	{
+	public function supports($resource, $type = null) {
 		return $this->supports;
 	}
 
-	public function addLoading($resource)
-	{
+	public function addLoading($resource) {
 		self::$loading[$resource] = true;
 	}
 
-	public function removeLoading($resource)
-	{
+	public function removeLoading($resource) {
 		unset(self::$loading[$resource]);
 	}
 
-	public function clearLoading()
-	{
+	public function clearLoading() {
 		self::$loading = array();
 	}
 
-	public function setSupports($supports)
-	{
+	public function setSupports($supports) {
 		$this->supports = $supports;
 	}
 }

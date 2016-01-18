@@ -22,8 +22,7 @@ use RuntimeException;
 /**
  * Registry of loaded log engines
  */
-class LogEngineRegistry extends ObjectRegistry
-{
+class LogEngineRegistry extends ObjectRegistry {
 
 	/**
 	 * Resolve a logger classname.
@@ -33,8 +32,7 @@ class LogEngineRegistry extends ObjectRegistry
 	 * @param string $class Partial classname to resolve.
 	 * @return string|false Either the correct classname or false.
 	 */
-	protected function _resolveClassName($class)
-	{
+	protected function _resolveClassName($class) {
 		if (is_object($class)) {
 			return $class;
 		}
@@ -52,8 +50,7 @@ class LogEngineRegistry extends ObjectRegistry
 	 * @return void
 	 * @throws \RuntimeException
 	 */
-	protected function _throwMissingClassError($class, $plugin)
-	{
+	protected function _throwMissingClassError($class, $plugin) {
 		throw new RuntimeException(sprintf('Could not load class %s', $class));
 	}
 
@@ -68,8 +65,7 @@ class LogEngineRegistry extends ObjectRegistry
 	 * @return \Psr\Log\LoggerInterface The constructed logger class.
 	 * @throws \RuntimeException when an object doesn't implement the correct interface.
 	 */
-	protected function _create($class, $alias, $settings)
-	{
+	protected function _create($class, $alias, $settings) {
 		if (is_callable($class)) {
 			$class = $class();
 		}
@@ -97,8 +93,7 @@ class LogEngineRegistry extends ObjectRegistry
 	 * @param string $name The logger name.
 	 * @return void
 	 */
-	public function unload($name)
-	{
+	public function unload($name) {
 		unset($this->_loaded[$name]);
 	}
 }

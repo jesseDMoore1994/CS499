@@ -37,8 +37,7 @@ use DateTime;
  *
  * This iterator does not preserve the keys passed in the original elements.
  */
-class SortIterator extends Collection
-{
+class SortIterator extends Collection {
 
 	/**
 	 * Wraps this iterator around the passed items so when iterated they are returned
@@ -57,8 +56,7 @@ class SortIterator extends Collection
 	 * @param int $type the type of comparison to perform, either SORT_STRING
 	 * SORT_NUMERIC or SORT_NATURAL
 	 */
-	public function __construct($items, $callback, $dir = SORT_DESC, $type = SORT_NUMERIC)
-	{
+	public function __construct($items, $callback, $dir = SORT_DESC, $type = SORT_NUMERIC) {
 		if (is_array($items)) {
 			$items = new Collection($items);
 		}

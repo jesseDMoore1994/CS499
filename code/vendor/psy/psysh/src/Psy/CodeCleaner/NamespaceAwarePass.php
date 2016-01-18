@@ -19,8 +19,7 @@ use PhpParser\Node\Stmt\Namespace_ as NamespaceStmt;
 /**
  * Abstract namespace-aware code cleaner pass.
  */
-abstract class NamespaceAwarePass extends CodeCleanerPass
-{
+abstract class NamespaceAwarePass extends CodeCleanerPass {
 	protected $namespace;
 	protected $currentScope;
 
@@ -30,8 +29,7 @@ abstract class NamespaceAwarePass extends CodeCleanerPass
 	 *
 	 * Reset the namespace and the current scope before beginning analysis.
 	 */
-	public function beforeTraverse(array $nodes)
-	{
+	public function beforeTraverse(array $nodes) {
 		$this->namespace = array();
 		$this->currentScope = array();
 	}
@@ -42,8 +40,7 @@ abstract class NamespaceAwarePass extends CodeCleanerPass
 	 *
 	 * @param Node $node
 	 */
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		if ($node instanceof NamespaceStmt) {
 			$this->namespace = isset($node->name) ? $node->name->parts : array();
 		}
@@ -56,8 +53,7 @@ abstract class NamespaceAwarePass extends CodeCleanerPass
 	 *
 	 * @return string
 	 */
-	protected function getFullyQualifiedName($name)
-	{
+	protected function getFullyQualifiedName($name) {
 		if ($name instanceof FullyQualifiedName) {
 			return implode('\\', $name->parts);
 		} elseif ($name instanceof Name) {

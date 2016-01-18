@@ -22,8 +22,7 @@ use Cake\Utility\Hash;
  *
  * Implementing objects are expected to declare a `$_defaultConfig` property.
  */
-trait InstanceConfigTrait
-{
+trait InstanceConfigTrait {
 
 	/**
 	 * Runtime config
@@ -84,8 +83,7 @@ trait InstanceConfigTrait
 	 * @return mixed Config value being read, or the object itself on write operations.
 	 * @throws \Cake\Core\Exception\Exception When trying to set a key that is invalid.
 	 */
-	public function config($key = null, $value = null, $merge = true)
-	{
+	public function config($key = null, $value = null, $merge = true) {
 		if (!$this->_configInitialized) {
 			$this->_config = $this->_defaultConfig;
 			$this->_configInitialized = true;
@@ -125,8 +123,7 @@ trait InstanceConfigTrait
 	 * @param mixed|null $value The value to set.
 	 * @return $this The object itself.
 	 */
-	public function configShallow($key, $value = null)
-	{
+	public function configShallow($key, $value = null) {
 		if (!$this->_configInitialized) {
 			$this->_config = $this->_defaultConfig;
 			$this->_configInitialized = true;
@@ -142,8 +139,7 @@ trait InstanceConfigTrait
 	 * @param string|null $key Key to read.
 	 * @return mixed
 	 */
-	protected function _configRead($key)
-	{
+	protected function _configRead($key) {
 		if ($key === null) {
 			return $this->_config;
 		}
@@ -176,8 +172,7 @@ trait InstanceConfigTrait
 	 * @return void
 	 * @throws \Cake\Core\Exception\Exception if attempting to clobber existing config
 	 */
-	protected function _configWrite($key, $value, $merge = false)
-	{
+	protected function _configWrite($key, $value, $merge = false) {
 		if (is_string($key) && $value === null) {
 			$this->_configDelete($key);
 			return;
@@ -230,8 +225,7 @@ trait InstanceConfigTrait
 	 * @return void
 	 * @throws \Cake\Core\Exception\Exception if attempting to clobber existing config
 	 */
-	protected function _configDelete($key)
-	{
+	protected function _configDelete($key) {
 		if (strpos($key, '.') === false) {
 			unset($this->_config[$key]);
 			return;

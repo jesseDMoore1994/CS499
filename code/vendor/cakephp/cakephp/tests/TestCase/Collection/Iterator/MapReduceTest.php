@@ -21,8 +21,7 @@ use Cake\TestSuite\TestCase;
  * Tests MapReduce class
  *
  */
-class MapReduceTest extends TestCase
-{
+class MapReduceTest extends TestCase {
 
 	/**
 	 * Tests the creation of an inversed index of words to documents using
@@ -30,8 +29,7 @@ class MapReduceTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInvertedIndexCreation()
-	{
+	public function testInvertedIndexCreation() {
 		$data = [
 			'document_1' => 'Dogs are the most amazing animal in history',
 			'document_2' => 'History is not only amazing but boring',
@@ -73,8 +71,7 @@ class MapReduceTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEmitFinalInMapper()
-	{
+	public function testEmitFinalInMapper() {
 		$data = ['a' => ['one', 'two'], 'b' => ['three', 'four']];
 		$mapper = function ($row, $key, $mr) {
 			foreach ($row as $number) {
@@ -92,8 +89,7 @@ class MapReduceTest extends TestCase
 	 * @expectedException \LogicException
 	 * @return void
 	 */
-	public function testReducerRequired()
-	{
+	public function testReducerRequired() {
 		$data = ['a' => ['one', 'two'], 'b' => ['three', 'four']];
 		$mapper = function ($row, $key, $mr) {
 			foreach ($row as $number) {

@@ -24,8 +24,7 @@ use Cake\TestSuite\TestCase;
  * I18nTest class
  *
  */
-class I18nTest extends TestCase
-{
+class I18nTest extends TestCase {
 
 	/**
 	 * Used to restore the internal locale after tests
@@ -39,8 +38,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->locale = I18n::locale();
 	}
@@ -50,8 +48,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		I18n::clear();
 		I18n::defaultFormatter('default');
@@ -66,8 +63,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDefaultTranslator()
-	{
+	public function testDefaultTranslator() {
 		$translator = I18n::translator();
 		$this->assertInstanceOf('Aura\Intl\Translator', $translator);
 		$this->assertEquals('%d is 1 (po translated)', $translator->translate('%d = 1'));
@@ -78,8 +74,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTranslatorLoadMoFile()
-	{
+	public function testTranslatorLoadMoFile() {
 		$translator = I18n::translator('default', 'es_ES');
 		$this->assertEquals('Plural Rule 6 (translated)', $translator->translate('Plural Rule 1'));
 	}
@@ -90,8 +85,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluralSelection()
-	{
+	public function testPluralSelection() {
 		I18n::defaultFormatter('sprintf');
 		$translator = I18n::translator(); // en_US
 		$result = $translator->translate('%d = 0 or > 1', ['_count' => 1]);
@@ -107,8 +101,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluralSelectionBasicFormatter()
-	{
+	public function testPluralSelectionBasicFormatter() {
 		$translator = I18n::translator('special');
 		$result = $translator->translate('There are {0} things', ['_count' => 2, 'plenty']);
 		$this->assertEquals('There are plenty things', $result);
@@ -122,8 +115,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateCustomTranslationPackage()
-	{
+	public function testCreateCustomTranslationPackage() {
 		I18n::translator('custom', 'fr_FR', function () {
 			$package = new Package('default');
 			$package->setMessages([
@@ -142,8 +134,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginMesagesLoad()
-	{
+	public function testPluginMesagesLoad() {
 		Plugin::load([
 			'TestPlugin',
 			'Company/TestPluginThree'
@@ -168,8 +159,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginOverride()
-	{
+	public function testPluginOverride() {
 		Plugin::load('TestTheme');
 		$translator = I18n::translator('test_theme');
 		$this->assertEquals(
@@ -183,8 +173,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDefaultLocale()
-	{
+	public function testDefaultLocale() {
 		$this->assertEquals('en_US', I18n::locale());
 		$this->assertEquals('en_US', ini_get('intl.default_locale'));
 		I18n::locale('fr_FR');
@@ -198,8 +187,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetTranslatorByDefaultLocale()
-	{
+	public function testGetTranslatorByDefaultLocale() {
 		I18n::translator('custom', 'fr_FR', function () {
 			$package = new Package('default');
 			$package->setMessages([
@@ -218,8 +206,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBasicTranslateFunction()
-	{
+	public function testBasicTranslateFunction() {
 		I18n::defaultFormatter('sprintf');
 		$this->assertEquals('%d is 1 (po translated)', __('%d = 1'));
 		$this->assertEquals('1 is 1 (po translated)', __('%d = 1', 1));
@@ -230,8 +217,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBasicTranslatePluralFunction()
-	{
+	public function testBasicTranslatePluralFunction() {
 		I18n::defaultFormatter('sprintf');
 		$result = __n('singular msg', '%d = 0 or > 1', 1);
 		$this->assertEquals('1 is 1 (po translated)', $result);
@@ -245,8 +231,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBasicDomainFunction()
-	{
+	public function testBasicDomainFunction() {
 		I18n::translator('custom', 'en_US', function () {
 			$package = new Package('default');
 			$package->setMessages([
@@ -264,8 +249,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBasicDomainPluralFunction()
-	{
+	public function testBasicDomainPluralFunction() {
 		I18n::translator('custom', 'en_US', function () {
 			$package = new Package('default');
 			$package->setMessages([
@@ -286,8 +270,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBasicContextFunction()
-	{
+	public function testBasicContextFunction() {
 		I18n::translator('default', 'en_US', function () {
 			$package = new Package('default');
 			$package->setMessages([
@@ -313,8 +296,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluralContextFunction()
-	{
+	public function testPluralContextFunction() {
 		I18n::translator('default', 'en_US', function () {
 			$package = new Package('default');
 			$package->setMessages([
@@ -351,8 +333,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDomainContextFunction()
-	{
+	public function testDomainContextFunction() {
 		I18n::translator('custom', 'en_US', function () {
 			$package = new Package('default');
 			$package->setMessages([
@@ -378,8 +359,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDomainPluralContextFunction()
-	{
+	public function testDomainPluralContextFunction() {
 		I18n::translator('custom', 'en_US', function () {
 			$package = new Package('default');
 			$package->setMessages([
@@ -422,8 +402,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTranslatorCache()
-	{
+	public function testTranslatorCache() {
 		$english = I18n::translator();
 		$spanish = I18n::translator('default', 'es_ES');
 
@@ -444,8 +423,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testloaderFactory()
-	{
+	public function testloaderFactory() {
 		I18n::config('custom', function ($name, $locale) {
 			$this->assertEquals('custom', $name);
 			$package = new Package('default');
@@ -490,8 +468,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFallbackTranslator()
-	{
+	public function testFallbackTranslator() {
 		I18n::translator('default', 'fr_FR', function () {
 			$package = new Package('default');
 			$package->setMessages([
@@ -518,8 +495,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFallbackTranslatorDisabled()
-	{
+	public function testFallbackTranslatorDisabled() {
 		I18n::useFallback(false);
 
 		I18n::translator('default', 'fr_FR', function () {
@@ -545,8 +521,7 @@ class I18nTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFallbackTranslatorWithFactory()
-	{
+	public function testFallbackTranslatorWithFactory() {
 		I18n::translator('default', 'fr_FR', function () {
 			$package = new Package('default');
 			$package->setMessages([

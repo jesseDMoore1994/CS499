@@ -14,19 +14,16 @@ namespace Psy\Test\Util;
 use Psy\Reflection\ReflectionConstant;
 use Psy\Util\Mirror;
 
-class MirrorTest extends \PHPUnit_Framework_TestCase
-{
+class MirrorTest extends \PHPUnit_Framework_TestCase {
 	const FOO = 1;
 	private $bar = 2;
 	private static $baz = 3;
 
-	public function aPublicMethod()
-	{
+	public function aPublicMethod() {
 		// nada
 	}
 
-	public function testMirror()
-	{
+	public function testMirror() {
 		$refl = Mirror::get('sort');
 		$this->assertTrue($refl instanceof \ReflectionFunction);
 
@@ -55,8 +52,7 @@ class MirrorTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \RuntimeException
 	 */
-	public function testMirrorThrowsExceptions()
-	{
+	public function testMirrorThrowsExceptions() {
 		Mirror::get($this, 'notAMethod');
 	}
 
@@ -64,13 +60,11 @@ class MirrorTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @dataProvider invalidArguments
 	 */
-	public function testMirrorThrowsInvalidArgumentExceptions($value)
-	{
+	public function testMirrorThrowsInvalidArgumentExceptions($value) {
 		Mirror::get($value);
 	}
 
-	public function invalidArguments()
-	{
+	public function invalidArguments() {
 		return array(
 			array('not_a_function_or_class'),
 			array(array()),

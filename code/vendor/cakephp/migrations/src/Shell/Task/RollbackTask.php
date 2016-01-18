@@ -18,14 +18,12 @@ namespace Migrations\Shell\Task;
  * when using the CakePHP migrations shell plugin. It has no effect on the
  * migrations process.
  */
-class RollbackTask extends CommandTask
-{
+class RollbackTask extends CommandTask {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser
 			->addOption('target', [

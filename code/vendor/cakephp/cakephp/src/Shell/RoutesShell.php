@@ -23,8 +23,7 @@ use Cake\Routing\Router;
  * Provides interactive CLI tools for routing.
  *
  */
-class RoutesShell extends Shell
-{
+class RoutesShell extends Shell {
 
 	/**
 	 * Override main() to handle action
@@ -32,8 +31,7 @@ class RoutesShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		$output = [
 			['Route name', 'URI template', 'Defaults']
 		];
@@ -51,8 +49,7 @@ class RoutesShell extends Shell
 	 * @param string $url The URL to parse
 	 * @return null|false
 	 */
-	public function check($url)
-	{
+	public function check($url) {
 		try {
 			$route = Router::parse($url);
 			foreach (Router::routes() as $r) {
@@ -80,8 +77,7 @@ class RoutesShell extends Shell
 	 * Takes variadic arguments of key/value pairs.
 	 * @return null|false
 	 */
-	public function generate()
-	{
+	public function generate() {
 		try {
 			$args = $this->_splitArgs($this->args);
 			$url = Router::url($args);
@@ -99,8 +95,7 @@ class RoutesShell extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser->description(
 			'Get the list of routes connected in this application. ' .
@@ -123,8 +118,7 @@ class RoutesShell extends Shell
 	 * @param array $args The arguments to split.
 	 * @return array
 	 */
-	protected function _splitArgs($args)
-	{
+	protected function _splitArgs($args) {
 		$out = [];
 		foreach ($args as $arg) {
 			if (strpos($arg, ':') !== false) {

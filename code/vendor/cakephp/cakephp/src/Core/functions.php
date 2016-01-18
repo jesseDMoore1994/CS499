@@ -35,8 +35,7 @@ if (!function_exists('h')) {
 	 * @return string Wrapped text.
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/global-constants-and-functions.html#h
 	 */
-	function h($text, $double = true, $charset = null)
-	{
+	function h($text, $double = true, $charset = null) {
 		if (is_string($text)) {
 			//optimize for strings
 		} elseif (is_array($text)) {
@@ -86,8 +85,7 @@ if (!function_exists('pluginSplit')) {
 	 * @return array Array with 2 indexes. 0 => plugin name, 1 => class name.
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/global-constants-and-functions.html#pluginSplit
 	 */
-	function pluginSplit($name, $dotAppend = false, $plugin = null)
-	{
+	function pluginSplit($name, $dotAppend = false, $plugin = null) {
 		if (strpos($name, '.') !== false) {
 			$parts = explode('.', $name, 2);
 			if ($dotAppend) {
@@ -109,8 +107,7 @@ if (!function_exists('namespaceSplit')) {
 	 * @param string $class The full class name, ie `Cake\Core\App`.
 	 * @return array Array with 2 indexes. 0 => namespace, 1 => classname.
 	 */
-	function namespaceSplit($class)
-	{
+	function namespaceSplit($class) {
 		$pos = strrpos($class, '\\');
 		if ($pos === false) {
 			return ['', $class];
@@ -132,8 +129,7 @@ if (!function_exists('pr')) {
 	 * @see debug()
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/global-constants-and-functions.html#pr
 	 */
-	function pr($var)
-	{
+	function pr($var) {
 		if (!Configure::read('debug')) {
 			return;
 		}
@@ -156,8 +152,7 @@ if (!function_exists('pj')) {
 	 * @see pr()
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/global-constants-and-functions.html#pj
 	 */
-	function pj($var)
-	{
+	function pj($var) {
 		if (!Configure::read('debug')) {
 			return;
 		}
@@ -180,8 +175,7 @@ if (!function_exists('env')) {
 	 * @return string|null Environment variable setting.
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/global-constants-and-functions.html#env
 	 */
-	function env($key, $default = null)
-	{
+	function env($key, $default = null) {
 		if ($key === 'HTTPS') {
 			if (isset($_SERVER['HTTPS'])) {
 				return (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');

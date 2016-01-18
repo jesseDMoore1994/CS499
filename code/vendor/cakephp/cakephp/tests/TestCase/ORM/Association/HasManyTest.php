@@ -32,8 +32,7 @@ use Cake\TestSuite\TestCase;
  * Tests HasMany class
  *
  */
-class HasManyTest extends TestCase
-{
+class HasManyTest extends TestCase {
 	/**
 	 * Fixtures
 	 *
@@ -46,8 +45,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->author = TableRegistry::get('Authors', [
 			'schema' => [
@@ -89,8 +87,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -100,8 +97,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testForeignKey()
-	{
+	public function testForeignKey() {
 		$this->author->table('schema.authors');
 		$assoc = new HasMany('Articles', [
 			'sourceTable' => $this->author
@@ -114,8 +110,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCanBeJoined()
-	{
+	public function testCanBeJoined() {
 		$assoc = new HasMany('Test');
 		$this->assertFalse($assoc->canBeJoined());
 	}
@@ -125,8 +120,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSort()
-	{
+	public function testSort() {
 		$assoc = new HasMany('Test');
 		$this->assertNull($assoc->sort());
 		$assoc->sort(['id' => 'ASC']);
@@ -138,8 +132,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequiresKeys()
-	{
+	public function testRequiresKeys() {
 		$assoc = new HasMany('Test');
 		$this->assertTrue($assoc->requiresKeys());
 
@@ -157,8 +150,7 @@ class HasManyTest extends TestCase
 	 * @expectedExceptionMessage Invalid strategy "join" was provided
 	 * @return void
 	 */
-	public function testStrategyFailure()
-	{
+	public function testStrategyFailure() {
 		$assoc = new HasMany('Test');
 		$assoc->strategy(HasMany::STRATEGY_JOIN);
 	}
@@ -168,8 +160,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEagerLoader()
-	{
+	public function testEagerLoader() {
 		$config = [
 			'sourceTable' => $this->author,
 			'targetTable' => $this->article,
@@ -209,8 +200,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEagerLoaderWithDefaults()
-	{
+	public function testEagerLoaderWithDefaults() {
 		$config = [
 			'sourceTable' => $this->author,
 			'targetTable' => $this->article,
@@ -243,8 +233,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEagerLoaderWithOverrides()
-	{
+	public function testEagerLoaderWithOverrides() {
 		$config = [
 			'sourceTable' => $this->author,
 			'targetTable' => $this->article,
@@ -300,8 +289,7 @@ class HasManyTest extends TestCase
 	 * @expectedExceptionMessage You are required to select the "Articles.author_id"
 	 * @return void
 	 */
-	public function testEagerLoaderFieldsException()
-	{
+	public function testEagerLoaderFieldsException() {
 		$config = [
 			'sourceTable' => $this->author,
 			'targetTable' => $this->article,
@@ -326,8 +314,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEagerLoaderWithQueryBuilder()
-	{
+	public function testEagerLoaderWithQueryBuilder() {
 		$config = [
 			'sourceTable' => $this->author,
 			'targetTable' => $this->article,
@@ -375,8 +362,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEagerLoaderMultipleKeys()
-	{
+	public function testEagerLoaderMultipleKeys() {
 		$config = [
 			'sourceTable' => $this->author,
 			'targetTable' => $this->article,
@@ -430,8 +416,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCascadeDelete()
-	{
+	public function testCascadeDelete() {
 		$config = [
 			'dependent' => true,
 			'sourceTable' => $this->author,
@@ -456,8 +441,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCascadeDeleteCallbacks()
-	{
+	public function testCascadeDeleteCallbacks() {
 		$articles = TableRegistry::get('Articles');
 		$config = [
 			'dependent' => true,
@@ -483,8 +467,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveAssociatedOnlyEntities()
-	{
+	public function testSaveAssociatedOnlyEntities() {
 		$mock = $this->getMock('Cake\ORM\Table', [], [], '', false);
 		$config = [
 			'sourceTable' => $this->author,
@@ -512,8 +495,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPropertyOption()
-	{
+	public function testPropertyOption() {
 		$config = ['propertyName' => 'thing_placeholder'];
 		$association = new hasMany('Thing', $config);
 		$this->assertEquals('thing_placeholder', $association->property());
@@ -524,8 +506,7 @@ class HasManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPropertyNoPlugin()
-	{
+	public function testPropertyNoPlugin() {
 		$mock = $this->getMock('Cake\ORM\Table', [], [], '', false);
 		$config = [
 			'sourceTable' => $this->author,
@@ -542,8 +523,7 @@ class HasManyTest extends TestCase
 	 * @param \Cake\ORM\Query $query The query to check.
 	 * @return void
 	 */
-	protected function assertJoin($expected, $query)
-	{
+	protected function assertJoin($expected, $query) {
 		if ($this->autoQuote) {
 			$driver = $query->connection()->driver();
 			$quoter = new IdentifierQuoter($driver);
@@ -564,8 +544,7 @@ class HasManyTest extends TestCase
 	 * @param \Cake\ORM\Query $query The query to check.
 	 * @return void
 	 */
-	protected function assertWhereClause($expected, $query)
-	{
+	protected function assertWhereClause($expected, $query) {
 		if ($this->autoQuote) {
 			$quoter = new IdentifierQuoter($query->connection()->driver());
 			$expected->traverse([$quoter, 'quoteExpression']);
@@ -580,8 +559,7 @@ class HasManyTest extends TestCase
 	 * @param \Cake\ORM\Query $query The query to check.
 	 * @return void
 	 */
-	protected function assertOrderClause($expected, $query)
-	{
+	protected function assertOrderClause($expected, $query) {
 		if ($this->autoQuote) {
 			$quoter = new IdentifierQuoter($query->connection()->driver());
 			$quoter->quoteExpression($expected);
@@ -596,8 +574,7 @@ class HasManyTest extends TestCase
 	 * @param \Cake\ORM\Query $query The query to check.
 	 * @return void
 	 */
-	protected function assertSelectClause($expected, $query)
-	{
+	protected function assertSelectClause($expected, $query) {
 		if ($this->autoQuote) {
 			$connection = $query->connection();
 			foreach ($expected as $key => $value) {

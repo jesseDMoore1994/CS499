@@ -20,6 +20,5 @@ namespace Company\TestPluginThree\Controller\Component;
 
 use Cake\Controller\Component;
 
-class SomethingComponent extends Component
-{
+class SomethingComponent extends Component {
 }

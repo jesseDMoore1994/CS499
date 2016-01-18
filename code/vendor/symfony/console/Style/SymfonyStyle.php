@@ -30,8 +30,7 @@ use Symfony\Component\Console\Question\Question;
  *
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-class SymfonyStyle extends OutputStyle
-{
+class SymfonyStyle extends OutputStyle {
 	const MAX_LINE_LENGTH = 120;
 
 	private $input;
@@ -44,8 +43,7 @@ class SymfonyStyle extends OutputStyle
 	 * @param InputInterface $input
 	 * @param OutputInterface $output
 	 */
-	public function __construct(InputInterface $input, OutputInterface $output)
-	{
+	public function __construct(InputInterface $input, OutputInterface $output) {
 		$this->input = $input;
 		$this->bufferedOutput = new BufferedOutput($output->getVerbosity(), false, clone $output->getFormatter());
 		// Windows cmd wraps lines as soon as the terminal width is reached, whether there are following chars or not.
@@ -63,8 +61,7 @@ class SymfonyStyle extends OutputStyle
 	 * @param string $prefix The prefix for the block
 	 * @param bool $padding Whether to add vertical padding
 	 */
-	public function block($messages, $type = null, $style = null, $prefix = ' ', $padding = false)
-	{
+	public function block($messages, $type = null, $style = null, $prefix = ' ', $padding = false) {
 		$this->autoPrependBlock();
 		$messages = is_array($messages) ? array_values($messages) : array($messages);
 		$lines = array();
@@ -105,8 +102,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function title($message)
-	{
+	public function title($message) {
 		$this->autoPrependBlock();
 		$this->writeln(array(
 			sprintf('<comment>%s</>', $message),
@@ -118,8 +114,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function section($message)
-	{
+	public function section($message) {
 		$this->autoPrependBlock();
 		$this->writeln(array(
 			sprintf('<comment>%s</>', $message),
@@ -131,8 +126,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function listing(array $elements)
-	{
+	public function listing(array $elements) {
 		$this->autoPrependText();
 		$elements = array_map(function ($element) {
 			return sprintf(' * %s', $element);
@@ -145,8 +139,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function text($message)
-	{
+	public function text($message) {
 		$this->autoPrependText();
 
 		$messages = is_array($message) ? array_values($message) : array($message);
@@ -158,8 +151,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function comment($message)
-	{
+	public function comment($message) {
 		$this->autoPrependText();
 
 		$messages = is_array($message) ? array_values($message) : array($message);
@@ -171,48 +163,42 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function success($message)
-	{
+	public function success($message) {
 		$this->block($message, 'OK', 'fg=black;bg=green', ' ', true);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function error($message)
-	{
+	public function error($message) {
 		$this->block($message, 'ERROR', 'fg=white;bg=red', ' ', true);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function warning($message)
-	{
+	public function warning($message) {
 		$this->block($message, 'WARNING', 'fg=white;bg=red', ' ', true);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function note($message)
-	{
+	public function note($message) {
 		$this->block($message, 'NOTE', 'fg=yellow', ' ! ');
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function caution($message)
-	{
+	public function caution($message) {
 		$this->block($message, 'CAUTION', 'fg=white;bg=red', ' ! ', true);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function table(array $headers, array $rows)
-	{
+	public function table(array $headers, array $rows) {
 		$headers = array_map(function ($value) {
 			return sprintf('<info>%s</>', $value);
 		}, $headers);
@@ -229,8 +215,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function ask($question, $default = null, $validator = null)
-	{
+	public function ask($question, $default = null, $validator = null) {
 		$question = new Question($question, $default);
 		$question->setValidator($validator);
 
@@ -240,8 +225,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function askHidden($question, $validator = null)
-	{
+	public function askHidden($question, $validator = null) {
 		$question = new Question($question);
 
 		$question->setHidden(true);
@@ -253,16 +237,14 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function confirm($question, $default = true)
-	{
+	public function confirm($question, $default = true) {
 		return $this->askQuestion(new ConfirmationQuestion($question, $default));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function choice($question, array $choices, $default = null)
-	{
+	public function choice($question, array $choices, $default = null) {
 		if (null !== $default) {
 			$values = array_flip($choices);
 			$default = $values[$default];
@@ -274,8 +256,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function progressStart($max = 0)
-	{
+	public function progressStart($max = 0) {
 		$this->progressBar = $this->createProgressBar($max);
 		$this->progressBar->start();
 	}
@@ -283,16 +264,14 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function progressAdvance($step = 1)
-	{
+	public function progressAdvance($step = 1) {
 		$this->getProgressBar()->advance($step);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function progressFinish()
-	{
+	public function progressFinish() {
 		$this->getProgressBar()->finish();
 		$this->newLine(2);
 		$this->progressBar = null;
@@ -301,8 +280,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function createProgressBar($max = 0)
-	{
+	public function createProgressBar($max = 0) {
 		$progressBar = parent::createProgressBar($max);
 
 		if ('\\' !== DIRECTORY_SEPARATOR) {
@@ -319,8 +297,7 @@ class SymfonyStyle extends OutputStyle
 	 *
 	 * @return string
 	 */
-	public function askQuestion(Question $question)
-	{
+	public function askQuestion(Question $question) {
 		if ($this->input->isInteractive()) {
 			$this->autoPrependBlock();
 		}
@@ -342,8 +319,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function writeln($messages, $type = self::OUTPUT_NORMAL)
-	{
+	public function writeln($messages, $type = self::OUTPUT_NORMAL) {
 		parent::writeln($messages, $type);
 		$this->bufferedOutput->writeln($this->reduceBuffer($messages), $type);
 	}
@@ -351,8 +327,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function write($messages, $newline = false, $type = self::OUTPUT_NORMAL)
-	{
+	public function write($messages, $newline = false, $type = self::OUTPUT_NORMAL) {
 		parent::write($messages, $newline, $type);
 		$this->bufferedOutput->write($this->reduceBuffer($messages), $newline, $type);
 	}
@@ -360,8 +335,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * {@inheritdoc}
 	 */
-	public function newLine($count = 1)
-	{
+	public function newLine($count = 1) {
 		parent::newLine($count);
 		$this->bufferedOutput->write(str_repeat("\n", $count));
 	}
@@ -369,8 +343,7 @@ class SymfonyStyle extends OutputStyle
 	/**
 	 * @return ProgressBar
 	 */
-	private function getProgressBar()
-	{
+	private function getProgressBar() {
 		if (!$this->progressBar) {
 			throw new RuntimeException('The ProgressBar is not started.');
 		}
@@ -378,16 +351,14 @@ class SymfonyStyle extends OutputStyle
 		return $this->progressBar;
 	}
 
-	private function getTerminalWidth()
-	{
+	private function getTerminalWidth() {
 		$application = new Application();
 		$dimensions = $application->getTerminalDimensions();
 
 		return $dimensions[0] ?: self::MAX_LINE_LENGTH;
 	}
 
-	private function autoPrependBlock()
-	{
+	private function autoPrependBlock() {
 		$chars = substr(str_replace(PHP_EOL, "\n", $this->bufferedOutput->fetch()), -2);
 
 		if (!isset($chars[0])) {
@@ -397,8 +368,7 @@ class SymfonyStyle extends OutputStyle
 		$this->newLine(2 - substr_count($chars, "\n"));
 	}
 
-	private function autoPrependText()
-	{
+	private function autoPrependText() {
 		$fetched = $this->bufferedOutput->fetch();
 		//Prepend new line if last char isn't EOL:
 		if ("\n" !== substr($fetched, -1)) {
@@ -406,8 +376,7 @@ class SymfonyStyle extends OutputStyle
 		}
 	}
 
-	private function reduceBuffer($messages)
-	{
+	private function reduceBuffer($messages) {
 		// We need to know if the two last chars are PHP_EOL
 		// Preserve the last 4 chars inserted (PHP_EOL on windows is two chars) in the history buffer
 		return array_map(function ($value) {

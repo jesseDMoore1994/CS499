@@ -15,19 +15,16 @@ use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class InputDefinitionTest extends \PHPUnit_Framework_TestCase
-{
+class InputDefinitionTest extends \PHPUnit_Framework_TestCase {
 	protected static $fixtures;
 
 	protected $foo, $bar, $foo1, $foo2;
 
-	public static function setUpBeforeClass()
-	{
+	public static function setUpBeforeClass() {
 		self::$fixtures = __DIR__ . '/../Fixtures/';
 	}
 
-	public function testConstructorArguments()
-	{
+	public function testConstructorArguments() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -37,8 +34,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getArguments(), '__construct() takes an array of InputArgument objects as its first argument');
 	}
 
-	public function testConstructorOptions()
-	{
+	public function testConstructorOptions() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition();
@@ -48,8 +44,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getOptions(), '__construct() takes an array of InputOption objects as its first argument');
 	}
 
-	public function testSetArguments()
-	{
+	public function testSetArguments() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -60,8 +55,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('bar' => $this->bar), $definition->getArguments(), '->setArguments() clears all InputArgument objects');
 	}
 
-	public function testAddArguments()
-	{
+	public function testAddArguments() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -71,8 +65,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getArguments(), '->addArguments() does not clear existing InputArgument objects');
 	}
 
-	public function testAddArgument()
-	{
+	public function testAddArgument() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -86,8 +79,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \LogicException
 	 * @expectedExceptionMessage An argument with name "foo" already exists.
 	 */
-	public function testArgumentsMustHaveDifferentNames()
-	{
+	public function testArgumentsMustHaveDifferentNames() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -99,8 +91,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \LogicException
 	 * @expectedExceptionMessage Cannot add an argument after an array argument.
 	 */
-	public function testArrayArgumentHasToBeLast()
-	{
+	public function testArrayArgumentHasToBeLast() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -112,8 +103,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \LogicException
 	 * @expectedExceptionMessage Cannot add a required argument after an optional one.
 	 */
-	public function testRequiredArgumentCannotFollowAnOptionalOne()
-	{
+	public function testRequiredArgumentCannotFollowAnOptionalOne() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -121,8 +111,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$definition->addArgument($this->foo2);
 	}
 
-	public function testGetArgument()
-	{
+	public function testGetArgument() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -134,8 +123,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \InvalidArgumentException
 	 * @expectedExceptionMessage The "bar" argument does not exist.
 	 */
-	public function testGetInvalidArgument()
-	{
+	public function testGetInvalidArgument() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -143,8 +131,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$definition->getArgument('bar');
 	}
 
-	public function testHasArgument()
-	{
+	public function testHasArgument() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -154,8 +141,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($definition->hasArgument('bar'), '->hasArgument() returns false if a InputArgument exists for the given name');
 	}
 
-	public function testGetArgumentRequiredCount()
-	{
+	public function testGetArgumentRequiredCount() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -165,8 +151,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(1, $definition->getArgumentRequiredCount(), '->getArgumentRequiredCount() returns the number of required arguments');
 	}
 
-	public function testGetArgumentCount()
-	{
+	public function testGetArgumentCount() {
 		$this->initializeArguments();
 
 		$definition = new InputDefinition();
@@ -176,8 +161,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(2, $definition->getArgumentCount(), '->getArgumentCount() returns the number of arguments');
 	}
 
-	public function testGetArgumentDefaults()
-	{
+	public function testGetArgumentDefaults() {
 		$definition = new InputDefinition(array(
 			new InputArgument('foo1', InputArgument::OPTIONAL),
 			new InputArgument('foo2', InputArgument::OPTIONAL, '', 'default'),
@@ -192,8 +176,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('foo4' => array(1, 2)), $definition->getArgumentDefaults(), '->getArgumentDefaults() return the default values for each argument');
 	}
 
-	public function testSetOptions()
-	{
+	public function testSetOptions() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->foo));
@@ -206,8 +189,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \InvalidArgumentException
 	 * @expectedExceptionMessage The "-f" option does not exist.
 	 */
-	public function testSetOptionsClearsOptions()
-	{
+	public function testSetOptionsClearsOptions() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->foo));
@@ -215,8 +197,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$definition->getOptionForShortcut('f');
 	}
 
-	public function testAddOptions()
-	{
+	public function testAddOptions() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->foo));
@@ -225,8 +206,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('foo' => $this->foo, 'bar' => $this->bar), $definition->getOptions(), '->addOptions() does not clear existing InputOption objects');
 	}
 
-	public function testAddOption()
-	{
+	public function testAddOption() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition();
@@ -240,8 +220,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \LogicException
 	 * @expectedExceptionMessage An option named "foo" already exists.
 	 */
-	public function testAddDuplicateOption()
-	{
+	public function testAddDuplicateOption() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition();
@@ -253,8 +232,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \LogicException
 	 * @expectedExceptionMessage An option with shortcut "f" already exists.
 	 */
-	public function testAddDuplicateShortcutOption()
-	{
+	public function testAddDuplicateShortcutOption() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition();
@@ -262,8 +240,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$definition->addOption($this->foo1);
 	}
 
-	public function testGetOption()
-	{
+	public function testGetOption() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->foo));
@@ -274,16 +251,14 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \InvalidArgumentException
 	 * @expectedExceptionMessage The "--bar" option does not exist.
 	 */
-	public function testGetInvalidOption()
-	{
+	public function testGetInvalidOption() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->foo));
 		$definition->getOption('bar');
 	}
 
-	public function testHasOption()
-	{
+	public function testHasOption() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->foo));
@@ -291,8 +266,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($definition->hasOption('bar'), '->hasOption() returns false if a InputOption exists for the given name');
 	}
 
-	public function testHasShortcut()
-	{
+	public function testHasShortcut() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->foo));
@@ -300,16 +274,14 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($definition->hasShortcut('b'), '->hasShortcut() returns false if a InputOption exists for the given shortcut');
 	}
 
-	public function testGetOptionForShortcut()
-	{
+	public function testGetOptionForShortcut() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->foo));
 		$this->assertEquals($this->foo, $definition->getOptionForShortcut('f'), '->getOptionForShortcut() returns a InputOption by its shortcut');
 	}
 
-	public function testGetOptionForMultiShortcut()
-	{
+	public function testGetOptionForMultiShortcut() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->multi));
@@ -321,16 +293,14 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \InvalidArgumentException
 	 * @expectedExceptionMessage The "-l" option does not exist.
 	 */
-	public function testGetOptionForInvalidShortcut()
-	{
+	public function testGetOptionForInvalidShortcut() {
 		$this->initializeOptions();
 
 		$definition = new InputDefinition(array($this->foo));
 		$definition->getOptionForShortcut('l');
 	}
 
-	public function testGetOptionDefaults()
-	{
+	public function testGetOptionDefaults() {
 		$definition = new InputDefinition(array(
 			new InputOption('foo1', null, InputOption::VALUE_NONE),
 			new InputOption('foo2', null, InputOption::VALUE_REQUIRED),
@@ -355,13 +325,11 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getGetSynopsisData
 	 */
-	public function testGetSynopsis(InputDefinition $definition, $expectedSynopsis, $message = null)
-	{
+	public function testGetSynopsis(InputDefinition $definition, $expectedSynopsis, $message = null) {
 		$this->assertEquals($expectedSynopsis, $definition->getSynopsis(), $message ? '->getSynopsis() ' . $message : '');
 	}
 
-	public function getGetSynopsisData()
-	{
+	public function getGetSynopsisData() {
 		return array(
 			array(new InputDefinition(array(new InputOption('foo'))), '[--foo]', 'puts optional options in square brackets'),
 			array(new InputDefinition(array(new InputOption('foo', 'f'))), '[-f|--foo]', 'separates shortcut with a pipe'),
@@ -377,22 +345,19 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testGetShortSynopsis()
-	{
+	public function testGetShortSynopsis() {
 		$definition = new InputDefinition(array(new InputOption('foo'), new InputOption('bar'), new InputArgument('cat')));
 		$this->assertEquals('[options] [--] [<cat>]', $definition->getSynopsis(true), '->getSynopsis(true) groups options in [options]');
 	}
 
-	protected function initializeArguments()
-	{
+	protected function initializeArguments() {
 		$this->foo = new InputArgument('foo');
 		$this->bar = new InputArgument('bar');
 		$this->foo1 = new InputArgument('foo');
 		$this->foo2 = new InputArgument('foo2', InputArgument::REQUIRED);
 	}
 
-	protected function initializeOptions()
-	{
+	protected function initializeOptions() {
 		$this->foo = new InputOption('foo', 'f');
 		$this->bar = new InputOption('bar', 'b');
 		$this->foo1 = new InputOption('fooBis', 'f');

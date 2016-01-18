@@ -19,8 +19,7 @@ namespace Cake\Database\Expression;
  *
  * @internal
  */
-trait FieldTrait
-{
+trait FieldTrait {
 
 	/**
 	 * The field name or expression to be used in the left hand side of the operator
@@ -35,8 +34,7 @@ trait FieldTrait
 	 * @param string $field The field to compare with.
 	 * @return void
 	 */
-	public function setField($field)
-	{
+	public function setField($field) {
 		$this->_field = $field;
 	}
 
@@ -45,8 +43,7 @@ trait FieldTrait
 	 *
 	 * @return string|\Cake\Database\ExpressionInterface
 	 */
-	public function getField()
-	{
+	public function getField() {
 		return $this->_field;
 	}
 }

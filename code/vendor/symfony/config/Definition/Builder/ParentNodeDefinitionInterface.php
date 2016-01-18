@@ -16,8 +16,7 @@ namespace Symfony\Component\Config\Definition\Builder;
  *
  * @author Victor Berchet <victor@suumit.com>
  */
-interface ParentNodeDefinitionInterface
-{
+interface ParentNodeDefinitionInterface {
 	public function children();
 
 	public function append(NodeDefinition $node);

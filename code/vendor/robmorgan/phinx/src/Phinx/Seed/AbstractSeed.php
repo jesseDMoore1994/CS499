@@ -42,8 +42,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Rob Morgan <robbym@gmail.com>
  */
-abstract class AbstractSeed implements SeedInterface
-{
+abstract class AbstractSeed implements SeedInterface {
 	/**
 	 * @var AdapterInterface
 	 */
@@ -59,8 +58,7 @@ abstract class AbstractSeed implements SeedInterface
 	 *
 	 * @return void
 	 */
-	final public function __construct()
-	{
+	final public function __construct() {
 		$this->init();
 	}
 
@@ -69,22 +67,19 @@ abstract class AbstractSeed implements SeedInterface
 	 *
 	 * @return void
 	 */
-	protected function init()
-	{
+	protected function init() {
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function run()
-	{
+	public function run() {
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setAdapter(AdapterInterface $adapter)
-	{
+	public function setAdapter(AdapterInterface $adapter) {
 		$this->adapter = $adapter;
 		return $this;
 	}
@@ -92,16 +87,14 @@ abstract class AbstractSeed implements SeedInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getAdapter()
-	{
+	public function getAdapter() {
 		return $this->adapter;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setOutput(OutputInterface $output)
-	{
+	public function setOutput(OutputInterface $output) {
 		$this->output = $output;
 		return $this;
 	}
@@ -109,56 +102,49 @@ abstract class AbstractSeed implements SeedInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getOutput()
-	{
+	public function getOutput() {
 		return $this->output;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return get_class($this);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function execute($sql)
-	{
+	public function execute($sql) {
 		return $this->getAdapter()->execute($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function query($sql)
-	{
+	public function query($sql) {
 		return $this->getAdapter()->query($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function fetchRow($sql)
-	{
+	public function fetchRow($sql) {
 		return $this->getAdapter()->fetchRow($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function fetchAll($sql)
-	{
+	public function fetchAll($sql) {
 		return $this->getAdapter()->fetchAll($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function insert($table, $data)
-	{
+	public function insert($table, $data) {
 		// convert to table object
 		if (is_string($table)) {
 			$table = new Table($table, array(), $this->getAdapter());
@@ -169,16 +155,14 @@ abstract class AbstractSeed implements SeedInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasTable($tableName)
-	{
+	public function hasTable($tableName) {
 		return $this->getAdapter()->hasTable($tableName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function table($tableName, $options = array())
-	{
+	public function table($tableName, $options = array()) {
 		return new Table($tableName, $options, $this->getAdapter());
 	}
 }

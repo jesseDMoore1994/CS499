@@ -33,8 +33,7 @@ use Cake\Event\EventDispatcherInterface;
  * If the including class also implements events the `Model.buildValidator` event
  * will be triggered when validators are created.
  */
-trait ValidatorAwareTrait
-{
+trait ValidatorAwareTrait {
 
 	/**
 	 * Validator class.
@@ -92,8 +91,7 @@ trait ValidatorAwareTrait
 	 *   use null to get a validator.
 	 * @return \Cake\Validation\Validator
 	 */
-	public function validator($name = null, Validator $validator = null)
-	{
+	public function validator($name = null, Validator $validator = null) {
 		if ($name === null) {
 			$name = self::DEFAULT_VALIDATOR;
 		}
@@ -121,8 +119,7 @@ trait ValidatorAwareTrait
 	 * add some rules to it.
 	 * @return \Cake\Validation\Validator
 	 */
-	public function validationDefault(Validator $validator)
-	{
+	public function validationDefault(Validator $validator) {
 		return $validator;
 	}
 }

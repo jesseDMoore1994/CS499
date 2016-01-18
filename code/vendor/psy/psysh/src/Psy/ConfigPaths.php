@@ -16,8 +16,7 @@ use XdgBaseDir\Xdg;
 /**
  * A Psy Shell configuration path helper.
  */
-class ConfigPaths
-{
+class ConfigPaths {
 	/**
 	 * Get potential config directory paths.
 	 *
@@ -28,8 +27,7 @@ class ConfigPaths
 	 *
 	 * @return string[]
 	 */
-	public static function getConfigDirs()
-	{
+	public static function getConfigDirs() {
 		$xdg = new Xdg();
 
 		return self::getDirNames($xdg->getConfigDirs());
@@ -45,8 +43,7 @@ class ConfigPaths
 	 *
 	 * @return string[]
 	 */
-	public static function getHomeConfigDirs()
-	{
+	public static function getHomeConfigDirs() {
 		$xdg = new Xdg();
 
 		return self::getDirNames(array($xdg->getHomeConfigDir()));
@@ -64,8 +61,7 @@ class ConfigPaths
 	 *
 	 * @return string
 	 */
-	public static function getCurrentConfigDir()
-	{
+	public static function getCurrentConfigDir() {
 		$configDirs = self::getHomeConfigDirs();
 		foreach ($configDirs as $configDir) {
 			if (@is_dir($configDir)) {
@@ -84,8 +80,7 @@ class ConfigPaths
 	 *
 	 * @return string[]
 	 */
-	public static function getConfigFiles(array $names, $configDir = null)
-	{
+	public static function getConfigFiles(array $names, $configDir = null) {
 		$dirs = ($configDir === null) ? self::getConfigDirs() : array($configDir);
 
 		return self::getRealFiles($dirs, $names);
@@ -103,8 +98,7 @@ class ConfigPaths
 	 *
 	 * @return string[]
 	 */
-	public static function getDataDirs()
-	{
+	public static function getDataDirs() {
 		$xdg = new Xdg();
 
 		return self::getDirNames($xdg->getDataDirs());
@@ -118,8 +112,7 @@ class ConfigPaths
 	 *
 	 * @return string[]
 	 */
-	public static function getDataFiles(array $names, $dataDir = null)
-	{
+	public static function getDataFiles(array $names, $dataDir = null) {
 		$dirs = ($dataDir === null) ? self::getDataDirs() : array($dataDir);
 
 		return self::getRealFiles($dirs, $names);
@@ -132,15 +125,13 @@ class ConfigPaths
 	 *
 	 * @return string
 	 */
-	public static function getRuntimeDir()
-	{
+	public static function getRuntimeDir() {
 		$xdg = new Xdg();
 
 		return $xdg->getRuntimeDir(false) . '/psysh';
 	}
 
-	private static function getDirNames(array $baseDirs)
-	{
+	private static function getDirNames(array $baseDirs) {
 		$dirs = array_map(function ($dir) {
 			return strtr($dir, '\\', '/') . '/psysh';
 		}, $baseDirs);
@@ -166,8 +157,7 @@ class ConfigPaths
 		return $dirs;
 	}
 
-	private static function getRealFiles(array $dirNames, array $fileNames)
-	{
+	private static function getRealFiles(array $dirNames, array $fileNames) {
 		$files = array();
 		foreach ($dirNames as $dir) {
 			foreach ($fileNames as $name) {

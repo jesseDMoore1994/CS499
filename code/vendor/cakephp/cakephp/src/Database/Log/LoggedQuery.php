@@ -20,8 +20,7 @@ namespace Cake\Database\Log;
  *
  * @internal
  */
-class LoggedQuery
-{
+class LoggedQuery {
 
 	/**
 	 * Query string that was executed
@@ -63,8 +62,7 @@ class LoggedQuery
 	 *
 	 * @return string
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		return $this->query;
 	}
 }

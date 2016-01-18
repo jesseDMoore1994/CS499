@@ -25,8 +25,7 @@ use RecursiveIteratorIterator;
  *
  * @link http://book.cakephp.org/3.0/en/core-libraries/file-folder.html#folder-api
  */
-class Folder
-{
+class Folder {
 
 	/**
 	 * Default scheme for Folder::copy
@@ -110,8 +109,7 @@ class Folder
 	 * @param bool $create Create folder if not found
 	 * @param int|bool $mode Mode (CHMOD) to apply to created folder, false to ignore
 	 */
-	public function __construct($path = null, $create = false, $mode = false)
-	{
+	public function __construct($path = null, $create = false, $mode = false) {
 		if (empty($path)) {
 			$path = TMP;
 		}
@@ -135,8 +133,7 @@ class Folder
 	 *
 	 * @return string Current path
 	 */
-	public function pwd()
-	{
+	public function pwd() {
 		return $this->path;
 	}
 
@@ -146,8 +143,7 @@ class Folder
 	 * @param string $path Path to the directory to change to
 	 * @return string The new path. Returns false on failure
 	 */
-	public function cd($path)
-	{
+	public function cd($path) {
 		$path = $this->realpath($path);
 		if (is_dir($path)) {
 			return $this->path = $path;
@@ -165,8 +161,7 @@ class Folder
 	 * @param bool $fullPath True returns the full path
 	 * @return mixed Contents of current directory as an array, an empty array on failure
 	 */
-	public function read($sort = true, $exceptions = false, $fullPath = false)
-	{
+	public function read($sort = true, $exceptions = false, $fullPath = false) {
 		$dirs = $files = [];
 
 		if (!$this->pwd()) {
@@ -214,8 +209,7 @@ class Folder
 	 * @param bool $sort Whether results should be sorted.
 	 * @return array Files that match given pattern
 	 */
-	public function find($regexpPattern = '.*', $sort = false)
-	{
+	public function find($regexpPattern = '.*', $sort = false) {
 		list(, $files) = $this->read($sort);
 		return array_values(preg_grep('/^' . $regexpPattern . '$/i', $files));
 	}
@@ -227,8 +221,7 @@ class Folder
 	 * @param bool $sort Whether results should be sorted.
 	 * @return array Files matching $pattern
 	 */
-	public function findRecursive($pattern = '.*', $sort = false)
-	{
+	public function findRecursive($pattern = '.*', $sort = false) {
 		if (!$this->pwd()) {
 			return [];
 		}
@@ -245,8 +238,7 @@ class Folder
 	 * @param bool $sort Whether results should be sorted.
 	 * @return array Files matching pattern
 	 */
-	protected function _findRecursive($pattern, $sort = false)
-	{
+	protected function _findRecursive($pattern, $sort = false) {
 		list($dirs, $files) = $this->read($sort);
 		$found = [];
 
@@ -270,8 +262,7 @@ class Folder
 	 * @param string $path Path to check
 	 * @return bool true if windows path, false otherwise
 	 */
-	public static function isWindowsPath($path)
-	{
+	public static function isWindowsPath($path) {
 		return (preg_match('/^[A-Z]:\\\\/i', $path) || substr($path, 0, 2) === '\\\\');
 	}
 
@@ -281,8 +272,7 @@ class Folder
 	 * @param string $path Path to check
 	 * @return bool true if path is absolute.
 	 */
-	public static function isAbsolute($path)
-	{
+	public static function isAbsolute($path) {
 		if (empty($path)) {
 			return false;
 		}
@@ -298,8 +288,7 @@ class Folder
 	 * @param string $path Path to check
 	 * @return bool True if path is registered stream wrapper.
 	 */
-	public static function isRegisteredStreamWrapper($path)
-	{
+	public static function isRegisteredStreamWrapper($path) {
 		return preg_match('/^[A-Z]+(?=:\/\/)/i', $path, $matches) &&
 		in_array($matches[0], stream_get_wrappers());
 	}
@@ -310,8 +299,7 @@ class Folder
 	 * @param string $path Path to check
 	 * @return string Set of slashes ("\\" or "/")
 	 */
-	public static function normalizePath($path)
-	{
+	public static function normalizePath($path) {
 		return Folder::correctSlashFor($path);
 	}
 
@@ -321,8 +309,7 @@ class Folder
 	 * @param string $path Path to check
 	 * @return string Set of slashes ("\\" or "/")
 	 */
-	public static function correctSlashFor($path)
-	{
+	public static function correctSlashFor($path) {
 		return (Folder::isWindowsPath($path)) ? '\\' : '/';
 	}
 
@@ -332,8 +319,7 @@ class Folder
 	 * @param string $path Path to check
 	 * @return string Path with ending slash
 	 */
-	public static function slashTerm($path)
-	{
+	public static function slashTerm($path) {
 		if (Folder::isSlashTerm($path)) {
 			return $path;
 		}
@@ -347,8 +333,7 @@ class Folder
 	 * @param string|array $element Element to add at end of path
 	 * @return string Combined path
 	 */
-	public static function addPathElement($path, $element)
-	{
+	public static function addPathElement($path, $element) {
 		$element = (array)$element;
 		array_unshift($element, rtrim($path, DIRECTORY_SEPARATOR));
 		return implode(DIRECTORY_SEPARATOR, $element);
@@ -360,8 +345,7 @@ class Folder
 	 * @param string $path The path to check.
 	 * @return bool
 	 */
-	public function inCakePath($path = '')
-	{
+	public function inCakePath($path = '') {
 		$dir = substr(Folder::slashTerm(ROOT), 0, -1);
 		$newdir = $dir . $path;
 
@@ -375,8 +359,7 @@ class Folder
 	 * @param bool $reverse Reverse the search, check that pwd() resides within $path.
 	 * @return bool
 	 */
-	public function inPath($path = '', $reverse = false)
-	{
+	public function inPath($path = '', $reverse = false) {
 		$dir = Folder::slashTerm($path);
 		$current = Folder::slashTerm($this->pwd());
 
@@ -397,8 +380,7 @@ class Folder
 	 * @param array $exceptions Array of files, directories to skip.
 	 * @return bool Success.
 	 */
-	public function chmod($path, $mode = false, $recursive = true, array $exceptions = [])
-	{
+	public function chmod($path, $mode = false, $recursive = true, array $exceptions = []) {
 		if (!$mode) {
 			$mode = $this->mode;
 		}
@@ -453,8 +435,7 @@ class Folder
 	 * @param string|null $type either 'file' or 'dir'. Null returns both files and directories
 	 * @return mixed array of nested directories and files in each directory
 	 */
-	public function tree($path = null, $exceptions = false, $type = null)
-	{
+	public function tree($path = null, $exceptions = false, $type = null) {
 		if (!$path) {
 			$path = $this->path;
 		}
@@ -520,8 +501,7 @@ class Folder
 	 * @param int $mode octal value 0755
 	 * @return bool Returns TRUE on success, FALSE on failure
 	 */
-	public function create($pathname, $mode = false)
-	{
+	public function create($pathname, $mode = false) {
 		if (is_dir($pathname) || empty($pathname)) {
 			return true;
 		}
@@ -562,8 +542,7 @@ class Folder
 	 *
 	 * @return int size in bytes of current folder
 	 */
-	public function dirsize()
-	{
+	public function dirsize() {
 		$size = 0;
 		$directory = Folder::slashTerm($this->path);
 		$stack = [$directory];
@@ -599,8 +578,7 @@ class Folder
 	 * @param string|null $path Path of directory to delete
 	 * @return bool Success
 	 */
-	public function delete($path = null)
-	{
+	public function delete($path = null) {
 		if (!$path) {
 			$path = $this->pwd();
 		}
@@ -666,8 +644,7 @@ class Folder
 	 * @param array|string $options Either an array of options (see above) or a string of the destination directory.
 	 * @return bool Success.
 	 */
-	public function copy($options)
-	{
+	public function copy($options) {
 		if (!$this->pwd()) {
 			return false;
 		}
@@ -771,8 +748,7 @@ class Folder
 	 * @param array|string $options (to, from, chmod, skip, scheme)
 	 * @return bool Success
 	 */
-	public function move($options)
-	{
+	public function move($options) {
 		$to = null;
 		if (is_string($options)) {
 			$to = $options;
@@ -794,8 +770,7 @@ class Folder
 	 * @param bool $reset Reset message stack after reading
 	 * @return array
 	 */
-	public function messages($reset = true)
-	{
+	public function messages($reset = true) {
 		$messages = $this->_messages;
 		if ($reset) {
 			$this->_messages = [];
@@ -809,8 +784,7 @@ class Folder
 	 * @param bool $reset Reset error stack after reading
 	 * @return array
 	 */
-	public function errors($reset = true)
-	{
+	public function errors($reset = true) {
 		$errors = $this->_errors;
 		if ($reset) {
 			$this->_errors = [];
@@ -824,8 +798,7 @@ class Folder
 	 * @param string $path Path to resolve
 	 * @return string The resolved path
 	 */
-	public function realpath($path)
-	{
+	public function realpath($path) {
 		if (strpos($path, '..') === false) {
 			if (!Folder::isAbsolute($path)) {
 				$path = Folder::addPathElement($this->path, $path);
@@ -864,8 +837,7 @@ class Folder
 	 * @param string $path Path to check
 	 * @return bool true if path ends with slash, false otherwise
 	 */
-	public static function isSlashTerm($path)
-	{
+	public static function isSlashTerm($path) {
 		$lastChar = $path[strlen($path) - 1];
 		return $lastChar === '/' || $lastChar === '\\';
 	}

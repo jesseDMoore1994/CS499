@@ -4,27 +4,23 @@
  * @license     MIT License https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt
  * @link        http://mobiledetect.net
  */
-class VendorsTest extends PHPUnit_Framework_TestCase
-{
+class VendorsTest extends PHPUnit_Framework_TestCase {
 	protected $detect;
 	protected static $items;
 
-	public function setUp()
-	{
+	public function setUp() {
 		$this->detect = new Mobile_Detect;
 
 	}
 
-	public static function setUpBeforeClass()
-	{
+	public static function setUpBeforeClass() {
 		//this method could be called multiple times
 		if (!self::$items) {
 			self::$items = include dirname(__FILE__) . '/UA_List.inc.php';
 		}
 	}
 
-	public function testisMobileIsTablet()
-	{
+	public function testisMobileIsTablet() {
 		foreach (self::$items as $brand => $deviceArr) {
 			foreach ($deviceArr as $userAgent => $conditions) {
 				if (!is_array($conditions)) {
@@ -64,8 +60,7 @@ class VendorsTest extends PHPUnit_Framework_TestCase
 
 	}
 
-	public function testVersion()
-	{
+	public function testVersion() {
 		foreach (self::$items as $brand => $deviceArr) {
 
 			foreach ($deviceArr as $userAgent => $conditions) {

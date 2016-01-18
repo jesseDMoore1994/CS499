@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
 /**
  * AssociationCollection test case.
  */
-class AssociationCollectionTest extends TestCase
-{
+class AssociationCollectionTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->associations = new AssociationCollection();
 	}
@@ -42,8 +40,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddHasRemoveAndGet()
-	{
+	public function testAddHasRemoveAndGet() {
 		$this->assertFalse($this->associations->has('users'));
 		$this->assertFalse($this->associations->has('Users'));
 
@@ -71,8 +68,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemoveAll()
-	{
+	public function testRemoveAll() {
 		$this->assertEmpty($this->associations->keys());
 
 		$belongsTo = new BelongsTo('');
@@ -89,8 +85,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetByProperty()
-	{
+	public function testGetByProperty() {
 		$belongsTo = new BelongsTo('Users', []);
 		$this->assertEquals('user', $belongsTo->property());
 		$this->associations->add('Users', $belongsTo);
@@ -104,8 +99,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddHasRemoveGetWithPlugin()
-	{
+	public function testAddHasRemoveGetWithPlugin() {
 		$this->assertFalse($this->associations->has('Photos.Photos'));
 		$this->assertFalse($this->associations->has('Photos'));
 
@@ -120,8 +114,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testKeys()
-	{
+	public function testKeys() {
 		$belongsTo = new BelongsTo('');
 		$this->associations->add('Users', $belongsTo);
 		$this->associations->add('Categories', $belongsTo);
@@ -136,8 +129,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testType()
-	{
+	public function testType() {
 		$belongsTo = new BelongsTo('');
 		$this->associations->add('Users', $belongsTo);
 
@@ -158,8 +150,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCascadeDelete()
-	{
+	public function testCascadeDelete() {
 		$mockOne = $this->getMock('Cake\ORM\Association\BelongsTo', [], ['']);
 		$mockTwo = $this->getMock('Cake\ORM\Association\HasMany', [], ['']);
 
@@ -184,8 +175,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveParents()
-	{
+	public function testSaveParents() {
 		$table = $this->getMock('Cake\ORM\Table', [], [[]]);
 		$mockOne = $this->getMock(
 			'Cake\ORM\Association\BelongsTo',
@@ -233,8 +223,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveParentsFiltered()
-	{
+	public function testSaveParentsFiltered() {
 		$table = $this->getMock('Cake\ORM\Table', [], [[]]);
 		$mockOne = $this->getMock(
 			'Cake\ORM\Association\BelongsTo',
@@ -282,8 +271,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveChildrenFiltered()
-	{
+	public function testSaveChildrenFiltered() {
 		$table = $this->getMock('Cake\ORM\Table', [], [[]]);
 		$mockOne = $this->getMock(
 			'Cake\ORM\Association\HasMany',
@@ -332,8 +320,7 @@ class AssociationCollectionTest extends TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @expectedExceptionMessage Cannot save Profiles, it is not associated to Users
 	 */
-	public function testErrorOnUnknownAlias()
-	{
+	public function testErrorOnUnknownAlias() {
 		$table = $this->getMock(
 			'Cake\ORM\Table',
 			['save'],
@@ -356,8 +343,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNormalizeKeys()
-	{
+	public function testNormalizeKeys() {
 		$this->assertSame([], $this->associations->normalizeKeys([]));
 		$this->assertSame([], $this->associations->normalizeKeys(false));
 
@@ -377,8 +363,7 @@ class AssociationCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssociationsCanBeIterated()
-	{
+	public function testAssociationsCanBeIterated() {
 		$belongsTo = new BelongsTo('');
 		$this->associations->add('Users', $belongsTo);
 		$belongsToMany = new BelongsToMany('');

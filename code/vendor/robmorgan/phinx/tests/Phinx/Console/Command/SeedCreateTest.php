@@ -7,12 +7,10 @@ use Symfony\Component\Console\Output\StreamOutput;
 use Phinx\Config\Config;
 use Phinx\Console\Command\SeedCreate;
 
-class SeedCreateTest extends \PHPUnit_Framework_TestCase
-{
+class SeedCreateTest extends \PHPUnit_Framework_TestCase {
 	protected $config = array();
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->config = new Config(array(
 			'paths' => array(
 				'migrations' => sys_get_temp_dir(),
@@ -37,8 +35,7 @@ class SeedCreateTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @expectedExceptionMessage The file "MyDuplicateSeeder.php" already exists
 	 */
-	public function testExecute()
-	{
+	public function testExecute() {
 		$application = new \Phinx\Console\PhinxApplication('testing');
 		$application->add(new SeedCreate());
 
@@ -62,8 +59,7 @@ class SeedCreateTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @expectedExceptionMessage The seed class name "badseedname" is invalid. Please use CamelCase format
 	 */
-	public function testExecuteWithInvalidClassName()
-	{
+	public function testExecuteWithInvalidClassName() {
 		$application = new \Phinx\Console\PhinxApplication('testing');
 		$application->add(new SeedCreate());
 

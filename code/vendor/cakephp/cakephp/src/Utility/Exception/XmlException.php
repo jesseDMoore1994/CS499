@@ -19,6 +19,5 @@ use RuntimeException;
  * encounters an error.
  *
  */
-class XmlException extends RuntimeException
-{
+class XmlException extends RuntimeException {
 }

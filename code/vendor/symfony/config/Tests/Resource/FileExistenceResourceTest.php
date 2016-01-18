@@ -13,38 +13,32 @@ namespace Symfony\Component\Config\Tests\Resource;
 
 use Symfony\Component\Config\Resource\FileExistenceResource;
 
-class FileExistenceResourceTest extends \PHPUnit_Framework_TestCase
-{
+class FileExistenceResourceTest extends \PHPUnit_Framework_TestCase {
 	protected $resource;
 	protected $file;
 	protected $time;
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->file = realpath(sys_get_temp_dir()) . '/tmp.xml';
 		$this->time = time();
 		$this->resource = new FileExistenceResource($this->file);
 	}
 
-	protected function tearDown()
-	{
+	protected function tearDown() {
 		if (file_exists($this->file)) {
 			unlink($this->file);
 		}
 	}
 
-	public function testToString()
-	{
+	public function testToString() {
 		$this->assertSame($this->file, (string)$this->resource);
 	}
 
-	public function testGetResource()
-	{
+	public function testGetResource() {
 		$this->assertSame($this->file, $this->resource->getResource(), '->getResource() returns the path to the resource');
 	}
 
-	public function testIsFreshWithExistingResource()
-	{
+	public function testIsFreshWithExistingResource() {
 		touch($this->file, $this->time);
 		$serialized = serialize(new FileExistenceResource($this->file));
 
@@ -56,8 +50,7 @@ class FileExistenceResourceTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($resource->isFresh($this->time), '->isFresh() returns false if the resource has been deleted');
 	}
 
-	public function testIsFreshWithAbsentResource()
-	{
+	public function testIsFreshWithAbsentResource() {
 		$serialized = serialize(new FileExistenceResource($this->file));
 
 		$resource = unserialize($serialized);

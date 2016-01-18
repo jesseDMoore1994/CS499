@@ -26,16 +26,13 @@ use Cake\View\View;
 /**
  * NumberHelperTestObject class
  */
-class NumberHelperTestObject extends NumberHelper
-{
+class NumberHelperTestObject extends NumberHelper {
 
-	public function attach(NumberMock $cakeNumber)
-	{
+	public function attach(NumberMock $cakeNumber) {
 		$this->_engine = $cakeNumber;
 	}
 
-	public function engine()
-	{
+	public function engine() {
 		return $this->_engine;
 	}
 }
@@ -43,24 +40,21 @@ class NumberHelperTestObject extends NumberHelper
 /**
  * NumberMock class
  */
-class NumberMock
-{
+class NumberMock {
 }
 
 /**
  * NumberHelperTest class
  *
  */
-class NumberHelperTest extends TestCase
-{
+class NumberHelperTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->View = new View();
 
@@ -73,8 +67,7 @@ class NumberHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Configure::write('App.namespace', $this->_appNamespace);
 		unset($this->View);
@@ -85,8 +78,7 @@ class NumberHelperTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function methodProvider()
-	{
+	public function methodProvider() {
 		return [
 			['precision'],
 			['toReadableSize'],
@@ -106,8 +98,7 @@ class NumberHelperTest extends TestCase
 	 * @dataProvider methodProvider
 	 * @return void
 	 */
-	public function testNumberHelperProxyMethodCalls($method)
-	{
+	public function testNumberHelperProxyMethodCalls($method) {
 		$number = $this->getMock(__NAMESPACE__ . '\NumberMock', [$method]);
 		$helper = new NumberHelperTestObject($this->View, ['engine' => __NAMESPACE__ . '\NumberMock']);
 		$helper->attach($number);
@@ -122,8 +113,7 @@ class NumberHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEngineOverride()
-	{
+	public function testEngineOverride() {
 		$Number = new NumberHelperTestObject($this->View, ['engine' => 'TestAppEngine']);
 		$this->assertInstanceOf('TestApp\Utility\TestAppEngine', $Number->engine());
 

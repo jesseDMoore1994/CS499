@@ -8,8 +8,7 @@ use Composer\Package\Package;
 use Composer\Package\RootPackage;
 use Composer\Repository\RepositoryManager;
 
-class PluginInstallerTest extends \PHPUnit_Framework_TestCase
-{
+class PluginInstallerTest extends \PHPUnit_Framework_TestCase {
 
 	public $package;
 
@@ -27,8 +26,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->package = new Package('CamelCased', '1.0', '1.0');
 		$this->package->setType('cakephp-plugin');
@@ -58,8 +56,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 		$this->installer = new PluginInstaller($this->io, $composer);
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		$dirs = array_reverse($this->testDirs);
 
@@ -82,8 +79,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfigFile()
-	{
+	public function testConfigFile() {
 		$path = PluginInstaller::configFile("");
 		$this->assertFileExists(dirname($path));
 	}
@@ -93,8 +89,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrimaryNamespace()
-	{
+	public function testPrimaryNamespace() {
 		$autoload = [
 			'psr-4' => [
 				'FOC\\Authenticate' => ''
@@ -166,8 +161,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('Acme\Foo', $name);
 	}
 
-	public function testDeterminePlugins()
-	{
+	public function testDeterminePlugins() {
 		$plugin1 = new Package('cakephp/the-thing', '1.0', '1.0');
 		$plugin1->setType('cakephp-plugin');
 		$plugin1->setAutoload([
@@ -219,8 +213,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($expected, $return, 'Composer and application plugins should be listed');
 	}
 
-	public function testWriteConfigFile()
-	{
+	public function testWriteConfigFile() {
 		$plugins = [
 			'Fee' => $this->path . '/plugins/Fee',
 			'Foe' => $this->path . '/plugins/Foe',
@@ -276,8 +269,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($expected, $result, 'The evaluated result should be the same as the input except for namespaced plugin');
 	}
 
-	public function testUpdateConfigNoConfigFile()
-	{
+	public function testUpdateConfigNoConfigFile() {
 		$this->installer->updateConfig('DebugKit', '/vendor/cakephp/DebugKit');
 		$this->assertFileExists($this->path . '/vendor/cakephp-plugins.php');
 		$contents = file_get_contents($this->path . '/vendor/cakephp-plugins.php');
@@ -286,8 +278,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 		$this->assertContains("'DebugKit' => '/vendor/cakephp/DebugKit/'", $contents);
 	}
 
-	public function testUpdateConfigAddPathInvalidFile()
-	{
+	public function testUpdateConfigAddPathInvalidFile() {
 		file_put_contents($this->path . '/vendor/cakephp-plugins.php', '<?php $foo = "DERP";');
 
 		$this->io->expects($this->once())
@@ -295,8 +286,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 		$this->installer->updateConfig('DebugKit', '/vendor/cakephp/DebugKit');
 	}
 
-	public function testUpdateConfigAddPathFileExists()
-	{
+	public function testUpdateConfigAddPathFileExists() {
 		file_put_contents(
 			$this->path . '/vendor/cakephp-plugins.php',
 			'<?php $config = ["plugins" => ["Bake" => "/some/path"]];'
@@ -315,8 +305,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 */
-	public function testUpdateConfigAddRootPath()
-	{
+	public function testUpdateConfigAddRootPath() {
 		file_put_contents(
 			$this->path . '/vendor/cakephp-plugins.php',
 			'<?php return ["plugins" => ["Bake" => "/some/path"]];'
@@ -335,8 +324,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 */
-	public function testUpdateConfigAddPath()
-	{
+	public function testUpdateConfigAddPath() {
 		file_put_contents(
 			$this->path . '/vendor/cakephp-plugins.php',
 			'<?php return ["plugins" => ["Bake" => "/some/path"]];'
@@ -357,8 +345,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 */
-	public function testUpdateConfigAddPathWindows()
-	{
+	public function testUpdateConfigAddPathWindows() {
 		file_put_contents(
 			$this->path . '/vendor/cakephp-plugins.php',
 			'<?php return ["plugins" => ["Bake" => "/some/path"]];'
@@ -376,8 +363,7 @@ class PluginInstallerTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 */
-	public function testUpdateConfigRemovePath()
-	{
+	public function testUpdateConfigRemovePath() {
 		file_put_contents(
 			$this->path . '/vendor/cakephp-plugins.php',
 			'<?php $config = ["plugins" => ["Bake" => "/some/path"]];'

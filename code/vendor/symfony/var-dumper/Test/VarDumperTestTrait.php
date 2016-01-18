@@ -17,20 +17,16 @@ use Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-trait VarDumperTestTrait
-{
-	public function assertDumpEquals($dump, $data, $message = '')
-	{
+trait VarDumperTestTrait {
+	public function assertDumpEquals($dump, $data, $message = '') {
 		$this->assertSame(rtrim($dump), $this->getDump($data), $message);
 	}
 
-	public function assertDumpMatchesFormat($dump, $data, $message = '')
-	{
+	public function assertDumpMatchesFormat($dump, $data, $message = '') {
 		$this->assertStringMatchesFormat(rtrim($dump), $this->getDump($data), $message);
 	}
 
-	protected function getDump($data)
-	{
+	protected function getDump($data) {
 		$h = fopen('php://memory', 'r+b');
 		$cloner = new VarCloner();
 		$cloner->setMaxItems(-1);

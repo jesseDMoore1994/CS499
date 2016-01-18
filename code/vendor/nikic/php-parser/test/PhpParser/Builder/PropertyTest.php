@@ -8,15 +8,12 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar;
 use PhpParser\Comment;
 
-class PropertyTest extends \PHPUnit_Framework_TestCase
-{
-	public function createPropertyBuilder($name)
-	{
+class PropertyTest extends \PHPUnit_Framework_TestCase {
+	public function createPropertyBuilder($name) {
 		return new Property($name);
 	}
 
-	public function testModifiers()
-	{
+	public function testModifiers() {
 		$node = $this->createPropertyBuilder('test')
 			->makePrivate()
 			->makeStatic()
@@ -62,8 +59,7 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testDocComment()
-	{
+	public function testDocComment() {
 		$node = $this->createPropertyBuilder('test')
 			->setDocComment('/** Test */')
 			->getNode();
@@ -82,8 +78,7 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider provideTestDefaultValues
 	 */
-	public function testDefaultValues($value, $expectedValueNode)
-	{
+	public function testDefaultValues($value, $expectedValueNode) {
 		$node = $this->createPropertyBuilder('test')
 			->setDefault($value)
 			->getNode();
@@ -91,8 +86,7 @@ class PropertyTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($expectedValueNode, $node->props[0]->default);
 	}
 
-	public function provideTestDefaultValues()
-	{
+	public function provideTestDefaultValues() {
 		return array(
 			array(
 				null,

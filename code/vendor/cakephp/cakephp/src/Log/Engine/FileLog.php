@@ -22,8 +22,7 @@ use Cake\Utility\Text;
  * based on the level of log it is.
  *
  */
-class FileLog extends BaseLog
-{
+class FileLog extends BaseLog {
 
 	/**
 	 * Default config for this class
@@ -80,8 +79,7 @@ class FileLog extends BaseLog
 	 *
 	 * @param array $config Configuration array
 	 */
-	public function __construct(array $config = [])
-	{
+	public function __construct(array $config = []) {
 		parent::__construct($config);
 
 		if (!empty($this->_config['path'])) {
@@ -119,8 +117,7 @@ class FileLog extends BaseLog
 	 * @param array $context Additional information about the logged message
 	 * @return bool success of write.
 	 */
-	public function log($level, $message, array $context = [])
-	{
+	public function log($level, $message, array $context = []) {
 		$message = $this->_format($message, $context);
 		$output = date('Y-m-d H:i:s') . ' ' . ucfirst($level) . ': ' . $message . "\n";
 		$filename = $this->_getFilename($level);
@@ -156,8 +153,7 @@ class FileLog extends BaseLog
 	 * @param string $level The level of log.
 	 * @return string File name
 	 */
-	protected function _getFilename($level)
-	{
+	protected function _getFilename($level) {
 		$debugTypes = ['notice', 'info', 'debug'];
 
 		if (!empty($this->_file)) {
@@ -181,8 +177,7 @@ class FileLog extends BaseLog
 	 * @return mixed True if rotated successfully or false in case of error.
 	 *   Void if file doesn't need to be rotated.
 	 */
-	protected function _rotateFile($filename)
-	{
+	protected function _rotateFile($filename) {
 		$filepath = $this->_path . $filename;
 		clearstatcache(true, $filepath);
 

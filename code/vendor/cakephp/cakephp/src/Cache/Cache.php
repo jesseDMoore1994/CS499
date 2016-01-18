@@ -64,8 +64,7 @@ use RuntimeException;
  * @param array $config Optional associative array of settings passed to the engine
  * @return array [engine, settings] on success, false on failure
  */
-class Cache
-{
+class Cache {
 
 	use StaticConfigTrait;
 
@@ -120,8 +119,7 @@ class Cache
 	 * @param \Cake\Core\ObjectRegistry $registry Injectable registry object.
 	 * @return \Cake\Core\ObjectRegistry
 	 */
-	public static function registry(ObjectRegistry $registry = null)
-	{
+	public static function registry(ObjectRegistry $registry = null) {
 		if ($registry) {
 			static::$_registry = $registry;
 		}
@@ -140,8 +138,7 @@ class Cache
 	 * @return void
 	 * @throws \InvalidArgumentException When a cache engine cannot be created.
 	 */
-	protected static function _buildEngine($name)
-	{
+	protected static function _buildEngine($name) {
 		$registry = static::registry();
 
 		if (empty(static::$_config[$name]['className'])) {
@@ -171,8 +168,7 @@ class Cache
 	 * @param string $config The configuration name you want an engine for.
 	 * @return \Cake\Cache\CacheEngine When caching is disabled a null engine will be returned.
 	 */
-	public static function engine($config)
-	{
+	public static function engine($config) {
 		if (!static::$_enabled) {
 			return new NullEngine();
 		}
@@ -196,8 +192,7 @@ class Cache
 	 * @param int|null $expires [optional] An expires timestamp. Defaults to NULL
 	 * @return void
 	 */
-	public static function gc($config = 'default', $expires = null)
-	{
+	public static function gc($config = 'default', $expires = null) {
 		$engine = static::engine($config);
 		$engine->gc($expires);
 	}
@@ -224,8 +219,7 @@ class Cache
 	 * @param string $config Optional string configuration name to write to. Defaults to 'default'
 	 * @return bool True if the data was successfully cached, false on failure
 	 */
-	public static function write($key, $value, $config = 'default')
-	{
+	public static function write($key, $value, $config = 'default') {
 		$engine = static::engine($config);
 		if (is_resource($value)) {
 			return false;
@@ -268,8 +262,7 @@ class Cache
 	 * @return array of bools for each key provided, indicating true for success or false for fail
 	 * @throws \RuntimeException
 	 */
-	public static function writeMany($data, $config = 'default')
-	{
+	public static function writeMany($data, $config = 'default') {
 		$engine = static::engine($config);
 		$return = $engine->writeMany($data);
 		foreach ($return as $key => $success) {
@@ -306,8 +299,7 @@ class Cache
 	 * @param string $config optional name of the configuration to use. Defaults to 'default'
 	 * @return mixed The cached data, or false if the data doesn't exist, has expired, or if there was an error fetching it
 	 */
-	public static function read($key, $config = 'default')
-	{
+	public static function read($key, $config = 'default') {
 		$engine = static::engine($config);
 		return $engine->read($key);
 	}
@@ -334,8 +326,7 @@ class Cache
 	 * @return array An array containing, for each of the given $keys, the cached data or false if cached data could not be
 	 * retrieved.
 	 */
-	public static function readMany($keys, $config = 'default')
-	{
+	public static function readMany($keys, $config = 'default') {
 		$engine = static::engine($config);
 		return $engine->readMany($keys);
 	}
@@ -349,8 +340,7 @@ class Cache
 	 * @return mixed new value, or false if the data doesn't exist, is not integer,
 	 *    or if there was an error fetching it.
 	 */
-	public static function increment($key, $offset = 1, $config = 'default')
-	{
+	public static function increment($key, $offset = 1, $config = 'default') {
 		$engine = static::engine($config);
 		if (!is_int($offset) || $offset < 0) {
 			return false;
@@ -368,8 +358,7 @@ class Cache
 	 * @return mixed new value, or false if the data doesn't exist, is not integer,
 	 *   or if there was an error fetching it
 	 */
-	public static function decrement($key, $offset = 1, $config = 'default')
-	{
+	public static function decrement($key, $offset = 1, $config = 'default') {
 		$engine = static::engine($config);
 		if (!is_int($offset) || $offset < 0) {
 			return false;
@@ -399,8 +388,7 @@ class Cache
 	 * @param string $config name of the configuration to use. Defaults to 'default'
 	 * @return bool True if the value was successfully deleted, false if it didn't exist or couldn't be removed
 	 */
-	public static function delete($key, $config = 'default')
-	{
+	public static function delete($key, $config = 'default') {
 		$engine = static::engine($config);
 		return $engine->delete($key);
 	}
@@ -427,8 +415,7 @@ class Cache
 	 * @return array of boolean values that are true if the value was successfully deleted, false if it didn't exist or
 	 * couldn't be removed
 	 */
-	public static function deleteMany($keys, $config = 'default')
-	{
+	public static function deleteMany($keys, $config = 'default') {
 		$engine = static::engine($config);
 		return $engine->deleteMany($keys);
 	}
@@ -440,8 +427,7 @@ class Cache
 	 * @param string $config name of the configuration to use. Defaults to 'default'
 	 * @return bool True if the cache was successfully cleared, false otherwise
 	 */
-	public static function clear($check = false, $config = 'default')
-	{
+	public static function clear($check = false, $config = 'default') {
 		$engine = static::engine($config);
 		return $engine->clear($check);
 	}
@@ -453,8 +439,7 @@ class Cache
 	 * @param string $config name of the configuration to use. Defaults to 'default'
 	 * @return bool True if the cache group was successfully cleared, false otherwise
 	 */
-	public static function clearGroup($group, $config = 'default')
-	{
+	public static function clearGroup($group, $config = 'default') {
 		$engine = static::engine($config);
 		return $engine->clearGroup($group);
 	}
@@ -475,8 +460,7 @@ class Cache
 	 * @return array map of group and all configuration that has the same group
 	 * @throws \InvalidArgumentException
 	 */
-	public static function groupConfigs($group = null)
-	{
+	public static function groupConfigs($group = null) {
 		foreach (array_keys(static::$_config) as $config) {
 			static::engine($config);
 		}
@@ -498,8 +482,7 @@ class Cache
 	 *
 	 * @return void
 	 */
-	public static function enable()
-	{
+	public static function enable() {
 		static::$_enabled = true;
 	}
 
@@ -510,8 +493,7 @@ class Cache
 	 *
 	 * @return void
 	 */
-	public static function disable()
-	{
+	public static function disable() {
 		static::$_enabled = false;
 	}
 
@@ -520,8 +502,7 @@ class Cache
 	 *
 	 * @return bool
 	 */
-	public static function enabled()
-	{
+	public static function enabled() {
 		return static::$_enabled;
 	}
 
@@ -551,8 +532,7 @@ class Cache
 	 *   missing/expired, or an error. If the key is not found: boolean of the
 	 *   success of the write
 	 */
-	public static function remember($key, $callable, $config = 'default')
-	{
+	public static function remember($key, $callable, $config = 'default') {
 		$existing = self::read($key, $config);
 		if ($existing !== false) {
 			return $existing;
@@ -585,8 +565,7 @@ class Cache
 	 * @return bool True if the data was successfully cached, false on failure.
 	 *   Or if the key existed already.
 	 */
-	public static function add($key, $value, $config = 'default')
-	{
+	public static function add($key, $value, $config = 'default') {
 		$engine = static::engine($config);
 		if (is_resource($value)) {
 			return false;

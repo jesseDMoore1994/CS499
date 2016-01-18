@@ -28,16 +28,14 @@ use Cake\View\Form\EntityContext;
 /**
  * Test stub.
  */
-class Article extends Entity
-{
+class Article extends Entity {
 
 	/**
 	 * Testing stub method.
 	 *
 	 * @return bool
 	 */
-	public function isRequired()
-	{
+	public function isRequired() {
 		return true;
 	}
 }
@@ -45,8 +43,7 @@ class Article extends Entity
 /**
  * Entity context test case.
  */
-class EntityContextTest extends TestCase
-{
+class EntityContextTest extends TestCase {
 
 	/**
 	 * Fixtures to use.
@@ -60,8 +57,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->request = new Request();
 	}
@@ -71,8 +67,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEntity()
-	{
+	public function testEntity() {
 		$row = new Article();
 		$context = new EntityContext($this->request, [
 			'entity' => $row,
@@ -85,8 +80,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrimaryKey()
-	{
+	public function testPrimaryKey() {
 		$row = new Article();
 		$context = new EntityContext($this->request, [
 			'entity' => $row,
@@ -99,8 +93,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsPrimaryKey()
-	{
+	public function testIsPrimaryKey() {
 		$row = new Article();
 		$context = new EntityContext($this->request, [
 			'entity' => $row,
@@ -120,8 +113,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsCreateSingle()
-	{
+	public function testIsCreateSingle() {
 		$row = new Article();
 		$context = new EntityContext($this->request, [
 			'entity' => $row,
@@ -141,8 +133,7 @@ class EntityContextTest extends TestCase
 	 * @dataProvider collectionProvider
 	 * @return void
 	 */
-	public function testIsCreateCollection($collection)
-	{
+	public function testIsCreateCollection($collection) {
 		$context = new EntityContext($this->request, [
 			'entity' => $collection,
 		]);
@@ -155,8 +146,7 @@ class EntityContextTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @expectedExceptionMessage Unable to find table class for current entity
 	 */
-	public function testInvalidTable()
-	{
+	public function testInvalidTable() {
 		$row = new \StdClass();
 		$context = new EntityContext($this->request, [
 			'entity' => $row,
@@ -169,8 +159,7 @@ class EntityContextTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @expectedExceptionMessage Unable to find table class for current entity
 	 */
-	public function testDefaultEntityError()
-	{
+	public function testDefaultEntityError() {
 		$context = new EntityContext($this->request, [
 			'entity' => new \Cake\ORM\Entity,
 		]);
@@ -181,8 +170,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTableFromEntitySource()
-	{
+	public function testTableFromEntitySource() {
 		$entity = new Entity;
 		$entity->source('Articles');
 		$context = new EntityContext($this->request, [
@@ -197,8 +185,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOperationsNoEntity()
-	{
+	public function testOperationsNoEntity() {
 		$context = new EntityContext($this->request, [
 			'table' => 'Articles'
 		]);
@@ -219,8 +206,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOperationsNoTableArg()
-	{
+	public function testOperationsNoTableArg() {
 		$row = new Article([
 			'title' => 'Test entity',
 			'body' => 'Something new'
@@ -245,8 +231,7 @@ class EntityContextTest extends TestCase
 	 * @dataProvider collectionProvider
 	 * @return void
 	 */
-	public function testCollectionOperationsNoTableArg($collection)
-	{
+	public function testCollectionOperationsNoTableArg($collection) {
 		$context = new EntityContext($this->request, [
 			'entity' => $collection,
 		]);
@@ -263,8 +248,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function collectionProvider()
-	{
+	public static function collectionProvider() {
 		$one = new Article([
 			'title' => 'First post',
 			'body' => 'Stuff',
@@ -293,8 +277,7 @@ class EntityContextTest extends TestCase
 	 * @dataProvider collectionProvider
 	 * @return void
 	 */
-	public function testValOnCollections($collection)
-	{
+	public function testValOnCollections($collection) {
 		$context = new EntityContext($this->request, [
 			'entity' => $collection,
 			'table' => 'Articles',
@@ -323,8 +306,7 @@ class EntityContextTest extends TestCase
 	 * @dataProvider collectionProvider
 	 * @return void
 	 */
-	public function testValOnCollectionsWithRootName($collection)
-	{
+	public function testValOnCollectionsWithRootName($collection) {
 		$context = new EntityContext($this->request, [
 			'entity' => $collection,
 			'table' => 'Articles',
@@ -351,8 +333,7 @@ class EntityContextTest extends TestCase
 	 * @dataProvider collectionProvider
 	 * @return void
 	 */
-	public function testErrorsOnCollections($collection)
-	{
+	public function testErrorsOnCollections($collection) {
 		$context = new EntityContext($this->request, [
 			'entity' => $collection,
 			'table' => 'Articles',
@@ -376,8 +357,7 @@ class EntityContextTest extends TestCase
 	 * @dataProvider collectionProvider
 	 * @return void
 	 */
-	public function testSchemaOnCollections($collection)
-	{
+	public function testSchemaOnCollections($collection) {
 		$this->_setupTables();
 		$context = new EntityContext($this->request, [
 			'entity' => $collection,
@@ -401,8 +381,7 @@ class EntityContextTest extends TestCase
 	 * @dataProvider collectionProvider
 	 * @return void
 	 */
-	public function testValidatorsOnCollections($collection)
-	{
+	public function testValidatorsOnCollections($collection) {
 		$this->_setupTables();
 
 		$context = new EntityContext($this->request, [
@@ -428,8 +407,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValBasic()
-	{
+	public function testValBasic() {
 		$row = new Article([
 			'title' => 'Test entity',
 			'body' => 'Something new'
@@ -453,8 +431,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValGetArrayValue()
-	{
+	public function testValGetArrayValue() {
 		$row = new Article([
 			'title' => 'Test entity',
 			'types' => [1, 2, 3],
@@ -490,8 +467,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValReadsRequest()
-	{
+	public function testValReadsRequest() {
 		$this->request->data = [
 			'title' => 'New title',
 			'notInEntity' => 'yes',
@@ -514,8 +490,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValAssociated()
-	{
+	public function testValAssociated() {
 		$row = new Article([
 			'title' => 'Test entity',
 			'user' => new Entity([
@@ -553,8 +528,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValMissingAssociation()
-	{
+	public function testValMissingAssociation() {
 		$row = new Article([
 			'id' => 1
 		]);
@@ -573,8 +547,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValAssociatedHasMany()
-	{
+	public function testValAssociatedHasMany() {
 		$row = new Article([
 			'title' => 'First post',
 			'user' => new Entity([
@@ -603,8 +576,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValAssociatedDefaultIds()
-	{
+	public function testValAssociatedDefaultIds() {
 		$row = new Article([
 			'title' => 'First post',
 			'user' => new Entity([
@@ -630,8 +602,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValAssociatedCustomIds()
-	{
+	public function testValAssociatedCustomIds() {
 		$row = new Article([
 			'title' => 'First post',
 			'user' => new Entity([
@@ -660,8 +631,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequiredBooleanField()
-	{
+	public function testIsRequiredBooleanField() {
 		$this->_setupTables();
 
 		$context = new EntityContext($this->request, [
@@ -687,8 +657,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequiredStringValidator()
-	{
+	public function testIsRequiredStringValidator() {
 		$this->_setupTables();
 
 		$context = new EntityContext($this->request, [
@@ -710,8 +679,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequiredAssociatedHasMany()
-	{
+	public function testIsRequiredAssociatedHasMany() {
 		$this->_setupTables();
 
 		$comments = TableRegistry::get('Comments');
@@ -744,8 +712,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequiredAssociatedHasManyBoolean()
-	{
+	public function testIsRequiredAssociatedHasManyBoolean() {
 		$this->_setupTables();
 
 		$comments = TableRegistry::get('Comments');
@@ -775,8 +742,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequiredAssociatedCustomValidator()
-	{
+	public function testIsRequiredAssociatedCustomValidator() {
 		$this->_setupTables();
 		$users = TableRegistry::get('Users');
 		$articles = TableRegistry::get('Articles');
@@ -804,8 +770,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequiredAssociatedHasManyMissingObject()
-	{
+	public function testIsRequiredAssociatedHasManyMissingObject() {
 		$this->_setupTables();
 
 		$comments = TableRegistry::get('Comments');
@@ -841,8 +806,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequiredAssociatedValidator()
-	{
+	public function testIsRequiredAssociatedValidator() {
 		$this->_setupTables();
 
 		$row = new Article([
@@ -872,8 +836,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequiredAssociatedBelongsTo()
-	{
+	public function testIsRequiredAssociatedBelongsTo() {
 		$this->_setupTables();
 
 		$row = new Article([
@@ -898,8 +861,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testType()
-	{
+	public function testType() {
 		$this->_setupTables();
 
 		$row = new Article([
@@ -922,8 +884,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTypeAssociated()
-	{
+	public function testTypeAssociated() {
 		$this->_setupTables();
 
 		$row = new Article([
@@ -945,8 +906,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttributes()
-	{
+	public function testAttributes() {
 		$this->_setupTables();
 
 		$row = new Article([
@@ -979,8 +939,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHasError()
-	{
+	public function testHasError() {
 		$this->_setupTables();
 
 		$row = new Article([
@@ -1006,8 +965,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHasErrorAssociated()
-	{
+	public function testHasErrorAssociated() {
 		$this->_setupTables();
 
 		$row = new Article([
@@ -1032,8 +990,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testError()
-	{
+	public function testError() {
 		$this->_setupTables();
 
 		$row = new Article([
@@ -1065,8 +1022,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorAssociatedHasMany()
-	{
+	public function testErrorAssociatedHasMany() {
 		$this->_setupTables();
 
 		$comments = TableRegistry::get('Comments');
@@ -1101,8 +1057,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	protected function _setupTables()
-	{
+	protected function _setupTables() {
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsTo('Users');
 		$articles->hasMany('Comments');
@@ -1152,8 +1107,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFieldNames()
-	{
+	public function testFieldNames() {
 		$context = new EntityContext($this->request, [
 			'entity' => new Entity(),
 			'table' => 'Articles',
@@ -1167,8 +1121,7 @@ class EntityContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValidatorEntityProvider()
-	{
+	public function testValidatorEntityProvider() {
 		$row = new Article([
 			'title' => 'Test entity',
 			'body' => 'Something new'

@@ -10,13 +10,11 @@ use \Phinx\Config\Config;
  * @group config
  * @covers \Phinx\Config\Config::getMigrationPath
  */
-class ConfigMigrationPathTest extends AbstractConfigTest
-{
+class ConfigMigrationPathTest extends AbstractConfigTest {
 	/**
 	 * @expectedException \UnexpectedValueException
 	 */
-	public function testGetMigrationPathThrowsExceptionForNoPath()
-	{
+	public function testGetMigrationPathThrowsExceptionForNoPath() {
 		$config = new Config(array());
 		$config->getMigrationPath();
 	}
@@ -24,8 +22,7 @@ class ConfigMigrationPathTest extends AbstractConfigTest
 	/**
 	 * Normal behavior
 	 */
-	public function testGetMigrationPath()
-	{
+	public function testGetMigrationPath() {
 		$config = new Config($this->getConfigArray());
 		$this->assertEquals($this->getMigrationPath(), $config->getMigrationPath());
 	}

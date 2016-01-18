@@ -23,8 +23,7 @@ use JsonSerializable;
  * generating other collections.
  *
  */
-interface CollectionInterface extends Iterator, JsonSerializable
-{
+interface CollectionInterface extends Iterator, JsonSerializable {
 
 	/**
 	 * Executes the passed callable for each of the elements in this collection

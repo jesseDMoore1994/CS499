@@ -20,16 +20,14 @@ use Cake\TestSuite\TestCase;
 /**
  * HTTP cookies test.
  */
-class CookieCollectionTest extends TestCase
-{
+class CookieCollectionTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->cookies = new CookieCollection();
 	}
@@ -39,8 +37,7 @@ class CookieCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStore()
-	{
+	public function testStore() {
 		$headers = [
 			'HTTP/1.0 200 Ok',
 			'Set-Cookie: first=1',
@@ -75,8 +72,7 @@ class CookieCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStoreSecure()
-	{
+	public function testStoreSecure() {
 		$headers = [
 			'HTTP/1.0 200 Ok',
 			'Set-Cookie: first=1',
@@ -112,8 +108,7 @@ class CookieCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStoreExpiring()
-	{
+	public function testStoreExpiring() {
 		$headers = [
 			'HTTP/1.0 200 Ok',
 			'Set-Cookie: first=1',
@@ -170,8 +165,7 @@ class CookieCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetMatchingSecure()
-	{
+	public function testGetMatchingSecure() {
 		$headers = [
 			'HTTP/1.0 200 Ok',
 			'Set-Cookie: first=1',
@@ -194,8 +188,7 @@ class CookieCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetMatchingPath()
-	{
+	public function testGetMatchingPath() {
 		$headers = [
 			'HTTP/1.0 200 Ok',
 			'Set-Cookie: first=1; Path=/foo',
@@ -222,8 +215,7 @@ class CookieCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetMatchingDomain()
-	{
+	public function testGetMatchingDomain() {
 		$headers = [
 			'HTTP/1.0 200 Ok',
 			'Set-Cookie: first=1; Domain=.example.com',

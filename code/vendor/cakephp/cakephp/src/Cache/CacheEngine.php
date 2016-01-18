@@ -21,8 +21,7 @@ use InvalidArgumentException;
  * Storage engine for CakePHP caching
  *
  */
-abstract class CacheEngine
-{
+abstract class CacheEngine {
 
 	use InstanceConfigTrait;
 
@@ -64,8 +63,7 @@ abstract class CacheEngine
 	 * @param array $config Associative array of parameters for the engine
 	 * @return bool True if the engine has been successfully initialized, false if not
 	 */
-	public function init(array $config = [])
-	{
+	public function init(array $config = []) {
 		$this->config($config);
 
 		if (!empty($this->_config['groups'])) {
@@ -87,8 +85,7 @@ abstract class CacheEngine
 	 * @param int|null $expires [optional] An expires timestamp, invalidating all data before.
 	 * @return void
 	 */
-	public function gc($expires = null)
-	{
+	public function gc($expires = null) {
 	}
 
 	/**
@@ -106,8 +103,7 @@ abstract class CacheEngine
 	 * @param array $data An array of data to be stored in the cache
 	 * @return array of bools for each key provided, true if the data was successfully cached, false on failure
 	 */
-	public function writeMany($data)
-	{
+	public function writeMany($data) {
 		$return = [];
 		foreach ($data as $key => $value) {
 			$return[$key] = $this->write($key, $value);
@@ -130,8 +126,7 @@ abstract class CacheEngine
 	 * @return array For each cache key (given as the array key) the cache data associated or false if the data doesn't
 	 * exist, has expired, or if there was an error fetching it
 	 */
-	public function readMany($keys)
-	{
+	public function readMany($keys) {
 		$return = [];
 		foreach ($keys as $key) {
 			$return[$key] = $this->read($key);
@@ -181,8 +176,7 @@ abstract class CacheEngine
 	 * @return array For each provided cache key (given back as the array key) true if the value was successfully deleted,
 	 * false if it didn't exist or couldn't be removed
 	 */
-	public function deleteMany($keys)
-	{
+	public function deleteMany($keys) {
 		$return = [];
 		foreach ($keys as $key) {
 			$return[$key] = $this->delete($key);
@@ -200,8 +194,7 @@ abstract class CacheEngine
 	 * @param mixed $value Data to be cached.
 	 * @return bool True if the data was successfully cached, false on failure.
 	 */
-	public function add($key, $value)
-	{
+	public function add($key, $value) {
 		$cachedValue = $this->read($key);
 		if ($cachedValue === false) {
 			return $this->write($key, $value);
@@ -217,8 +210,7 @@ abstract class CacheEngine
 	 * @param string $group name of the group to be cleared
 	 * @return bool
 	 */
-	public function clearGroup($group)
-	{
+	public function clearGroup($group) {
 		return false;
 	}
 
@@ -229,8 +221,7 @@ abstract class CacheEngine
 	 *
 	 * @return array
 	 */
-	public function groups()
-	{
+	public function groups() {
 		return $this->_config['groups'];
 	}
 
@@ -240,8 +231,7 @@ abstract class CacheEngine
 	 * @param string $key the key passed over
 	 * @return bool|string string key or false
 	 */
-	public function key($key)
-	{
+	public function key($key) {
 		if (empty($key)) {
 			return false;
 		}
@@ -262,8 +252,7 @@ abstract class CacheEngine
 	 * @return mixed string $key or false
 	 * @throws \InvalidArgumentException If key's value is empty
 	 */
-	protected function _key($key)
-	{
+	protected function _key($key) {
 		$key = $this->key($key);
 		if ($key === false) {
 			throw new InvalidArgumentException('An empty value is not valid as a cache key');

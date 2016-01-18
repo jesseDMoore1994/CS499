@@ -25,8 +25,7 @@ use Cake\Event\EventDispatcherTrait;
  *
  * Handles loading, constructing and binding events for component class objects.
  */
-class ComponentRegistry extends ObjectRegistry implements EventDispatcherInterface
-{
+class ComponentRegistry extends ObjectRegistry implements EventDispatcherInterface {
 
 	use EventDispatcherTrait;
 
@@ -42,8 +41,7 @@ class ComponentRegistry extends ObjectRegistry implements EventDispatcherInterfa
 	 *
 	 * @param \Cake\Controller\Controller $controller Controller instance.
 	 */
-	public function __construct(Controller $controller = null)
-	{
+	public function __construct(Controller $controller = null) {
 		if ($controller) {
 			$this->setController($controller);
 		}
@@ -54,8 +52,7 @@ class ComponentRegistry extends ObjectRegistry implements EventDispatcherInterfa
 	 *
 	 * @return Controller Controller instance
 	 */
-	public function getController()
-	{
+	public function getController() {
 		return $this->_Controller;
 	}
 
@@ -65,8 +62,7 @@ class ComponentRegistry extends ObjectRegistry implements EventDispatcherInterfa
 	 * @param \Cake\Controller\Controller $controller Controller instance.
 	 * @return void
 	 */
-	public function setController(Controller $controller)
-	{
+	public function setController(Controller $controller) {
 		$this->_Controller = $controller;
 		$this->eventManager($controller->eventManager());
 	}
@@ -79,8 +75,7 @@ class ComponentRegistry extends ObjectRegistry implements EventDispatcherInterfa
 	 * @param string $class Partial classname to resolve.
 	 * @return string|false Either the correct classname or false.
 	 */
-	protected function _resolveClassName($class)
-	{
+	protected function _resolveClassName($class) {
 		return App::className($class, 'Controller/Component', 'Component');
 	}
 
@@ -94,8 +89,7 @@ class ComponentRegistry extends ObjectRegistry implements EventDispatcherInterfa
 	 * @return void
 	 * @throws \Cake\Controller\Exception\MissingComponentException
 	 */
-	protected function _throwMissingClassError($class, $plugin)
-	{
+	protected function _throwMissingClassError($class, $plugin) {
 		throw new MissingComponentException([
 			'class' => $class . 'Component',
 			'plugin' => $plugin
@@ -113,8 +107,7 @@ class ComponentRegistry extends ObjectRegistry implements EventDispatcherInterfa
 	 * @param array $config An array of config to use for the component.
 	 * @return \Cake\Controller\Component The constructed component class.
 	 */
-	protected function _create($class, $alias, $config)
-	{
+	protected function _create($class, $alias, $config) {
 		$instance = new $class($this, $config);
 		$enable = isset($config['enabled']) ? $config['enabled'] : true;
 		if ($enable) {

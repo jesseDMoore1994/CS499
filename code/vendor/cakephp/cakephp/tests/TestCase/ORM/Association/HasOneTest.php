@@ -28,15 +28,13 @@ use Cake\TestSuite\TestCase;
  * Tests HasOne class
  *
  */
-class HasOneTest extends TestCase
-{
+class HasOneTest extends TestCase {
 	/**
 	 * Set up
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->user = TableRegistry::get('Users', [
 			'schema' => [
@@ -72,8 +70,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -83,8 +80,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCanBeJoined()
-	{
+	public function testCanBeJoined() {
 		$assoc = new HasOne('Test');
 		$this->assertTrue($assoc->canBeJoined());
 	}
@@ -95,8 +91,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachTo()
-	{
+	public function testAttachTo() {
 		$query = $this->getMock('\Cake\ORM\Query', ['join', 'select'], [null, null]);
 		$config = [
 			'foreignKey' => 'user_id',
@@ -129,8 +124,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachToNoFields()
-	{
+	public function testAttachToNoFields() {
 		$query = $this->getMock('\Cake\ORM\Query', ['join', 'select'], [null, null]);
 		$config = [
 			'sourceTable' => $this->user,
@@ -159,8 +153,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachToMultiPrimaryKey()
-	{
+	public function testAttachToMultiPrimaryKey() {
 		$query = $this->getMock('\Cake\ORM\Query', ['join', 'select'], [null, null]);
 		$config = [
 			'sourceTable' => $this->user,
@@ -194,8 +187,7 @@ class HasOneTest extends TestCase
 	 * @expectedExceptionMessage Cannot match provided foreignKey for "Profiles", got "(user_id)" but expected foreign key for "(id, site_id)"
 	 * @return void
 	 */
-	public function testAttachToMultiPrimaryKeyMistmatch()
-	{
+	public function testAttachToMultiPrimaryKeyMistmatch() {
 		$query = $this->getMock('\Cake\ORM\Query', ['join', 'select'], [null, null]);
 		$config = [
 			'sourceTable' => $this->user,
@@ -212,8 +204,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveAssociatedOnlyEntities()
-	{
+	public function testSaveAssociatedOnlyEntities() {
 		$mock = $this->getMock('Cake\ORM\Table', [], [], '', false);
 		$config = [
 			'sourceTable' => $this->user,
@@ -239,8 +230,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPropertyOption()
-	{
+	public function testPropertyOption() {
 		$config = ['propertyName' => 'thing_placeholder'];
 		$association = new hasOne('Thing', $config);
 		$this->assertEquals('thing_placeholder', $association->property());
@@ -251,8 +241,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPropertyNoPlugin()
-	{
+	public function testPropertyNoPlugin() {
 		$mock = $this->getMock('Cake\ORM\Table', [], [], '', false);
 		$config = [
 			'sourceTable' => $this->user,
@@ -268,8 +257,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachToBeforeFind()
-	{
+	public function testAttachToBeforeFind() {
 		$query = $this->getMock('\Cake\ORM\Query', ['join', 'select'], [null, null]);
 		$config = [
 			'foreignKey' => 'user_id',
@@ -295,8 +283,7 @@ class HasOneTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachToBeforeFindExtraOptions()
-	{
+	public function testAttachToBeforeFindExtraOptions() {
 		$query = $this->getMock('\Cake\ORM\Query', ['join', 'select'], [null, null]);
 		$config = [
 			'foreignKey' => 'user_id',

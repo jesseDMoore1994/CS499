@@ -20,8 +20,7 @@ use Cake\Network\Request;
 /**
  * Memory based non-persistent storage for authenticated user record.
  */
-class MemoryStorage implements StorageInterface
-{
+class MemoryStorage implements StorageInterface {
 
 	/**
 	 * User record.
@@ -40,32 +39,28 @@ class MemoryStorage implements StorageInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function read()
-	{
+	public function read() {
 		return $this->_user;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function write(array $user)
-	{
+	public function write(array $user) {
 		$this->_user = $user;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function delete()
-	{
+	public function delete() {
 		$this->_user = null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function redirectUrl($url = null)
-	{
+	public function redirectUrl($url = null) {
 		if ($url === null) {
 			return $this->_redirectUrl;
 		}

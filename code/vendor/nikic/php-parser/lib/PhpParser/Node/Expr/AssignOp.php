@@ -8,8 +8,7 @@ use PhpParser\Node\Expr;
  * @property Expr $var  Variable
  * @property Expr $expr Expression
  */
-abstract class AssignOp extends Expr
-{
+abstract class AssignOp extends Expr {
 	/** @var Expr Variable */
 	public $var;
 	/** @var Expr Expression */
@@ -22,15 +21,13 @@ abstract class AssignOp extends Expr
 	 * @param Expr $expr Expression
 	 * @param array $attributes Additional attributes
 	 */
-	public function __construct(Expr $var, Expr $expr, array $attributes = array())
-	{
+	public function __construct(Expr $var, Expr $expr, array $attributes = array()) {
 		parent::__construct($attributes);
 		$this->var = $var;
 		$this->expr = $expr;
 	}
 
-	public function getSubNodeNames()
-	{
+	public function getSubNodeNames() {
 		return array('var', 'expr');
 	}
 }

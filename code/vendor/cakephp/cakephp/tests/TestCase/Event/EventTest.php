@@ -25,8 +25,7 @@ use Cake\TestSuite\TestCase;
  * Tests the Cake\Event\Event class functionality
  *
  */
-class EventTest extends TestCase
-{
+class EventTest extends TestCase {
 
 	/**
 	 * Tests the name() method
@@ -34,8 +33,7 @@ class EventTest extends TestCase
 	 * @return void
 	 * @triggers fake.event
 	 */
-	public function testName()
-	{
+	public function testName() {
 		$event = new Event('fake.event');
 		$this->assertEquals('fake.event', $event->name());
 	}
@@ -47,8 +45,7 @@ class EventTest extends TestCase
 	 * @triggers fake.event $this
 	 * @triggers fake.event
 	 */
-	public function testSubject()
-	{
+	public function testSubject() {
 		$event = new Event('fake.event', $this);
 		$this->assertSame($this, $event->subject());
 
@@ -62,8 +59,7 @@ class EventTest extends TestCase
 	 * @return void
 	 * @triggers fake.event
 	 */
-	public function testPropagation()
-	{
+	public function testPropagation() {
 		$event = new Event('fake.event');
 		$this->assertFalse($event->isStopped());
 		$event->stopPropagation();
@@ -76,8 +72,7 @@ class EventTest extends TestCase
 	 * @return void
 	 * @triggers fake.event $this, array('some' => 'data')
 	 */
-	public function testEventData()
-	{
+	public function testEventData() {
 		$event = new Event('fake.event', $this, ['some' => 'data']);
 		$this->assertEquals(['some' => 'data'], $event->data);
 	}
@@ -88,8 +83,7 @@ class EventTest extends TestCase
 	 * @return void
 	 * @triggers fake.event $this
 	 */
-	public function testEventDirectPropertyAccess()
-	{
+	public function testEventDirectPropertyAccess() {
 		$event = new Event('fake.event', $this);
 		$this->assertEquals($this, $event->subject);
 		$this->assertEquals('fake.event', $event->name);

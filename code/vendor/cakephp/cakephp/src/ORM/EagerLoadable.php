@@ -22,8 +22,7 @@ namespace Cake\ORM;
  *
  * @internal
  */
-class EagerLoadable
-{
+class EagerLoadable {
 
 	/**
 	 * The name of the association to load.
@@ -102,8 +101,7 @@ class EagerLoadable
 	 * @param string $name The Association name.
 	 * @param array $config The list of properties to set.
 	 */
-	public function __construct($name, array $config = [])
-	{
+	public function __construct($name, array $config = []) {
 		$this->_name = $name;
 		$allowed = [
 			'associations', 'instance', 'config', 'canBeJoined',
@@ -123,8 +121,7 @@ class EagerLoadable
 	 * @param \Cake\ORM\EagerLoadable $association The association to load.
 	 * @return void
 	 */
-	public function addAssociation($name, EagerLoadable $association)
-	{
+	public function addAssociation($name, EagerLoadable $association) {
 		$this->_associations[$name] = $association;
 	}
 
@@ -133,8 +130,7 @@ class EagerLoadable
 	 *
 	 * @return array
 	 */
-	public function associations()
-	{
+	public function associations() {
 		return $this->_associations;
 	}
 
@@ -143,8 +139,7 @@ class EagerLoadable
 	 *
 	 * @return \Cake\ORM\Association|null
 	 */
-	public function instance()
-	{
+	public function instance() {
 		return $this->_instance;
 	}
 
@@ -154,8 +149,7 @@ class EagerLoadable
 	 *
 	 * @return string|null
 	 */
-	public function aliasPath()
-	{
+	public function aliasPath() {
 		return $this->_aliasPath;
 	}
 
@@ -165,8 +159,7 @@ class EagerLoadable
 	 *
 	 * @return string|null
 	 */
-	public function propertyPath()
-	{
+	public function propertyPath() {
 		return $this->_propertyPath;
 	}
 
@@ -178,8 +171,7 @@ class EagerLoadable
 	 * @param bool|null $possible The value to set.
 	 * @return bool
 	 */
-	public function canBeJoined($possible = null)
-	{
+	public function canBeJoined($possible = null) {
 		if ($possible === null) {
 			return $this->_canBeJoined;
 		}
@@ -196,8 +188,7 @@ class EagerLoadable
 	 * @param array|null $config The value to set.
 	 * @return array
 	 */
-	public function config(array $config = null)
-	{
+	public function config(array $config = null) {
 		if ($config === null) {
 			return $this->_config;
 		}
@@ -210,8 +201,7 @@ class EagerLoadable
 	 *
 	 * @return bool|null
 	 */
-	public function forMatching()
-	{
+	public function forMatching() {
 		return $this->_forMatching;
 	}
 
@@ -221,8 +211,7 @@ class EagerLoadable
 	 *
 	 * @return array
 	 */
-	public function asContainArray()
-	{
+	public function asContainArray() {
 		$associations = [];
 		foreach ($this->_associations as $assoc) {
 			$associations += $assoc->asContainArray();

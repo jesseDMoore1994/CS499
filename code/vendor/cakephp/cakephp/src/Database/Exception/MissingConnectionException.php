@@ -16,8 +16,7 @@ namespace Cake\Database\Exception;
 
 use Cake\Core\Exception\Exception;
 
-class MissingConnectionException extends Exception
-{
+class MissingConnectionException extends Exception {
 
 	/**
 	 * {@inheritDoc}

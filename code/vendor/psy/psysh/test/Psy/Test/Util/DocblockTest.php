@@ -13,13 +13,11 @@ namespace Psy\Test\Util;
 
 use Psy\Util\Docblock;
 
-class DocblockTest extends \PHPUnit_Framework_TestCase
-{
+class DocblockTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider comments
 	 */
-	public function testDocblockParsing($comment, $body, $tags)
-	{
+	public function testDocblockParsing($comment, $body, $tags) {
 		$reflector = $this
 			->getMockBuilder('ReflectionClass')
 			->disableOriginalConstructor()
@@ -39,8 +37,7 @@ class DocblockTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function comments()
-	{
+	public function comments() {
 		return array(
 			array('', '', array()),
 			array(

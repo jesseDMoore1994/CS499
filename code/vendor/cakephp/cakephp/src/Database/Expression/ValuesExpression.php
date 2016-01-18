@@ -28,8 +28,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class ValuesExpression implements ExpressionInterface
-{
+class ValuesExpression implements ExpressionInterface {
 
 	use TypeMapTrait;
 
@@ -60,8 +59,7 @@ class ValuesExpression implements ExpressionInterface
 	 * @param array $columns The list of columns that are going to be part of the values.
 	 * @param \Cake\Database\TypeMap $typeMap A dictionary of column -> type names
 	 */
-	public function __construct(array $columns, $typeMap)
-	{
+	public function __construct(array $columns, $typeMap) {
 		$this->_columns = $columns;
 		$this->typeMap($typeMap);
 	}
@@ -74,8 +72,7 @@ class ValuesExpression implements ExpressionInterface
 	 * @return void
 	 * @throws \Cake\Database\Exception When mixing array + Query data types.
 	 */
-	public function add($data)
-	{
+	public function add($data) {
 		if ((count($this->_values) && $data instanceof Query) ||
 			($this->_query && is_array($data))
 		) {
@@ -97,8 +94,7 @@ class ValuesExpression implements ExpressionInterface
 	 * @param array $cols arrays with columns to be inserted
 	 * @return array|$this
 	 */
-	public function columns($cols = null)
-	{
+	public function columns($cols = null) {
 		if ($cols === null) {
 			return $this->_columns;
 		}
@@ -113,8 +109,7 @@ class ValuesExpression implements ExpressionInterface
 	 * @param array $values arrays with values to be inserted
 	 * @return array|$this
 	 */
-	public function values($values = null)
-	{
+	public function values($values = null) {
 		if ($values === null) {
 			return $this->_values;
 		}
@@ -130,8 +125,7 @@ class ValuesExpression implements ExpressionInterface
 	 * @param \Cake\Database\Query $query The query to set/get
 	 * @return \Cake\Database\Query
 	 */
-	public function query(Query $query = null)
-	{
+	public function query(Query $query = null) {
 		if ($query === null) {
 			return $this->_query;
 		}
@@ -144,8 +138,7 @@ class ValuesExpression implements ExpressionInterface
 	 * @param \Cake\Database\ValueBinder $generator Placeholder generator object
 	 * @return string
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		if (empty($this->_values) && empty($this->_query)) {
 			return '';
 		}
@@ -186,8 +179,7 @@ class ValuesExpression implements ExpressionInterface
 	 * @param callable $visitor The visitor to traverse the expression with.
 	 * @return void
 	 */
-	public function traverse(callable $visitor)
-	{
+	public function traverse(callable $visitor) {
 		if ($this->_query) {
 			return;
 		}

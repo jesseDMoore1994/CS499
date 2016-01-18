@@ -17,12 +17,10 @@ use Symfony\Component\VarDumper\Tests\Fixtures\GeneratorDemo;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ReflectionCasterTest extends \PHPUnit_Framework_TestCase
-{
+class ReflectionCasterTest extends \PHPUnit_Framework_TestCase {
 	use VarDumperTestTrait;
 
-	public function testReflectionCaster()
-	{
+	public function testReflectionCaster() {
 		$var = new \ReflectionClass('ReflectionClass');
 
 		$this->assertDumpMatchesFormat(
@@ -59,8 +57,7 @@ EOTXT
 		);
 	}
 
-	public function testClosureCaster()
-	{
+	public function testClosureCaster() {
 		$a = $b = 123;
 		$var = function ($x) use ($a, &$b) {
 		};
@@ -83,8 +80,7 @@ EOTXT
 		);
 	}
 
-	public function testReflectionParameter()
-	{
+	public function testReflectionParameter() {
 		$var = new \ReflectionParameter(__NAMESPACE__ . '\reflectionParameterFixture', 0);
 
 		$this->assertDumpMatchesFormat(
@@ -103,8 +99,7 @@ EOTXT
 	/**
 	 * @requires PHP 7.0
 	 */
-	public function testReflectionParameterScalar()
-	{
+	public function testReflectionParameterScalar() {
 		$f = eval('return function (int $a) {};');
 		$var = new \ReflectionParameter($f, 0);
 
@@ -123,8 +118,7 @@ EOTXT
 	/**
 	 * @requires PHP 7.0
 	 */
-	public function testReturnType()
-	{
+	public function testReturnType() {
 		$f = eval('return function ():int {};');
 		$line = __LINE__ - 1;
 
@@ -145,8 +139,7 @@ EOTXT
 	/**
 	 * @requires PHP 7.0
 	 */
-	public function testGenerator()
-	{
+	public function testGenerator() {
 		$g = new GeneratorDemo();
 		$g = $g->baz();
 		$r = new \ReflectionGenerator($g);
@@ -224,6 +217,5 @@ EODUMP;
 	}
 }
 
-function reflectionParameterFixture(NotExistingClass $arg1 = null, $arg2)
-{
+function reflectionParameterFixture(NotExistingClass $arg1 = null, $arg2) {
 }

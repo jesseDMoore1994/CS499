@@ -5,15 +5,13 @@ namespace Test\Phinx\Db\Adapter;
 use Symfony\Component\Console\Output\NullOutput;
 use Phinx\Db\Adapter\SqlServerAdapter;
 
-class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
-{
+class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @var \Phinx\Db\Adapter\SqlServerAdapter
 	 */
 	private $adapter;
 
-	public function setUp()
-	{
+	public function setUp() {
 		if (!TESTS_PHINX_DB_ADAPTER_SQLSRV_ENABLED) {
 			$this->markTestSkipped('SqlServer tests disabled. See TESTS_PHINX_DB_ADAPTER_SQLSRV_ENABLED constant.');
 		}
@@ -35,26 +33,22 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->disconnect();
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($this->adapter);
 	}
 
-	public function testConnection()
-	{
+	public function testConnection() {
 		$this->assertTrue($this->adapter->getConnection() instanceof \PDO);
 	}
 
-	public function testConnectionWithoutPort()
-	{
+	public function testConnectionWithoutPort() {
 		$options = $this->adapter->getOptions();
 		unset($options['port']);
 		$this->adapter->setOptions($options);
 		$this->assertTrue($this->adapter->getConnection() instanceof \PDO);
 	}
 
-	public function testConnectionWithInvalidCredentials()
-	{
+	public function testConnectionWithInvalidCredentials() {
 		$options = array(
 			'host' => TESTS_PHINX_DB_ADAPTER_SQLSRV_HOST,
 			'name' => TESTS_PHINX_DB_ADAPTER_SQLSRV_DATABASE,
@@ -77,8 +71,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testCreatingTheSchemaTableOnConnect()
-	{
+	public function testCreatingTheSchemaTableOnConnect() {
 		$this->adapter->connect();
 		$this->assertTrue($this->adapter->hasTable($this->adapter->getSchemaTableName()));
 		$this->adapter->dropTable($this->adapter->getSchemaTableName());
@@ -88,25 +81,21 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasTable($this->adapter->getSchemaTableName()));
 	}
 
-	public function testSchemaTableIsCreatedWithPrimaryKey()
-	{
+	public function testSchemaTableIsCreatedWithPrimaryKey() {
 		$this->adapter->connect();
 		$table = new \Phinx\Db\Table($this->adapter->getSchemaTableName(), array(), $this->adapter);
 		$this->assertTrue($this->adapter->hasIndex($this->adapter->getSchemaTableName(), array('version')));
 	}
 
-	public function testQuoteTableName()
-	{
+	public function testQuoteTableName() {
 		$this->assertEquals('[test_table]', $this->adapter->quoteTableName('test_table'));
 	}
 
-	public function testQuoteColumnName()
-	{
+	public function testQuoteColumnName() {
 		$this->assertEquals('[test_column]', $this->adapter->quoteColumnName('test_column'));
 	}
 
-	public function testCreateTable()
-	{
+	public function testCreateTable() {
 		$table = new \Phinx\Db\Table('ntable', array(), $this->adapter);
 		$table->addColumn('realname', 'string')
 			->addColumn('email', 'integer')
@@ -118,8 +107,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('ntable', 'address'));
 	}
 
-	public function testCreateTableCustomIdColumn()
-	{
+	public function testCreateTableCustomIdColumn() {
 		$table = new \Phinx\Db\Table('ntable', array('id' => 'custom_id'), $this->adapter);
 		$table->addColumn('realname', 'string')
 			->addColumn('email', 'integer')
@@ -131,8 +119,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('ntable', 'address'));
 	}
 
-	public function testCreateTableWithNoPrimaryKey()
-	{
+	public function testCreateTableWithNoPrimaryKey() {
 		$options = array(
 			'id' => false
 		);
@@ -142,8 +129,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('atable', 'id'));
 	}
 
-	public function testCreateTableWithMultiplePrimaryKeys()
-	{
+	public function testCreateTableWithMultiplePrimaryKeys() {
 		$options = array(
 			'id' => false,
 			'primary_key' => array('user_id', 'tag_id')
@@ -157,8 +143,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasIndex('table1', array('tag_id', 'user_email')));
 	}
 
-	public function testCreateTableWithMultipleIndexes()
-	{
+	public function testCreateTableWithMultipleIndexes() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->addColumn('name', 'string')
@@ -171,8 +156,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasIndex('table1', array('email', 'user_name')));
 	}
 
-	public function testCreateTableWithUniqueIndexes()
-	{
+	public function testCreateTableWithUniqueIndexes() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->addIndex('email', array('unique' => true))
@@ -181,8 +165,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasIndex('table1', array('email', 'user_email')));
 	}
 
-	public function testCreateTableWithNamedIndexes()
-	{
+	public function testCreateTableWithNamedIndexes() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->addIndex('email', array('name' => 'myemailindex'))
@@ -192,8 +175,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasIndexByName('table1', 'myemailindex'));
 	}
 
-	public function testRenameTable()
-	{
+	public function testRenameTable() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$this->assertTrue($this->adapter->hasTable('table1'));
@@ -203,8 +185,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasTable('table2'));
 	}
 
-	public function testAddColumn()
-	{
+	public function testAddColumn() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$this->assertFalse($table->hasColumn('email'));
@@ -213,8 +194,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($table->hasColumn('email'));
 	}
 
-	public function testAddColumnWithDefaultValue()
-	{
+	public function testAddColumnWithDefaultValue() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('default_zero', 'string', array('default' => 'test'))
@@ -227,8 +207,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testAddColumnWithDefaultZero()
-	{
+	public function testAddColumnWithDefaultZero() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('default_zero', 'integer', array('default' => 0))
@@ -242,8 +221,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testAddColumnWithDefaultNull()
-	{
+	public function testAddColumnWithDefaultNull() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('default_null', 'string', array('null' => true, 'default' => null))
@@ -256,8 +234,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testAddColumnWithDefaultBool()
-	{
+	public function testAddColumnWithDefaultBool() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table
@@ -275,8 +252,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testRenameColumn()
-	{
+	public function testRenameColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -287,8 +263,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasColumn('t', 'column2'));
 	}
 
-	public function testRenamingANonExistentColumn()
-	{
+	public function testRenamingANonExistentColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -306,8 +281,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testChangeColumn()
-	{
+	public function testChangeColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -331,8 +305,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testChangeColumnDefaults()
-	{
+	public function testChangeColumnDefaults() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string', array('default' => 'test'))
 			->save();
@@ -352,8 +325,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame('another test', $columns['column1']->getDefault());
 	}
 
-	public function testChangeColumnDefaultToNull()
-	{
+	public function testChangeColumnDefaultToNull() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string', array('null' => true, 'default' => 'test'))
 			->save();
@@ -366,8 +338,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertNull($columns['column1']->getDefault());
 	}
 
-	public function testChangeColumnDefaultToZero()
-	{
+	public function testChangeColumnDefaultToZero() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'integer')
 			->save();
@@ -380,8 +351,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame(0, $columns['column1']->getDefault());
 	}
 
-	public function testDropColumn()
-	{
+	public function testDropColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -390,8 +360,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('t', 'column1'));
 	}
 
-	public function testGetColumns()
-	{
+	public function testGetColumns() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string', array('null' => true, 'default' => null))
 			->addColumn('column2', 'integer', array('default' => 0))
@@ -420,8 +389,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame('text', $columns['column4']->getDefault());
 	}
 
-	public function testAddIndex()
-	{
+	public function testAddIndex() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->save();
@@ -431,8 +399,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($table->hasIndex('email'));
 	}
 
-	public function testGetIndexes()
-	{
+	public function testGetIndexes() {
 		// single column index
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
@@ -451,8 +418,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('email', 'username'), $indexes['email_username']['columns']);
 	}
 
-	public function testDropIndex()
-	{
+	public function testDropIndex() {
 		// single column index
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
@@ -492,8 +458,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($table4->hasIndex(array('fname', 'lname')));
 	}
 
-	public function testDropIndexByName()
-	{
+	public function testDropIndexByName() {
 		// single column index
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
@@ -515,8 +480,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($table2->hasIndex(array('fname', 'lname')));
 	}
 
-	public function testAddForeignKey()
-	{
+	public function testAddForeignKey() {
 		$refTable = new \Phinx\Db\Table('ref_table', array(), $this->adapter);
 		$refTable->addColumn('field1', 'string')->save();
 
@@ -532,8 +496,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasForeignKey($table->getName(), array('ref_table_id')));
 	}
 
-	public function dropForeignKey()
-	{
+	public function dropForeignKey() {
 		$refTable = new \Phinx\Db\Table('ref_table', array(), $this->adapter);
 		$refTable->addColumn('field1', 'string')->save();
 
@@ -551,14 +514,12 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasForeignKey($table->getName(), array('ref_table_id')));
 	}
 
-	public function testHasDatabase()
-	{
+	public function testHasDatabase() {
 		$this->assertFalse($this->adapter->hasDatabase('fake_database_name'));
 		$this->assertTrue($this->adapter->hasDatabase(TESTS_PHINX_DB_ADAPTER_SQLSRV_DATABASE));
 	}
 
-	public function testDropDatabase()
-	{
+	public function testDropDatabase() {
 		$this->assertFalse($this->adapter->hasDatabase('phinx_temp_database'));
 		$this->adapter->createDatabase('phinx_temp_database');
 		$this->assertTrue($this->adapter->hasDatabase('phinx_temp_database'));
@@ -569,13 +530,11 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \RuntimeException
 	 * @expectedExceptionMessage The type: "idontexist" is not supported
 	 */
-	public function testInvalidSqlType()
-	{
+	public function testInvalidSqlType() {
 		$this->adapter->getSqlType('idontexist');
 	}
 
-	public function testGetPhinxType()
-	{
+	public function testGetPhinxType() {
 		$this->assertEquals('integer', $this->adapter->getPhinxType('int'));
 		$this->assertEquals('integer', $this->adapter->getPhinxType('integer'));
 
@@ -603,8 +562,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 
 	}
 
-	public function testAddColumnComment()
-	{
+	public function testAddColumnComment() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('field1', 'string', array('comment' => $comment = 'Comments from column "field1"'))
 			->save();
@@ -617,8 +575,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dependss testAddColumnComment
 	 */
-	public function testChangeColumnComment()
-	{
+	public function testChangeColumnComment() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('field1', 'string', array('comment' => 'Comments from column "field1"'))
 			->save();
@@ -634,8 +591,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @depends testAddColumnComment
 	 */
-	public function testRemoveColumnComment()
-	{
+	public function testRemoveColumnComment() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('field1', 'string', array('comment' => 'Comments from column "field1"'))
 			->save();
@@ -651,8 +607,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * Test that column names are properly escaped when creating Foreign Keys
 	 */
-	public function testForignKeysArePropertlyEscaped()
-	{
+	public function testForignKeysArePropertlyEscaped() {
 		$userId = 'user';
 		$sessionId = 'session';
 
@@ -667,8 +622,7 @@ class SqlServerAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($foreign->hasForeignKey('user'));
 	}
 
-	public function testInsertData()
-	{
+	public function testInsertData() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->addColumn('column2', 'integer')

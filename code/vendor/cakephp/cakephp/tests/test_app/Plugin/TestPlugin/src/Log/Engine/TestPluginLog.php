@@ -21,10 +21,8 @@ use Psr\Log\AbstractLogger;
  * Test Suite Test Plugin Logging stream class.
  *
  */
-class TestPluginLog extends AbstractLogger
-{
+class TestPluginLog extends AbstractLogger {
 
-	public function log($level, $message, array $context = [])
-	{
+	public function log($level, $message, array $context = []) {
 	}
 }

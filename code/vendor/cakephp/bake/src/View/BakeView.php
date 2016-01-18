@@ -23,8 +23,7 @@ use Cake\Network\Response;
 use Cake\Utility\Inflector;
 use Cake\View\View;
 
-class BakeView extends View
-{
+class BakeView extends View {
 	use ConventionsTrait;
 	use InstanceConfigTrait;
 
@@ -84,8 +83,7 @@ class BakeView extends View
 		Response $response = null,
 		EventManager $eventManager = null,
 		array $viewOptions = []
-	)
-	{
+	) {
 		parent::__construct($request, $response, $eventManager, $viewOptions);
 
 		$bakeTemplates = dirname(dirname(__FILE__)) . DS . 'Template' . DS;
@@ -122,8 +120,7 @@ class BakeView extends View
 	 * @return string|null Rendered content.
 	 * @throws \Cake\Core\Exception\Exception If there is an error in the view.
 	 */
-	public function render($view = null, $layout = null)
-	{
+	public function render($view = null, $layout = null) {
 		$viewFileName = $this->_getViewFileName($view);
 		$templateEventName = str_replace(
 			['.ctp', DS],
@@ -162,8 +159,7 @@ class BakeView extends View
 	 *
 	 * @return \Cake\Event\Event
 	 */
-	public function dispatchEvent($name, $data = null, $subject = null)
-	{
+	public function dispatchEvent($name, $data = null, $subject = null) {
 		$name = preg_replace('/^View\./', 'Bake.', $name);
 		return parent::dispatchEvent($name, $data, $subject);
 	}
@@ -176,8 +172,7 @@ class BakeView extends View
 	 *    If empty the current View::$viewVars will be used.
 	 * @return string Rendered output
 	 */
-	protected function _evaluate($viewFile, $dataForView)
-	{
+	protected function _evaluate($viewFile, $dataForView) {
 		$viewString = $this->_getViewFileContents($viewFile);
 
 		$replacements = array_merge($this->config('phpTagReplacements') + $this->config('replacements'));
@@ -211,8 +206,7 @@ class BakeView extends View
 	 * @param string $filename A template filename
 	 * @return string Bake template to evaluate
 	 */
-	protected function _getViewFileContents($filename)
-	{
+	protected function _getViewFileContents($filename) {
 		return file_get_contents($filename);
 	}
 
@@ -223,8 +217,7 @@ class BakeView extends View
 	 * @param bool $cached Set to false to force a refresh of view paths. Default true.
 	 * @return array paths
 	 */
-	protected function _paths($plugin = null, $cached = true)
-	{
+	protected function _paths($plugin = null, $cached = true) {
 		$paths = parent::_paths($plugin, false);
 		foreach ($paths as &$path) {
 			$path .= 'Bake' . DS;
@@ -240,8 +233,7 @@ class BakeView extends View
 	 * @param string $maybeRegex a fixed string or a regex
 	 * @return bool
 	 */
-	protected function _isRegex($maybeRegex)
-	{
+	protected function _isRegex($maybeRegex) {
 		// @codingStandardsIgnoreStart
 		$isRegex = @preg_match($maybeRegex, '');
 		// @codingStandardsIgnoreEnd

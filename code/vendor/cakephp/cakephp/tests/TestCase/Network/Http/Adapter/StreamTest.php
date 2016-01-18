@@ -22,11 +22,9 @@ use Cake\TestSuite\TestCase;
 /**
  * HTTP stream adapter test.
  */
-class StreamTest extends TestCase
-{
+class StreamTest extends TestCase {
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->stream = $this->getMock(
 			'Cake\Network\Http\Adapter\Stream',
@@ -39,8 +37,7 @@ class StreamTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSend()
-	{
+	public function testSend() {
 		$stream = new Stream();
 		$request = new Request();
 		$request->url('http://localhost')
@@ -60,8 +57,7 @@ class StreamTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildingContextHeader()
-	{
+	public function testBuildingContextHeader() {
 		$request = new Request();
 		$request->url('http://localhost')
 			->header([
@@ -94,8 +90,7 @@ class StreamTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSendContextContentString()
-	{
+	public function testSendContextContentString() {
 		$content = json_encode(['a' => 'b']);
 		$request = new Request();
 		$request->url('http://localhost')
@@ -123,8 +118,7 @@ class StreamTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSendContextContentArray()
-	{
+	public function testSendContextContentArray() {
 		$request = new Request();
 		$request->url('http://localhost')
 			->header([
@@ -149,8 +143,7 @@ class StreamTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSendContextContentArrayFiles()
-	{
+	public function testSendContextContentArrayFiles() {
 		$request = new Request();
 		$request->url('http://localhost')
 			->header([
@@ -175,8 +168,7 @@ class StreamTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSendContextSsl()
-	{
+	public function testSendContextSsl() {
 		$request = new Request();
 		$request->url('https://localhost.com/test.html');
 		$options = [
@@ -210,8 +202,7 @@ class StreamTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateResponseWithRedirects()
-	{
+	public function testCreateResponseWithRedirects() {
 		$headers = [
 			'HTTP/1.1 302 Found',
 			'Date: Mon, 31 Dec 2012 16:53:16 GMT',

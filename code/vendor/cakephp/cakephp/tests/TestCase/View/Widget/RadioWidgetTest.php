@@ -23,16 +23,14 @@ use Cake\View\Widget\RadioWidget;
 /**
  * Radio test case
  */
-class RadioWidgetTest extends TestCase
-{
+class RadioWidgetTest extends TestCase {
 
 	/**
 	 * setup method.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$templates = [
 			'radio' => '<input type="radio" name="{{name}}" value="{{value}}"{{attrs}}>',
@@ -48,8 +46,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSimpleNotNested()
-	{
+	public function testRenderSimpleNotNested() {
 		$this->templates->add([
 			'nestingLabel' => '<label{{attrs}}>{{text}}</label>',
 			'radioWrapper' => '{{input}}{{label}}'
@@ -112,8 +109,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSimple()
-	{
+	public function testRenderSimple() {
 		$label = new NestingLabelWidget($this->templates);
 		$radio = new RadioWidget($this->templates, $label);
 		$data = [
@@ -157,8 +153,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderComplex()
-	{
+	public function testRenderComplex() {
 		$label = new NestingLabelWidget($this->templates);
 		$radio = new RadioWidget($this->templates, $label);
 		$data = [
@@ -198,8 +193,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderIdSuffixGeneration()
-	{
+	public function testRenderIdSuffixGeneration() {
 		$label = new NestingLabelWidget($this->templates);
 		$radio = new RadioWidget($this->templates, $label);
 		$data = [
@@ -235,8 +229,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderBooleanishValues()
-	{
+	public function testRenderBooleanishValues() {
 		$label = new NestingLabelWidget($this->templates);
 		$radio = new RadioWidget($this->templates, $label);
 		$data = [
@@ -311,8 +304,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderRequiredAndFormAttribute()
-	{
+	public function testRenderRequiredAndFormAttribute() {
 		$label = new NestingLabelWidget($this->templates);
 		$radio = new RadioWidget($this->templates, $label);
 		$data = [
@@ -342,8 +334,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderEmptyOption()
-	{
+	public function testRenderEmptyOption() {
 		$label = new NestingLabelWidget($this->templates);
 		$radio = new RadioWidget($this->templates, $label);
 		$data = [
@@ -404,8 +395,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderInputInsideLabel()
-	{
+	public function testRenderInputInsideLabel() {
 		$this->templates->add([
 			'label' => '<label{{attrs}}>{{input}}{{text}}</label>',
 			'radioWrapper' => '{{label}}',
@@ -436,8 +426,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSelected()
-	{
+	public function testRenderSelected() {
 		$label = new NestingLabelWidget($this->templates);
 		$radio = new RadioWidget($this->templates, $label);
 		$data = [
@@ -488,8 +477,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderDisabled()
-	{
+	public function testRenderDisabled() {
 		$label = new NestingLabelWidget($this->templates);
 		$radio = new RadioWidget($this->templates, $label);
 		$data = [
@@ -561,8 +549,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderLabelOptions()
-	{
+	public function testRenderLabelOptions() {
 		$label = new NestingLabelWidget($this->templates);
 		$radio = new RadioWidget($this->templates, $label);
 		$data = [
@@ -632,8 +619,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderContainerTemplate()
-	{
+	public function testRenderContainerTemplate() {
 		$this->templates->add([
 			'radioWrapper' => '<div class="radio">{{input}}{{label}}</div>'
 		]);
@@ -663,8 +649,7 @@ class RadioWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderTemplateVars()
-	{
+	public function testRenderTemplateVars() {
 		$this->templates->add([
 			'radioWrapper' => '<div class="radio" data-var="{{wrapperVar}}">{{label}}</div>',
 			'radio' => '<input type="radio" data-i="{{inputVar}}" name="{{name}}" value="{{value}}"{{attrs}}>',

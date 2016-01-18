@@ -7,18 +7,15 @@ use PhpParser\Parser\Tokens;
 
 require_once __DIR__ . '/../LexerTest.php';
 
-class EmulativeTest extends LexerTest
-{
-	protected function getLexer(array $options = array())
-	{
+class EmulativeTest extends LexerTest {
+	protected function getLexer(array $options = array()) {
 		return new Emulative($options);
 	}
 
 	/**
 	 * @dataProvider provideTestReplaceKeywords
 	 */
-	public function testReplaceKeywords($keyword, $expectedToken)
-	{
+	public function testReplaceKeywords($keyword, $expectedToken) {
 		$lexer = $this->getLexer();
 		$lexer->startLexing('<?php ' . $keyword);
 
@@ -29,8 +26,7 @@ class EmulativeTest extends LexerTest
 	/**
 	 * @dataProvider provideTestReplaceKeywords
 	 */
-	public function testNoReplaceKeywordsAfterObjectOperator($keyword)
-	{
+	public function testNoReplaceKeywordsAfterObjectOperator($keyword) {
 		$lexer = $this->getLexer();
 		$lexer->startLexing('<?php ->' . $keyword);
 
@@ -39,8 +35,7 @@ class EmulativeTest extends LexerTest
 		$this->assertSame(0, $lexer->getNextToken());
 	}
 
-	public function provideTestReplaceKeywords()
-	{
+	public function provideTestReplaceKeywords() {
 		return array(
 			// PHP 5.5
 			array('finally', Tokens::T_FINALLY),
@@ -63,8 +58,7 @@ class EmulativeTest extends LexerTest
 	/**
 	 * @dataProvider provideTestLexNewFeatures
 	 */
-	public function testLexNewFeatures($code, array $expectedTokens)
-	{
+	public function testLexNewFeatures($code, array $expectedTokens) {
 		$lexer = $this->getLexer();
 		$lexer->startLexing('<?php ' . $code);
 
@@ -79,8 +73,7 @@ class EmulativeTest extends LexerTest
 	/**
 	 * @dataProvider provideTestLexNewFeatures
 	 */
-	public function testLeaveStuffAloneInStrings($code)
-	{
+	public function testLeaveStuffAloneInStrings($code) {
 		$stringifiedToken = '"' . addcslashes($code, '"\\') . '"';
 
 		$lexer = $this->getLexer();
@@ -91,8 +84,7 @@ class EmulativeTest extends LexerTest
 		$this->assertSame(0, $lexer->getNextToken());
 	}
 
-	public function provideTestLexNewFeatures()
-	{
+	public function provideTestLexNewFeatures() {
 		return array(
 			array('yield from', array(
 				array(Tokens::T_YIELD_FROM, 'yield from'),

@@ -23,23 +23,20 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * Shows, searches and replays readline history. Not too shabby.
  */
-class HistoryCommand extends Command
-{
+class HistoryCommand extends Command {
 	/**
 	 * Set the Shell's Readline service.
 	 *
 	 * @param Readline $readline
 	 */
-	public function setReadline(Readline $readline)
-	{
+	public function setReadline(Readline $readline) {
 		$this->readline = $readline;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('history')
 			->setAliases(array('hist'))
@@ -75,8 +72,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->validateOnlyOne($input, array('show', 'head', 'tail'));
 		$this->validateOnlyOne($input, array('save', 'replay', 'clear'));
 
@@ -153,8 +149,7 @@ HELP
 	 *
 	 * @return array [ start, end ]
 	 */
-	private function extractRange($range)
-	{
+	private function extractRange($range) {
 		if (preg_match('/^\d+$/', $range)) {
 			return array($range, $range + 1);
 		}
@@ -179,8 +174,7 @@ HELP
 	 *
 	 * @return array A slilce of history.
 	 */
-	private function getHistorySlice($show, $head, $tail)
-	{
+	private function getHistorySlice($show, $head, $tail) {
 		$history = $this->readline->listHistory();
 
 		if ($show) {
@@ -214,8 +208,7 @@ HELP
 	 *
 	 * @return bool
 	 */
-	private function validateRegex($pattern)
-	{
+	private function validateRegex($pattern) {
 		set_error_handler(array('Psy\Exception\ErrorException', 'throwException'));
 		try {
 			preg_match($pattern, '');
@@ -231,8 +224,7 @@ HELP
 	 * @param InputInterface $input
 	 * @param array $options
 	 */
-	private function validateOnlyOne(InputInterface $input, array $options)
-	{
+	private function validateOnlyOne(InputInterface $input, array $options) {
 		$count = 0;
 		foreach ($options as $opt) {
 			if ($input->getOption($opt)) {
@@ -248,13 +240,11 @@ HELP
 	/**
 	 * Clear the readline history.
 	 */
-	private function clearHistory()
-	{
+	private function clearHistory() {
 		$this->readline->clearHistory();
 	}
 
-	public static function escape($string)
-	{
+	public static function escape($string) {
 		return OutputFormatter::escape($string);
 	}
 }

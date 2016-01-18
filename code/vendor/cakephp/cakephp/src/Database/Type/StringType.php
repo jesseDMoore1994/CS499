@@ -24,8 +24,7 @@ use PDO;
  *
  * Use to convert string data between PHP and the database types.
  */
-class StringType extends Type
-{
+class StringType extends Type {
 
 	/**
 	 * Convert string data into the database format.
@@ -34,8 +33,7 @@ class StringType extends Type
 	 * @param Driver $driver The driver instance to convert with.
 	 * @return string|null
 	 */
-	public function toDatabase($value, Driver $driver)
-	{
+	public function toDatabase($value, Driver $driver) {
 		if ($value === null || is_string($value)) {
 			return $value;
 		}
@@ -58,8 +56,7 @@ class StringType extends Type
 	 * @param Driver $driver The driver instance to convert with.
 	 * @return string|null
 	 */
-	public function toPHP($value, Driver $driver)
-	{
+	public function toPHP($value, Driver $driver) {
 		if ($value === null) {
 			return null;
 		}
@@ -73,8 +70,7 @@ class StringType extends Type
 	 * @param Driver $driver The driver.
 	 * @return int
 	 */
-	public function toStatement($value, Driver $driver)
-	{
+	public function toStatement($value, Driver $driver) {
 		return PDO::PARAM_STR;
 	}
 
@@ -84,8 +80,7 @@ class StringType extends Type
 	 * @param mixed $value The value to convert.
 	 * @return mixed Converted value.
 	 */
-	public function marshal($value)
-	{
+	public function marshal($value) {
 		if ($value === null) {
 			return null;
 		}

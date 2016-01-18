@@ -21,16 +21,14 @@ use Cake\View\ViewVarsTrait;
  * ViewVarsTrait test case
  *
  */
-class ViewVarsTraitTest extends TestCase
-{
+class ViewVarsTraitTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->subject = new Controller;
@@ -41,8 +39,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetOneParam()
-	{
+	public function testSetOneParam() {
 		$data = ['test' => 'val', 'foo' => 'bar'];
 		$this->subject->set($data);
 		$this->assertEquals($data, $this->subject->viewVars);
@@ -57,8 +54,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetTwoParam()
-	{
+	public function testSetTwoParam() {
 		$this->subject->set('testing', 'value');
 		$this->assertEquals(['testing' => 'value'], $this->subject->viewVars);
 	}
@@ -68,8 +64,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetChained()
-	{
+	public function testSetChained() {
 		$result = $this->subject->set('testing', 'value')
 			->set('foo', 'bar');
 		$this->assertSame($this->subject, $result);
@@ -81,8 +76,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetTwoParamCombind()
-	{
+	public function testSetTwoParamCombind() {
 		$keys = ['one', 'key'];
 		$vals = ['two', 'val'];
 		$this->subject->set($keys, $vals);
@@ -96,8 +90,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddOneViewOption()
-	{
+	public function testAddOneViewOption() {
 		$option = 'newOption';
 		$this->subject->viewOptions($option);
 
@@ -109,8 +102,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddTwoViewOption()
-	{
+	public function testAddTwoViewOption() {
 		$this->subject->viewOptions(['oldOption'], false);
 		$option = ['newOption', 'anotherOption'];
 		$result = $this->subject->viewOptions($option);
@@ -125,8 +117,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadingViewOptions()
-	{
+	public function testReadingViewOptions() {
 		$expected = $this->subject->viewOptions(['one', 'two', 'three'], false);
 		$result = $this->subject->viewOptions();
 
@@ -138,8 +129,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeFalseViewOptions()
-	{
+	public function testMergeFalseViewOptions() {
 		$this->subject->viewOptions(['one', 'two', 'three'], false);
 		$expected = ['four', 'five', 'six'];
 		$result = $this->subject->viewOptions($expected, false);
@@ -152,8 +142,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUndefinedValidViewOptions()
-	{
+	public function testUndefinedValidViewOptions() {
 		$result = $this->subject->viewOptions([], false);
 
 		$this->assertTrue(is_array($result));
@@ -165,8 +154,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUptoDateViewVars()
-	{
+	public function testUptoDateViewVars() {
 		$expected = ['one' => 'one'];
 		$this->subject->set($expected);
 		$this->assertEquals($expected, $this->subject->createView()->viewVars);
@@ -181,8 +169,7 @@ class ViewVarsTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testViewOptionsGetsToBuilder()
-	{
+	public function testViewOptionsGetsToBuilder() {
 		$this->subject->passedArgs = 'test';
 		$this->subject->createView();
 		$result = $this->subject->viewbuilder()->options();
@@ -196,8 +183,7 @@ class ViewVarsTraitTest extends TestCase
 	 * @expectedExceptionMessage View class "Foo" is missing.
 	 * @return void
 	 */
-	public function testCreateViewException()
-	{
+	public function testCreateViewException() {
 		$this->subject->createView('Foo');
 	}
 }

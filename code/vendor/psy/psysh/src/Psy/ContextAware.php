@@ -17,8 +17,7 @@ namespace Psy;
  * This interface is used to pass the Shell's context into commands and such
  * which require access to the current scope variables.
  */
-interface ContextAware
-{
+interface ContextAware {
 	/**
 	 * Set the Context reference.
 	 *

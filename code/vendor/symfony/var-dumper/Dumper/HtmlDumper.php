@@ -19,8 +19,7 @@ use Symfony\Component\VarDumper\Cloner\Data;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class HtmlDumper extends CliDumper
-{
+class HtmlDumper extends CliDumper {
 	public static $defaultOutput = 'php://output';
 
 	protected $dumpHeader;
@@ -48,8 +47,7 @@ class HtmlDumper extends CliDumper
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct($output = null, $charset = null)
-	{
+	public function __construct($output = null, $charset = null) {
 		AbstractDumper::__construct($output, $charset);
 		$this->dumpId = 'sf-dump-' . mt_rand();
 	}
@@ -57,8 +55,7 @@ class HtmlDumper extends CliDumper
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setOutput($output)
-	{
+	public function setOutput($output) {
 		if ($output !== $prev = parent::setOutput($output)) {
 			$this->headerIsDumped = false;
 		}
@@ -69,8 +66,7 @@ class HtmlDumper extends CliDumper
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setStyles(array $styles)
-	{
+	public function setStyles(array $styles) {
 		$this->headerIsDumped = false;
 		$this->styles = $styles + $this->styles;
 	}
@@ -80,8 +76,7 @@ class HtmlDumper extends CliDumper
 	 *
 	 * @param string $header An HTML string.
 	 */
-	public function setDumpHeader($header)
-	{
+	public function setDumpHeader($header) {
 		$this->dumpHeader = $header;
 	}
 
@@ -91,8 +86,7 @@ class HtmlDumper extends CliDumper
 	 * @param string $prefix The prepended HTML string.
 	 * @param string $suffix The appended HTML string.
 	 */
-	public function setDumpBoundaries($prefix, $suffix)
-	{
+	public function setDumpBoundaries($prefix, $suffix) {
 		$this->dumpPrefix = $prefix;
 		$this->dumpSuffix = $suffix;
 	}
@@ -100,8 +94,7 @@ class HtmlDumper extends CliDumper
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dump(Data $data, $output = null)
-	{
+	public function dump(Data $data, $output = null) {
 		parent::dump($data, $output);
 		$this->dumpId = 'sf-dump-' . mt_rand();
 	}
@@ -109,8 +102,7 @@ class HtmlDumper extends CliDumper
 	/**
 	 * Dumps the HTML header.
 	 */
-	protected function getDumpHeader()
-	{
+	protected function getDumpHeader() {
 		$this->headerIsDumped = true;
 
 		if (null !== $this->dumpHeader) {
@@ -336,8 +328,7 @@ EOHTML;
 	/**
 	 * {@inheritdoc}
 	 */
-	public function enterHash(Cursor $cursor, $type, $class, $hasChild)
-	{
+	public function enterHash(Cursor $cursor, $type, $class, $hasChild) {
 		parent::enterHash($cursor, $type, $class, false);
 
 		if ($hasChild) {
@@ -356,8 +347,7 @@ EOHTML;
 	/**
 	 * {@inheritdoc}
 	 */
-	public function leaveHash(Cursor $cursor, $type, $class, $hasChild, $cut)
-	{
+	public function leaveHash(Cursor $cursor, $type, $class, $hasChild, $cut) {
 		$this->dumpEllipsis($cursor, $hasChild, $cut);
 		if ($hasChild) {
 			$this->line .= '</samp>';
@@ -368,8 +358,7 @@ EOHTML;
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function style($style, $value, $attr = array())
-	{
+	protected function style($style, $value, $attr = array()) {
 		if ('' === $value) {
 			return '';
 		}
@@ -428,8 +417,7 @@ EOHTML;
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function dumpLine($depth, $endOfValue = false)
-	{
+	protected function dumpLine($depth, $endOfValue = false) {
 		if (-1 === $this->lastDepth) {
 			$this->line = sprintf($this->dumpPrefix, $this->dumpId, $this->indentPad) . $this->line;
 		}

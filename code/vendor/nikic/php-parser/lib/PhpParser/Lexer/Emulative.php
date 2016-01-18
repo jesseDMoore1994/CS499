@@ -7,8 +7,7 @@ use PhpParser\Parser\Tokens;
 /**
  * ATTENTION: This code is WRITE-ONLY. Do not try to read it.
  */
-class Emulative extends \PhpParser\Lexer
-{
+class Emulative extends \PhpParser\Lexer {
 	protected $newKeywords;
 	protected $inObjectAccess;
 
@@ -23,8 +22,7 @@ class Emulative extends \PhpParser\Lexer
 	const PHP_5_6 = '5.6.0rc1';
 	const PHP_5_5 = '5.5.0beta1';
 
-	public function __construct(array $options = array())
-	{
+	public function __construct(array $options = array()) {
 		parent::__construct($options);
 
 		$newKeywordsPerVersion = array(
@@ -58,8 +56,7 @@ class Emulative extends \PhpParser\Lexer
 		$this->tokenMap[self::T_POW_EQUAL] = Tokens::T_POW_EQUAL;
 	}
 
-	public function startLexing($code)
-	{
+	public function startLexing($code) {
 		$this->inObjectAccess = false;
 
 		$preprocessedCode = $this->preprocessCode($code);
@@ -81,8 +78,7 @@ class Emulative extends \PhpParser\Lexer
 	 * by real tokens or replaced with their original content (e.g. if they occurred
 	 * inside a string, i.e. a place where they don't have a special meaning).
 	 */
-	protected function preprocessCode($code)
-	{
+	protected function preprocessCode($code) {
 		if (version_compare(PHP_VERSION, self::PHP_7_0, '>=')) {
 			return $code;
 		}
@@ -109,8 +105,7 @@ class Emulative extends \PhpParser\Lexer
 	 * Replaces the ~__EMU__...~ sequences with real tokens or their original
 	 * value.
 	 */
-	protected function postprocessTokens()
-	{
+	protected function postprocessTokens() {
 		// we need to manually iterate and manage a count because we'll change
 		// the tokens array on the way
 		for ($i = 0, $c = count($this->tokens); $i < $c; ++$i) {
@@ -171,8 +166,7 @@ class Emulative extends \PhpParser\Lexer
 	 * This method is a callback for restoring EMU sequences in
 	 * multichar tokens (like strings) to their original value.
 	 */
-	public function restoreContentCallback(array $matches)
-	{
+	public function restoreContentCallback(array $matches) {
 		if ('ELLIPSIS' === $matches[1]) {
 			return '...';
 		} else if ('POW' === $matches[1]) {
@@ -190,8 +184,7 @@ class Emulative extends \PhpParser\Lexer
 		}
 	}
 
-	public function getNextToken(&$value = null, &$startAttributes = null, &$endAttributes = null)
-	{
+	public function getNextToken(&$value = null, &$startAttributes = null, &$endAttributes = null) {
 		$token = parent::getNextToken($value, $startAttributes, $endAttributes);
 
 		// replace new keywords by their respective tokens. This is not done

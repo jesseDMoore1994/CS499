@@ -71,16 +71,15 @@ if ($isController): %>
 		 * @return void
 		 */
 		public
-		function setUp()
-		{
+		function setUp() {
 			parent::setUp();
 			<%
 			- if ($preConstruct): %>
-			< %= $preConstruct %>
+				< %= $preConstruct %>
     <%- endif; %>
         $this-><%= $subject . ' = ' . $construction %>
     <%- if ($postConstruct): %>
-			< %= $postConstruct %>
+				< %= $postConstruct %>
     <%- endif; %>
     }
 
@@ -90,8 +89,7 @@ if ($isController): %>
 		 * @return void
 		 */
 		public
-		function tearDown()
-		{
+		function tearDown() {
 			unset($this-><%= $subject %>);
 
         parent::tearDown();
@@ -123,8 +121,7 @@ if ($isController): %>
 		 * @return void
 		 */
 		public
-		function testInitialization()
-		{
+		function testInitialization() {
 			$this->markTestIncomplete('Not implemented yet.');
 		}
 

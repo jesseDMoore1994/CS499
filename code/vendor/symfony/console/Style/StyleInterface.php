@@ -16,8 +16,7 @@ namespace Symfony\Component\Console\Style;
  *
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-interface StyleInterface
-{
+interface StyleInterface {
 	/**
 	 * Formats a command title.
 	 *

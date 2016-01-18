@@ -25,8 +25,7 @@ use Cake\Validation\Validator;
 /**
  * Used to test correct class is instantiated when using $this->_locator->get();
  */
-class MyUsersTable extends Table
-{
+class MyUsersTable extends Table {
 
 	/**
 	 * Overrides default table name
@@ -40,8 +39,7 @@ class MyUsersTable extends Table
 /**
  * Test case for TableLocator
  */
-class TableLocatorTest extends TestCase
-{
+class TableLocatorTest extends TestCase {
 
 	/**
 	 * TableLocator instance.
@@ -56,8 +54,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 
@@ -69,8 +66,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfig()
-	{
+	public function testConfig() {
 		$this->assertEquals([], $this->_locator->config('Tests'));
 
 		$data = [
@@ -90,8 +86,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfigPlugin()
-	{
+	public function testConfigPlugin() {
 		Plugin::load('TestPlugin');
 
 		$data = [
@@ -110,8 +105,7 @@ class TableLocatorTest extends TestCase
 	 * @expectedExceptionMessage You cannot configure "Users", it has already been constructed.
 	 * @return void
 	 */
-	public function testConfigOnDefinedInstance()
-	{
+	public function testConfigOnDefinedInstance() {
 		$users = $this->_locator->get('Users');
 		$this->_locator->config('Users', ['table' => 'my_users']);
 	}
@@ -121,8 +115,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExists()
-	{
+	public function testExists() {
 		$this->assertFalse($this->_locator->exists('Articles'));
 
 		$this->_locator->config('Articles', ['table' => 'articles']);
@@ -137,8 +130,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExistsPlugin()
-	{
+	public function testExistsPlugin() {
 		$this->assertFalse($this->_locator->exists('Comments'));
 		$this->assertFalse($this->_locator->exists('TestPlugin.Comments'));
 
@@ -156,8 +148,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGet()
-	{
+	public function testGet() {
 		$result = $this->_locator->get('Articles', [
 			'table' => 'my_articles',
 		]);
@@ -174,8 +165,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetFallbacks()
-	{
+	public function testGetFallbacks() {
 		$result = $this->_locator->get('Droids');
 		$this->assertInstanceOf('Cake\ORM\Table', $result);
 		$this->assertEquals('droids', $result->table());
@@ -212,8 +202,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetWithConfig()
-	{
+	public function testGetWithConfig() {
 		$this->_locator->config('Articles', [
 			'table' => 'my_articles',
 		]);
@@ -226,8 +215,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetWithConfigClassName()
-	{
+	public function testGetWithConfigClassName() {
 		$this->_locator->config('MyUsersTableAlias', [
 			'className' => '\Cake\Test\TestCase\ORM\Locator\MyUsersTable',
 		]);
@@ -242,8 +230,7 @@ class TableLocatorTest extends TestCase
 	 * @expectedExceptionMessage You cannot configure "Users", it already exists in the registry.
 	 * @return void
 	 */
-	public function testGetExistingWithConfigData()
-	{
+	public function testGetExistingWithConfigData() {
 		$users = $this->_locator->get('Users');
 		$this->_locator->get('Users', ['table' => 'my_users']);
 	}
@@ -254,8 +241,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetWithSameOption()
-	{
+	public function testGetWithSameOption() {
 		$result = $this->_locator->get('Users', ['className' => 'Cake\Test\TestCase\ORM\Locator\MyUsersTable']);
 		$result2 = $this->_locator->get('Users', ['className' => 'Cake\Test\TestCase\ORM\Locator\MyUsersTable']);
 		$this->assertEquals($result, $result2);
@@ -267,8 +253,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetWithConventions()
-	{
+	public function testGetWithConventions() {
 		$table = $this->_locator->get('articles');
 		$this->assertInstanceOf('TestApp\Model\Table\ArticlesTable', $table);
 		$table = $this->_locator->get('Articles');
@@ -285,8 +270,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetPlugin()
-	{
+	public function testGetPlugin() {
 		Plugin::load('TestPlugin');
 		$table = $this->_locator->get('TestPlugin.TestPluginComments');
 
@@ -311,8 +295,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetMultiplePlugins()
-	{
+	public function testGetMultiplePlugins() {
 		Plugin::load('TestPlugin');
 		Plugin::load('TestPluginTwo');
 
@@ -338,8 +321,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetPluginWithClassNameOption()
-	{
+	public function testGetPluginWithClassNameOption() {
 		Plugin::load('TestPlugin');
 		$table = $this->_locator->get('Comments', [
 			'className' => 'TestPlugin.TestPluginComments',
@@ -359,8 +341,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetPluginWithFullNamespaceName()
-	{
+	public function testGetPluginWithFullNamespaceName() {
 		Plugin::load('TestPlugin');
 		$class = 'TestPlugin\Model\Table\TestPluginCommentsTable';
 		$table = $this->_locator->get('Comments', [
@@ -377,8 +358,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfigAndBuild()
-	{
+	public function testConfigAndBuild() {
 		$this->_locator->clear();
 		$map = $this->_locator->config();
 		$this->assertEquals([], $map);
@@ -420,8 +400,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfigWithSingleValidator()
-	{
+	public function testConfigWithSingleValidator() {
 		$validator = new Validator();
 
 		$this->_locator->config('users', ['validator' => $validator]);
@@ -435,8 +414,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfigWithMultipleValidators()
-	{
+	public function testConfigWithMultipleValidators() {
 		$validator1 = new Validator();
 		$validator2 = new Validator();
 		$validator3 = new Validator();
@@ -460,8 +438,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSet()
-	{
+	public function testSet() {
 		$mock = $this->getMock('Cake\ORM\Table');
 		$this->assertSame($mock, $this->_locator->set('Articles', $mock));
 		$this->assertSame($mock, $this->_locator->get('Articles'));
@@ -472,8 +449,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetPlugin()
-	{
+	public function testSetPlugin() {
 		Plugin::load('TestPlugin');
 
 		$mock = $this->getMock('TestPlugin\Model\Table\CommentsTable');
@@ -487,8 +463,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGenericInstances()
-	{
+	public function testGenericInstances() {
 		$foos = $this->_locator->get('Foos');
 		$bars = $this->_locator->get('Bars');
 		$this->_locator->get('Articles');
@@ -501,8 +476,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemove()
-	{
+	public function testRemove() {
 		$first = $this->_locator->get('Comments');
 
 		$this->assertTrue($this->_locator->exists('Comments'));
@@ -526,8 +500,7 @@ class TableLocatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemovePlugin()
-	{
+	public function testRemovePlugin() {
 		Plugin::load('TestPlugin');
 		Plugin::load('TestPluginTwo');
 

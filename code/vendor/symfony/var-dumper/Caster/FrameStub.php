@@ -16,13 +16,11 @@ namespace Symfony\Component\VarDumper\Caster;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class FrameStub extends EnumStub
-{
+class FrameStub extends EnumStub {
 	public $keepArgs;
 	public $inTraceStub;
 
-	public function __construct(array $frame, $keepArgs = true, $inTraceStub = false)
-	{
+	public function __construct(array $frame, $keepArgs = true, $inTraceStub = false) {
 		$this->value = $frame;
 		$this->keepArgs = $keepArgs;
 		$this->inTraceStub = $inTraceStub;

@@ -4,8 +4,7 @@ namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
 
-class Echo_ extends Node\Stmt
-{
+class Echo_ extends Node\Stmt {
 	/** @var Node\Expr[] Expressions */
 	public $exprs;
 
@@ -15,14 +14,12 @@ class Echo_ extends Node\Stmt
 	 * @param Node\Expr[] $exprs Expressions
 	 * @param array $attributes Additional attributes
 	 */
-	public function __construct(array $exprs, array $attributes = array())
-	{
+	public function __construct(array $exprs, array $attributes = array()) {
 		parent::__construct($attributes);
 		$this->exprs = $exprs;
 	}
 
-	public function getSubNodeNames()
-	{
+	public function getSubNodeNames() {
 		return array('exprs');
 	}
 }

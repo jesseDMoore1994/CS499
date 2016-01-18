@@ -9,13 +9,11 @@ use \Phinx\Config\Config;
  * @package Test\Phinx\Config
  * @group config
  */
-class ConfigJsonTest extends \PHPUnit_Framework_TestCase
-{
+class ConfigJsonTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @covers \Phinx\Config\Config::fromJson
 	 */
-	public function testFromJSONMethod()
-	{
+	public function testFromJSONMethod() {
 		$path = __DIR__ . '/_files';
 		$config = Config::fromJson($path . '/valid_config.json');
 		$this->assertEquals('dev', $config->getDefaultEnvironment());
@@ -25,8 +23,7 @@ class ConfigJsonTest extends \PHPUnit_Framework_TestCase
 	 * @covers \Phinx\Config\Config::fromJson
 	 * @expectedException \RuntimeException
 	 */
-	public function testFromJSONInvalidJson()
-	{
+	public function testFromJSONInvalidJson() {
 		$path = __DIR__ . '/_files';
 		Config::fromJson($path . '/invalid.json');
 	}

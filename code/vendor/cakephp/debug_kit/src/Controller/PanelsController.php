@@ -20,8 +20,7 @@ use Cake\Network\Exception\NotFoundException;
 /**
  * Provides access to panel data.
  */
-class PanelsController extends Controller
-{
+class PanelsController extends Controller {
 
 	/**
 	 * components
@@ -37,8 +36,7 @@ class PanelsController extends Controller
 	 * @return void
 	 * @throws \Cake\Network\Exception\NotFoundException
 	 */
-	public function beforeFilter(Event $event)
-	{
+	public function beforeFilter(Event $event) {
 		// TODO add config override.
 		if (!Configure::read('debug')) {
 			throw new NotFoundException();
@@ -51,8 +49,7 @@ class PanelsController extends Controller
 	 * @param \Cake\Event\Event $event The event.
 	 * @return void
 	 */
-	public function beforeRender(Event $event)
-	{
+	public function beforeRender(Event $event) {
 		$this->viewBuilder()->layout('DebugKit.panel');
 	}
 
@@ -63,8 +60,7 @@ class PanelsController extends Controller
 	 * @return void
 	 * @throws \Cake\Network\Exception\NotFoundException
 	 */
-	public function index($requestId = null)
-	{
+	public function index($requestId = null) {
 		$query = $this->Panels->find('byRequest', ['requestId' => $requestId]);
 		$panels = $query->toArray();
 		if (empty($panels)) {
@@ -82,8 +78,7 @@ class PanelsController extends Controller
 	 * @param string $id The id.
 	 * @return void
 	 */
-	public function view($id = null)
-	{
+	public function view($id = null) {
 		$this->Cookie->configKey('debugKit_sort', 'encryption', false);
 		$this->set('sort', $this->Cookie->read('debugKit_sort'));
 		$panel = $this->Panels->get($id);

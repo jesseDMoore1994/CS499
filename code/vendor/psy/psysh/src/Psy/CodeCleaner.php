@@ -36,8 +36,7 @@ use Psy\Exception\ParseErrorException;
  * A service to clean up user input, detect parse errors before they happen,
  * and generally work around issues with the PHP code evaluation experience.
  */
-class CodeCleaner
-{
+class CodeCleaner {
 	private $parser;
 	private $printer;
 	private $traverser;
@@ -50,8 +49,7 @@ class CodeCleaner
 	 * @param Printer $printer A PhpParser Printer instance. One will be created if not explicitly supplied.
 	 * @param NodeTraverser $traverser A PhpParser NodeTraverser instance. One will be created if not explicitly supplied.
 	 */
-	public function __construct(Parser $parser = null, Printer $printer = null, NodeTraverser $traverser = null)
-	{
+	public function __construct(Parser $parser = null, Printer $printer = null, NodeTraverser $traverser = null) {
 		if ($parser === null) {
 			$parserFactory = new ParserFactory();
 			$parser = $parserFactory->createParser();
@@ -71,8 +69,7 @@ class CodeCleaner
 	 *
 	 * @return array
 	 */
-	private function getDefaultPasses()
-	{
+	private function getDefaultPasses() {
 		return array(
 			new AbstractClassPass(),
 			new AssignThisVariablePass(),
@@ -103,8 +100,7 @@ class CodeCleaner
 	 *
 	 * @return string|false Cleaned PHP code, False if the input is incomplete.
 	 */
-	public function clean(array $codeLines, $requireSemicolons = false)
-	{
+	public function clean(array $codeLines, $requireSemicolons = false) {
 		$stmts = $this->parse('<?php ' . implode(PHP_EOL, $codeLines) . PHP_EOL, $requireSemicolons);
 		if ($stmts === false) {
 			return false;
@@ -123,8 +119,7 @@ class CodeCleaner
 	 *
 	 * @return null|array
 	 */
-	public function setNamespace(array $namespace = null)
-	{
+	public function setNamespace(array $namespace = null) {
 		$this->namespace = $namespace;
 	}
 
@@ -133,8 +128,7 @@ class CodeCleaner
 	 *
 	 * @return null|array
 	 */
-	public function getNamespace()
-	{
+	public function getNamespace() {
 		return $this->namespace;
 	}
 
@@ -148,8 +142,7 @@ class CodeCleaner
 	 *
 	 * @return array A set of statements
 	 */
-	protected function parse($code, $requireSemicolons = false)
-	{
+	protected function parse($code, $requireSemicolons = false) {
 		try {
 			return $this->parser->parse($code);
 		} catch (\PhpParser\Error $e) {
@@ -174,8 +167,7 @@ class CodeCleaner
 		}
 	}
 
-	private function parseErrorIsEOF(\PhpParser\Error $e)
-	{
+	private function parseErrorIsEOF(\PhpParser\Error $e) {
 		$msg = $e->getRawMessage();
 
 		return ($msg === 'Unexpected token EOF') || (strpos($msg, 'Syntax error, unexpected EOF') !== false);
@@ -193,8 +185,7 @@ class CodeCleaner
 	 *
 	 * @return bool
 	 */
-	private function parseErrorIsUnclosedString(\PhpParser\Error $e, $code)
-	{
+	private function parseErrorIsUnclosedString(\PhpParser\Error $e, $code) {
 		if ($e->getRawMessage() !== 'Syntax error, unexpected T_ENCAPSED_AND_WHITESPACE') {
 			return false;
 		}

@@ -23,8 +23,7 @@ use Cake\View\Helper;
 /**
  * UrlHelper class for generating urls.
  */
-class UrlHelper extends Helper
-{
+class UrlHelper extends Helper {
 
 	/**
 	 * Returns a URL based on provided parameters.
@@ -35,8 +34,7 @@ class UrlHelper extends Helper
 	 * @param bool $full If true, the full base URL will be prepended to the result
 	 * @return string Full translated URL with base path.
 	 */
-	public function build($url = null, $full = false)
-	{
+	public function build($url = null, $full = false) {
 		return h(Router::url($url, $full));
 	}
 
@@ -52,8 +50,7 @@ class UrlHelper extends Helper
 	 *   `plugin` False value will prevent parsing path as a plugin
 	 * @return string Generated URL
 	 */
-	public function assetUrl($path, array $options = [])
-	{
+	public function assetUrl($path, array $options = []) {
 		if (is_array($path)) {
 			return $this->build($path, !empty($options['fullBase']));
 		}
@@ -92,8 +89,7 @@ class UrlHelper extends Helper
 	 * @param string $url The URL to encode.
 	 * @return string The URL encoded for both URL & HTML contexts.
 	 */
-	protected function _encodeUrl($url)
-	{
+	protected function _encodeUrl($url) {
 		$path = parse_url($url, PHP_URL_PATH);
 		$parts = array_map('rawurldecode', explode('/', $path));
 		$parts = array_map('rawurlencode', $parts);
@@ -109,8 +105,7 @@ class UrlHelper extends Helper
 	 * @param string $path The file path to timestamp, the path must be inside WWW_ROOT
 	 * @return string Path with a timestamp added, or not.
 	 */
-	public function assetTimestamp($path)
-	{
+	public function assetTimestamp($path) {
 		$stamp = Configure::read('Asset.timestamp');
 		$timestampEnabled = $stamp === 'force' || ($stamp === true && Configure::read('debug'));
 		if ($timestampEnabled && strpos($path, '?') === false) {
@@ -144,8 +139,7 @@ class UrlHelper extends Helper
 	 * @param string $file The file to create a webroot path to.
 	 * @return string Web accessible path to file.
 	 */
-	public function webroot($file)
-	{
+	public function webroot($file) {
 		$asset = explode('?', $file);
 		$asset[1] = isset($asset[1]) ? '?' . $asset[1] : null;
 		$webPath = $this->request->webroot . $asset[0];
@@ -181,8 +175,7 @@ class UrlHelper extends Helper
 	 * @param string $name Name of the theme which should be inflected.
 	 * @return string Inflected name of the theme
 	 */
-	protected function _inflectThemeName($name)
-	{
+	protected function _inflectThemeName($name) {
 		return Inflector::underscore($name);
 	}
 
@@ -191,8 +184,7 @@ class UrlHelper extends Helper
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 }

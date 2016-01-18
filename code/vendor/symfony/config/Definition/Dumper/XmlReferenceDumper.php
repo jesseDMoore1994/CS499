@@ -22,17 +22,14 @@ use Symfony\Component\Config\Definition\PrototypedArrayNode;
  *
  * @author Wouter J <waldio.webdesign@gmail.com>
  */
-class XmlReferenceDumper
-{
+class XmlReferenceDumper {
 	private $reference;
 
-	public function dump(ConfigurationInterface $configuration, $namespace = null)
-	{
+	public function dump(ConfigurationInterface $configuration, $namespace = null) {
 		return $this->dumpNode($configuration->getConfigTreeBuilder()->buildTree(), $namespace);
 	}
 
-	public function dumpNode(NodeInterface $node, $namespace = null)
-	{
+	public function dumpNode(NodeInterface $node, $namespace = null) {
 		$this->reference = '';
 		$this->writeNode($node, 0, true, $namespace);
 		$ref = $this->reference;
@@ -47,8 +44,7 @@ class XmlReferenceDumper
 	 * @param bool $root If the node is the root node
 	 * @param string $namespace The namespace of the node
 	 */
-	private function writeNode(NodeInterface $node, $depth = 0, $root = false, $namespace = null)
-	{
+	private function writeNode(NodeInterface $node, $depth = 0, $root = false, $namespace = null) {
 		$rootName = ($root ? 'config' : $node->getName());
 		$rootNamespace = ($namespace ?: ($root ? 'http://example.org/schema/dic/' . $node->getName() : null));
 
@@ -256,8 +252,7 @@ class XmlReferenceDumper
 	 * @param string $text
 	 * @param int $indent
 	 */
-	private function writeLine($text, $indent = 0)
-	{
+	private function writeLine($text, $indent = 0) {
 		$indent = strlen($text) + $indent;
 		$format = '%' . $indent . 's';
 
@@ -271,8 +266,7 @@ class XmlReferenceDumper
 	 *
 	 * @return string
 	 */
-	private function writeValue($value)
-	{
+	private function writeValue($value) {
 		if ('%%%%not_defined%%%%' === $value) {
 			return '';
 		}

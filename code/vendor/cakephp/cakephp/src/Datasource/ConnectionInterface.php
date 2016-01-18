@@ -18,8 +18,7 @@ namespace Cake\Datasource;
  * This interface defines the methods you can depend on in
  * a connection.
  */
-interface ConnectionInterface
-{
+interface ConnectionInterface {
 	/**
 	 * Get the configuration name for this connection.
 	 *

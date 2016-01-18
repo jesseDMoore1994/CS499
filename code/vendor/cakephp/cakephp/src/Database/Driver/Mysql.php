@@ -20,8 +20,7 @@ use Cake\Database\Query;
 use Cake\Database\Statement\MysqlStatement;
 use PDO;
 
-class Mysql extends Driver
-{
+class Mysql extends Driver {
 
 	use MysqlDialectTrait;
 	use PDODriverTrait;
@@ -49,8 +48,7 @@ class Mysql extends Driver
 	 *
 	 * @return bool true on success
 	 */
-	public function connect()
-	{
+	public function connect() {
 		if ($this->_connection) {
 			return true;
 		}
@@ -103,8 +101,7 @@ class Mysql extends Driver
 	 *
 	 * @return bool true if it is valid to use this driver
 	 */
-	public function enabled()
-	{
+	public function enabled() {
 		return in_array('mysql', PDO::getAvailableDrivers());
 	}
 
@@ -114,8 +111,7 @@ class Mysql extends Driver
 	 * @param string|\Cake\Database\Query $query The query to prepare.
 	 * @return \Cake\Database\StatementInterface
 	 */
-	public function prepare($query)
-	{
+	public function prepare($query) {
 		$this->connect();
 		$isObject = $query instanceof Query;
 		$statement = $this->_connection->prepare($isObject ? $query->sql() : $query);
@@ -129,8 +125,7 @@ class Mysql extends Driver
 	/**
 	 * {@inheritDoc}
 	 */
-	public function supportsDynamicConstraints()
-	{
+	public function supportsDynamicConstraints() {
 		return true;
 	}
 }

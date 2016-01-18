@@ -5,15 +5,13 @@ namespace Test\Phinx\Db\Adapter;
 use Symfony\Component\Console\Output\NullOutput;
 use Phinx\Db\Adapter\SQLiteAdapter;
 
-class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
-{
+class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @var \Phinx\Db\Adapter\MysqlAdapter
 	 */
 	private $adapter;
 
-	public function setUp()
-	{
+	public function setUp() {
 		if (!TESTS_PHINX_DB_ADAPTER_SQLITE_ENABLED) {
 			$this->markTestSkipped('SQLite tests disabled. See TESTS_PHINX_DB_ADAPTER_SQLITE_ENABLED constant.');
 		}
@@ -31,18 +29,15 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->disconnect();
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($this->adapter);
 	}
 
-	public function testConnection()
-	{
+	public function testConnection() {
 		$this->assertTrue($this->adapter->getConnection() instanceof \PDO);
 	}
 
-	public function testBeginTransaction()
-	{
+	public function testBeginTransaction() {
 		$this->adapter->getConnection()
 			->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 		$this->adapter->beginTransaction();
@@ -50,8 +45,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue(true, 'Transaction query succeeded');
 	}
 
-	public function testCreatingTheSchemaTableOnConnect()
-	{
+	public function testCreatingTheSchemaTableOnConnect() {
 		$this->adapter->connect();
 		$this->assertTrue($this->adapter->hasTable($this->adapter->getSchemaTableName()));
 		$this->adapter->dropTable($this->adapter->getSchemaTableName());
@@ -61,25 +55,21 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasTable($this->adapter->getSchemaTableName()));
 	}
 
-	public function testSchemaTableIsCreatedWithPrimaryKey()
-	{
+	public function testSchemaTableIsCreatedWithPrimaryKey() {
 		$this->adapter->connect();
 		$table = new \Phinx\Db\Table($this->adapter->getSchemaTableName(), array(), $this->adapter);
 		$this->assertTrue($this->adapter->hasIndex($this->adapter->getSchemaTableName(), array('version')));
 	}
 
-	public function testQuoteTableName()
-	{
+	public function testQuoteTableName() {
 		$this->assertEquals('`test_table`', $this->adapter->quoteTableName('test_table'));
 	}
 
-	public function testQuoteColumnName()
-	{
+	public function testQuoteColumnName() {
 		$this->assertEquals('`test_column`', $this->adapter->quoteColumnName('test_column'));
 	}
 
-	public function testCreateTable()
-	{
+	public function testCreateTable() {
 		$table = new \Phinx\Db\Table('ntable', array(), $this->adapter);
 		$table->addColumn('realname', 'string')
 			->addColumn('email', 'integer')
@@ -91,8 +81,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('ntable', 'address'));
 	}
 
-	public function testCreateTableCustomIdColumn()
-	{
+	public function testCreateTableCustomIdColumn() {
 		$table = new \Phinx\Db\Table('ntable', array('id' => 'custom_id'), $this->adapter);
 		$table->addColumn('realname', 'string')
 			->addColumn('email', 'integer')
@@ -105,14 +94,12 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('ntable', 'address'));
 	}
 
-	public function testCreateTableWithNoOptions()
-	{
+	public function testCreateTableWithNoOptions() {
 		$this->markTestIncomplete();
 		//$this->adapter->createTable('ntable', )
 	}
 
-	public function testCreateTableWithNoPrimaryKey()
-	{
+	public function testCreateTableWithNoPrimaryKey() {
 		$options = array(
 			'id' => false
 		);
@@ -122,8 +109,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('atable', 'id'));
 	}
 
-	public function testCreateTableWithMultiplePrimaryKeys()
-	{
+	public function testCreateTableWithMultiplePrimaryKeys() {
 		$options = array(
 			'id' => false,
 			'primary_key' => array('user_id', 'tag_id')
@@ -137,8 +123,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasIndex('table1', array('tag_id', 'user_email')));
 	}
 
-	public function testCreateTableWithMultipleIndexes()
-	{
+	public function testCreateTableWithMultipleIndexes() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->addColumn('name', 'string')
@@ -151,8 +136,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasIndex('table1', array('email', 'user_name')));
 	}
 
-	public function testCreateTableWithUniqueIndexes()
-	{
+	public function testCreateTableWithUniqueIndexes() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->addIndex('email', array('unique' => true))
@@ -161,8 +145,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasIndex('table1', array('email', 'user_email')));
 	}
 
-	public function testCreateTableWithNamedIndexes()
-	{
+	public function testCreateTableWithNamedIndexes() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->addIndex('email', array('name' => 'myemailindex'))
@@ -172,13 +155,11 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasIndexByName('table1', 'myemailindex'));
 	}
 
-	public function testCreateTableWithMultiplePKsAndUniqueIndexes()
-	{
+	public function testCreateTableWithMultiplePKsAndUniqueIndexes() {
 		$this->markTestIncomplete();
 	}
 
-	public function testCreateTableWithForeignKey()
-	{
+	public function testCreateTableWithForeignKey() {
 		$refTable = new \Phinx\Db\Table('ref_table', array(), $this->adapter);
 		$refTable->addColumn('field1', 'string')->save();
 
@@ -191,8 +172,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasForeignKey($table->getName(), array('ref_table_id')));
 	}
 
-	public function testRenameTable()
-	{
+	public function testRenameTable() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$this->assertTrue($this->adapter->hasTable('table1'));
@@ -202,8 +182,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasTable('table2'));
 	}
 
-	public function testAddColumn()
-	{
+	public function testAddColumn() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$this->assertFalse($table->hasColumn('email'));
@@ -217,8 +196,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		// $this->assertEquals('realname', $rows[1]['Field']);
 	}
 
-	public function testAddColumnWithDefaultValue()
-	{
+	public function testAddColumnWithDefaultValue() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('default_zero', 'string', array('default' => 'test'))
@@ -227,8 +205,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals("'test'", $rows[1]['dflt_value']);
 	}
 
-	public function testAddColumnWithDefaultZero()
-	{
+	public function testAddColumnWithDefaultZero() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('default_zero', 'integer', array('default' => 0))
@@ -238,8 +215,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals("0", $rows[1]['dflt_value']);
 	}
 
-	public function testAddColumnWithDefaultEmptyString()
-	{
+	public function testAddColumnWithDefaultEmptyString() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('default_empty', 'string', array('default' => ''))
@@ -248,8 +224,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals("''", $rows[1]['dflt_value']);
 	}
 
-	public function testRenameColumn()
-	{
+	public function testRenameColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -259,8 +234,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasColumn('t', 'column2'));
 	}
 
-	public function testRenamingANonExistentColumn()
-	{
+	public function testRenamingANonExistentColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -278,8 +252,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testChangeColumn()
-	{
+	public function testChangeColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -296,8 +269,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasColumn('t', 'column2'));
 	}
 
-	public function testChangeColumnDefaultValue()
-	{
+	public function testChangeColumnDefaultValue() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string', array('default' => 'test'))
 			->save();
@@ -311,8 +283,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 	}
 
 
-	public function testChangeColumnDefaultToZero()
-	{
+	public function testChangeColumnDefaultToZero() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'integer')
 			->save();
@@ -324,8 +295,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals("0", $rows[1]['dflt_value']);
 	}
 
-	public function testChangeColumnDefaultToNull()
-	{
+	public function testChangeColumnDefaultToNull() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string', array('default' => 'test'))
 			->save();
@@ -337,8 +307,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertNull($rows[1]['dflt_value']);
 	}
 
-	public function testDropColumn()
-	{
+	public function testDropColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -347,8 +316,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('t', 'column1'));
 	}
 
-	public function testGetColumns()
-	{
+	public function testGetColumns() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->addColumn('column2', 'integer')
@@ -373,8 +341,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testAddIndex()
-	{
+	public function testAddIndex() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->save();
@@ -384,8 +351,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($table->hasIndex('email'));
 	}
 
-	public function testDropIndex()
-	{
+	public function testDropIndex() {
 		// single column index
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
@@ -425,8 +391,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($table4->hasIndex(array('fname', 'lname')));
 	}
 
-	public function testDropIndexByName()
-	{
+	public function testDropIndexByName() {
 		// single column index
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
@@ -447,8 +412,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($table2->hasIndex(array('fname', 'lname')));
 	}
 
-	public function testAddForeignKey()
-	{
+	public function testAddForeignKey() {
 		$refTable = new \Phinx\Db\Table('ref_table', array(), $this->adapter);
 		$refTable->addColumn('field1', 'string')->save();
 
@@ -465,8 +429,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasForeignKey($table->getName(), array('ref_table_id')));
 	}
 
-	public function testAddForeignKeyWithPdoExceptionErrorMode()
-	{
+	public function testAddForeignKeyWithPdoExceptionErrorMode() {
 		$this->adapter->getConnection()
 			->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 		$refTable = new \Phinx\Db\Table('ref_table', array(), $this->adapter);
@@ -485,8 +448,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasForeignKey($table->getName(), array('ref_table_id')));
 	}
 
-	public function testDropForeignKey()
-	{
+	public function testDropForeignKey() {
 		$refTable = new \Phinx\Db\Table('ref_table', array(), $this->adapter);
 		$refTable->addColumn('field1', 'string')->save();
 
@@ -522,22 +484,19 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasTable($table->getName()));
 	}
 
-	public function testHasDatabase()
-	{
+	public function testHasDatabase() {
 		$this->assertFalse($this->adapter->hasDatabase('fake_database_name'));
 		$this->assertTrue($this->adapter->hasDatabase(TESTS_PHINX_DB_ADAPTER_SQLITE_DATABASE));
 	}
 
-	public function testDropDatabase()
-	{
+	public function testDropDatabase() {
 		$this->assertFalse($this->adapter->hasDatabase('phinx_temp_database'));
 		$this->adapter->createDatabase('phinx_temp_database');
 		$this->assertTrue($this->adapter->hasDatabase('phinx_temp_database'));
 		$this->adapter->dropDatabase('phinx_temp_database');
 	}
 
-	public function testAddColumnWithComment()
-	{
+	public function testAddColumnWithComment() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('column1', 'string', array('comment' => $comment = 'Comments from "column1"'))
 			->save();
@@ -553,21 +512,18 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertRegExp('/\/\* Comments from "column1" \*\//', $sql);
 	}
 
-	public function testPhinxTypeNotValidType()
-	{
+	public function testPhinxTypeNotValidType() {
 		$this->setExpectedException('\RuntimeException', 'The type: "fake" is not supported.');
 		$this->adapter->getPhinxType('fake');
 	}
 
-	public function testPhinxTypeNotValidTypeRegex()
-	{
+	public function testPhinxTypeNotValidTypeRegex() {
 		$this->setExpectedException('\RuntimeException', 'Column type ?int? is not supported');
 		$this->adapter->getPhinxType('?int?');
 	}
 
 
-	public function testAddIndexTwoTablesSameIndex()
-	{
+	public function testAddIndexTwoTablesSameIndex() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->save();
@@ -587,8 +543,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($table2->hasIndex('email'));
 	}
 
-	public function testInsertData()
-	{
+	public function testInsertData() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->addColumn('column2', 'integer')
@@ -620,8 +575,7 @@ class SQLiteAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(3, $rows[2]['column2']);
 	}
 
-	public function testNullWithoutDefaultValue()
-	{
+	public function testNullWithoutDefaultValue() {
 		$this->markTestSkipped('Skipping for now. See Github Issue #265.');
 
 		// construct table with default/null combinations

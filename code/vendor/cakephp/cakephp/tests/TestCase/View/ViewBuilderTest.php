@@ -21,15 +21,13 @@ use Cake\View\ViewBuilder;
 /**
  * View builder test case.
  */
-class ViewBuilderTest extends TestCase
-{
+class ViewBuilderTest extends TestCase {
 	/**
 	 * data provider for string properties.
 	 *
 	 * @return array
 	 */
-	public function stringPropertyProvider()
-	{
+	public function stringPropertyProvider() {
 		return [
 			['layoutPath', 'Admin/'],
 			['templatePath', 'Admin/'],
@@ -48,8 +46,7 @@ class ViewBuilderTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function arrayPropertyProvider()
-	{
+	public function arrayPropertyProvider() {
 		return [
 			['helpers', ['Html', 'Form']],
 			['options', ['key' => 'value']],
@@ -62,8 +59,7 @@ class ViewBuilderTest extends TestCase
 	 * @dataProvider stringPropertyProvider
 	 * @return void
 	 */
-	public function testStringProperties($property, $value)
-	{
+	public function testStringProperties($property, $value) {
 		$builder = new ViewBuilder();
 		$this->assertNull($builder->{$property}(), 'Default value should be null');
 		$this->assertSame($builder, $builder->{$property}($value), 'Setter returns this');
@@ -76,8 +72,7 @@ class ViewBuilderTest extends TestCase
 	 * @dataProvider arrayPropertyProvider
 	 * @return void
 	 */
-	public function testArrayProperties($property, $value)
-	{
+	public function testArrayProperties($property, $value) {
 		$builder = new ViewBuilder();
 		$this->assertSame([], $builder->{$property}(), 'Default value should be empty list');
 		$this->assertSame($builder, $builder->{$property}($value), 'Setter returns this');
@@ -90,8 +85,7 @@ class ViewBuilderTest extends TestCase
 	 * @dataProvider arrayPropertyProvider
 	 * @return void
 	 */
-	public function testArrayPropertyMerge($property, $value)
-	{
+	public function testArrayPropertyMerge($property, $value) {
 		$builder = new ViewBuilder();
 		$builder->{$property}($value);
 
@@ -107,8 +101,7 @@ class ViewBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildComplete()
-	{
+	public function testBuildComplete() {
 		$request = $this->getMock('Cake\Network\Request');
 		$response = $this->getMock('Cake\Network\Response');
 		$events = $this->getMock('Cake\Event\EventManager');
@@ -149,8 +142,7 @@ class ViewBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildAppViewMissing()
-	{
+	public function testBuildAppViewMissing() {
 		Configure::write('App.namespace', 'Nope');
 		$builder = new ViewBuilder();
 		$view = $builder->build();
@@ -162,8 +154,7 @@ class ViewBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildAppViewPresent()
-	{
+	public function testBuildAppViewPresent() {
 		Configure::write('App.namespace', 'TestApp');
 		$builder = new ViewBuilder();
 		$view = $builder->build();
@@ -177,8 +168,7 @@ class ViewBuilderTest extends TestCase
 	 * @expectedExceptionMessage View class "Foo" is missing.
 	 * @return void
 	 */
-	public function testBuildMissingViewClass()
-	{
+	public function testBuildMissingViewClass() {
 		$builder = new ViewBuilder();
 		$builder->className('Foo');
 		$builder->build();
@@ -189,8 +179,7 @@ class ViewBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJsonSerialize()
-	{
+	public function testJsonSerialize() {
 		$builder = new ViewBuilder();
 
 		$builder
@@ -218,8 +207,7 @@ class ViewBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateFromArray()
-	{
+	public function testCreateFromArray() {
 		$builder = new ViewBuilder();
 
 		$builder

@@ -18,8 +18,7 @@ namespace Psy\Readline;
  *
  * Oh well.
  */
-class GNUReadline implements Readline
-{
+class GNUReadline implements Readline {
 	protected $historyFile;
 	protected $historySize;
 	protected $eraseDups;
@@ -31,16 +30,14 @@ class GNUReadline implements Readline
 	 *
 	 * @return bool
 	 */
-	public static function isSupported()
-	{
+	public static function isSupported() {
 		return function_exists('readline_list_history');
 	}
 
 	/**
 	 * GNU Readline constructor.
 	 */
-	public function __construct($historyFile = null, $historySize = 0, $eraseDups = false)
-	{
+	public function __construct($historyFile = null, $historySize = 0, $eraseDups = false) {
 		$this->historyFile = $historyFile;
 		$this->historySize = $historySize;
 		$this->eraseDups = $eraseDups;
@@ -49,8 +46,7 @@ class GNUReadline implements Readline
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addHistory($line)
-	{
+	public function addHistory($line) {
 		if ($res = readline_add_history($line)) {
 			$this->writeHistory();
 		}
@@ -61,8 +57,7 @@ class GNUReadline implements Readline
 	/**
 	 * {@inheritdoc}
 	 */
-	public function clearHistory()
-	{
+	public function clearHistory() {
 		if ($res = readline_clear_history()) {
 			$this->writeHistory();
 		}
@@ -73,16 +68,14 @@ class GNUReadline implements Readline
 	/**
 	 * {@inheritdoc}
 	 */
-	public function listHistory()
-	{
+	public function listHistory() {
 		return readline_list_history();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function readHistory()
-	{
+	public function readHistory() {
 		// Workaround PHP bug #69054
 		//
 		// If open_basedir is set, readline_read_history() segfaults. This will be fixed in 5.6.7:
@@ -101,24 +94,21 @@ class GNUReadline implements Readline
 	/**
 	 * {@inheritdoc}
 	 */
-	public function readline($prompt = null)
-	{
+	public function readline($prompt = null) {
 		return readline($prompt);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function redisplay()
-	{
+	public function redisplay() {
 		readline_redisplay();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function writeHistory()
-	{
+	public function writeHistory() {
 		// We have to write history first, since it is used
 		// by Libedit to list history
 		$res = readline_write_history($this->historyFile);

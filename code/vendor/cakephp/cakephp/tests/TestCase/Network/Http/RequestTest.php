@@ -19,16 +19,14 @@ use Cake\TestSuite\TestCase;
 /**
  * HTTP request test.
  */
-class RequestTest extends TestCase
-{
+class RequestTest extends TestCase {
 
 	/**
 	 * test url method
 	 *
 	 * @return void
 	 */
-	public function testUrl()
-	{
+	public function testUrl() {
 		$request = new Request();
 		$this->assertSame($request, $request->url('http://example.com'));
 
@@ -40,8 +38,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMethod()
-	{
+	public function testMethod() {
 		$request = new Request();
 		$this->assertSame($request, $request->method(Request::METHOD_GET));
 
@@ -54,8 +51,7 @@ class RequestTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testMethodInvalid()
-	{
+	public function testMethodInvalid() {
 		$request = new Request();
 		$request->method('set on fire');
 	}
@@ -65,8 +61,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBody()
-	{
+	public function testBody() {
 		$data = '{"json":"data"}';
 		$request = new Request();
 		$this->assertSame($request, $request->body($data));
@@ -79,8 +74,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHeader()
-	{
+	public function testHeader() {
 		$request = new Request();
 		$type = 'application/json';
 		$result = $request->header('Content-Type', $type);
@@ -108,8 +102,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCookie()
-	{
+	public function testCookie() {
 		$request = new Request();
 		$result = $request->cookie('session', '123456');
 		$this->assertSame($result, $request, 'Should return self');
@@ -125,8 +118,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testVersion()
-	{
+	public function testVersion() {
 		$request = new Request();
 		$result = $request->version('1.0');
 		$this->assertSame($request, $request, 'Should return self');

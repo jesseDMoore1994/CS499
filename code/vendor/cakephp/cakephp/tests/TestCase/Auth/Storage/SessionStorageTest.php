@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
  * Test case for SessionStorage
  *
  */
-class SessionStorageTest extends TestCase
-{
+class SessionStorageTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->session = $this->getMock('Cake\Network\Session');
@@ -47,8 +45,7 @@ class SessionStorageTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWrite()
-	{
+	public function testWrite() {
 		$this->session->expects($this->once())
 			->method('write')
 			->with('Auth.AuthUser', $this->user)
@@ -62,8 +59,7 @@ class SessionStorageTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRead()
-	{
+	public function testRead() {
 		$this->session->expects($this->once())
 			->method('read')
 			->with('Auth.AuthUser')
@@ -78,8 +74,7 @@ class SessionStorageTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetFromLocalVar()
-	{
+	public function testGetFromLocalVar() {
 		$this->storage->write($this->user);
 
 		$this->session->expects($this->never())
@@ -94,8 +89,7 @@ class SessionStorageTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDelete()
-	{
+	public function testDelete() {
 		$this->session->expects($this->once())
 			->method('delete')
 			->with('Auth.AuthUser');
@@ -108,8 +102,7 @@ class SessionStorageTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function redirectUrl()
-	{
+	public function redirectUrl() {
 		$url = '/url';
 
 		$this->session->expects($this->once())

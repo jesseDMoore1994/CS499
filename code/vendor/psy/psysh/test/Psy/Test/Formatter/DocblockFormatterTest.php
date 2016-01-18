@@ -13,8 +13,7 @@ namespace Psy\Test\Formatter;
 
 use Psy\Formatter\DocblockFormatter;
 
-class DocblockFormatterTest extends \PHPUnit_Framework_TestCase
-{
+class DocblockFormatterTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * This is a docblock!
 	 *
@@ -27,8 +26,7 @@ class DocblockFormatterTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return string A string of no consequence.
 	 */
-	private function methodWithDocblock($foo, $bar = 1)
-	{
+	private function methodWithDocblock($foo, $bar = 1) {
 		if (empty($foo)) {
 			throw new \InvalidArgumentException();
 		}
@@ -36,8 +34,7 @@ class DocblockFormatterTest extends \PHPUnit_Framework_TestCase
 		return 'method called';
 	}
 
-	public function testFormat()
-	{
+	public function testFormat() {
 		$expected = <<<EOS
 <comment>Description:</comment>
   This is a docblock!

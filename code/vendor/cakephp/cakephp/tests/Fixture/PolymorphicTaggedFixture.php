@@ -16,8 +16,7 @@ namespace Cake\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
 
-class PolymorphicTaggedFixture extends TestFixture
-{
+class PolymorphicTaggedFixture extends TestFixture {
 
 	/**
 	 * table property

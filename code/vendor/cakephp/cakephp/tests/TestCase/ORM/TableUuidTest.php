@@ -27,8 +27,7 @@ use Cake\Utility\Text;
  * Integration tests for Table class with uuid primary keys.
  *
  */
-class TableUuidTest extends TestCase
-{
+class TableUuidTest extends TestCase {
 
 	/**
 	 * Fixtures
@@ -44,8 +43,7 @@ class TableUuidTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->connection = ConnectionManager::get('test');
 		Configure::write('App.namespace', 'TestApp');
@@ -56,8 +54,7 @@ class TableUuidTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -67,8 +64,7 @@ class TableUuidTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveNew()
-	{
+	public function testSaveNew() {
 		$entity = new Entity([
 			'name' => 'shiny new',
 			'published' => true,
@@ -87,8 +83,7 @@ class TableUuidTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveNewSpecificId()
-	{
+	public function testSaveNewSpecificId() {
 		$id = Text::uuid();
 		$entity = new Entity([
 			'id' => $id,
@@ -110,8 +105,7 @@ class TableUuidTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveUpdate()
-	{
+	public function testSaveUpdate() {
 		$id = '481fc6d0-b920-43e0-a40d-6d1740cf8569';
 		$entity = new Entity([
 			'id' => $id,
@@ -133,8 +127,7 @@ class TableUuidTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDelete()
-	{
+	public function testDelete() {
 		$id = '481fc6d0-b920-43e0-a40d-6d1740cf8569';
 		$table = TableRegistry::get('uuiditems');
 		$entity = $table->find('all')->where(['id' => $id])->first();
@@ -149,8 +142,7 @@ class TableUuidTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEmptyUuid()
-	{
+	public function testEmptyUuid() {
 		$id = '';
 		$table = TableRegistry::get('uuiditems');
 		$entity = $table->find('all')

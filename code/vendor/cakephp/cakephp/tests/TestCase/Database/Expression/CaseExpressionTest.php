@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Tests CaseExpression class
  */
-class CaseExpressionTest extends TestCase
-{
+class CaseExpressionTest extends TestCase {
 
 	/**
 	 * Test that the sql output works correctly
 	 *
 	 * @return void
 	 */
-	public function testSqlOutput()
-	{
+	public function testSqlOutput() {
 		$expr = new QueryExpression();
 		$expr->eq('test', 'true');
 		$expr2 = new QueryExpression();
@@ -58,8 +56,7 @@ class CaseExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSqlOutputZero()
-	{
+	public function testSqlOutputZero() {
 		$expression = new QueryExpression();
 		$expression->add(['id' => 'test']);
 		$caseExpression = new CaseExpression([$expression], [0], ['integer']);
@@ -78,8 +75,7 @@ class CaseExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTraverse()
-	{
+	public function testTraverse() {
 		$count = 0;
 		$visitor = function () use (&$count) {
 			$count++;
@@ -99,8 +95,7 @@ class CaseExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClone()
-	{
+	public function testClone() {
 		$expr = new QueryExpression();
 		$expr->eq('test', 'true');
 		$expr2 = new QueryExpression();

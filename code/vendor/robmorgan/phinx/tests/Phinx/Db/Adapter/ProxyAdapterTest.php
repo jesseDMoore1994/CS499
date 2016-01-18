@@ -9,27 +9,23 @@ use Phinx\Db\Table\Index;
 use Phinx\Db\Table\ForeignKey;
 use Phinx\Migration\IrreversibleMigrationException;
 
-class ProxyAdapterTest extends \PHPUnit_Framework_TestCase
-{
+class ProxyAdapterTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @var \Phinx\Db\Adapter\ProxyAdapter
 	 */
 	private $adapter;
 
-	public function setUp()
-	{
+	public function setUp() {
 		$stub = $this->getMock('\Phinx\Db\Adapter\PdoAdapter', array(), array(array()));
 
 		$this->adapter = new ProxyAdapter($stub);
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($this->adapter);
 	}
 
-	public function testProxyAdapterCanInvertCreateTable()
-	{
+	public function testProxyAdapterCanInvertCreateTable() {
 		$table = new \Phinx\Db\Table('atable');
 		$this->adapter->createTable($table);
 
@@ -38,8 +34,7 @@ class ProxyAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('atable', $commands[0]['arguments'][0]);
 	}
 
-	public function testProxyAdapterCanInvertRenameTable()
-	{
+	public function testProxyAdapterCanInvertRenameTable() {
 		$this->adapter->renameTable('oldname', 'newname');
 
 		$commands = $this->adapter->getInvertedCommands();
@@ -48,8 +43,7 @@ class ProxyAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('oldname', $commands[0]['arguments'][1]);
 	}
 
-	public function testProxyAdapterCanInvertAddColumn()
-	{
+	public function testProxyAdapterCanInvertAddColumn() {
 		$table = new \Phinx\Db\Table('atable');
 		$column = new \Phinx\Db\Table\Column();
 		$column->setName('acolumn');
@@ -62,8 +56,7 @@ class ProxyAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertContains('acolumn', $commands[0]['arguments'][1]);
 	}
 
-	public function testProxyAdapterCanInvertRenameColumn()
-	{
+	public function testProxyAdapterCanInvertRenameColumn() {
 		$this->adapter->renameColumn('atable', 'oldname', 'newname');
 
 		$commands = $this->adapter->getInvertedCommands();
@@ -73,8 +66,7 @@ class ProxyAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('oldname', $commands[0]['arguments'][2]);
 	}
 
-	public function testProxyAdapterCanInvertAddIndex()
-	{
+	public function testProxyAdapterCanInvertAddIndex() {
 		$table = new \Phinx\Db\Table('atable');
 		$index = new \Phinx\Db\Table\Index();
 		$index->setType(\Phinx\Db\Table\Index::INDEX)
@@ -88,8 +80,7 @@ class ProxyAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertContains('email', $commands[0]['arguments'][1]);
 	}
 
-	public function testProxyAdapterCanInvertAddForeignKey()
-	{
+	public function testProxyAdapterCanInvertAddForeignKey() {
 		$table = new \Phinx\Db\Table('atable');
 		$refTable = new \Phinx\Db\Table('refTable');
 		$fk = new \Phinx\Db\Table\ForeignKey();
@@ -109,8 +100,7 @@ class ProxyAdapterTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \Phinx\Migration\IrreversibleMigrationException
 	 * @expectedExceptionMessage Cannot reverse a "createDatabase" command
 	 */
-	public function testGetInvertedCommandsThrowsExceptionForIrreversibleCommand()
-	{
+	public function testGetInvertedCommandsThrowsExceptionForIrreversibleCommand() {
 		$this->adapter->recordCommand('createDatabase', array('testdb'));
 		$this->adapter->getInvertedCommands();
 	}

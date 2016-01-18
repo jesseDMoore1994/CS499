@@ -25,8 +25,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * This is needed so that we can use the application configuration instead of having
  * a configuration yaml file.
  */
-trait ConfigurationTrait
-{
+trait ConfigurationTrait {
 
 	/**
 	 * The configuration object that phinx uses for connecting to the database
@@ -49,8 +48,7 @@ trait ConfigurationTrait
 	 * @param bool $forceRefresh
 	 * @return \Phinx\Config\Config
 	 */
-	public function getConfig($forceRefresh = false)
-	{
+	public function getConfig($forceRefresh = false) {
 		if ($this->configuration && $forceRefresh === false) {
 			return $this->configuration;
 		}
@@ -128,8 +126,7 @@ trait ConfigurationTrait
 	 * @throws \InvalidArgumentexception when it was not possible to infer the information
 	 * out of the provided database configuration
 	 */
-	public function getAdapterName($driver)
-	{
+	public function getAdapterName($driver) {
 		switch ($driver) {
 			case 'Cake\Database\Driver\Mysql':
 			case is_subclass_of($driver, 'Cake\Database\Driver\Mysql'):
@@ -156,8 +153,7 @@ trait ConfigurationTrait
 	 * @param \Symfony\Component\Console\Output\OutputInterface $output the output object
 	 * @return void
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->beforeExecute($input, $output);
 		parent::execute($input, $output);
 	}
@@ -170,8 +166,7 @@ trait ConfigurationTrait
 	 * @param \Symfony\Component\Console\Output\OutputInterface $output the output object
 	 * @return void
 	 */
-	protected function beforeExecute(InputInterface $input, OutputInterface $output)
-	{
+	protected function beforeExecute(InputInterface $input, OutputInterface $output) {
 		$this->setInput($input);
 		$this->addOption('--environment', '-e', InputArgument::OPTIONAL);
 		$input->setOption('environment', 'default');
@@ -184,8 +179,7 @@ trait ConfigurationTrait
 	 * @param \Symfony\Component\Console\Input\InputInterface $input the input object
 	 * @return void
 	 */
-	public function setInput(InputInterface $input)
-	{
+	public function setInput(InputInterface $input) {
 		$this->input = $input;
 	}
 
@@ -198,8 +192,7 @@ trait ConfigurationTrait
 	 * @param \Symfony\Component\Console\Output\OutputInterface $output the output object
 	 * @return void
 	 */
-	public function bootstrap(InputInterface $input, OutputInterface $output)
-	{
+	public function bootstrap(InputInterface $input, OutputInterface $output) {
 		parent::bootstrap($input, $output);
 		$name = $this->getConnectionName($input);
 		ConnectionManager::alias($name, 'default');
@@ -223,8 +216,7 @@ trait ConfigurationTrait
 	 * @param \Symfony\Component\Console\Input\InputInterface $input the input object
 	 * @return string
 	 */
-	protected function getConnectionName(InputInterface $input)
-	{
+	protected function getConnectionName(InputInterface $input) {
 		$connection = 'default';
 		if ($input->getOption('connection')) {
 			$connection = $input->getOption('connection');

@@ -16,8 +16,7 @@ namespace Psy\TabCompletion\Matcher;
  *
  * @author Marc Garcia <markcial@gmail.com>
  */
-abstract class AbstractMatcher
-{
+abstract class AbstractMatcher {
 	/** Syntax types */
 	const CONSTANT_SYNTAX = '^[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$';
 	const VAR_SYNTAX = '^\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*$';
@@ -49,8 +48,7 @@ abstract class AbstractMatcher
 	 *
 	 * @return bool
 	 */
-	public function hasMatched(array $tokens)
-	{
+	public function hasMatched(array $tokens) {
 		return false;
 	}
 
@@ -61,8 +59,7 @@ abstract class AbstractMatcher
 	 *
 	 * @return string
 	 */
-	protected function getInput(array $tokens)
-	{
+	protected function getInput(array $tokens) {
 		$var = '';
 		$firstToken = array_pop($tokens);
 		if (self::tokenIs($firstToken, self::T_STRING)) {
@@ -79,8 +76,7 @@ abstract class AbstractMatcher
 	 *
 	 * @return string
 	 */
-	protected function getNamespaceAndClass($tokens)
-	{
+	protected function getNamespaceAndClass($tokens) {
 		$class = '';
 		while (self::hasToken(
 			array(self::T_NS_SEPARATOR, self::T_STRING),
@@ -110,8 +106,7 @@ abstract class AbstractMatcher
 	 *
 	 * @return bool
 	 */
-	public static function startsWith($prefix, $word)
-	{
+	public static function startsWith($prefix, $word) {
 		return preg_match(sprintf('#^%s#', $prefix), $word);
 	}
 
@@ -123,8 +118,7 @@ abstract class AbstractMatcher
 	 *
 	 * @return bool
 	 */
-	public static function hasSyntax($token, $syntax = self::VAR_SYNTAX)
-	{
+	public static function hasSyntax($token, $syntax = self::VAR_SYNTAX) {
 		if (!is_array($token)) {
 			return false;
 		}
@@ -142,8 +136,7 @@ abstract class AbstractMatcher
 	 *
 	 * @return bool
 	 */
-	public static function tokenIs($token, $which)
-	{
+	public static function tokenIs($token, $which) {
 		if (!is_array($token)) {
 			return false;
 		}
@@ -158,8 +151,7 @@ abstract class AbstractMatcher
 	 *
 	 * @return bool
 	 */
-	public static function isOperator($token)
-	{
+	public static function isOperator($token) {
 		if (!is_string($token)) {
 			return false;
 		}
@@ -175,8 +167,7 @@ abstract class AbstractMatcher
 	 *
 	 * @return bool
 	 */
-	public static function hasToken(array $coll, $token)
-	{
+	public static function hasToken(array $coll, $token) {
 		if (!is_array($token)) {
 			return false;
 		}

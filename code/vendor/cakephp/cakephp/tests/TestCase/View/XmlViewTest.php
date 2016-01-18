@@ -29,11 +29,9 @@ use Cake\View\XmlView;
  * XmlViewTest
  *
  */
-class XmlViewTest extends TestCase
-{
+class XmlViewTest extends TestCase {
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('debug', false);
 	}
@@ -43,8 +41,7 @@ class XmlViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderWithoutView()
-	{
+	public function testRenderWithoutView() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -91,8 +88,7 @@ class XmlViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSerializeNoHelpers()
-	{
+	public function testRenderSerializeNoHelpers() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -112,8 +108,7 @@ class XmlViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSerializeWithOptions()
-	{
+	public function testRenderSerializeWithOptions() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -147,8 +142,7 @@ class XmlViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSerializeWithString()
-	{
+	public function testRenderSerializeWithString() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -184,8 +178,7 @@ class XmlViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderWithoutViewMultiple()
-	{
+	public function testRenderWithoutViewMultiple() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -216,8 +209,7 @@ class XmlViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderWithoutViewMultipleAndAlias()
-	{
+	public function testRenderWithoutViewMultipleAndAlias() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -248,8 +240,7 @@ class XmlViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderWithSerializeTrue()
-	{
+	public function testRenderWithSerializeTrue() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -279,8 +270,7 @@ class XmlViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderWithView()
-	{
+	public function testRenderWithView() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);

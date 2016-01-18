@@ -19,8 +19,7 @@ use Cake\View\Form\ContextInterface;
 /**
  * Input widget for creating checkbox widgets.
  */
-class CheckboxWidget extends BasicWidget
-{
+class CheckboxWidget extends BasicWidget {
 
 	/**
 	 * Render a checkbox element.
@@ -39,8 +38,7 @@ class CheckboxWidget extends BasicWidget
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string Generated HTML string.
 	 */
-	public function render(array $data, ContextInterface $context)
-	{
+	public function render(array $data, ContextInterface $context) {
 		$data += [
 			'name' => '',
 			'value' => 1,
@@ -72,8 +70,7 @@ class CheckboxWidget extends BasicWidget
 	 * @param array $data Data to look at and determine checked state.
 	 * @return bool
 	 */
-	protected function _isChecked($data)
-	{
+	protected function _isChecked($data) {
 		if (array_key_exists('checked', $data)) {
 			return (bool)$data['checked'];
 		}

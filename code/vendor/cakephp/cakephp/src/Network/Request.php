@@ -28,8 +28,7 @@ use Cake\Utility\Hash;
  *
  * `$request['controller']` or `$request->controller`.
  */
-class Request implements ArrayAccess
-{
+class Request implements ArrayAccess {
 
 	/**
 	 * Array of parameters parsed from the URL.
@@ -165,8 +164,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return \Cake\Network\Request
 	 */
-	public static function createFromGlobals()
-	{
+	public static function createFromGlobals() {
 		list($base, $webroot) = static::_base();
 		$sessionConfig = (array)Configure::read('Session') + [
 				'defaults' => 'php',
@@ -208,8 +206,7 @@ class Request implements ArrayAccess
 	 *
 	 * @param string|array $config An array of request data to create a request with.
 	 */
-	public function __construct($config = [])
-	{
+	public function __construct($config = []) {
 		if (is_string($config)) {
 			$config = ['url' => $config];
 		}
@@ -235,8 +232,7 @@ class Request implements ArrayAccess
 	 * @param array $config The config data to use.
 	 * @return void
 	 */
-	protected function _setConfig($config)
-	{
+	protected function _setConfig($config) {
 		if (!empty($config['url']) && $config['url'][0] === '/') {
 			$config['url'] = substr($config['url'], 1);
 		}
@@ -272,8 +268,7 @@ class Request implements ArrayAccess
 	 * @param array $data Array of post data.
 	 * @return array
 	 */
-	protected function _processPost($data)
-	{
+	protected function _processPost($data) {
 		$method = $this->env('REQUEST_METHOD');
 		if (in_array($method, ['PUT', 'DELETE', 'PATCH']) &&
 			strpos($this->contentType(), 'application/x-www-form-urlencoded') === 0
@@ -298,8 +293,7 @@ class Request implements ArrayAccess
 	 * @param array $query The array to which the parsed keys/values are being added.
 	 * @return array An array containing the parsed querystring keys/values.
 	 */
-	protected function _processGet($query)
-	{
+	protected function _processGet($query) {
 		$unsetUrl = '/' . str_replace(['.', ' '], '_', urldecode($this->url));
 		unset($query[$unsetUrl]);
 		unset($query[$this->base . $unsetUrl]);
@@ -319,8 +313,7 @@ class Request implements ArrayAccess
 	 * @param array $config Configuration to set.
 	 * @return string URI The CakePHP request path that is being accessed.
 	 */
-	protected static function _url($config)
-	{
+	protected static function _url($config) {
 		if (!empty($_SERVER['PATH_INFO'])) {
 			return $_SERVER['PATH_INFO'];
 		} elseif (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '://') === false) {
@@ -371,8 +364,7 @@ class Request implements ArrayAccess
 	 * @return array Base URL, webroot dir ending in /
 	 * @link https://cakephp.lighthouseapp.com/projects/42648-cakephp/tickets/3318
 	 */
-	protected static function _base()
-	{
+	protected static function _base() {
 		$base = $webroot = $baseUrl = null;
 		$config = Configure::read('App');
 		extract($config);
@@ -427,8 +419,7 @@ class Request implements ArrayAccess
 	 * @param array $files Uploaded files to merge in.
 	 * @return array merged post + file data.
 	 */
-	protected function _processFiles($post, $files)
-	{
+	protected function _processFiles($post, $files) {
 		if (is_array($files)) {
 			foreach ($files as $key => $data) {
 				if (isset($data['tmp_name']) && is_string($data['tmp_name'])) {
@@ -453,8 +444,7 @@ class Request implements ArrayAccess
 	 *   $_FILES properties e.g. name, tmp_name, size, error
 	 * @return array The restructured FILES data
 	 */
-	protected function _processFileData($data, $post, $path = '', $field = '')
-	{
+	protected function _processFileData($data, $post, $path = '', $field = '') {
 		foreach ($post as $key => $fields) {
 			$newField = $field;
 			$newPath = $path;
@@ -479,8 +469,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return string
 	 */
-	public function contentType()
-	{
+	public function contentType() {
 		$type = $this->env('CONTENT_TYPE');
 		if ($type) {
 			return $type;
@@ -497,8 +486,7 @@ class Request implements ArrayAccess
 	 * @param \Cake\Network\Session|null $session the session object to use
 	 * @return \Cake\Network\Session
 	 */
-	public function session(Session $session = null)
-	{
+	public function session(Session $session = null) {
 		if ($session === null) {
 			return $this->_session;
 		}
@@ -510,8 +498,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return string The client IP.
 	 */
-	public function clientIp()
-	{
+	public function clientIp() {
 		if ($this->trustProxy && $this->env('HTTP_X_FORWARDED_FOR')) {
 			$ipaddr = preg_replace('/(?:,.*)/', '', $this->env('HTTP_X_FORWARDED_FOR'));
 		} else {
@@ -539,8 +526,7 @@ class Request implements ArrayAccess
 	 *   Local addresses do not contain hostnames.
 	 * @return string The referring address for this request.
 	 */
-	public function referer($local = false)
-	{
+	public function referer($local = false) {
 		$ref = $this->env('HTTP_REFERER');
 
 		$base = Configure::read('App.fullBaseUrl') . $this->webroot;
@@ -566,8 +552,7 @@ class Request implements ArrayAccess
 	 * @return mixed
 	 * @throws \BadMethodCallException when an invalid method is called.
 	 */
-	public function __call($name, $params)
-	{
+	public function __call($name, $params) {
 		if (strpos($name, 'is') === 0) {
 			$type = strtolower(substr($name, 2));
 			return $this->is($type);
@@ -583,8 +568,7 @@ class Request implements ArrayAccess
 	 * @param string $name The property being accessed.
 	 * @return mixed Either the value of the parameter or null.
 	 */
-	public function __get($name)
-	{
+	public function __get($name) {
 		if (isset($this->params[$name])) {
 			return $this->params[$name];
 		}
@@ -598,8 +582,7 @@ class Request implements ArrayAccess
 	 * @param string $name The property being accessed.
 	 * @return bool Existence
 	 */
-	public function __isset($name)
-	{
+	public function __isset($name) {
 		return isset($this->params[$name]);
 	}
 
@@ -614,8 +597,7 @@ class Request implements ArrayAccess
 	 *   this method will return true if the request matches any type.
 	 * @return bool Whether or not the request is the type you are checking.
 	 */
-	public function is($type)
-	{
+	public function is($type) {
 		if (is_array($type)) {
 			$result = array_map([$this, 'is'], $type);
 			return count(array_filter($result)) > 0;
@@ -638,8 +620,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return void
 	 */
-	public function clearDetectorCache()
-	{
+	public function clearDetectorCache() {
 		$this->_detectorCache = [];
 	}
 
@@ -650,8 +631,7 @@ class Request implements ArrayAccess
 	 *   this method will return true if the request matches any type.
 	 * @return bool Whether or not the request is the type you are checking.
 	 */
-	protected function _is($type)
-	{
+	protected function _is($type) {
 		$detect = static::$_detectors[$type];
 		if (is_callable($detect)) {
 			return call_user_func($detect, $this);
@@ -677,8 +657,7 @@ class Request implements ArrayAccess
 	 * @param array $detect Detector options array.
 	 * @return bool Whether or not the request is the type you are checking.
 	 */
-	protected function _acceptHeaderDetector($detect)
-	{
+	protected function _acceptHeaderDetector($detect) {
 		$acceptHeaders = explode(',', $this->env('HTTP_ACCEPT'));
 		foreach ($detect['accept'] as $header) {
 			if (in_array($header, $acceptHeaders)) {
@@ -694,8 +673,7 @@ class Request implements ArrayAccess
 	 * @param array $detect Detector options array.
 	 * @return bool Whether or not the request is the type you are checking.
 	 */
-	protected function _headerDetector($detect)
-	{
+	protected function _headerDetector($detect) {
 		foreach ($detect['header'] as $header => $value) {
 			$header = $this->env('http_' . $header);
 			if ($header !== null) {
@@ -714,8 +692,7 @@ class Request implements ArrayAccess
 	 * @param array $detect Detector options array.
 	 * @return bool Whether or not the request is the type you are checking.
 	 */
-	protected function _paramDetector($detect)
-	{
+	protected function _paramDetector($detect) {
 		$key = $detect['param'];
 		if (isset($detect['value'])) {
 			$value = $detect['value'];
@@ -733,8 +710,7 @@ class Request implements ArrayAccess
 	 * @param array $detect Detector options array.
 	 * @return bool Whether or not the request is the type you are checking.
 	 */
-	protected function _environmentDetector($detect)
-	{
+	protected function _environmentDetector($detect) {
 		if (isset($detect['env'])) {
 			if (isset($detect['value'])) {
 				return $this->env($detect['env']) == $detect['value'];
@@ -761,8 +737,7 @@ class Request implements ArrayAccess
 	 * @return bool Success.
 	 * @see \Cake\Network\Request::is()
 	 */
-	public function isAll(array $types)
-	{
+	public function isAll(array $types) {
 		$result = array_filter(array_map([$this, 'is'], $types));
 		return count($result) === count($types);
 	}
@@ -821,8 +796,7 @@ class Request implements ArrayAccess
 	 * @param callable|array $callable A callable or options array for the detector definition.
 	 * @return void
 	 */
-	public static function addDetector($name, $callable)
-	{
+	public static function addDetector($name, $callable) {
 		$name = strtolower($name);
 		if (is_callable($callable)) {
 			static::$_detectors[$name] = $callable;
@@ -841,8 +815,7 @@ class Request implements ArrayAccess
 	 * @param array $params Array of parameters to merge in
 	 * @return $this The current object, you can chain this method.
 	 */
-	public function addParams(array $params)
-	{
+	public function addParams(array $params) {
 		$this->params = array_merge($this->params, $params);
 		return $this;
 	}
@@ -854,8 +827,7 @@ class Request implements ArrayAccess
 	 * @param array $paths Array of paths to merge in
 	 * @return $this The current object, you can chain this method.
 	 */
-	public function addPaths(array $paths)
-	{
+	public function addPaths(array $paths) {
 		foreach (['webroot', 'here', 'base'] as $element) {
 			if (isset($paths[$element])) {
 				$this->{$element} = $paths[$element];
@@ -870,8 +842,7 @@ class Request implements ArrayAccess
 	 * @param bool $base Include the base path, set to false to trim the base path off.
 	 * @return string The current request URL including query string args.
 	 */
-	public function here($base = true)
-	{
+	public function here($base = true) {
 		$url = $this->here;
 		if (!empty($this->query)) {
 			$url .= '?' . http_build_query($this->query, null, '&');
@@ -888,8 +859,7 @@ class Request implements ArrayAccess
 	 * @param string $name Name of the header you want.
 	 * @return mixed Either null on no header being set or the value of the header.
 	 */
-	public function header($name)
-	{
+	public function header($name) {
 		$name = 'HTTP_' . str_replace('-', '_', $name);
 		return $this->env($name);
 	}
@@ -907,8 +877,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return string The name of the HTTP method used.
 	 */
-	public function method()
-	{
+	public function method() {
 		return $this->env('REQUEST_METHOD');
 	}
 
@@ -917,8 +886,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return string
 	 */
-	public function host()
-	{
+	public function host() {
 		if ($this->trustProxy && $this->env('HTTP_X_FORWARDED_HOST')) {
 			return $this->env('HTTP_X_FORWARDED_HOST');
 		}
@@ -930,8 +898,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return string
 	 */
-	public function port()
-	{
+	public function port() {
 		if ($this->trustProxy && $this->env('HTTP_X_FORWARDED_PORT')) {
 			return $this->env('HTTP_X_FORWARDED_PORT');
 		}
@@ -945,8 +912,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return string The scheme used for the request.
 	 */
-	public function scheme()
-	{
+	public function scheme() {
 		if ($this->trustProxy && $this->env('HTTP_X_FORWARDED_PROTO')) {
 			return $this->env('HTTP_X_FORWARDED_PROTO');
 		}
@@ -960,8 +926,7 @@ class Request implements ArrayAccess
 	 *   While `example.co.uk` contains 2.
 	 * @return string Domain name without subdomains.
 	 */
-	public function domain($tldLength = 1)
-	{
+	public function domain($tldLength = 1) {
 		$segments = explode('.', $this->host());
 		$domain = array_slice($segments, -1 * ($tldLength + 1));
 		return implode('.', $domain);
@@ -974,8 +939,7 @@ class Request implements ArrayAccess
 	 *   While `example.co.uk` contains 2.
 	 * @return array An array of subdomains.
 	 */
-	public function subdomains($tldLength = 1)
-	{
+	public function subdomains($tldLength = 1) {
 		$segments = explode('.', $this->host());
 		return array_slice($segments, 0, -1 * ($tldLength + 1));
 	}
@@ -1003,8 +967,7 @@ class Request implements ArrayAccess
 	 * @return mixed Either an array of all the types the client accepts or a boolean if they accept the
 	 *   provided type.
 	 */
-	public function accepts($type = null)
-	{
+	public function accepts($type = null) {
 		$raw = $this->parseAccept();
 		$accept = [];
 		foreach ($raw as $types) {
@@ -1025,8 +988,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return array An array of prefValue => [content/types]
 	 */
-	public function parseAccept()
-	{
+	public function parseAccept() {
 		return $this->_parseAcceptWithQualifier($this->header('accept'));
 	}
 
@@ -1044,8 +1006,7 @@ class Request implements ArrayAccess
 	 * @param string|null $language The language to test.
 	 * @return mixed If a $language is provided, a boolean. Otherwise the array of accepted languages.
 	 */
-	public function acceptLanguage($language = null)
-	{
+	public function acceptLanguage($language = null) {
 		$raw = $this->_parseAcceptWithQualifier($this->header('Accept-Language'));
 		$accept = [];
 		foreach ($raw as $languages) {
@@ -1072,8 +1033,7 @@ class Request implements ArrayAccess
 	 * @param string $header Header to parse.
 	 * @return array
 	 */
-	protected function _parseAcceptWithQualifier($header)
-	{
+	protected function _parseAcceptWithQualifier($header) {
 		$accept = [];
 		$header = explode(',', $header);
 		foreach (array_filter($header) as $value) {
@@ -1110,8 +1070,7 @@ class Request implements ArrayAccess
 	 * @param string $name Query string variable name
 	 * @return mixed The value being read
 	 */
-	public function query($name)
-	{
+	public function query($name) {
 		return Hash::get($this->query, $name);
 	}
 
@@ -1139,8 +1098,7 @@ class Request implements ArrayAccess
 	 * @param string|null $name Dot separated name of the value to read/write
 	 * @return mixed|$this Either the value being read, or this so you can chain consecutive writes.
 	 */
-	public function data($name = null)
-	{
+	public function data($name = null) {
 		$args = func_get_args();
 		if (count($args) === 2) {
 			$this->data = Hash::insert($this->data, $name, $args[1]);
@@ -1159,8 +1117,7 @@ class Request implements ArrayAccess
 	 * @return mixed The value of the provided parameter. Will
 	 *   return false if the parameter doesn't exist or is falsey.
 	 */
-	public function param($name)
-	{
+	public function param($name) {
 		$args = func_get_args();
 		if (count($args) === 2) {
 			$this->params = Hash::insert($this->params, $name, $args[1]);
@@ -1195,8 +1152,7 @@ class Request implements ArrayAccess
 	 *     supply additional parameters for the decoding callback using var args, see above.
 	 * @return string The decoded/processed request data.
 	 */
-	public function input($callback = null)
-	{
+	public function input($callback = null) {
 		$input = $this->_readInput();
 		$args = func_get_args();
 		if (!empty($args)) {
@@ -1213,8 +1169,7 @@ class Request implements ArrayAccess
 	 * @param string $key The key you want to read.
 	 * @return null|string Either the cookie value, or null if the value doesn't exist.
 	 */
-	public function cookie($key)
-	{
+	public function cookie($key) {
 		if (isset($this->cookies[$key])) {
 			return $this->cookies[$key];
 		}
@@ -1232,8 +1187,7 @@ class Request implements ArrayAccess
 	 * @return $this|string|null This instance if used as setter,
 	 *   if used as getter either the environment value, or null if the value doesn't exist.
 	 */
-	public function env($key, $value = null, $default = null)
-	{
+	public function env($key, $value = null, $default = null) {
 		if ($value !== null) {
 			$this->_environment[$key] = $value;
 			$this->clearDetectorCache();
@@ -1264,8 +1218,7 @@ class Request implements ArrayAccess
 	 * @return bool true
 	 * @throws \Cake\Network\Exception\MethodNotAllowedException
 	 */
-	public function allowMethod($methods)
-	{
+	public function allowMethod($methods) {
 		$methods = (array)$methods;
 		foreach ($methods as $method) {
 			if ($this->is($method)) {
@@ -1283,8 +1236,7 @@ class Request implements ArrayAccess
 	 *
 	 * @return string contents of php://input
 	 */
-	protected function _readInput()
-	{
+	protected function _readInput() {
 		if (empty($this->_input)) {
 			$fh = fopen('php://input', 'r');
 			$content = stream_get_contents($fh);
@@ -1301,8 +1253,7 @@ class Request implements ArrayAccess
 	 * @param string $input A string to replace original parsed data from input()
 	 * @return void
 	 */
-	public function setInput($input)
-	{
+	public function setInput($input) {
 		$this->_input = $input;
 	}
 
@@ -1312,8 +1263,7 @@ class Request implements ArrayAccess
 	 * @param string $name Name of the key being accessed.
 	 * @return mixed
 	 */
-	public function offsetGet($name)
-	{
+	public function offsetGet($name) {
 		if (isset($this->params[$name])) {
 			return $this->params[$name];
 		}
@@ -1333,8 +1283,7 @@ class Request implements ArrayAccess
 	 * @param mixed $value The value being written.
 	 * @return void
 	 */
-	public function offsetSet($name, $value)
-	{
+	public function offsetSet($name, $value) {
 		$this->params[$name] = $value;
 	}
 
@@ -1344,8 +1293,7 @@ class Request implements ArrayAccess
 	 * @param string $name thing to check.
 	 * @return bool
 	 */
-	public function offsetExists($name)
-	{
+	public function offsetExists($name) {
 		return isset($this->params[$name]);
 	}
 
@@ -1355,8 +1303,7 @@ class Request implements ArrayAccess
 	 * @param string $name Name to unset.
 	 * @return void
 	 */
-	public function offsetUnset($name)
-	{
+	public function offsetUnset($name) {
 		unset($this->params[$name]);
 	}
 }

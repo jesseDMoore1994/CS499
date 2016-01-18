@@ -20,16 +20,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Dispatcher factory test case.
  */
-class DispatcherFactoryTest extends TestCase
-{
+class DispatcherFactoryTest extends TestCase {
 
 	/**
 	 * setup function
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		DispatcherFactory::clear();
 	}
@@ -39,8 +37,7 @@ class DispatcherFactoryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddFilter()
-	{
+	public function testAddFilter() {
 		$mw = $this->getMock('Cake\Routing\DispatcherFilter', ['beforeDispatch']);
 		$result = DispatcherFactory::add($mw);
 		$this->assertSame($mw, $result);
@@ -51,8 +48,7 @@ class DispatcherFactoryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddFilterString()
-	{
+	public function testAddFilterString() {
 		$result = DispatcherFactory::add('Routing');
 		$this->assertInstanceOf('Cake\Routing\Filter\RoutingFilter', $result);
 	}
@@ -63,8 +59,7 @@ class DispatcherFactoryTest extends TestCase
 	 * @expectedException \Cake\Routing\Exception\MissingDispatcherFilterException
 	 * @return void
 	 */
-	public function testAddFilterMissing()
-	{
+	public function testAddFilterMissing() {
 		DispatcherFactory::add('NopeSauce');
 	}
 
@@ -73,8 +68,7 @@ class DispatcherFactoryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddFilterWithOptions()
-	{
+	public function testAddFilterWithOptions() {
 		$config = ['config' => 'value', 'priority' => 999];
 		$result = DispatcherFactory::add('Routing', $config);
 		$this->assertInstanceOf('Cake\Routing\Filter\RoutingFilter', $result);
@@ -87,8 +81,7 @@ class DispatcherFactoryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreate()
-	{
+	public function testCreate() {
 		$mw = $this->getMock('Cake\Routing\DispatcherFilter', ['beforeDispatch']);
 		DispatcherFactory::add($mw);
 		$result = DispatcherFactory::create();

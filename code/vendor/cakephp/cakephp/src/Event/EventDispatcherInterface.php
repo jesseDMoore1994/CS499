@@ -23,8 +23,7 @@ namespace Cake\Event;
  * The Cake\Event\EventDispatcherTrait lets you easily implement
  * this interface.
  */
-interface EventDispatcherInterface
-{
+interface EventDispatcherInterface {
 	/**
 	 * Wrapper for creating and dispatching events.
 	 *

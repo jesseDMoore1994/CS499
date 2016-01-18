@@ -17,8 +17,7 @@ namespace Psy;
  * This class encapsulates the current variables, most recent return value and
  * exception, and the current namespace.
  */
-class Context
-{
+class Context {
 	private static $specialVars = array('_', '_e', '__psysh__');
 	private $scopeVariables = array();
 	private $lastException;
@@ -33,8 +32,7 @@ class Context
 	 *
 	 * @return mixed
 	 */
-	public function get($name)
-	{
+	public function get($name) {
 		switch ($name) {
 			case '_':
 				return $this->returnValue;
@@ -60,8 +58,7 @@ class Context
 	 *
 	 * @return array
 	 */
-	public function getAll()
-	{
+	public function getAll() {
 		$vars = $this->scopeVariables;
 		$vars['_'] = $this->returnValue;
 
@@ -79,8 +76,7 @@ class Context
 	 *
 	 * @param array $vars
 	 */
-	public function setAll(array $vars)
-	{
+	public function setAll(array $vars) {
 		foreach (self::$specialVars as $key) {
 			unset($vars[$key]);
 		}
@@ -93,8 +89,7 @@ class Context
 	 *
 	 * @param mixed $value
 	 */
-	public function setReturnValue($value)
-	{
+	public function setReturnValue($value) {
 		$this->returnValue = $value;
 	}
 
@@ -103,8 +98,7 @@ class Context
 	 *
 	 * @return mixed
 	 */
-	public function getReturnValue()
-	{
+	public function getReturnValue() {
 		return $this->returnValue;
 	}
 
@@ -113,8 +107,7 @@ class Context
 	 *
 	 * @param \Exception $e
 	 */
-	public function setLastException(\Exception $e)
-	{
+	public function setLastException(\Exception $e) {
 		$this->lastException = $e;
 	}
 
@@ -125,8 +118,7 @@ class Context
 	 *
 	 * @return null|Exception
 	 */
-	public function getLastException()
-	{
+	public function getLastException() {
 		if (!isset($this->lastException)) {
 			throw new \InvalidArgumentException('No most-recent exception');
 		}

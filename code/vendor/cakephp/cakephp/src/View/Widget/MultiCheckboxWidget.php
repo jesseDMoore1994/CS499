@@ -21,8 +21,7 @@ use Cake\View\Helper\IdGeneratorTrait;
  * Input widget class for generating multiple checkboxes.
  *
  */
-class MultiCheckboxWidget implements WidgetInterface
-{
+class MultiCheckboxWidget implements WidgetInterface {
 
 	use IdGeneratorTrait;
 
@@ -54,8 +53,7 @@ class MultiCheckboxWidget implements WidgetInterface
 	 * @param \Cake\View\StringTemplate $templates Templates list.
 	 * @param \Cake\View\Widget\LabelWidget $label Label widget instance.
 	 */
-	public function __construct($templates, $label)
-	{
+	public function __construct($templates, $label) {
 		$this->_templates = $templates;
 		$this->_label = $label;
 	}
@@ -102,8 +100,7 @@ class MultiCheckboxWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	public function render(array $data, ContextInterface $context)
-	{
+	public function render(array $data, ContextInterface $context) {
 		$data += [
 			'name' => '',
 			'escape' => true,
@@ -155,8 +152,7 @@ class MultiCheckboxWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context Context object.
 	 * @return string
 	 */
-	protected function _renderInput($checkbox, $context)
-	{
+	protected function _renderInput($checkbox, $context) {
 		$input = $this->_templates->format('checkbox', [
 			'name' => $checkbox['name'] . '[]',
 			'value' => $checkbox['escape'] ? h($checkbox['value']) : $checkbox['value'],
@@ -193,8 +189,7 @@ class MultiCheckboxWidget implements WidgetInterface
 	 * @param array|string|null $selected The selected values.
 	 * @return bool
 	 */
-	protected function _isSelected($key, $selected)
-	{
+	protected function _isSelected($key, $selected) {
 		if ($selected === null) {
 			return false;
 		}
@@ -213,8 +208,7 @@ class MultiCheckboxWidget implements WidgetInterface
 	 * @param array|null $disabled The disabled values.
 	 * @return bool
 	 */
-	protected function _isDisabled($key, $disabled)
-	{
+	protected function _isDisabled($key, $disabled) {
 		if ($disabled === null || $disabled === false) {
 			return false;
 		}
@@ -228,8 +222,7 @@ class MultiCheckboxWidget implements WidgetInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function secureFields(array $data)
-	{
+	public function secureFields(array $data) {
 		return [$data['name']];
 	}
 }

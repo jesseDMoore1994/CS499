@@ -14,10 +14,8 @@ namespace Psy\Test\Exception;
 use Psy\Exception\Exception;
 use Psy\Exception\FatalErrorException;
 
-class FatalErrorExceptionTest extends \PHPUnit_Framework_TestCase
-{
-	public function testInstance()
-	{
+class FatalErrorExceptionTest extends \PHPUnit_Framework_TestCase {
+	public function testInstance() {
 		$e = new FatalErrorException();
 
 		$this->assertTrue($e instanceof Exception);
@@ -25,8 +23,7 @@ class FatalErrorExceptionTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($e instanceof FatalErrorException);
 	}
 
-	public function testMessage()
-	{
+	public function testMessage() {
 		$e = new FatalErrorException('{msg}', 0, 0, '{filename}', 13);
 
 		$this->assertEquals('{msg}', $e->getRawMessage());
@@ -35,8 +32,7 @@ class FatalErrorExceptionTest extends \PHPUnit_Framework_TestCase
 		$this->assertContains('line 13', $e->getMessage());
 	}
 
-	public function testMessageWithNoFilename()
-	{
+	public function testMessageWithNoFilename() {
 		$e = new FatalErrorException('{msg}');
 
 		$this->assertEquals('{msg}', $e->getRawMessage());

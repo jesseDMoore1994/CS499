@@ -22,16 +22,14 @@ use Cake\View\Widget\SelectBoxWidget;
 /**
  * DateTime input test case
  */
-class DateTimeWidgetTest extends TestCase
-{
+class DateTimeWidgetTest extends TestCase {
 
 	/**
 	 * @setUp
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$templates = [
 			'select' => '<select name="{{name}}"{{attrs}}>{{content}}</select>',
@@ -50,8 +48,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function invalidSelectedValuesProvider()
-	{
+	public static function invalidSelectedValuesProvider() {
 		return [
 			'false' => [false],
 			'true' => [true],
@@ -68,8 +65,7 @@ class DateTimeWidgetTest extends TestCase
 	 * @dataProvider invalidSelectedValuesProvider
 	 * @return void
 	 */
-	public function testRenderSelectedInvalid($selected)
-	{
+	public function testRenderSelectedInvalid($selected) {
 		$result = $this->DateTime->render(['val' => $selected], $this->context);
 		$now = new \DateTime();
 		$format = '<option value="%s" selected="selected">%s</option>';
@@ -84,8 +80,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSelectedEmpty()
-	{
+	public function testRenderSelectedEmpty() {
 		$result = $this->DateTime->render([
 			'val' => '',
 			'year' => ['empty' => true],
@@ -114,8 +109,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderEmptyCustom()
-	{
+	public function testRenderEmptyCustom() {
 		$result = $this->DateTime->render([
 			'val' => '',
 			'year' => [
@@ -131,8 +125,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function selectedValuesProvider()
-	{
+	public static function selectedValuesProvider() {
 		$date = new \DateTime('2014-01-20 12:30:45');
 		return [
 			'DateTime' => [$date],
@@ -152,8 +145,7 @@ class DateTimeWidgetTest extends TestCase
 	 * @dataProvider selectedValuesProvider
 	 * @return void
 	 */
-	public function testRenderSelected($selected)
-	{
+	public function testRenderSelected($selected) {
 		$result = $this->DateTime->render(['val' => $selected], $this->context);
 		$this->assertContains('<option value="2014" selected="selected">2014</option>', $result);
 		$this->assertContains('<option value="01" selected="selected">1</option>', $result);
@@ -163,8 +155,7 @@ class DateTimeWidgetTest extends TestCase
 		$this->assertContains('<option value="45" selected="selected">45</option>', $result);
 	}
 
-	public function testRenderInvalidDate()
-	{
+	public function testRenderInvalidDate() {
 		$selected = [
 			'year' => '2014', 'month' => '02', 'day' => '31',
 			'hour' => '12', 'minute' => '30', 'second' => '45',
@@ -183,8 +174,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSelectedNoSeconds()
-	{
+	public function testRenderSelectedNoSeconds() {
 		$selected = [
 			'year' => '2014', 'month' => '01', 'day' => '20',
 			'hour' => '12', 'minute' => '30'
@@ -209,8 +199,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSelectedMeridian()
-	{
+	public function testRenderSelectedMeridian() {
 		$selected = [
 			'year' => '2014', 'month' => '01', 'day' => '20',
 			'hour' => '7', 'minute' => '30', 'meridian' => 'pm'
@@ -227,8 +216,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @retun void
 	 */
-	public function testRenderEmptyValues()
-	{
+	public function testRenderEmptyValues() {
 		$result = $this->DateTime->render([
 			'year' => ['empty' => 'YEAR'],
 			'month' => ['empty' => 'MONTH'],
@@ -252,8 +240,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderYearWidgetDefaultRange()
-	{
+	public function testRenderYearWidgetDefaultRange() {
 		$now = new \DateTime();
 		$result = $this->DateTime->render([
 			'month' => false,
@@ -285,8 +272,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderYearWidgetOrdering()
-	{
+	public function testRenderYearWidgetOrdering() {
 		$now = new \DateTime('2014-01-01 12:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -343,8 +329,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderYearWidgetValueOutOfBounds()
-	{
+	public function testRenderYearWidgetValueOutOfBounds() {
 		$now = new \DateTime('2010-01-01 12:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -401,8 +386,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderMonthWidget()
-	{
+	public function testRenderMonthWidget() {
 		$now = new \DateTime('2010-09-01 12:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -437,8 +421,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderMonthWidgetWithNamesNoLeadingZeros()
-	{
+	public function testRenderMonthWidgetWithNamesNoLeadingZeros() {
 		$now = new \DateTime('2010-12-01 12:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -495,8 +478,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderMonthWidgetWithNames()
-	{
+	public function testRenderMonthWidgetWithNames() {
 		$now = new \DateTime('2010-09-01 12:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -532,8 +514,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderMonthWidgetWithCustomNames()
-	{
+	public function testRenderMonthWidgetWithCustomNames() {
 		$now = new \DateTime('2010-09-01 12:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -561,8 +542,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderDayWidget()
-	{
+	public function testRenderDayWidget() {
 		$now = new \DateTime('2010-09-09 12:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -619,8 +599,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderHourWidget24StartAndEnd()
-	{
+	public function testRenderHourWidget24StartAndEnd() {
 		$now = new \DateTime('2010-09-09 13:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -664,8 +643,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderHourWidget24()
-	{
+	public function testRenderHourWidget24() {
 		$now = new \DateTime('2010-09-09 13:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -711,8 +689,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderHour24SelectedValues()
-	{
+	public function testRenderHour24SelectedValues() {
 		$now = new \DateTime('2010-09-09 23:00:00');
 		$data = [
 			'name' => 'date',
@@ -737,8 +714,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderHourWidget12()
-	{
+	public function testRenderHourWidget12() {
 		$now = new \DateTime('2010-09-09 13:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -786,8 +762,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderHourWidget12Midnight()
-	{
+	public function testRenderHourWidget12Midnight() {
 		$now = new \DateTime('2010-09-09 00:30:45');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -813,8 +788,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderHourWidget12StartAndEnd()
-	{
+	public function testRenderHourWidget12StartAndEnd() {
 		$now = new \DateTime('2010-09-09 13:00:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -862,8 +836,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderMinuteWidget()
-	{
+	public function testRenderMinuteWidget() {
 		$now = new \DateTime('2010-09-09 13:25:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -906,8 +879,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderMinuteWidgetEmptyZeroDefault()
-	{
+	public function testRenderMinuteWidgetEmptyZeroDefault() {
 		$now = new \DateTime('2010-09-09 13:00:23');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -963,8 +935,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderMinuteWidgetInterval()
-	{
+	public function testRenderMinuteWidgetInterval() {
 		$now = new \DateTime('2010-09-09 13:23:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -1011,8 +982,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderMinuteWidgetIntervalRounding()
-	{
+	public function testRenderMinuteWidgetIntervalRounding() {
 		$now = new \DateTime('2010-09-09 13:22:00');
 		$data = [
 			'name' => 'date',
@@ -1050,8 +1020,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMinuteIntervalHourRollover()
-	{
+	public function testMinuteIntervalHourRollover() {
 		$now = new \DateTime('2010-09-09 23:58:00');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -1082,8 +1051,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSecondsWidget()
-	{
+	public function testRenderSecondsWidget() {
 		$now = new \DateTime('2010-09-09 13:00:25');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -1132,8 +1100,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderMeridianWidget()
-	{
+	public function testRenderMeridianWidget() {
 		$now = new \DateTime('2010-09-09 13:00:25');
 		$result = $this->DateTime->render([
 			'name' => 'date',
@@ -1180,8 +1147,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderTemplateVars()
-	{
+	public function testRenderTemplateVars() {
 		$templates = [
 			'select' => '<select data-s="{{svar}}" name="{{name}}"{{attrs}}>{{content}}</select>',
 			'option' => '<option data-o="{{ovar}}" value="{{value}}"{{attrs}}>{{text}}</option>',
@@ -1220,8 +1186,7 @@ class DateTimeWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecureFields()
-	{
+	public function testSecureFields() {
 		$data = [
 			'name' => 'date',
 		];

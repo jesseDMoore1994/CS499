@@ -19,46 +19,40 @@ use Cake\Database\Exception;
 /**
  * Schema generation/reflection features for MySQL
  */
-class MysqlSchema extends BaseSchema
-{
+class MysqlSchema extends BaseSchema {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function listTablesSql($config)
-	{
+	public function listTablesSql($config) {
 		return ['SHOW TABLES FROM ' . $this->_driver->quoteIdentifier($config['database']), []];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeColumnSql($tableName, $config)
-	{
+	public function describeColumnSql($tableName, $config) {
 		return ['SHOW FULL COLUMNS FROM ' . $this->_driver->quoteIdentifier($tableName), []];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeIndexSql($tableName, $config)
-	{
+	public function describeIndexSql($tableName, $config) {
 		return ['SHOW INDEXES FROM ' . $this->_driver->quoteIdentifier($tableName), []];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeOptionsSql($tableName, $config)
-	{
+	public function describeOptionsSql($tableName, $config) {
 		return ['SHOW TABLE STATUS WHERE Name = ?', [$tableName]];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function convertOptionsDescription(Table $table, $row)
-	{
+	public function convertOptionsDescription(Table $table, $row) {
 		$table->options([
 			'engine' => $row['Engine'],
 			'collation' => $row['Collation'],
@@ -74,8 +68,7 @@ class MysqlSchema extends BaseSchema
 	 * @return array Array of column information.
 	 * @throws \Cake\Database\Exception When column type cannot be parsed.
 	 */
-	protected function _convertColumn($column)
-	{
+	protected function _convertColumn($column) {
 		preg_match('/([a-z]+)(?:\(([0-9,]+)\))?\s*([a-z]+)?/i', $column, $matches);
 		if (empty($matches)) {
 			throw new Exception(sprintf('Unable to parse column type from "%s"', $column));
@@ -143,8 +136,7 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function convertColumnDescription(Table $table, $row)
-	{
+	public function convertColumnDescription(Table $table, $row) {
 		$field = $this->_convertColumn($row['Type']);
 		$field += [
 			'null' => $row['Null'] === 'YES' ? true : false,
@@ -161,8 +153,7 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function convertIndexDescription(Table $table, $row)
-	{
+	public function convertIndexDescription(Table $table, $row) {
 		$type = null;
 		$columns = $length = [];
 
@@ -217,8 +208,7 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeForeignKeySql($tableName, $config)
-	{
+	public function describeForeignKeySql($tableName, $config) {
 		$sql = 'SELECT * FROM information_schema.key_column_usage AS kcu
             INNER JOIN information_schema.referential_constraints AS rc
             ON (
@@ -233,8 +223,7 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function convertForeignKeyDescription(Table $table, $row)
-	{
+	public function convertForeignKeyDescription(Table $table, $row) {
 		$data = [
 			'type' => Table::CONSTRAINT_FOREIGN,
 			'columns' => [$row['COLUMN_NAME']],
@@ -249,16 +238,14 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function truncateTableSql(Table $table)
-	{
+	public function truncateTableSql(Table $table) {
 		return [sprintf('TRUNCATE TABLE `%s`', $table->name())];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function createTableSql(Table $table, $columns, $constraints, $indexes)
-	{
+	public function createTableSql(Table $table, $columns, $constraints, $indexes) {
 		$content = implode(",\n", array_merge($columns, $constraints, $indexes));
 		$temporary = $table->temporary() ? ' TEMPORARY ' : ' ';
 		$content = sprintf("CREATE%sTABLE `%s` (\n%s\n)", $temporary, $table->name(), $content);
@@ -278,8 +265,7 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function columnSql(Table $table, $name)
-	{
+	public function columnSql(Table $table, $name) {
 		$data = $table->column($name);
 		$out = $this->_driver->quoteIdentifier($name);
 		$typeMap = [
@@ -367,8 +353,7 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function constraintSql(Table $table, $name)
-	{
+	public function constraintSql(Table $table, $name) {
 		$data = $table->constraint($name);
 		if ($data['type'] === Table::CONSTRAINT_PRIMARY) {
 			$columns = array_map(
@@ -392,8 +377,7 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function addConstraintSql(Table $table)
-	{
+	public function addConstraintSql(Table $table) {
 		$sqlPattern = 'ALTER TABLE %s ADD %s;';
 		$sql = [];
 
@@ -411,8 +395,7 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function dropConstraintSql(Table $table)
-	{
+	public function dropConstraintSql(Table $table) {
 		$sqlPattern = 'ALTER TABLE %s DROP FOREIGN KEY %s;';
 		$sql = [];
 
@@ -431,8 +414,7 @@ class MysqlSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function indexSql(Table $table, $name)
-	{
+	public function indexSql(Table $table, $name) {
 		$data = $table->index($name);
 		if ($data['type'] === Table::INDEX_INDEX) {
 			$out = 'KEY ';
@@ -451,8 +433,7 @@ class MysqlSchema extends BaseSchema
 	 * @param array $data Key data.
 	 * @return string
 	 */
-	protected function _keySql($prefix, $data)
-	{
+	protected function _keySql($prefix, $data) {
 		$columns = array_map(
 			[$this->_driver, 'quoteIdentifier'],
 			$data['columns']

@@ -10,18 +10,15 @@ use \Phinx\Config\Config;
  * @group config
  * @covers \Phinx\Config\Config::getDefaultEnvironment
  */
-class ConfigDefaultEnvironmentTest extends AbstractConfigTest
-{
-	public function testGetDefaultEnvironment()
-	{
+class ConfigDefaultEnvironmentTest extends AbstractConfigTest {
+	public function testGetDefaultEnvironment() {
 		// test with the config array
 		$configArray = $this->getConfigArray();
 		$config = new Config($configArray);
 		$this->assertEquals('testing', $config->getDefaultEnvironment());
 	}
 
-	public function testConfigReplacesTokensWithEnvVariables()
-	{
+	public function testConfigReplacesTokensWithEnvVariables() {
 		$_SERVER['PHINX_DBHOST'] = 'localhost';
 		$_SERVER['PHINX_DBNAME'] = 'productionapp';
 		$_SERVER['PHINX_DBUSER'] = 'root';
@@ -41,8 +38,7 @@ class ConfigDefaultEnvironmentTest extends AbstractConfigTest
 	 * @expectedException \RuntimeException
 	 * @expectedExceptionMessage The environment configuration (read from $PHINX_ENVIRONMENT) for 'conf-test' is missing
 	 */
-	public function testGetDefaultEnvironmentOverridenByEnvButNotSet()
-	{
+	public function testGetDefaultEnvironmentOverridenByEnvButNotSet() {
 		// set dummy
 		$dummyEnv = 'conf-test';
 		putenv('PHINX_ENVIRONMENT=' . $dummyEnv);
@@ -63,8 +59,7 @@ class ConfigDefaultEnvironmentTest extends AbstractConfigTest
 	 * @expectedException \RuntimeException
 	 * @expectedExceptionMessage Could not find a default environment
 	 */
-	public function testGetDefaultEnvironmentOverridenFailedToFind()
-	{
+	public function testGetDefaultEnvironmentOverridenFailedToFind() {
 		// set empty env var
 		putenv('PHINX_ENVIRONMENT=');
 

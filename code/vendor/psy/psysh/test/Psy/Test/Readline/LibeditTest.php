@@ -13,12 +13,10 @@ namespace Psy\Test\Readline;
 
 use Psy\Readline\Libedit;
 
-class LibeditTest extends \PHPUnit_Framework_TestCase
-{
+class LibeditTest extends \PHPUnit_Framework_TestCase {
 	private $historyFile;
 
-	public function setUp()
-	{
+	public function setUp() {
 		if (!Libedit::isSupported()) {
 			$this->markTestSkipped('Libedit not enabled');
 		}
@@ -33,15 +31,13 @@ class LibeditTest extends \PHPUnit_Framework_TestCase
 		readline_clear_history();
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		if (is_file($this->historyFile)) {
 			unlink($this->historyFile);
 		}
 	}
 
-	public function testHistory()
-	{
+	public function testHistory() {
 		$readline = new Libedit($this->historyFile);
 		$this->assertEmpty($readline->listHistory());
 		$readline->addHistory('foo');
@@ -57,8 +53,7 @@ class LibeditTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @depends testHistory
 	 */
-	public function testHistorySize()
-	{
+	public function testHistorySize() {
 		$readline = new Libedit($this->historyFile, 2);
 		$this->assertEmpty($readline->listHistory());
 		$readline->addHistory('foo');
@@ -75,8 +70,7 @@ class LibeditTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @depends testHistory
 	 */
-	public function testHistoryEraseDups()
-	{
+	public function testHistoryEraseDups() {
 		$readline = new Libedit($this->historyFile, 0, true);
 		$this->assertEmpty($readline->listHistory());
 		$readline->addHistory('foo');
@@ -91,8 +85,7 @@ class LibeditTest extends \PHPUnit_Framework_TestCase
 		$this->assertEmpty($readline->listHistory());
 	}
 
-	public function testListHistory()
-	{
+	public function testListHistory() {
 		$readline = new Libedit($this->historyFile);
 		file_put_contents(
 			$this->historyFile,
@@ -110,8 +103,7 @@ class LibeditTest extends \PHPUnit_Framework_TestCase
 	 * Libedit being a BSD library,
 	 * it doesn't support non-unix line separators.
 	 */
-	public function testLinebreaksSupport()
-	{
+	public function testLinebreaksSupport() {
 		$readline = new Libedit($this->historyFile);
 		file_put_contents(
 			$this->historyFile,

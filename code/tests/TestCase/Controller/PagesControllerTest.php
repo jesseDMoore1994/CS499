@@ -25,16 +25,14 @@ use Cake\View\Exception\MissingTemplateException;
 /**
  * PagesControllerTest class
  */
-class PagesControllerTest extends IntegrationTestCase
-{
+class PagesControllerTest extends IntegrationTestCase {
 
 	/**
 	 * testDisplay method
 	 *
 	 * @return void
 	 */
-	public function testDisplay()
-	{
+	public function testDisplay() {
 		$this->get('/pages/home');
 		$this->assertResponseOk();
 		$this->assertResponseContains('CakePHP');
@@ -46,8 +44,7 @@ class PagesControllerTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testMissingTemplate()
-	{
+	public function testMissingTemplate() {
 		Configure::write('debug', false);
 		$this->get('/pages/not_existing');
 
@@ -60,8 +57,7 @@ class PagesControllerTest extends IntegrationTestCase
 	 *
 	 * @return void
 	 */
-	public function testMissingTemplateInDebug()
-	{
+	public function testMissingTemplateInDebug() {
 		Configure::write('debug', true);
 		$this->get('/pages/not_existing');
 

@@ -7,15 +7,12 @@ use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
-class ClassTest extends \PHPUnit_Framework_TestCase
-{
-	protected function createClassBuilder($class)
-	{
+class ClassTest extends \PHPUnit_Framework_TestCase {
+	protected function createClassBuilder($class) {
 		return new Class_($class);
 	}
 
-	public function testExtendsImplements()
-	{
+	public function testExtendsImplements() {
 		$node = $this->createClassBuilder('SomeLogger')
 			->extend('BaseLogger')
 			->implement('Namespaced\Logger', new Name('SomeInterface'))
@@ -36,8 +33,7 @@ class ClassTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testAbstract()
-	{
+	public function testAbstract() {
 		$node = $this->createClassBuilder('Test')
 			->makeAbstract()
 			->getNode();
@@ -50,8 +46,7 @@ class ClassTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testFinal()
-	{
+	public function testFinal() {
 		$node = $this->createClassBuilder('Test')
 			->makeFinal()
 			->getNode();
@@ -64,8 +59,7 @@ class ClassTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testStatementOrder()
-	{
+	public function testStatementOrder() {
 		$method = new Stmt\ClassMethod('testMethod');
 		$property = new Stmt\Property(
 			Stmt\Class_::MODIFIER_PUBLIC,
@@ -90,8 +84,7 @@ class ClassTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testDocComment()
-	{
+	public function testDocComment() {
 		$docComment = <<<'DOC'
 /**
  * Test
@@ -128,8 +121,7 @@ DOC;
 	 * @expectedException \LogicException
 	 * @expectedExceptionMessage Unexpected node of type "Stmt_Echo"
 	 */
-	public function testInvalidStmtError()
-	{
+	public function testInvalidStmtError() {
 		$this->createClassBuilder('Test')
 			->addStmt(new Stmt\Echo_(array()));
 	}
@@ -138,8 +130,7 @@ DOC;
 	 * @expectedException \LogicException
 	 * @expectedExceptionMessage Doc comment must be a string or an instance of PhpParser\Comment\Doc
 	 */
-	public function testInvalidDocComment()
-	{
+	public function testInvalidDocComment() {
 		$this->createClassBuilder('Test')
 			->setDocComment(new Comment('Test'));
 	}
@@ -148,8 +139,7 @@ DOC;
 	 * @expectedException \LogicException
 	 * @expectedExceptionMessage Name cannot be empty
 	 */
-	public function testEmptyName()
-	{
+	public function testEmptyName() {
 		$this->createClassBuilder('Test')
 			->extend('');
 	}
@@ -158,8 +148,7 @@ DOC;
 	 * @expectedException \LogicException
 	 * @expectedExceptionMessage Name must be a string or an instance of PhpParser\Node\Name
 	 */
-	public function testInvalidName()
-	{
+	public function testInvalidName() {
 		$this->createClassBuilder('Test')
 			->extend(array('Foo'));
 	}

@@ -18,8 +18,7 @@ use Symfony\Component\Console\Formatter\OutputFormatterInterface;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface OutputInterface
-{
+interface OutputInterface {
 	const VERBOSITY_QUIET = 16;
 	const VERBOSITY_NORMAL = 32;
 	const VERBOSITY_VERBOSE = 64;

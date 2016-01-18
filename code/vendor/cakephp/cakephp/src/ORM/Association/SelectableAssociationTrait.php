@@ -21,8 +21,7 @@ use InvalidArgumentException;
 /**
  * Represents a type of association that that can be fetched using another query
  */
-trait SelectableAssociationTrait
-{
+trait SelectableAssociationTrait {
 
 	/**
 	 * Returns true if the eager loading process will require a set of the owning table's
@@ -31,8 +30,7 @@ trait SelectableAssociationTrait
 	 * @param array $options The options containing the strategy to be used.
 	 * @return bool true if a list of keys will be required
 	 */
-	public function requiresKeys(array $options = [])
-	{
+	public function requiresKeys(array $options = []) {
 		$strategy = isset($options['strategy']) ? $options['strategy'] : $this->strategy();
 		return $strategy === $this::STRATEGY_SELECT;
 	}
@@ -40,8 +38,7 @@ trait SelectableAssociationTrait
 	/**
 	 * {@inheritDoc}
 	 */
-	public function eagerLoader(array $options)
-	{
+	public function eagerLoader(array $options) {
 		$options += $this->_defaultOptions();
 		$fetchQuery = $this->_buildQuery($options);
 		$resultMap = $this->_buildResultMap($fetchQuery, $options);
@@ -53,8 +50,7 @@ trait SelectableAssociationTrait
 	 *
 	 * @return array
 	 */
-	protected function _defaultOptions()
-	{
+	protected function _defaultOptions() {
 		return [
 			'foreignKey' => $this->foreignKey(),
 			'conditions' => [],
@@ -72,8 +68,7 @@ trait SelectableAssociationTrait
 	 * @return \Cake\ORM\Query
 	 * @throws \InvalidArgumentException When a key is required for associations but not selected.
 	 */
-	protected function _buildQuery($options)
-	{
+	protected function _buildQuery($options) {
 		$target = $this->target();
 		$alias = $target->alias();
 		$key = $this->_linkField($options);
@@ -130,8 +125,7 @@ trait SelectableAssociationTrait
 	 * @param \Cake\ORM\Query $subquery The Subquery to use for filtering
 	 * @return \Cake\ORM\Query
 	 */
-	public function _addFilteringJoin($query, $key, $subquery)
-	{
+	public function _addFilteringJoin($query, $key, $subquery) {
 		$filter = [];
 		$aliasedTable = $this->source()->alias();
 
@@ -166,8 +160,7 @@ trait SelectableAssociationTrait
 	 * @param mixed $filter the value that should be used to match for $key
 	 * @return \Cake\ORM\Query
 	 */
-	protected function _addFilteringCondition($query, $key, $filter)
-	{
+	protected function _addFilteringCondition($query, $key, $filter) {
 		if (is_array($key)) {
 			$conditions = $this->_createTupleCondition($query, $key, $filter, 'IN');
 		}
@@ -186,8 +179,7 @@ trait SelectableAssociationTrait
 	 * @param string $operator The operator for comparing the tuples
 	 * @return \Cake\Database\Expression\TupleComparison
 	 */
-	protected function _createTupleCondition($query, $keys, $filter, $operator)
-	{
+	protected function _createTupleCondition($query, $keys, $filter, $operator) {
 		$types = [];
 		$defaults = $query->defaultTypes();
 		foreach ($keys as $k) {
@@ -215,8 +207,7 @@ trait SelectableAssociationTrait
 	 * @param \Cake\ORM\Query $query the original query used to load source records
 	 * @return \Cake\ORM\Query
 	 */
-	protected function _buildSubquery($query)
-	{
+	protected function _buildSubquery($query) {
 		$filterQuery = clone $query;
 		$filterQuery->autoFields(false);
 		$filterQuery->mapReduce(null, null, true);
@@ -244,8 +235,7 @@ trait SelectableAssociationTrait
 	 * @param \Cake\ORM\Query $query The query to get fields from.
 	 * @return array The list of fields for the subquery.
 	 */
-	protected function _subqueryFields($query)
-	{
+	protected function _subqueryFields($query) {
 		$keys = (array)$this->bindingKey();
 		if ($this->type() === $this::MANY_TO_ONE) {
 			$keys = (array)$this->foreignKey();
@@ -285,8 +275,7 @@ trait SelectableAssociationTrait
 	 * @param array $options The options passed to the eagerLoader method
 	 * @return \Closure
 	 */
-	protected function _resultInjector($fetchQuery, $resultMap, $options)
-	{
+	protected function _resultInjector($fetchQuery, $resultMap, $options) {
 		$source = $this->source();
 		$sAlias = $source->alias();
 		$keys = $this->type() === $this::MANY_TO_ONE ?
@@ -323,8 +312,7 @@ trait SelectableAssociationTrait
 	 * @param string $nestKey The key under which results should be nested
 	 * @return \Closure
 	 */
-	protected function _multiKeysInjector($resultMap, $sourceKeys, $nestKey)
-	{
+	protected function _multiKeysInjector($resultMap, $sourceKeys, $nestKey) {
 		return function ($row) use ($resultMap, $sourceKeys, $nestKey) {
 			$values = [];
 			foreach ($sourceKeys as $key) {

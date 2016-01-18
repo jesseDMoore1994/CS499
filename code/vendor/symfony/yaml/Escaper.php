@@ -19,8 +19,7 @@ namespace Symfony\Component\Yaml;
  *
  * @internal
  */
-class Escaper
-{
+class Escaper {
 	// Characters that would cause a dumped string to require double quoting.
 	const REGEX_CHARACTER_TO_ESCAPE = "[\\x00-\\x1f]|\xc2\x85|\xc2\xa0|\xe2\x80\xa8|\xe2\x80\xa9";
 
@@ -48,8 +47,7 @@ class Escaper
 	 *
 	 * @return bool True if the value would require double quotes.
 	 */
-	public static function requiresDoubleQuoting($value)
-	{
+	public static function requiresDoubleQuoting($value) {
 		return preg_match('/' . self::REGEX_CHARACTER_TO_ESCAPE . '/u', $value);
 	}
 
@@ -60,8 +58,7 @@ class Escaper
 	 *
 	 * @return string The quoted, escaped string
 	 */
-	public static function escapeWithDoubleQuotes($value)
-	{
+	public static function escapeWithDoubleQuotes($value) {
 		return sprintf('"%s"', str_replace(self::$escapees, self::$escaped, $value));
 	}
 
@@ -72,8 +69,7 @@ class Escaper
 	 *
 	 * @return bool True if the value would require single quotes.
 	 */
-	public static function requiresSingleQuoting($value)
-	{
+	public static function requiresSingleQuoting($value) {
 		// Determines if a PHP value is entirely composed of a value that would
 		// require single quoting in YAML.
 		if (in_array(strtolower($value), array('null', '~', 'true', 'false', 'y', 'n', 'yes', 'no', 'on', 'off'))) {
@@ -92,8 +88,7 @@ class Escaper
 	 *
 	 * @return string The quoted, escaped string
 	 */
-	public static function escapeWithSingleQuotes($value)
-	{
+	public static function escapeWithSingleQuotes($value) {
 		return sprintf("'%s'", str_replace('\'', '\'\'', $value));
 	}
 }

@@ -51,8 +51,7 @@ use Cake\Utility\Hash;
  *
  * @see http://php.net/parse_ini_file
  */
-class IniConfig implements ConfigEngineInterface
-{
+class IniConfig implements ConfigEngineInterface {
 
 	use FileConfigTrait;
 
@@ -78,8 +77,7 @@ class IniConfig implements ConfigEngineInterface
 	 * @param string|null $section Only get one section, leave null to parse and fetch
 	 *     all sections in the ini file.
 	 */
-	public function __construct($path = null, $section = null)
-	{
+	public function __construct($path = null, $section = null) {
 		if ($path === null) {
 			$path = CONFIG;
 		}
@@ -96,8 +94,7 @@ class IniConfig implements ConfigEngineInterface
 	 * @throws \Cake\Core\Exception\Exception when files don't exist.
 	 *  Or when files contain '..' as this could lead to abusive reads.
 	 */
-	public function read($key)
-	{
+	public function read($key) {
 		$file = $this->_getFilePath($key, true);
 
 		$contents = parse_ini_file($file, true);
@@ -123,8 +120,7 @@ class IniConfig implements ConfigEngineInterface
 	 * @param array $values Values to be exploded.
 	 * @return array Array of values exploded
 	 */
-	protected function _parseNestedValues($values)
-	{
+	protected function _parseNestedValues($values) {
 		foreach ($values as $key => $value) {
 			if ($value === '1') {
 				$value = true;
@@ -150,8 +146,7 @@ class IniConfig implements ConfigEngineInterface
 	 * @param array $data The data to convert to ini file.
 	 * @return bool Success.
 	 */
-	public function dump($key, array $data)
-	{
+	public function dump($key, array $data) {
 		$result = [];
 		foreach ($data as $k => $value) {
 			$isSection = false;
@@ -181,8 +176,7 @@ class IniConfig implements ConfigEngineInterface
 	 * @param mixed $value Value to export.
 	 * @return string String value for ini file.
 	 */
-	protected function _value($value)
-	{
+	protected function _value($value) {
 		if ($value === null) {
 			return 'null';
 		}

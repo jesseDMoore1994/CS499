@@ -27,8 +27,7 @@ use Cake\View\Helper;
  * @uses          AppHelper
  * @since         v 1.0 (22-Jun-2009)
  */
-class TidyHelper extends Helper
-{
+class TidyHelper extends Helper {
 
 	/**
 	 * helpers property
@@ -52,8 +51,7 @@ class TidyHelper extends Helper
 	 * @param string &$out ''
 	 * @return array
 	 */
-	public function process($html = '', &$out = '')
-	{
+	public function process($html = '', &$out = '') {
 		$errors = $this->tidyErrors($html, $out);
 
 		if (!$errors) {
@@ -97,8 +95,7 @@ class TidyHelper extends Helper
 	 * @param mixed $html null
 	 * @return string
 	 */
-	public function report($html = null)
-	{
+	public function report($html = null) {
 		if ($html) {
 			$this->process($html);
 		} elseif ($this->results === null) {
@@ -125,8 +122,7 @@ class TidyHelper extends Helper
 	 * @param string &$out ''
 	 * @return string
 	 */
-	public function tidyErrors($in = '', &$out = '')
-	{
+	public function tidyErrors($in = '', &$out = '') {
 		$out = preg_replace('@>\s*<@s', ">\n<", $in);
 
 		// direct access? windows etc
@@ -161,8 +157,7 @@ class TidyHelper extends Helper
 	 * @param mixed &$out null
 	 * @return bool True if successful
 	 */
-	protected function _exec($cmd, &$out = null)
-	{
+	protected function _exec($cmd, &$out = null) {
 		if (DS === '/') {
 			$_out = exec($cmd . ' 2>&1', $out, $return);
 		} else {

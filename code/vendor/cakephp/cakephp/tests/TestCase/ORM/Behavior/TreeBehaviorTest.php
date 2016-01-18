@@ -24,8 +24,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Translate behavior test case
  */
-class TreeBehaviorTest extends TestCase
-{
+class TreeBehaviorTest extends TestCase {
 
 	/**
 	 * fixtures
@@ -37,16 +36,14 @@ class TreeBehaviorTest extends TestCase
 		'core.number_trees'
 	];
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->table = TableRegistry::get('NumberTrees');
 		$this->table->primaryKey(['id']);
 		$this->table->addBehavior('Tree');
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -59,8 +56,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertMpttValues()
-	{
+	public function testAssertMpttValues() {
 		$expected = [
 			' 1:20 -  1:electronics',
 			'_ 2: 9 -  2:televisions',
@@ -113,8 +109,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindPath()
-	{
+	public function testFindPath() {
 		$nodes = $this->table->find('path', ['for' => 9]);
 		$this->assertEquals([1, 6, 9], $nodes->extract('id')->toArray());
 
@@ -150,8 +145,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testChildCount()
-	{
+	public function testChildCount() {
 		// direct children for the root node
 		$table = $this->table;
 		$countDirect = $this->table->childCount($table->get(1), true);
@@ -185,8 +179,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testChildCountNoTreeColumns()
-	{
+	public function testChildCountNoTreeColumns() {
 		$table = $this->table;
 		$node = $table->get(6);
 		$node->unsetProperty('lft');
@@ -200,8 +193,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCallableScoping()
-	{
+	public function testCallableScoping() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', [
 			'scope' => function ($query) {
@@ -217,8 +209,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindChildren()
-	{
+	public function testFindChildren() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 
@@ -243,8 +234,7 @@ class TreeBehaviorTest extends TestCase
 	 * @expectedException \Cake\Datasource\Exception\RecordNotFoundException
 	 * @return void
 	 */
-	public function testFindChildrenException()
-	{
+	public function testFindChildrenException() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$query = $table->find('children', ['for' => 500]);
@@ -255,8 +245,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindTreeList()
-	{
+	public function testFindTreeList() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$result = $table->find('treeList')->toArray();
@@ -278,8 +267,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindTreeListAfterMove()
-	{
+	public function testFindTreeListAfterMove() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 
@@ -317,8 +305,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindTreeListCustom()
-	{
+	public function testFindTreeListCustom() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$result = $table
@@ -342,8 +329,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatTreeListCustom()
-	{
+	public function testFormatTreeListCustom() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree');
 
@@ -372,8 +358,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMoveUp()
-	{
+	public function testMoveUp() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 
@@ -429,8 +414,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMoveLeaf()
-	{
+	public function testMoveLeaf() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$node = $table->moveUp($table->get(5), 1);
@@ -453,8 +437,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMoveTop()
-	{
+	public function testMoveTop() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$node = $table->moveUp($table->get(8), true);
@@ -476,8 +459,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMoveNoTreeColumns()
-	{
+	public function testMoveNoTreeColumns() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$node = $table->get(8);
@@ -503,8 +485,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMoveDown()
-	{
+	public function testMoveDown() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		// latest node, won't move
@@ -558,8 +539,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMoveLeafDown()
-	{
+	public function testMoveLeafDown() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$node = $table->moveDown($table->get(5), 1);
@@ -582,8 +562,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMoveToBottom()
-	{
+	public function testMoveToBottom() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$node = $table->moveDown($table->get(1), true);
@@ -606,8 +585,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMoveDownNoTreeColumns()
-	{
+	public function testMoveDownNoTreeColumns() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$node = $table->get(1);
@@ -628,8 +606,7 @@ class TreeBehaviorTest extends TestCase
 		$this->assertMpttValues($expected, $table);
 	}
 
-	public function testMoveDownMultiplePositions()
-	{
+	public function testMoveDownMultiplePositions() {
 		$node = $this->table->moveDown($this->table->get(3), 2);
 		$this->assertEquals(['lft' => 7, 'rght' => 8], $node->extract(['lft', 'rght']));
 		$expected = [
@@ -653,8 +630,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRecover()
-	{
+	public function testRecover() {
 		$table = $this->table;
 
 		$expectedLevels = $table
@@ -692,8 +668,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRecoverScoped()
-	{
+	public function testRecoverScoped() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu']]);
 		$table->updateAll(['lft' => null, 'rght' => null], ['menu' => 'main-menu']);
@@ -733,8 +708,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRecoverWithCustomOrder()
-	{
+	public function testRecoverWithCustomOrder() {
 		$table = TableRegistry::get('MenuLinkTrees');
 		$table->addBehavior('Tree', ['scope' => ['menu' => 'main-menu'], 'recoverOrder' => ['MenuLinkTrees.title' => 'desc']]);
 		$table->updateAll(['lft' => null, 'rght' => null], ['menu' => 'main-menu']);
@@ -758,8 +732,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddOrphan()
-	{
+	public function testAddOrphan() {
 		$table = $this->table;
 		$entity = new Entity(
 			['name' => 'New Orphan', 'parent_id' => null, 'level' => null],
@@ -791,8 +764,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddMiddle()
-	{
+	public function testAddMiddle() {
 		$table = $this->table;
 		$entity = new Entity(
 			['name' => 'laptops', 'parent_id' => 1],
@@ -824,8 +796,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddLeaf()
-	{
+	public function testAddLeaf() {
 		$table = $this->table;
 		$entity = new Entity(
 			['name' => 'laptops', 'parent_id' => 2],
@@ -857,8 +828,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReParentSubTreeRight()
-	{
+	public function testReParentSubTreeRight() {
 		$table = $this->table;
 		$entity = $table->get(2);
 		$entity->parent_id = 6;
@@ -887,8 +857,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReParentSubTreeLeft()
-	{
+	public function testReParentSubTreeLeft() {
 		$table = $this->table;
 		$entity = $table->get(6);
 		$entity->parent_id = 2;
@@ -917,8 +886,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReParentLeafLeft()
-	{
+	public function testReParentLeafLeft() {
 		$table = $this->table;
 		$entity = $table->get(10);
 		$entity->parent_id = 2;
@@ -947,8 +915,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReParentLeafRight()
-	{
+	public function testReParentLeafRight() {
 		$table = $this->table;
 		$entity = $table->get(5);
 		$entity->parent_id = 6;
@@ -979,8 +946,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReParentNoTreeColumns()
-	{
+	public function testReParentNoTreeColumns() {
 		$table = $this->table;
 		$entity = $table->get(6);
 		$entity->unsetProperty('lft');
@@ -1011,8 +977,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRootingSubTree()
-	{
+	public function testRootingSubTree() {
 		$table = $this->table;
 		$entity = $table->get(2);
 		$entity->parent_id = null;
@@ -1041,8 +1006,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRootingNoTreeColumns()
-	{
+	public function testRootingNoTreeColumns() {
 		$table = $this->table;
 		$entity = $table->get(2);
 		$entity->unsetProperty('lft');
@@ -1075,8 +1039,7 @@ class TreeBehaviorTest extends TestCase
 	 * @expectedExceptionMessage Cannot use node "5" as parent for entity "2"
 	 * @return void
 	 */
-	public function testReparentCycle()
-	{
+	public function testReparentCycle() {
 		$table = $this->table;
 		$entity = $table->get(2);
 		$entity->parent_id = 5;
@@ -1088,8 +1051,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteLeaf()
-	{
+	public function testDeleteLeaf() {
 		$table = $this->table;
 		$entity = $table->get(4);
 		$this->assertTrue($table->delete($entity));
@@ -1114,8 +1076,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteSubTree()
-	{
+	public function testDeleteSubTree() {
 		$table = $this->table;
 		$entity = $table->get(6);
 		$this->assertTrue($table->delete($entity));
@@ -1136,8 +1097,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteRoot()
-	{
+	public function testDeleteRoot() {
 		$table = $this->table;
 		$entity = $table->get(1);
 		$this->assertTrue($table->delete($entity));
@@ -1153,8 +1113,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteRootNoTreeColumns()
-	{
+	public function testDeleteRootNoTreeColumns() {
 		$table = $this->table;
 		$entity = $table->get(1);
 		$entity->unsetProperty('lft');
@@ -1172,8 +1131,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemoveFromLeafFromTree()
-	{
+	public function testRemoveFromLeafFromTree() {
 		$table = $this->table;
 		$entity = $table->get(10);
 		$this->assertSame($entity, $table->removeFromTree($entity));
@@ -1203,8 +1161,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemoveMiddleNodeFromTree()
-	{
+	public function testRemoveMiddleNodeFromTree() {
 		$table = $this->table;
 		$entity = $table->get(6);
 		$this->assertSame($entity, $table->removeFromTree($entity));
@@ -1234,8 +1191,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemoveRootFromTree()
-	{
+	public function testRemoveRootFromTree() {
 		$table = $this->table;
 		$entity = $table->get(1);
 		$this->assertSame($entity, $table->removeFromTree($entity));
@@ -1266,8 +1222,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindPathWithAssociation()
-	{
+	public function testFindPathWithAssociation() {
 		$table = $this->table;
 		$other = TableRegistry::get('FriendlyTrees', [
 			'table' => $table->table()
@@ -1287,8 +1242,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetLevel()
-	{
+	public function testGetLevel() {
 		$entity = $this->table->get(8);
 		$result = $this->table->getLevel($entity);
 		$this->assertEquals(3, $result);
@@ -1308,8 +1262,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetLevelNewNode()
-	{
+	public function testSetLevelNewNode() {
 		$this->table->behaviors()->Tree->config('level', 'depth');
 
 		$entity = new Entity(['parent_id' => null, 'name' => 'Depth 0']);
@@ -1333,8 +1286,7 @@ class TreeBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetLevelExistingNode()
-	{
+	public function testSetLevelExistingNode() {
 		$this->table->behaviors()->Tree->config('level', 'depth');
 
 		// Leaf node
@@ -1376,8 +1328,7 @@ class TreeBehaviorTest extends TestCase
 	 * @param \Cake\ORM\Query $query Optional query object
 	 * @return void
 	 */
-	public function assertMpttValues($expected, $table, $query = null)
-	{
+	public function assertMpttValues($expected, $table, $query = null) {
 		$query = $query ?: $table->find();
 		$primaryKey = $table->primaryKey();
 		if (is_array($primaryKey)) {

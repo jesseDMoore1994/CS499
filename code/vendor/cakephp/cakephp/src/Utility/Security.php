@@ -22,8 +22,7 @@ use InvalidArgumentException;
  * Security Library contains utility methods related to security
  *
  */
-class Security
-{
+class Security {
 
 	/**
 	 * Default hash method. If `$type` param for `Security::hash()` is not specified
@@ -59,8 +58,7 @@ class Security
 	 * @return string Hash
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/security.html#hashing-data
 	 */
-	public static function hash($string, $type = null, $salt = false)
-	{
+	public static function hash($string, $type = null, $salt = false) {
 		if (empty($type)) {
 			$type = static::$hashType;
 		}
@@ -84,8 +82,7 @@ class Security
 	 * @return void
 	 * @see Security::hash()
 	 */
-	public static function setHash($hash)
-	{
+	public static function setHash($hash) {
 		static::$hashType = $hash;
 	}
 
@@ -98,8 +95,7 @@ class Security
 	 * @return object Crypto instance.
 	 * @throws \InvalidArgumentException When no compatible crypto extension is available.
 	 */
-	public static function engine($instance = null)
-	{
+	public static function engine($instance = null) {
 		if ($instance === null && static::$_instance === null) {
 			if (extension_loaded('openssl')) {
 				$instance = new OpenSsl();
@@ -128,8 +124,7 @@ class Security
 	 * @throws \InvalidArgumentException When there are errors.
 	 * @return string Encrypted/Decrypted string
 	 */
-	public static function rijndael($text, $key, $operation)
-	{
+	public static function rijndael($text, $key, $operation) {
 		if (empty($key)) {
 			throw new InvalidArgumentException('You cannot use an empty key for Security::rijndael()');
 		}
@@ -156,8 +151,7 @@ class Security
 	 * @return string Encrypted data.
 	 * @throws \InvalidArgumentException On invalid data or key.
 	 */
-	public static function encrypt($plain, $key, $hmacSalt = null)
-	{
+	public static function encrypt($plain, $key, $hmacSalt = null) {
 		self::_checkKey($key, 'encrypt()');
 
 		if ($hmacSalt === null) {
@@ -180,8 +174,7 @@ class Security
 	 * @return void
 	 * @throws \InvalidArgumentException When key length is not 256 bit/32 bytes
 	 */
-	protected static function _checkKey($key, $method)
-	{
+	protected static function _checkKey($key, $method) {
 		if (mb_strlen($key, '8bit') < 32) {
 			throw new InvalidArgumentException(
 				sprintf('Invalid key for %s, key must be at least 256 bits (32 bytes) long.', $method)
@@ -198,8 +191,7 @@ class Security
 	 * @return string Decrypted data. Any trailing null bytes will be removed.
 	 * @throws InvalidArgumentException On invalid data or key.
 	 */
-	public static function decrypt($cipher, $key, $hmacSalt = null)
-	{
+	public static function decrypt($cipher, $key, $hmacSalt = null) {
 		self::_checkKey($key, 'decrypt()');
 		if (empty($cipher)) {
 			throw new InvalidArgumentException('The data to decrypt cannot be empty.');
@@ -233,8 +225,7 @@ class Security
 	 * @return bool
 	 * @see https://github.com/resonantcore/php-future/
 	 */
-	protected static function _constantEquals($hmac, $compare)
-	{
+	protected static function _constantEquals($hmac, $compare) {
 		if (function_exists('hash_equals')) {
 			return hash_equals($hmac, $compare);
 		}
@@ -257,8 +248,7 @@ class Security
 	 * @param string|null $salt The salt to use for encryption routines. If null returns current salt.
 	 * @return string The currently configured salt
 	 */
-	public static function salt($salt = null)
-	{
+	public static function salt($salt = null) {
 		if ($salt === null) {
 			return static::$_salt;
 		}

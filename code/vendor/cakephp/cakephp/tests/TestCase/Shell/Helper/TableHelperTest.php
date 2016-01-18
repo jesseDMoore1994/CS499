@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
 /**
  * TableHelper test.
  */
-class TableHelperTest extends TestCase
-{
+class TableHelperTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->stub = new ConsoleOutput();
@@ -44,8 +42,7 @@ class TableHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDefaultOutput()
-	{
+	public function testDefaultOutput() {
 		$data = [
 			['Header 1', 'Header', 'Long Header'],
 			['short', 'Longish thing', 'short'],
@@ -68,8 +65,7 @@ class TableHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputUtf8()
-	{
+	public function testOutputUtf8() {
 		$data = [
 			['Header 1', 'Head', 'Long Header'],
 			['short', 'ÄÄÄÜÜÜ', 'short'],
@@ -92,8 +88,7 @@ class TableHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputWithoutHeaderStyle()
-	{
+	public function testOutputWithoutHeaderStyle() {
 		$data = [
 			['Header 1', 'Header', 'Long Header'],
 			['short', 'Longish thing', 'short'],
@@ -117,8 +112,7 @@ class TableHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputWithDifferentHeaderStyle()
-	{
+	public function testOutputWithDifferentHeaderStyle() {
 		$data = [
 			['Header 1', 'Header', 'Long Header'],
 			['short', 'Longish thing', 'short'],
@@ -142,8 +136,7 @@ class TableHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputWithoutHeaders()
-	{
+	public function testOutputWithoutHeaders() {
 		$data = [
 			['short', 'Longish thing', 'short'],
 			['Longer thing', 'short', 'Longest Value'],
@@ -164,8 +157,7 @@ class TableHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputWithRowSeparator()
-	{
+	public function testOutputWithRowSeparator() {
 		$data = [
 			['Header 1', 'Header', 'Long Header'],
 			['short', 'Longish thing', 'short'],
@@ -190,8 +182,7 @@ class TableHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputWithRowSeparatorAndHeaders()
-	{
+	public function testOutputWithRowSeparatorAndHeaders() {
 		$data = [
 			['Header 1', 'Header', 'Long Header'],
 			['short', 'Longish thing', 'short'],

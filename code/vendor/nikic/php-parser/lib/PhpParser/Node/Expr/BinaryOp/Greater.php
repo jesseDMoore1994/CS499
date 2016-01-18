@@ -4,6 +4,5 @@ namespace PhpParser\Node\Expr\BinaryOp;
 
 use PhpParser\Node\Expr\BinaryOp;
 
-class Greater extends BinaryOp
-{
+class Greater extends BinaryOp {
 }

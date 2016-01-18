@@ -2,10 +2,8 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class UserSeeder extends AbstractSeed
-{
-	public function run()
-	{
+class UserSeeder extends AbstractSeed {
+	public function run() {
 		$data = array(
 			array(
 				'name' => 'foo',

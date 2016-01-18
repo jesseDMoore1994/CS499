@@ -25,16 +25,14 @@ use \PDO;
 /**
  * Tests Postgres driver
  */
-class PostgresTest extends TestCase
-{
+class PostgresTest extends TestCase {
 
 	/**
 	 * Test connecting to Postgres with default configuration
 	 *
 	 * @return void
 	 */
-	public function testConnectionConfigDefault()
-	{
+	public function testConnectionConfigDefault() {
 		$driver = $this->getMock('Cake\Database\Driver\Postgres', ['_connect', 'connection']);
 		$dsn = 'pgsql:host=localhost;port=5432;dbname=cake';
 		$expected = [
@@ -82,8 +80,7 @@ class PostgresTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectionConfigCustom()
-	{
+	public function testConnectionConfigCustom() {
 		$config = [
 			'persistent' => false,
 			'host' => 'foo',
@@ -141,8 +138,7 @@ class PostgresTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsertReturning()
-	{
+	public function testInsertReturning() {
 		$driver = $this->getMock(
 			'Cake\Database\Driver\Postgres',
 			['_connect', 'connection'],

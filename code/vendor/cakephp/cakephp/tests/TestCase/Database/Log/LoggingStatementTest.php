@@ -22,16 +22,14 @@ use PDOStatement;
  * Tests LoggingStatement class
  *
  */
-class LoggingStatementTest extends TestCase
-{
+class LoggingStatementTest extends TestCase {
 
 	/**
 	 * Tests that queries are logged when executed without params
 	 *
 	 * @return void
 	 */
-	public function testExecuteNoParams()
-	{
+	public function testExecuteNoParams() {
 		$inner = $this->getMock('PDOStatement');
 		$inner->expects($this->once())->method('rowCount')->will($this->returnValue(3));
 		$logger = $this->getMock('\Cake\Database\Log\QueryLogger');
@@ -55,8 +53,7 @@ class LoggingStatementTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExecuteWithParams()
-	{
+	public function testExecuteWithParams() {
 		$inner = $this->getMock('PDOStatement');
 		$inner->expects($this->once())->method('rowCount')->will($this->returnValue(4));
 		$logger = $this->getMock('\Cake\Database\Log\QueryLogger');
@@ -80,8 +77,7 @@ class LoggingStatementTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExecuteWithBinding()
-	{
+	public function testExecuteWithBinding() {
 		$inner = $this->getMock('PDOStatement');
 		$inner->expects($this->any())->method('rowCount')->will($this->returnValue(4));
 		$logger = $this->getMock('\Cake\Database\Log\QueryLogger');
@@ -124,8 +120,7 @@ class LoggingStatementTest extends TestCase
 	 * @expectedExceptionMessage This is bad
 	 * @return void
 	 */
-	public function testExecuteWithError()
-	{
+	public function testExecuteWithError() {
 		$exception = new \LogicException('This is bad');
 		$inner = $this->getMock('PDOStatement');
 		$inner->expects($this->once())->method('execute')

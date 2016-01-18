@@ -17,8 +17,7 @@ namespace Cake\Datasource;
 /**
  * Defines the interface that testing fixtures use.
  */
-interface FixtureInterface
-{
+interface FixtureInterface {
 	/**
 	 * Create the fixture schema/mapping/definition
 	 *

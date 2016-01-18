@@ -18,8 +18,7 @@ namespace Symfony\Component\Console\Helper;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DebugFormatterHelper extends Helper
-{
+class DebugFormatterHelper extends Helper {
 	private $colors = array('black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'default');
 	private $started = array();
 	private $count = -1;
@@ -33,8 +32,7 @@ class DebugFormatterHelper extends Helper
 	 *
 	 * @return string
 	 */
-	public function start($id, $message, $prefix = 'RUN')
-	{
+	public function start($id, $message, $prefix = 'RUN') {
 		$this->started[$id] = array('border' => ++$this->count % count($this->colors));
 
 		return sprintf("%s<bg=blue;fg=white> %s </> <fg=blue>%s</>\n", $this->getBorder($id), $prefix, $message);
@@ -51,8 +49,7 @@ class DebugFormatterHelper extends Helper
 	 *
 	 * @return string
 	 */
-	public function progress($id, $buffer, $error = false, $prefix = 'OUT', $errorPrefix = 'ERR')
-	{
+	public function progress($id, $buffer, $error = false, $prefix = 'OUT', $errorPrefix = 'ERR') {
 		$message = '';
 
 		if ($error) {
@@ -92,8 +89,7 @@ class DebugFormatterHelper extends Helper
 	 *
 	 * @return string
 	 */
-	public function stop($id, $message, $successful, $prefix = 'RES')
-	{
+	public function stop($id, $message, $successful, $prefix = 'RES') {
 		$trailingEOL = isset($this->started[$id]['out']) || isset($this->started[$id]['err']) ? "\n" : '';
 
 		if ($successful) {
@@ -112,16 +108,14 @@ class DebugFormatterHelper extends Helper
 	 *
 	 * @return string
 	 */
-	private function getBorder($id)
-	{
+	private function getBorder($id) {
 		return sprintf('<bg=%s> </>', $this->colors[$this->started[$id]['border']]);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return 'debug_formatter';
 	}
 }

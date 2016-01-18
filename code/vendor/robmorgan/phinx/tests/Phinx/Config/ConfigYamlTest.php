@@ -9,15 +9,13 @@ use \Phinx\Config\Config;
  * @package Test\Phinx\Config
  * @group config
  */
-class ConfigYamlTest extends \PHPUnit_Framework_TestCase
-{
+class ConfigYamlTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @covers \Phinx\Config\Config::fromYaml
 	 * @covers \Phinx\Config\Config::getDefaultEnvironment
 	 * @expectedException \RuntimeException
 	 */
-	public function testGetDefaultEnvironmentWithAnEmptyYamlFile()
-	{
+	public function testGetDefaultEnvironmentWithAnEmptyYamlFile() {
 		// test using a Yaml file with no key or entries
 		$path = __DIR__ . '/_files';
 		$config = Config::fromYaml($path . '/empty.yml');
@@ -30,8 +28,7 @@ class ConfigYamlTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \RuntimeException
 	 * @expectedExceptionMessage The environment configuration for 'staging' is missing
 	 */
-	public function testGetDefaultEnvironmentWithAMissingEnvironmentEntry()
-	{
+	public function testGetDefaultEnvironmentWithAMissingEnvironmentEntry() {
 		// test using a Yaml file with a 'default_database' key, but without a
 		// corresponding entry
 		$path = __DIR__ . '/_files';
@@ -42,8 +39,7 @@ class ConfigYamlTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @covers \Phinx\Config\Config::getDefaultEnvironment
 	 */
-	public function testGetDefaultEnvironmentMethod()
-	{
+	public function testGetDefaultEnvironmentMethod() {
 		$path = __DIR__ . '/_files';
 
 		// test using a Yaml file without the 'default_database' key.

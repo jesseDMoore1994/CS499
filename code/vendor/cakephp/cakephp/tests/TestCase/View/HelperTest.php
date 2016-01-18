@@ -24,8 +24,7 @@ use Cake\TestSuite\TestCase;
 use Cake\View\Helper;
 use Cake\View\View;
 
-class TestHelper extends Helper
-{
+class TestHelper extends Helper {
 
 	/**
 	 * Settings for this helper.
@@ -53,8 +52,7 @@ class TestHelper extends Helper
 	 * @param string $insertAfter
 	 * @return void
 	 */
-	public function parseAttributes($options, $exclude = null, $insertBefore = ' ', $insertAfter = null)
-	{
+	public function parseAttributes($options, $exclude = null, $insertBefore = ' ', $insertAfter = null) {
 		return $this->_parseAttributes($options, $exclude, $insertBefore, $insertAfter);
 	}
 }
@@ -63,16 +61,14 @@ class TestHelper extends Helper
  * HelperTest class
  *
  */
-class HelperTest extends TestCase
-{
+class HelperTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		Router::reload();
@@ -86,8 +82,7 @@ class HelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Configure::delete('Asset');
 
@@ -100,8 +95,7 @@ class HelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSettingsMerging()
-	{
+	public function testSettingsMerging() {
 		$Helper = new TestHelper($this->View, [
 			'key3' => 'val3',
 			'key2' => ['key2.2' => 'newval']
@@ -119,8 +113,7 @@ class HelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLazyLoadingHelpers()
-	{
+	public function testLazyLoadingHelpers() {
 		Plugin::load(['TestPlugin']);
 
 		$Helper = new TestHelper($this->View);
@@ -133,8 +126,7 @@ class HelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testThatHelperHelpersAreNotAttached()
-	{
+	public function testThatHelperHelpersAreNotAttached() {
 		Plugin::loadAll();
 
 		$events = $this->getMock('\Cake\Event\EventManager');
@@ -152,8 +144,7 @@ class HelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLazyLoadingUsesReferences()
-	{
+	public function testLazyLoadingUsesReferences() {
 		$Helper = new TestHelper($this->View);
 		$resultA = $Helper->Html;
 		$resultB = $Helper->Html;
@@ -167,8 +158,7 @@ class HelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDebugInfo()
-	{
+	public function testDebugInfo() {
 		$Helper = new TestHelper($this->View);
 
 		$expected = [

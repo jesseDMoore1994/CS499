@@ -19,8 +19,7 @@ namespace Symfony\Component\Config\Definition;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-interface NodeInterface
-{
+interface NodeInterface {
 	/**
 	 * Returns the name of the node.
 	 *

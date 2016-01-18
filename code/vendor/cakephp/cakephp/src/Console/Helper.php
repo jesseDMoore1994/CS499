@@ -23,8 +23,7 @@ use Cake\Core\InstanceConfigTrait;
  * of Console output logic. For example creating tables,
  * progress bars or ascii art.
  */
-abstract class Helper
-{
+abstract class Helper {
 	use InstanceConfigTrait;
 
 	/**
@@ -47,8 +46,7 @@ abstract class Helper
 	 * @param \Cake\Console\ConsoleIo $io The ConsoleIo instance to use.
 	 * @param array $config The settings for this helper.
 	 */
-	public function __construct(ConsoleIo $io, array $config = [])
-	{
+	public function __construct(ConsoleIo $io, array $config = []) {
 		$this->_io = $io;
 		$this->config($config);
 	}

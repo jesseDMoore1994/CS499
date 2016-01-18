@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
  * Class TaskRegistryTest
  *
  */
-class TaskRegistryTest extends TestCase
-{
+class TaskRegistryTest extends TestCase {
 
 	/**
 	 * setUp
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$shell = $this->getMock('Cake\Console\Shell', [], [], '', false);
 		$this->Tasks = new TaskRegistry($shell);
@@ -43,8 +41,7 @@ class TaskRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($this->Tasks);
 		parent::tearDown();
 	}
@@ -54,8 +51,7 @@ class TaskRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoad()
-	{
+	public function testLoad() {
 		$result = $this->Tasks->load('Command');
 		$this->assertInstanceOf('Cake\Shell\Task\CommandTask', $result);
 		$this->assertInstanceOf('Cake\Shell\Task\CommandTask', $this->Tasks->Command);
@@ -70,8 +66,7 @@ class TaskRegistryTest extends TestCase
 	 * @expectedException \Cake\Console\Exception\MissingTaskException
 	 * @return void
 	 */
-	public function testLoadMissingTask()
-	{
+	public function testLoadMissingTask() {
 		$this->Tasks->load('ThisTaskShouldAlwaysBeMissing');
 	}
 
@@ -80,8 +75,7 @@ class TaskRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadPluginTask()
-	{
+	public function testLoadPluginTask() {
 		$dispatcher = $this->getMock('Cake\Console\ShellDispatcher', [], [], '', false);
 		$shell = $this->getMock('Cake\Console\Shell', [], [], '', false);
 		Plugin::load('TestPlugin');
@@ -98,8 +92,7 @@ class TaskRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithAlias()
-	{
+	public function testLoadWithAlias() {
 		Plugin::load('TestPlugin');
 
 		$result = $this->Tasks->load('CommandAliased', ['className' => 'Command']);

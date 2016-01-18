@@ -21,8 +21,7 @@ use DebugKit\DebugPanel;
 /**
  * A panel for spying on cache engines.
  */
-class CachePanel extends DebugPanel
-{
+class CachePanel extends DebugPanel {
 
 	/**
 	 * The cache spy instances used.
@@ -36,8 +35,7 @@ class CachePanel extends DebugPanel
 	 *
 	 * @return void
 	 */
-	public function initialize()
-	{
+	public function initialize() {
 		foreach (Cache::configured() as $name) {
 			$config = Cache::config($name);
 			if ($config['className'] instanceof DebugEngine) {
@@ -56,8 +54,7 @@ class CachePanel extends DebugPanel
 	 *
 	 * @return array
 	 */
-	public function data()
-	{
+	public function data() {
 		$metrics = [];
 		foreach ($this->_instances as $name => $instance) {
 			$metrics[$name] = $instance->metrics();

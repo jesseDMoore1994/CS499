@@ -20,16 +20,14 @@ use Cake\Routing\Router;
 use Cake\Routing\Route\Route;
 use Cake\TestSuite\TestCase;
 
-class RouteCollectionTest extends TestCase
-{
+class RouteCollectionTest extends TestCase {
 
 	/**
 	 * Setup method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->collection = new RouteCollection();
 	}
@@ -40,8 +38,7 @@ class RouteCollectionTest extends TestCase
 	 * @expectedException \Cake\Routing\Exception\MissingRouteException
 	 * @expectedExceptionMessage A route matching "/" could not be found
 	 */
-	public function testParseMissingRoute()
-	{
+	public function testParseMissingRoute() {
 		$routes = new RouteBuilder($this->collection, '/b', ['key' => 'value']);
 		$routes->connect('/', ['controller' => 'Articles']);
 		$routes->connect('/:id', ['controller' => 'Articles', 'action' => 'view']);
@@ -55,8 +52,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParse()
-	{
+	public function testParse() {
 		$routes = new RouteBuilder($this->collection, '/b', ['key' => 'value']);
 		$routes->connect('/', ['controller' => 'Articles']);
 		$routes->connect('/:id', ['controller' => 'Articles', 'action' => 'view']);
@@ -111,8 +107,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseEncodedBytesInFixedSegment()
-	{
+	public function testParseEncodedBytesInFixedSegment() {
 		$routes = new RouteBuilder($this->collection, '/');
 		$routes->connect('/ден/:day-:month', ['controller' => 'Events', 'action' => 'index']);
 		$url = '/%D0%B4%D0%B5%D0%BD/15-%D0%BE%D0%BA%D1%82%D0%BE%D0%BC%D0%B2%D1%80%D0%B8?test=foo';
@@ -134,8 +129,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseFallback()
-	{
+	public function testParseFallback() {
 		$routes = new RouteBuilder($this->collection, '/', []);
 
 		$routes->resources('Articles');
@@ -158,8 +152,7 @@ class RouteCollectionTest extends TestCase
 	 * @expectedException \Cake\Routing\Exception\MissingRouteException
 	 * @expectedExceptionMessage A route matching "array (
 	 */
-	public function testMatchError()
-	{
+	public function testMatchError() {
 		$context = [
 			'_base' => '/',
 			'_scheme' => 'http',
@@ -177,8 +170,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMatch()
-	{
+	public function testMatch() {
 		$context = [
 			'_base' => '/',
 			'_scheme' => 'http',
@@ -203,8 +195,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMatchNamed()
-	{
+	public function testMatchNamed() {
 		$context = [
 			'_base' => '/',
 			'_scheme' => 'http',
@@ -227,8 +218,7 @@ class RouteCollectionTest extends TestCase
 	 * @expectedException \Cake\Routing\Exception\MissingRouteException
 	 * @return void
 	 */
-	public function testMatchNamedError()
-	{
+	public function testMatchNamedError() {
 		$context = [
 			'_base' => '/',
 			'_scheme' => 'http',
@@ -245,8 +235,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMatchPlugin()
-	{
+	public function testMatchPlugin() {
 		$context = [
 			'_base' => '/',
 			'_scheme' => 'http',
@@ -267,8 +256,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMatchPrefixSpecificity()
-	{
+	public function testMatchPrefixSpecificity() {
 		$context = [
 			'_base' => '/',
 			'_scheme' => 'http',
@@ -301,8 +289,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNamed()
-	{
+	public function testNamed() {
 		$routes = new RouteBuilder($this->collection, '/l');
 		$routes->connect('/:controller', ['action' => 'index'], ['_name' => 'cntrl']);
 		$routes->connect('/:controller/:action/*');
@@ -318,8 +305,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddingRoutes()
-	{
+	public function testAddingRoutes() {
 		$one = new Route('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 		$two = new Route('/', ['controller' => 'Dashboards', 'action' => 'display']);
 		$this->collection->add($one);
@@ -336,8 +322,7 @@ class RouteCollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtensions()
-	{
+	public function testExtensions() {
 		$this->assertEquals([], $this->collection->extensions());
 
 		$this->collection->extensions('json');

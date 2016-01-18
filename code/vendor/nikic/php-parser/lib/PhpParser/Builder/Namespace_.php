@@ -6,8 +6,7 @@ use PhpParser;
 use PhpParser\Node;
 use PhpParser\Node\Stmt;
 
-class Namespace_ extends PhpParser\BuilderAbstract
-{
+class Namespace_ extends PhpParser\BuilderAbstract {
 	private $name;
 	private $stmts = array();
 
@@ -16,8 +15,7 @@ class Namespace_ extends PhpParser\BuilderAbstract
 	 *
 	 * @param Node\Name|string|null $name Name of the namespace
 	 */
-	public function __construct($name)
-	{
+	public function __construct($name) {
 		$this->name = null !== $name ? $this->normalizeName($name) : null;
 	}
 
@@ -28,8 +26,7 @@ class Namespace_ extends PhpParser\BuilderAbstract
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function addStmt($stmt)
-	{
+	public function addStmt($stmt) {
 		$this->stmts[] = $this->normalizeNode($stmt);
 
 		return $this;
@@ -42,8 +39,7 @@ class Namespace_ extends PhpParser\BuilderAbstract
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function addStmts(array $stmts)
-	{
+	public function addStmts(array $stmts) {
 		foreach ($stmts as $stmt) {
 			$this->addStmt($stmt);
 		}
@@ -56,8 +52,7 @@ class Namespace_ extends PhpParser\BuilderAbstract
 	 *
 	 * @return Node The built node
 	 */
-	public function getNode()
-	{
+	public function getNode() {
 		return new Stmt\Namespace_($this->name, $this->stmts);
 	}
 }

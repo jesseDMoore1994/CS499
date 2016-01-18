@@ -13,8 +13,7 @@ namespace Migrations;
 
 use Phinx\Migration\AbstractMigration as BaseAbstractMigration;
 
-class AbstractMigration extends BaseAbstractMigration
-{
+class AbstractMigration extends BaseAbstractMigration {
 
 	/**
 	 * Whether the tables created in this migration
@@ -31,8 +30,7 @@ class AbstractMigration extends BaseAbstractMigration
 	/**
 	 * {@inheritdoc}
 	 */
-	public function table($tableName, $options = array())
-	{
+	public function table($tableName, $options = array()) {
 		if ($this->autoId === false) {
 			$options['id'] = false;
 		}

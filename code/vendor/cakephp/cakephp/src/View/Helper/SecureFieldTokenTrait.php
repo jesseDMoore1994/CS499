@@ -20,8 +20,7 @@ use Cake\Utility\Security;
  * Provides methods for building token data that is
  * compatible with SecurityComponent.
  */
-trait SecureFieldTokenTrait
-{
+trait SecureFieldTokenTrait {
 	/**
 	 * Generate the token data for the provided inputs.
 	 *
@@ -32,8 +31,7 @@ trait SecureFieldTokenTrait
 	 *    field validation.
 	 * @return array The token data.
 	 */
-	protected function _buildFieldToken($url, $fields, $unlockedFields = [])
-	{
+	protected function _buildFieldToken($url, $fields, $unlockedFields = []) {
 		$locked = [];
 		foreach ($fields as $key => $value) {
 			if (is_numeric($value)) {

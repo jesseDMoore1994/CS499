@@ -20,57 +20,49 @@ use Cake\TestSuite\TestCase;
 /**
  * Test Stub.
  */
-class TestBehavior extends Behavior
-{
+class TestBehavior extends Behavior {
 
 	/**
 	 * Test for event bindings.
 	 */
-	public function beforeFind()
-	{
+	public function beforeFind() {
 	}
 
 	/**
 	 * Test for event bindings.
 	 */
-	public function beforeRules()
-	{
+	public function beforeRules() {
 	}
 
 	/**
 	 * Test for event bindings.
 	 */
-	public function afterRules()
-	{
+	public function afterRules() {
 	}
 
 	/**
 	 * Test for event bindings.
 	 */
-	public function buildRules()
-	{
+	public function buildRules() {
 	}
 
 	/**
 	 * Test for event bindings.
 	 */
-	public function afterSaveCommit()
-	{
+	public function afterSaveCommit() {
 	}
 
 	/**
 	 * Test for event bindings.
 	 */
-	public function afterDeleteCommit()
-	{
+	public function afterDeleteCommit() {
 	}
 }
 
 /**
  * Test Stub.
  */
-class Test2Behavior extends Behavior
-{
+class Test2Behavior extends Behavior {
 
 	protected $_defaultConfig = [
 		'implementedFinders' => [
@@ -84,57 +76,49 @@ class Test2Behavior extends Behavior
 	/**
 	 * Test for event bindings.
 	 */
-	public function beforeFind()
-	{
+	public function beforeFind() {
 	}
 
 	/**
 	 * Test finder
 	 */
-	public function findFoo()
-	{
+	public function findFoo() {
 	}
 
 	/**
 	 * Test method
 	 */
-	public function doSomething()
-	{
+	public function doSomething() {
 	}
 }
 
 /**
  * Test3Behavior
  */
-class Test3Behavior extends Behavior
-{
+class Test3Behavior extends Behavior {
 
 	/**
 	 * Test for event bindings.
 	 */
-	public function beforeFind()
-	{
+	public function beforeFind() {
 	}
 
 	/**
 	 * Test finder
 	 */
-	public function findFoo()
-	{
+	public function findFoo() {
 	}
 
 	/**
 	 * Test method
 	 */
-	public function doSomething()
-	{
+	public function doSomething() {
 	}
 
 	/**
 	 * Test method to ensure it is ignored as a callable method.
 	 */
-	public function verifyConfig()
-	{
+	public function verifyConfig() {
 		return parent::verifyConfig();
 	}
 
@@ -145,23 +129,20 @@ class Test3Behavior extends Behavior
 	 *
 	 * @return void
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return ['Model.beforeFind' => 'beforeFind'];
 	}
 
 	/**
 	 * implementedFinders
 	 */
-	public function implementedFinders()
-	{
+	public function implementedFinders() {
 	}
 
 	/**
 	 * implementedMethods
 	 */
-	public function implementedMethods()
-	{
+	public function implementedMethods() {
 	}
 
 	/**
@@ -171,8 +152,7 @@ class Test3Behavior extends Behavior
 	 *
 	 * @return array
 	 */
-	public function testReflectionCache()
-	{
+	public function testReflectionCache() {
 		return $this->_reflectionCache();
 	}
 }
@@ -180,24 +160,21 @@ class Test3Behavior extends Behavior
 /**
  * Behavior test case
  */
-class BehaviorTest extends TestCase
-{
+class BehaviorTest extends TestCase {
 
 	/**
 	 * Test the side effects of the constructor.
 	 *
 	 * @return void
 	 */
-	public function testConstructor()
-	{
+	public function testConstructor() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$config = ['key' => 'value'];
 		$behavior = new TestBehavior($table, $config);
 		$this->assertEquals($config, $behavior->config());
 	}
 
-	public function testReflectionCache()
-	{
+	public function testReflectionCache() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test3Behavior($table);
 		$expected = [
@@ -217,8 +194,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedEvents()
-	{
+	public function testImplementedEvents() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new TestBehavior($table);
 		$expected = [
@@ -237,8 +213,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedEventsWithPriority()
-	{
+	public function testImplementedEventsWithPriority() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new TestBehavior($table, ['priority' => 10]);
 		$expected = [
@@ -275,8 +250,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedMethods()
-	{
+	public function testImplementedMethods() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table);
 		$expected = [
@@ -290,8 +264,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedMethodsAliased()
-	{
+	public function testImplementedMethodsAliased() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table, [
 			'implementedMethods' => [
@@ -309,8 +282,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedMethodsDisabled()
-	{
+	public function testImplementedMethodsDisabled() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table, [
 			'implementedMethods' => []
@@ -324,8 +296,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedFinders()
-	{
+	public function testImplementedFinders() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table);
 		$expected = [
@@ -339,8 +310,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedFindersAliased()
-	{
+	public function testImplementedFindersAliased() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table, [
 			'implementedFinders' => [
@@ -358,8 +328,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedFindersDisabled()
-	{
+	public function testImplementedFindersDisabled() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table, [
 			'implementedFinders' => []
@@ -374,8 +343,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testVerifyConfig()
-	{
+	public function testVerifyConfig() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table);
 		$behavior->verifyConfig();
@@ -389,8 +357,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testVerifyConfigImplementedFindersOverridden()
-	{
+	public function testVerifyConfigImplementedFindersOverridden() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table, [
 			'implementedFinders' => [
@@ -409,8 +376,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testVerifyImplementedFindersInvalid()
-	{
+	public function testVerifyImplementedFindersInvalid() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table, [
 			'implementedFinders' => [
@@ -427,8 +393,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testVerifyConfigImplementedMethodsOverridden()
-	{
+	public function testVerifyConfigImplementedMethodsOverridden() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table);
 		$behavior = new Test2Behavior($table, [
@@ -448,8 +413,7 @@ class BehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testVerifyImplementedMethodsInvalid()
-	{
+	public function testVerifyImplementedMethodsInvalid() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$behavior = new Test2Behavior($table, [
 			'implementedMethods' => [

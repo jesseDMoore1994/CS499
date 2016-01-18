@@ -20,8 +20,7 @@ use Cake\Utility\Inflector;
  * A trait that provides id generating methods to be
  * used in various widget classes.
  */
-trait IdGeneratorTrait
-{
+trait IdGeneratorTrait {
 
 	/**
 	 * Prefix for id attribute.
@@ -42,8 +41,7 @@ trait IdGeneratorTrait
 	 *
 	 * @return void
 	 */
-	protected function _clearIds()
-	{
+	protected function _clearIds() {
 		$this->_idSuffixes = [];
 	}
 
@@ -56,8 +54,7 @@ trait IdGeneratorTrait
 	 * @param string $val The ID attribute value.
 	 * @return string Generated id.
 	 */
-	protected function _id($name, $val)
-	{
+	protected function _id($name, $val) {
 		$name = $this->_domId($name);
 
 		$idSuffix = mb_strtolower(str_replace(['/', '@', '<', '>', ' ', '"', '\''], '-', $val));
@@ -76,8 +73,7 @@ trait IdGeneratorTrait
 	 * @param string $value The value to convert into an ID.
 	 * @return string The generated id.
 	 */
-	protected function _domId($value)
-	{
+	protected function _domId($value) {
 		$domId = mb_strtolower(Inflector::slug($value, '-'));
 		if (!empty($this->_idPrefix)) {
 			$domId = $this->_idPrefix . '-' . $domId;

@@ -13,22 +13,18 @@ namespace Symfony\Component\Config\Tests\Exception;
 
 use Symfony\Component\Config\Exception\FileLoaderLoadException;
 
-class FileLoaderLoadExceptionTest extends \PHPUnit_Framework_TestCase
-{
-	public function testMessageCannotLoadResource()
-	{
+class FileLoaderLoadExceptionTest extends \PHPUnit_Framework_TestCase {
+	public function testMessageCannotLoadResource() {
 		$exception = new FileLoaderLoadException('resource', null);
 		$this->assertEquals('Cannot load resource "resource".', $exception->getMessage());
 	}
 
-	public function testMessageCannotImportResourceFromSource()
-	{
+	public function testMessageCannotImportResourceFromSource() {
 		$exception = new FileLoaderLoadException('resource', 'sourceResource');
 		$this->assertEquals('Cannot import resource "resource" from "sourceResource".', $exception->getMessage());
 	}
 
-	public function testMessageCannotImportBundleResource()
-	{
+	public function testMessageCannotImportBundleResource() {
 		$exception = new FileLoaderLoadException('@resource', 'sourceResource');
 		$this->assertEquals(
 			'Cannot import resource "@resource" from "sourceResource". ' .
@@ -38,8 +34,7 @@ class FileLoaderLoadExceptionTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testMessageHasPreviousErrorWithDotAndUnableToLoad()
-	{
+	public function testMessageHasPreviousErrorWithDotAndUnableToLoad() {
 		$exception = new FileLoaderLoadException(
 			'resource',
 			null,
@@ -52,8 +47,7 @@ class FileLoaderLoadExceptionTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testMessageHasPreviousErrorWithoutDotAndUnableToLoad()
-	{
+	public function testMessageHasPreviousErrorWithoutDotAndUnableToLoad() {
 		$exception = new FileLoaderLoadException(
 			'resource',
 			null,
@@ -66,8 +60,7 @@ class FileLoaderLoadExceptionTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testMessageHasPreviousErrorAndUnableToLoadBundle()
-	{
+	public function testMessageHasPreviousErrorAndUnableToLoadBundle() {
 		$exception = new FileLoaderLoadException(
 			'@resource',
 			null,

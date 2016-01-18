@@ -1,8 +1,7 @@
 <?php
 namespace Aura\Intl;
 
-class TranslatorTest extends \PHPUnit_Framework_TestCase
-{
+class TranslatorTest extends \PHPUnit_Framework_TestCase {
 	protected $translator;
 
 	protected $factory;
@@ -16,8 +15,7 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 
 	protected $formatter;
 
-	protected function newTranslator(TranslatorInterface $fallback = null)
-	{
+	protected function newTranslator(TranslatorInterface $fallback = null) {
 		return $this->factory->newInstance(
 			'en_US',
 			$this->messages,
@@ -26,15 +24,13 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->factory = new TranslatorFactory;
 		$this->formatter = new MockFormatter;
 		$this->translator = $this->newTranslator();
 	}
 
-	public function testTranslate()
-	{
+	public function testTranslate() {
 		// key exists
 		$expect = 'Foo text';
 		$actual = $this->translator->translate('TEXT_FOO');
@@ -51,8 +47,7 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($expect, $actual);
 	}
 
-	public function testTranslate_fallback()
-	{
+	public function testTranslate_fallback() {
 		// create fallback translator
 		$fallback = new Translator(
 			'en_US',
@@ -71,8 +66,7 @@ class TranslatorTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($expect, $actual);
 	}
 
-	public function testTranslateMissingKey()
-	{
+	public function testTranslateMissingKey() {
 		$formatter = $this->getMock(get_class($this->formatter));
 		// create fallback translator
 		$translator = new Translator('en_US', [], $formatter);

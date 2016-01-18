@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
  * Tests QueryLogger class
  *
  */
-class QueryLoggerTest extends TestCase
-{
+class QueryLoggerTest extends TestCase {
 
 	/**
 	 * Set up
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Log::reset();
 	}
@@ -42,8 +40,7 @@ class QueryLoggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Log::reset();
 	}
@@ -53,8 +50,7 @@ class QueryLoggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStringInterpolation()
-	{
+	public function testStringInterpolation() {
 		$logger = $this->getMock('\Cake\Database\Log\QueryLogger', ['_log']);
 		$query = new LoggedQuery;
 		$query->query = 'SELECT a FROM b where a = :p1 AND b = :p2 AND c = :p3 AND d = :p4 AND e = :p5 AND f = :p6';
@@ -71,8 +67,7 @@ class QueryLoggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStringInterpolation2()
-	{
+	public function testStringInterpolation2() {
 		$logger = $this->getMock('\Cake\Database\Log\QueryLogger', ['_log']);
 		$query = new LoggedQuery;
 		$query->query = 'SELECT a FROM b where a = ? AND b = ? AND c = ? AND d = ? AND e = ? AND f = ?';
@@ -89,8 +84,7 @@ class QueryLoggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStringInterpolation3()
-	{
+	public function testStringInterpolation3() {
 		$logger = $this->getMock('\Cake\Database\Log\QueryLogger', ['_log']);
 		$query = new LoggedQuery;
 		$query->query = 'SELECT a FROM b where a = :p1 AND b = :p1 AND c = :p2 AND d = :p2';
@@ -107,8 +101,7 @@ class QueryLoggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStringInterpolationNamed()
-	{
+	public function testStringInterpolationNamed() {
 		$logger = $this->getMock('\Cake\Database\Log\QueryLogger', ['_log']);
 		$query = new LoggedQuery;
 		$query->query = 'SELECT a FROM b where a = :p1 AND b = :p11 AND c = :p20 AND d = :p2';
@@ -126,8 +119,7 @@ class QueryLoggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLogFunction()
-	{
+	public function testLogFunction() {
 		$logger = new QueryLogger;
 		$query = new LoggedQuery;
 		$query->query = 'SELECT a FROM b where a = ? AND b = ? AND c = ?';

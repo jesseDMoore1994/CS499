@@ -20,8 +20,7 @@ namespace Cake\Event;
  * represents the object that the event applies to.
  *
  */
-class Event
-{
+class Event {
 
 	/**
 	 * Name of the event
@@ -72,8 +71,7 @@ class Event
 	 * @param object|null $subject the object that this event applies to (usually the object that is generating the event)
 	 * @param array|null $data any value you wish to be transported with this event to it can be read by listeners
 	 */
-	public function __construct($name, $subject = null, $data = null)
-	{
+	public function __construct($name, $subject = null, $data = null) {
 		$this->_name = $name;
 		$this->data = $data;
 		$this->_subject = $subject;
@@ -85,8 +83,7 @@ class Event
 	 * @param string $attribute Attribute name.
 	 * @return mixed
 	 */
-	public function __get($attribute)
-	{
+	public function __get($attribute) {
 		if ($attribute === 'name' || $attribute === 'subject') {
 			return $this->{$attribute}();
 		}
@@ -97,8 +94,7 @@ class Event
 	 *
 	 * @return string
 	 */
-	public function name()
-	{
+	public function name() {
 		return $this->_name;
 	}
 
@@ -107,8 +103,7 @@ class Event
 	 *
 	 * @return object
 	 */
-	public function subject()
-	{
+	public function subject() {
 		return $this->_subject;
 	}
 
@@ -117,8 +112,7 @@ class Event
 	 *
 	 * @return void
 	 */
-	public function stopPropagation()
-	{
+	public function stopPropagation() {
 		$this->_stopped = true;
 	}
 
@@ -127,8 +121,7 @@ class Event
 	 *
 	 * @return bool True if the event is stopped
 	 */
-	public function isStopped()
-	{
+	public function isStopped() {
 		return $this->_stopped;
 	}
 
@@ -137,8 +130,7 @@ class Event
 	 *
 	 * @return array
 	 */
-	public function data()
-	{
+	public function data() {
 		return (array)$this->data;
 	}
 }

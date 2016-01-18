@@ -23,16 +23,14 @@ namespace TestApp\Shell;
 
 use Cake\Console\Shell;
 
-class I18m extends Shell
-{
+class I18m extends Shell {
 
 	/**
 	 * main method
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		$this->out('This is the main method called from I18mShell');
 	}
 }

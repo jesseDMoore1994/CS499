@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
  * WincacheEngineTest class
  *
  */
-class WincacheEngineTest extends TestCase
-{
+class WincacheEngineTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->skipIf(!function_exists('wincache_ucache_set'), 'Wincache is not installed or configured properly.');
 		$this->skipIf(!ini_get('wincache.enablecli'), 'Wincache is not enabled on the CLI.');
@@ -44,8 +42,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Cache::drop('wincache');
 		Cache::drop('wincache_groups');
@@ -57,8 +54,7 @@ class WincacheEngineTest extends TestCase
 	 * @param array $config
 	 * @return void
 	 */
-	protected function _configCache($config = [])
-	{
+	protected function _configCache($config = []) {
 		$defaults = [
 			'className' => 'Wincache',
 			'prefix' => 'cake_'
@@ -72,8 +68,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadAndWriteCache()
-	{
+	public function testReadAndWriteCache() {
 		$this->_configCache(['duration' => 1]);
 
 		$result = Cache::read('test', 'wincache');
@@ -96,8 +91,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExpiry()
-	{
+	public function testExpiry() {
 		$this->_configCache(['duration' => 1]);
 
 		$result = Cache::read('test', 'wincache');
@@ -125,8 +119,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteCache()
-	{
+	public function testDeleteCache() {
 		$data = 'this is a test of the emergency broadcasting system';
 		$result = Cache::write('delete_test', $data, 'wincache');
 		$this->assertTrue($result);
@@ -140,8 +133,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDecrement()
-	{
+	public function testDecrement() {
 		$this->skipIf(
 			!function_exists('wincache_ucache_dec'),
 			'No wincache_ucache_dec() function, cannot test decrement().'
@@ -168,8 +160,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIncrement()
-	{
+	public function testIncrement() {
 		$this->skipIf(
 			!function_exists('wincache_ucache_inc'),
 			'No wincache_inc() function, cannot test increment().'
@@ -196,8 +187,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClear()
-	{
+	public function testClear() {
 		wincache_ucache_set('not_cake', 'safe');
 		Cache::write('some_value', 'value', 'wincache');
 
@@ -214,8 +204,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupsReadWrite()
-	{
+	public function testGroupsReadWrite() {
 		Cache::config('wincache_groups', [
 			'engine' => 'Wincache',
 			'duration' => 0,
@@ -241,8 +230,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupDelete()
-	{
+	public function testGroupDelete() {
 		Cache::config('wincache_groups', [
 			'engine' => 'Wincache',
 			'duration' => 0,
@@ -261,8 +249,7 @@ class WincacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupClear()
-	{
+	public function testGroupClear() {
 		Cache::config('wincache_groups', [
 			'engine' => 'Wincache',
 			'duration' => 0,

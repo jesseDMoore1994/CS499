@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
 /**
  * ConsoleIo test.
  */
-class ConsoleIoTest extends TestCase
-{
+class ConsoleIoTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 
@@ -46,8 +44,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function choiceProvider()
-	{
+	public function choiceProvider() {
 		return [
 			[['y', 'n']],
 			['y,n'],
@@ -62,8 +59,7 @@ class ConsoleIoTest extends TestCase
 	 * @dataProvider choiceProvider
 	 * @return void
 	 */
-	public function testAskChoices($choices)
-	{
+	public function testAskChoices($choices) {
 		$this->in->expects($this->at(0))
 			->method('read')
 			->will($this->returnValue('y'));
@@ -78,8 +74,7 @@ class ConsoleIoTest extends TestCase
 	 * @dataProvider choiceProvider
 	 * @return void
 	 */
-	public function testAskChoicesInsensitive($choices)
-	{
+	public function testAskChoicesInsensitive($choices) {
 		$this->in->expects($this->at(0))
 			->method('read')
 			->will($this->returnValue('Y'));
@@ -93,8 +88,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAsk()
-	{
+	public function testAsk() {
 		$this->out->expects($this->at(0))
 			->method('write')
 			->with("<question>Just a test?</question>\n> ");
@@ -112,8 +106,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAskDefaultValue()
-	{
+	public function testAskDefaultValue() {
 		$this->out->expects($this->at(0))
 			->method('write')
 			->with("<question>Just a test?</question>\n[n] > ");
@@ -131,8 +124,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOut()
-	{
+	public function testOut() {
 		$this->out->expects($this->at(0))
 			->method('write')
 			->with("Just a test", 1);
@@ -160,8 +152,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testVerboseOut()
-	{
+	public function testVerboseOut() {
 		$this->out->expects($this->at(0))
 			->method('write')
 			->with('Verbose', 1);
@@ -184,8 +175,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testVerboseOutput()
-	{
+	public function testVerboseOutput() {
 		$this->out->expects($this->at(0))
 			->method('write')
 			->with('Verbose', 1);
@@ -208,8 +198,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testQuietOutput()
-	{
+	public function testQuietOutput() {
 		$this->out->expects($this->exactly(2))
 			->method('write')
 			->with('Quiet', 1);
@@ -228,8 +217,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErr()
-	{
+	public function testErr() {
 		$this->err->expects($this->at(0))
 			->method('write')
 			->with("Just a test", 1);
@@ -257,8 +245,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNl()
-	{
+	public function testNl() {
 		$newLine = "\n";
 		if (DS === '\\') {
 			$newLine = "\r\n";
@@ -275,8 +262,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHr()
-	{
+	public function testHr() {
 		$bar = str_repeat('-', 79);
 
 		$this->out->expects($this->at(0))->method('write')->with('', 0);
@@ -301,8 +287,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOverwrite()
-	{
+	public function testOverwrite() {
 		$number = strlen('Some text I want to overwrite');
 
 		$this->out->expects($this->at(0))
@@ -332,8 +317,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetLoggers()
-	{
+	public function testSetLoggers() {
 		Log::drop('stdout');
 		Log::drop('stderr');
 		$this->io->setLoggers(true);
@@ -350,8 +334,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetLoggersQuiet()
-	{
+	public function testSetLoggersQuiet() {
 		Log::drop('stdout');
 		Log::drop('stderr');
 		$this->io->setLoggers(ConsoleIo::QUIET);
@@ -364,8 +347,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetLoggersVerbose()
-	{
+	public function testSetLoggersVerbose() {
 		Log::drop('stdout');
 		Log::drop('stderr');
 		$this->io->setLoggers(ConsoleIo::VERBOSE);
@@ -380,8 +362,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStyles()
-	{
+	public function testStyles() {
 		$this->out->expects($this->once())
 			->method('styles')
 			->with('name', 'props');
@@ -393,8 +374,7 @@ class ConsoleIoTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHelper()
-	{
+	public function testHelper() {
 		$this->out->expects($this->once())
 			->method('write')
 			->with('It works!well ish');

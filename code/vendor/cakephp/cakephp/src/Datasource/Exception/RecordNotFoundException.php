@@ -20,8 +20,7 @@ use RuntimeException;
  * Exception raised when a particular record was not found
  *
  */
-class RecordNotFoundException extends RuntimeException
-{
+class RecordNotFoundException extends RuntimeException {
 
 	/**
 	 * Constructor.
@@ -30,8 +29,7 @@ class RecordNotFoundException extends RuntimeException
 	 * @param int $code The code of the error, is also the HTTP status code for the error.
 	 * @param \Exception|null $previous the previous exception.
 	 */
-	public function __construct($message, $code = 404, $previous = null)
-	{
+	public function __construct($message, $code = 404, $previous = null) {
 		parent::__construct($message, $code, $previous);
 	}
 }

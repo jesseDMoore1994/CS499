@@ -22,8 +22,7 @@ use RuntimeException;
  * one of them returns a non-empty package.
  *
  */
-class ChainMessagesLoader
-{
+class ChainMessagesLoader {
 
 	/**
 	 * The list of callables to execute one after another for loading messages
@@ -38,8 +37,7 @@ class ChainMessagesLoader
 	 *
 	 * @param array $loaders List of callables to execute
 	 */
-	public function __construct(array $loaders)
-	{
+	public function __construct(array $loaders) {
 		$this->_loaders = $loaders;
 	}
 
@@ -50,8 +48,7 @@ class ChainMessagesLoader
 	 * @return \Aura\Intl\Package
 	 * @throws \RuntimeException if any of the loaders in the chain is not a valid callable
 	 */
-	public function __invoke()
-	{
+	public function __invoke() {
 		foreach ($this->_loaders as $k => $loader) {
 			if (!is_callable($loader)) {
 				throw new RuntimeException(sprintf(

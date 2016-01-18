@@ -20,8 +20,7 @@ use Cake\Collection\Collection;
  * Creates an iterator from another iterator that will modify each of the values
  * by converting them using a callback function.
  */
-class ReplaceIterator extends Collection
-{
+class ReplaceIterator extends Collection {
 
 	/**
 	 * The callback function to be used to modify each of the values
@@ -48,8 +47,7 @@ class ReplaceIterator extends Collection
 	 * @param array|\Traversable $items The items to be filtered.
 	 * @param callable $callback Callback.
 	 */
-	public function __construct($items, callable $callback)
-	{
+	public function __construct($items, callable $callback) {
 		$this->_callback = $callback;
 		parent::__construct($items);
 		$this->_innerIterator = $this->getInnerIterator();
@@ -61,8 +59,7 @@ class ReplaceIterator extends Collection
 	 *
 	 * @return mixed
 	 */
-	public function current()
-	{
+	public function current() {
 		$callback = $this->_callback;
 		return $callback(parent::current(), $this->key(), $this->_innerIterator);
 	}

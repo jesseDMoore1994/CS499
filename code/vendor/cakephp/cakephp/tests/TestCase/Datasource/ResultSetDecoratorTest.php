@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * Tests ResultSetDecorator class
  *
  */
-class ResultSetDecoratorTest extends TestCase
-{
+class ResultSetDecoratorTest extends TestCase {
 
 	/**
 	 * Tests the decorator can wrap a simple iterator
 	 *
 	 * @return void
 	 */
-	public function testDecorateSimpleIterator()
-	{
+	public function testDecorateSimpleIterator() {
 		$data = new \ArrayIterator([1, 2, 3]);
 		$decorator = new ResultSetDecorator($data);
 		$this->assertEquals([1, 2, 3], iterator_to_array($decorator));
@@ -41,8 +39,7 @@ class ResultSetDecoratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToArray()
-	{
+	public function testToArray() {
 		$data = new \ArrayIterator([1, 2, 3]);
 		$decorator = new ResultSetDecorator($data);
 		$this->assertEquals([1, 2, 3], $decorator->toArray());
@@ -53,8 +50,7 @@ class ResultSetDecoratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToJson()
-	{
+	public function testToJson() {
 		$data = new \ArrayIterator([1, 2, 3]);
 		$decorator = new ResultSetDecorator($data);
 		$this->assertEquals(json_encode([1, 2, 3]), json_encode($decorator));
@@ -65,8 +61,7 @@ class ResultSetDecoratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSerialization()
-	{
+	public function testSerialization() {
 		$data = new \ArrayIterator([1, 2, 3]);
 		$decorator = new ResultSetDecorator($data);
 		$serialized = serialize($decorator);
@@ -78,8 +73,7 @@ class ResultSetDecoratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFirst()
-	{
+	public function testFirst() {
 		$data = new \ArrayIterator([1, 2, 3]);
 		$decorator = new ResultSetDecorator($data);
 
@@ -92,8 +86,7 @@ class ResultSetDecoratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCount()
-	{
+	public function testCount() {
 		$data = new \ArrayIterator([1, 2, 3]);
 		$decorator = new ResultSetDecorator($data);
 

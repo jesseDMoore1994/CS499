@@ -23,8 +23,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Routing filter test.
  */
-class RoutingFilterTest extends TestCase
-{
+class RoutingFilterTest extends TestCase {
 
 	/**
 	 * test setting parameters in beforeDispatch method
@@ -32,8 +31,7 @@ class RoutingFilterTest extends TestCase
 	 * @return void
 	 * @triggers __CLASS__ $this, compact(request)
 	 */
-	public function testBeforeDispatchSkipWhenControllerSet()
-	{
+	public function testBeforeDispatchSkipWhenControllerSet() {
 		$filter = new RoutingFilter();
 
 		$request = new Request("/testcontroller/testaction/params1/params2/params3");
@@ -51,8 +49,7 @@ class RoutingFilterTest extends TestCase
 	 * @return void
 	 * @triggers __CLASS__ $this, compact(request)
 	 */
-	public function testBeforeDispatchSetsParameters()
-	{
+	public function testBeforeDispatchSetsParameters() {
 		Router::connect('/:controller/:action/*');
 		$filter = new RoutingFilter();
 
@@ -75,8 +72,7 @@ class RoutingFilterTest extends TestCase
 	 * @triggers __CLASS__ $this, compact(request)
 	 * @triggers __CLASS__ $this, compact(request)
 	 */
-	public function testQueryStringOnRoot()
-	{
+	public function testQueryStringOnRoot() {
 		Router::reload();
 		Router::connect('/', ['controller' => 'pages', 'action' => 'display', 'home']);
 		Router::connect('/pages/*', ['controller' => 'pages', 'action' => 'display']);

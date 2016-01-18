@@ -22,8 +22,7 @@ namespace Cake\Utility;
  *
  * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html
  */
-class Inflector
-{
+class Inflector {
 
 	/**
 	 * Plural inflector rules
@@ -418,8 +417,7 @@ class Inflector
 	 * @param string|bool $value Inflected value
 	 * @return string|bool Inflected value on cache hit or false on cache miss.
 	 */
-	protected static function _cache($type, $key, $value = false)
-	{
+	protected static function _cache($type, $key, $value = false) {
 		$key = '_' . $key;
 		$type = '_' . $type;
 		if ($value !== false) {
@@ -438,8 +436,7 @@ class Inflector
 	 *
 	 * @return void
 	 */
-	public static function reset()
-	{
+	public static function reset() {
 		if (empty(static::$_initialState)) {
 			static::$_initialState = get_class_vars(__CLASS__);
 			return;
@@ -471,8 +468,7 @@ class Inflector
 	 *        new rules that are being defined in $rules.
 	 * @return void
 	 */
-	public static function rules($type, $rules, $reset = false)
-	{
+	public static function rules($type, $rules, $reset = false) {
 		$var = '_' . $type;
 
 		if ($reset) {
@@ -496,8 +492,7 @@ class Inflector
 	 * @return string Word in plural
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html#creating-plural-singular-forms
 	 */
-	public static function pluralize($word)
-	{
+	public static function pluralize($word) {
 		if (isset(static::$_cache['pluralize'][$word])) {
 			return static::$_cache['pluralize'][$word];
 		}
@@ -536,8 +531,7 @@ class Inflector
 	 * @return string Word in singular
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html#creating-plural-singular-forms
 	 */
-	public static function singularize($word)
-	{
+	public static function singularize($word) {
 		if (isset(static::$_cache['singularize'][$word])) {
 			return static::$_cache['singularize'][$word];
 		}
@@ -579,8 +573,7 @@ class Inflector
 	 * @return string CamelizedStringLikeThis.
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html#creating-camelcase-and-under-scored-forms
 	 */
-	public static function camelize($string, $delimiter = '_')
-	{
+	public static function camelize($string, $delimiter = '_') {
 		$cacheKey = __FUNCTION__ . $delimiter;
 
 		$result = static::_cache($cacheKey, $string);
@@ -602,8 +595,7 @@ class Inflector
 	 * @return string underscore_version of the input string
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html#creating-camelcase-and-under-scored-forms
 	 */
-	public static function underscore($string)
-	{
+	public static function underscore($string) {
 		return static::delimit(str_replace('-', '_', $string), '_');
 	}
 
@@ -615,8 +607,7 @@ class Inflector
 	 * @param string $string The string to dasherize.
 	 * @return string Dashed version of the input string
 	 */
-	public static function dasherize($string)
-	{
+	public static function dasherize($string) {
 		return static::delimit(str_replace('_', '-', $string), '-');
 	}
 
@@ -629,8 +620,7 @@ class Inflector
 	 * @return string Human-readable string
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html#creating-human-readable-forms
 	 */
-	public static function humanize($string, $delimiter = '_')
-	{
+	public static function humanize($string, $delimiter = '_') {
 		$cacheKey = __FUNCTION__ . $delimiter;
 
 		$result = static::_cache($cacheKey, $string);
@@ -654,8 +644,7 @@ class Inflector
 	 * @param string $delimiter the character to use as a delimiter
 	 * @return string delimited string
 	 */
-	public static function delimit($string, $delimiter = '_')
-	{
+	public static function delimit($string, $delimiter = '_') {
 		$cacheKey = __FUNCTION__ . $delimiter;
 
 		$result = static::_cache($cacheKey, $string);
@@ -675,8 +664,7 @@ class Inflector
 	 * @return string Name of the database table for given class
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html#creating-table-and-class-name-forms
 	 */
-	public static function tableize($className)
-	{
+	public static function tableize($className) {
 		$result = static::_cache(__FUNCTION__, $className);
 
 		if ($result === false) {
@@ -694,8 +682,7 @@ class Inflector
 	 * @return string Class name
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html#creating-table-and-class-name-forms
 	 */
-	public static function classify($tableName)
-	{
+	public static function classify($tableName) {
 		$result = static::_cache(__FUNCTION__, $tableName);
 
 		if ($result === false) {
@@ -713,8 +700,7 @@ class Inflector
 	 * @return string in variable form
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html#creating-variable-names
 	 */
-	public static function variable($string)
-	{
+	public static function variable($string) {
 		$result = static::_cache(__FUNCTION__, $string);
 
 		if ($result === false) {
@@ -736,8 +722,7 @@ class Inflector
 	 * @return string
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/inflector.html#creating-url-safe-strings
 	 */
-	public static function slug($string, $replacement = '-')
-	{
+	public static function slug($string, $replacement = '-') {
 		$quotedReplacement = preg_quote($replacement, '/');
 
 		$map = [

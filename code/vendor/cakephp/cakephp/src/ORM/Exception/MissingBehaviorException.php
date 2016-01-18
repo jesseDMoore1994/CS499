@@ -18,8 +18,7 @@ use Cake\Core\Exception\Exception;
  * Used when a behavior cannot be found.
  *
  */
-class MissingBehaviorException extends Exception
-{
+class MissingBehaviorException extends Exception {
 
 	protected $_messageTemplate = 'Behavior class %s could not be found.';
 }

@@ -5,8 +5,7 @@ namespace PhpParser\Node\Stmt;
 use PhpParser\Node;
 use PhpParser\Error;
 
-class Namespace_ extends Node\Stmt
-{
+class Namespace_ extends Node\Stmt {
 	/** @var null|Node\Name Name */
 	public $name;
 	/** @var Node[] Statements */
@@ -25,8 +24,7 @@ class Namespace_ extends Node\Stmt
 	 * @param null|Node[] $stmts Statements
 	 * @param array $attributes Additional attributes
 	 */
-	public function __construct(Node\Name $name = null, $stmts = array(), array $attributes = array())
-	{
+	public function __construct(Node\Name $name = null, $stmts = array(), array $attributes = array()) {
 		parent::__construct($attributes);
 		$this->name = $name;
 		$this->stmts = $stmts;
@@ -47,8 +45,7 @@ class Namespace_ extends Node\Stmt
 		}
 	}
 
-	public function getSubNodeNames()
-	{
+	public function getSubNodeNames() {
 		return array('name', 'stmts');
 	}
 }

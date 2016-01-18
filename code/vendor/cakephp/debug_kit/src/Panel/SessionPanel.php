@@ -19,8 +19,7 @@ use DebugKit\DebugPanel;
 /**
  * Provides debug information on the Session contents.
  */
-class SessionPanel extends DebugPanel
-{
+class SessionPanel extends DebugPanel {
 
 	/**
 	 * shutdown callback
@@ -28,8 +27,7 @@ class SessionPanel extends DebugPanel
 	 * @param \Cake\Event\Event $event The event
 	 * @return array
 	 */
-	public function shutdown(Event $event)
-	{
+	public function shutdown(Event $event) {
 		$request = $event->subject()->request;
 		if ($request) {
 			$this->_data = ['content' => $request->session()->read()];

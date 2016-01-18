@@ -10,8 +10,7 @@ use Composer\Script\Event;
 use Composer\Util\Filesystem;
 use RuntimeException;
 
-class PluginInstaller extends LibraryInstaller
-{
+class PluginInstaller extends LibraryInstaller {
 	/**
 	 * A flag to check usage - once
 	 *
@@ -27,8 +26,7 @@ class PluginInstaller extends LibraryInstaller
 	 * @param string $type what are we loading
 	 * @param Filesystem $filesystem composer object
 	 */
-	public function __construct(IOInterface $io, Composer $composer, $type = 'library', Filesystem $filesystem = null)
-	{
+	public function __construct(IOInterface $io, Composer $composer, $type = 'library', Filesystem $filesystem = null) {
 		parent::__construct($io, $composer, $type, $filesystem);
 		$this->checkUsage($composer);
 	}
@@ -42,8 +40,7 @@ class PluginInstaller extends LibraryInstaller
 	 * @param Composer $composer object
 	 * @return void
 	 */
-	public function checkUsage(Composer $composer)
-	{
+	public function checkUsage(Composer $composer) {
 		if (static::$checkUsage === false) {
 			return;
 		}
@@ -78,8 +75,7 @@ class PluginInstaller extends LibraryInstaller
 	 *
 	 * @return void
 	 */
-	public function warnUser($title, $text)
-	{
+	public function warnUser($title, $text) {
 		$wrap = function ($text, $width = 75) {
 			return '<error>     ' . str_pad($text, $width) . '</error>';
 		};
@@ -111,8 +107,7 @@ class PluginInstaller extends LibraryInstaller
 	 * @param Event $event the composer event object
 	 * @return void
 	 */
-	public static function postAutoloadDump(Event $event)
-	{
+	public static function postAutoloadDump(Event $event) {
 		$composer = $event->getComposer();
 		$config = $composer->getConfig();
 
@@ -138,8 +133,7 @@ class PluginInstaller extends LibraryInstaller
 	 * @param string $vendorDir the path to the vendor dir
 	 * @return array plugin-name indexed paths to plugins
 	 */
-	public static function determinePlugins($packages, $pluginsDir = 'plugins', $vendorDir = 'vendor')
-	{
+	public static function determinePlugins($packages, $pluginsDir = 'plugins', $vendorDir = 'vendor') {
 		$plugins = [];
 
 		foreach ($packages as $package) {
@@ -175,8 +169,7 @@ class PluginInstaller extends LibraryInstaller
 	 * @param array $plugins of plugins
 	 * @return void
 	 */
-	public static function writeConfigFile($configFile, $plugins)
-	{
+	public static function writeConfigFile($configFile, $plugins) {
 		$root = dirname(dirname($configFile));
 
 		$data = [];
@@ -228,8 +221,7 @@ PHP;
 	 * @param string $vendorDir path to composer-vendor dir
 	 * @return string absolute file path
 	 */
-	protected static function _configFile($vendorDir)
-	{
+	protected static function _configFile($vendorDir) {
 		return $vendorDir . DIRECTORY_SEPARATOR . 'cakephp-plugins.php';
 	}
 
@@ -240,8 +232,7 @@ PHP;
 	 * @return string The package's primary namespace.
 	 * @throws \RuntimeException When the package's primary namespace cannot be determined.
 	 */
-	public static function primaryNamespace($package)
-	{
+	public static function primaryNamespace($package) {
 		$primaryNs = null;
 		$autoLoad = $package->getAutoload();
 		foreach ($autoLoad as $type => $pathMap) {
@@ -290,8 +281,7 @@ PHP;
 	 *
 	 * @return bool
 	 */
-	public function supports($packageType)
-	{
+	public function supports($packageType) {
 		return 'cakephp-plugin' === $packageType;
 	}
 
@@ -305,8 +295,7 @@ PHP;
 	 * @param \Composer\Package\PackageInterface $package Package instance.
 	 * @deprecated superceeded by the post-autoload-dump hook
 	 */
-	public function install(InstalledRepositoryInterface $repo, PackageInterface $package)
-	{
+	public function install(InstalledRepositoryInterface $repo, PackageInterface $package) {
 		parent::install($repo, $package);
 		$path = $this->getInstallPath($package);
 		$ns = static::primaryNamespace($package);
@@ -326,8 +315,7 @@ PHP;
 	 *
 	 * @throws \InvalidArgumentException if $initial package is not installed
 	 */
-	public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
-	{
+	public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target) {
 		parent::update($repo, $initial, $target);
 
 		$ns = static::primaryNamespace($initial);
@@ -345,8 +333,7 @@ PHP;
 	 * @param \Composer\Package\PackageInterface $package Package instance.
 	 * @deprecated superceeded by the post-autoload-dump hook
 	 */
-	public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
-	{
+	public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package) {
 		parent::uninstall($repo, $package);
 		$path = $this->getInstallPath($package);
 		$ns = static::primaryNamespace($package);
@@ -359,8 +346,7 @@ PHP;
 	 * @param string $name The plugin name being installed.
 	 * @param string $path The path, the plugin is being installed into.
 	 */
-	public function updateConfig($name, $path)
-	{
+	public function updateConfig($name, $path) {
 		$name = str_replace('\\', '/', $name);
 		$configFile = static::_configFile($this->vendorDir);
 		$this->_ensureConfigFile($configFile);
@@ -405,8 +391,7 @@ PHP;
 	 * @param string $path the config file path.
 	 * @return void
 	 */
-	protected function _ensureConfigFile($path)
-	{
+	protected function _ensureConfigFile($path) {
 		if (file_exists($path)) {
 			if ($this->io->isVerbose()) {
 				$this->io->write('vendor/cakephp-plugins.php exists.');
@@ -447,8 +432,7 @@ PHP;
 	 * @param array $config The config data to write.
 	 * @return void
 	 */
-	protected function _writeConfig($path, $config)
-	{
+	protected function _writeConfig($path, $config) {
 		$root = dirname($this->vendorDir);
 		$data = '';
 		foreach ($config['plugins'] as $name => $pluginPath) {

@@ -17,16 +17,14 @@ use Phinx\Migration\Manager;
  * Overrides Phinx Manager class in order to provide an interface
  * for running migrations within an app
  */
-class CakeManager extends Manager
-{
+class CakeManager extends Manager {
 
 	/**
 	 * Reset the migrations stored in the object
 	 *
 	 * @return void
 	 */
-	public function resetMigrations()
-	{
+	public function resetMigrations() {
 		$this->migrations = null;
 	}
 
@@ -37,8 +35,7 @@ class CakeManager extends Manager
 	 * @param null|string $format
 	 * @return array Array of migrations
 	 */
-	public function printStatus($environment, $format = null)
-	{
+	public function printStatus($environment, $format = null) {
 		$migrations = [];
 		if (count($this->getMigrations())) {
 			$env = $this->getEnvironment($environment);
@@ -74,8 +71,7 @@ class CakeManager extends Manager
 	/**
 	 * {@inheritdoc}
 	 */
-	public function migrateToDateTime($environment, \DateTime $dateTime)
-	{
+	public function migrateToDateTime($environment, \DateTime $dateTime) {
 		$versions = array_keys($this->getMigrations());
 		$dateString = $dateTime->format('Ymdhis');
 		$versionToMigrate = null;
@@ -101,8 +97,7 @@ class CakeManager extends Manager
 	/**
 	 * {@inheritdoc}
 	 */
-	public function rollbackToDateTime($environment, \DateTime $dateTime)
-	{
+	public function rollbackToDateTime($environment, \DateTime $dateTime) {
 		$env = $this->getEnvironment($environment);
 		$versions = $env->getVersions();
 		$dateString = $dateTime->format('Ymdhis');
@@ -138,8 +133,7 @@ class CakeManager extends Manager
 	 * @param int|string $version Version number of the migration to check
 	 * @return bool
 	 */
-	public function isMigrated($version)
-	{
+	public function isMigrated($version) {
 		$adapter = $this->getEnvironment('default')->getAdapter();
 		$versions = array_flip($adapter->getVersions());
 
@@ -153,8 +147,7 @@ class CakeManager extends Manager
 	 * @param string $path Path where the migration file is located
 	 * @return bool True if success
 	 */
-	public function markMigrated($version, $path)
-	{
+	public function markMigrated($version, $path) {
 		$adapter = $this->getEnvironment('default')->getAdapter();
 
 		$migrationFile = glob($path . DS . $version . '*');
@@ -182,8 +175,7 @@ class CakeManager extends Manager
 	 * @param string $path Path to the migration file of which we want the class name
 	 * @return string Migration class name
 	 */
-	protected function getMigrationClassName($path)
-	{
+	protected function getMigrationClassName($path) {
 		$class = preg_replace('/^[0-9]+_/', '', basename($path));
 		$class = str_replace('_', ' ', $class);
 		$class = ucwords($class);

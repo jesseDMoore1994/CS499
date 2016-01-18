@@ -22,8 +22,7 @@ use MessageFormatter;
 /**
  * A formatter that will interpolate variables using the MessageFormatter class
  */
-class IcuFormatter implements FormatterInterface
-{
+class IcuFormatter implements FormatterInterface {
 
 	/**
 	 * Returns a string with all passed variables interpolated into the original
@@ -38,8 +37,7 @@ class IcuFormatter implements FormatterInterface
 	 * @param array $vars The list of values to interpolate in the message
 	 * @return string The formatted message
 	 */
-	public function format($locale, $message, array $vars)
-	{
+	public function format($locale, $message, array $vars) {
 		$isString = is_string($message);
 		if ($isString && isset($vars['_singular'])) {
 			$message = [$vars['_singular'], $message];
@@ -83,8 +81,7 @@ class IcuFormatter implements FormatterInterface
 	 * @throws \Aura\Intl\Exception\CannotFormat If any error related to the passed
 	 * variables is found
 	 */
-	protected function _formatMessage($locale, $message, $vars)
-	{
+	protected function _formatMessage($locale, $message, $vars) {
 		// Using procedural style as it showed twice as fast as
 		// its counterpart in PHP 5.5
 		$result = MessageFormatter::formatMessage($locale, $message, $vars);

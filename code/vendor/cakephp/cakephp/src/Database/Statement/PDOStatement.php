@@ -21,8 +21,7 @@ use PDOStatement as Statement;
  * Decorator for \PDOStatement class mainly used for converting human readable
  * fetch modes into PDO constants.
  */
-class PDOStatement extends StatementDecorator
-{
+class PDOStatement extends StatementDecorator {
 
 	/**
 	 * Constructor
@@ -30,8 +29,7 @@ class PDOStatement extends StatementDecorator
 	 * @param \PDOStatement|null $statement Original statement to be decorated.
 	 * @param \Cake\Database\Driver|null $driver Driver instance.
 	 */
-	public function __construct(Statement $statement = null, $driver = null)
-	{
+	public function __construct(Statement $statement = null, $driver = null) {
 		$this->_statement = $statement;
 		$this->_driver = $driver;
 	}
@@ -61,8 +59,7 @@ class PDOStatement extends StatementDecorator
 	 * @param string|int $type PDO type or name of configured Type class
 	 * @return void
 	 */
-	public function bindValue($column, $value, $type = 'string')
-	{
+	public function bindValue($column, $value, $type = 'string') {
 		if ($type === null) {
 			$type = 'string';
 		}
@@ -89,8 +86,7 @@ class PDOStatement extends StatementDecorator
 	 * @return mixed Result array containing columns and values or false if no results
 	 * are left
 	 */
-	public function fetch($type = 'num')
-	{
+	public function fetch($type = 'num') {
 		if ($type === 'num') {
 			return $this->_statement->fetch(PDO::FETCH_NUM);
 		}
@@ -114,8 +110,7 @@ class PDOStatement extends StatementDecorator
 	 * @param string $type num for fetching columns as positional keys or assoc for column names as keys
 	 * @return array list of all results from database for this statement
 	 */
-	public function fetchAll($type = 'num')
-	{
+	public function fetchAll($type = 'num') {
 		if ($type === 'num') {
 			return $this->_statement->fetchAll(PDO::FETCH_NUM);
 		}

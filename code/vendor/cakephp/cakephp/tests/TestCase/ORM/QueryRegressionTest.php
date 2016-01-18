@@ -25,8 +25,7 @@ use Cake\TestSuite\TestCase;
  * Contains regression test for the Query builder
  *
  */
-class QueryRegressionTest extends TestCase
-{
+class QueryRegressionTest extends TestCase {
 
 	/**
 	 * Fixture to be used
@@ -52,8 +51,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 
 		TableRegistry::clear();
@@ -64,8 +62,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectTimestampColumn()
-	{
+	public function testSelectTimestampColumn() {
 		$table = TableRegistry::get('users');
 		$user = $table->find()->where(['id' => 1])->first();
 		$this->assertEquals(new Time('2007-03-17 01:16:23'), $user->created);
@@ -78,8 +75,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEagerLoadingFromEmptyResults()
-	{
+	public function testEagerLoadingFromEmptyResults() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsToMany('ArticlesTags');
 		$results = $table->find()->where(['id >' => 100])->contain('ArticlesTags')->toArray();
@@ -92,8 +88,7 @@ class QueryRegressionTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testEagerLoadingBelongsToManyList()
-	{
+	public function testEagerLoadingBelongsToManyList() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsToMany('Tags', [
 			'finder' => 'list'
@@ -106,8 +101,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBelongsToManyAssociationProxyFindWithConditions()
-	{
+	public function testBelongsToManyAssociationProxyFindWithConditions() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsToMany('Tags', [
 			'foreignKey' => 'article_id',
@@ -125,8 +119,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBelongsToManyAssociationProxyFindWithConditionsMatching()
-	{
+	public function testBelongsToManyAssociationProxyFindWithConditionsMatching() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsToMany('Tags', [
 			'foreignKey' => 'article_id',
@@ -149,8 +142,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDuplicateAttachableAliases()
-	{
+	public function testDuplicateAttachableAliases() {
 		TableRegistry::get('Stuff', ['table' => 'tags']);
 		TableRegistry::get('Things', ['table' => 'articles_tags']);
 
@@ -186,8 +178,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNullableTimeColumn()
-	{
+	public function testNullableTimeColumn() {
 		$table = TableRegistry::get('users');
 		$entity = $table->newEntity(['username' => 'derp', 'created' => null]);
 		$this->assertSame($entity, $table->save($entity));
@@ -200,8 +191,7 @@ class QueryRegressionTest extends TestCase
 	 * Checks that join data is actually created and not tried to be updated every time
 	 * @return void
 	 */
-	public function testCreateJointData()
-	{
+	public function testCreateJointData() {
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsToMany('Highlights', [
 			'className' => 'TestApp\Model\Table\TagsTable',
@@ -232,8 +222,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReciprocalBelongsToMany()
-	{
+	public function testReciprocalBelongsToMany() {
 		$articles = TableRegistry::get('Articles');
 		$tags = TableRegistry::get('Tags');
 
@@ -253,8 +242,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReciprocalBelongsToManyNoOverwrite()
-	{
+	public function testReciprocalBelongsToManyNoOverwrite() {
 		$articles = TableRegistry::get('Articles');
 		$tags = TableRegistry::get('Tags');
 
@@ -274,8 +262,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function strategyProvider()
-	{
+	public function strategyProvider() {
 		return [['append', 'replace']];
 	}
 
@@ -290,8 +277,7 @@ class QueryRegressionTest extends TestCase
 	 * @param string $strategy
 	 * @return void
 	 */
-	public function testBelongsToManyDeepSave($strategy)
-	{
+	public function testBelongsToManyDeepSave($strategy) {
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsToMany('Highlights', [
 			'className' => 'TestApp\Model\Table\TagsTable',
@@ -350,8 +336,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/3803
 	 * @return void
 	 */
-	public function testSaveWithCallbacks()
-	{
+	public function testSaveWithCallbacks() {
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsTo('Authors');
 
@@ -371,8 +356,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveWithExpressionProperty()
-	{
+	public function testSaveWithExpressionProperty() {
 		$articles = TableRegistry::get('Articles');
 		$article = $articles->newEntity();
 		$article->title = new \Cake\Database\Expression\QueryExpression("SELECT 'jose'");
@@ -386,8 +370,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/4009
 	 * @return void
 	 */
-	public function testBelongsToManyDeepSave2()
-	{
+	public function testBelongsToManyDeepSave2() {
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsToMany('Highlights', [
 			'className' => 'TestApp\Model\Table\TagsTable',
@@ -443,8 +426,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginAssociationQueryGeneration()
-	{
+	public function testPluginAssociationQueryGeneration() {
 		Plugin::load('TestPlugin');
 		$articles = TableRegistry::get('Articles');
 		$articles->hasMany('TestPlugin.Comments');
@@ -473,8 +455,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/4454
 	 * @return void
 	 */
-	public function testAssociationChainOrder()
-	{
+	public function testAssociationChainOrder() {
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsTo('Authors');
 		$articles->hasOne('ArticlesTags');
@@ -502,8 +483,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssociationSubQueryNoOffset()
-	{
+	public function testAssociationSubQueryNoOffset() {
 		$table = TableRegistry::get('Articles');
 		$table->addBehavior('Translate', ['fields' => ['title', 'body']]);
 		$table->locale('eng');
@@ -521,8 +501,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/4484
 	 * @return void
 	 */
-	public function testDeepBelongsToManySubqueryStrategy()
-	{
+	public function testDeepBelongsToManySubqueryStrategy() {
 		$table = TableRegistry::get('Authors');
 		$table->hasMany('Articles');
 		$table->Articles->belongsToMany('Tags', [
@@ -542,8 +521,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/5769
 	 * @return void
 	 */
-	public function testDeepBelongsToManySubqueryStrategy2()
-	{
+	public function testDeepBelongsToManySubqueryStrategy2() {
 		$table = TableRegistry::get('Authors');
 		$table->hasMany('Articles');
 		$table->Articles->belongsToMany('Tags', [
@@ -572,8 +550,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/6781
 	 * @return void
 	 */
-	public function testDeepHasManyEitherStrategy()
-	{
+	public function testDeepHasManyEitherStrategy() {
 		$tags = TableRegistry::get('Tags');
 		$featuredTags = TableRegistry::get('FeaturedTags');
 		$featuredTags->belongsTo('Tags');
@@ -609,8 +586,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/4511
 	 * @return void
 	 */
-	public function testCountWithContain()
-	{
+	public function testCountWithContain() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors', ['joinType' => 'inner']);
 		$count = $table
@@ -628,8 +604,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainNoEmptyAssociatedObjects()
-	{
+	public function testContainNoEmptyAssociatedObjects() {
 		$comments = TableRegistry::get('Comments');
 		$comments->belongsTo('Users');
 		$users = TableRegistry::get('Users');
@@ -658,8 +633,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/5081
 	 * @return void
 	 */
-	public function testOrConditionsWithExpression()
-	{
+	public function testOrConditionsWithExpression() {
 		$table = TableRegistry::get('Articles');
 		$query = $table->find();
 		$query->where([
@@ -679,8 +653,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/5107
 	 * @return void
 	 */
-	public function testCountWithUnionQuery()
-	{
+	public function testCountWithUnionQuery() {
 		$table = TableRegistry::get('Articles');
 		$query = $table->find()->where(['id' => 1]);
 		$query2 = $table->find()->where(['id' => 2]);
@@ -693,8 +666,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectNoFieldsOnPrimaryAlias()
-	{
+	public function testSelectNoFieldsOnPrimaryAlias() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Users');
 		$query = $table->find()
@@ -709,8 +681,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFirstOnResultSet()
-	{
+	public function testFirstOnResultSet() {
 		$results = TableRegistry::get('Articles')->find()->all();
 		$this->assertEquals(3, $results->count());
 		$this->assertNotNull($results->first());
@@ -723,8 +694,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/5463
 	 * @return void
 	 */
-	public function testFindMatchingAndContain()
-	{
+	public function testFindMatchingAndContain() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors');
 		$article = $table->find()
@@ -743,8 +713,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/5463
 	 * @return void
 	 */
-	public function testFindMatchingAndContainWithSubquery()
-	{
+	public function testFindMatchingAndContainWithSubquery() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles', ['strategy' => 'subquery']);
 		$table->articles->belongsToMany('tags');
@@ -764,8 +733,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/5584
 	 * @return void
 	 */
-	public function testFindMatchingOverwrite()
-	{
+	public function testFindMatchingOverwrite() {
 		$comments = TableRegistry::get('Comments');
 		$comments->belongsTo('Articles');
 
@@ -793,8 +761,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/5584
 	 * @return void
 	 */
-	public function testFindMatchingOverwrite2()
-	{
+	public function testFindMatchingOverwrite2() {
 		$comments = TableRegistry::get('Comments');
 		$comments->belongsTo('Articles');
 
@@ -820,8 +787,7 @@ class QueryRegressionTest extends TestCase
 	 * @expectedException InvalidArgumentException
 	 * @return void
 	 */
-	public function testQueryNotFatalError()
-	{
+	public function testQueryNotFatalError() {
 		$comments = TableRegistry::get('Comments');
 		$comments->find()->contain('Deprs')->all();
 	}
@@ -833,8 +799,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/5721
 	 * @return void
 	 */
-	public function testFindMatchingWithContain()
-	{
+	public function testFindMatchingWithContain() {
 		$comments = TableRegistry::get('Comments');
 		$comments->belongsTo('Articles');
 		$comments->belongsTo('Users');
@@ -860,8 +825,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHasManyEagerLoadingUniqueKey()
-	{
+	public function testHasManyEagerLoadingUniqueKey() {
 		$table = TableRegistry::get('ArticlesTags');
 		$table->belongsTo('Articles', [
 			'strategy' => 'select'
@@ -885,8 +849,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/6214
 	 * @return void
 	 */
-	public function testContainWithNoFields()
-	{
+	public function testContainWithNoFields() {
 		$table = TableRegistry::get('Comments');
 		$table->belongsTo('Users');
 		$results = $table->find()
@@ -905,8 +868,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/6223
 	 * @return void
 	 */
-	public function testMatchingWithNoFields()
-	{
+	public function testMatchingWithNoFields() {
 		$table = TableRegistry::get('Users');
 		$table->hasMany('Comments');
 		$results = $table->find()
@@ -924,8 +886,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMatchingEmptyQuery()
-	{
+	public function testMatchingEmptyQuery() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsToMany('Tags');
 
@@ -949,8 +910,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubqueryInSelectExpression()
-	{
+	public function testSubqueryInSelectExpression() {
 		$table = TableRegistry::get('Comments');
 		$ratio = $table->find()
 			->select(function ($query) use ($table) {
@@ -975,8 +935,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/6683
 	 * @return void
 	 */
-	public function testFindLastOnEmptyTable()
-	{
+	public function testFindLastOnEmptyTable() {
 		$table = TableRegistry::get('Comments');
 		$table->deleteAll(['1 = 1']);
 		$this->assertEquals(0, $table->find()->count());
@@ -989,8 +948,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/7591
 	 * @return void
 	 */
-	public function testContainInNestedClosure()
-	{
+	public function testContainInNestedClosure() {
 		$table = TableRegistry::get('Comments');
 		$table->belongsTo('Articles');
 		$table->Articles->belongsTo('Authors');
@@ -1010,8 +968,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTypemapInFunctions()
-	{
+	public function testTypemapInFunctions() {
 		$table = TableRegistry::get('Comments');
 		$table->updateAll(['published' => null], ['1 = 1']);
 		$query = $table->find();
@@ -1035,8 +992,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBooleanConditionsInContain()
-	{
+	public function testBooleanConditionsInContain() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsToMany('Tags', [
 			'foreignKey' => 'article_id',
@@ -1060,8 +1016,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testComplexTypesInJoinedWhere()
-	{
+	public function testComplexTypesInJoinedWhere() {
 		$table = TableRegistry::get('Users');
 		$table->hasOne('Comments', [
 			'foreignKey' => 'user_id',
@@ -1082,8 +1037,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testComplexNestedTypesInJoinedWhere()
-	{
+	public function testComplexNestedTypesInJoinedWhere() {
 		$table = TableRegistry::get('Users');
 		$table->hasOne('Comments', [
 			'foreignKey' => 'user_id',
@@ -1112,8 +1066,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDotNotationNotOverride()
-	{
+	public function testDotNotationNotOverride() {
 		$table = TableRegistry::get('Comments');
 		$articles = $table->belongsTo('Articles');
 		$specialTags = $articles->hasMany('SpecialTags');
@@ -1139,8 +1092,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testComplexOrderWithUnion()
-	{
+	public function testComplexOrderWithUnion() {
 		$table = TableRegistry::get('Comments');
 		$query = $table->find();
 		$inner = $table->find()
@@ -1166,8 +1118,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEagerLoadOrderAndSubquery()
-	{
+	public function testEagerLoadOrderAndSubquery() {
 		$table = TableRegistry::get('Articles');
 		$table->hasMany('Comments', [
 			'strategy' => 'subquery'
@@ -1187,8 +1138,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatResultsMemory()
-	{
+	public function testFormatResultsMemory() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors');
 		$table->belongsToMany('Tags');
@@ -1213,8 +1163,7 @@ class QueryRegressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountWithComplexOrderBy()
-	{
+	public function testCountWithComplexOrderBy() {
 		$table = TableRegistry::get('Articles');
 		$query = $table->find();
 		$query->orderDesc($query->newExpr()->addCase(
@@ -1244,8 +1193,7 @@ class QueryRegressionTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/7943
 	 * @return void
 	 */
-	public function testFunctionInWhereClause()
-	{
+	public function testFunctionInWhereClause() {
 		$table = TableRegistry::get('Comments');
 		$table->updateAll(['updated' => Time::tomorrow()], ['id' => 6]);
 		$query = $table->find();

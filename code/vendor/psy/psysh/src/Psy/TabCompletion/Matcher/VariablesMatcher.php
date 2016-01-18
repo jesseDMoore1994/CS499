@@ -18,13 +18,11 @@ namespace Psy\TabCompletion\Matcher;
  *
  * @author Marc Garcia <markcial@gmail.com>
  */
-class VariablesMatcher extends AbstractContextAwareMatcher
-{
+class VariablesMatcher extends AbstractContextAwareMatcher {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getMatches(array $tokens, array $info = array())
-	{
+	public function getMatches(array $tokens, array $info = array()) {
 		$var = str_replace('$', '', $this->getInput($tokens));
 
 		return array_filter(array_keys($this->getVariables()), function ($variable) use ($var) {
@@ -35,8 +33,7 @@ class VariablesMatcher extends AbstractContextAwareMatcher
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasMatched(array $tokens)
-	{
+	public function hasMatched(array $tokens) {
 		$token = array_pop($tokens);
 
 		switch (true) {

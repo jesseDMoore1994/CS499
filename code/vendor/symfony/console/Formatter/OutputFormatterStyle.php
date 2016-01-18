@@ -18,8 +18,7 @@ use Symfony\Component\Console\Exception\InvalidArgumentException;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-class OutputFormatterStyle implements OutputFormatterStyleInterface
-{
+class OutputFormatterStyle implements OutputFormatterStyleInterface {
 	private static $availableForegroundColors = array(
 		'black' => array('set' => 30, 'unset' => 39),
 		'red' => array('set' => 31, 'unset' => 39),
@@ -61,8 +60,7 @@ class OutputFormatterStyle implements OutputFormatterStyleInterface
 	 * @param string|null $background The style background color name
 	 * @param array $options The style options
 	 */
-	public function __construct($foreground = null, $background = null, array $options = array())
-	{
+	public function __construct($foreground = null, $background = null, array $options = array()) {
 		if (null !== $foreground) {
 			$this->setForeground($foreground);
 		}
@@ -81,8 +79,7 @@ class OutputFormatterStyle implements OutputFormatterStyleInterface
 	 *
 	 * @throws InvalidArgumentException When the color name isn't defined
 	 */
-	public function setForeground($color = null)
-	{
+	public function setForeground($color = null) {
 		if (null === $color) {
 			$this->foreground = null;
 
@@ -107,8 +104,7 @@ class OutputFormatterStyle implements OutputFormatterStyleInterface
 	 *
 	 * @throws InvalidArgumentException When the color name isn't defined
 	 */
-	public function setBackground($color = null)
-	{
+	public function setBackground($color = null) {
 		if (null === $color) {
 			$this->background = null;
 
@@ -133,8 +129,7 @@ class OutputFormatterStyle implements OutputFormatterStyleInterface
 	 *
 	 * @throws InvalidArgumentException When the option name isn't defined
 	 */
-	public function setOption($option)
-	{
+	public function setOption($option) {
 		if (!isset(static::$availableOptions[$option])) {
 			throw new InvalidArgumentException(sprintf(
 				'Invalid option specified: "%s". Expected one of (%s)',
@@ -155,8 +150,7 @@ class OutputFormatterStyle implements OutputFormatterStyleInterface
 	 *
 	 * @throws InvalidArgumentException When the option name isn't defined
 	 */
-	public function unsetOption($option)
-	{
+	public function unsetOption($option) {
 		if (!isset(static::$availableOptions[$option])) {
 			throw new InvalidArgumentException(sprintf(
 				'Invalid option specified: "%s". Expected one of (%s)',
@@ -176,8 +170,7 @@ class OutputFormatterStyle implements OutputFormatterStyleInterface
 	 *
 	 * @param array $options
 	 */
-	public function setOptions(array $options)
-	{
+	public function setOptions(array $options) {
 		$this->options = array();
 
 		foreach ($options as $option) {
@@ -192,8 +185,7 @@ class OutputFormatterStyle implements OutputFormatterStyleInterface
 	 *
 	 * @return string
 	 */
-	public function apply($text)
-	{
+	public function apply($text) {
 		$setCodes = array();
 		$unsetCodes = array();
 

@@ -21,8 +21,7 @@ use Cake\Controller\ComponentRegistry;
  *
  * @since         DebugKit 0.1
  */
-class ToolbarComponent extends Component
-{
+class ToolbarComponent extends Component {
 
 	/**
 	 * Constructor
@@ -35,8 +34,7 @@ class ToolbarComponent extends Component
 	 * @return void
 	 * @throws \RuntimeException
 	 */
-	public function __construct(ComponentRegistry $registry, $settings = [])
-	{
+	public function __construct(ComponentRegistry $registry, $settings = []) {
 		$msg = 'DebugKit is now loaded through plugin bootstrapping. Make sure you have ' .
 			'`Plugin::load("DebugKit", ["bootstrap" => true]);` in your application\'s bootstrap.php.';
 		throw new \RuntimeException($msg);

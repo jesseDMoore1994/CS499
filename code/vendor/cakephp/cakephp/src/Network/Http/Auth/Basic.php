@@ -21,8 +21,7 @@ use Cake\Network\Http\Request;
  * Generally not directly constructed, but instead used by Cake\Network\Http\Client
  * when $options['auth']['type'] is 'basic'
  */
-class Basic
-{
+class Basic {
 
 	/**
 	 * Add Authorization header to the request.
@@ -32,8 +31,7 @@ class Basic
 	 * @return void
 	 * @see http://www.ietf.org/rfc/rfc2617.txt
 	 */
-	public function authentication(Request $request, array $credentials)
-	{
+	public function authentication(Request $request, array $credentials) {
 		if (isset($credentials['username'], $credentials['password'])) {
 			$value = $this->_generateHeader($credentials['username'], $credentials['password']);
 			$request->header('Authorization', $value);
@@ -48,8 +46,7 @@ class Basic
 	 * @return void
 	 * @see http://www.ietf.org/rfc/rfc2617.txt
 	 */
-	public function proxyAuthentication(Request $request, array $credentials)
-	{
+	public function proxyAuthentication(Request $request, array $credentials) {
 		if (isset($credentials['username'], $credentials['password'])) {
 			$value = $this->_generateHeader($credentials['username'], $credentials['password']);
 			$request->header('Proxy-Authorization', $value);
@@ -63,8 +60,7 @@ class Basic
 	 * @param string $pass Password.
 	 * @return string
 	 */
-	protected function _generateHeader($user, $pass)
-	{
+	protected function _generateHeader($user, $pass) {
 		return 'Basic ' . base64_encode($user . ':' . $pass);
 	}
 }

@@ -20,8 +20,7 @@ namespace Cake\Database;
  *
  * @internal
  */
-class SqliteCompiler extends QueryCompiler
-{
+class SqliteCompiler extends QueryCompiler {
 	/**
 	 * SQLite does not support ORDER BY in UNION queries.
 	 *

@@ -25,8 +25,7 @@ use RuntimeException;
  *
  * Use to convert datetime instances to strings & back.
  */
-class DateTimeType extends Type
-{
+class DateTimeType extends Type {
 
 	/**
 	 * The class to use for representing date objects
@@ -68,8 +67,7 @@ class DateTimeType extends Type
 	/**
 	 * {@inheritDoc}
 	 */
-	public function __construct($name = null)
-	{
+	public function __construct($name = null) {
 		parent::__construct($name);
 
 		if (!class_exists(static::$dateTimeClass)) {
@@ -86,8 +84,7 @@ class DateTimeType extends Type
 	 * @param Driver $driver The driver instance to convert with.
 	 * @return string
 	 */
-	public function toDatabase($value, Driver $driver)
-	{
+	public function toDatabase($value, Driver $driver) {
 		if ($value === null || is_string($value)) {
 			return $value;
 		}
@@ -104,8 +101,7 @@ class DateTimeType extends Type
 	 * @param Driver $driver The driver instance to convert with.
 	 * @return \Cake\I18n\Time|\DateTime
 	 */
-	public function toPHP($value, Driver $driver)
-	{
+	public function toPHP($value, Driver $driver) {
 		if ($value === null || strpos($value, '0000-00-00') === 0) {
 			return null;
 		}
@@ -124,8 +120,7 @@ class DateTimeType extends Type
 	 * @param mixed $value Request data
 	 * @return \Cake\I18n\Time|\DateTime
 	 */
-	public function marshal($value)
-	{
+	public function marshal($value) {
 		if ($value instanceof DateTime) {
 			return $value;
 		}
@@ -190,8 +185,7 @@ class DateTimeType extends Type
 	 * @param bool $enable Whether or not to enable
 	 * @return $this
 	 */
-	public function useLocaleParser($enable = true)
-	{
+	public function useLocaleParser($enable = true) {
 		if ($enable === false) {
 			$this->_useLocaleParser = $enable;
 			return $this;
@@ -216,8 +210,7 @@ class DateTimeType extends Type
 	 * @see \Cake\I18n\Time::parseDateTime()
 	 * @return $this
 	 */
-	public function setLocaleFormat($format)
-	{
+	public function setLocaleFormat($format) {
 		$this->_localeFormat = $format;
 		return $this;
 	}
@@ -229,8 +222,7 @@ class DateTimeType extends Type
 	 * @param string $value The value to parse and convert to an object.
 	 * @return \Cake\I18n\Time|null
 	 */
-	protected function _parseValue($value)
-	{
+	protected function _parseValue($value) {
 		$class = static::$dateTimeClass;
 		return $class::parseDateTime($value, $this->_localeFormat);
 	}

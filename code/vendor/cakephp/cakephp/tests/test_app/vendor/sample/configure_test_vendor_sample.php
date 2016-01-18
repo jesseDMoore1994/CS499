@@ -17,6 +17,5 @@
  * Class ConfigureTestVendorSample
  *
  */
-class ConfigureTestVendorSample
-{
+class ConfigureTestVendorSample {
 }

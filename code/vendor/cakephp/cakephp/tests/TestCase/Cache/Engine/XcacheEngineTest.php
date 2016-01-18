@@ -24,16 +24,14 @@ use Cake\TestSuite\TestCase;
  * XcacheEngineTest class
  *
  */
-class XcacheEngineTest extends TestCase
-{
+class XcacheEngineTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		if ((PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg')) {
 			$this->markTestSkipped('Xcache is not available for the CLI.');
@@ -51,8 +49,7 @@ class XcacheEngineTest extends TestCase
 	 * @param array $config
 	 * @return void
 	 */
-	protected function _configCache($config = [])
-	{
+	protected function _configCache($config = []) {
 		$defaults = [
 			'className' => 'Xcache',
 			'prefix' => 'cake_',
@@ -66,8 +63,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Cache::drop('xcache');
 		Cache::drop('xcache_groups');
@@ -78,8 +74,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfig()
-	{
+	public function testConfig() {
 		$config = Cache::engine('xcache')->config();
 		$expecting = [
 			'prefix' => 'cake_',
@@ -98,8 +93,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadAndWriteCache()
-	{
+	public function testReadAndWriteCache() {
 		$result = Cache::read('test', 'xcache');
 		$expecting = '';
 		$this->assertEquals($expecting, $result);
@@ -120,8 +114,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExpiry()
-	{
+	public function testExpiry() {
 		$this->_configCache(['duration' => 1]);
 		$result = Cache::read('test', 'xcache');
 		$this->assertFalse($result);
@@ -150,8 +143,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteCache()
-	{
+	public function testDeleteCache() {
 		$data = 'this is a test of the emergency broadcasting system';
 		$result = Cache::write('delete_test', $data, 'xcache');
 		$this->assertTrue($result);
@@ -165,8 +157,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClearCache()
-	{
+	public function testClearCache() {
 		$data = 'this is a test of the emergency broadcasting system';
 		$result = Cache::write('clear_test_1', $data, 'xcache');
 		$this->assertTrue($result);
@@ -183,8 +174,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDecrement()
-	{
+	public function testDecrement() {
 		$result = Cache::write('test_decrement', 5, 'xcache');
 		$this->assertTrue($result);
 
@@ -206,8 +196,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIncrement()
-	{
+	public function testIncrement() {
 		$result = Cache::write('test_increment', 5, 'xcache');
 		$this->assertTrue($result);
 
@@ -231,8 +220,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupsReadWrite()
-	{
+	public function testGroupsReadWrite() {
 		Cache::config('xcache_groups', [
 			'engine' => 'Xcache',
 			'duration' => 0,
@@ -258,8 +246,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupDelete()
-	{
+	public function testGroupDelete() {
 		Cache::config('xcache_groups', [
 			'engine' => 'Xcache',
 			'duration' => 0,
@@ -278,8 +265,7 @@ class XcacheEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupClear()
-	{
+	public function testGroupClear() {
 		Cache::config('xcache_groups', [
 			'engine' => 'Xcache',
 			'duration' => 0,

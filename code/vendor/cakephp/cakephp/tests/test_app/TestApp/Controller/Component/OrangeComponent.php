@@ -21,8 +21,7 @@ use Cake\Event\Event;
  * OrangeComponent class
  *
  */
-class OrangeComponent extends Component
-{
+class OrangeComponent extends Component {
 
 	/**
 	 * components property
@@ -37,8 +36,7 @@ class OrangeComponent extends Component
 	 * @param array $config
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		$this->Controller = $this->_registry->getController();
 		$this->Banana->testField = 'OrangeField';
 	}
@@ -49,8 +47,7 @@ class OrangeComponent extends Component
 	 * @param Event $event
 	 * @return string
 	 */
-	public function startup(Event $event)
-	{
+	public function startup(Event $event) {
 		$this->Controller->foo = 'pass';
 	}
 }

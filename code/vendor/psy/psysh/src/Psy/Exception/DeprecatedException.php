@@ -14,7 +14,6 @@ namespace Psy\Exception;
 /**
  * A DeprecatedException for Psy.
  */
-class DeprecatedException extends RuntimeException
-{
+class DeprecatedException extends RuntimeException {
 	// This space intentionally left blank.
 }

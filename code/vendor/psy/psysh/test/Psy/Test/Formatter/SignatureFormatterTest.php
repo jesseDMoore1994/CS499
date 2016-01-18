@@ -14,25 +14,21 @@ namespace Psy\Test\Formatter;
 use Psy\Formatter\SignatureFormatter;
 use Psy\Reflection\ReflectionConstant;
 
-class SignatureFormatterTest extends \PHPUnit_Framework_TestCase
-{
+class SignatureFormatterTest extends \PHPUnit_Framework_TestCase {
 	const FOO = 'foo value';
 	private static $bar = 'bar value';
 
-	private function someFakeMethod(array $one, $two = 'TWO', \Reflector $three = null)
-	{
+	private function someFakeMethod(array $one, $two = 'TWO', \Reflector $three = null) {
 	}
 
 	/**
 	 * @dataProvider signatureReflectors
 	 */
-	public function testFormat($reflector, $expected)
-	{
+	public function testFormat($reflector, $expected) {
 		$this->assertEquals($expected, strip_tags(SignatureFormatter::format($reflector)));
 	}
 
-	public function signatureReflectors()
-	{
+	public function signatureReflectors() {
 		return array(
 			array(
 				new \ReflectionClass($this),
@@ -69,8 +65,7 @@ class SignatureFormatterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException InvalidArgumentException
 	 */
-	public function testSignatureFormatterThrowsUnknownReflectorExpeption()
-	{
+	public function testSignatureFormatterThrowsUnknownReflectorExpeption() {
 		$refl = $this->getMock('Reflector');
 		SignatureFormatter::format($refl);
 	}

@@ -20,8 +20,7 @@ use Cake\Utility\Inflector;
  * This route class will transparently inflect the controller and plugin routing
  * parameters, so that requesting `/my_controller` is parsed as `['controller' => 'MyController']`
  */
-class InflectedRoute extends Route
-{
+class InflectedRoute extends Route {
 
 	/**
 	 * Flag for tracking whether or not the defaults have been inflected.
@@ -40,8 +39,7 @@ class InflectedRoute extends Route
 	 * @param string $url The URL to parse
 	 * @return mixed false on failure, or an array of request parameters
 	 */
-	public function parse($url)
-	{
+	public function parse($url) {
 		$params = parent::parse($url);
 		if (!$params) {
 			return false;
@@ -65,8 +63,7 @@ class InflectedRoute extends Route
 	 *   directory.
 	 * @return mixed either false or a string URL.
 	 */
-	public function match(array $url, array $context = [])
-	{
+	public function match(array $url, array $context = []) {
 		$url = $this->_underscore($url);
 		if (!$this->_inflectedDefaults) {
 			$this->_inflectedDefaults = true;
@@ -81,8 +78,7 @@ class InflectedRoute extends Route
 	 * @param array $url An array of URL keys.
 	 * @return array
 	 */
-	protected function _underscore($url)
-	{
+	protected function _underscore($url) {
 		if (!empty($url['controller'])) {
 			$url['controller'] = Inflector::underscore($url['controller']);
 		}

@@ -4,25 +4,21 @@
  * @license     MIT License https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt
  * @link        http://mobiledetect.net
  */
-class BasicTest extends PHPUnit_Framework_TestCase
-{
+class BasicTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * @var Mobile_Detect
 	 */
 	protected $detect;
 
-	public function testClassExists()
-	{
+	public function testClassExists() {
 		$this->assertTrue(class_exists('Mobile_Detect'));
 	}
 
-	public function setUp()
-	{
+	public function setUp() {
 		$this->detect = new Mobile_Detect;
 	}
 
-	public function testBasicMethods()
-	{
+	public function testBasicMethods() {
 		$this->assertNotEmpty($this->detect->getScriptVersion());
 
 		$this->detect->setHttpHeaders(array(
@@ -63,8 +59,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 
 	}
 
-	public function headersProvider()
-	{
+	public function headersProvider() {
 		return array(
 			array(array(
 				'SERVER_SOFTWARE' => 'Apache/2.2.15 (Linux) Whatever/4.0 PHP/5.2.13',
@@ -105,8 +100,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @dataProvider headersProvider
 	 * @covers       Mobile_Detect::getHttpHeader
 	 */
-	public function testConstructorInjection(array $headers)
-	{
+	public function testConstructorInjection(array $headers) {
 		$md = new Mobile_Detect($headers);
 
 		foreach ($headers as $header => $value) {
@@ -129,14 +123,12 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @dataProvider headersProvider
 	 * @covers       Mobile_Detect::getHttpHeader
 	 */
-	public function testInvalidHeader($headers)
-	{
+	public function testInvalidHeader($headers) {
 		$md = new Mobile_Detect($headers);
 		$this->assertNull($md->getHttpHeader('garbage_is_Garbage'));
 	}
 
-	public function userAgentProvider()
-	{
+	public function userAgentProvider() {
 		return array(
 			array(array(
 				'HTTP_USER_AGENT' => 'blah'
@@ -157,8 +149,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @covers       Mobile_Detect::setUserAgent
 	 * @covers       Mobile_Detect::getUserAgent
 	 */
-	public function testGetUserAgent($headers, $expectedUserAgent)
-	{
+	public function testGetUserAgent($headers, $expectedUserAgent) {
 		$md = new Mobile_Detect($headers);
 		$md->setUserAgent();
 		$this->assertSame($expectedUserAgent, $md->getUserAgent());
@@ -169,8 +160,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @covers Mobile_Detect::setHttpHeaders
 	 * @issue #144
 	 */
-	public function testSetHttpHeaders()
-	{
+	public function testSetHttpHeaders() {
 		$header1 = array('HTTP_PINK_PONY' => 'I secretly love ponies >_>');
 		$md = new Mobile_Detect($header1);
 		$this->assertSame($md->getHttpHeaders(), $header1);
@@ -184,8 +174,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * Read response from cloudfront, if the cloudfront headers are detected
 	 * @covers Mobile_Detect::setCfHeaders
 	 */
-	public function testSetCfHeaders()
-	{
+	public function testSetCfHeaders() {
 		// Test mobile detected
 		$header1 = array(
 			'HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER' => 'false',
@@ -232,8 +221,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @covers Mobile_Detect::setUserAgent
 	 * @covers Mobile_Detect::getUserAgent
 	 */
-	public function testSetUserAgent()
-	{
+	public function testSetUserAgent() {
 		$md = new Mobile_Detect(array());
 		$md->setUserAgent('hello world');
 		$this->assertSame('hello world', $md->getUserAgent());
@@ -242,8 +230,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @covers Mobile_Detect::setDetectionType
 	 */
-	public function testSetDetectionType()
-	{
+	public function testSetDetectionType() {
 		$md = new Mobile_Detect(array());
 
 		$md->setDetectionType('bskdfjhs');
@@ -276,8 +263,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	}
 
 	//special headers that give 'quick' indication that a device is mobile
-	public function quickHeadersData()
-	{
+	public function quickHeadersData() {
 		return array(
 			array(array(
 				'HTTP_ACCEPT' => 'application/json; q=0.2, application/x-obml2d; q=0.8, image/gif; q=0.99, */*'
@@ -337,15 +323,13 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @dataProvider quickHeadersData
 	 * @covers       Mobile_Detect::checkHttpHeadersForMobile
 	 */
-	public function testQuickHeaders($headers)
-	{
+	public function testQuickHeaders($headers) {
 		$md = new Mobile_Detect($headers);
 		$this->assertTrue($md->checkHttpHeadersForMobile());
 	}
 
 	// Headers that are not mobile.
-	public function quickNonMobileHeadersData()
-	{
+	public function quickNonMobileHeadersData() {
 
 		return array(
 			array(array(
@@ -371,8 +355,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @dataProvider quickNonMobileHeadersData
 	 * @covers       Mobile_Detect::checkHttpHeadersForMobile
 	 */
-	public function testNonMobileQuickHeaders($headers)
-	{
+	public function testNonMobileQuickHeaders($headers) {
 		$md = new Mobile_Detect($headers);
 		$this->assertFalse($md->checkHttpHeadersForMobile());
 	}
@@ -381,14 +364,12 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @expectedException BadMethodCallException
 	 * @coversNothing
 	 */
-	public function testBadMethodCall()
-	{
+	public function testBadMethodCall() {
 		$md = new Mobile_Detect(array());
 		$md->badmethodthatdoesntexistatall();
 	}
 
-	public function versionDataProvider()
-	{
+	public function versionDataProvider() {
 		return array(
 			array(
 				'Mozilla/5.0 (Linux; Android 4.0.4; ARCHOS 80G9 Build/IMM76D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19',
@@ -433,8 +414,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @dataProvider versionDataProvider
 	 * @covers       Mobile_Detect::version
 	 */
-	public function testVersionExtraction($userAgent, $property, $stringVersion, $floatVersion)
-	{
+	public function testVersionExtraction($userAgent, $property, $stringVersion, $floatVersion) {
 		$md = new Mobile_Detect(array('HTTP_USER_AGENT' => $userAgent));
 		$prop = $md->version($property);
 
@@ -451,8 +431,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @covers Mobile_Detect::getMobileDetectionRules
 	 */
-	public function testRules()
-	{
+	public function testRules() {
 		$md = new Mobile_Detect;
 		$count = array_sum(array(
 			count(Mobile_Detect::getPhoneDevices()),
@@ -467,8 +446,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @covers Mobile_Detect::getMobileDetectionRulesExtended
 	 */
-	public function testRulesExtended()
-	{
+	public function testRulesExtended() {
 		$md = new Mobile_Detect;
 		$count = array_sum(array(
 			count(Mobile_Detect::getPhoneDevices()),
@@ -485,8 +463,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @covers Mobile_Detect::getScriptVersion
 	 */
-	public function testScriptVersion()
-	{
+	public function testScriptVersion() {
 		$v = Mobile_Detect::getScriptVersion();
 		$formatCheck = (bool)preg_match('/^[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9])?$/', $v);
 
@@ -494,8 +471,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 			. ' does not match X.Y.Z pattern');
 	}
 
-	public function crazyVersionNumbers()
-	{
+	public function crazyVersionNumbers() {
 		return array(
 			array('2.5.6', 2.56),
 			array('12142.2142.412521.24.152', 12142.214241252124152),
@@ -511,8 +487,7 @@ class BasicTest extends PHPUnit_Framework_TestCase
 	 * @dataProvider crazyVersionNumbers
 	 * @covers       Mobile_Detect::prepareVersionNo
 	 */
-	public function testPrepareVersionNo($raw, $expected)
-	{
+	public function testPrepareVersionNo($raw, $expected) {
 		$md = new Mobile_Detect;
 		$actual = $md->prepareVersionNo($raw);
 		$this->assertSame($expected, $actual, "We expected " . var_export($raw, true) . " to convert to "

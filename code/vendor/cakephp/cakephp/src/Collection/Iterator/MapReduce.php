@@ -24,8 +24,7 @@ use Traversable;
  * processed, thus offering a transparent wrapper for results coming from any
  * source.
  */
-class MapReduce implements IteratorAggregate
-{
+class MapReduce implements IteratorAggregate {
 
 	/**
 	 * Holds the shuffled results that were emitted from the map
@@ -113,8 +112,7 @@ class MapReduce implements IteratorAggregate
 	 * of the bucket that was created during the mapping phase and third one is an
 	 * instance of this class.
 	 */
-	public function __construct(Traversable $data, callable $mapper, callable $reducer = null)
-	{
+	public function __construct(Traversable $data, callable $mapper, callable $reducer = null) {
 		$this->_data = $data;
 		$this->_mapper = $mapper;
 		$this->_reducer = $reducer;
@@ -126,8 +124,7 @@ class MapReduce implements IteratorAggregate
 	 *
 	 * @return \ArrayIterator
 	 */
-	public function getIterator()
-	{
+	public function getIterator() {
 		if (!$this->_executed) {
 			$this->_execute();
 		}
@@ -142,8 +139,7 @@ class MapReduce implements IteratorAggregate
 	 * @param string $bucket the name of the bucket where to put the record
 	 * @return void
 	 */
-	public function emitIntermediate($value, $bucket)
-	{
+	public function emitIntermediate($value, $bucket) {
 		$this->_intermediate[$bucket][] = $value;
 	}
 
@@ -155,8 +151,7 @@ class MapReduce implements IteratorAggregate
 	 * @param string $key and optional key to assign to the value
 	 * @return void
 	 */
-	public function emit($value, $key = null)
-	{
+	public function emit($value, $key = null) {
 		$this->_result[$key === null ? $this->_counter : $key] = $value;
 		$this->_counter++;
 	}
@@ -170,8 +165,7 @@ class MapReduce implements IteratorAggregate
 	 * @throws \LogicException if emitIntermediate was called but no reducer function
 	 * was provided
 	 */
-	protected function _execute()
-	{
+	protected function _execute() {
 		$mapper = $this->_mapper;
 		foreach ($this->_data as $key => $value) {
 			$mapper($value, $key, $this);

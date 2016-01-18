@@ -25,11 +25,9 @@ use Cake\View\View;
 /**
  * Extended HtmlHelper
  */
-class HtmlAliasHelper extends Helper
-{
+class HtmlAliasHelper extends Helper {
 
-	public function afterRender($viewFile)
-	{
+	public function afterRender($viewFile) {
 	}
 }
 
@@ -37,16 +35,14 @@ class HtmlAliasHelper extends Helper
  * Class HelperRegistryTest
  *
  */
-class HelperRegistryTest extends TestCase
-{
+class HelperRegistryTest extends TestCase {
 
 	/**
 	 * setUp
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->View = new View();
 		$this->Events = $this->View->eventManager();
@@ -58,8 +54,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		Plugin::unload();
 		unset($this->Helpers, $this->View);
 		parent::tearDown();
@@ -70,8 +65,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoad()
-	{
+	public function testLoad() {
 		$result = $this->Helpers->load('Html');
 		$this->assertInstanceOf('Cake\View\Helper\HtmlHelper', $result);
 		$this->assertInstanceOf('Cake\View\Helper\HtmlHelper', $this->Helpers->Html);
@@ -85,8 +79,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLazyLoad()
-	{
+	public function testLazyLoad() {
 		$result = $this->Helpers->Html;
 		$this->assertInstanceOf('Cake\View\Helper\HtmlHelper', $result);
 
@@ -105,8 +98,7 @@ class HelperRegistryTest extends TestCase
 	 * @expectedException \Cake\View\Exception\MissingHelperException
 	 * @return void
 	 */
-	public function testLazyLoadException()
-	{
+	public function testLazyLoadException() {
 		$this->Helpers->NotAHelper;
 	}
 
@@ -115,8 +107,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadSubscribeEvents()
-	{
+	public function testLoadSubscribeEvents() {
 		$this->Helpers->load('Html', ['className' => __NAMESPACE__ . '\HtmlAliasHelper']);
 		$result = $this->Events->listeners('View.afterRender');
 		$this->assertCount(1, $result);
@@ -127,8 +118,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithAlias()
-	{
+	public function testLoadWithAlias() {
 		$result = $this->Helpers->load('Html', ['className' => __NAMESPACE__ . '\HtmlAliasHelper']);
 		$this->assertInstanceOf(__NAMESPACE__ . '\HtmlAliasHelper', $result);
 		$this->assertInstanceOf(__NAMESPACE__ . '\HtmlAliasHelper', $this->Helpers->Html);
@@ -145,8 +135,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithAliasAndPlugin()
-	{
+	public function testLoadWithAliasAndPlugin() {
 		Plugin::load('TestPlugin');
 		$result = $this->Helpers->load('SomeOther', ['className' => 'TestPlugin.OtherHelper']);
 		$this->assertInstanceOf('TestPlugin\View\Helper\OtherHelperHelper', $result);
@@ -161,8 +150,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithEnabledFalse()
-	{
+	public function testLoadWithEnabledFalse() {
 		$result = $this->Helpers->load('Html', ['enabled' => false]);
 		$this->assertInstanceOf('Cake\View\Helper\HtmlHelper', $result);
 		$this->assertInstanceOf('Cake\View\Helper\HtmlHelper', $this->Helpers->Html);
@@ -176,8 +164,7 @@ class HelperRegistryTest extends TestCase
 	 * @expectedException \Cake\View\Exception\MissingHelperException
 	 * @return void
 	 */
-	public function testLoadMissingHelper()
-	{
+	public function testLoadMissingHelper() {
 		$this->Helpers->load('ThisHelperShouldAlwaysBeMissing');
 	}
 
@@ -186,8 +173,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadPluginHelper()
-	{
+	public function testLoadPluginHelper() {
 		Plugin::load(['TestPlugin']);
 
 		$result = $this->Helpers->load('TestPlugin.OtherHelper');
@@ -200,8 +186,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadPluginHelperDottedAlias()
-	{
+	public function testLoadPluginHelperDottedAlias() {
 		Plugin::load(['TestPlugin']);
 
 		$result = $this->Helpers->load('thing.helper', [
@@ -226,8 +211,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReset()
-	{
+	public function testReset() {
 		Configure::write('App.namespace', 'TestApp');
 
 		$instance = $this->Helpers->load('EventListenerTest');
@@ -249,8 +233,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUnload()
-	{
+	public function testUnload() {
 		Configure::write('App.namespace', 'TestApp');
 
 		$instance = $this->Helpers->load('EventListenerTest');
@@ -272,8 +255,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadMultipleTimesNoConfig()
-	{
+	public function testLoadMultipleTimesNoConfig() {
 		$this->Helpers->load('Html');
 		$this->Helpers->load('Html');
 		$this->addToAssertionCount(1);
@@ -287,8 +269,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadMultipleTimesAlreadyConfigured()
-	{
+	public function testLoadMultipleTimesAlreadyConfigured() {
 		$this->Helpers->load('Html', ['same' => 'stuff']);
 		$this->Helpers->load('Html');
 		$this->addToAssertionCount(1);
@@ -300,8 +281,7 @@ class HelperRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadMultipleTimesDefaultConfigValuesWorks()
-	{
+	public function testLoadMultipleTimesDefaultConfigValuesWorks() {
 		$this->Helpers->load('Number', ['engine' => 'Cake\I18n\Number']);
 		$this->Helpers->load('Number');
 		$this->addToAssertionCount(1);
@@ -314,8 +294,7 @@ class HelperRegistryTest extends TestCase
 	 * @expectedExceptionMessage The "Html" alias has already been loaded with the following
 	 * @return void
 	 */
-	public function testLoadMultipleTimesDifferentConfigured()
-	{
+	public function testLoadMultipleTimesDifferentConfigured() {
 		$this->Helpers->load('Html');
 		$this->Helpers->load('Html', ['same' => 'stuff']);
 	}
@@ -327,8 +306,7 @@ class HelperRegistryTest extends TestCase
 	 * @expectedExceptionMessage The "Html" alias has already been loaded with the following
 	 * @return void
 	 */
-	public function testLoadMultipleTimesDifferentConfigValues()
-	{
+	public function testLoadMultipleTimesDifferentConfigValues() {
 		$this->Helpers->load('Html', ['key' => 'value']);
 		$this->Helpers->load('Html', ['key' => 'new value']);
 	}

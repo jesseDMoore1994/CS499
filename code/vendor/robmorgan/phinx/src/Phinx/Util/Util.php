@@ -28,8 +28,7 @@
  */
 namespace Phinx\Util;
 
-class Util
-{
+class Util {
 	/**
 	 * @var string
 	 */
@@ -50,8 +49,7 @@ class Util
 	 *
 	 * @return string
 	 */
-	public static function getCurrentTimestamp()
-	{
+	public static function getCurrentTimestamp() {
 		$dt = new \DateTime('now', new \DateTimeZone('UTC'));
 		return $dt->format(static::DATE_FORMAT);
 	}
@@ -61,8 +59,7 @@ class Util
 	 *
 	 * @return string
 	 */
-	public static function getExistingMigrationClassNames($path)
-	{
+	public static function getExistingMigrationClassNames($path) {
 		$classNames = array();
 
 		if (!is_dir($path)) {
@@ -87,8 +84,7 @@ class Util
 	 * @param string $fileName File Name
 	 * @return string
 	 */
-	public static function getVersionFromFileName($fileName)
-	{
+	public static function getVersionFromFileName($fileName) {
 		$matches = array();
 		preg_match('/^[0-9]+/', basename($fileName), $matches);
 		return $matches[0];
@@ -102,8 +98,7 @@ class Util
 	 * @param string $className Class Name
 	 * @return string
 	 */
-	public static function mapClassNameToFileName($className)
-	{
+	public static function mapClassNameToFileName($className) {
 		$arr = preg_split('/(?=[A-Z])/', $className);
 		unset($arr[0]); // remove the first element ('')
 		$fileName = static::getCurrentTimestamp() . '_' . strtolower(implode($arr, '_')) . '.php';
@@ -117,8 +112,7 @@ class Util
 	 * @param string $fileName File Name
 	 * @return string
 	 */
-	public static function mapFileNameToClassName($fileName)
-	{
+	public static function mapFileNameToClassName($fileName) {
 		$matches = array();
 		if (preg_match(static::MIGRATION_FILE_NAME_PATTERN, $fileName, $matches)) {
 			$fileName = $matches[1];
@@ -142,8 +136,7 @@ class Util
 	 * @param string $path Path
 	 * @return boolean
 	 */
-	public static function isUniqueMigrationClassName($className, $path)
-	{
+	public static function isUniqueMigrationClassName($className, $path) {
 		$existingClassNames = static::getExistingMigrationClassNames($path);
 		return !(in_array($className, $existingClassNames));
 	}
@@ -159,8 +152,7 @@ class Util
 	 * @param string $className Class Name
 	 * @return boolean
 	 */
-	public static function isValidPhinxClassName($className)
-	{
+	public static function isValidPhinxClassName($className) {
 		return (bool)preg_match('/^([A-Z][a-z0-9]+)+$/', $className);
 	}
 
@@ -170,8 +162,7 @@ class Util
 	 * @param string $fileName File Name
 	 * @return boolean
 	 */
-	public static function isValidMigrationFileName($fileName)
-	{
+	public static function isValidMigrationFileName($fileName) {
 		$matches = array();
 		return preg_match(static::MIGRATION_FILE_NAME_PATTERN, $fileName, $matches);
 	}
@@ -182,8 +173,7 @@ class Util
 	 * @param string $fileName File Name
 	 * @return boolean
 	 */
-	public static function isValidSeedFileName($fileName)
-	{
+	public static function isValidSeedFileName($fileName) {
 		$matches = array();
 		return preg_match(static::SEED_FILE_NAME_PATTERN, $fileName, $matches);
 	}

@@ -17,8 +17,7 @@ use Cake\Core\Exception\Exception;
 /**
  * Used when an element file cannot be found.
  */
-class MissingElementException extends Exception
-{
+class MissingElementException extends Exception {
 
 	/**
 	 * Message template

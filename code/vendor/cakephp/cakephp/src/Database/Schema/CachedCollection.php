@@ -21,8 +21,7 @@ use Cake\Datasource\ConnectionInterface;
  * Extends the schema collection class to provide caching
  *
  */
-class CachedCollection extends Collection
-{
+class CachedCollection extends Collection {
 
 	/**
 	 * The name of the cache config key to use for caching table metadata,
@@ -38,8 +37,7 @@ class CachedCollection extends Collection
 	 * @param \Cake\Datasource\ConnectionInterface $connection The connection instance.
 	 * @param string|bool $cacheKey The cache key or boolean false to disable caching.
 	 */
-	public function __construct(ConnectionInterface $connection, $cacheKey = true)
-	{
+	public function __construct(ConnectionInterface $connection, $cacheKey = true) {
 		parent::__construct($connection);
 		$this->cacheMetadata($cacheKey);
 	}
@@ -48,8 +46,7 @@ class CachedCollection extends Collection
 	 * {@inheritDoc}
 	 *
 	 */
-	public function describe($name, array $options = [])
-	{
+	public function describe($name, array $options = []) {
 		$options += ['forceRefresh' => false];
 		$cacheConfig = $this->cacheMetadata();
 		$cacheKey = $this->cacheKey($name);
@@ -76,8 +73,7 @@ class CachedCollection extends Collection
 	 * @param string $name The name to get a cache key for.
 	 * @return string The cache key.
 	 */
-	public function cacheKey($name)
-	{
+	public function cacheKey($name) {
 		return $this->_connection->configName() . '_' . $name;
 	}
 
@@ -89,8 +85,7 @@ class CachedCollection extends Collection
 	 * @param bool $enable whether or not to enable caching
 	 * @return string|bool
 	 */
-	public function cacheMetadata($enable = null)
-	{
+	public function cacheMetadata($enable = null) {
 		if ($enable === null) {
 			return $this->_cache;
 		}

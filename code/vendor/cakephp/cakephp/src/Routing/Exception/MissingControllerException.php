@@ -19,8 +19,7 @@ use Cake\Core\Exception\Exception;
  * cannot be found.
  *
  */
-class MissingControllerException extends Exception
-{
+class MissingControllerException extends Exception {
 
 	/**
 	 * {@inheritDoc}
@@ -30,8 +29,7 @@ class MissingControllerException extends Exception
 	/**
 	 * {@inheritDoc}
 	 */
-	public function __construct($message, $code = 404)
-	{
+	public function __construct($message, $code = 404) {
 		parent::__construct($message, $code);
 	}
 }

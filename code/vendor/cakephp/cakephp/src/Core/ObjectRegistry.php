@@ -34,8 +34,7 @@ use RuntimeException;
  * @see \Cake\View\HelperRegistry
  * @see \Cake\Console\TaskRegistry
  */
-abstract class ObjectRegistry
-{
+abstract class ObjectRegistry {
 
 	/**
 	 * Map of loaded objects.
@@ -68,8 +67,7 @@ abstract class ObjectRegistry
 	 * @param array $config Additional settings to use when loading the object.
 	 * @return mixed
 	 */
-	public function load($objectName, $config = [])
-	{
+	public function load($objectName, $config = []) {
 		if (is_array($config) && isset($config['className'])) {
 			$name = $objectName;
 			$objectName = $config['className'];
@@ -111,8 +109,7 @@ abstract class ObjectRegistry
 	 * @return void
 	 * @throws \RuntimeException When a duplicate is found.
 	 */
-	protected function _checkDuplicate($name, $config)
-	{
+	protected function _checkDuplicate($name, $config) {
 		$existing = $this->_loaded[$name];
 		$msg = sprintf('The "%s" alias has already been loaded', $name);
 		$hasConfig = method_exists($existing, 'config');
@@ -180,8 +177,7 @@ abstract class ObjectRegistry
 	 *
 	 * @return array List of object names.
 	 */
-	public function loaded()
-	{
+	public function loaded() {
 		return array_keys($this->_loaded);
 	}
 
@@ -191,8 +187,7 @@ abstract class ObjectRegistry
 	 * @param string $name The object name to check for.
 	 * @return bool True is object is loaded else false.
 	 */
-	public function has($name)
-	{
+	public function has($name) {
 		return isset($this->_loaded[$name]);
 	}
 
@@ -202,8 +197,7 @@ abstract class ObjectRegistry
 	 * @param string $name Name of object.
 	 * @return object|null Object instance if loaded else null.
 	 */
-	public function get($name)
-	{
+	public function get($name) {
 		if (isset($this->_loaded[$name])) {
 			return $this->_loaded[$name];
 		}
@@ -216,8 +210,7 @@ abstract class ObjectRegistry
 	 * @param string $name Name of property to read
 	 * @return mixed
 	 */
-	public function __get($name)
-	{
+	public function __get($name) {
 		return $this->get($name);
 	}
 
@@ -227,8 +220,7 @@ abstract class ObjectRegistry
 	 * @param string $name Name of object being checked.
 	 * @return bool
 	 */
-	public function __isset($name)
-	{
+	public function __isset($name) {
 		return isset($this->_loaded[$name]);
 	}
 
@@ -239,8 +231,7 @@ abstract class ObjectRegistry
 	 * @param array $objects Array of child objects to normalize.
 	 * @return array Array of normalized objects.
 	 */
-	public function normalizeArray($objects)
-	{
+	public function normalizeArray($objects) {
 		$normal = [];
 		foreach ($objects as $i => $objectName) {
 			$config = [];
@@ -261,8 +252,7 @@ abstract class ObjectRegistry
 	 *
 	 * @return void
 	 */
-	public function reset()
-	{
+	public function reset() {
 		foreach (array_keys($this->_loaded) as $name) {
 			$this->unload($name);
 		}
@@ -278,8 +268,7 @@ abstract class ObjectRegistry
 	 * @param object $object instance to store in the registry
 	 * @return void
 	 */
-	public function set($objectName, $object)
-	{
+	public function set($objectName, $object) {
 		list(, $name) = pluginSplit($objectName);
 		$this->unload($objectName);
 		if ($this instanceof EventDispatcherInterface && $object instanceof EventListenerInterface) {
@@ -296,8 +285,7 @@ abstract class ObjectRegistry
 	 * @param string $objectName The name of the object to remove from the registry.
 	 * @return void
 	 */
-	public function unload($objectName)
-	{
+	public function unload($objectName) {
 		if (empty($this->_loaded[$objectName])) {
 			return;
 		}
@@ -313,8 +301,7 @@ abstract class ObjectRegistry
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		$properties = get_object_vars($this);
 		if (isset($properties['_loaded'])) {
 			$properties['_loaded'] = array_keys($properties['_loaded']);

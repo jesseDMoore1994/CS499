@@ -1,15 +1,12 @@
 <?php
 namespace Aura\Intl;
 
-class BasicFormatterTest extends \PHPUnit_Framework_TestCase
-{
-	protected function newFormatter()
-	{
+class BasicFormatterTest extends \PHPUnit_Framework_TestCase {
+	protected function newFormatter() {
 		return new BasicFormatter;
 	}
 
-	public function testFormat()
-	{
+	public function testFormat() {
 		$formatter = $this->newFormatter();
 
 		$locale = 'en_US';

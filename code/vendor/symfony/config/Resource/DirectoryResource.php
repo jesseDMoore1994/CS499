@@ -16,8 +16,7 @@ namespace Symfony\Component\Config\Resource;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class DirectoryResource implements SelfCheckingResourceInterface, \Serializable
-{
+class DirectoryResource implements SelfCheckingResourceInterface, \Serializable {
 	private $resource;
 	private $pattern;
 
@@ -27,8 +26,7 @@ class DirectoryResource implements SelfCheckingResourceInterface, \Serializable
 	 * @param string $resource The file path to the resource
 	 * @param string|null $pattern A pattern to restrict monitored files
 	 */
-	public function __construct($resource, $pattern = null)
-	{
+	public function __construct($resource, $pattern = null) {
 		$this->resource = $resource;
 		$this->pattern = $pattern;
 	}
@@ -36,16 +34,14 @@ class DirectoryResource implements SelfCheckingResourceInterface, \Serializable
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		return md5(serialize(array($this->resource, $this->pattern)));
 	}
 
 	/**
 	 * @return string The file path to the resource
 	 */
-	public function getResource()
-	{
+	public function getResource() {
 		return $this->resource;
 	}
 
@@ -54,16 +50,14 @@ class DirectoryResource implements SelfCheckingResourceInterface, \Serializable
 	 *
 	 * @return string|null
 	 */
-	public function getPattern()
-	{
+	public function getPattern() {
 		return $this->pattern;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function isFresh($timestamp)
-	{
+	public function isFresh($timestamp) {
 		if (!is_dir($this->resource)) {
 			return false;
 		}
@@ -87,13 +81,11 @@ class DirectoryResource implements SelfCheckingResourceInterface, \Serializable
 		return $newestMTime < $timestamp;
 	}
 
-	public function serialize()
-	{
+	public function serialize() {
 		return serialize(array($this->resource, $this->pattern));
 	}
 
-	public function unserialize($serialized)
-	{
+	public function unserialize($serialized) {
 		list($this->resource, $this->pattern) = unserialize($serialized);
 	}
 }

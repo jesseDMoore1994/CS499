@@ -35,8 +35,7 @@ use Cake\Network\Response;
  *
  * @see AuthComponent::$authenticate
  */
-class FormAuthenticate extends BaseAuthenticate
-{
+class FormAuthenticate extends BaseAuthenticate {
 
 	/**
 	 * Checks the fields to ensure they are supplied.
@@ -45,8 +44,7 @@ class FormAuthenticate extends BaseAuthenticate
 	 * @param array $fields The fields to be checked.
 	 * @return bool False if the fields have not been supplied. True if they exist.
 	 */
-	protected function _checkFields(Request $request, array $fields)
-	{
+	protected function _checkFields(Request $request, array $fields) {
 		foreach ([$fields['username'], $fields['password']] as $field) {
 			$value = $request->data($field);
 			if (empty($value) || !is_string($value)) {
@@ -65,8 +63,7 @@ class FormAuthenticate extends BaseAuthenticate
 	 * @param \Cake\Network\Response $response Unused response object.
 	 * @return mixed False on login failure.  An array of User data on success.
 	 */
-	public function authenticate(Request $request, Response $response)
-	{
+	public function authenticate(Request $request, Response $response) {
 		$fields = $this->_config['fields'];
 		if (!$this->_checkFields($request, $fields)) {
 			return false;

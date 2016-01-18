@@ -23,16 +23,14 @@ use Cake\Utility\Hash;
  * Class HashTest
  *
  */
-class HashTest extends TestCase
-{
+class HashTest extends TestCase {
 
 	/**
 	 * Data provider
 	 *
 	 * @return array
 	 */
-	public static function articleData()
-	{
+	public static function articleData() {
 		return [
 			[
 				'Article' => [
@@ -150,8 +148,7 @@ class HashTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function articleDataObject()
-	{
+	public static function articleDataObject() {
 		return new ArrayObject([
 			new Entity([
 				'Article' => new ArrayObject([
@@ -269,8 +266,7 @@ class HashTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function articleDataSets()
-	{
+	public static function articleDataSets() {
 		return [
 			[static::articleData()],
 			[static::articleDataObject()]
@@ -282,8 +278,7 @@ class HashTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function userData()
-	{
+	public static function userData() {
 		return [
 			[
 				'User' => [
@@ -323,8 +318,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGet()
-	{
+	public function testGet() {
 		$data = ['abc', 'def'];
 
 		$result = Hash::get($data, '0');
@@ -401,8 +395,7 @@ class HashTest extends TestCase
 	 * @expectedExceptionMessage Invalid data type, must be an array or \ArrayAccess instance.
 	 * @return void
 	 */
-	public function testGetInvalidData()
-	{
+	public function testGetInvalidData() {
 		Hash::get('string', 'path');
 	}
 
@@ -412,8 +405,7 @@ class HashTest extends TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @return void
 	 */
-	public function testGetInvalidPath()
-	{
+	public function testGetInvalidPath() {
 		Hash::get(['one' => 'two'], true);
 	}
 
@@ -422,8 +414,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDimensions()
-	{
+	public function testDimensions() {
 		$result = Hash::dimensions([]);
 		$this->assertEquals($result, 0);
 
@@ -453,8 +444,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMaxDimensions()
-	{
+	public function testMaxDimensions() {
 		$data = [];
 		$result = Hash::maxDimensions($data);
 		$this->assertEquals(0, $result);
@@ -500,8 +490,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFlatten()
-	{
+	public function testFlatten() {
 		$data = ['Larry', 'Curly', 'Moe'];
 		$result = Hash::flatten($data);
 		$this->assertEquals($result, $data);
@@ -570,8 +559,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDiff()
-	{
+	public function testDiff() {
 		$a = [
 			0 => ['name' => 'main'],
 			1 => ['name' => 'about']
@@ -653,8 +641,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMerge()
-	{
+	public function testMerge() {
 		$result = Hash::merge(['foo'], ['bar']);
 		$this->assertEquals($result, ['foo', 'bar']);
 
@@ -741,8 +728,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNormalize()
-	{
+	public function testNormalize() {
 		$result = Hash::normalize(['one', 'two', 'three']);
 		$expected = ['one' => null, 'two' => null, 'three' => null];
 		$this->assertEquals($expected, $result);
@@ -769,8 +755,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContains()
-	{
+	public function testContains() {
 		$data = ['apple', 'bee', 'cyclops'];
 		$this->assertTrue(Hash::contains($data, ['apple']));
 		$this->assertFalse(Hash::contains($data, ['data']));
@@ -814,8 +799,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFilter()
-	{
+	public function testFilter() {
 		$result = Hash::filter(['0', false, true, 0, ['one thing', 'I can tell you', 'is you got to be', false]]);
 		$expected = ['0', 2 => true, 3 => 0, 4 => ['one thing', 'I can tell you', 'is you got to be']];
 		$this->assertSame($expected, $result);
@@ -844,8 +828,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNumeric()
-	{
+	public function testNumeric() {
 		$data = ['one'];
 		$this->assertTrue(Hash::numeric(array_keys($data)));
 
@@ -887,8 +870,7 @@ class HashTest extends TestCase
 	 * @expectedExceptionMessage Invalid data type, must be an array or \ArrayAccess instance.
 	 * @return void
 	 */
-	public function testExtractInvalidArgument()
-	{
+	public function testExtractInvalidArgument() {
 		Hash::extract('foo', '');
 	}
 
@@ -898,8 +880,7 @@ class HashTest extends TestCase
 	 * @dataProvider articleDataSets
 	 * @return void
 	 */
-	public function testExtractBasic($data)
-	{
+	public function testExtractBasic($data) {
 		$result = Hash::extract($data, '');
 		$this->assertEquals($data, $result);
 
@@ -919,8 +900,7 @@ class HashTest extends TestCase
 	 * @dataProvider articleDataSets
 	 * @return void
 	 */
-	public function testExtractNumericKey($data)
-	{
+	public function testExtractNumericKey($data) {
 		$result = Hash::extract($data, '{n}.Article.title');
 		$expected = [
 			'First Article', 'Second Article',
@@ -941,8 +921,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractNumericMixedKeys()
-	{
+	public function testExtractNumericMixedKeys() {
 		$data = [
 			'User' => [
 				0 => [
@@ -999,8 +978,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractNumericNonZero()
-	{
+	public function testExtractNumericNonZero() {
 		$data = [
 			1 => [
 				'User' => [
@@ -1056,8 +1034,7 @@ class HashTest extends TestCase
 	 * @dataProvider articleDataSets
 	 * @return void
 	 */
-	public function testExtractStringKey($data)
-	{
+	public function testExtractStringKey($data) {
 		$result = Hash::extract($data, '{n}.{s}.user');
 		$expected = [
 			'mariano',
@@ -1077,8 +1054,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractWildcard()
-	{
+	public function testExtractWildcard() {
 		$data = [
 			'02000009C5560001' => ['name' => 'Mr. Alphanumeric'],
 			'2300000918020101' => ['name' => 'Mr. Numeric'],
@@ -1124,8 +1100,7 @@ class HashTest extends TestCase
 	 * @dataProvider articleDataSets
 	 * @return void
 	 */
-	public function testExtractAttributePresence($data)
-	{
+	public function testExtractAttributePresence($data) {
 		$result = Hash::extract($data, '{n}.Article[published]');
 		$expected = [$data[1]['Article']];
 		$this->assertEquals($expected, $result);
@@ -1141,8 +1116,7 @@ class HashTest extends TestCase
 	 * @dataProvider articleDataSets
 	 * @return void
 	 */
-	public function testExtractAttributeEquality($data)
-	{
+	public function testExtractAttributeEquality($data) {
 		$result = Hash::extract($data, '{n}.Article[id=3]');
 		$expected = [$data[2]['Article']];
 		$this->assertEquals($expected, $result);
@@ -1163,8 +1137,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractAttributeBoolean()
-	{
+	public function testExtractAttributeBoolean() {
 		$usersArray = [
 			[
 				'id' => 2,
@@ -1227,8 +1200,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractAttributeEqualityOnScalarValue()
-	{
+	public function testExtractAttributeEqualityOnScalarValue() {
 		$dataArray = [
 			'Entity' => [
 				'id' => 1,
@@ -1258,8 +1230,7 @@ class HashTest extends TestCase
 	 * @dataProvider articleDataSets
 	 * @return void
 	 */
-	public function testExtractAttributeComparison($data)
-	{
+	public function testExtractAttributeComparison($data) {
 		$result = Hash::extract($data, '{n}.Comment.{n}[user_id > 2]');
 		$expected = [$data[0]['Comment'][1]];
 		$this->assertEquals($expected, $result);
@@ -1287,8 +1258,7 @@ class HashTest extends TestCase
 	 * @dataProvider articleDataSets
 	 * @return void
 	 */
-	public function testExtractAttributeMultiple($data)
-	{
+	public function testExtractAttributeMultiple($data) {
 		$result = Hash::extract($data, '{n}.Comment.{n}[user_id > 2][id=1]');
 		$this->assertEmpty($result);
 
@@ -1304,8 +1274,7 @@ class HashTest extends TestCase
 	 * @dataProvider articleDataSets
 	 * @return void
 	 */
-	public function testExtractAttributePattern($data)
-	{
+	public function testExtractAttributePattern($data) {
 		$result = Hash::extract($data, '{n}.Article[title=/^First/]');
 		$expected = [$data[0]['Article']];
 		$this->assertEquals($expected, $result);
@@ -1320,8 +1289,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractMatchesNull()
-	{
+	public function testExtractMatchesNull() {
 		$data = [
 			'Country' => [
 				['name' => 'Canada'],
@@ -1356,8 +1324,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractUnevenKeys()
-	{
+	public function testExtractUnevenKeys() {
 		$data = [
 			'Level1' => [
 				'Level2' => ['test1', 'test2'],
@@ -1424,8 +1391,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSort()
-	{
+	public function testSort() {
 		$result = Hash::sort([], '{n}.name');
 		$this->assertEquals([], $result);
 
@@ -1577,8 +1543,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortNumeric()
-	{
+	public function testSortNumeric() {
 		$items = [
 			['Item' => ['price' => '155,000']],
 			['Item' => ['price' => '139,000']],
@@ -1612,8 +1577,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortNatural()
-	{
+	public function testSortNatural() {
 		$items = [
 			['Item' => ['image' => 'img1.jpg']],
 			['Item' => ['image' => 'img99.jpg']],
@@ -1647,8 +1611,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortNaturalFallbackToRegular()
-	{
+	public function testSortNaturalFallbackToRegular() {
 		$a = [
 			0 => ['Person' => ['name' => 'Jeff']],
 			1 => ['Shirt' => ['color' => 'black']]
@@ -1666,8 +1629,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortWithOutOfOrderKeys()
-	{
+	public function testSortWithOutOfOrderKeys() {
 		$data = [
 			9 => ['class' => 510, 'test2' => 2],
 			1 => ['class' => 500, 'test2' => 1],
@@ -1694,8 +1656,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortString()
-	{
+	public function testSortString() {
 		$toSort = [
 			'four' => ['number' => 4, 'some' => 'foursome'],
 			'six' => ['number' => 6, 'some' => 'sixsome'],
@@ -1733,8 +1694,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortStringIgnoreCase()
-	{
+	public function testSortStringIgnoreCase() {
 		$toSort = [
 			['Item' => ['name' => 'bar']],
 			['Item' => ['name' => 'Baby']],
@@ -1756,8 +1716,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortRegularIgnoreCase()
-	{
+	public function testSortRegularIgnoreCase() {
 		$toSort = [
 			['Item' => ['name' => 'bar']],
 			['Item' => ['name' => 'Baby']],
@@ -1779,8 +1738,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsertSimple()
-	{
+	public function testInsertSimple() {
 		$a = [
 			'pages' => ['name' => 'page']
 		];
@@ -1813,8 +1771,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsertMulti()
-	{
+	public function testInsertMulti() {
 		$data = static::articleData();
 
 		$result = Hash::insert($data, '{n}.Article.insert', 'value');
@@ -1859,8 +1816,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsertOverwriteStringValue()
-	{
+	public function testInsertOverwriteStringValue() {
 		$data = [
 			'Some' => [
 				'string' => 'value'
@@ -1882,8 +1838,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemove()
-	{
+	public function testRemove() {
 		$a = [
 			'pages' => ['name' => 'page'],
 			'files' => ['name' => 'files']
@@ -1953,8 +1908,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemoveMulti()
-	{
+	public function testRemoveMulti() {
 		$data = static::articleData();
 
 		$result = Hash::remove($data, '{n}.Article.title');
@@ -2000,8 +1954,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheck()
-	{
+	public function testCheck() {
 		$set = [
 			'My Index 1' => ['First' => 'The first item']
 		];
@@ -2030,8 +1983,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCombine()
-	{
+	public function testCombine() {
 		$result = Hash::combine([], '{n}.User.id', '{n}.User.Data');
 		$this->assertTrue(empty($result));
 
@@ -2066,8 +2018,7 @@ class HashTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testCombineErrorMissingValue()
-	{
+	public function testCombineErrorMissingValue() {
 		$data = [
 			['User' => ['id' => 1, 'name' => 'mark']],
 			['User' => ['name' => 'jose']],
@@ -2081,8 +2032,7 @@ class HashTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testCombineErrorMissingKey()
-	{
+	public function testCombineErrorMissingKey() {
 		$data = [
 			['User' => ['id' => 1, 'name' => 'mark']],
 			['User' => ['id' => 2]],
@@ -2095,8 +2045,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCombineWithGroupPath()
-	{
+	public function testCombineWithGroupPath() {
 		$a = static::userData();
 
 		$result = Hash::combine($a, '{n}.User.id', '{n}.User.Data', '{n}.User.group_id');
@@ -2153,8 +2102,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCombineWithFormatting()
-	{
+	public function testCombineWithFormatting() {
 		$a = static::userData();
 
 		$result = Hash::combine(
@@ -2220,8 +2168,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormat()
-	{
+	public function testFormat() {
 		$data = static::userData();
 
 		$result = Hash::format(
@@ -2254,8 +2201,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatNullValues()
-	{
+	public function testFormatNullValues() {
 		$data = [
 			['Person' => [
 				'first_name' => 'Nate', 'last_name' => 'Abele', 'city' => 'Boston', 'state' => 'MA', 'something' => '42'
@@ -2282,8 +2228,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMap()
-	{
+	public function testMap() {
 		$data = static::articleData();
 
 		$result = Hash::map($data, '{n}.Article.id', [$this, 'mapCallback']);
@@ -2296,8 +2241,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testApply()
-	{
+	public function testApply() {
 		$data = static::articleData();
 
 		$result = Hash::apply($data, '{n}.Article.id', 'array_sum');
@@ -2309,8 +2253,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReduce()
-	{
+	public function testReduce() {
 		$data = static::articleData();
 
 		$result = Hash::reduce($data, '{n}.Article.id', [$this, 'reduceCallback']);
@@ -2323,8 +2266,7 @@ class HashTest extends TestCase
 	 * @param mixed $value Value
 	 * @return mixed
 	 */
-	public function mapCallback($value)
-	{
+	public function mapCallback($value) {
 		return $value * 2;
 	}
 
@@ -2335,8 +2277,7 @@ class HashTest extends TestCase
 	 * @param mixed $two Second param
 	 * @return mixed
 	 */
-	public function reduceCallback($one, $two)
-	{
+	public function reduceCallback($one, $two) {
 		return $one + $two;
 	}
 
@@ -2346,8 +2287,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestModel()
-	{
+	public function testNestModel() {
 		$input = [
 			[
 				'ModelName' => [
@@ -2494,8 +2434,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestModelExplicitRoot()
-	{
+	public function testNestModelExplicitRoot() {
 		$input = [
 			[
 				'ModelName' => [
@@ -2605,8 +2544,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNest1Dimensional()
-	{
+	public function testNest1Dimensional() {
 		$input = [
 			[
 				'id' => 1,
@@ -2716,8 +2654,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMissingParent()
-	{
+	public function testMissingParent() {
 		$input = [
 			[
 				'id' => 1,
@@ -2766,8 +2703,7 @@ class HashTest extends TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @return void
 	 */
-	public function testNestInvalid()
-	{
+	public function testNestInvalid() {
 		$input = [
 			[
 				'ParentCategory' => [
@@ -2785,8 +2721,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeDiff()
-	{
+	public function testMergeDiff() {
 		$first = [
 			'ModelOne' => [
 				'id' => 1001,
@@ -2887,8 +2822,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExpand()
-	{
+	public function testExpand() {
 		$data = ['My', 'Array', 'To', 'Flatten'];
 		$flat = Hash::flatten($data);
 		$result = Hash::expand($flat);
@@ -2946,8 +2880,7 @@ class HashTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFlattenInfiniteLoop()
-	{
+	public function testFlattenInfiniteLoop() {
 		$data = [
 			'Order.ASI' => '0',
 			'Order.Accounting' => '0',

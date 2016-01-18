@@ -37,8 +37,7 @@ use Phinx\Db\Adapter\AdapterInterface;
  *
  * @author Woody Gilk <woody.gilk@gmail.com>
  */
-class AdapterFactory
-{
+class AdapterFactory {
 	/**
 	 * @var AdapterFactory
 	 */
@@ -49,8 +48,7 @@ class AdapterFactory
 	 *
 	 * @return AdapterFactory
 	 */
-	public static function instance()
-	{
+	public static function instance() {
 		if (!static::$instance) {
 			static::$instance = new static();
 		}
@@ -87,8 +85,7 @@ class AdapterFactory
 	 * @param  string $class
 	 * @return $this
 	 */
-	public function registerAdapter($name, $class)
-	{
+	public function registerAdapter($name, $class) {
 		if (!is_subclass_of($class, 'Phinx\Db\Adapter\AdapterInterface')) {
 			throw new \RuntimeException(sprintf(
 				'Adapter class "%s" must be implement Phinx\\Db\\Adapter\\AdapterInterface',
@@ -106,8 +103,7 @@ class AdapterFactory
 	 * @param  string $name
 	 * @return string
 	 */
-	protected function getClass($name)
-	{
+	protected function getClass($name) {
 		if (empty($this->adapters[$name])) {
 			throw new \RuntimeException(sprintf(
 				'Adapter "%s" has not been registered',
@@ -124,8 +120,7 @@ class AdapterFactory
 	 * @param  array $options
 	 * @return AdapterInterface
 	 */
-	public function getAdapter($name, array $options)
-	{
+	public function getAdapter($name, array $options) {
 		$class = $this->getClass($name);
 		return new $class($options);
 	}
@@ -138,8 +133,7 @@ class AdapterFactory
 	 * @param  string $class
 	 * @return $this
 	 */
-	public function registerWrapper($name, $class)
-	{
+	public function registerWrapper($name, $class) {
 		if (!is_subclass_of($class, 'Phinx\Db\Adapter\WrapperInterface')) {
 			throw new \RuntimeException(sprintf(
 				'Wrapper class "%s" must be implement Phinx\\Db\\Adapter\\WrapperInterface',
@@ -157,8 +151,7 @@ class AdapterFactory
 	 * @param  string $name
 	 * @return string
 	 */
-	protected function getWrapperClass($name)
-	{
+	protected function getWrapperClass($name) {
 		if (empty($this->wrappers[$name])) {
 			throw new \RuntimeException(sprintf(
 				'Wrapper "%s" has not been registered',
@@ -175,8 +168,7 @@ class AdapterFactory
 	 * @param  AdapterInterface $adapter
 	 * @return AdapterInterface
 	 */
-	public function getWrapper($name, AdapterInterface $adapter)
-	{
+	public function getWrapper($name, AdapterInterface $adapter) {
 		$class = $this->getWrapperClass($name);
 		return new $class($adapter);
 	}

@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
  * SortIterator Test
  *
  */
-class SortIteratorTest extends TestCase
-{
+class SortIteratorTest extends TestCase {
 
 	/**
 	 * Tests sorting numbers with an identity callbacks
 	 *
 	 * @return void
 	 */
-	public function testSortNumbersIdentity()
-	{
+	public function testSortNumbersIdentity() {
 		$items = new ArrayObject([3, 5, 1, 2, 4]);
 		$identity = function ($a) {
 			return $a;
@@ -51,8 +49,7 @@ class SortIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortNumbersCustom()
-	{
+	public function testSortNumbersCustom() {
 		$items = new ArrayObject([3, 5, 1, 2, 4]);
 		$callback = function ($a) {
 			return $a * -1;
@@ -71,8 +68,7 @@ class SortIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortComplexNumeric()
-	{
+	public function testSortComplexNumeric() {
 		$items = new ArrayObject([
 			['foo' => 1, 'bar' => 'a'],
 			['foo' => 10, 'bar' => 'a'],
@@ -106,8 +102,7 @@ class SortIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortComplexNatural()
-	{
+	public function testSortComplexNatural() {
 		$items = new ArrayObject([
 			['foo' => 'foo_1', 'bar' => 'a'],
 			['foo' => 'foo_10', 'bar' => 'a'],
@@ -142,8 +137,7 @@ class SortIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortComplexNaturalWithPath()
-	{
+	public function testSortComplexNaturalWithPath() {
 		$items = new ArrayObject([
 			['foo' => 'foo_1', 'bar' => 'a'],
 			['foo' => 'foo_10', 'bar' => 'a'],
@@ -175,8 +169,7 @@ class SortIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortComplexDeepPath()
-	{
+	public function testSortComplexDeepPath() {
 		$items = new ArrayObject([
 			['foo' => ['bar' => 1], 'bar' => 'a'],
 			['foo' => ['bar' => 12], 'bar' => 'a'],
@@ -198,8 +191,7 @@ class SortIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSortDateTime()
-	{
+	public function testSortDateTime() {
 		$items = new ArrayObject([
 			new \DateTime('2014-07-21'),
 			new \DateTime('2015-06-30'),

@@ -47,8 +47,7 @@ use SimpleXmlElement;
  * Once made configuration profiles can be used to re-use across various email messages your
  * application sends.
  */
-class Email implements JsonSerializable, Serializable
-{
+class Email implements JsonSerializable, Serializable {
 
 	use StaticConfigTrait;
 	use ViewVarsTrait;
@@ -327,8 +326,7 @@ class Email implements JsonSerializable, Serializable
 	 *
 	 * @param array|string|null $config Array of configs, or string to load configs from email.php
 	 */
-	public function __construct($config = null)
-	{
+	public function __construct($config = null) {
 		$this->_appCharset = Configure::read('App.encoding');
 		if ($this->_appCharset !== null) {
 			$this->charset = $this->_appCharset;
@@ -360,8 +358,7 @@ class Email implements JsonSerializable, Serializable
 	 *
 	 * @return void
 	 */
-	public function __clone()
-	{
+	public function __clone() {
 		$this->_viewBuilder = clone $this->viewBuilder();
 	}
 
@@ -374,8 +371,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return array|$this
 	 * @throws \InvalidArgumentException
 	 */
-	public function from($email = null, $name = null)
-	{
+	public function from($email = null, $name = null) {
 		if ($email === null) {
 			return $this->_from;
 		}
@@ -391,8 +387,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return array|$this
 	 * @throws \InvalidArgumentException
 	 */
-	public function sender($email = null, $name = null)
-	{
+	public function sender($email = null, $name = null) {
 		if ($email === null) {
 			return $this->_sender;
 		}
@@ -408,8 +403,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return array|$this
 	 * @throws \InvalidArgumentException
 	 */
-	public function replyTo($email = null, $name = null)
-	{
+	public function replyTo($email = null, $name = null) {
 		if ($email === null) {
 			return $this->_replyTo;
 		}
@@ -425,8 +419,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return array|$this
 	 * @throws \InvalidArgumentException
 	 */
-	public function readReceipt($email = null, $name = null)
-	{
+	public function readReceipt($email = null, $name = null) {
 		if ($email === null) {
 			return $this->_readReceipt;
 		}
@@ -442,8 +435,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return array|$this
 	 * @throws \InvalidArgumentException
 	 */
-	public function returnPath($email = null, $name = null)
-	{
+	public function returnPath($email = null, $name = null) {
 		if ($email === null) {
 			return $this->_returnPath;
 		}
@@ -458,8 +450,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $name Name
 	 * @return array|$this
 	 */
-	public function to($email = null, $name = null)
-	{
+	public function to($email = null, $name = null) {
 		if ($email === null) {
 			return $this->_to;
 		}
@@ -474,8 +465,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $name Name
 	 * @return $this
 	 */
-	public function addTo($email, $name = null)
-	{
+	public function addTo($email, $name = null) {
 		return $this->_addEmail('_to', $email, $name);
 	}
 
@@ -487,8 +477,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $name Name
 	 * @return array|$this
 	 */
-	public function cc($email = null, $name = null)
-	{
+	public function cc($email = null, $name = null) {
 		if ($email === null) {
 			return $this->_cc;
 		}
@@ -503,8 +492,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $name Name
 	 * @return $this
 	 */
-	public function addCc($email, $name = null)
-	{
+	public function addCc($email, $name = null) {
 		return $this->_addEmail('_cc', $email, $name);
 	}
 
@@ -516,8 +504,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $name Name
 	 * @return array|$this
 	 */
-	public function bcc($email = null, $name = null)
-	{
+	public function bcc($email = null, $name = null) {
 		if ($email === null) {
 			return $this->_bcc;
 		}
@@ -532,8 +519,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $name Name
 	 * @return $this
 	 */
-	public function addBcc($email, $name = null)
-	{
+	public function addBcc($email, $name = null) {
 		return $this->_addEmail('_bcc', $email, $name);
 	}
 
@@ -543,8 +529,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $charset Character set.
 	 * @return string this->charset
 	 */
-	public function charset($charset = null)
-	{
+	public function charset($charset = null) {
 		if ($charset === null) {
 			return $this->charset;
 		}
@@ -561,8 +546,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $charset Character set.
 	 * @return string this->charset
 	 */
-	public function headerCharset($charset = null)
-	{
+	public function headerCharset($charset = null) {
 		if ($charset === null) {
 			return $this->headerCharset;
 		}
@@ -577,8 +561,7 @@ class Email implements JsonSerializable, Serializable
 	 *   nothing to return the current value
 	 * @return string|$this
 	 */
-	public function emailPattern($regex = false)
-	{
+	public function emailPattern($regex = false) {
 		if ($regex === false) {
 			return $this->_emailPattern;
 		}
@@ -596,8 +579,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return $this
 	 * @throws \InvalidArgumentException
 	 */
-	protected function _setEmail($varName, $email, $name)
-	{
+	protected function _setEmail($varName, $email, $name) {
 		if (!is_array($email)) {
 			$this->_validateEmail($email);
 			if ($name === null) {
@@ -625,8 +607,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return void
 	 * @throws \InvalidArgumentException If email address does not validate
 	 */
-	protected function _validateEmail($email)
-	{
+	protected function _validateEmail($email) {
 		if ($this->_emailPattern === null) {
 			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 				return;
@@ -648,8 +629,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return $this
 	 * @throws \InvalidArgumentException
 	 */
-	protected function _setEmailSingle($varName, $email, $name, $throwMessage)
-	{
+	protected function _setEmailSingle($varName, $email, $name, $throwMessage) {
 		$current = $this->{$varName};
 		$this->_setEmail($varName, $email, $name);
 		if (count($this->{$varName}) !== 1) {
@@ -669,8 +649,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return $this
 	 * @throws \InvalidArgumentException
 	 */
-	protected function _addEmail($varName, $email, $name)
-	{
+	protected function _addEmail($varName, $email, $name) {
 		if (!is_array($email)) {
 			$this->_validateEmail($email);
 			if ($name === null) {
@@ -697,8 +676,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $subject Subject string.
 	 * @return string|$this
 	 */
-	public function subject($subject = null)
-	{
+	public function subject($subject = null) {
 		if ($subject === null) {
 			return $this->_subject;
 		}
@@ -712,8 +690,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param array $headers Associative array containing headers to be set.
 	 * @return $this
 	 */
-	public function setHeaders(array $headers)
-	{
+	public function setHeaders(array $headers) {
 		$this->_headers = $headers;
 		return $this;
 	}
@@ -724,8 +701,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param array $headers Headers to set.
 	 * @return $this
 	 */
-	public function addHeaders(array $headers)
-	{
+	public function addHeaders(array $headers) {
 		$this->_headers = array_merge($this->_headers, $headers);
 		return $this;
 	}
@@ -747,8 +723,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param array $include List of headers.
 	 * @return array
 	 */
-	public function getHeaders(array $include = [])
-	{
+	public function getHeaders(array $include = []) {
 		if ($include == array_values($include)) {
 			$include = array_fill_keys($include, true);
 		}
@@ -829,8 +804,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param array $address Addresses to format.
 	 * @return array
 	 */
-	protected function _formatAddress($address)
-	{
+	protected function _formatAddress($address) {
 		$return = [];
 		foreach ($address as $email => $alias) {
 			if ($email === $alias) {
@@ -853,8 +827,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param bool|string $layout Layout name or null to not use
 	 * @return array|$this
 	 */
-	public function template($template = false, $layout = false)
-	{
+	public function template($template = false, $layout = false) {
 		if ($template === false) {
 			return [
 				'template' => $this->viewBuilder()->template(),
@@ -874,8 +847,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $viewClass View class name.
 	 * @return string|$this
 	 */
-	public function viewRender($viewClass = null)
-	{
+	public function viewRender($viewClass = null) {
 		if ($viewClass === null) {
 			return $this->viewBuilder()->className();
 		}
@@ -889,8 +861,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param array|null $viewVars Variables to set for view.
 	 * @return array|$this
 	 */
-	public function viewVars($viewVars = null)
-	{
+	public function viewVars($viewVars = null) {
 		if ($viewVars === null) {
 			return $this->viewVars;
 		}
@@ -904,8 +875,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $theme Theme name.
 	 * @return string|$this
 	 */
-	public function theme($theme = null)
-	{
+	public function theme($theme = null) {
 		if ($theme === null) {
 			return $this->viewBuilder()->theme();
 		}
@@ -919,8 +889,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param array|null $helpers Helpers list.
 	 * @return array|$this
 	 */
-	public function helpers($helpers = null)
-	{
+	public function helpers($helpers = null) {
 		if ($helpers === null) {
 			return $this->viewBuilder()->helpers();
 		}
@@ -935,8 +904,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return string|$this
 	 * @throws \InvalidArgumentException
 	 */
-	public function emailFormat($format = null)
-	{
+	public function emailFormat($format = null) {
 		if ($format === null) {
 			return $this->_emailFormat;
 		}
@@ -959,8 +927,7 @@ class Email implements JsonSerializable, Serializable
 	 * @throws \LogicException When the chosen transport lacks a send method.
 	 * @throws \InvalidArgumentException When $name is neither a string nor an object.
 	 */
-	public function transport($name = null)
-	{
+	public function transport($name = null) {
 		if ($name === null) {
 			return $this->_transport;
 		}
@@ -989,8 +956,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return \Cake\Mailer\AbstractTransport
 	 * @throws \InvalidArgumentException When transport configuration is missing or invalid.
 	 */
-	protected function _constructTransport($name)
-	{
+	protected function _constructTransport($name) {
 		if (!isset(static::$_transportConfig[$name])) {
 			throw new InvalidArgumentException(sprintf('Transport config "%s" is missing.', $name));
 		}
@@ -1033,8 +999,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return bool|string|$this
 	 * @throws \InvalidArgumentException
 	 */
-	public function messageId($message = null)
-	{
+	public function messageId($message = null) {
 		if ($message === null) {
 			return $this->_messageId;
 		}
@@ -1055,8 +1020,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $domain Manually set the domain for CLI mailing
 	 * @return string|$this
 	 */
-	public function domain($domain = null)
-	{
+	public function domain($domain = null) {
 		if ($domain === null) {
 			return $this->_domain;
 		}
@@ -1113,8 +1077,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return array|$this Either the array of attachments when getting or $this when setting.
 	 * @throws \InvalidArgumentException
 	 */
-	public function attachments($attachments = null)
-	{
+	public function attachments($attachments = null) {
 		if ($attachments === null) {
 			return $this->_attachments;
 		}
@@ -1158,8 +1121,7 @@ class Email implements JsonSerializable, Serializable
 	 * @throws \InvalidArgumentException
 	 * @see \Cake\Mailer\Email::attachments()
 	 */
-	public function addAttachments($attachments)
-	{
+	public function addAttachments($attachments) {
 		$current = $this->_attachments;
 		$this->attachments($attachments);
 		$this->_attachments = array_merge($current, $this->_attachments);
@@ -1172,8 +1134,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $type Use MESSAGE_* constants or null to return the full message as array
 	 * @return string|array String if have type, array if type is null
 	 */
-	public function message($type = null)
-	{
+	public function message($type = null) {
 		switch ($type) {
 			case static::MESSAGE_HTML:
 				return $this->_htmlMessage;
@@ -1204,8 +1165,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return mixed Either null when setting or an array of data when reading.
 	 * @throws \BadMethodCallException When modifying an existing configuration.
 	 */
-	public static function configTransport($key, $config = null)
-	{
+	public static function configTransport($key, $config = null) {
 		if ($config === null && is_string($key)) {
 			return isset(static::$_transportConfig[$key]) ? static::$_transportConfig[$key] : null;
 		}
@@ -1237,8 +1197,7 @@ class Email implements JsonSerializable, Serializable
 	 *
 	 * @return array Array of configurations.
 	 */
-	public static function configuredTransport()
-	{
+	public static function configuredTransport() {
 		return array_keys(static::$_transportConfig);
 	}
 
@@ -1248,8 +1207,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string $key The transport name to remove.
 	 * @return void
 	 */
-	public static function dropTransport($key)
-	{
+	public static function dropTransport($key) {
 		unset(static::$_transportConfig[$key]);
 	}
 
@@ -1260,8 +1218,7 @@ class Email implements JsonSerializable, Serializable
 	 *    an array with config or null to return current config.
 	 * @return string|array|$this
 	 */
-	public function profile($config = null)
-	{
+	public function profile($config = null) {
 		if ($config === null) {
 			return $this->_profile;
 		}
@@ -1279,8 +1236,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return array
 	 * @throws \BadMethodCallException
 	 */
-	public function send($content = null)
-	{
+	public function send($content = null) {
 		if (empty($this->_from)) {
 			throw new BadMethodCallException('From is not specified.');
 		}
@@ -1311,8 +1267,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param array $contents The content with 'headers' and 'message' keys.
 	 * @return void
 	 */
-	protected function _logDelivery($contents)
-	{
+	protected function _logDelivery($contents) {
 		if (empty($this->_profile['log'])) {
 			return;
 		}
@@ -1344,8 +1299,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return \Cake\Mailer\Email Instance of Cake\Mailer\Email
 	 * @throws \InvalidArgumentException
 	 */
-	public static function deliver($to = null, $subject = null, $message = null, $transportConfig = 'fast', $send = true)
-	{
+	public static function deliver($to = null, $subject = null, $message = null, $transportConfig = 'fast', $send = true) {
 		$class = __CLASS__;
 		$instance = new $class($transportConfig);
 		if ($to !== null) {
@@ -1375,8 +1329,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return void
 	 * @throws \InvalidArgumentException When using a configuration that doesn't exist.
 	 */
-	protected function _applyConfig($config)
-	{
+	protected function _applyConfig($config) {
 		if (is_string($config)) {
 			$name = $config;
 			$config = static::config($name);
@@ -1431,8 +1384,7 @@ class Email implements JsonSerializable, Serializable
 	 *
 	 * @return $this
 	 */
-	public function reset()
-	{
+	public function reset() {
 		$this->_to = [];
 		$this->_from = [];
 		$this->_sender = [];
@@ -1471,8 +1423,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string $text String to encode
 	 * @return string Encoded string
 	 */
-	protected function _encode($text)
-	{
+	protected function _encode($text) {
 		$restore = mb_internal_encoding();
 		mb_internal_encoding($this->_appCharset);
 		if (empty($this->headerCharset)) {
@@ -1491,8 +1442,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string $charset the target encoding
 	 * @return string
 	 */
-	protected function _encodeString($text, $charset)
-	{
+	protected function _encodeString($text, $charset) {
 		if ($this->_appCharset === $charset) {
 			return $text;
 		}
@@ -1506,8 +1456,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param int $wrapLength The line length
 	 * @return array Wrapped message
 	 */
-	protected function _wrap($message, $wrapLength = Email::LINE_LENGTH_MUST)
-	{
+	protected function _wrap($message, $wrapLength = Email::LINE_LENGTH_MUST) {
 		if (strlen($message) === 0) {
 			return [''];
 		}
@@ -1612,8 +1561,7 @@ class Email implements JsonSerializable, Serializable
 	 *
 	 * @return void
 	 */
-	protected function _createBoundary()
-	{
+	protected function _createBoundary() {
 		if (!empty($this->_attachments) || $this->_emailFormat === 'both') {
 			$this->_boundary = md5(uniqid(time()));
 		}
@@ -1625,8 +1573,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $boundary Boundary to use. If null, will default to $this->_boundary
 	 * @return array An array of lines to add to the message
 	 */
-	protected function _attachFiles($boundary = null)
-	{
+	protected function _attachFiles($boundary = null) {
 		if ($boundary === null) {
 			$boundary = $this->_boundary;
 		}
@@ -1663,8 +1610,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string $path The absolute path to the file to read.
 	 * @return string File contents in base64 encoding
 	 */
-	protected function _readFile($path)
-	{
+	protected function _readFile($path) {
 		$File = new File($path);
 		return chunk_split(base64_encode($File->read()));
 	}
@@ -1675,8 +1621,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string|null $boundary Boundary to use. If null, will default to $this->_boundary
 	 * @return array An array of lines to add to the message
 	 */
-	protected function _attachInlineFiles($boundary = null)
-	{
+	protected function _attachInlineFiles($boundary = null) {
 		if ($boundary === null) {
 			$boundary = $this->_boundary;
 		}
@@ -1706,8 +1651,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param array $content Content to render
 	 * @return array Email body ready to be sent
 	 */
-	protected function _render($content)
-	{
+	protected function _render($content) {
 		$this->_textMessage = $this->_htmlMessage = '';
 
 		$content = implode("\n", $content);
@@ -1794,8 +1738,7 @@ class Email implements JsonSerializable, Serializable
 	 *
 	 * @return array Array of types. Valid types are 'text' and 'html'
 	 */
-	protected function _getTypes()
-	{
+	protected function _getTypes() {
 		$types = [$this->_emailFormat];
 		if ($this->_emailFormat === 'both') {
 			$types = ['html', 'text'];
@@ -1811,8 +1754,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string $content The content passed in from send() in most cases.
 	 * @return array The rendered content with html and text keys.
 	 */
-	protected function _renderTemplates($content)
-	{
+	protected function _renderTemplates($content) {
 		$types = $this->_getTypes();
 		$rendered = [];
 		$template = $this->viewBuilder()->template();
@@ -1860,8 +1802,7 @@ class Email implements JsonSerializable, Serializable
 	 *
 	 * @return string
 	 */
-	protected function _getContentTransferEncoding()
-	{
+	protected function _getContentTransferEncoding() {
 		$charset = strtoupper($this->charset);
 		if (in_array($charset, $this->_charset8bit)) {
 			return '8bit';
@@ -1877,8 +1818,7 @@ class Email implements JsonSerializable, Serializable
 	 *
 	 * @return string
 	 */
-	protected function _getContentTypeCharset()
-	{
+	protected function _getContentTypeCharset() {
 		$charset = strtoupper($this->charset);
 		if (array_key_exists($charset, $this->_contentTypeCharset)) {
 			return strtoupper($this->_contentTypeCharset[$charset]);
@@ -1900,8 +1840,7 @@ class Email implements JsonSerializable, Serializable
 	 * @return array Serializable array of configuration properties.
 	 * @throws \Exception When a view var object can not be properly serialized.
 	 */
-	public function jsonSerialize()
-	{
+	public function jsonSerialize() {
 		$properties = [
 			'_to', '_from', '_sender', '_replyTo', '_cc', '_bcc', '_subject',
 			'_returnPath', '_readReceipt', '_emailFormat', '_emailPattern', '_domain',
@@ -1935,8 +1874,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string $key View var key.
 	 * @return void
 	 */
-	protected function _checkViewVars(&$item, $key)
-	{
+	protected function _checkViewVars(&$item, $key) {
 		if ($item instanceof Exception) {
 			$item = (string)$item;
 		}
@@ -1960,8 +1898,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param array $config Email configuration array.
 	 * @return \Cake\Mailer\Email Configured email instance.
 	 */
-	public function createFromArray($config)
-	{
+	public function createFromArray($config) {
 		if (isset($config['viewConfig'])) {
 			$this->viewBuilder()->createFromArray($config['viewConfig']);
 			unset($config['viewConfig']);
@@ -1979,8 +1916,7 @@ class Email implements JsonSerializable, Serializable
 	 *
 	 * @return string
 	 */
-	public function serialize()
-	{
+	public function serialize() {
 		$array = $this->jsonSerialize();
 		array_walk_recursive($array, function (&$item, $key) {
 			if ($item instanceof SimpleXmlElement) {
@@ -1996,8 +1932,7 @@ class Email implements JsonSerializable, Serializable
 	 * @param string $data Serialized string.
 	 * @return \Cake\Mailer\Email Configured email instance.
 	 */
-	public function unserialize($data)
-	{
+	public function unserialize($data) {
 		return $this->createFromArray(unserialize($data));
 	}
 }

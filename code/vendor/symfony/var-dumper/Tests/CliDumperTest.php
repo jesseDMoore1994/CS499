@@ -18,12 +18,10 @@ use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class CliDumperTest extends \PHPUnit_Framework_TestCase
-{
+class CliDumperTest extends \PHPUnit_Framework_TestCase {
 	use VarDumperTestTrait;
 
-	public function testGet()
-	{
+	public function testGet() {
 		require __DIR__ . '/Fixtures/dumb-var.php';
 
 		$dumper = new CliDumper('php://output');
@@ -113,8 +111,7 @@ EOTXT
 	/**
 	 * @requires extension xml
 	 */
-	public function testXmlResource()
-	{
+	public function testXmlResource() {
 		$var = xml_parser_create();
 
 		$this->assertDumpMatchesFormat(
@@ -131,8 +128,7 @@ EOTXT
 		);
 	}
 
-	public function testClosedResource()
-	{
+	public function testClosedResource() {
 		if (defined('HHVM_VERSION') && HHVM_VERSION_ID < 30600) {
 			$this->markTestSkipped();
 		}
@@ -160,8 +156,7 @@ EOTXT
 		);
 	}
 
-	public function testThrowingCaster()
-	{
+	public function testThrowingCaster() {
 		$out = fopen('php://memory', 'r+b');
 
 		require_once __DIR__ . '/Fixtures/Twig.php';
@@ -279,8 +274,7 @@ EOTXT
 		);
 	}
 
-	public function testRefsInProperties()
-	{
+	public function testRefsInProperties() {
 		$var = (object)array('foo' => 'foo');
 		$var->bar = &$var->foo;
 
@@ -313,8 +307,7 @@ EOTXT
 	 * @preserveGlobalState disabled
 	 * @requires PHP 5.6
 	 */
-	public function testSpecialVars56()
-	{
+	public function testSpecialVars56() {
 		$var = $this->getSpecialVars();
 
 		$this->assertDumpEquals(
@@ -342,8 +335,7 @@ EOTXT
 	 * @runInSeparateProcess
 	 * @preserveGlobalState disabled
 	 */
-	public function testGlobalsNoExt()
-	{
+	public function testGlobalsNoExt() {
 		$var = $this->getSpecialVars();
 		unset($var[0]);
 		$out = '';
@@ -384,8 +376,7 @@ EOTXT
 	 * @runInSeparateProcess
 	 * @preserveGlobalState disabled
 	 */
-	public function testBuggyRefs()
-	{
+	public function testBuggyRefs() {
 		if (PHP_VERSION_ID >= 50600) {
 			$this->markTestSkipped('PHP 5.6 fixed refs counting');
 		}
@@ -421,8 +412,7 @@ EOTXT
 		);
 	}
 
-	private function getSpecialVars()
-	{
+	private function getSpecialVars() {
 		foreach (array_keys($GLOBALS) as $var) {
 			if ('GLOBALS' !== $var) {
 				unset($GLOBALS[$var]);

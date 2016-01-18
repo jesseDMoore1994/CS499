@@ -24,15 +24,13 @@ if (!function_exists('Psy\sh')) {
 	 *
 	 * @return string
 	 */
-	function sh()
-	{
+	function sh() {
 		return 'extract(\Psy\Shell::debug(get_defined_vars(), isset($this) ? $this : null));';
 	}
 }
 
 if (!function_exists('Psy\info')) {
-	function info()
-	{
+	function info() {
 		$config = new Configuration();
 
 		$core = array(
@@ -129,8 +127,7 @@ if (!function_exists('Psy\bin')) {
 	 *
 	 * @return Closure
 	 */
-	function bin()
-	{
+	function bin() {
 		return function () {
 			$usageException = null;
 

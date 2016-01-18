@@ -22,8 +22,7 @@ namespace Cake\Utility\Crypto;
  *
  * @internal
  */
-class Mcrypt
-{
+class Mcrypt {
 
 	/**
 	 * Encrypts/Decrypts a text using the given key using rijndael method.
@@ -34,8 +33,7 @@ class Mcrypt
 	 * @throws \LogicException When there are errors.
 	 * @return string Encrytped binary string data, or decrypted data depending on operation.
 	 */
-	public static function rijndael($text, $key, $operation)
-	{
+	public static function rijndael($text, $key, $operation) {
 		$algorithm = MCRYPT_RIJNDAEL_256;
 		$mode = MCRYPT_MODE_CBC;
 		$ivSize = mcrypt_get_iv_size($algorithm, $mode);
@@ -63,8 +61,7 @@ class Mcrypt
 	 * @return string Encrypted data.
 	 * @throws \InvalidArgumentException On invalid data or key.
 	 */
-	public static function encrypt($plain, $key)
-	{
+	public static function encrypt($plain, $key) {
 		$algorithm = MCRYPT_RIJNDAEL_128;
 		$mode = MCRYPT_MODE_CBC;
 
@@ -86,8 +83,7 @@ class Mcrypt
 	 * @return string Decrypted data. Any trailing null bytes will be removed.
 	 * @throws InvalidArgumentException On invalid data or key.
 	 */
-	public static function decrypt($cipher, $key)
-	{
+	public static function decrypt($cipher, $key) {
 		$algorithm = MCRYPT_RIJNDAEL_128;
 		$mode = MCRYPT_MODE_CBC;
 		$ivSize = mcrypt_get_iv_size($algorithm, $mode);

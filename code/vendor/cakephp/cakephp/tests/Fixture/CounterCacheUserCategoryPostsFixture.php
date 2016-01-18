@@ -19,8 +19,7 @@ use Cake\TestSuite\Fixture\TestFixture;
 /**
  * CounterCache test fixture for testing binding keys.
  */
-class CounterCacheUserCategoryPostsFixture extends TestFixture
-{
+class CounterCacheUserCategoryPostsFixture extends TestFixture {
 
 	public $fields = [
 		'id' => ['type' => 'integer'],

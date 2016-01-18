@@ -14,8 +14,7 @@ namespace Symfony\Component\Yaml\Tests;
 use Symfony\Component\Yaml\Parser;
 use Symfony\Component\Yaml\Dumper;
 
-class DumperTest extends \PHPUnit_Framework_TestCase
-{
+class DumperTest extends \PHPUnit_Framework_TestCase {
 	protected $parser;
 	protected $dumper;
 	protected $path;
@@ -35,23 +34,20 @@ class DumperTest extends \PHPUnit_Framework_TestCase
 		),
 	);
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->parser = new Parser();
 		$this->dumper = new Dumper();
 		$this->path = __DIR__ . '/Fixtures';
 	}
 
-	protected function tearDown()
-	{
+	protected function tearDown() {
 		$this->parser = null;
 		$this->dumper = null;
 		$this->path = null;
 		$this->array = null;
 	}
 
-	public function testSetIndentation()
-	{
+	public function testSetIndentation() {
 		$this->dumper->setIndentation(7);
 
 		$expected = <<<EOF
@@ -76,8 +72,7 @@ EOF;
 		$this->assertEquals($expected, $this->dumper->dump($this->array, 4, 0));
 	}
 
-	public function testSpecifications()
-	{
+	public function testSpecifications() {
 		$files = $this->parser->parse(file_get_contents($this->path . '/index.yml'));
 		foreach ($files as $file) {
 			$yamls = file_get_contents($this->path . '/' . $file . '.yml');
@@ -101,8 +96,7 @@ EOF;
 		}
 	}
 
-	public function testInlineLevel()
-	{
+	public function testInlineLevel() {
 		$expected = <<<EOF
 { '': bar, foo: '#bar', 'foo''bar': {  }, bar: [1, foo], foobar: { foo: bar, bar: [1, foo], foobar: { foo: bar, bar: [1, foo] } } }
 EOF;
@@ -176,15 +170,13 @@ EOF;
 		$this->assertEquals($expected, $this->dumper->dump($this->array, 10), '->dump() takes an inline level argument');
 	}
 
-	public function testObjectSupportEnabled()
-	{
+	public function testObjectSupportEnabled() {
 		$dump = $this->dumper->dump(array('foo' => new A(), 'bar' => 1), 0, 0, false, true);
 
 		$this->assertEquals('{ foo: !!php/object:O:30:"Symfony\Component\Yaml\Tests\A":1:{s:1:"a";s:3:"foo";}, bar: 1 }', $dump, '->dump() is able to dump objects');
 	}
 
-	public function testObjectSupportDisabledButNoExceptions()
-	{
+	public function testObjectSupportDisabledButNoExceptions() {
 		$dump = $this->dumper->dump(array('foo' => new A(), 'bar' => 1));
 
 		$this->assertEquals('{ foo: null, bar: 1 }', $dump, '->dump() does not dump objects when disabled');
@@ -193,21 +185,18 @@ EOF;
 	/**
 	 * @expectedException \Symfony\Component\Yaml\Exception\DumpException
 	 */
-	public function testObjectSupportDisabledWithExceptions()
-	{
+	public function testObjectSupportDisabledWithExceptions() {
 		$this->dumper->dump(array('foo' => new A(), 'bar' => 1), 0, 0, true, false);
 	}
 
 	/**
 	 * @dataProvider getEscapeSequences
 	 */
-	public function testEscapedEscapeSequencesInQuotedScalar($input, $expected)
-	{
+	public function testEscapedEscapeSequencesInQuotedScalar($input, $expected) {
 		$this->assertEquals($expected, $this->dumper->dump($input));
 	}
 
-	public function getEscapeSequences()
-	{
+	public function getEscapeSequences() {
 		return array(
 			'null' => array("\t\\0", '"\t\\\\0"'),
 			'bell' => array("\t\\a", '"\t\\\\a"'),
@@ -230,7 +219,6 @@ EOF;
 	}
 }
 
-class A
-{
+class A {
 	public $a = 'foo';
 }

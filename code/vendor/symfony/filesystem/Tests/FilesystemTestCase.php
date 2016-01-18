@@ -13,8 +13,7 @@ namespace Symfony\Component\Filesystem\Tests;
 
 use Symfony\Component\Filesystem\Filesystem;
 
-class FilesystemTestCase extends \PHPUnit_Framework_TestCase
-{
+class FilesystemTestCase extends \PHPUnit_Framework_TestCase {
 	private $umask;
 
 	/**
@@ -29,8 +28,7 @@ class FilesystemTestCase extends \PHPUnit_Framework_TestCase
 
 	private static $symlinkOnWindows = null;
 
-	public static function setUpBeforeClass()
-	{
+	public static function setUpBeforeClass() {
 		if ('\\' === DIRECTORY_SEPARATOR && null === self::$symlinkOnWindows) {
 			$target = tempnam(sys_get_temp_dir(), 'sl');
 			$link = sys_get_temp_dir() . '/sl' . microtime(true) . mt_rand();
@@ -41,8 +39,7 @@ class FilesystemTestCase extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->umask = umask(0);
 		$this->workspace = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . time() . mt_rand(0, 1000);
 		mkdir($this->workspace, 0777, true);
@@ -50,8 +47,7 @@ class FilesystemTestCase extends \PHPUnit_Framework_TestCase
 		$this->filesystem = new Filesystem();
 	}
 
-	protected function tearDown()
-	{
+	protected function tearDown() {
 		$this->filesystem->remove($this->workspace);
 		umask($this->umask);
 	}
@@ -60,8 +56,7 @@ class FilesystemTestCase extends \PHPUnit_Framework_TestCase
 	 * @param int $expectedFilePerms expected file permissions as three digits (i.e. 755)
 	 * @param string $filePath
 	 */
-	protected function assertFilePermissions($expectedFilePerms, $filePath)
-	{
+	protected function assertFilePermissions($expectedFilePerms, $filePath) {
 		$actualFilePerms = (int)substr(sprintf('%o', fileperms($filePath)), -3);
 		$this->assertEquals(
 			$expectedFilePerms,
@@ -70,8 +65,7 @@ class FilesystemTestCase extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	protected function getFileOwner($filepath)
-	{
+	protected function getFileOwner($filepath) {
 		$this->markAsSkippedIfPosixIsMissing();
 
 		$infos = stat($filepath);
@@ -80,8 +74,7 @@ class FilesystemTestCase extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	protected function getFileGroup($filepath)
-	{
+	protected function getFileGroup($filepath) {
 		$this->markAsSkippedIfPosixIsMissing();
 
 		$infos = stat($filepath);
@@ -92,8 +85,7 @@ class FilesystemTestCase extends \PHPUnit_Framework_TestCase
 		$this->markTestSkipped('Unable to retrieve file group name');
 	}
 
-	protected function markAsSkippedIfSymlinkIsMissing()
-	{
+	protected function markAsSkippedIfSymlinkIsMissing() {
 		if (!function_exists('symlink')) {
 			$this->markTestSkipped('Function symlink is required.');
 		}
@@ -103,15 +95,13 @@ class FilesystemTestCase extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	protected function markAsSkippedIfChmodIsMissing()
-	{
+	protected function markAsSkippedIfChmodIsMissing() {
 		if ('\\' === DIRECTORY_SEPARATOR) {
 			$this->markTestSkipped('chmod is not supported on Windows');
 		}
 	}
 
-	protected function markAsSkippedIfPosixIsMissing()
-	{
+	protected function markAsSkippedIfPosixIsMissing() {
 		if (!function_exists('posix_isatty')) {
 			$this->markTestSkipped('Function posix_isatty is required.');
 		}

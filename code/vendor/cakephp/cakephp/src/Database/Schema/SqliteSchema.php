@@ -21,8 +21,7 @@ use RuntimeException;
 /**
  * Schema management/reflection features for Sqlite
  */
-class SqliteSchema extends BaseSchema
-{
+class SqliteSchema extends BaseSchema {
 
 	/**
 	 * Array containing the foreign keys constraints names
@@ -42,8 +41,7 @@ class SqliteSchema extends BaseSchema
 	 * @throws \Cake\Database\Exception when unable to parse column type
 	 * @return array Array of column information.
 	 */
-	protected function _convertColumn($column)
-	{
+	protected function _convertColumn($column) {
 		preg_match('/(unsigned)?\s*([a-z]+)(?:\(([0-9,]+)\))?/i', $column, $matches);
 		if (empty($matches)) {
 			throw new Exception(sprintf('Unable to parse column type from "%s"', $column));
@@ -100,8 +98,7 @@ class SqliteSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function listTablesSql($config)
-	{
+	public function listTablesSql($config) {
 		return [
 			'SELECT name FROM sqlite_master WHERE type="table" ' .
 			'AND name != "sqlite_sequence" ORDER BY name',
@@ -112,8 +109,7 @@ class SqliteSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeColumnSql($tableName, $config)
-	{
+	public function describeColumnSql($tableName, $config) {
 		$sql = sprintf(
 			'PRAGMA table_info(%s)',
 			$this->_driver->quoteIdentifier($tableName)
@@ -124,8 +120,7 @@ class SqliteSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function convertColumnDescription(Table $table, $row)
-	{
+	public function convertColumnDescription(Table $table, $row) {
 		$field = $this->_convertColumn($row['type']);
 		$field += [
 			'null' => !$row['notnull'],
@@ -158,8 +153,7 @@ class SqliteSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeIndexSql($tableName, $config)
-	{
+	public function describeIndexSql($tableName, $config) {
 		$sql = sprintf(
 			'PRAGMA index_list(%s)',
 			$this->_driver->quoteIdentifier($tableName)
@@ -176,8 +170,7 @@ class SqliteSchema extends BaseSchema
 	 * the table. This is a limitation in Sqlite's metadata features.
 	 *
 	 */
-	public function convertIndexDescription(Table $table, $row)
-	{
+	public function convertIndexDescription(Table $table, $row) {
 		$sql = sprintf(
 			'PRAGMA index_info(%s)',
 			$this->_driver->quoteIdentifier($row['name'])
@@ -205,8 +198,7 @@ class SqliteSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function describeForeignKeySql($tableName, $config)
-	{
+	public function describeForeignKeySql($tableName, $config) {
 		$sql = sprintf('PRAGMA foreign_key_list(%s)', $this->_driver->quoteIdentifier($tableName));
 		return [$sql, []];
 	}
@@ -214,8 +206,7 @@ class SqliteSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function convertForeignKeyDescription(Table $table, $row)
-	{
+	public function convertForeignKeyDescription(Table $table, $row) {
 		$name = $row['from'] . '_fk';
 
 		$update = isset($row['on_update']) ? $row['on_update'] : '';
@@ -242,8 +233,7 @@ class SqliteSchema extends BaseSchema
 	 *
 	 * @throws \Cake\Database\Exception when the column type is unknown
 	 */
-	public function columnSql(Table $table, $name)
-	{
+	public function columnSql(Table $table, $name) {
 		$data = $table->column($name);
 		$typeMap = [
 			'uuid' => ' CHAR(36)',
@@ -314,8 +304,7 @@ class SqliteSchema extends BaseSchema
 	 * that integer primary keys be defined in the column definition.
 	 *
 	 */
-	public function constraintSql(Table $table, $name)
-	{
+	public function constraintSql(Table $table, $name) {
 		$data = $table->constraint($name);
 		if ($data['type'] === Table::CONSTRAINT_PRIMARY &&
 			count($data['columns']) === 1 &&
@@ -360,8 +349,7 @@ class SqliteSchema extends BaseSchema
 	 * SQLite can not properly handle adding a constraint to an existing table.
 	 * This method is no-op
 	 */
-	public function addConstraintSql(Table $table)
-	{
+	public function addConstraintSql(Table $table) {
 		return [];
 	}
 
@@ -371,16 +359,14 @@ class SqliteSchema extends BaseSchema
 	 * SQLite can not properly handle dropping a constraint to an existing table.
 	 * This method is no-op
 	 */
-	public function dropConstraintSql(Table $table)
-	{
+	public function dropConstraintSql(Table $table) {
 		return [];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function indexSql(Table $table, $name)
-	{
+	public function indexSql(Table $table, $name) {
 		$data = $table->index($name);
 		$columns = array_map(
 			[$this->_driver, 'quoteIdentifier'],
@@ -397,8 +383,7 @@ class SqliteSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function createTableSql(Table $table, $columns, $constraints, $indexes)
-	{
+	public function createTableSql(Table $table, $columns, $constraints, $indexes) {
 		$lines = array_merge($columns, $constraints);
 		$content = implode(",\n", array_filter($lines));
 		$temporary = $table->temporary() ? ' TEMPORARY ' : ' ';
@@ -413,8 +398,7 @@ class SqliteSchema extends BaseSchema
 	/**
 	 * {@inheritDoc}
 	 */
-	public function truncateTableSql(Table $table)
-	{
+	public function truncateTableSql(Table $table) {
 		$name = $table->name();
 		$sql = [];
 		if ($this->hasSequences()) {
@@ -431,8 +415,7 @@ class SqliteSchema extends BaseSchema
 	 *
 	 * @return bool
 	 */
-	public function hasSequences()
-	{
+	public function hasSequences() {
 		$result = $this->_driver
 			->prepare('SELECT 1 FROM sqlite_master WHERE name = "sqlite_sequence"');
 		$result->execute();

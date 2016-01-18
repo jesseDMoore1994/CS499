@@ -33,8 +33,7 @@ namespace Phinx\Db\Adapter;
  *
  * @author Woody Gilk <woody.gilk@gmail.com>
  */
-interface WrapperInterface
-{
+interface WrapperInterface {
 	/**
 	 * Class constructor, must always wrap another adapter.
 	 *

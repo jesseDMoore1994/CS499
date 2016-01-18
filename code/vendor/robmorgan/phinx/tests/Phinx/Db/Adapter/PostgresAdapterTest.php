@@ -5,15 +5,13 @@ namespace Test\Phinx\Db\Adapter;
 use Symfony\Component\Console\Output\NullOutput;
 use Phinx\Db\Adapter\PostgresAdapter;
 
-class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
-{
+class PostgresAdapterTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Check if Postgres is enabled in the current PHP
 	 *
 	 * @return boolean
 	 */
-	private static function isPostgresAvailable()
-	{
+	private static function isPostgresAvailable() {
 		static $available;
 
 		if (is_null($available)) {
@@ -28,8 +26,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 	 */
 	private $adapter;
 
-	public function setUp()
-	{
+	public function setUp() {
 		if (!TESTS_PHINX_DB_ADAPTER_POSTGRES_ENABLED) {
 			$this->markTestSkipped('Postgres tests disabled.  See TESTS_PHINX_DB_ADAPTER_POSTGRES_ENABLED constant.');
 		}
@@ -55,29 +52,25 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->disconnect();
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		if ($this->adapter) {
 			$this->adapter->dropAllSchemas();
 			unset($this->adapter);
 		}
 	}
 
-	public function testConnection()
-	{
+	public function testConnection() {
 		$this->assertTrue($this->adapter->getConnection() instanceof \PDO);
 	}
 
-	public function testConnectionWithoutPort()
-	{
+	public function testConnectionWithoutPort() {
 		$options = $this->adapter->getOptions();
 		unset($options['port']);
 		$this->adapter->setOptions($options);
 		$this->assertTrue($this->adapter->getConnection() instanceof \PDO);
 	}
 
-	public function testConnectionWithInvalidCredentials()
-	{
+	public function testConnectionWithInvalidCredentials() {
 		$options = array(
 			'host' => TESTS_PHINX_DB_ADAPTER_POSTGRES_HOST,
 			'name' => TESTS_PHINX_DB_ADAPTER_POSTGRES_DATABASE,
@@ -100,8 +93,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testCreatingTheSchemaTableOnConnect()
-	{
+	public function testCreatingTheSchemaTableOnConnect() {
 		$this->adapter->connect();
 		$this->assertTrue($this->adapter->hasTable($this->adapter->getSchemaTableName()));
 		$this->adapter->dropTable($this->adapter->getSchemaTableName());
@@ -111,33 +103,28 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasTable($this->adapter->getSchemaTableName()));
 	}
 
-	public function testSchemaTableIsCreatedWithPrimaryKey()
-	{
+	public function testSchemaTableIsCreatedWithPrimaryKey() {
 		$this->adapter->connect();
 		$table = new \Phinx\Db\Table($this->adapter->getSchemaTableName(), array(), $this->adapter);
 		$this->assertTrue($this->adapter->hasIndex($this->adapter->getSchemaTableName(), array('version')));
 	}
 
-	public function testQuoteSchemaName()
-	{
+	public function testQuoteSchemaName() {
 		$this->assertEquals('"schema"', $this->adapter->quoteSchemaName('schema'));
 		$this->assertEquals('"schema.schema"', $this->adapter->quoteSchemaName('schema.schema'));
 	}
 
-	public function testQuoteTableName()
-	{
+	public function testQuoteTableName() {
 		$this->assertEquals('"public"."table"', $this->adapter->quoteTableName('table'));
 		$this->assertEquals('"public"."table.table"', $this->adapter->quoteTableName('table.table'));
 	}
 
-	public function testQuoteColumnName()
-	{
+	public function testQuoteColumnName() {
 		$this->assertEquals('"string"', $this->adapter->quoteColumnName('string'));
 		$this->assertEquals('"string.string"', $this->adapter->quoteColumnName('string.string'));
 	}
 
-	public function testCreateTable()
-	{
+	public function testCreateTable() {
 		$table = new \Phinx\Db\Table('ntable', array(), $this->adapter);
 		$table->addColumn('realname', 'string')
 			->addColumn('email', 'integer')
@@ -149,8 +136,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('ntable', 'address'));
 	}
 
-	public function testCreateTableCustomIdColumn()
-	{
+	public function testCreateTableCustomIdColumn() {
 		$table = new \Phinx\Db\Table('ntable', array('id' => 'custom_id'), $this->adapter);
 		$table->addColumn('realname', 'string')
 			->addColumn('email', 'integer')
@@ -162,8 +148,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('ntable', 'address'));
 	}
 
-	public function testCreateTableWithNoPrimaryKey()
-	{
+	public function testCreateTableWithNoPrimaryKey() {
 		$options = array(
 			'id' => false
 		);
@@ -173,8 +158,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('atable', 'id'));
 	}
 
-	public function testCreateTableWithMultiplePrimaryKeys()
-	{
+	public function testCreateTableWithMultiplePrimaryKeys() {
 		$options = array(
 			'id' => false,
 			'primary_key' => array('user_id', 'tag_id')
@@ -188,8 +172,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasIndex('table1', array('tag_id', 'user_email')));
 	}
 
-	public function testCreateTableWithMultipleIndexes()
-	{
+	public function testCreateTableWithMultipleIndexes() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->addColumn('name', 'string')
@@ -202,8 +185,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasIndex('table1', array('email', 'user_name')));
 	}
 
-	public function testCreateTableWithUniqueIndexes()
-	{
+	public function testCreateTableWithUniqueIndexes() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->addIndex('email', array('unique' => true))
@@ -212,8 +194,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasIndex('table1', array('email', 'user_email')));
 	}
 
-	public function testCreateTableWithNamedIndexes()
-	{
+	public function testCreateTableWithNamedIndexes() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->addIndex('email', array('name' => 'myemailindex'))
@@ -223,8 +204,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasIndexByName('table1', 'myemailindex'));
 	}
 
-	public function testRenameTable()
-	{
+	public function testRenameTable() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$this->assertTrue($this->adapter->hasTable('table1'));
@@ -234,8 +214,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasTable('table2'));
 	}
 
-	public function testAddColumn()
-	{
+	public function testAddColumn() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$this->assertFalse($table->hasColumn('email'));
@@ -244,8 +223,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($table->hasColumn('email'));
 	}
 
-	public function testAddColumnWithDefaultValue()
-	{
+	public function testAddColumnWithDefaultValue() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('default_zero', 'string', array('default' => 'test'))
@@ -258,8 +236,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testAddColumnWithDefaultZero()
-	{
+	public function testAddColumnWithDefaultZero() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('default_zero', 'integer', array('default' => 0))
@@ -273,8 +250,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testAddColumnWithDefaultBoolean()
-	{
+	public function testAddColumnWithDefaultBoolean() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('default_true', 'boolean', array('default' => true))
@@ -293,8 +269,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testAddDecimalWithPrecisionAndScale()
-	{
+	public function testAddDecimalWithPrecisionAndScale() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$table->addColumn('number', 'decimal', array('precision' => 10, 'scale' => 2))
@@ -315,8 +290,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function providerArrayType()
-	{
+	public function providerArrayType() {
 		return array(
 			array('array_text', 'text[]'),
 			array('array_char', 'char[]'),
@@ -337,8 +311,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider providerArrayType
 	 */
-	public function testAddColumnArrayType($column_name, $column_type)
-	{
+	public function testAddColumnArrayType($column_name, $column_type) {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->save();
 		$this->assertFalse($table->hasColumn($column_name));
@@ -347,8 +320,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($table->hasColumn($column_name));
 	}
 
-	public function testRenameColumn()
-	{
+	public function testRenameColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -359,8 +331,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasColumn('t', 'column2'));
 	}
 
-	public function testRenamingANonExistentColumn()
-	{
+	public function testRenamingANonExistentColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -378,8 +349,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testChangeColumn()
-	{
+	public function testChangeColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -403,8 +373,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testChangeColumnWithDefault()
-	{
+	public function testChangeColumnWithDefault() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -426,8 +395,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testChangeColumnWithDropDefault()
-	{
+	public function testChangeColumnWithDropDefault() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string', array('default' => 'Test'))
 			->save();
@@ -453,8 +421,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testDropColumn()
-	{
+	public function testDropColumn() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->save();
@@ -463,8 +430,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('t', 'column1'));
 	}
 
-	public function testGetColumns()
-	{
+	public function testGetColumns() {
 		$table = new \Phinx\Db\Table('t', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->addColumn('column2', 'integer', array('limit' => PostgresAdapter::INT_SMALL))
@@ -489,8 +455,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testAddIndex()
-	{
+	public function testAddIndex() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
 			->save();
@@ -500,8 +465,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($table->hasIndex('email'));
 	}
 
-	public function testDropIndex()
-	{
+	public function testDropIndex() {
 		// single column index
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
@@ -541,8 +505,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($table4->hasIndex(array('fname', 'lname')));
 	}
 
-	public function testDropIndexByName()
-	{
+	public function testDropIndexByName() {
 		// single column index
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('email', 'string')
@@ -564,8 +527,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($table2->hasIndex(array('fname', 'lname')));
 	}
 
-	public function testAddForeignKey()
-	{
+	public function testAddForeignKey() {
 		$refTable = new \Phinx\Db\Table('ref_table', array(), $this->adapter);
 		$refTable->addColumn('field1', 'string')->save();
 
@@ -581,8 +543,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasForeignKey($table->getName(), array('ref_table_id')));
 	}
 
-	public function testDropForeignKey()
-	{
+	public function testDropForeignKey() {
 		$refTable = new \Phinx\Db\Table('ref_table', array(), $this->adapter);
 		$refTable->addColumn('field1', 'string')->save();
 
@@ -600,36 +561,31 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasForeignKey($table->getName(), array('ref_table_id')));
 	}
 
-	public function testHasDatabase()
-	{
+	public function testHasDatabase() {
 		$this->assertFalse($this->adapter->hasDatabase('fake_database_name'));
 		$this->assertTrue($this->adapter->hasDatabase(TESTS_PHINX_DB_ADAPTER_POSTGRES_DATABASE));
 	}
 
-	public function testDropDatabase()
-	{
+	public function testDropDatabase() {
 		$this->assertFalse($this->adapter->hasDatabase('phinx_temp_database'));
 		$this->adapter->createDatabase('phinx_temp_database');
 		$this->assertTrue($this->adapter->hasDatabase('phinx_temp_database'));
 		$this->adapter->dropDatabase('phinx_temp_database');
 	}
 
-	public function testCreateSchema()
-	{
+	public function testCreateSchema() {
 		$this->adapter->createSchema('foo');
 		$this->assertTrue($this->adapter->hasSchema('foo'));
 	}
 
-	public function testDropSchema()
-	{
+	public function testDropSchema() {
 		$this->adapter->createSchema('foo');
 		$this->assertTrue($this->adapter->hasSchema('foo'));
 		$this->adapter->dropSchema('foo');
 		$this->assertFalse($this->adapter->hasSchema('foo'));
 	}
 
-	public function testDropAllSchemas()
-	{
+	public function testDropAllSchemas() {
 		$this->adapter->createSchema('foo');
 		$this->adapter->createSchema('bar');
 
@@ -644,13 +600,11 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \RuntimeException
 	 * @expectedExceptionMessage The type: "idontexist" is not supported
 	 */
-	public function testInvalidSqlType()
-	{
+	public function testInvalidSqlType() {
 		$this->adapter->getSqlType('idontexist');
 	}
 
-	public function testGetPhinxType()
-	{
+	public function testGetPhinxType() {
 		$this->assertEquals('integer', $this->adapter->getPhinxType('int'));
 		$this->assertEquals('integer', $this->adapter->getPhinxType('int4'));
 		$this->assertEquals('integer', $this->adapter->getPhinxType('integer'));
@@ -686,8 +640,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 
 	}
 
-	public function testCanAddColumnComment()
-	{
+	public function testCanAddColumnComment() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('field1', 'string', array('comment' => $comment = 'Comments from column "field1"'))
 			->save();
@@ -709,8 +662,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @depends testCanAddColumnComment
 	 */
-	public function testCanChangeColumnComment()
-	{
+	public function testCanChangeColumnComment() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('field1', 'string', array('comment' => 'Comments from column "field1"'))
 			->save();
@@ -735,8 +687,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @depends testCanAddColumnComment
 	 */
-	public function testCanRemoveColumnComment()
-	{
+	public function testCanRemoveColumnComment() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('field1', 'string', array('comment' => 'Comments from column "field1"'))
 			->save();
@@ -761,8 +712,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @depends testCanAddColumnComment
 	 */
-	public function testCanAddMultipleCommentsToOneTable()
-	{
+	public function testCanAddMultipleCommentsToOneTable() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('comment1', 'string', array(
 			'comment' => $comment1 = 'first comment'
@@ -802,8 +752,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @depends testCanAddColumnComment
 	 */
-	public function testColumnsAreResetBetweenTables()
-	{
+	public function testColumnsAreResetBetweenTables() {
 		$table = new \Phinx\Db\Table('widgets', array(), $this->adapter);
 		$table->addColumn('transport', 'string', array(
 			'comment' => $comment = 'One of: car, boat, truck, plane, train'
@@ -831,8 +780,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * Test that column names are properly escaped when creating Foreign Keys
 	 */
-	public function testForignKeysArePropertlyEscaped()
-	{
+	public function testForignKeysArePropertlyEscaped() {
 		$userId = 'user';
 		$sessionId = 'session';
 
@@ -847,8 +795,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($foreign->hasForeignKey('user'));
 	}
 
-	public function testTimestampWithTimezone()
-	{
+	public function testTimestampWithTimezone() {
 		$table = new \Phinx\Db\Table('tztable', array('id' => false), $this->adapter);
 		$table
 			->addColumn('timestamp_tz', 'timestamp', array('timezone' => true))
@@ -872,8 +819,7 @@ class PostgresAdapterTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testInsertData()
-	{
+	public function testInsertData() {
 		$table = new \Phinx\Db\Table('table1', array(), $this->adapter);
 		$table->addColumn('column1', 'string')
 			->addColumn('column2', 'integer')

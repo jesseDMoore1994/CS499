@@ -22,8 +22,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Test for the DateTime type.
  */
-class DateTimeTypeTest extends TestCase
-{
+class DateTimeTypeTest extends TestCase {
 
 	/**
 	 * Original type map
@@ -37,8 +36,7 @@ class DateTimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->type = Type::build('datetime');
 		$this->driver = $this->getMock('Cake\Database\Driver');
@@ -50,8 +48,7 @@ class DateTimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 
 		Type::map($this->_originalMap);
@@ -62,8 +59,7 @@ class DateTimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPHP()
-	{
+	public function testToPHP() {
 		$this->assertNull($this->type->toPHP(null, $this->driver));
 		$this->assertNull($this->type->toPHP('0000-00-00 00:00:00', $this->driver));
 
@@ -85,8 +81,7 @@ class DateTimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPHPIncludingMilliseconds()
-	{
+	public function testToPHPIncludingMilliseconds() {
 		$in = '2014-03-24 20:44:36.315113';
 		$result = $this->type->toPHP($in, $this->driver);
 		$this->assertInstanceOf('Cake\I18n\Time', $result);
@@ -97,8 +92,7 @@ class DateTimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToDatabase()
-	{
+	public function testToDatabase() {
 		$value = '2001-01-04 12:13:14';
 		$result = $this->type->toDatabase($value, $this->driver);
 		$this->assertEquals($value, $result);
@@ -117,8 +111,7 @@ class DateTimeTypeTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function marshalProvider()
-	{
+	public function marshalProvider() {
 		return [
 			// invalid types.
 			[null, null],
@@ -210,8 +203,7 @@ class DateTimeTypeTest extends TestCase
 	 * @dataProvider marshalProvider
 	 * @return void
 	 */
-	public function testMarshal($value, $expected)
-	{
+	public function testMarshal($value, $expected) {
 		$result = $this->type->marshal($value);
 		if (is_object($expected)) {
 			$this->assertEquals($expected, $result);
@@ -225,8 +217,7 @@ class DateTimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMarshalWithLocaleParsing()
-	{
+	public function testMarshalWithLocaleParsing() {
 		$this->type->useLocaleParser();
 		$expected = new Time('13-10-2013 23:28:00');
 		$result = $this->type->marshal('10/13/2013 11:28pm');
@@ -240,8 +231,7 @@ class DateTimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMarshalWithLocaleParsingWithFormat()
-	{
+	public function testMarshalWithLocaleParsingWithFormat() {
 		$this->type->useLocaleParser()->setLocaleFormat('dd MMM, y hh:mma');
 		$expected = new Time('13-10-2013 13:54:00');
 		$result = $this->type->marshal('13 Oct, 2013 01:54pm');

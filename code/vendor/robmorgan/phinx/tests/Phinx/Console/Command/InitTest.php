@@ -7,18 +7,15 @@ use Symfony\Component\Console\Output\StreamOutput;
 use Phinx\Config\Config;
 use Phinx\Console\Command\Init;
 
-class InitTest extends \PHPUnit_Framework_TestCase
-{
-	protected function setUp()
-	{
+class InitTest extends \PHPUnit_Framework_TestCase {
+	protected function setUp() {
 		$file = sys_get_temp_dir() . '/phinx.yml';
 		if (is_file($file)) {
 			unlink($file);
 		}
 	}
 
-	public function testConfigIsWritten()
-	{
+	public function testConfigIsWritten() {
 		$application = new \Phinx\Console\PhinxApplication('testing');
 		$application->add(new Init());
 
@@ -50,8 +47,7 @@ class InitTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException              \InvalidArgumentException
 	 * @expectedExceptionMessageRegExp /The file "(.*)" already exists/
 	 */
-	public function testThrowsExceptionWhenConfigFilePresent()
-	{
+	public function testThrowsExceptionWhenConfigFilePresent() {
 		touch(sys_get_temp_dir() . '/phinx.yml');
 		$application = new \Phinx\Console\PhinxApplication('testing');
 		$application->add(new Init());

@@ -25,8 +25,7 @@ use Symfony\Component\VarDumper\Caster\Caster;
 /**
  * Parse PHP code and show the abstract syntax tree.
  */
-class ParseCommand extends Command implements PresenterAware
-{
+class ParseCommand extends Command implements PresenterAware {
 	private $presenter;
 	private $parserFactory;
 	private $parsers;
@@ -34,8 +33,7 @@ class ParseCommand extends Command implements PresenterAware
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct($name = null)
-	{
+	public function __construct($name = null) {
 		$this->parserFactory = new ParserFactory();
 		$this->parsers = array();
 
@@ -47,8 +45,7 @@ class ParseCommand extends Command implements PresenterAware
 	 *
 	 * @param Presenter $presenter
 	 */
-	public function setPresenter(Presenter $presenter)
-	{
+	public function setPresenter(Presenter $presenter) {
 		$this->presenter = clone $presenter;
 		$this->presenter->addCasters(array(
 			'PhpParser\Node' => function (Node $node, array $a) {
@@ -69,8 +66,7 @@ class ParseCommand extends Command implements PresenterAware
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$definition = array(
 			new InputArgument('code', InputArgument::REQUIRED, 'PHP code to parse.'),
 			new InputOption('depth', '', InputOption::VALUE_REQUIRED, 'Depth to parse', 10),
@@ -106,8 +102,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$code = $input->getArgument('code');
 		if (strpos('<?', $code) === false) {
 			$code = '<?php ' . $code;
@@ -127,8 +122,7 @@ HELP
 	 *
 	 * @return array Statements
 	 */
-	private function parse(Parser $parser, $code)
-	{
+	private function parse(Parser $parser, $code) {
 		try {
 			return $parser->parse($code);
 		} catch (\PhpParser\Error $e) {
@@ -148,8 +142,7 @@ HELP
 	 *
 	 * @return Parser
 	 */
-	private function getParser($kind = null)
-	{
+	private function getParser($kind = null) {
 		if (!array_key_exists($kind, $this->parsers)) {
 			$this->parsers[$kind] = $this->parserFactory->createParser($kind);
 		}

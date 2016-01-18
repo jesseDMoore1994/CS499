@@ -21,8 +21,7 @@ use Psy\Exception\FatalErrorException;
  *
  * @author Martin Hasoň <martin.hason@gmail.com>
  */
-class AssignThisVariablePass extends CodeCleanerPass
-{
+class AssignThisVariablePass extends CodeCleanerPass {
 	/**
 	 * Validate that the user input does not assign the `$this` variable.
 	 *
@@ -30,8 +29,7 @@ class AssignThisVariablePass extends CodeCleanerPass
 	 *
 	 * @param Node $node
 	 */
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		if ($node instanceof Assign && $node->var instanceof Variable && $node->var->name === 'this') {
 			throw new FatalErrorException('Cannot re-assign $this');
 		}

@@ -110,8 +110,7 @@ use Cake\Mailer\Exception\MissingActionException;
  * @method Email message($type = null)
  * @method Email profile($config = null)
  */
-abstract class Mailer implements EventListenerInterface
-{
+abstract class Mailer implements EventListenerInterface {
 
 	use ModelAwareTrait;
 
@@ -142,8 +141,7 @@ abstract class Mailer implements EventListenerInterface
 	 *
 	 * @param \Cake\Mailer\Email|null $email Email instance.
 	 */
-	public function __construct(Email $email = null)
-	{
+	public function __construct(Email $email = null) {
 		if ($email === null) {
 			$email = new Email();
 		}
@@ -157,8 +155,7 @@ abstract class Mailer implements EventListenerInterface
 	 *
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		if (!static::$name) {
 			static::$name = str_replace(
 				'Mailer',
@@ -175,8 +172,7 @@ abstract class Mailer implements EventListenerInterface
 	 * @param string $layout Name of the layout to use.
 	 * @return $this object.
 	 */
-	public function layout($layout)
-	{
+	public function layout($layout) {
 		$this->_email->viewBuilder()->layout($layout);
 		return $this;
 	}
@@ -186,8 +182,7 @@ abstract class Mailer implements EventListenerInterface
 	 *
 	 * @return \Cake\View\ViewBuilder
 	 */
-	public function viewBuilder()
-	{
+	public function viewBuilder() {
 		return $this->_email->viewBuilder();
 	}
 
@@ -198,8 +193,7 @@ abstract class Mailer implements EventListenerInterface
 	 * @param array $args Method arguments
 	 * @return $this
 	 */
-	public function __call($method, $args)
-	{
+	public function __call($method, $args) {
 		call_user_func_array([$this->_email, $method], $args);
 		return $this;
 	}
@@ -211,8 +205,7 @@ abstract class Mailer implements EventListenerInterface
 	 * @param mixed $value View variable value.
 	 * @return $this object.
 	 */
-	public function set($key, $value = null)
-	{
+	public function set($key, $value = null) {
 		$this->_email->viewVars(is_string($key) ? [$key => $value] : $key);
 		return $this;
 	}
@@ -227,8 +220,7 @@ abstract class Mailer implements EventListenerInterface
 	 * @throws \Cake\Mailer\Exception\MissingActionException
 	 * @throws \BadMethodCallException
 	 */
-	public function send($action, $args = [], $headers = [])
-	{
+	public function send($action, $args = [], $headers = []) {
 		if (!method_exists($this, $action)) {
 			throw new MissingActionException([
 				'mailer' => $this->getName() . 'Mailer',
@@ -254,8 +246,7 @@ abstract class Mailer implements EventListenerInterface
 	 *
 	 * @return $this
 	 */
-	protected function reset()
-	{
+	protected function reset() {
 		$this->_email = clone $this->_clonedEmail;
 		return $this;
 	}
@@ -265,8 +256,7 @@ abstract class Mailer implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 }

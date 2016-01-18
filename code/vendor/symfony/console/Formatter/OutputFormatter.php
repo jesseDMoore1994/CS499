@@ -18,8 +18,7 @@ use Symfony\Component\Console\Exception\InvalidArgumentException;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-class OutputFormatter implements OutputFormatterInterface
-{
+class OutputFormatter implements OutputFormatterInterface {
 	private $decorated;
 	private $styles = array();
 	private $styleStack;
@@ -31,8 +30,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 *
 	 * @return string Escaped text
 	 */
-	public static function escape($text)
-	{
+	public static function escape($text) {
 		return preg_replace('/([^\\\\]?)</', '$1\\<', $text);
 	}
 
@@ -42,8 +40,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 * @param bool $decorated Whether this formatter should actually decorate strings
 	 * @param OutputFormatterStyleInterface[] $styles Array of "name => FormatterStyle" instances
 	 */
-	public function __construct($decorated = false, array $styles = array())
-	{
+	public function __construct($decorated = false, array $styles = array()) {
 		$this->decorated = (bool)$decorated;
 
 		$this->setStyle('error', new OutputFormatterStyle('white', 'red'));
@@ -63,8 +60,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 *
 	 * @param bool $decorated Whether to decorate the messages or not
 	 */
-	public function setDecorated($decorated)
-	{
+	public function setDecorated($decorated) {
 		$this->decorated = (bool)$decorated;
 	}
 
@@ -73,8 +69,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 *
 	 * @return bool true if the output will decorate messages, false otherwise
 	 */
-	public function isDecorated()
-	{
+	public function isDecorated() {
 		return $this->decorated;
 	}
 
@@ -84,8 +79,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 * @param string $name The style name
 	 * @param OutputFormatterStyleInterface $style The style instance
 	 */
-	public function setStyle($name, OutputFormatterStyleInterface $style)
-	{
+	public function setStyle($name, OutputFormatterStyleInterface $style) {
 		$this->styles[strtolower($name)] = $style;
 	}
 
@@ -96,8 +90,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 *
 	 * @return bool
 	 */
-	public function hasStyle($name)
-	{
+	public function hasStyle($name) {
 		return isset($this->styles[strtolower($name)]);
 	}
 
@@ -110,8 +103,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 *
 	 * @throws InvalidArgumentException When style isn't defined
 	 */
-	public function getStyle($name)
-	{
+	public function getStyle($name) {
 		if (!$this->hasStyle($name)) {
 			throw new InvalidArgumentException(sprintf('Undefined style: %s', $name));
 		}
@@ -126,8 +118,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 *
 	 * @return string The styled message
 	 */
-	public function format($message)
-	{
+	public function format($message) {
 		$message = (string)$message;
 		$offset = 0;
 		$output = '';
@@ -172,8 +163,7 @@ class OutputFormatter implements OutputFormatterInterface
 	/**
 	 * @return OutputFormatterStyleStack
 	 */
-	public function getStyleStack()
-	{
+	public function getStyleStack() {
 		return $this->styleStack;
 	}
 
@@ -184,8 +174,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 *
 	 * @return OutputFormatterStyle|bool false if string is not format string
 	 */
-	private function createStyleFromString($string)
-	{
+	private function createStyleFromString($string) {
 		if (isset($this->styles[$string])) {
 			return $this->styles[$string];
 		}
@@ -221,8 +210,7 @@ class OutputFormatter implements OutputFormatterInterface
 	 *
 	 * @return string Styled text
 	 */
-	private function applyCurrentStyle($text)
-	{
+	private function applyCurrentStyle($text) {
 		return $this->isDecorated() && strlen($text) > 0 ? $this->styleStack->getCurrent()->apply($text) : $text;
 	}
 }

@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Test for the Date type.
  */
-class DateTypeTest extends TestCase
-{
+class DateTypeTest extends TestCase {
 
 	/**
 	 * Setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->type = Type::build('date');
 		$this->driver = $this->getMock('Cake\Database\Driver');
@@ -42,8 +40,7 @@ class DateTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPHP()
-	{
+	public function testToPHP() {
 		$this->assertNull($this->type->toPHP(null, $this->driver));
 		$this->assertNull($this->type->toPHP('0000-00-00', $this->driver));
 
@@ -59,8 +56,7 @@ class DateTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToDatabase()
-	{
+	public function testToDatabase() {
 		$value = '2001-01-04';
 		$result = $this->type->toDatabase($value, $this->driver);
 		$this->assertEquals($value, $result);
@@ -79,8 +75,7 @@ class DateTypeTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function marshalProvider()
-	{
+	public function marshalProvider() {
 		$date = new Time('@1392387900');
 		$date->setTime(0, 0, 0);
 
@@ -157,8 +152,7 @@ class DateTypeTest extends TestCase
 	 * @dataProvider marshalProvider
 	 * @return void
 	 */
-	public function testMarshal($value, $expected)
-	{
+	public function testMarshal($value, $expected) {
 		$result = $this->type->marshal($value);
 		if (is_object($expected)) {
 			$this->assertEquals($expected, $result);
@@ -172,8 +166,7 @@ class DateTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMarshalWithLocaleParsing()
-	{
+	public function testMarshalWithLocaleParsing() {
 		$this->type->useLocaleParser();
 		$expected = new Time('13-10-2013');
 		$result = $this->type->marshal('10/13/2013');
@@ -187,8 +180,7 @@ class DateTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMarshalWithLocaleParsingWithFormat()
-	{
+	public function testMarshalWithLocaleParsingWithFormat() {
 		$this->type->useLocaleParser()->setLocaleFormat('dd MMM, y');
 		$expected = new Time('13-10-2013');
 		$result = $this->type->marshal('13 Oct, 2013');

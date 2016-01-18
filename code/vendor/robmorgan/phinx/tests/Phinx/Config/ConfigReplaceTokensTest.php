@@ -9,8 +9,7 @@ use Phinx\Config\Config;
  * @package Test\Phinx\Config
  * @group config
  */
-class ConfigReplaceTokensTest extends AbstractConfigTest
-{
+class ConfigReplaceTokensTest extends AbstractConfigTest {
 	/**
 	 * Data to be saved to $_SERVER and checked later
 	 * @var array
@@ -24,8 +23,7 @@ class ConfigReplaceTokensTest extends AbstractConfigTest
 	/**
 	 * Pass vars to $_SERVER
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		foreach (static::$server as $name => $value) {
 			$_SERVER[$name] = $value;
 		}
@@ -34,8 +32,7 @@ class ConfigReplaceTokensTest extends AbstractConfigTest
 	/**
 	 * Clean-up
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		foreach (static::$server as $name => $value) {
 			unset($_SERVER[$name]);
 		}
@@ -45,8 +42,7 @@ class ConfigReplaceTokensTest extends AbstractConfigTest
 	 * @covers \Phinx\Config\Config::replaceTokens
 	 * @covers \Phinx\Config\Config::recurseArrayForTokens
 	 */
-	public function testReplaceTokens()
-	{
+	public function testReplaceTokens() {
 		$config = new Config(array(
 			'some-var-1' => 'includes/%%PHINX_TEST_VAR_1%%',
 			'some-var-2' => 'includes/%%NON_PHINX_TEST_VAR_1%%',
@@ -72,8 +68,7 @@ class ConfigReplaceTokensTest extends AbstractConfigTest
 	 * @covers \Phinx\Config\Config::replaceTokens
 	 * @covers \Phinx\Config\Config::recurseArrayForTokens
 	 */
-	public function testReplaceTokensRecursive()
-	{
+	public function testReplaceTokensRecursive() {
 		$config = new Config(array(
 			'folding' => array(
 				'some-var-1' => 'includes/%%PHINX_TEST_VAR_1%%',

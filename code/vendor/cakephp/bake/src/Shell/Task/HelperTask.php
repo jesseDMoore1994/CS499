@@ -17,8 +17,7 @@ namespace Bake\Shell\Task;
 /**
  * Helper code generator.
  */
-class HelperTask extends SimpleBakeTask
-{
+class HelperTask extends SimpleBakeTask {
 	/**
 	 * Task name used in path generation.
 	 *
@@ -29,24 +28,21 @@ class HelperTask extends SimpleBakeTask
 	/**
 	 * {@inheritDoc}
 	 */
-	public function name()
-	{
+	public function name() {
 		return 'helper';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function fileName($name)
-	{
+	public function fileName($name) {
 		return $name . 'Helper.php';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function template()
-	{
+	public function template() {
 		return 'View/helper';
 	}
 }

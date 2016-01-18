@@ -26,16 +26,14 @@ use Exception;
 /**
  * FlashComponentTest class
  */
-class FlashComponentTest extends TestCase
-{
+class FlashComponentTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 		$this->Controller = new Controller(new Request(['session' => new Session()]));
@@ -49,8 +47,7 @@ class FlashComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		$this->Session->destroy();
 	}
@@ -61,8 +58,7 @@ class FlashComponentTest extends TestCase
 	 * @return void
 	 * @covers \Cake\Controller\Component\FlashComponent::set
 	 */
-	public function testSet()
-	{
+	public function testSet() {
 		$this->assertNull($this->Session->read('Flash.flash'));
 
 		$this->Flash->set('This is a test message');
@@ -116,8 +112,7 @@ class FlashComponentTest extends TestCase
 	 * @return void
 	 * @covers \Cake\Controller\Component\FlashComponent::set
 	 */
-	public function testSetWithClear()
-	{
+	public function testSetWithClear() {
 		$this->assertNull($this->Session->read('Flash.flash'));
 
 		$this->Flash->set('This is a test message');
@@ -151,8 +146,7 @@ class FlashComponentTest extends TestCase
 	 * @return void
 	 * @covers \Cake\Controller\Component\FlashComponent::set
 	 */
-	public function testSetWithException()
-	{
+	public function testSetWithException() {
 		$this->assertNull($this->Session->read('Flash.flash'));
 
 		$this->Flash->set(new Exception('This is a test message', 404));
@@ -173,8 +167,7 @@ class FlashComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetWithComponentConfiguration()
-	{
+	public function testSetWithComponentConfiguration() {
 		$this->assertNull($this->Session->read('Flash.flash'));
 
 		$this->Controller->loadComponent('Flash', ['element' => 'test']);
@@ -197,8 +190,7 @@ class FlashComponentTest extends TestCase
 	 * @covers \Cake\Controller\Component\FlashComponent::__call
 	 * @return void
 	 */
-	public function testCall()
-	{
+	public function testCall() {
 		$this->assertNull($this->Session->read('Flash.flash'));
 
 		$this->Flash->success('It worked');
@@ -242,8 +234,7 @@ class FlashComponentTest extends TestCase
 	 * @return void
 	 * @covers \Cake\Controller\Component\FlashComponent::set
 	 */
-	public function testCallWithClear()
-	{
+	public function testCallWithClear() {
 		$this->assertNull($this->Session->read('Flash.flash'));
 		$this->Flash->success('It worked');
 		$expected = [

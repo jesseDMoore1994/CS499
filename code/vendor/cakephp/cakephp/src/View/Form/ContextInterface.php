@@ -17,8 +17,7 @@ namespace Cake\View\Form;
 /**
  * Interface for FormHelper context implementations.
  */
-interface ContextInterface
-{
+interface ContextInterface {
 
 	/**
 	 * Get the fields used in the context as a primary key.

@@ -21,16 +21,14 @@ namespace TestPluginTwo\Shell;
 
 use Cake\Console\Shell;
 
-class UniqueShell extends Shell
-{
+class UniqueShell extends Shell {
 
 	/**
 	 * main method
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		$this->out('This is the main method called from TestPluginTwo.UniqueShell');
 	}
 }

@@ -20,14 +20,12 @@ use Cake\TestSuite\TestCase;
 /**
  * Oauth test.
  */
-class OauthTest extends TestCase
-{
+class OauthTest extends TestCase {
 
 	/**
 	 * @expectedException \Cake\Core\Exception\Exception
 	 */
-	public function testExceptionUnknownSigningMethod()
-	{
+	public function testExceptionUnknownSigningMethod() {
 		$auth = new Oauth();
 		$creds = [
 			'consumerSecret' => 'it is secret',
@@ -45,8 +43,7 @@ class OauthTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPlainTextSigning()
-	{
+	public function testPlainTextSigning() {
 		$auth = new Oauth();
 		$creds = [
 			'consumerSecret' => 'it is secret',
@@ -74,8 +71,7 @@ class OauthTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseStringNormalizeUrl()
-	{
+	public function testBaseStringNormalizeUrl() {
 		$request = new Request();
 		$request->url('HTTP://exAmple.com:80/parts/foo');
 
@@ -91,8 +87,7 @@ class OauthTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseStringWithQueryString()
-	{
+	public function testBaseStringWithQueryString() {
 		$request = new Request();
 		$request->url('http://example.com/search?q=pogo&cat=2');
 
@@ -135,8 +130,7 @@ class OauthTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseStringWithPostData()
-	{
+	public function testBaseStringWithPostData() {
 		$request = new Request();
 		$request->url('http://example.com/search?q=pogo')
 			->method(Request::METHOD_POST)
@@ -186,8 +180,7 @@ class OauthTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHmacSigning()
-	{
+	public function testHmacSigning() {
 		$request = new Request();
 		$request->url('http://photos.example.net/photos')
 			->body([

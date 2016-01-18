@@ -23,8 +23,7 @@ use Cake\Utility\Inflector;
  *
  * @since         DebugKit 0.1
  */
-class DebugPanel implements EventListenerInterface
-{
+class DebugPanel implements EventListenerInterface {
 
 	/**
 	 * Defines which plugin this panel is from so the element can be located.
@@ -45,8 +44,7 @@ class DebugPanel implements EventListenerInterface
 	 *
 	 * @return string
 	 */
-	public function title()
-	{
+	public function title() {
 		list($ns, $name) = namespaceSplit(get_class($this));
 		$name = substr($name, 0, strlen('Panel') * -1);
 		return Inflector::humanize(Inflector::underscore($name));
@@ -57,8 +55,7 @@ class DebugPanel implements EventListenerInterface
 	 *
 	 * @return string
 	 */
-	public function elementName()
-	{
+	public function elementName() {
 		list($ns, $name) = namespaceSplit(get_class($this));
 		if ($this->plugin) {
 			return $this->plugin . '.' . Inflector::underscore($name);
@@ -71,8 +68,7 @@ class DebugPanel implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function data()
-	{
+	public function data() {
 		return $this->_data;
 	}
 
@@ -83,8 +79,7 @@ class DebugPanel implements EventListenerInterface
 	 *
 	 * @return string
 	 */
-	public function summary()
-	{
+	public function summary() {
 		return '';
 	}
 
@@ -93,8 +88,7 @@ class DebugPanel implements EventListenerInterface
 	 *
 	 * @return void
 	 */
-	public function initialize()
-	{
+	public function initialize() {
 	}
 
 	/**
@@ -103,8 +97,7 @@ class DebugPanel implements EventListenerInterface
 	 * @param \Cake\Event\Event $event The event.
 	 * @return void
 	 */
-	public function shutdown(Event $event)
-	{
+	public function shutdown(Event $event) {
 	}
 
 	/**
@@ -112,8 +105,7 @@ class DebugPanel implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [
 			'Controller.shutdown' => 'shutdown',
 		];

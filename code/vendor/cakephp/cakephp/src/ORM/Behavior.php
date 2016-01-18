@@ -110,8 +110,7 @@ use ReflectionMethod;
  * @see \Cake\ORM\Table::addBehavior()
  * @see \Cake\Event\EventManager
  */
-class Behavior implements EventListenerInterface
-{
+class Behavior implements EventListenerInterface {
 
 	use InstanceConfigTrait;
 
@@ -149,8 +148,7 @@ class Behavior implements EventListenerInterface
 	 * @param \Cake\ORM\Table $table The table this behavior is attached to.
 	 * @param array $config The config for this behavior.
 	 */
-	public function __construct(Table $table, array $config = [])
-	{
+	public function __construct(Table $table, array $config = []) {
 		$config = $this->_resolveMethodAliases(
 			'implementedFinders',
 			$this->_defaultConfig,
@@ -175,8 +173,7 @@ class Behavior implements EventListenerInterface
 	 * @param array $config The configuration settings provided to this behavior.
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 	}
 
 	/**
@@ -187,8 +184,7 @@ class Behavior implements EventListenerInterface
 	 * @param array $config The customized method mappings.
 	 * @return array A de-duped list of config data.
 	 */
-	protected function _resolveMethodAliases($key, $defaults, $config)
-	{
+	protected function _resolveMethodAliases($key, $defaults, $config) {
 		if (!isset($defaults[$key], $config[$key])) {
 			return $config;
 		}
@@ -218,8 +214,7 @@ class Behavior implements EventListenerInterface
 	 * @return void
 	 * @throws \Cake\Core\Exception\Exception if config are invalid
 	 */
-	public function verifyConfig()
-	{
+	public function verifyConfig() {
 		$keys = ['implementedFinders', 'implementedMethods'];
 		foreach ($keys as $key) {
 			if (!isset($this->_config[$key])) {
@@ -245,8 +240,7 @@ class Behavior implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		$eventMap = [
 			'Model.beforeMarshal' => 'beforeMarshal',
 			'Model.beforeFind' => 'beforeFind',
@@ -302,8 +296,7 @@ class Behavior implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function implementedFinders()
-	{
+	public function implementedFinders() {
 		$methods = $this->config('implementedFinders');
 		if (isset($methods)) {
 			return $methods;
@@ -333,8 +326,7 @@ class Behavior implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function implementedMethods()
-	{
+	public function implementedMethods() {
 		$methods = $this->config('implementedMethods');
 		if (isset($methods)) {
 			return $methods;
@@ -352,8 +344,7 @@ class Behavior implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	protected function _reflectionCache()
-	{
+	protected function _reflectionCache() {
 		$class = get_class($this);
 		if (isset(self::$_reflectionCache[$class])) {
 			return self::$_reflectionCache[$class];

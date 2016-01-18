@@ -19,13 +19,11 @@ use Cake\TestSuite\TestCase;
 /**
  * Testing stub.
  */
-class Stub
-{
+class Stub {
 
 	use ModelAwareTrait;
 
-	public function setProps($name)
-	{
+	public function setProps($name) {
 		$this->_setModelClass($name);
 	}
 }
@@ -33,16 +31,14 @@ class Stub
 /**
  * ModelAwareTrait test case
  */
-class ModelAwareTraitTest extends TestCase
-{
+class ModelAwareTraitTest extends TestCase {
 
 	/**
 	 * Test set modelClass
 	 *
 	 * @return void
 	 */
-	public function testSetModelClass()
-	{
+	public function testSetModelClass() {
 		$stub = new Stub();
 		$this->assertNull($stub->modelClass);
 
@@ -55,8 +51,7 @@ class ModelAwareTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadModel()
-	{
+	public function testLoadModel() {
 		$stub = new Stub();
 		$stub->setProps('Articles');
 		$stub->modelFactory('Table', ['\Cake\ORM\TableRegistry', 'get']);
@@ -79,8 +74,7 @@ class ModelAwareTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadModelPlugin()
-	{
+	public function testLoadModelPlugin() {
 		$stub = new Stub();
 		$stub->setProps('Articles');
 		$stub->modelFactory('Table', ['\Cake\ORM\TableRegistry', 'get']);
@@ -100,8 +94,7 @@ class ModelAwareTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testModelFactory()
-	{
+	public function testModelFactory() {
 		$stub = new Stub();
 		$stub->setProps('Articles');
 
@@ -122,8 +115,7 @@ class ModelAwareTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testModelType()
-	{
+	public function testModelType() {
 		$stub = new Stub();
 		$stub->setProps('Articles');
 
@@ -147,8 +139,7 @@ class ModelAwareTraitTest extends TestCase
 	 * @expectedException \Cake\Datasource\Exception\MissingModelException
 	 * @expectedExceptionMessage Model class "Magic" of type "Test" could not be found.
 	 */
-	public function testMissingModelException()
-	{
+	public function testMissingModelException() {
 		$stub = new Stub();
 
 		$stub->modelFactory('Test', function ($name) {

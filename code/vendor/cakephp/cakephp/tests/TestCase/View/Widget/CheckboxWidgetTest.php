@@ -21,16 +21,14 @@ use Cake\View\Widget\CheckboxWidget;
 /**
  * Checkbox test case
  */
-class CheckboxWidgetTest extends TestCase
-{
+class CheckboxWidgetTest extends TestCase {
 
 	/**
 	 * setup method.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$templates = [
 			'checkbox' => '<input type="checkbox" name="{{name}}" value="{{value}}"{{attrs}}>',
@@ -44,8 +42,7 @@ class CheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSimple()
-	{
+	public function testRenderSimple() {
 		$checkbox = new CheckboxWidget($this->templates);
 		$data = [
 			'name' => 'Comment[spam]',
@@ -80,8 +77,7 @@ class CheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderDisabled()
-	{
+	public function testRenderDisabled() {
 		$checkbox = new CheckboxWidget($this->templates);
 		$data = [
 			'name' => 'Comment[spam]',
@@ -104,8 +100,7 @@ class CheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderChecked()
-	{
+	public function testRenderChecked() {
 		$checkbox = new CheckboxWidget($this->templates);
 		$data = [
 			'name' => 'Comment[spam]',
@@ -156,8 +151,7 @@ class CheckboxWidgetTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function checkedProvider()
-	{
+	public static function checkedProvider() {
 		return [
 			['checked'],
 			['1'],
@@ -172,8 +166,7 @@ class CheckboxWidgetTest extends TestCase
 	 * @dataProvider checkedProvider
 	 * @return void
 	 */
-	public function testRenderCheckedValue($checked)
-	{
+	public function testRenderCheckedValue($checked) {
 		$checkbox = new CheckboxWidget($this->templates);
 		$data = [
 			'name' => 'Comment[spam]',
@@ -197,8 +190,7 @@ class CheckboxWidgetTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function uncheckedProvider()
-	{
+	public static function uncheckedProvider() {
 		return [
 			[''],
 			['0'],
@@ -214,8 +206,7 @@ class CheckboxWidgetTest extends TestCase
 	 * @dataProvider uncheckedProvider
 	 * @return void
 	 */
-	public function testRenderUnCheckedValue($checked)
-	{
+	public function testRenderUnCheckedValue($checked) {
 		$checkbox = new CheckboxWidget($this->templates);
 		$data = [
 			'name' => 'Comment[spam]',
@@ -239,8 +230,7 @@ class CheckboxWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderTemplateVars()
-	{
+	public function testRenderTemplateVars() {
 		$this->templates->add([
 			'checkbox' => '<input type="checkbox" custom="{{custom}}" name="{{name}}" value="{{value}}"{{attrs}}>',
 		]);

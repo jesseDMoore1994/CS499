@@ -18,8 +18,7 @@ namespace Cake\Event;
  * Implements Cake\Event\EventDispatcherInterface.
  *
  */
-trait EventDispatcherTrait
-{
+trait EventDispatcherTrait {
 
 	/**
 	 * Instance of the Cake\Event\EventManager this object is using
@@ -45,8 +44,7 @@ trait EventDispatcherTrait
 	 * @param \Cake\Event\EventManager|null $eventManager the eventManager to set
 	 * @return \Cake\Event\EventManager
 	 */
-	public function eventManager(EventManager $eventManager = null)
-	{
+	public function eventManager(EventManager $eventManager = null) {
 		if ($eventManager !== null) {
 			$this->_eventManager = $eventManager;
 		} elseif (empty($this->_eventManager)) {
@@ -68,8 +66,7 @@ trait EventDispatcherTrait
 	 *
 	 * @return \Cake\Event\Event
 	 */
-	public function dispatchEvent($name, $data = null, $subject = null)
-	{
+	public function dispatchEvent($name, $data = null, $subject = null) {
 		if ($subject === null) {
 			$subject = $this;
 		}

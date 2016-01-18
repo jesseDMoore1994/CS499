@@ -19,8 +19,7 @@ use Cake\Error\Debugger;
  * Contains methods for Profiling and creating timers.
  *
  */
-class DebugTimer
-{
+class DebugTimer {
 
 	/**
 	 * Internal timers array
@@ -36,8 +35,7 @@ class DebugTimer
 	 * @param string $message A message for your timer
 	 * @return bool Always true
 	 */
-	public static function start($name = null, $message = null)
-	{
+	public static function start($name = null, $message = null) {
 		$start = microtime(true);
 
 		if (!$name) {
@@ -79,8 +77,7 @@ class DebugTimer
 	 * @param string $name The name of the timer to end.
 	 * @return bool true if timer was ended, false if timer was not started.
 	 */
-	public static function stop($name = null)
-	{
+	public static function stop($name = null) {
 		$end = microtime(true);
 		if (!$name) {
 			$names = array_reverse(array_keys(self::$_timers));
@@ -117,8 +114,7 @@ class DebugTimer
 	 * @param bool $clear false
 	 * @return array
 	 */
-	public static function getAll($clear = false)
-	{
+	public static function getAll($clear = false) {
 		$start = self::requestStartTime();
 		$now = microtime(true);
 
@@ -157,8 +153,7 @@ class DebugTimer
 	 *
 	 * @return bool true
 	 */
-	public static function clear()
-	{
+	public static function clear() {
 		self::$_timers = [];
 		return true;
 	}
@@ -170,8 +165,7 @@ class DebugTimer
 	 * @param int $precision the number of decimal places to return, defaults to 5.
 	 * @return float number of seconds elapsed for timer name, 0 on missing key
 	 */
-	public static function elapsedTime($name = 'default', $precision = 5)
-	{
+	public static function elapsedTime($name = 'default', $precision = 5) {
 		if (!isset(self::$_timers[$name]['start']) || !isset(self::$_timers[$name]['end'])) {
 			return 0;
 		}
@@ -183,8 +177,7 @@ class DebugTimer
 	 *
 	 * @return float elapsed time in seconds since script start.
 	 */
-	public static function requestTime()
-	{
+	public static function requestTime() {
 		$start = self::requestStartTime();
 		$now = microtime(true);
 		return ($now - $start);
@@ -195,8 +188,7 @@ class DebugTimer
 	 *
 	 * @return float time of request start
 	 */
-	public static function requestStartTime()
-	{
+	public static function requestStartTime() {
 		if (defined('TIME_START')) {
 			$startTime = TIME_START;
 		} elseif (isset($GLOBALS['TIME_START'])) {

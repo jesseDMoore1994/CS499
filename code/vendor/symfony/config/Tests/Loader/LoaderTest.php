@@ -13,10 +13,8 @@ namespace Symfony\Component\Config\Tests\Loader;
 
 use Symfony\Component\Config\Loader\Loader;
 
-class LoaderTest extends \PHPUnit_Framework_TestCase
-{
-	public function testGetSetResolver()
-	{
+class LoaderTest extends \PHPUnit_Framework_TestCase {
+	public function testGetSetResolver() {
 		$resolver = $this->getMock('Symfony\Component\Config\Loader\LoaderResolverInterface');
 
 		$loader = new ProjectLoader1();
@@ -25,8 +23,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($resolver, $loader->getResolver(), '->setResolver() sets the resolver loader');
 	}
 
-	public function testResolve()
-	{
+	public function testResolve() {
 		$resolvedLoader = $this->getMock('Symfony\Component\Config\Loader\LoaderInterface');
 
 		$resolver = $this->getMock('Symfony\Component\Config\Loader\LoaderResolverInterface');
@@ -45,8 +42,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \Symfony\Component\Config\Exception\FileLoaderLoadException
 	 */
-	public function testResolveWhenResolverCannotFindLoader()
-	{
+	public function testResolveWhenResolverCannotFindLoader() {
 		$resolver = $this->getMock('Symfony\Component\Config\Loader\LoaderResolverInterface');
 		$resolver->expects($this->once())
 			->method('resolve')
@@ -59,8 +55,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
 		$loader->resolve('FOOBAR');
 	}
 
-	public function testImport()
-	{
+	public function testImport() {
 		$resolvedLoader = $this->getMock('Symfony\Component\Config\Loader\LoaderInterface');
 		$resolvedLoader->expects($this->once())
 			->method('load')
@@ -79,8 +74,7 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('yes', $loader->import('foo'));
 	}
 
-	public function testImportWithType()
-	{
+	public function testImportWithType() {
 		$resolvedLoader = $this->getMock('Symfony\Component\Config\Loader\LoaderInterface');
 		$resolvedLoader->expects($this->once())
 			->method('load')
@@ -100,18 +94,14 @@ class LoaderTest extends \PHPUnit_Framework_TestCase
 	}
 }
 
-class ProjectLoader1 extends Loader
-{
-	public function load($resource, $type = null)
-	{
+class ProjectLoader1 extends Loader {
+	public function load($resource, $type = null) {
 	}
 
-	public function supports($resource, $type = null)
-	{
+	public function supports($resource, $type = null) {
 		return is_string($resource) && 'foo' === pathinfo($resource, PATHINFO_EXTENSION);
 	}
 
-	public function getType()
-	{
+	public function getType() {
 	}
 }

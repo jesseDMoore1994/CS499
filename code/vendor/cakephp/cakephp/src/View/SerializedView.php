@@ -21,8 +21,7 @@ use Cake\Network\Response;
 /**
  * Parent class for view classes generating serialized outputs like JsonView and XmlView.
  */
-class SerializedView extends View
-{
+class SerializedView extends View {
 	/**
 	 * Response type.
 	 *
@@ -43,8 +42,7 @@ class SerializedView extends View
 		Response $response = null,
 		EventManager $eventManager = null,
 		array $viewOptions = []
-	)
-	{
+	) {
 		parent::__construct($request, $response, $eventManager, $viewOptions);
 
 		if ($response && $response instanceof Response) {
@@ -57,8 +55,7 @@ class SerializedView extends View
 	 *
 	 * @return void
 	 */
-	public function loadHelpers()
-	{
+	public function loadHelpers() {
 		if (empty($this->viewVars['_serialize'])) {
 			parent::loadHelpers();
 		}
@@ -77,8 +74,7 @@ class SerializedView extends View
 	 * @param string|null $layout The layout being rendered.
 	 * @return string|null The rendered view.
 	 */
-	public function render($view = null, $layout = null)
-	{
+	public function render($view = null, $layout = null) {
 		$serialize = false;
 		if (isset($this->viewVars['_serialize'])) {
 			$serialize = $this->viewVars['_serialize'];

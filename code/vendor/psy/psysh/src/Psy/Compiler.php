@@ -16,15 +16,13 @@ use Symfony\Component\Finder\Finder;
 /**
  * A Psy Shell Phar compiler.
  */
-class Compiler
-{
+class Compiler {
 	/**
 	 * Compiles psysh into a single phar file.
 	 *
 	 * @param string $pharFile The full path to the file to create
 	 */
-	public function compile($pharFile = 'psysh.phar')
-	{
+	public function compile($pharFile = 'psysh.phar') {
 		if (file_exists($pharFile)) {
 			unlink($pharFile);
 		}
@@ -74,8 +72,7 @@ class Compiler
 	 * @param SplFileInfo $file
 	 * @param bool $strip (default: true)
 	 */
-	private function addFile($phar, $file, $strip = true)
-	{
+	private function addFile($phar, $file, $strip = true) {
 		$path = str_replace(dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR, '', $file->getRealPath());
 
 		$content = file_get_contents($file);
@@ -95,8 +92,7 @@ class Compiler
 	 *
 	 * @return string The PHP string with the whitespace removed
 	 */
-	private function stripWhitespace($source)
-	{
+	private function stripWhitespace($source) {
 		if (!function_exists('token_get_all')) {
 			return $source;
 		}
@@ -123,8 +119,7 @@ class Compiler
 		return $output;
 	}
 
-	private static function getStubLicense()
-	{
+	private static function getStubLicense() {
 		$license = file_get_contents(__DIR__ . '/../../LICENSE');
 		$license = str_replace('The MIT License (MIT)', '', $license);
 		$license = str_replace("\n", "\n * ", trim($license));
@@ -144,8 +139,7 @@ EOS;
 	 *
 	 * @return string
 	 */
-	private function getStub()
-	{
+	private function getStub() {
 		$content = file_get_contents(__DIR__ . '/../../bin/psysh');
 		$content = preg_replace('{/\* <<<.*?>>> \*/}sm', self::STUB_AUTOLOAD, $content);
 		$content = preg_replace('/\\(c\\) .*?with this source code./sm', self::getStubLicense(), $content);

@@ -21,16 +21,14 @@ use Cake\Utility\Hash;
  * PaginatorPostsTable class
  *
  */
-class PaginatorPostsTable extends Table
-{
+class PaginatorPostsTable extends Table {
 
 	/**
 	 * initialize method
 	 *
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		$this->table('posts');
 		$this->belongsTo('PaginatorAuthor', [
 			'foreignKey' => 'author_id'
@@ -40,8 +38,7 @@ class PaginatorPostsTable extends Table
 	/**
 	 * Finder method for find('popular');
 	 */
-	public function findPopular(Query $query, array $options)
-	{
+	public function findPopular(Query $query, array $options) {
 		$field = $this->alias() . '.' . $this->primaryKey();
 		$query->where([$field . ' >' => '1']);
 		return $query;
@@ -50,8 +47,7 @@ class PaginatorPostsTable extends Table
 	/**
 	 * Finder for published posts.
 	 */
-	public function findPublished(Query $query, array $options)
-	{
+	public function findPublished(Query $query, array $options) {
 		$query->where(['published' => 'Y']);
 		return $query;
 	}
@@ -63,8 +59,7 @@ class PaginatorPostsTable extends Table
 	 * @param array $options
 	 * @return \Cake\ORM\Query
 	 */
-	public function findAuthor(Query $query, array $options = [])
-	{
+	public function findAuthor(Query $query, array $options = []) {
 		if (isset($options['author_id'])) {
 			$query->where(['PaginatorPosts.author_id' => $options['author_id']]);
 		}

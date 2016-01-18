@@ -30,16 +30,14 @@ require_once CAKE . 'basics.php';
 /**
  * BasicsTest class
  */
-class BasicsTest extends TestCase
-{
+class BasicsTest extends TestCase {
 
 	/**
 	 * test the array_diff_key compatibility function.
 	 *
 	 * @return void
 	 */
-	public function testArrayDiffKey()
-	{
+	public function testArrayDiffKey() {
 		$one = ['one' => 1, 'two' => 2, 'three' => 3];
 		$two = ['one' => 'one', 'two' => 'two'];
 		$result = array_diff_key($one, $two);
@@ -74,8 +72,7 @@ class BasicsTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEnv()
-	{
+	public function testEnv() {
 		$this->skipIf(!function_exists('ini_get') || ini_get('safe_mode') === '1', 'Safe mode is on.');
 
 		$server = $_SERVER;
@@ -146,8 +143,7 @@ class BasicsTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testH()
-	{
+	public function testH() {
 		$string = '<foo>';
 		$result = h($string);
 		$this->assertEquals('&lt;foo&gt;', $result);
@@ -225,8 +221,7 @@ class BasicsTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDebug()
-	{
+	public function testDebug() {
 		ob_start();
 		debug('this-is-a-test', false);
 		$result = ob_get_clean();
@@ -391,8 +386,7 @@ EXPECTED;
 	 *
 	 * @return void
 	 */
-	public function testPr()
-	{
+	public function testPr() {
 		ob_start();
 		pr(true);
 		$result = ob_get_clean();
@@ -441,8 +435,7 @@ EXPECTED;
 	 *
 	 * @return void
 	 */
-	public function testPj()
-	{
+	public function testPj() {
 		ob_start();
 		pj(true);
 		$result = ob_get_clean();
@@ -491,8 +484,7 @@ EXPECTED;
 	 *
 	 * @return void
 	 */
-	public function testPluginSplit()
-	{
+	public function testPluginSplit() {
 		$result = pluginSplit('Something.else');
 		$this->assertEquals(['Something', 'else'], $result);
 
@@ -520,8 +512,7 @@ EXPECTED;
 	 *
 	 * @return void
 	 */
-	public function testNamespaceSplit()
-	{
+	public function testNamespaceSplit() {
 		$result = namespaceSplit('Something');
 		$this->assertEquals(['', 'Something'], $result);
 
@@ -540,8 +531,7 @@ EXPECTED;
 	 *
 	 * @return void
 	 */
-	public function testStackTrace()
-	{
+	public function testStackTrace() {
 		ob_start();
 		list($r, $expected) = [stackTrace(), \Cake\Error\Debugger::trace()];
 		$result = ob_get_clean();
@@ -559,8 +549,7 @@ EXPECTED;
 	 *
 	 * @return void
 	 */
-	public function testCollection()
-	{
+	public function testCollection() {
 		$items = [1, 2, 3];
 		$collection = collection($items);
 		$this->assertInstanceOf('Cake\Collection\Collection', $collection);
@@ -576,8 +565,7 @@ EXPECTED;
 	 *
 	 * @return \Cake\Event\EventManager
 	 */
-	public function testEventManagerReset1()
-	{
+	public function testEventManagerReset1() {
 		return EventManager::instance();
 	}
 
@@ -587,8 +575,7 @@ EXPECTED;
 	 * @depends testEventManagerReset1
 	 * @return void
 	 */
-	public function testEventManagerReset2($prevEventManager)
-	{
+	public function testEventManagerReset2($prevEventManager) {
 		$this->assertNotSame($prevEventManager, EventManager::instance());
 	}
 }

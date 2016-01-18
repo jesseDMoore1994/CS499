@@ -39,8 +39,7 @@ use Cake\Network\Request;
  *
  * @see AuthComponent::$authenticate
  */
-class ControllerAuthorize extends BaseAuthorize
-{
+class ControllerAuthorize extends BaseAuthorize {
 
 	/**
 	 * Controller for the request.
@@ -52,8 +51,7 @@ class ControllerAuthorize extends BaseAuthorize
 	/**
 	 * {@inheritDoc}
 	 */
-	public function __construct(ComponentRegistry $registry, array $config = [])
-	{
+	public function __construct(ComponentRegistry $registry, array $config = []) {
 		parent::__construct($registry, $config);
 		$this->controller($registry->getController());
 	}
@@ -66,8 +64,7 @@ class ControllerAuthorize extends BaseAuthorize
 	 * @return \Cake\Controller\Controller
 	 * @throws \Cake\Core\Exception\Exception If controller does not have method `isAuthorized()`.
 	 */
-	public function controller(Controller $controller = null)
-	{
+	public function controller(Controller $controller = null) {
 		if ($controller) {
 			if (!method_exists($controller, 'isAuthorized')) {
 				throw new Exception(sprintf(
@@ -87,8 +84,7 @@ class ControllerAuthorize extends BaseAuthorize
 	 * @param \Cake\Network\Request $request Request instance.
 	 * @return bool
 	 */
-	public function authorize($user, Request $request)
-	{
+	public function authorize($user, Request $request) {
 		return (bool)$this->_Controller->isAuthorized($user);
 	}
 }

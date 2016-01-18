@@ -22,8 +22,7 @@ use PDO;
  * a database engine including its SQL dialect
  *
  */
-abstract class Driver
-{
+abstract class Driver {
 
 	/**
 	 * Configuration data.
@@ -54,8 +53,7 @@ abstract class Driver
 	 * @param array $config The configuration for the driver.
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct($config = [])
-	{
+	public function __construct($config = []) {
 		if (empty($config['username']) && !empty($config['login'])) {
 			throw new InvalidArgumentException(
 				'Please pass "username" instead of "login" for connecting to the database'
@@ -178,8 +176,7 @@ abstract class Driver
 	 *
 	 * @return bool true if save points are supported, false otherwise
 	 */
-	public function supportsSavePoints()
-	{
+	public function supportsSavePoints() {
 		return true;
 	}
 
@@ -197,8 +194,7 @@ abstract class Driver
 	 *
 	 * @return bool
 	 */
-	public function supportsQuoting()
-	{
+	public function supportsQuoting() {
 		return true;
 	}
 
@@ -241,8 +237,7 @@ abstract class Driver
 	 * @param mixed $value The value to escape.
 	 * @return string String for use in schema definitions.
 	 */
-	public function schemaValue($value)
-	{
+	public function schemaValue($value) {
 		if ($value === null) {
 			return 'NULL';
 		}
@@ -271,8 +266,7 @@ abstract class Driver
 	 * @param string $column the name of the column representing the primary key
 	 * @return string|int
 	 */
-	public function lastInsertId($table = null, $column = null)
-	{
+	public function lastInsertId($table = null, $column = null) {
 		return $this->_connection->lastInsertId($table, $column);
 	}
 
@@ -281,8 +275,7 @@ abstract class Driver
 	 *
 	 * @return bool
 	 */
-	public function isConnected()
-	{
+	public function isConnected() {
 		return $this->_connection !== null;
 	}
 
@@ -296,8 +289,7 @@ abstract class Driver
 	 * @param bool $enable whether to enable auto quoting
 	 * @return bool
 	 */
-	public function autoQuoting($enable = null)
-	{
+	public function autoQuoting($enable = null) {
 		if ($enable === null) {
 			return $this->_autoQuoting;
 		}
@@ -313,8 +305,7 @@ abstract class Driver
 	 * @return array containing 2 entries. The first entity is the transformed query
 	 * and the second one the compiled SQL
 	 */
-	public function compileQuery(Query $query, ValueBinder $generator)
-	{
+	public function compileQuery(Query $query, ValueBinder $generator) {
 		$processor = $this->newCompiler();
 		$translator = $this->queryTranslator($query->type());
 		$query = $translator($query);
@@ -326,16 +317,14 @@ abstract class Driver
 	 *
 	 * @return \Cake\Database\QueryCompiler
 	 */
-	public function newCompiler()
-	{
+	public function newCompiler() {
 		return new QueryCompiler;
 	}
 
 	/**
 	 * Destructor
 	 */
-	public function __destruct()
-	{
+	public function __destruct() {
 		$this->_connection = null;
 	}
 
@@ -345,8 +334,7 @@ abstract class Driver
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		return [
 			'connected' => $this->isConnected()
 		];

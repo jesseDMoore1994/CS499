@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-class Translator implements TranslatorInterface
-{
+class Translator implements TranslatorInterface {
 	/**
 	 *
 	 * A fallback translator.
@@ -73,8 +72,7 @@ class Translator implements TranslatorInterface
 		array $messages,
 		FormatterInterface $formatter,
 		TranslatorInterface $fallback = null
-	)
-	{
+	) {
 		$this->locale = $locale;
 		$this->messages = $messages;
 		$this->formatter = $formatter;
@@ -90,8 +88,7 @@ class Translator implements TranslatorInterface
 	 * @return mixed The message translation string, or false if not found.
 	 *
 	 */
-	protected function getMessage($key)
-	{
+	protected function getMessage($key) {
 		if (isset($this->messages[$key])) {
 			return $this->messages[$key];
 		}
@@ -122,8 +119,7 @@ class Translator implements TranslatorInterface
 	 * @return string The translated message with tokens replaced.
 	 *
 	 */
-	public function translate($key, array $tokens_values = [])
-	{
+	public function translate($key, array $tokens_values = []) {
 		// get the message string
 		$message = $this->getMessage($key);
 

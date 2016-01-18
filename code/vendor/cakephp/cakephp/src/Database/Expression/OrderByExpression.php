@@ -22,8 +22,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class OrderByExpression extends QueryExpression
-{
+class OrderByExpression extends QueryExpression {
 
 	/**
 	 * Constructor
@@ -32,8 +31,7 @@ class OrderByExpression extends QueryExpression
 	 * @param array $types The types for each column.
 	 * @param string $conjunction The glue used to join conditions together.
 	 */
-	public function __construct($conditions = [], $types = [], $conjunction = '')
-	{
+	public function __construct($conditions = [], $types = [], $conjunction = '') {
 		parent::__construct($conditions, $types, $conjunction);
 	}
 
@@ -43,8 +41,7 @@ class OrderByExpression extends QueryExpression
 	 * @param \Cake\Database\ValueBinder $generator Placeholder generator object
 	 * @return string
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		$order = [];
 		foreach ($this->_conditions as $k => $direction) {
 			if ($direction instanceof ExpressionInterface) {
@@ -65,8 +62,7 @@ class OrderByExpression extends QueryExpression
 	 * @param array $types list of types associated on fields referenced in $conditions
 	 * @return void
 	 */
-	protected function _addConditions(array $orders, array $types)
-	{
+	protected function _addConditions(array $orders, array $types) {
 		$this->_conditions = array_merge($this->_conditions, $orders);
 	}
 }

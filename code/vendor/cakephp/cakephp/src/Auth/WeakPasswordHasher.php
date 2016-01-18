@@ -24,8 +24,7 @@ use Cake\Utility\Security;
  * not been migrated to a stronger algorithm yet.
  *
  */
-class WeakPasswordHasher extends AbstractPasswordHasher
-{
+class WeakPasswordHasher extends AbstractPasswordHasher {
 
 	/**
 	 * Default config for this object.
@@ -39,8 +38,7 @@ class WeakPasswordHasher extends AbstractPasswordHasher
 	/**
 	 * {@inheritDoc}
 	 */
-	public function __construct(array $config = [])
-	{
+	public function __construct(array $config = []) {
 		if (Configure::read('debug')) {
 			Debugger::checkSecurityKeys();
 		}
@@ -53,8 +51,7 @@ class WeakPasswordHasher extends AbstractPasswordHasher
 	 * @param string $password Plain text password to hash.
 	 * @return string Password hash
 	 */
-	public function hash($password)
-	{
+	public function hash($password) {
 		return Security::hash($password, $this->_config['hashType'], true);
 	}
 
@@ -65,8 +62,7 @@ class WeakPasswordHasher extends AbstractPasswordHasher
 	 * @param string $hashedPassword Existing hashed password.
 	 * @return bool True if hashes match else false.
 	 */
-	public function check($password, $hashedPassword)
-	{
+	public function check($password, $hashedPassword) {
 		return $hashedPassword === $this->hash($password);
 	}
 }

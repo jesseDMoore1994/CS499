@@ -18,8 +18,7 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class XmlResourceCaster
-{
+class XmlResourceCaster {
 	private static $xmlErrors = array(
 		XML_ERROR_NONE => 'XML_ERROR_NONE',
 		XML_ERROR_NO_MEMORY => 'XML_ERROR_NO_MEMORY',
@@ -45,8 +44,7 @@ class XmlResourceCaster
 		XML_ERROR_EXTERNAL_ENTITY_HANDLING => 'XML_ERROR_EXTERNAL_ENTITY_HANDLING',
 	);
 
-	public static function castXml($h, array $a, Stub $stub, $isNested)
-	{
+	public static function castXml($h, array $a, Stub $stub, $isNested) {
 		$a['current_byte_index'] = xml_get_current_byte_index($h);
 		$a['current_column_number'] = xml_get_current_column_number($h);
 		$a['current_line_number'] = xml_get_current_line_number($h);

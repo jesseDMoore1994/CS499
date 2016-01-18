@@ -23,16 +23,14 @@ use \PDO;
 /**
  * Tests Sqlite driver
  */
-class SqliteTest extends TestCase
-{
+class SqliteTest extends TestCase {
 
 	/**
 	 * Test connecting to Sqlite with default configuration
 	 *
 	 * @return void
 	 */
-	public function testConnectionConfigDefault()
-	{
+	public function testConnectionConfigDefault() {
 		$driver = $this->getMock('Cake\Database\Driver\Sqlite', ['_connect']);
 		$dsn = 'sqlite::memory:';
 		$expected = [
@@ -59,8 +57,7 @@ class SqliteTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectionConfigCustom()
-	{
+	public function testConnectionConfigCustom() {
 		$config = [
 			'persistent' => true,
 			'host' => 'foo',
@@ -100,8 +97,7 @@ class SqliteTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function schemaValueProvider()
-	{
+	public static function schemaValueProvider() {
 		return [
 			[null, 'NULL'],
 			[false, 'FALSE'],
@@ -121,8 +117,7 @@ class SqliteTest extends TestCase
 	 * @dataProvider schemaValueProvider
 	 * @return void
 	 */
-	public function testSchemaValue($input, $expected)
-	{
+	public function testSchemaValue($input, $expected) {
 		$driver = new Sqlite();
 		$mock = $this->getMock('FakePdo', ['quote', 'quoteIdentifier']);
 		$mock->expects($this->any())

@@ -26,8 +26,7 @@ use Cake\Utility\Inflector;
  * The Plugin Task handles creating an empty plugin, ready to be used
  *
  */
-class PluginTask extends BakeTask
-{
+class PluginTask extends BakeTask {
 	/**
 	 * Path to the bootstrap file. Changed in tests.
 	 *
@@ -49,8 +48,7 @@ class PluginTask extends BakeTask
 	 *
 	 * @return void
 	 */
-	public function initialize()
-	{
+	public function initialize() {
 		$this->path = current(App::path('Plugin'));
 		$this->bootstrap = ROOT . DS . 'config' . DS . 'bootstrap.php';
 	}
@@ -61,8 +59,7 @@ class PluginTask extends BakeTask
 	 * @param string|null $name The name of the plugin to bake.
 	 * @return void
 	 */
-	public function main($name = null)
-	{
+	public function main($name = null) {
 		if (empty($name)) {
 			$this->err('<error>You must provide a plugin name in CamelCase format.</error>');
 			$this->err('To make an "Example" plugin, run <info>`cake bake plugin Example`</info>.');
@@ -88,8 +85,7 @@ class PluginTask extends BakeTask
 	 * @param string $plugin Name of the plugin in CamelCased format
 	 * @return bool
 	 */
-	public function bake($plugin)
-	{
+	public function bake($plugin) {
 		$pathOptions = App::path('Plugin');
 		if (count($pathOptions) > 1) {
 			$this->findPath($pathOptions);
@@ -123,8 +119,7 @@ class PluginTask extends BakeTask
 	 * the plugin
 	 * @return void
 	 */
-	protected function _modifyBootstrap($plugin, $hasAutoloader)
-	{
+	protected function _modifyBootstrap($plugin, $hasAutoloader) {
 		$bootstrap = new File($this->bootstrap, false);
 		$contents = $bootstrap->read();
 		if (!preg_match("@\n\s*Plugin::loadAll@", $contents)) {
@@ -151,8 +146,7 @@ class PluginTask extends BakeTask
 	 * @param string $path the path to the plugins dir (the containing folder)
 	 * @return void
 	 */
-	protected function _generateFiles($pluginName, $path)
-	{
+	protected function _generateFiles($pluginName, $path) {
 		$namespace = str_replace('/', '\\', $pluginName);
 
 		$name = $pluginName;
@@ -201,8 +195,7 @@ class PluginTask extends BakeTask
 	 * @param string $root The path to the plugin's root
 	 * @return void
 	 */
-	protected function _generateFile($template, $root)
-	{
+	protected function _generateFile($template, $root) {
 		$this->out(sprintf('Generating %s file...', $template));
 		$out = $this->BakeTemplate->generate('Plugin/' . $template);
 		$this->createFile($root . $template, $out);
@@ -216,8 +209,7 @@ class PluginTask extends BakeTask
 	 * @param string $path The path to save the phpunit.xml file to.
 	 * @return bool True if composer could be modified correctly
 	 */
-	protected function _modifyAutoloader($plugin, $path)
-	{
+	protected function _modifyAutoloader($plugin, $path) {
 		$file = $this->_rootComposerFilePath();
 
 		if (!file_exists($file)) {
@@ -270,8 +262,7 @@ class PluginTask extends BakeTask
 	 *
 	 * @return string the abs file path
 	 */
-	protected function _rootComposerFilePath()
-	{
+	protected function _rootComposerFilePath() {
 		return ROOT . DS . 'composer.json';
 	}
 
@@ -281,8 +272,7 @@ class PluginTask extends BakeTask
 	 * @param array $pathOptions The list of paths to look in.
 	 * @return void
 	 */
-	public function findPath(array $pathOptions)
-	{
+	public function findPath(array $pathOptions) {
 		$valid = false;
 		foreach ($pathOptions as $i => $path) {
 			if (!is_dir($path)) {
@@ -320,8 +310,7 @@ class PluginTask extends BakeTask
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser->description(
 			'Create the directory structure, AppController class and testing setup for a new plugin. ' .
@@ -341,8 +330,7 @@ class PluginTask extends BakeTask
 	 *
 	 * @return string|false Either the path to composer or false if it cannot be found.
 	 */
-	public function findComposer()
-	{
+	public function findComposer() {
 		if (!empty($this->params['composer'])) {
 			$path = $this->params['composer'];
 			if (file_exists($path)) {
@@ -364,8 +352,7 @@ class PluginTask extends BakeTask
 	 * @param array $path The paths to search.
 	 * @return string|bool
 	 */
-	protected function _searchPath($path)
-	{
+	protected function _searchPath($path) {
 		$composer = ['composer.phar', 'composer'];
 		foreach ($path as $dir) {
 			foreach ($composer as $cmd) {

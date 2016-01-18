@@ -19,8 +19,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Rollback extends RollbackCommand
-{
+class Rollback extends RollbackCommand {
 
 	use ConfigurationTrait {
 		execute as parentExecute;
@@ -30,8 +29,7 @@ class Rollback extends RollbackCommand
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this->setName('rollback')
 			->setDescription('Rollback the last or to a specific migration')
 			->setHelp('reverts the last migration, or optionally up to a specific version')
@@ -50,8 +48,7 @@ class Rollback extends RollbackCommand
 	 * @param \Symfony\Component\Console\Output\OutputInterface $output the output object
 	 * @return mixed
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$event = $this->dispatchEvent('Migration.beforeRollback');
 		if ($event->isStopped()) {
 			return $event->result;

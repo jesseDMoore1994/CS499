@@ -18,10 +18,8 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class StubCaster
-{
-	public static function castStub(Stub $c, array $a, Stub $stub, $isNested)
-	{
+class StubCaster {
+	public static function castStub(Stub $c, array $a, Stub $stub, $isNested) {
 		if ($isNested) {
 			$stub->type = $c->type;
 			$stub->class = $c->class;
@@ -33,13 +31,11 @@ class StubCaster
 		}
 	}
 
-	public static function castCutArray(CutArrayStub $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castCutArray(CutArrayStub $c, array $a, Stub $stub, $isNested) {
 		return $isNested ? $c->preservedSubset : $a;
 	}
 
-	public static function cutInternals($obj, array $a, Stub $stub, $isNested)
-	{
+	public static function cutInternals($obj, array $a, Stub $stub, $isNested) {
 		if ($isNested) {
 			$stub->cut += count($a);
 
@@ -49,8 +45,7 @@ class StubCaster
 		return $a;
 	}
 
-	public static function castEnum(EnumStub $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castEnum(EnumStub $c, array $a, Stub $stub, $isNested) {
 		if ($isNested) {
 			$stub->class = '';
 			$stub->handle = 0;

@@ -21,8 +21,7 @@ use Cake\Filesystem\File;
  * Task for loading plugins.
  *
  */
-class LoadTask extends Shell
-{
+class LoadTask extends Shell {
 	/**
 	 * Path to the bootstrap file.
 	 *
@@ -36,8 +35,7 @@ class LoadTask extends Shell
 	 * @param string $plugin The plugin name.
 	 * @return bool
 	 */
-	public function main($plugin = null)
-	{
+	public function main($plugin = null) {
 		$this->bootstrap = ROOT . DS . 'config' . DS . 'bootstrap.php';
 
 		if (empty($plugin)) {
@@ -64,8 +62,7 @@ class LoadTask extends Shell
 	 * the plugin.
 	 * @return bool If modify passed.
 	 */
-	protected function _modifyBootstrap($plugin, $hasBootstrap, $hasRoutes, $hasAutoloader)
-	{
+	protected function _modifyBootstrap($plugin, $hasBootstrap, $hasRoutes, $hasAutoloader) {
 		$bootstrap = new File($this->bootstrap, false);
 		$contents = $bootstrap->read();
 		if (!preg_match("@\n\s*Plugin::loadAll@", $contents)) {
@@ -89,8 +86,7 @@ class LoadTask extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->addOption('bootstrap', [

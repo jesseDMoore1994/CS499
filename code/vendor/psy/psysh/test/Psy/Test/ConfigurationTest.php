@@ -17,10 +17,8 @@ use Psy\ExecutionLoop\Loop;
 use Psy\Output\PassthruPager;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
-{
-	public function testDefaults()
-	{
+class ConfigurationTest extends \PHPUnit_Framework_TestCase {
+	public function testDefaults() {
 		$config = new Configuration();
 
 		$this->assertEquals(function_exists('readline'), $config->hasReadline());
@@ -30,8 +28,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($config->requireSemicolons());
 	}
 
-	public function testGettersAndSetters()
-	{
+	public function testGettersAndSetters() {
 		$config = new Configuration();
 
 		$this->assertNull($config->getDataDir());
@@ -46,8 +43,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider directories
 	 */
-	public function testFilesAndDirectories($home, $configFile, $historyFile, $manualDbFile)
-	{
+	public function testFilesAndDirectories($home, $configFile, $historyFile, $manualDbFile) {
 		$oldHome = getenv('HOME');
 		putenv("HOME=$home");
 
@@ -59,8 +55,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 		putenv("HOME=$oldHome");
 	}
 
-	public function directories()
-	{
+	public function directories() {
 		$base = realpath(__DIR__ . '/../../fixtures');
 
 		return array(
@@ -85,8 +80,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testLoadConfig()
-	{
+	public function testLoadConfig() {
 		$config = new Configuration();
 		$cleaner = new CodeCleaner();
 		$pager = new PassthruPager(new ConsoleOutput());
@@ -111,8 +105,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(E_ERROR | E_WARNING, $config->errorLoggingLevel());
 	}
 
-	public function testLoadConfigFile()
-	{
+	public function testLoadConfigFile() {
 		$config = new Configuration(array('configFile' => __DIR__ . '/../../fixtures/config.php'));
 
 		$runtimeDir = $this->joinPath(realpath(sys_get_temp_dir()), 'psysh_test', 'withconfig', 'temp');
@@ -126,8 +119,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(E_ALL & ~E_NOTICE, $config->errorLoggingLevel());
 	}
 
-	public function testLoadLocalConfigFile()
-	{
+	public function testLoadLocalConfigFile() {
 		$oldPwd = getenv('PWD');
 		putenv('PWD=' . realpath(__DIR__ . '/../../fixtures/project/'));
 
@@ -149,18 +141,15 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException Psy\Exception\DeprecatedException
 	 */
-	public function testBaseDirConfigIsDeprecated()
-	{
+	public function testBaseDirConfigIsDeprecated() {
 		$config = new Configuration(array('baseDir' => 'fake'));
 	}
 
-	private function joinPath()
-	{
+	private function joinPath() {
 		return implode(DIRECTORY_SEPARATOR, func_get_args());
 	}
 
-	public function testConfigIncludes()
-	{
+	public function testConfigIncludes() {
 		$config = new Configuration(array(
 			'defaultIncludes' => array('/file.php'),
 			'configFile' => __DIR__ . '/../../fixtures/empty.php',

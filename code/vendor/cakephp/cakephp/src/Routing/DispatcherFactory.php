@@ -21,8 +21,7 @@ use Cake\Routing\Exception\MissingDispatcherFilterException;
  * A factory for creating dispatchers with all the desired middleware
  * connected.
  */
-class DispatcherFactory
-{
+class DispatcherFactory {
 
 	/**
 	 * Stack of middleware to apply to dispatchers.
@@ -44,8 +43,7 @@ class DispatcherFactory
 	 *   If you are passing an instance, this argument will be ignored.
 	 * @return \Cake\Routing\DispatcherFilter
 	 */
-	public static function add($filter, array $options = [])
-	{
+	public static function add($filter, array $options = []) {
 		if (is_string($filter)) {
 			$filter = static::_createFilter($filter, $options);
 		}
@@ -61,8 +59,7 @@ class DispatcherFactory
 	 * @return \Cake\Routing\DispatcherFilter
 	 * @throws \Cake\Routing\Exception\MissingDispatcherFilterException When filters cannot be found.
 	 */
-	protected static function _createFilter($name, $options)
-	{
+	protected static function _createFilter($name, $options) {
 		$className = App::className($name, 'Routing/Filter', 'Filter');
 		if (!$className) {
 			$msg = sprintf('Cannot locate dispatcher filter named "%s".', $name);
@@ -76,8 +73,7 @@ class DispatcherFactory
 	 *
 	 * @return \Cake\Routing\Dispatcher
 	 */
-	public static function create()
-	{
+	public static function create() {
 		$dispatcher = new Dispatcher();
 		foreach (static::$_stack as $middleware) {
 			$dispatcher->addFilter($middleware);
@@ -90,8 +86,7 @@ class DispatcherFactory
 	 *
 	 * @return array
 	 */
-	public static function filters()
-	{
+	public static function filters() {
 		return static::$_stack;
 	}
 
@@ -100,8 +95,7 @@ class DispatcherFactory
 	 *
 	 * @return void
 	 */
-	public static function clear()
-	{
+	public static function clear() {
 		static::$_stack = [];
 	}
 }

@@ -21,8 +21,7 @@ use Cake\Cache\CacheEngine;
  *
  * @link          http://trac.lighttpd.net/xcache/ Xcache
  */
-class XcacheEngine extends CacheEngine
-{
+class XcacheEngine extends CacheEngine {
 
 	/**
 	 * The default config used unless overridden by runtime configuration
@@ -56,8 +55,7 @@ class XcacheEngine extends CacheEngine
 	 * @param array $config array of setting for the engine
 	 * @return bool True if the engine has been successfully initialized, false if not
 	 */
-	public function init(array $config = [])
-	{
+	public function init(array $config = []) {
 		if ((PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg') || !extension_loaded('xcache')) {
 			return false;
 		}
@@ -73,8 +71,7 @@ class XcacheEngine extends CacheEngine
 	 * @param mixed $value Data to be cached
 	 * @return bool True if the data was successfully cached, false on failure
 	 */
-	public function write($key, $value)
-	{
+	public function write($key, $value) {
 		$key = $this->_key($key);
 
 		$duration = $this->_config['duration'];
@@ -90,8 +87,7 @@ class XcacheEngine extends CacheEngine
 	 * @return mixed The cached data, or false if the data doesn't exist,
 	 *   has expired, or if there was an error fetching it
 	 */
-	public function read($key)
-	{
+	public function read($key) {
 		$key = $this->_key($key);
 
 		if (xcache_isset($key)) {
@@ -113,8 +109,7 @@ class XcacheEngine extends CacheEngine
 	 * @param int $offset How much to increment
 	 * @return bool|int New incremented value, false otherwise
 	 */
-	public function increment($key, $offset = 1)
-	{
+	public function increment($key, $offset = 1) {
 		$key = $this->_key($key);
 
 		return xcache_inc($key, $offset);
@@ -128,8 +123,7 @@ class XcacheEngine extends CacheEngine
 	 * @param int $offset How much to subtract
 	 * @return bool|int New decremented value, false otherwise
 	 */
-	public function decrement($key, $offset = 1)
-	{
+	public function decrement($key, $offset = 1) {
 		$key = $this->_key($key);
 
 		return xcache_dec($key, $offset);
@@ -141,8 +135,7 @@ class XcacheEngine extends CacheEngine
 	 * @param string $key Identifier for the data
 	 * @return bool True if the value was successfully deleted, false if it didn't exist or couldn't be removed
 	 */
-	public function delete($key)
-	{
+	public function delete($key) {
 		$key = $this->_key($key);
 
 		return xcache_unset($key);
@@ -156,8 +149,7 @@ class XcacheEngine extends CacheEngine
 	 *   Unused for Xcache engine.
 	 * @return bool True if the cache was successfully cleared, false otherwise
 	 */
-	public function clear($check)
-	{
+	public function clear($check) {
 		$this->_auth();
 		$max = xcache_count(XC_TYPE_VAR);
 		for ($i = 0; $i < $max; $i++) {
@@ -174,8 +166,7 @@ class XcacheEngine extends CacheEngine
 	 *
 	 * @return array
 	 */
-	public function groups()
-	{
+	public function groups() {
 		$result = [];
 		foreach ($this->_config['groups'] as $group) {
 			$value = xcache_get($this->_config['prefix'] . $group);
@@ -195,8 +186,7 @@ class XcacheEngine extends CacheEngine
 	 * @param string $group The group to clear.
 	 * @return bool success
 	 */
-	public function clearGroup($group)
-	{
+	public function clearGroup($group) {
 		return (bool)xcache_inc($this->_config['prefix'] . $group, 1);
 	}
 
@@ -210,8 +200,7 @@ class XcacheEngine extends CacheEngine
 	 * @param bool $reverse Revert changes
 	 * @return void
 	 */
-	protected function _auth($reverse = false)
-	{
+	protected function _auth($reverse = false) {
 		static $backup = [];
 		$keys = ['PHP_AUTH_USER' => 'user', 'PHP_AUTH_PW' => 'password'];
 		foreach ($keys as $key => $value) {

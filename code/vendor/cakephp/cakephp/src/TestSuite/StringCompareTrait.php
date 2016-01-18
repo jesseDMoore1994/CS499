@@ -20,8 +20,7 @@ namespace Cake\TestSuite;
  * Implementing objects are expected to modify the `$_compareBasePath` property
  * before use.
  */
-trait StringCompareTrait
-{
+trait StringCompareTrait {
 
 	/**
 	 * The base path for output comparisons
@@ -39,8 +38,7 @@ trait StringCompareTrait
 	 * @param string $result test result as a string
 	 * @return void
 	 */
-	public function assertSameAsFile($path, $result)
-	{
+	public function assertSameAsFile($path, $result) {
 		$path = $this->_compareBasePath . $path;
 
 		$expected = file_get_contents($path);

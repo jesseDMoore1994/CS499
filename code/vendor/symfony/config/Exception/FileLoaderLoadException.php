@@ -16,16 +16,14 @@ namespace Symfony\Component\Config\Exception;
  *
  * @author Ryan Weaver <ryan@thatsquality.com>
  */
-class FileLoaderLoadException extends \Exception
-{
+class FileLoaderLoadException extends \Exception {
 	/**
 	 * @param string $resource The resource that could not be imported
 	 * @param string $sourceResource The original resource importing the new resource
 	 * @param int $code The error code
 	 * @param \Exception $previous A previous exception
 	 */
-	public function __construct($resource, $sourceResource = null, $code = null, $previous = null)
-	{
+	public function __construct($resource, $sourceResource = null, $code = null, $previous = null) {
 		$message = '';
 		if ($previous) {
 			// Include the previous exception, to help the user see what might be the underlying cause
@@ -65,8 +63,7 @@ class FileLoaderLoadException extends \Exception
 		parent::__construct($message, $code, $previous);
 	}
 
-	protected function varToString($var)
-	{
+	protected function varToString($var) {
 		if (is_object($var)) {
 			return sprintf('Object(%s)', get_class($var));
 		}

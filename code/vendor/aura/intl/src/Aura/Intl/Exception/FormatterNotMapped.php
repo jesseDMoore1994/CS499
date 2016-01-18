@@ -19,6 +19,5 @@ use Aura\Intl\Exception;
  * @package Aura.Intl
  *
  */
-class FormatterNotMapped extends \Exception
-{
+class FormatterNotMapped extends \Exception {
 }

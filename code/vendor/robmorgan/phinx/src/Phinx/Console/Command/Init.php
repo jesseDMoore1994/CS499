@@ -33,13 +33,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Init extends Command
-{
+class Init extends Command {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this->setName('init')
 			->setDescription('Initialize the application for Phinx')
 			->addArgument('path', InputArgument::OPTIONAL, 'Which path should we initialize for Phinx?')
@@ -59,8 +57,7 @@ class Init extends Command
 	 * @throws \InvalidArgumentException
 	 * @return void
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		// get the migration path from the config
 		$path = $input->getArgument('path');
 

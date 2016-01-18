@@ -16,6 +16,5 @@ namespace Symfony\Component\Config\Definition\Exception;
  *
  * @author Victor Berchet <victor.berchet@suumit.com>
  */
-class InvalidDefinitionException extends Exception
-{
+class InvalidDefinitionException extends Exception {
 }

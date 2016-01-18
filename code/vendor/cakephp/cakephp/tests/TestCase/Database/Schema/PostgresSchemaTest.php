@@ -24,16 +24,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Postgres schema test case.
  */
-class PostgresSchemaTest extends TestCase
-{
+class PostgresSchemaTest extends TestCase {
 
 	/**
 	 * Helper method for skipping tests that need a real connection.
 	 *
 	 * @return void
 	 */
-	protected function _needsConnection()
-	{
+	protected function _needsConnection() {
 		$config = ConnectionManager::config('test');
 		$this->skipIf(strpos($config['driver'], 'Postgres') === false, 'Not using Postgres for test config');
 	}
@@ -44,8 +42,7 @@ class PostgresSchemaTest extends TestCase
 	 * @param \Cake\Datasource\ConnectionInterface $connection
 	 * @return void
 	 */
-	protected function _createTables($connection)
-	{
+	protected function _createTables($connection) {
 		$this->_needsConnection();
 
 		$connection->execute('DROP TABLE IF EXISTS schema_articles');
@@ -88,8 +85,7 @@ SQL;
 	 *
 	 * @return array
 	 */
-	public static function convertColumnProvider()
-	{
+	public static function convertColumnProvider() {
 		return [
 			// Timestamp
 			[
@@ -209,8 +205,7 @@ SQL;
 	 * @dataProvider convertColumnProvider
 	 * @return void
 	 */
-	public function testConvertColumn($type, $expected)
-	{
+	public function testConvertColumn($type, $expected) {
 		$field = [
 			'name' => 'field',
 			'type' => $type,
@@ -239,8 +234,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testListTables()
-	{
+	public function testListTables() {
 		$connection = ConnectionManager::get('test');
 		$this->_createTables($connection);
 
@@ -256,8 +250,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testDescribeWithSchemaName()
-	{
+	public function testDescribeWithSchemaName() {
 		$connection = ConnectionManager::get('test');
 		$this->_createTables($connection);
 
@@ -272,8 +265,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testDescribeTable()
-	{
+	public function testDescribeTable() {
 		$connection = ConnectionManager::get('test');
 		$this->_createTables($connection);
 
@@ -363,8 +355,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testDescribeTableCompositeKey()
-	{
+	public function testDescribeTableCompositeKey() {
 		$this->_needsConnection();
 		$connection = ConnectionManager::get('test');
 		$sql = <<<SQL
@@ -390,8 +381,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testDescribeTableWithDefaults()
-	{
+	public function testDescribeTableWithDefaults() {
 		$connection = ConnectionManager::get('test');
 		$this->_createTables($connection);
 
@@ -455,8 +445,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testDescribeTableConstraintsWithKeywords()
-	{
+	public function testDescribeTableConstraintsWithKeywords() {
 		$connection = ConnectionManager::get('test');
 		$this->_createTables($connection);
 
@@ -485,8 +474,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testDescribeTableIndexes()
-	{
+	public function testDescribeTableIndexes() {
 		$connection = ConnectionManager::get('test');
 		$this->_createTables($connection);
 
@@ -544,8 +532,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testDescribeTableIndexesNullsFirst()
-	{
+	public function testDescribeTableIndexesNullsFirst() {
 		$this->_needsConnection();
 		$connection = ConnectionManager::get('test');
 		$connection->execute('DROP TABLE IF EXISTS schema_index');
@@ -588,8 +575,7 @@ SQL;
 	 *
 	 * @return array
 	 */
-	public static function columnSqlProvider()
-	{
+	public static function columnSqlProvider() {
 		return [
 			// strings
 			[
@@ -736,8 +722,7 @@ SQL;
 	 * @dataProvider columnSqlProvider
 	 * @return void
 	 */
-	public function testColumnSql($name, $data, $expected)
-	{
+	public function testColumnSql($name, $data, $expected) {
 		$driver = $this->_getMockedDriver();
 		$schema = new PostgresSchema($driver);
 
@@ -750,8 +735,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testColumnSqlPrimaryKey()
-	{
+	public function testColumnSqlPrimaryKey() {
 		$driver = $this->_getMockedDriver();
 		$schema = new PostgresSchema($driver);
 
@@ -773,8 +757,7 @@ SQL;
 	 *
 	 * @return array
 	 */
-	public static function constraintSqlProvider()
-	{
+	public static function constraintSqlProvider() {
 		return [
 			[
 				'primary',
@@ -824,8 +807,7 @@ SQL;
 	 *
 	 * @dataProvider constraintSqlProvider
 	 */
-	public function testConstraintSql($name, $data, $expected)
-	{
+	public function testConstraintSql($name, $data, $expected) {
 		$driver = $this->_getMockedDriver();
 		$schema = new PostgresSchema($driver);
 
@@ -844,8 +826,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testAddConstraintSql()
-	{
+	public function testAddConstraintSql() {
 		$driver = $this->_getMockedDriver();
 		$connection = $this->getMock('Cake\Database\Connection', [], [], '', false);
 		$connection->expects($this->any())->method('driver')
@@ -893,8 +874,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testDropConstraintSql()
-	{
+	public function testDropConstraintSql() {
 		$driver = $this->_getMockedDriver();
 		$connection = $this->getMock('Cake\Database\Connection', [], [], '', false);
 		$connection->expects($this->any())->method('driver')
@@ -942,8 +922,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testCreateSql()
-	{
+	public function testCreateSql() {
 		$driver = $this->_getMockedDriver();
 		$connection = $this->getMock('Cake\Database\Connection', [], [], '', false);
 		$connection->expects($this->any())->method('driver')
@@ -997,8 +976,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testCreateTemporary()
-	{
+	public function testCreateTemporary() {
 		$driver = $this->_getMockedDriver();
 		$connection = $this->getMock('Cake\Database\Connection', [], [], '', false);
 		$connection->expects($this->any())->method('driver')
@@ -1017,8 +995,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testCreateSqlCompositeIntegerKey()
-	{
+	public function testCreateSqlCompositeIntegerKey() {
 		$driver = $this->_getMockedDriver();
 		$connection = $this->getMock('Cake\Database\Connection', [], [], '', false);
 		$connection->expects($this->any())->method('driver')
@@ -1081,8 +1058,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testDropSql()
-	{
+	public function testDropSql() {
 		$driver = $this->_getMockedDriver();
 		$connection = $this->getMock('Cake\Database\Connection', [], [], '', false);
 		$connection->expects($this->any())->method('driver')
@@ -1099,8 +1075,7 @@ SQL;
 	 *
 	 * @return void
 	 */
-	public function testTruncateSql()
-	{
+	public function testTruncateSql() {
 		$driver = $this->_getMockedDriver();
 		$connection = $this->getMock('Cake\Database\Connection', [], [], '', false);
 		$connection->expects($this->any())->method('driver')
@@ -1122,8 +1097,7 @@ SQL;
 	 *
 	 * @return Driver
 	 */
-	protected function _getMockedDriver()
-	{
+	protected function _getMockedDriver() {
 		$driver = new \Cake\Database\Driver\Postgres();
 		$mock = $this->getMock('FakePdo', ['quote', 'quoteIdentifier']);
 		$mock->expects($this->any())

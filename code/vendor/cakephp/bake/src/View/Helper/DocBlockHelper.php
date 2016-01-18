@@ -7,8 +7,7 @@ use Cake\View\Helper;
 /**
  * DocBlock helper
  */
-class DocBlockHelper extends Helper
-{
+class DocBlockHelper extends Helper {
 	/**
 	 * Converts an entity class type to its DocBlock hint type counterpart.
 	 *
@@ -16,8 +15,7 @@ class DocBlockHelper extends Helper
 	 * @param \Cake\ORM\Association $association The association related to the entity class.
 	 * @return string The DocBlock type
 	 */
-	public function associatedEntityTypeToHintType($type, Association $association)
-	{
+	public function associatedEntityTypeToHintType($type, Association $association) {
 		if ($association->type() === Association::MANY_TO_MANY ||
 			$association->type() === Association::ONE_TO_MANY
 		) {
@@ -47,8 +45,7 @@ class DocBlockHelper extends Helper
 	 * @param array $propertySchema The property schema to use for generating the type map.
 	 * @return array The property DocType map.
 	 */
-	public function buildEntityPropertyHintTypeMap(array $propertySchema)
-	{
+	public function buildEntityPropertyHintTypeMap(array $propertySchema) {
 		$properties = [];
 		foreach ($propertySchema as $property => $info) {
 			switch ($info['kind']) {
@@ -84,8 +81,7 @@ class DocBlockHelper extends Helper
 	 * @param string $type The column type.
 	 * @return null|string The DocBlock type, or `null` for unsupported column types.
 	 */
-	public function columnTypeToHintType($type)
-	{
+	public function columnTypeToHintType($type) {
 		switch ($type) {
 			case 'string':
 			case 'text':
@@ -126,8 +122,7 @@ class DocBlockHelper extends Helper
 	 * @param mixed $value The entry to insert.
 	 * @return array The array with the new value inserted.
 	 */
-	protected function _insertAfter(array $target, $key, $value)
-	{
+	protected function _insertAfter(array $target, $key, $value) {
 		$index = array_search($key, array_keys($target));
 		if ($index !== false) {
 			$target = array_merge(

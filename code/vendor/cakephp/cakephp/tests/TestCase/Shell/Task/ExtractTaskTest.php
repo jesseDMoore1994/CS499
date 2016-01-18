@@ -25,16 +25,14 @@ use Cake\TestSuite\TestCase;
  * ExtractTaskTest class
  *
  */
-class ExtractTaskTest extends TestCase
-{
+class ExtractTaskTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
 		$progress = $this->getMock('Cake\Shell\Helper\ProgressHelper', [], [$this->io]);
@@ -55,8 +53,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->Task);
 
@@ -70,8 +67,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExecute()
-	{
+	public function testExecute() {
 		$this->Task->params['paths'] = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Pages';
 		$this->Task->params['output'] = $this->path . DS;
 		$this->Task->params['extract-core'] = 'no';
@@ -140,8 +136,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExecuteMerge()
-	{
+	public function testExecuteMerge() {
 		$this->Task->params['paths'] = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Pages';
 		$this->Task->params['output'] = $this->path . DS;
 		$this->Task->params['extract-core'] = 'no';
@@ -163,8 +158,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractWithExclude()
-	{
+	public function testExtractWithExclude() {
 		$this->Task->interactive = false;
 
 		$this->Task->params['paths'] = TEST_APP . 'TestApp/Template';
@@ -191,8 +185,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractWithoutLocations()
-	{
+	public function testExtractWithoutLocations() {
 		$this->Task->params['paths'] = TEST_APP . 'TestApp/Template';
 		$this->Task->params['output'] = $this->path . DS;
 		$this->Task->params['exclude'] = 'Pages,Layout';
@@ -217,8 +210,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractMultiplePaths()
-	{
+	public function testExtractMultiplePaths() {
 		$this->Task->interactive = false;
 
 		$this->Task->params['paths'] =
@@ -242,8 +234,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractExcludePlugins()
-	{
+	public function testExtractExcludePlugins() {
 		Configure::write('App.namespace', 'TestApp');
 		$this->Task = $this->getMock(
 			'Cake\Shell\Task\ExtractTask',
@@ -268,8 +259,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractPlugin()
-	{
+	public function testExtractPlugin() {
 		Configure::write('App.namespace', 'TestApp');
 
 		$this->Task = $this->getMock(
@@ -293,8 +283,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractOverwrite()
-	{
+	public function testExtractOverwrite() {
 		Configure::write('App.namespace', 'TestApp');
 		$this->Task->interactive = false;
 
@@ -317,8 +306,7 @@ class ExtractTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtractCore()
-	{
+	public function testExtractCore() {
 		Configure::write('App.namespace', 'TestApp');
 		$this->Task->interactive = false;
 

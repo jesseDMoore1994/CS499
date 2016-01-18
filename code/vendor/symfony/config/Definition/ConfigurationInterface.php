@@ -16,8 +16,7 @@ namespace Symfony\Component\Config\Definition;
  *
  * @author Victor Berchet <victor@suumit.com>
  */
-interface ConfigurationInterface
-{
+interface ConfigurationInterface {
 	/**
 	 * Generates the configuration tree builder.
 	 *

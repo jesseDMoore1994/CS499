@@ -24,16 +24,14 @@ use Cake\TestSuite\TestCase;
  * NumberTest class
  *
  */
-class NumberTest extends TestCase
-{
+class NumberTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->Number = new Number();
 		$this->locale = I18n::locale();
@@ -44,8 +42,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->Number);
 		I18n::locale($this->locale);
@@ -57,8 +54,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormat()
-	{
+	public function testFormat() {
 		$value = '100100100';
 
 		$result = $this->Number->format($value);
@@ -99,8 +95,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseFloat()
-	{
+	public function testParseFloat() {
 		I18n::locale('de_DE');
 		$value = '1.234.567,891';
 		$result = $this->Number->parseFloat($value);
@@ -124,8 +119,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatDelta()
-	{
+	public function testFormatDelta() {
 		$value = '100100100';
 
 		$result = $this->Number->formatDelta($value, ['places' => 0]);
@@ -169,8 +163,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCurrency()
-	{
+	public function testCurrency() {
 		$value = '100100100';
 
 		$result = $this->Number->currency($value);
@@ -279,8 +272,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCurrencyWithFractionAndPlaces()
-	{
+	public function testCurrencyWithFractionAndPlaces() {
 		$result = $this->Number->currency('1.23', 'EUR', ['locale' => 'de_DE', 'places' => 3]);
 		$expected = '1,230 €';
 		$this->assertEquals($expected, $result);
@@ -303,8 +295,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDefaultCurrency()
-	{
+	public function testDefaultCurrency() {
 		$result = $this->Number->defaultCurrency();
 		$this->assertEquals('USD', $result);
 
@@ -321,8 +312,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCurrencyCentsNegative()
-	{
+	public function testCurrencyCentsNegative() {
 		$value = '-0.99';
 
 		$result = $this->Number->currency($value, 'EUR', ['locale' => 'de_DE']);
@@ -339,8 +329,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCurrencyZero()
-	{
+	public function testCurrencyZero() {
 		$value = '0';
 
 		$result = $this->Number->currency($value, 'USD');
@@ -357,8 +346,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCurrencyOptions()
-	{
+	public function testCurrencyOptions() {
 		$value = '1234567.89';
 
 		$result = $this->Number->currency($value, null, ['before' => 'Total: ']);
@@ -376,8 +364,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCurrencyIntlCode()
-	{
+	public function testCurrencyIntlCode() {
 		$value = '123';
 		$result = $this->Number->currency($value, 'USD', ['useIntlCode' => true]);
 		$expected = 'USD 123.00';
@@ -397,8 +384,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrecisionLocalized()
-	{
+	public function testPrecisionLocalized() {
 		I18n::locale('fr_FR');
 		$result = $this->Number->precision(1.234);
 		$this->assertEquals('1,234', $result);
@@ -409,8 +395,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPercentage()
-	{
+	public function testToPercentage() {
 		$result = $this->Number->toPercentage(45, 0);
 		$expected = '45%';
 		$this->assertEquals($expected, $result);
@@ -461,8 +446,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToReadableSize()
-	{
+	public function testToReadableSize() {
 		$result = $this->Number->toReadableSize(0);
 		$expected = '0 Bytes';
 		$this->assertEquals($expected, $result);
@@ -529,8 +513,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadableSizeLocalized()
-	{
+	public function testReadableSizeLocalized() {
 		I18n::locale('fr_FR');
 		$result = $this->Number->toReadableSize(1321205);
 		$this->assertEquals('1,26 MB', $result);
@@ -544,8 +527,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfig()
-	{
+	public function testConfig() {
 		$result = $this->Number->currency(15000, 'INR', ['locale' => 'en_IN']);
 		$this->assertEquals('₹ 15,000.00', $result);
 
@@ -562,8 +544,7 @@ class NumberTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOrdinal()
-	{
+	public function testOrdinal() {
 		I18n::locale('en_US');
 		$result = $this->Number->ordinal(1);
 		$this->assertEquals('1st', $result);

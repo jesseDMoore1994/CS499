@@ -19,8 +19,7 @@ namespace Cake\Database\Statement;
  *
  * @internal
  */
-trait BufferResultsTrait
-{
+trait BufferResultsTrait {
 
 	/**
 	 * Whether or not to buffer results in php
@@ -35,8 +34,7 @@ trait BufferResultsTrait
 	 * @param bool $buffer Toggle buffering
 	 * @return $this
 	 */
-	public function bufferResults($buffer)
-	{
+	public function bufferResults($buffer) {
 		$this->_bufferResults = (bool)$buffer;
 		return $this;
 	}

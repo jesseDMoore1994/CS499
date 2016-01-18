@@ -20,8 +20,7 @@ use Cake\TestSuite\Fixture\TestFixture;
  * Short description for class.
  *
  */
-class ArticlesTagsFixture extends TestFixture
-{
+class ArticlesTagsFixture extends TestFixture {
 
 	/**
 	 * fields property

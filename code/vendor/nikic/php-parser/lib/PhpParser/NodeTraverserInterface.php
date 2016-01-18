@@ -2,8 +2,7 @@
 
 namespace PhpParser;
 
-interface NodeTraverserInterface
-{
+interface NodeTraverserInterface {
 	/**
 	 * If NodeVisitor::enterNode() returns DONT_TRAVERSE_CHILDREN, child nodes
 	 * of the current node will not be traversed for any visitors.

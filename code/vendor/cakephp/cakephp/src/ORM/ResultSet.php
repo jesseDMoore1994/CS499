@@ -29,8 +29,7 @@ use SplFixedArray;
  * queries required for eager loading external associations.
  *
  */
-class ResultSet implements ResultSetInterface
-{
+class ResultSet implements ResultSetInterface {
 
 	use CollectionTrait;
 
@@ -167,8 +166,7 @@ class ResultSet implements ResultSetInterface
 	 * @param \Cake\ORM\Query $query Query from where results come
 	 * @param \Cake\Database\StatementInterface $statement The statement to fetch from
 	 */
-	public function __construct($query, $statement)
-	{
+	public function __construct($query, $statement) {
 		$repository = $query->repository();
 		$this->_statement = $statement;
 		$this->_driver = $query->connection()->driver();
@@ -194,8 +192,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return array|object
 	 */
-	public function current()
-	{
+	public function current() {
 		return $this->_current;
 	}
 
@@ -206,8 +203,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return int
 	 */
-	public function key()
-	{
+	public function key() {
 		return $this->_index;
 	}
 
@@ -218,8 +214,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return void
 	 */
-	public function next()
-	{
+	public function next() {
 		$this->_index++;
 	}
 
@@ -231,8 +226,7 @@ class ResultSet implements ResultSetInterface
 	 * @throws \Cake\Database\Exception
 	 * @return void
 	 */
-	public function rewind()
-	{
+	public function rewind() {
 		if ($this->_index == 0) {
 			return;
 		}
@@ -252,8 +246,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return bool
 	 */
-	public function valid()
-	{
+	public function valid() {
 		if ($this->_useBuffering) {
 			$valid = $this->_index < $this->_count;
 			if ($valid && $this->_results[$this->_index] !== null) {
@@ -285,8 +278,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return array|object
 	 */
-	public function first()
-	{
+	public function first() {
 		foreach ($this as $result) {
 			if ($this->_statement && !$this->_useBuffering) {
 				$this->_statement->closeCursor();
@@ -302,8 +294,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return string Serialized object
 	 */
-	public function serialize()
-	{
+	public function serialize() {
 		while ($this->valid()) {
 			$this->next();
 		}
@@ -318,8 +309,7 @@ class ResultSet implements ResultSetInterface
 	 * @param string $serialized Serialized object
 	 * @return void
 	 */
-	public function unserialize($serialized)
-	{
+	public function unserialize($serialized) {
 		$this->_results = unserialize($serialized);
 		$this->_useBuffering = true;
 		$this->_count = count($this->_results);
@@ -332,8 +322,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return int
 	 */
-	public function count()
-	{
+	public function count() {
 		if ($this->_count !== null) {
 			return $this->_count;
 		}
@@ -350,8 +339,7 @@ class ResultSet implements ResultSetInterface
 	 * @param \Cake\ORM\Query $query The query from where to derive the associations
 	 * @return void
 	 */
-	protected function _calculateAssociationMap($query)
-	{
+	protected function _calculateAssociationMap($query) {
 		$map = $query->eagerLoader()->associationsMap($this->_defaultTable);
 		$this->_matchingMap = (new Collection($map))
 			->match(['matching' => true])
@@ -371,8 +359,7 @@ class ResultSet implements ResultSetInterface
 	 * @param \Cake\ORM\Query $query The query from where to derive the column map
 	 * @return void
 	 */
-	protected function _calculateColumnMap($query)
-	{
+	protected function _calculateColumnMap($query) {
 		$map = [];
 		foreach ($query->clause('select') as $key => $field) {
 			$key = trim($key, '"`[]');
@@ -401,8 +388,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return void
 	 */
-	protected function _calculateTypeMap()
-	{
+	protected function _calculateTypeMap() {
 		if (isset($this->_map[$this->_defaultAlias])) {
 			$this->_types[$this->_defaultAlias] = $this->_getTypes(
 				$this->_defaultTable,
@@ -437,8 +423,7 @@ class ResultSet implements ResultSetInterface
 	 * @param array $fields The fields whitelist to use for fields in the schema.
 	 * @return array
 	 */
-	protected function _getTypes($table, $fields)
-	{
+	protected function _getTypes($table, $fields) {
 		$types = [];
 		$schema = $table->schema();
 		$map = array_keys(Type::map() + ['string' => 1, 'text' => 1, 'boolean' => 1]);
@@ -469,8 +454,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return mixed
 	 */
-	protected function _fetchResult()
-	{
+	protected function _fetchResult() {
 		if (!$this->_statement) {
 			return false;
 		}
@@ -488,8 +472,7 @@ class ResultSet implements ResultSetInterface
 	 * @param mixed $row Array containing columns and values or false if there is no results
 	 * @return array Results
 	 */
-	protected function _groupResult($row)
-	{
+	protected function _groupResult($row) {
 		$defaultAlias = $this->_defaultAlias;
 		$results = $presentAliases = [];
 		$options = [
@@ -606,8 +589,7 @@ class ResultSet implements ResultSetInterface
 	 * @param array $values The values to cast
 	 * @return array
 	 */
-	protected function _castValues($alias, $values)
-	{
+	protected function _castValues($alias, $values) {
 		foreach ($this->_types[$alias] as $field => $type) {
 			$values[$field] = $type->toPHP($values[$field], $this->_driver);
 		}
@@ -621,8 +603,7 @@ class ResultSet implements ResultSetInterface
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		return [
 			'items' => $this->toArray(),
 		];

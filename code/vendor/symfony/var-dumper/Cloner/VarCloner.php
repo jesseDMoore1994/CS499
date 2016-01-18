@@ -14,16 +14,14 @@ namespace Symfony\Component\VarDumper\Cloner;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class VarCloner extends AbstractCloner
-{
+class VarCloner extends AbstractCloner {
 	private static $hashMask = 0;
 	private static $hashOffset = 0;
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function doClone($var)
-	{
+	protected function doClone($var) {
 		$useExt = $this->useExt;
 		$i = 0;                         // Current iteration position in $queue
 		$len = 1;                       // Length of $queue
@@ -271,8 +269,7 @@ class VarCloner extends AbstractCloner
 		return $queue;
 	}
 
-	private static function initHashMask()
-	{
+	private static function initHashMask() {
 		$obj = (object)array();
 		self::$hashOffset = 16 - PHP_INT_SIZE;
 		self::$hashMask = -1;

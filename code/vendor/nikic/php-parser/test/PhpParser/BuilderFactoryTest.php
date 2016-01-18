@@ -4,19 +4,16 @@ namespace PhpParser;
 
 use PhpParser\Node\Expr;
 
-class BuilderFactoryTest extends \PHPUnit_Framework_TestCase
-{
+class BuilderFactoryTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provideTestFactory
 	 */
-	public function testFactory($methodName, $className)
-	{
+	public function testFactory($methodName, $className) {
 		$factory = new BuilderFactory;
 		$this->assertInstanceOf($className, $factory->$methodName('test'));
 	}
 
-	public function provideTestFactory()
-	{
+	public function provideTestFactory() {
 		return array(
 			array('namespace', 'PhpParser\Builder\Namespace_'),
 			array('class', 'PhpParser\Builder\Class_'),
@@ -30,15 +27,13 @@ class BuilderFactoryTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testNonExistingMethod()
-	{
+	public function testNonExistingMethod() {
 		$this->setExpectedException('LogicException', 'Method "foo" does not exist');
 		$factory = new BuilderFactory();
 		$factory->foo();
 	}
 
-	public function testIntegration()
-	{
+	public function testIntegration() {
 		$factory = new BuilderFactory;
 		$node = $factory->namespace('Name\Space')
 			->addStmt($factory->use('Foo\Bar\SomeOtherClass'))

@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-class PackageLocator implements PackageLocatorInterface
-{
+class PackageLocator implements PackageLocatorInterface {
 	/**
 	 *
 	 * A registry of packages.
@@ -51,8 +50,7 @@ class PackageLocator implements PackageLocatorInterface
 	 * @see $registry
 	 *
 	 */
-	public function __construct(array $registry = [])
-	{
+	public function __construct(array $registry = []) {
 		foreach ($registry as $name => $locales) {
 			foreach ($locales as $locale => $spec) {
 				$this->set($name, $locale, $spec);
@@ -73,8 +71,7 @@ class PackageLocator implements PackageLocatorInterface
 	 * @return void
 	 *
 	 */
-	public function set($name, $locale, callable $spec)
-	{
+	public function set($name, $locale, callable $spec) {
 		$this->registry[$name][$locale] = $spec;
 		$this->converted[$name][$locale] = false;
 	}
@@ -90,8 +87,7 @@ class PackageLocator implements PackageLocatorInterface
 	 * @return Package
 	 *
 	 */
-	public function get($name, $locale)
-	{
+	public function get($name, $locale) {
 		if (!isset($this->registry[$name][$locale])) {
 			throw new Exception("Package '$name' with locale '$locale' is not registered.");
 		}

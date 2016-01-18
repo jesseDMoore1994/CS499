@@ -29,8 +29,7 @@ use Cake\View\View;
  * @property HtmlHelper $Html
  * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html
  */
-class PaginatorHelper extends Helper
-{
+class PaginatorHelper extends Helper {
 
 	use StringTemplateTrait;
 
@@ -94,8 +93,7 @@ class PaginatorHelper extends Helper
 	 * @param \Cake\View\View $View The View this helper is being attached to.
 	 * @param array $config Configuration settings for the helper.
 	 */
-	public function __construct(View $View, array $config = [])
-	{
+	public function __construct(View $View, array $config = []) {
 		parent::__construct($View, $config);
 
 		$this->config(
@@ -110,8 +108,7 @@ class PaginatorHelper extends Helper
 	 * @param string|null $model Optional model name. Uses the default if none is specified.
 	 * @return array The array of paging parameters for the paginated resultset.
 	 */
-	public function params($model = null)
-	{
+	public function params($model = null) {
 		if (empty($model)) {
 			$model = $this->defaultModel();
 		}
@@ -128,8 +125,7 @@ class PaginatorHelper extends Helper
 	 * @param string|null $model Optional model name. Uses the default if none is specified.
 	 * @return mixed Content of the requested param.
 	 */
-	public function param($key, $model = null)
-	{
+	public function param($key, $model = null) {
 		$params = $this->params($model);
 		if (!isset($params[$key])) {
 			return null;
@@ -144,8 +140,7 @@ class PaginatorHelper extends Helper
 	 *   See PaginatorHelper::$options for list of keys.
 	 * @return void
 	 */
-	public function options(array $options = [])
-	{
+	public function options(array $options = []) {
 		if (!empty($options['paging'])) {
 			if (!isset($this->request->params['paging'])) {
 				$this->request->params['paging'] = [];
@@ -172,8 +167,7 @@ class PaginatorHelper extends Helper
 	 * @return int The current page number of the recordset.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#checking-the-pagination-state
 	 */
-	public function current($model = null)
-	{
+	public function current($model = null) {
 		$params = $this->params($model);
 
 		if (isset($params['page'])) {
@@ -191,8 +185,7 @@ class PaginatorHelper extends Helper
 	 *  null if the results are not currently sorted.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-sort-links
 	 */
-	public function sortKey($model = null, array $options = [])
-	{
+	public function sortKey($model = null, array $options = []) {
 		if (empty($options)) {
 			$options = $this->params($model);
 		}
@@ -211,8 +204,7 @@ class PaginatorHelper extends Helper
 	 *  null if the results are not currently sorted.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-sort-links
 	 */
-	public function sortDir($model = null, array $options = [])
-	{
+	public function sortDir($model = null, array $options = []) {
 		$dir = null;
 
 		if (empty($options)) {
@@ -238,8 +230,7 @@ class PaginatorHelper extends Helper
 	 * @param array $templates An array of templates with the 'active' and 'disabled' keys.
 	 * @return string Generated HTML
 	 */
-	protected function _toggledLink($text, $enabled, $options, $templates)
-	{
+	protected function _toggledLink($text, $enabled, $options, $templates) {
 		$template = $templates['active'];
 		if (!$enabled) {
 			$text = $options['disabledTitle'];
@@ -310,8 +301,7 @@ class PaginatorHelper extends Helper
 	 * @return string A "previous" link or a disabled link.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-jump-links
 	 */
-	public function prev($title = '<< Previous', array $options = [])
-	{
+	public function prev($title = '<< Previous', array $options = []) {
 		$defaults = [
 			'url' => [],
 			'model' => $this->defaultModel(),
@@ -349,8 +339,7 @@ class PaginatorHelper extends Helper
 	 * @return string A "next" link or $disabledTitle text if the link is disabled.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-jump-links
 	 */
-	public function next($title = 'Next >>', array $options = [])
-	{
+	public function next($title = 'Next >>', array $options = []) {
 		$defaults = [
 			'url' => [],
 			'model' => $this->defaultModel(),
@@ -387,8 +376,7 @@ class PaginatorHelper extends Helper
 	 *  key the returned link will sort by 'desc'.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-sort-links
 	 */
-	public function sort($key, $title = null, array $options = [])
-	{
+	public function sort($key, $title = null, array $options = []) {
 		$options += ['url' => [], 'model' => null, 'escape' => true];
 		$url = $options['url'];
 		unset($options['url']);
@@ -451,8 +439,7 @@ class PaginatorHelper extends Helper
 	 * @return mixed By default, returns a full pagination URL string for use in non-standard contexts (i.e. JavaScript)
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#generating-pagination-urls
 	 */
-	public function generateUrl(array $options = [], $model = null, $full = false)
-	{
+	public function generateUrl(array $options = [], $model = null, $full = false) {
 		$paging = $this->params($model);
 		$paging += ['page' => null, 'sort' => null, 'direction' => null, 'limit' => null];
 		$url = [
@@ -490,8 +477,7 @@ class PaginatorHelper extends Helper
 	 * @return bool True if the result set is not at the first page.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#checking-the-pagination-state
 	 */
-	public function hasPrev($model = null)
-	{
+	public function hasPrev($model = null) {
 		return $this->_hasPage($model, 'prev');
 	}
 
@@ -502,8 +488,7 @@ class PaginatorHelper extends Helper
 	 * @return bool True if the result set is not at the last page.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#checking-the-pagination-state
 	 */
-	public function hasNext($model = null)
-	{
+	public function hasNext($model = null) {
 		return $this->_hasPage($model, 'next');
 	}
 
@@ -515,8 +500,7 @@ class PaginatorHelper extends Helper
 	 * @return bool True if the given result set has the specified page number.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#checking-the-pagination-state
 	 */
-	public function hasPage($model = null, $page = 1)
-	{
+	public function hasPage($model = null, $page = 1) {
 		if (is_numeric($model)) {
 			$page = $model;
 			$model = null;
@@ -535,8 +519,7 @@ class PaginatorHelper extends Helper
 	 * @param int $page Page number you are checking.
 	 * @return bool Whether model has $page
 	 */
-	protected function _hasPage($model, $page)
-	{
+	protected function _hasPage($model, $page) {
 		$params = $this->params($model);
 		return !empty($params) && $params[$page . 'Page'];
 	}
@@ -546,8 +529,7 @@ class PaginatorHelper extends Helper
 	 *
 	 * @return string|null Model name or null if the pagination isn't initialized.
 	 */
-	public function defaultModel()
-	{
+	public function defaultModel() {
 		if ($this->_defaultModel) {
 			return $this->_defaultModel;
 		}
@@ -574,8 +556,7 @@ class PaginatorHelper extends Helper
 	 * @return string Counter string.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-a-page-counter
 	 */
-	public function counter($options = [])
-	{
+	public function counter($options = []) {
 		if (is_string($options)) {
 			$options = ['format' => $options];
 		}
@@ -658,8 +639,7 @@ class PaginatorHelper extends Helper
 	 * @return string numbers string.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-page-number-links
 	 */
-	public function numbers(array $options = [])
-	{
+	public function numbers(array $options = []) {
 		$defaults = [
 			'before' => null, 'after' => null, 'model' => $this->defaultModel(),
 			'modulus' => 8, 'first' => null, 'last' => null, 'url' => []
@@ -698,8 +678,7 @@ class PaginatorHelper extends Helper
 	 * @param array $options Options from the numbers() method.
 	 * @return array An array with the start and end numbers.
 	 */
-	protected function _getNumbersStartAndEnd($params, $options)
-	{
+	protected function _getNumbersStartAndEnd($params, $options) {
 		$half = (int)($options['modulus'] / 2);
 		$end = $params['page'] + $half;
 
@@ -721,8 +700,7 @@ class PaginatorHelper extends Helper
 	 * @param array $options Options from the numbers() method.
 	 * @return string
 	 */
-	protected function _formatNumber($templater, $options)
-	{
+	protected function _formatNumber($templater, $options) {
 		$url = array_merge($options['url'], ['page' => $options['page']]);
 		$vars = [
 			'text' => $options['text'],
@@ -739,8 +717,7 @@ class PaginatorHelper extends Helper
 	 * @param array $options Options from the numbers() method.
 	 * @return string Markup output.
 	 */
-	protected function _modulusNumbers($templater, $params, $options)
-	{
+	protected function _modulusNumbers($templater, $params, $options) {
 		$out = '';
 		$ellipsis = $templater->format('ellipsis', []);
 
@@ -797,8 +774,7 @@ class PaginatorHelper extends Helper
 	 * @param array $options Options from the numbers() method.
 	 * @return string Markup output.
 	 */
-	protected function _firstNumber($ellipsis, $params, $start, $options)
-	{
+	protected function _firstNumber($ellipsis, $params, $start, $options) {
 		$out = '';
 		$first = is_int($options['first']) ? $options['first'] : 0;
 		if ($options['first'] && $start > 1) {
@@ -820,8 +796,7 @@ class PaginatorHelper extends Helper
 	 * @param array $options Options from the numbers() method.
 	 * @return string Markup output.
 	 */
-	protected function _lastNumber($ellipsis, $params, $end, $options)
-	{
+	protected function _lastNumber($ellipsis, $params, $end, $options) {
 		$out = '';
 		$last = is_int($options['last']) ? $options['last'] : 0;
 		if ($options['last'] && $end < $params['pageCount']) {
@@ -842,8 +817,7 @@ class PaginatorHelper extends Helper
 	 * @param array $options Options from the numbers() method.
 	 * @return string Markup output.
 	 */
-	protected function _numbers($templater, $params, $options)
-	{
+	protected function _numbers($templater, $params, $options) {
 		$out = '';
 		$out .= $options['before'];
 		for ($i = 1; $i <= $params['pageCount']; $i++) {
@@ -893,8 +867,7 @@ class PaginatorHelper extends Helper
 	 * @return string numbers string.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-jump-links
 	 */
-	public function first($first = '<< first', array $options = [])
-	{
+	public function first($first = '<< first', array $options = []) {
 		$options += [
 			'url' => [],
 			'model' => $this->defaultModel(),
@@ -953,8 +926,7 @@ class PaginatorHelper extends Helper
 	 * @return string numbers string.
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/paginator.html#creating-jump-links
 	 */
-	public function last($last = 'last >>', array $options = [])
-	{
+	public function last($last = 'last >>', array $options = []) {
 		$options += [
 			'model' => $this->defaultModel(),
 			'escape' => true,
@@ -1011,8 +983,7 @@ class PaginatorHelper extends Helper
 	 * @param array $options Array of options
 	 * @return string|null Meta links
 	 */
-	public function meta(array $options = [])
-	{
+	public function meta(array $options = []) {
 		$model = isset($options['model']) ? $options['model'] : null;
 		$params = $this->params($model);
 		$links = [];
@@ -1048,8 +1019,7 @@ class PaginatorHelper extends Helper
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 }

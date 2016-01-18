@@ -22,8 +22,7 @@ use Phinx\Util\Util;
 /**
  * Task class for generating migration snapshot files.
  */
-abstract class SimpleMigrationTask extends SimpleBakeTask
-{
+abstract class SimpleMigrationTask extends SimpleBakeTask {
 	/**
 	 * path to Migration directory
 	 *
@@ -34,16 +33,14 @@ abstract class SimpleMigrationTask extends SimpleBakeTask
 	/**
 	 * {@inheritDoc}
 	 */
-	public function name()
-	{
+	public function name() {
 		return 'migration';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function fileName($name)
-	{
+	public function fileName($name) {
 		$name = $this->getMigrationName($name);
 		return Util::getCurrentTimestamp() . '_' . Inflector::camelize($name) . '.php';
 	}
@@ -51,8 +48,7 @@ abstract class SimpleMigrationTask extends SimpleBakeTask
 	/**
 	 * {@inheritDoc}
 	 */
-	public function getPath()
-	{
+	public function getPath() {
 		$path = ROOT . DS . $this->pathFragment;
 		if (isset($this->plugin)) {
 			$path = $this->_pluginPath($this->plugin) . $this->pathFragment;
@@ -63,8 +59,7 @@ abstract class SimpleMigrationTask extends SimpleBakeTask
 	/**
 	 * {@inheritDoc}
 	 */
-	public function bake($name)
-	{
+	public function bake($name) {
 		$this->params['no-test'] = true;
 		return parent::bake($name);
 	}
@@ -77,8 +72,7 @@ abstract class SimpleMigrationTask extends SimpleBakeTask
 	 * @param string|null $name Name for the generated migration
 	 * @return string|null Name of the migration file or null if empty
 	 */
-	protected function getMigrationName($name = null)
-	{
+	protected function getMigrationName($name = null) {
 		if (empty($name)) {
 			$this->error('Choose a migration name to bake in CamelCase format');
 			return null;
@@ -100,8 +94,7 @@ abstract class SimpleMigrationTask extends SimpleBakeTask
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$name = ($this->plugin ? $this->plugin . '.' : '') . $this->name;
 		$parser = new ConsoleOptionParser($name);
 

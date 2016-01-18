@@ -60,8 +60,7 @@ use Cake\Network\Request;
  * `User.password` would store the password hash for use with other methods like
  * Basic or Form.
  */
-class DigestAuthenticate extends BasicAuthenticate
-{
+class DigestAuthenticate extends BasicAuthenticate {
 
 	/**
 	 * Constructor
@@ -79,8 +78,7 @@ class DigestAuthenticate extends BasicAuthenticate
 	 *   used on this request.
 	 * @param array $config Array of config to use.
 	 */
-	public function __construct(ComponentRegistry $registry, array $config = [])
-	{
+	public function __construct(ComponentRegistry $registry, array $config = []) {
 		$this->_registry = $registry;
 
 		$this->config([
@@ -99,8 +97,7 @@ class DigestAuthenticate extends BasicAuthenticate
 	 * @param \Cake\Network\Request $request Request object.
 	 * @return mixed Either false or an array of user information
 	 */
-	public function getUser(Request $request)
-	{
+	public function getUser(Request $request) {
 		$digest = $this->_getDigest($request);
 		if (empty($digest)) {
 			return false;
@@ -128,8 +125,7 @@ class DigestAuthenticate extends BasicAuthenticate
 	 * @param \Cake\Network\Request $request Request object.
 	 * @return array Array of digest information.
 	 */
-	protected function _getDigest(Request $request)
-	{
+	protected function _getDigest(Request $request) {
 		$digest = $request->env('PHP_AUTH_DIGEST');
 		if (empty($digest) && function_exists('apache_request_headers')) {
 			$headers = apache_request_headers();
@@ -149,8 +145,7 @@ class DigestAuthenticate extends BasicAuthenticate
 	 * @param string $digest The raw digest authentication headers.
 	 * @return array|null An array of digest authentication headers
 	 */
-	public function parseAuthData($digest)
-	{
+	public function parseAuthData($digest) {
 		if (substr($digest, 0, 7) === 'Digest ') {
 			$digest = substr($digest, 7);
 		}
@@ -177,8 +172,7 @@ class DigestAuthenticate extends BasicAuthenticate
 	 * @param string $method Request method
 	 * @return string Response hash
 	 */
-	public function generateResponseHash($digest, $password, $method)
-	{
+	public function generateResponseHash($digest, $password, $method) {
 		return md5(
 			$password .
 			':' . $digest['nonce'] . ':' . $digest['nc'] . ':' . $digest['cnonce'] . ':' . $digest['qop'] . ':' .
@@ -194,8 +188,7 @@ class DigestAuthenticate extends BasicAuthenticate
 	 * @param string $realm The realm the password is for.
 	 * @return string the hashed password that can later be used with Digest authentication.
 	 */
-	public static function password($username, $password, $realm)
-	{
+	public static function password($username, $password, $realm) {
 		return md5($username . ':' . $realm . ':' . $password);
 	}
 
@@ -205,8 +198,7 @@ class DigestAuthenticate extends BasicAuthenticate
 	 * @param \Cake\Network\Request $request Request object.
 	 * @return string Headers for logging in.
 	 */
-	public function loginHeaders(Request $request)
-	{
+	public function loginHeaders(Request $request) {
 		$realm = $this->_config['realm'] ?: $request->env('SERVER_NAME');
 
 		$options = [

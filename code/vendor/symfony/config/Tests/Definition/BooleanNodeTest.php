@@ -13,13 +13,11 @@ namespace Symfony\Component\Config\Tests\Definition;
 
 use Symfony\Component\Config\Definition\BooleanNode;
 
-class BooleanNodeTest extends \PHPUnit_Framework_TestCase
-{
+class BooleanNodeTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider getValidValues
 	 */
-	public function testNormalize($value)
-	{
+	public function testNormalize($value) {
 		$node = new BooleanNode('test');
 		$this->assertSame($value, $node->normalize($value));
 	}
@@ -29,16 +27,14 @@ class BooleanNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @param bool $value
 	 */
-	public function testValidNonEmptyValues($value)
-	{
+	public function testValidNonEmptyValues($value) {
 		$node = new BooleanNode('test');
 		$node->setAllowEmptyValue(false);
 
 		$this->assertSame($value, $node->finalize($value));
 	}
 
-	public function getValidValues()
-	{
+	public function getValidValues() {
 		return array(
 			array(false),
 			array(true),
@@ -49,14 +45,12 @@ class BooleanNodeTest extends \PHPUnit_Framework_TestCase
 	 * @dataProvider getInvalidValues
 	 * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
 	 */
-	public function testNormalizeThrowsExceptionOnInvalidValues($value)
-	{
+	public function testNormalizeThrowsExceptionOnInvalidValues($value) {
 		$node = new BooleanNode('test');
 		$node->normalize($value);
 	}
 
-	public function getInvalidValues()
-	{
+	public function getInvalidValues() {
 		return array(
 			array(null),
 			array(''),

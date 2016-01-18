@@ -20,8 +20,7 @@ use Symfony\Component\Console\Input\ArgvInput;
  * console actions so that database configuration already defined
  * for the application can be reused.
  */
-class MigrationsShell extends Shell
-{
+class MigrationsShell extends Shell {
 
 	/**
 	 * {@inheritDoc}
@@ -48,8 +47,7 @@ class MigrationsShell extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		return parent::getOptionParser()
 			->addOption('plugin', ['short' => 'p'])
 			->addOption('target', ['short' => 't'])
@@ -70,8 +68,7 @@ class MigrationsShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function initialize()
-	{
+	public function initialize() {
 		if (!defined('PHINX_VERSION')) {
 			define('PHINX_VERSION', (0 === strpos('@PHINX_VERSION@', '@PHINX_VERSION')) ? '0.4.1' : '@PHINX_VERSION@');
 		}
@@ -88,8 +85,7 @@ class MigrationsShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		$app = new MigrationsDispatcher(PHINX_VERSION);
 		$input = new ArgvInput($this->argv);
 		$app->setAutoExit(false);
@@ -102,8 +98,7 @@ class MigrationsShell extends Shell
 	 *
 	 * {@inheritDoc}
 	 */
-	public function runCommand($argv, $autoMethod = false, $extra = [])
-	{
+	public function runCommand($argv, $autoMethod = false, $extra = []) {
 		array_unshift($argv, 'migrations');
 		$this->argv = $argv;
 		return parent::runCommand($argv, $autoMethod, $extra);
@@ -115,8 +110,7 @@ class MigrationsShell extends Shell
 	 * @param string $command The command to get help for.
 	 * @return void
 	 */
-	protected function displayHelp($command)
-	{
+	protected function displayHelp($command) {
 		$command;
 		$this->main();
 	}
@@ -125,8 +119,7 @@ class MigrationsShell extends Shell
 	 * {@inheritDoc}
 	 */
 	// @codingStandardsIgnoreStart
-	protected function _displayHelp($command)
-	{
+	protected function _displayHelp($command) {
 		// @codingStandardsIgnoreEnd
 		return $this->displayHelp($command);
 	}

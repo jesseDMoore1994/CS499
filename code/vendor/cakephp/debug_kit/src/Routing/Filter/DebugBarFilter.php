@@ -28,8 +28,7 @@ use DebugKit\Panel\PanelRegistry;
  * and binds the correct events into the provided event
  * manager
  */
-class DebugBarFilter extends DispatcherFilter
-{
+class DebugBarFilter extends DispatcherFilter {
 
 	use EventManagerTrait;
 
@@ -67,8 +66,7 @@ class DebugBarFilter extends DispatcherFilter
 	 * @param \Cake\Event\EventManager $events The event manager to use.
 	 * @param array $config The configuration data for DebugKit.
 	 */
-	public function __construct(EventManager $events, array $config)
-	{
+	public function __construct(EventManager $events, array $config) {
 		$this->eventManager($events);
 		$this->config($config);
 		$this->_registry = new PanelRegistry($events);
@@ -79,8 +77,7 @@ class DebugBarFilter extends DispatcherFilter
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [
 			'Dispatcher.beforeDispatch' => [
 				'callable' => 'beforeDispatch',
@@ -98,8 +95,7 @@ class DebugBarFilter extends DispatcherFilter
 	 *
 	 * @return bool
 	 */
-	public function isEnabled()
-	{
+	public function isEnabled() {
 		$enabled = (bool)Configure::read('debug');
 		if ($enabled) {
 			return true;
@@ -116,8 +112,7 @@ class DebugBarFilter extends DispatcherFilter
 	 *
 	 * @return array
 	 */
-	public function loadedPanels()
-	{
+	public function loadedPanels() {
 		return $this->_registry->loaded();
 	}
 
@@ -127,8 +122,7 @@ class DebugBarFilter extends DispatcherFilter
 	 * @param string $name The name of the panel you want to get.
 	 * @return DebugKit\Panel\DebugPanel|null The panel or null.
 	 */
-	public function panel($name)
-	{
+	public function panel($name) {
 		return $this->_registry->{$name};
 	}
 
@@ -140,8 +134,7 @@ class DebugBarFilter extends DispatcherFilter
 	 *
 	 * @return void
 	 */
-	public function setup()
-	{
+	public function setup() {
 		foreach ($this->config('panels') as $panel) {
 			$this->_registry->load($panel);
 		}
@@ -153,8 +146,7 @@ class DebugBarFilter extends DispatcherFilter
 	 * @param \Cake\Event\Event $event The beforeDispatch event.
 	 * @return void
 	 */
-	public function beforeDispatch(Event $event)
-	{
+	public function beforeDispatch(Event $event) {
 		foreach ($this->_registry->loaded() as $panel) {
 			$this->_registry->{$panel}->initialize();
 		}
@@ -166,8 +158,7 @@ class DebugBarFilter extends DispatcherFilter
 	 * @param \Cake\Event\Event $event The afterDispatch event.
 	 * @return void
 	 */
-	public function afterDispatch(Event $event)
-	{
+	public function afterDispatch(Event $event) {
 		$request = $event->data['request'];
 		// Skip debugkit requests and requestAction()
 		if ($request->param('plugin') === 'DebugKit' || $request->is('requested')) {
@@ -222,8 +213,7 @@ class DebugBarFilter extends DispatcherFilter
 	 * @param \Cake\Network\Response $response The response to augment.
 	 * @return void
 	 */
-	protected function _injectScripts($id, $response)
-	{
+	protected function _injectScripts($id, $response) {
 		if (strpos($response->type(), 'html') === false) {
 			return;
 		}

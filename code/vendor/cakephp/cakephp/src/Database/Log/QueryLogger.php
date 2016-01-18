@@ -22,8 +22,7 @@ use Cake\Log\Log;
  *
  * @internal
  */
-class QueryLogger
-{
+class QueryLogger {
 
 	/**
 	 * Writes a LoggedQuery into a log
@@ -31,8 +30,7 @@ class QueryLogger
 	 * @param LoggedQuery $query to be written in log
 	 * @return void
 	 */
-	public function log(LoggedQuery $query)
-	{
+	public function log(LoggedQuery $query) {
 		if (!empty($query->params)) {
 			$query->query = $this->_interpolate($query);
 		}
@@ -46,8 +44,7 @@ class QueryLogger
 	 * @param LoggedQuery $query to be written in log
 	 * @return void
 	 */
-	protected function _log($query)
-	{
+	protected function _log($query) {
 		Log::write('debug', $query, ['queriesLog']);
 	}
 
@@ -58,8 +55,7 @@ class QueryLogger
 	 * @param LoggedQuery $query The query to log
 	 * @return string
 	 */
-	protected function _interpolate($query)
-	{
+	protected function _interpolate($query) {
 		$params = array_map(function ($p) {
 			if ($p === null) {
 				return 'NULL';

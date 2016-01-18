@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-class BasicFormatter implements FormatterInterface
-{
+class BasicFormatter implements FormatterInterface {
 	/**
 	 *
 	 * Format message
@@ -32,8 +31,7 @@ class BasicFormatter implements FormatterInterface
 	 * @return string A string replaced with the token values
 	 *
 	 */
-	public function format($locale, $string, array $tokens_values)
-	{
+	public function format($locale, $string, array $tokens_values) {
 		$replace = [];
 		foreach ($tokens_values as $token => $value) {
 			// convert an array to a CSV string

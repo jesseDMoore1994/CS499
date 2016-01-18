@@ -15,18 +15,15 @@ use Symfony\Component\Config\Definition\PrototypedArrayNode;
 use Symfony\Component\Config\Definition\ArrayNode;
 use Symfony\Component\Config\Definition\ScalarNode;
 
-class PrototypedArrayNodeTest extends \PHPUnit_Framework_TestCase
-{
-	public function testGetDefaultValueReturnsAnEmptyArrayForPrototypes()
-	{
+class PrototypedArrayNodeTest extends \PHPUnit_Framework_TestCase {
+	public function testGetDefaultValueReturnsAnEmptyArrayForPrototypes() {
 		$node = new PrototypedArrayNode('root');
 		$prototype = new ArrayNode(null, $node);
 		$node->setPrototype($prototype);
 		$this->assertEmpty($node->getDefaultValue());
 	}
 
-	public function testGetDefaultValueReturnsDefaultValueForPrototypes()
-	{
+	public function testGetDefaultValueReturnsDefaultValueForPrototypes() {
 		$node = new PrototypedArrayNode('root');
 		$prototype = new ArrayNode(null, $node);
 		$node->setPrototype($prototype);
@@ -35,8 +32,7 @@ class PrototypedArrayNodeTest extends \PHPUnit_Framework_TestCase
 	}
 
 	// a remapped key (e.g. "mapping" -> "mappings") should be unset after being used
-	public function testRemappedKeysAreUnset()
-	{
+	public function testRemappedKeysAreUnset() {
 		$node = new ArrayNode('root');
 		$mappingsNode = new PrototypedArrayNode('mappings');
 		$node->addChild($mappingsNode);
@@ -71,8 +67,7 @@ class PrototypedArrayNodeTest extends \PHPUnit_Framework_TestCase
 	 *         )
 	 *     )
 	 */
-	public function testMappedAttributeKeyIsRemoved()
-	{
+	public function testMappedAttributeKeyIsRemoved() {
 		$node = new PrototypedArrayNode('root');
 		$node->setKeyAttribute('id', true);
 
@@ -94,8 +89,7 @@ class PrototypedArrayNodeTest extends \PHPUnit_Framework_TestCase
 	 * Tests the opposite of the testMappedAttributeKeyIsRemoved because
 	 * the removal can be toggled with an option.
 	 */
-	public function testMappedAttributeKeyNotRemoved()
-	{
+	public function testMappedAttributeKeyNotRemoved() {
 		$node = new PrototypedArrayNode('root');
 		$node->setKeyAttribute('id', false);
 
@@ -114,8 +108,7 @@ class PrototypedArrayNodeTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, $normalized);
 	}
 
-	public function testAddDefaultChildren()
-	{
+	public function testAddDefaultChildren() {
 		$node = $this->getPrototypeNodeWithDefaultChildren();
 		$node->setAddChildrenIfNoneSet();
 		$this->assertTrue($node->hasDefaultValue());
@@ -156,8 +149,7 @@ class PrototypedArrayNodeTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array(array('foo' => 'bar'), array('foo' => 'bar')), $node->getDefaultValue());
 	}
 
-	public function testDefaultChildrenWinsOverDefaultValue()
-	{
+	public function testDefaultChildrenWinsOverDefaultValue() {
 		$node = $this->getPrototypeNodeWithDefaultChildren();
 		$node->setAddChildrenIfNoneSet();
 		$node->setDefaultValue(array('bar' => 'foo'));
@@ -165,8 +157,7 @@ class PrototypedArrayNodeTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array(array('foo' => 'bar')), $node->getDefaultValue());
 	}
 
-	protected function getPrototypeNodeWithDefaultChildren()
-	{
+	protected function getPrototypeNodeWithDefaultChildren() {
 		$node = new PrototypedArrayNode('root');
 		$prototype = new ArrayNode(null, $node);
 		$child = new ScalarNode('foo');

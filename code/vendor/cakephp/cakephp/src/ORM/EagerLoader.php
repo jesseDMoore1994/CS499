@@ -25,8 +25,7 @@ use InvalidArgumentException;
  * required joins and decorating the results so that those associations can be
  * part of the result set.
  */
-class EagerLoader
-{
+class EagerLoader {
 
 	/**
 	 * Nested array describing the association to be fetched
@@ -128,8 +127,7 @@ class EagerLoader
 	 * the new one.
 	 * @return array Containments.
 	 */
-	public function contain($associations = [])
-	{
+	public function contain($associations = []) {
 		if (empty($associations)) {
 			return $this->_containments;
 		}
@@ -150,8 +148,7 @@ class EagerLoader
 	 *
 	 * @return void
 	 */
-	public function clearContain()
-	{
+	public function clearContain() {
 		$this->_containments = [];
 		$this->_normalized = null;
 		$this->_loadExternal = [];
@@ -164,8 +161,7 @@ class EagerLoader
 	 * @param bool $value The value to set.
 	 * @return bool The current value.
 	 */
-	public function autoFields($value = null)
-	{
+	public function autoFields($value = null) {
 		if ($value !== null) {
 			$this->_autoFields = (bool)$value;
 		}
@@ -189,8 +185,7 @@ class EagerLoader
 	 * and 'fields'
 	 * @return array The resulting containments array
 	 */
-	public function matching($assoc = null, callable $builder = null, $options = [])
-	{
+	public function matching($assoc = null, callable $builder = null, $options = []) {
 		if ($this->_matching === null) {
 			$this->_matching = new self();
 		}
@@ -232,8 +227,7 @@ class EagerLoader
 	 * will be normalized
 	 * @return array
 	 */
-	public function normalized(Table $repository)
-	{
+	public function normalized(Table $repository) {
 		if ($this->_normalized !== null || empty($this->_containments)) {
 			return (array)$this->_normalized;
 		}
@@ -265,8 +259,7 @@ class EagerLoader
 	 * with the new one
 	 * @return array
 	 */
-	protected function _reformatContain($associations, $original)
-	{
+	protected function _reformatContain($associations, $original) {
 		$result = $original;
 
 		foreach ((array)$associations as $table => $options) {
@@ -330,8 +323,7 @@ class EagerLoader
 	 * per association in the containments array
 	 * @return void
 	 */
-	public function attachAssociations(Query $query, Table $repository, $includeFields)
-	{
+	public function attachAssociations(Query $query, Table $repository, $includeFields) {
 		if (empty($this->_containments) && $this->_matching === null) {
 			return;
 		}
@@ -363,8 +355,7 @@ class EagerLoader
 	 * attached
 	 * @return array
 	 */
-	public function attachableAssociations(Table $repository)
-	{
+	public function attachableAssociations(Table $repository) {
 		$contain = $this->normalized($repository);
 		$matching = $this->_matching ? $this->_matching->normalized($repository) : [];
 		$this->_fixStrategies();
@@ -380,8 +371,7 @@ class EagerLoader
 	 * to be loaded
 	 * @return array
 	 */
-	public function externalAssociations(Table $repository)
-	{
+	public function externalAssociations(Table $repository) {
 		if ($this->_loadExternal) {
 			return $this->_loadExternal;
 		}
@@ -404,8 +394,7 @@ class EagerLoader
 	 * @return array normalized associations
 	 * @throws \InvalidArgumentException When containments refer to associations that do not exist.
 	 */
-	protected function _normalizeContain(Table $parent, $alias, $options, $paths)
-	{
+	protected function _normalizeContain(Table $parent, $alias, $options, $paths) {
 		$defaults = $this->_containOptions;
 		$instance = $parent->association($alias);
 		if (!$instance) {
@@ -463,8 +452,7 @@ class EagerLoader
 	 *
 	 * @return void
 	 */
-	protected function _fixStrategies()
-	{
+	protected function _fixStrategies() {
 		foreach ($this->_aliasList as $aliases) {
 			foreach ($aliases as $configs) {
 				if (count($configs) < 2) {
@@ -486,8 +474,7 @@ class EagerLoader
 	 * @param \Cake\ORM\EagerLoadable $loadable The association config
 	 * @return void
 	 */
-	protected function _correctStrategy($loadable)
-	{
+	protected function _correctStrategy($loadable) {
 		$config = $loadable->config();
 		$currentStrategy = isset($config['strategy']) ?
 			$config['strategy'] :
@@ -510,8 +497,7 @@ class EagerLoader
 	 * @param array $matching list of associations that should be forcibly joined.
 	 * @return array
 	 */
-	protected function _resolveJoins($associations, $matching = [])
-	{
+	protected function _resolveJoins($associations, $matching = []) {
 		$result = [];
 		foreach ($matching as $table => $loadable) {
 			$result[$table] = $loadable;
@@ -544,8 +530,7 @@ class EagerLoader
 	 * @param \Cake\Database\StatementInterface $statement The statement created after executing the $query
 	 * @return CallbackStatement statement modified statement with extra loaders
 	 */
-	public function loadExternal($query, $statement)
-	{
+	public function loadExternal($query, $statement) {
 		$external = $this->externalAssociations($query->repository());
 		if (empty($external)) {
 			return $statement;
@@ -595,8 +580,7 @@ class EagerLoader
 	 * will be normalized
 	 * @return array
 	 */
-	public function associationsMap($table)
-	{
+	public function associationsMap($table) {
 		$map = [];
 
 		if (!$this->matching() && !$this->contain() && empty($this->_joinsMap)) {
@@ -640,8 +624,7 @@ class EagerLoader
 	 * 'matching' association.
 	 * @return void
 	 */
-	public function addToJoinsMap($alias, Association $assoc, $asMatching = false)
-	{
+	public function addToJoinsMap($alias, Association $assoc, $asMatching = false) {
 		$this->_joinsMap[$alias] = new EagerLoadable($alias, [
 			'aliasPath' => $alias,
 			'instance' => $assoc,
@@ -659,8 +642,7 @@ class EagerLoader
 	 * @param BufferedStatement $statement The statement to work on
 	 * @return array
 	 */
-	protected function _collectKeys($external, $query, $statement)
-	{
+	protected function _collectKeys($external, $query, $statement) {
 		$collectKeys = [];
 		foreach ($external as $meta) {
 			$instance = $meta->instance();
@@ -700,8 +682,7 @@ class EagerLoader
 	 * @param array $collectKeys The keys to collect
 	 * @return array
 	 */
-	protected function _groupKeys($statement, $collectKeys)
-	{
+	protected function _groupKeys($statement, $collectKeys) {
 		$keys = [];
 		while ($result = $statement->fetch('assoc')) {
 			foreach ($collectKeys as $nestKey => $parts) {

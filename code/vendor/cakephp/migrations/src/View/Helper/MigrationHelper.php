@@ -21,8 +21,7 @@ use Cake\View\View;
  *
  * MigrationHelper encloses all methods needed while working with HTML pages.
  */
-class MigrationHelper extends Helper
-{
+class MigrationHelper extends Helper {
 
 	/**
 	 * Schemas list for tables analyzed during migration baking
@@ -43,8 +42,7 @@ class MigrationHelper extends Helper
 	 * @param \Cake\View\View $View The View this helper is being attached to.
 	 * @param array $config Configuration settings for the helper.
 	 */
-	public function __construct(View $View, array $config = [])
-	{
+	public function __construct(View $View, array $config = []) {
 		parent::__construct($View, $config);
 	}
 
@@ -54,8 +52,7 @@ class MigrationHelper extends Helper
 	 * @param string $action Name of action to take against the table
 	 * @return string
 	 */
-	public function tableMethod($action)
-	{
+	public function tableMethod($action) {
 		if ($action === 'drop_table') {
 			return 'drop';
 		}
@@ -73,8 +70,7 @@ class MigrationHelper extends Helper
 	 * @param string $action Name of action to take against the table
 	 * @return string
 	 */
-	public function indexMethod($action)
-	{
+	public function indexMethod($action) {
 		if ($action === 'drop_field') {
 			return 'removeIndex';
 		}
@@ -88,8 +84,7 @@ class MigrationHelper extends Helper
 	 * @param string $action Name of action to take against the table
 	 * @return string
 	 */
-	public function columnMethod($action)
-	{
+	public function columnMethod($action) {
 		if ($action === 'drop_field') {
 			return 'removeColumn';
 		}
@@ -103,8 +98,7 @@ class MigrationHelper extends Helper
 	 * @param string $table Name of the table to get the Schema for
 	 * @return \Cake\Database\Schema\Table
 	 */
-	protected function schema($table)
-	{
+	protected function schema($table) {
 		if (isset($this->schemas[$table])) {
 			return $this->schemas[$table];
 		}
@@ -122,8 +116,7 @@ class MigrationHelper extends Helper
 	 * @param string $table Name of the table to retrieve columns for
 	 * @return array
 	 */
-	public function columns($table)
-	{
+	public function columns($table) {
 		$tableSchema = $this->schema($table);
 		$columns = [];
 		$tablePrimaryKeys = $tableSchema->primaryKey();
@@ -143,8 +136,7 @@ class MigrationHelper extends Helper
 	 * @param string $table Name of the table to retrieve indexes for
 	 * @return array
 	 */
-	public function indexes($table)
-	{
+	public function indexes($table) {
 		$tableSchema = $this->schema($table);
 
 		$tableIndexes = $tableSchema->indexes();
@@ -164,8 +156,7 @@ class MigrationHelper extends Helper
 	 * @param string $table Name of the table to retrieve constraints for
 	 * @return array
 	 */
-	public function constraints($table)
-	{
+	public function constraints($table) {
 		$tableSchema = $this->schema($table);
 
 		$constraints = [];
@@ -197,8 +188,7 @@ class MigrationHelper extends Helper
 	 * @param string $table Name of the table ot retrieve primary key for
 	 * @return array
 	 */
-	public function primaryKeys($table)
-	{
+	public function primaryKeys($table) {
 		$collection = $this->config('collection');
 		$tableSchema = $collection->describe($table);
 		$primaryKeys = [];
@@ -217,8 +207,7 @@ class MigrationHelper extends Helper
 	 * @param string $table Name of the table ot retrieve primary key for
 	 * @return array
 	 */
-	public function primaryKeysColumnsList($table)
-	{
+	public function primaryKeysColumnsList($table) {
 		$primaryKeys = $this->primaryKeys($table);
 		$primaryKeysColumns = Hash::extract($primaryKeys, '{n}.name');
 		sort($primaryKeysColumns);
@@ -232,8 +221,7 @@ class MigrationHelper extends Helper
 	 * @param string $column A column to retrieve data for
 	 * @return array
 	 */
-	public function column($tableSchema, $column)
-	{
+	public function column($tableSchema, $column) {
 		return [
 			'columnType' => $tableSchema->columnType($column),
 			'options' => $this->attributes($tableSchema->name(), $column),
@@ -246,8 +234,7 @@ class MigrationHelper extends Helper
 	 * @param string $value A value to represent as a string
 	 * @return mixed
 	 */
-	public function value($value)
-	{
+	public function value($value) {
 		if ($value === null || $value === 'null' || $value === 'NULL') {
 			return 'null';
 		}
@@ -274,8 +261,7 @@ class MigrationHelper extends Helper
 	 * @param string $column A column to retrieve attributes for
 	 * @return array
 	 */
-	public function attributes($table, $column)
-	{
+	public function attributes($table, $column) {
 		$collection = $this->config('collection');
 		$tableSchema = $collection->describe($table);
 		$validOptions = [
@@ -323,8 +309,7 @@ class MigrationHelper extends Helper
 	 * @param array $options options to use
 	 * @return string
 	 */
-	public function stringifyList(array $list, array $options = [])
-	{
+	public function stringifyList(array $list, array $options = []) {
 		$options += [
 			'indent' => 2
 		];
@@ -366,8 +351,7 @@ class MigrationHelper extends Helper
 	 * @param string $table Table for which the statement is needed
 	 * @return string
 	 */
-	public function tableStatement($table)
-	{
+	public function tableStatement($table) {
 		if (!isset($this->tableStatements[$table])) {
 			$this->tableStatements[$table] = true;
 			return '$this->table(\'' . $table . '\')';

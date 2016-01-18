@@ -32,8 +32,7 @@ namespace Phinx\Db\Table;
  *
  * This object is based loosely on: http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/Table.html.
  */
-class Column
-{
+class Column {
 	/**
 	 * @var string
 	 */
@@ -115,8 +114,7 @@ class Column
 	 * @param string $name
 	 * @return Column
 	 */
-	public function setName($name)
-	{
+	public function setName($name) {
 		$this->name = $name;
 		return $this;
 	}
@@ -126,8 +124,7 @@ class Column
 	 *
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->name;
 	}
 
@@ -137,8 +134,7 @@ class Column
 	 * @param string $type
 	 * @return Column
 	 */
-	public function setType($type)
-	{
+	public function setType($type) {
 		$this->type = $type;
 		return $this;
 	}
@@ -148,8 +144,7 @@ class Column
 	 *
 	 * @return string
 	 */
-	public function getType()
-	{
+	public function getType() {
 		return $this->type;
 	}
 
@@ -159,8 +154,7 @@ class Column
 	 * @param integer $limit
 	 * @return Column
 	 */
-	public function setLimit($limit)
-	{
+	public function setLimit($limit) {
 		$this->limit = $limit;
 		return $this;
 	}
@@ -170,8 +164,7 @@ class Column
 	 *
 	 * @return integer
 	 */
-	public function getLimit()
-	{
+	public function getLimit() {
 		return $this->limit;
 	}
 
@@ -181,8 +174,7 @@ class Column
 	 * @param boolean $null
 	 * @return Column
 	 */
-	public function setNull($null)
-	{
+	public function setNull($null) {
 		$this->null = (bool)$null;
 		return $this;
 	}
@@ -192,8 +184,7 @@ class Column
 	 *
 	 * @return boolean
 	 */
-	public function getNull()
-	{
+	public function getNull() {
 		return $this->null;
 	}
 
@@ -202,8 +193,7 @@ class Column
 	 *
 	 * @return boolean
 	 */
-	public function isNull()
-	{
+	public function isNull() {
 		return $this->getNull();
 	}
 
@@ -213,8 +203,7 @@ class Column
 	 * @param mixed $default
 	 * @return Column
 	 */
-	public function setDefault($default)
-	{
+	public function setDefault($default) {
 		$this->default = $default;
 		return $this;
 	}
@@ -224,8 +213,7 @@ class Column
 	 *
 	 * @return mixed
 	 */
-	public function getDefault()
-	{
+	public function getDefault() {
 		return $this->default;
 	}
 
@@ -235,8 +223,7 @@ class Column
 	 * @param boolean $identity
 	 * @return Column
 	 */
-	public function setIdentity($identity)
-	{
+	public function setIdentity($identity) {
 		$this->identity = $identity;
 		return $this;
 	}
@@ -246,8 +233,7 @@ class Column
 	 *
 	 * @return boolean
 	 */
-	public function getIdentity()
-	{
+	public function getIdentity() {
 		return $this->identity;
 	}
 
@@ -256,8 +242,7 @@ class Column
 	 *
 	 * @return boolean
 	 */
-	public function isIdentity()
-	{
+	public function isIdentity() {
 		return $this->getIdentity();
 	}
 
@@ -267,8 +252,7 @@ class Column
 	 * @param string $after After
 	 * @return Column
 	 */
-	public function setAfter($after)
-	{
+	public function setAfter($after) {
 		$this->after = $after;
 		return $this;
 	}
@@ -278,8 +262,7 @@ class Column
 	 *
 	 * @return string
 	 */
-	public function getAfter()
-	{
+	public function getAfter() {
 		return $this->after;
 	}
 
@@ -289,8 +272,7 @@ class Column
 	 * @param  string $update On Update function
 	 * @return Column
 	 */
-	public function setUpdate($update)
-	{
+	public function setUpdate($update) {
 		$this->update = $update;
 		return $this;
 	}
@@ -300,8 +282,7 @@ class Column
 	 *
 	 * @return string
 	 */
-	public function getUpdate()
-	{
+	public function getUpdate() {
 		return $this->update;
 	}
 
@@ -311,8 +292,7 @@ class Column
 	 * @param integer $precision
 	 * @return Column
 	 */
-	public function setPrecision($precision)
-	{
+	public function setPrecision($precision) {
 		$this->precision = $precision;
 		return $this;
 	}
@@ -322,8 +302,7 @@ class Column
 	 *
 	 * @return integer
 	 */
-	public function getPrecision()
-	{
+	public function getPrecision() {
 		return $this->precision;
 	}
 
@@ -333,8 +312,7 @@ class Column
 	 * @param integer $scale
 	 * @return Column
 	 */
-	public function setScale($scale)
-	{
+	public function setScale($scale) {
 		$this->scale = $scale;
 		return $this;
 	}
@@ -344,8 +322,7 @@ class Column
 	 *
 	 * @return integer
 	 */
-	public function getScale()
-	{
+	public function getScale() {
 		return $this->scale;
 	}
 
@@ -355,8 +332,7 @@ class Column
 	 * @param string $comment
 	 * @return Column
 	 */
-	public function setComment($comment)
-	{
+	public function setComment($comment) {
 		$this->comment = $comment;
 		return $this;
 	}
@@ -366,8 +342,7 @@ class Column
 	 *
 	 * @return string
 	 */
-	public function getComment()
-	{
+	public function getComment() {
 		return $this->comment;
 	}
 
@@ -377,8 +352,7 @@ class Column
 	 * @param bool $signed
 	 * @return Column
 	 */
-	public function setSigned($signed)
-	{
+	public function setSigned($signed) {
 		$this->signed = (bool)$signed;
 		return $this;
 	}
@@ -388,8 +362,7 @@ class Column
 	 *
 	 * @return string
 	 */
-	public function getSigned()
-	{
+	public function getSigned() {
 		return $this->signed;
 	}
 
@@ -398,8 +371,7 @@ class Column
 	 *
 	 * @return boolean
 	 */
-	public function isSigned()
-	{
+	public function isSigned() {
 		return $this->getSigned();
 	}
 
@@ -410,8 +382,7 @@ class Column
 	 * @param bool $timezone
 	 * @return Column
 	 */
-	public function setTimezone($timezone)
-	{
+	public function setTimezone($timezone) {
 		$this->timezone = (bool)$timezone;
 		return $this;
 	}
@@ -421,8 +392,7 @@ class Column
 	 *
 	 * @return boolean
 	 */
-	public function getTimezone()
-	{
+	public function getTimezone() {
 		return $this->timezone;
 	}
 
@@ -431,8 +401,7 @@ class Column
 	 *
 	 * @return boolean
 	 */
-	public function isTimezone()
-	{
+	public function isTimezone() {
 		return $this->getTimezone();
 	}
 
@@ -443,8 +412,7 @@ class Column
 	 *
 	 * @return Column
 	 */
-	public function setProperties($properties)
-	{
+	public function setProperties($properties) {
 		$this->properties = $properties;
 		return $this;
 	}
@@ -454,8 +422,7 @@ class Column
 	 *
 	 * @return array
 	 */
-	public function getProperties()
-	{
+	public function getProperties() {
 		return $this->properties;
 	}
 
@@ -466,8 +433,7 @@ class Column
 	 *
 	 * @return Column
 	 */
-	public function setValues($values)
-	{
+	public function setValues($values) {
 		if (!is_array($values)) {
 			$values = preg_split('/,\s*/', $values);
 		}
@@ -480,8 +446,7 @@ class Column
 	 *
 	 * @return string
 	 */
-	public function getValues()
-	{
+	public function getValues() {
 		return $this->values;
 	}
 
@@ -490,8 +455,7 @@ class Column
 	 *
 	 * @return array
 	 */
-	protected function getValidOptions()
-	{
+	protected function getValidOptions() {
 		return array(
 			'limit',
 			'default',
@@ -514,8 +478,7 @@ class Column
 	 *
 	 * @return array
 	 */
-	protected function getAliasedOptions()
-	{
+	protected function getAliasedOptions() {
 		return array(
 			'length' => 'limit',
 		);
@@ -527,8 +490,7 @@ class Column
 	 * @param array $options Options
 	 * @return Column
 	 */
-	public function setOptions($options)
-	{
+	public function setOptions($options) {
 		$validOptions = $this->getValidOptions();
 		$aliasOptions = $this->getAliasedOptions();
 

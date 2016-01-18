@@ -16,13 +16,11 @@ use Symfony\Component\Console\Input\InputInterface;
 /**
  * Class Enumerator class.
  */
-class ClassEnumerator extends Enumerator
-{
+class ClassEnumerator extends Enumerator {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
-	{
+	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null) {
 		// only list classes when no Reflector is present.
 		//
 		// TODO: make a NamespaceReflector and pass that in for commands like:
@@ -58,8 +56,7 @@ class ClassEnumerator extends Enumerator
 	 *
 	 * @return array
 	 */
-	protected function prepareClasses(array $classes)
-	{
+	protected function prepareClasses(array $classes) {
 		natcasesort($classes);
 
 		// My kingdom for a generator.

@@ -20,11 +20,9 @@ use Cake\Event\Event;
  * TestAuthComponent class
  *
  */
-class TestAuthComponent extends AuthComponent
-{
+class TestAuthComponent extends AuthComponent {
 
-	public function authCheck(Event $event)
-	{
+	public function authCheck(Event $event) {
 		if (isset($this->earlyAuthTest)) {
 			if ($this->_config['checkAuthIn'] !== $event->name()) {
 				return;
@@ -43,8 +41,7 @@ class TestAuthComponent extends AuthComponent
 	 * @param Object $object The object to add/set
 	 * @return void
 	 */
-	public function setAuthenticateObject($index, $object)
-	{
+	public function setAuthenticateObject($index, $object) {
 		$this->_authenticateObjects[$index] = $object;
 	}
 
@@ -55,8 +52,7 @@ class TestAuthComponent extends AuthComponent
 	 * @param Object $object The object to add/set
 	 * @return void
 	 */
-	public function setAuthorizeObject($index, $object)
-	{
+	public function setAuthorizeObject($index, $object) {
 		$this->_authorizeObjects[$index] = $object;
 	}
 }

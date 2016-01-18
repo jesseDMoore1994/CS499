@@ -48,8 +48,7 @@ use PDOException;
  * Using a subclass of ExceptionRenderer gives you full control over how Exceptions are rendered, you
  * can configure your class in your config/app.php.
  */
-class ExceptionRenderer
-{
+class ExceptionRenderer {
 
 	/**
 	 * Controller instance.
@@ -86,8 +85,7 @@ class ExceptionRenderer
 	 *
 	 * @param Exception $exception Exception.
 	 */
-	public function __construct(Exception $exception)
-	{
+	public function __construct(Exception $exception) {
 		$this->error = $exception;
 		$this->controller = $this->_getController();
 	}
@@ -99,8 +97,7 @@ class ExceptionRenderer
 	 * @param \Exception $exception The object to unwrap
 	 * @return \Exception|\Error
 	 */
-	protected function _unwrap($exception)
-	{
+	protected function _unwrap($exception) {
 		return $exception instanceof PHP7ErrorException ? $exception->getError() : $exception;
 	}
 
@@ -113,8 +110,7 @@ class ExceptionRenderer
 	 * @return \Cake\Controller\Controller
 	 * @triggers Controller.startup $controller
 	 */
-	protected function _getController()
-	{
+	protected function _getController() {
 		if (!$request = Router::getRequest(true)) {
 			$request = Request::createFromGlobals();
 		}
@@ -150,8 +146,7 @@ class ExceptionRenderer
 	 *
 	 * @return \Cake\Network\Response The response to be sent.
 	 */
-	public function render()
-	{
+	public function render() {
 		$exception = $this->error;
 		$code = $this->_code($exception);
 		$method = $this->_method($exception);
@@ -201,8 +196,7 @@ class ExceptionRenderer
 	 * @param Exception $exception The exception to render.
 	 * @return \Cake\Network\Response The response to send.
 	 */
-	protected function _customMethod($method, $exception)
-	{
+	protected function _customMethod($method, $exception) {
 		$result = call_user_func([$this, $method], $exception);
 		$this->_shutdown();
 		if (is_string($result)) {
@@ -218,8 +212,7 @@ class ExceptionRenderer
 	 * @param Exception $exception Exception instance.
 	 * @return string
 	 */
-	protected function _method(Exception $exception)
-	{
+	protected function _method(Exception $exception) {
 		$exception = $this->_unwrap($exception);
 		list(, $baseClass) = namespaceSplit(get_class($exception));
 
@@ -238,8 +231,7 @@ class ExceptionRenderer
 	 * @param int $code Error code.
 	 * @return string Error message
 	 */
-	protected function _message(Exception $exception, $code)
-	{
+	protected function _message(Exception $exception, $code) {
 		$exception = $this->_unwrap($exception);
 		$message = $exception->getMessage();
 
@@ -264,8 +256,7 @@ class ExceptionRenderer
 	 * @param int $code Error code.
 	 * @return string Template name
 	 */
-	protected function _template(Exception $exception, $method, $code)
-	{
+	protected function _template(Exception $exception, $method, $code) {
 		$exception = $this->_unwrap($exception);
 		$isHttpException = $exception instanceof HttpException;
 
@@ -300,8 +291,7 @@ class ExceptionRenderer
 	 * @param \Exception $exception Exception.
 	 * @return int Error code value within range 400 to 506
 	 */
-	protected function _code(Exception $exception)
-	{
+	protected function _code(Exception $exception) {
 		$code = 500;
 		$exception = $this->_unwrap($exception);
 		$errorCode = $exception->getCode();
@@ -317,8 +307,7 @@ class ExceptionRenderer
 	 * @param string $template The template to render.
 	 * @return \Cake\Network\Response A response object that can be sent.
 	 */
-	protected function _outputMessage($template)
-	{
+	protected function _outputMessage($template) {
 		try {
 			$this->controller->render($template);
 			return $this->_shutdown();
@@ -346,8 +335,7 @@ class ExceptionRenderer
 	 * @param string $template The template to render.
 	 * @return \Cake\Network\Response A response object that can be sent.
 	 */
-	protected function _outputMessageSafe($template)
-	{
+	protected function _outputMessageSafe($template) {
 		$helpers = ['Form', 'Html'];
 		$this->controller->helpers = $helpers;
 		$builder = $this->controller->viewBuilder();
@@ -368,8 +356,7 @@ class ExceptionRenderer
 	 *
 	 * @return \Cake\Network\Response The response to serve.
 	 */
-	protected function _shutdown()
-	{
+	protected function _shutdown() {
 		$this->controller->dispatchEvent('Controller.shutdown');
 		$dispatcher = DispatcherFactory::create();
 		$args = [

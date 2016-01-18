@@ -16,8 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-class ProgressIndicator
-{
+class ProgressIndicator {
 	private $output;
 	private $startTime;
 	private $format;
@@ -38,8 +37,7 @@ class ProgressIndicator
 	 * @param int $indicatorChangeInterval Change interval in milliseconds
 	 * @param array|null $indicatorValues Animated indicator characters
 	 */
-	public function __construct(OutputInterface $output, $format = null, $indicatorChangeInterval = 100, $indicatorValues = null)
-	{
+	public function __construct(OutputInterface $output, $format = null, $indicatorChangeInterval = 100, $indicatorValues = null) {
 		$this->output = $output;
 
 		if (null === $format) {
@@ -67,8 +65,7 @@ class ProgressIndicator
 	 *
 	 * @param string|null $message
 	 */
-	public function setMessage($message)
-	{
+	public function setMessage($message) {
 		$this->message = $message;
 
 		$this->display();
@@ -81,8 +78,7 @@ class ProgressIndicator
 	 *
 	 * @internal for PHP 5.3 compatibility
 	 */
-	public function getMessage()
-	{
+	public function getMessage() {
 		return $this->message;
 	}
 
@@ -93,8 +89,7 @@ class ProgressIndicator
 	 *
 	 * @internal for PHP 5.3 compatibility
 	 */
-	public function getStartTime()
-	{
+	public function getStartTime() {
 		return $this->startTime;
 	}
 
@@ -105,8 +100,7 @@ class ProgressIndicator
 	 *
 	 * @internal for PHP 5.3 compatibility
 	 */
-	public function getCurrentValue()
-	{
+	public function getCurrentValue() {
 		return $this->indicatorValues[$this->indicatorCurrent % count($this->indicatorValues)];
 	}
 
@@ -115,8 +109,7 @@ class ProgressIndicator
 	 *
 	 * @param $message
 	 */
-	public function start($message)
-	{
+	public function start($message) {
 		if ($this->started) {
 			throw new \LogicException('Progress indicator already started.');
 		}
@@ -134,8 +127,7 @@ class ProgressIndicator
 	/**
 	 * Advances the indicator.
 	 */
-	public function advance()
-	{
+	public function advance() {
 		if (!$this->started) {
 			throw new \LogicException('Progress indicator has not yet been started.');
 		}
@@ -161,8 +153,7 @@ class ProgressIndicator
 	 *
 	 * @param $message
 	 */
-	public function finish($message)
-	{
+	public function finish($message) {
 		if (!$this->started) {
 			throw new \LogicException('Progress indicator has not yet been started.');
 		}
@@ -180,8 +171,7 @@ class ProgressIndicator
 	 *
 	 * @return string|null A format string
 	 */
-	public static function getFormatDefinition($name)
-	{
+	public static function getFormatDefinition($name) {
 		if (!self::$formats) {
 			self::$formats = self::initFormats();
 		}
@@ -197,8 +187,7 @@ class ProgressIndicator
 	 * @param string $name The placeholder name (including the delimiter char like %)
 	 * @param callable $callable A PHP callable
 	 */
-	public static function setPlaceholderFormatterDefinition($name, $callable)
-	{
+	public static function setPlaceholderFormatterDefinition($name, $callable) {
 		if (!self::$formatters) {
 			self::$formatters = self::initPlaceholderFormatters();
 		}
@@ -213,8 +202,7 @@ class ProgressIndicator
 	 *
 	 * @return callable|null A PHP callable
 	 */
-	public static function getPlaceholderFormatterDefinition($name)
-	{
+	public static function getPlaceholderFormatterDefinition($name) {
 		if (!self::$formatters) {
 			self::$formatters = self::initPlaceholderFormatters();
 		}
@@ -222,8 +210,7 @@ class ProgressIndicator
 		return isset(self::$formatters[$name]) ? self::$formatters[$name] : null;
 	}
 
-	private function display()
-	{
+	private function display() {
 		if (OutputInterface::VERBOSITY_QUIET === $this->output->getVerbosity()) {
 			return;
 		}
@@ -239,8 +226,7 @@ class ProgressIndicator
 		}, $this->format));
 	}
 
-	private function determineBestFormat()
-	{
+	private function determineBestFormat() {
 		switch ($this->output->getVerbosity()) {
 			// OutputInterface::VERBOSITY_QUIET: display is disabled anyway
 			case OutputInterface::VERBOSITY_VERBOSE:
@@ -258,8 +244,7 @@ class ProgressIndicator
 	 *
 	 * @param string $message The message
 	 */
-	private function overwrite($message)
-	{
+	private function overwrite($message) {
 		// append whitespace to match the line's length
 		if (null !== $this->lastMessagesLength) {
 			if ($this->lastMessagesLength > Helper::strlenWithoutDecoration($this->output->getFormatter(), $message)) {
@@ -283,13 +268,11 @@ class ProgressIndicator
 		}
 	}
 
-	private function getCurrentTimeInMilliseconds()
-	{
+	private function getCurrentTimeInMilliseconds() {
 		return round(microtime(true) * 1000);
 	}
 
-	private static function initPlaceholderFormatters()
-	{
+	private static function initPlaceholderFormatters() {
 		return array(
 			'indicator' => function (ProgressIndicator $indicator) {
 				return $indicator->getCurrentValue();
@@ -306,8 +289,7 @@ class ProgressIndicator
 		);
 	}
 
-	private static function initFormats()
-	{
+	private static function initFormats() {
 		return array(
 			'normal' => ' %indicator% %message%',
 			'normal_no_ansi' => ' %message%',

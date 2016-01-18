@@ -17,17 +17,14 @@ use Symfony\Component\Console\Helper\TableSeparator;
 use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Output\StreamOutput;
 
-class TableTest extends \PHPUnit_Framework_TestCase
-{
+class TableTest extends \PHPUnit_Framework_TestCase {
 	protected $stream;
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->stream = fopen('php://memory', 'r+');
 	}
 
-	protected function tearDown()
-	{
+	protected function tearDown() {
 		fclose($this->stream);
 		$this->stream = null;
 	}
@@ -35,8 +32,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider testRenderProvider
 	 */
-	public function testRender($headers, $rows, $style, $expected)
-	{
+	public function testRender($headers, $rows, $style, $expected) {
 		$table = new Table($output = $this->getOutputStream());
 		$table
 			->setHeaders($headers)
@@ -50,8 +46,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider testRenderProvider
 	 */
-	public function testRenderAddRows($headers, $rows, $style, $expected)
-	{
+	public function testRenderAddRows($headers, $rows, $style, $expected) {
 		$table = new Table($output = $this->getOutputStream());
 		$table
 			->setHeaders($headers)
@@ -65,8 +60,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider testRenderProvider
 	 */
-	public function testRenderAddRowsOneByOne($headers, $rows, $style, $expected)
-	{
+	public function testRenderAddRowsOneByOne($headers, $rows, $style, $expected) {
 		$table = new Table($output = $this->getOutputStream());
 		$table
 			->setHeaders($headers)
@@ -79,8 +73,7 @@ class TableTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, $this->getOutputContent($output));
 	}
 
-	public function testRenderProvider()
-	{
+	public function testRenderProvider() {
 		$books = array(
 			array('99921-58-10-7', 'Divine Comedy', 'Dante Alighieri'),
 			array('9971-5-0210-0', 'A Tale of Two Cities', 'Charles Dickens'),
@@ -479,8 +472,7 @@ TABLE
 		);
 	}
 
-	public function testRenderMultiByte()
-	{
+	public function testRenderMultiByte() {
 		$table = new Table($output = $this->getOutputStream());
 		$table
 			->setHeaders(array('■■'))
@@ -501,8 +493,7 @@ TABLE;
 		$this->assertEquals($expected, $this->getOutputContent($output));
 	}
 
-	public function testStyle()
-	{
+	public function testStyle() {
 		$style = new TableStyle();
 		$style
 			->setHorizontalBorderChar('.')
@@ -530,8 +521,7 @@ TABLE;
 		$this->assertEquals($expected, $this->getOutputContent($output));
 	}
 
-	public function testRowSeparator()
-	{
+	public function testRowSeparator() {
 		$table = new Table($output = $this->getOutputStream());
 		$table
 			->setHeaders(array('Foo'))
@@ -563,8 +553,7 @@ TABLE;
 		$this->assertEquals($table, $table->addRow(new TableSeparator()), 'fluent interface on addRow() with a single TableSeparator() works');
 	}
 
-	public function testRenderMultiCalls()
-	{
+	public function testRenderMultiCalls() {
 		$table = new Table($output = $this->getOutputStream());
 		$table->setRows(array(
 			array(new TableCell('foo', array('colspan' => 2))),
@@ -590,8 +579,7 @@ TABLE;
 		$this->assertEquals($expected, $this->getOutputContent($output));
 	}
 
-	public function testColumnStyle()
-	{
+	public function testColumnStyle() {
 		$table = new Table($output = $this->getOutputStream());
 		$table
 			->setHeaders(array('ISBN', 'Title', 'Author', 'Price'))
@@ -620,13 +608,11 @@ TABLE;
 		$this->assertEquals($expected, $this->getOutputContent($output));
 	}
 
-	protected function getOutputStream()
-	{
+	protected function getOutputStream() {
 		return new StreamOutput($this->stream, StreamOutput::VERBOSITY_NORMAL, false);
 	}
 
-	protected function getOutputContent(StreamOutput $output)
-	{
+	protected function getOutputContent(StreamOutput $output) {
 		rewind($output->getStream());
 
 		return str_replace(PHP_EOL, "\n", stream_get_contents($output->getStream()));

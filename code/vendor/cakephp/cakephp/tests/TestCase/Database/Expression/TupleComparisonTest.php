@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
  * Tests TupleComparison class
  *
  */
-class TupleComparisonTest extends TestCase
-{
+class TupleComparisonTest extends TestCase {
 
 	/**
 	 * Tests generating a function with no arguments
 	 *
 	 * @return void
 	 */
-	public function testsSimpleTuple()
-	{
+	public function testsSimpleTuple() {
 		$f = new TupleComparison(['field1', 'field2'], [1, 2], ['integer', 'integer'], '=');
 		$binder = new ValueBinder;
 		$this->assertEquals('(field1, field2) = (:c0, :c1)', $f->sql($binder));
@@ -47,8 +45,7 @@ class TupleComparisonTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTupleWithExpressionFields()
-	{
+	public function testTupleWithExpressionFields() {
 		$field1 = new QueryExpression(['a' => 1]);
 		$f = new TupleComparison([$field1, 'field2'], [4, 5], ['integer', 'integer'], '>');
 		$binder = new ValueBinder;
@@ -63,8 +60,7 @@ class TupleComparisonTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTupleWithExpressionValues()
-	{
+	public function testTupleWithExpressionValues() {
 		$value1 = new QueryExpression(['a' => 1]);
 		$f = new TupleComparison(['field1', 'field2'], [$value1, 2], ['integer', 'integer'], '=');
 		$binder = new ValueBinder;
@@ -78,8 +74,7 @@ class TupleComparisonTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTupleWithInComparison()
-	{
+	public function testTupleWithInComparison() {
 		$f = new TupleComparison(
 			['field1', 'field2'],
 			[[1, 2], [3, 4]],
@@ -99,8 +94,7 @@ class TupleComparisonTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTraverse()
-	{
+	public function testTraverse() {
 		$value1 = new QueryExpression(['a' => 1]);
 		$field2 = new QueryExpression(['b' => 2]);
 		$f = new TupleComparison(['field1', $field2], [$value1, 2], ['integer', 'integer'], '=');
@@ -135,8 +129,7 @@ class TupleComparisonTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValueAsSingleExpression()
-	{
+	public function testValueAsSingleExpression() {
 		$value = new QueryExpression('SELECT 1, 1');
 		$f = new TupleComparison(['field1', 'field2'], $value);
 		$binder = new ValueBinder;
@@ -149,8 +142,7 @@ class TupleComparisonTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFieldAsSingleExpression()
-	{
+	public function testFieldAsSingleExpression() {
 		$value = [1, 1];
 		$f = new TupleComparison(new QueryExpression('a, b'), $value);
 		$binder = new ValueBinder;

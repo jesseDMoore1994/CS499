@@ -18,8 +18,7 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class SplCaster
-{
+class SplCaster {
 	private static $splFileObjectFlags = array(
 		\SplFileObject::DROP_NEW_LINE => 'DROP_NEW_LINE',
 		\SplFileObject::READ_AHEAD => 'READ_AHEAD',
@@ -27,8 +26,7 @@ class SplCaster
 		\SplFileObject::READ_CSV => 'READ_CSV',
 	);
 
-	public static function castArrayObject(\ArrayObject $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castArrayObject(\ArrayObject $c, array $a, Stub $stub, $isNested) {
 		$prefix = Caster::PREFIX_VIRTUAL;
 		$class = $stub->class;
 		$flags = $c->getFlags();
@@ -55,8 +53,7 @@ class SplCaster
 		return $a;
 	}
 
-	public static function castHeap(\Iterator $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castHeap(\Iterator $c, array $a, Stub $stub, $isNested) {
 		$a += array(
 			Caster::PREFIX_VIRTUAL . 'heap' => iterator_to_array(clone $c),
 		);
@@ -64,8 +61,7 @@ class SplCaster
 		return $a;
 	}
 
-	public static function castDoublyLinkedList(\SplDoublyLinkedList $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castDoublyLinkedList(\SplDoublyLinkedList $c, array $a, Stub $stub, $isNested) {
 		$prefix = Caster::PREFIX_VIRTUAL;
 		$mode = $c->getIteratorMode();
 		$c->setIteratorMode(\SplDoublyLinkedList::IT_MODE_KEEP | $mode & ~\SplDoublyLinkedList::IT_MODE_DELETE);
@@ -79,8 +75,7 @@ class SplCaster
 		return $a;
 	}
 
-	public static function castFileInfo(\SplFileInfo $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castFileInfo(\SplFileInfo $c, array $a, Stub $stub, $isNested) {
 		static $map = array(
 			'path' => 'getPath',
 			'filename' => 'getFilename',
@@ -129,8 +124,7 @@ class SplCaster
 		return $a;
 	}
 
-	public static function castFileObject(\SplFileObject $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castFileObject(\SplFileObject $c, array $a, Stub $stub, $isNested) {
 		static $map = array(
 			'csvControl' => 'getCsvControl',
 			'flags' => 'getFlags',
@@ -166,8 +160,7 @@ class SplCaster
 		return $a;
 	}
 
-	public static function castFixedArray(\SplFixedArray $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castFixedArray(\SplFixedArray $c, array $a, Stub $stub, $isNested) {
 		$a += array(
 			Caster::PREFIX_VIRTUAL . 'storage' => $c->toArray(),
 		);
@@ -175,8 +168,7 @@ class SplCaster
 		return $a;
 	}
 
-	public static function castObjectStorage(\SplObjectStorage $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castObjectStorage(\SplObjectStorage $c, array $a, Stub $stub, $isNested) {
 		$storage = array();
 		unset($a[Caster::PREFIX_DYNAMIC . "\0gcdata"]); // Don't hit https://bugs.php.net/65967
 
@@ -194,8 +186,7 @@ class SplCaster
 		return $a;
 	}
 
-	public static function castOuterIterator(\OuterIterator $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castOuterIterator(\OuterIterator $c, array $a, Stub $stub, $isNested) {
 		$a[Caster::PREFIX_VIRTUAL . 'innerIterator'] = $c->getInnerIterator();
 
 		return $a;

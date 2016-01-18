@@ -25,8 +25,7 @@ use Cake\Utility\Inflector;
  * Language string extractor
  *
  */
-class ExtractTask extends Shell
-{
+class ExtractTask extends Shell {
 
 	/**
 	 * Paths to use when looking for strings
@@ -110,8 +109,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return void
 	 */
-	protected function _welcome()
-	{
+	protected function _welcome() {
 	}
 
 	/**
@@ -119,8 +117,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return void
 	 */
-	protected function _getPaths()
-	{
+	protected function _getPaths() {
 		$defaultPath = APP;
 		while (true) {
 			$currentPaths = count($this->_paths) > 0 ? $this->_paths : ['None'];
@@ -153,8 +150,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		if (!empty($this->params['exclude'])) {
 			$this->_exclude = explode(',', $this->params['exclude']);
 		}
@@ -251,8 +247,7 @@ class ExtractTask extends Shell
 	 * @param array $details Context and plural form if any, file and line references
 	 * @return void
 	 */
-	protected function _addTranslation($domain, $msgid, $details = [])
-	{
+	protected function _addTranslation($domain, $msgid, $details = []) {
 		$context = isset($details['msgctxt']) ? $details['msgctxt'] : "";
 
 		if (empty($this->_translations[$domain][$msgid][$context])) {
@@ -276,8 +271,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return void
 	 */
-	protected function _extract()
-	{
+	protected function _extract() {
 		$this->out();
 		$this->out();
 		$this->out('Extracting...');
@@ -302,8 +296,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser->description(
 			'CakePHP Language String Extraction:'
@@ -356,8 +349,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return void
 	 */
-	protected function _extractTokens()
-	{
+	protected function _extractTokens() {
 		$progress = $this->helper('progress');
 		$progress->init(['total' => count($this->_files)]);
 		$isVerbose = $this->param('verbose');
@@ -401,8 +393,7 @@ class ExtractTask extends Shell
 	 * @param array $map Array containing what variables it will find (e.g: domain, singular, plural)
 	 * @return void
 	 */
-	protected function _parse($functionName, $map)
-	{
+	protected function _parse($functionName, $map) {
 		$count = 0;
 		$tokenCount = count($this->_tokens);
 
@@ -458,8 +449,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return void
 	 */
-	protected function _buildFiles()
-	{
+	protected function _buildFiles() {
 		$paths = $this->_paths;
 		$paths[] = realpath(APP) . DS;
 		foreach ($this->_translations as $domain => $translations) {
@@ -510,8 +500,7 @@ class ExtractTask extends Shell
 	 * @param string $sentence The sentence to store.
 	 * @return void
 	 */
-	protected function _store($domain, $header, $sentence)
-	{
+	protected function _store($domain, $header, $sentence) {
 		if (!isset($this->_storage[$domain])) {
 			$this->_storage[$domain] = [];
 		}
@@ -527,8 +516,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return void
 	 */
-	protected function _writeFiles()
-	{
+	protected function _writeFiles() {
 		$overwriteAll = false;
 		if (!empty($this->params['overwrite'])) {
 			$overwriteAll = true;
@@ -570,8 +558,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return string Translation template header
 	 */
-	protected function _writeHeader()
-	{
+	protected function _writeHeader() {
 		$output = "# LANGUAGE translation of CakePHP Application\n";
 		$output .= "# Copyright YEAR NAME <EMAIL@ADDRESS>\n";
 		$output .= "#\n";
@@ -597,8 +584,7 @@ class ExtractTask extends Shell
 	 * @param int $target Number of strings to extract
 	 * @return array Strings extracted
 	 */
-	protected function _getStrings(&$position, $target)
-	{
+	protected function _getStrings(&$position, $target) {
 		$strings = [];
 		$count = count($strings);
 		while ($count < $target && ($this->_tokens[$position] === ',' || $this->_tokens[$position][0] == T_CONSTANT_ENCAPSED_STRING || $this->_tokens[$position][0] == T_LNUMBER)) {
@@ -628,8 +614,7 @@ class ExtractTask extends Shell
 	 * @param string $string String to format
 	 * @return string Formatted string
 	 */
-	protected function _formatString($string)
-	{
+	protected function _formatString($string) {
 		$quote = substr($string, 0, 1);
 		$string = substr($string, 1, -1);
 		if ($quote === '"') {
@@ -650,8 +635,7 @@ class ExtractTask extends Shell
 	 * @param int $count Count
 	 * @return void
 	 */
-	protected function _markerError($file, $line, $marker, $count)
-	{
+	protected function _markerError($file, $line, $marker, $count) {
 		$this->err(sprintf("Invalid marker content in %s:%s\n* %s(", $file, $line, $marker));
 		$count += 2;
 		$tokenCount = count($this->_tokens);
@@ -680,8 +664,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return void
 	 */
-	protected function _searchFiles()
-	{
+	protected function _searchFiles() {
 		$pattern = false;
 		if (!empty($this->_exclude)) {
 			$exclude = [];
@@ -714,8 +697,7 @@ class ExtractTask extends Shell
 	 *
 	 * @return bool
 	 */
-	protected function _isExtractingApp()
-	{
+	protected function _isExtractingApp() {
 		return $this->_paths === [APP];
 	}
 
@@ -725,8 +707,7 @@ class ExtractTask extends Shell
 	 * @param string $path Path to folder
 	 * @return bool true if it exists and is writable, false otherwise
 	 */
-	protected function _isPathUsable($path)
-	{
+	protected function _isPathUsable($path) {
 		if (!is_dir($path)) {
 			mkdir($path, 0770, true);
 		}

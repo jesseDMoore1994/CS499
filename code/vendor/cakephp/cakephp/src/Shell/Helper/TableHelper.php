@@ -19,8 +19,7 @@ use Cake\Console\Helper;
  * Create a visually pleasing ASCII art table
  * from 2 dimensional array data.
  */
-class TableHelper extends Helper
-{
+class TableHelper extends Helper {
 	/**
 	 * Default config for this helper.
 	 *
@@ -38,8 +37,7 @@ class TableHelper extends Helper
 	 * @param array $rows The rows on which the columns width will be calculated on.
 	 * @return array
 	 */
-	protected function _calculateWidths($rows)
-	{
+	protected function _calculateWidths($rows) {
 		$widths = [];
 		foreach ($rows as $line) {
 			for ($i = 0, $len = count($line); $i < $len; $i++) {
@@ -58,8 +56,7 @@ class TableHelper extends Helper
 	 * @param array $widths The widths of each column to output.
 	 * @return void
 	 */
-	protected function _rowSeparator($widths)
-	{
+	protected function _rowSeparator($widths) {
 		$out = '';
 		foreach ($widths as $column) {
 			$out .= '+' . str_repeat('-', $column + 2);
@@ -76,8 +73,7 @@ class TableHelper extends Helper
 	 * @param array $options Options to be passed.
 	 * @return void
 	 */
-	protected function _render($row, $widths, $options = [])
-	{
+	protected function _render($row, $widths, $options = []) {
 		$out = '';
 		foreach ($row as $i => $column) {
 			$pad = $widths[$i] - mb_strlen($column);
@@ -96,8 +92,7 @@ class TableHelper extends Helper
 	 * @param array $rows The data to render out.
 	 * @return void
 	 */
-	public function output($rows)
-	{
+	public function output($rows) {
 		$config = $this->config();
 		$widths = $this->_calculateWidths($rows);
 
@@ -125,8 +120,7 @@ class TableHelper extends Helper
 	 * @param string $style The style to be applied
 	 * @return string
 	 */
-	protected function _addStyle($text, $style)
-	{
+	protected function _addStyle($text, $style) {
 		return '<' . $style . '>' . $text . '</' . $style . '>';
 	}
 }

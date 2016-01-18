@@ -21,16 +21,14 @@ use Cake\View\Widget\TextareaWidget;
 /**
  * Textarea input test.
  */
-class TextareaWidgetTest extends TestCase
-{
+class TextareaWidgetTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$templates = [
 			'textarea' => '<textarea name="{{name}}"{{attrs}}>{{value}}</textarea>',
@@ -44,8 +42,7 @@ class TextareaWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSimple()
-	{
+	public function testRenderSimple() {
 		$input = new TextareaWidget($this->templates);
 		$result = $input->render(['name' => 'comment'], $this->context);
 		$expected = [
@@ -60,8 +57,7 @@ class TextareaWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderWithValue()
-	{
+	public function testRenderWithValue() {
 		$input = new TextareaWidget($this->templates);
 		$data = ['name' => 'comment', 'data-foo' => '<val>', 'val' => 'some <html>'];
 		$result = $input->render($data, $this->context);
@@ -87,8 +83,7 @@ class TextareaWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderTemplateVars()
-	{
+	public function testRenderTemplateVars() {
 		$this->templates->add([
 			'textarea' => '<textarea custom="{{custom}}" name="{{name}}"{{attrs}}>{{value}}</textarea>',
 		]);

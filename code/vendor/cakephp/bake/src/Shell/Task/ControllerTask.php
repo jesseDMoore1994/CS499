@@ -22,8 +22,7 @@ use Cake\ORM\TableRegistry;
  * Task class for creating and updating controller files.
  *
  */
-class ControllerTask extends BakeTask
-{
+class ControllerTask extends BakeTask {
 	/**
 	 * Tasks to be loaded by this Task
 	 *
@@ -48,8 +47,7 @@ class ControllerTask extends BakeTask
 	 * @param string|null $name The name of the controller to bake.
 	 * @return void
 	 */
-	public function main($name = null)
-	{
+	public function main($name = null) {
 		parent::main();
 		$name = $this->_getName($name);
 
@@ -70,8 +68,7 @@ class ControllerTask extends BakeTask
 	 *
 	 * @return void
 	 */
-	public function all()
-	{
+	public function all() {
 		$tables = $this->listAll();
 		foreach ($tables as $table) {
 			TableRegistry::clear();
@@ -85,8 +82,7 @@ class ControllerTask extends BakeTask
 	 * @param string $controllerName Controller name already pluralized and correctly cased.
 	 * @return string Baked controller
 	 */
-	public function bake($controllerName)
-	{
+	public function bake($controllerName) {
 		$this->out("\n" . sprintf('Baking controller class for %s...', $controllerName), 1, Shell::QUIET);
 
 		$actions = [];
@@ -153,8 +149,7 @@ class ControllerTask extends BakeTask
 	 * @param array $data The data to turn into code.
 	 * @return string The generated controller file.
 	 */
-	public function bakeController($controllerName, array $data)
-	{
+	public function bakeController($controllerName, array $data) {
 		$data += [
 			'name' => null,
 			'namespace' => null,
@@ -182,8 +177,7 @@ class ControllerTask extends BakeTask
 	 * @param string $className Controller class name
 	 * @return string Baked test
 	 */
-	public function bakeTest($className)
-	{
+	public function bakeTest($className) {
 		if (!empty($this->params['no-test'])) {
 			return;
 		}
@@ -201,8 +195,7 @@ class ControllerTask extends BakeTask
 	 *
 	 * @return array
 	 */
-	public function getComponents()
-	{
+	public function getComponents() {
 		$components = [];
 		if (!empty($this->params['components'])) {
 			$components = explode(',', $this->params['components']);
@@ -216,8 +209,7 @@ class ControllerTask extends BakeTask
 	 *
 	 * @return array
 	 */
-	public function getHelpers()
-	{
+	public function getHelpers() {
 		$helpers = [];
 		if (!empty($this->params['helpers'])) {
 			$helpers = explode(',', $this->params['helpers']);
@@ -231,8 +223,7 @@ class ControllerTask extends BakeTask
 	 *
 	 * @return array Set of controllers
 	 */
-	public function listAll()
-	{
+	public function listAll() {
 		$this->Model->connection = $this->connection;
 		return $this->Model->listUnskipped();
 	}
@@ -242,8 +233,7 @@ class ControllerTask extends BakeTask
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser->description(
 			'Bake a controller skeleton.'

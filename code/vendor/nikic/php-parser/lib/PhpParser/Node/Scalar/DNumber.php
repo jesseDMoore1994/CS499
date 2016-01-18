@@ -4,8 +4,7 @@ namespace PhpParser\Node\Scalar;
 
 use PhpParser\Node\Scalar;
 
-class DNumber extends Scalar
-{
+class DNumber extends Scalar {
 	/** @var float Number value */
 	public $value;
 
@@ -15,14 +14,12 @@ class DNumber extends Scalar
 	 * @param float $value Value of the number
 	 * @param array $attributes Additional attributes
 	 */
-	public function __construct($value, array $attributes = array())
-	{
+	public function __construct($value, array $attributes = array()) {
 		parent::__construct($attributes);
 		$this->value = $value;
 	}
 
-	public function getSubNodeNames()
-	{
+	public function getSubNodeNames() {
 		return array('value');
 	}
 
@@ -35,8 +32,7 @@ class DNumber extends Scalar
 	 *
 	 * @return float The parsed number
 	 */
-	public static function parse($str)
-	{
+	public static function parse($str) {
 		// if string contains any of .eE just cast it to float
 		if (false !== strpbrk($str, '.eE')) {
 			return (float)$str;

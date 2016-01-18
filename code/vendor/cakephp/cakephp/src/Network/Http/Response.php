@@ -87,8 +87,7 @@ use RuntimeException;
  * $content = $response->code;
  * ```
  */
-class Response extends Message
-{
+class Response extends Message {
 
 	/**
 	 * The status code of the response.
@@ -138,8 +137,7 @@ class Response extends Message
 	 * @param array $headers Unparsed headers.
 	 * @param string $body The response body.
 	 */
-	public function __construct($headers = [], $body = '')
-	{
+	public function __construct($headers = [], $body = '') {
 		$this->_parseHeaders($headers);
 		if ($this->header('Content-Encoding') === 'gzip') {
 			$body = $this->_decodeGzipBody($body);
@@ -157,8 +155,7 @@ class Response extends Message
 	 * @return string
 	 * @throws \RuntimeException When attempting to decode gzip content without gzinflate.
 	 */
-	protected function _decodeGzipBody($body)
-	{
+	protected function _decodeGzipBody($body) {
 		if (!function_exists('gzinflate')) {
 			throw new RuntimeException('Cannot decompress gzip response body without gzinflate()');
 		}
@@ -182,8 +179,7 @@ class Response extends Message
 	 * @param array $headers Headers to parse.
 	 * @return void
 	 */
-	protected function _parseHeaders($headers)
-	{
+	protected function _parseHeaders($headers) {
 		foreach ($headers as $key => $value) {
 			if (substr($value, 0, 5) === 'HTTP/') {
 				preg_match('/HTTP\/([\d.]+) ([0-9]+)/i', $value, $matches);
@@ -212,8 +208,7 @@ class Response extends Message
 	 * @param string $value The cookie value to parse.
 	 * @return void
 	 */
-	protected function _parseCookie($value)
-	{
+	protected function _parseCookie($value) {
 		$value = rtrim($value, ';');
 		$nestedSemi = '";"';
 		if (strpos($value, $nestedSemi) !== false) {
@@ -251,8 +246,7 @@ class Response extends Message
 	 *
 	 * @return bool
 	 */
-	public function isOk()
-	{
+	public function isOk() {
 		$codes = [
 			static::STATUS_OK,
 			static::STATUS_CREATED,
@@ -266,8 +260,7 @@ class Response extends Message
 	 *
 	 * @return bool
 	 */
-	public function isRedirect()
-	{
+	public function isRedirect() {
 		$codes = [
 			static::STATUS_MOVED_PERMANENTLY,
 			static::STATUS_FOUND,
@@ -285,8 +278,7 @@ class Response extends Message
 	 *
 	 * @return int
 	 */
-	public function statusCode()
-	{
+	public function statusCode() {
 		return $this->_code;
 	}
 
@@ -295,8 +287,7 @@ class Response extends Message
 	 *
 	 * @return string|null
 	 */
-	public function encoding()
-	{
+	public function encoding() {
 		$content = $this->header('content-type');
 		if (!$content) {
 			return null;
@@ -318,8 +309,7 @@ class Response extends Message
 	 *   a header that had multiple values set. Otherwise a string
 	 *   will be returned.
 	 */
-	public function header($name = null)
-	{
+	public function header($name = null) {
 		if ($name === null) {
 			return $this->_headers;
 		}
@@ -339,8 +329,7 @@ class Response extends Message
 	 *   the value will be returned.
 	 * @return mixed
 	 */
-	public function cookie($name = null, $all = false)
-	{
+	public function cookie($name = null, $all = false) {
 		if ($name === null) {
 			return $this->_cookies;
 		}
@@ -369,8 +358,7 @@ class Response extends Message
 	 *   the response body.
 	 * @return mixed The response body.
 	 */
-	public function body($parser = null)
-	{
+	public function body($parser = null) {
 		if ($parser) {
 			return $parser($this->_body);
 		}
@@ -382,8 +370,7 @@ class Response extends Message
 	 *
 	 * @return null|array
 	 */
-	protected function _getJson()
-	{
+	protected function _getJson() {
 		if (!empty($this->_json)) {
 			return $this->_json;
 		}
@@ -400,8 +387,7 @@ class Response extends Message
 	 *
 	 * @return null|\SimpleXMLElement
 	 */
-	protected function _getXml()
-	{
+	protected function _getXml() {
 		if (!empty($this->_xml)) {
 			return $this->_xml;
 		}
@@ -420,8 +406,7 @@ class Response extends Message
 	 * @param string $name Property name.
 	 * @return mixed
 	 */
-	public function __get($name)
-	{
+	public function __get($name) {
 		if (!isset($this->_exposedProperties[$name])) {
 			return false;
 		}
@@ -438,8 +423,7 @@ class Response extends Message
 	 * @param string $name Property name.
 	 * @return bool
 	 */
-	public function __isset($name)
-	{
+	public function __isset($name) {
 		if (!isset($this->_exposedProperties[$name])) {
 			return false;
 		}

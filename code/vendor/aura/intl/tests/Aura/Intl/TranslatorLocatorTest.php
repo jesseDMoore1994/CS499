@@ -1,8 +1,7 @@
 <?php
 namespace Aura\Intl;
 
-class TranslatorLocatorTest extends \PHPUnit_Framework_TestCase
-{
+class TranslatorLocatorTest extends \PHPUnit_Framework_TestCase {
 	protected $factory;
 
 	protected $translators;
@@ -11,8 +10,7 @@ class TranslatorLocatorTest extends \PHPUnit_Framework_TestCase
 
 	protected $formatters;
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$registry['Vendor.Package']['en_US'] = function () {
 			return new \Aura\Intl\Package(
 				'mock',
@@ -51,40 +49,34 @@ class TranslatorLocatorTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testSetAndGetLocale()
-	{
+	public function testSetAndGetLocale() {
 		$expect = 'pt_BR';
 		$this->translators->setLocale($expect);
 		$actual = $this->translators->getLocale();
 		$this->assertSame($expect, $actual);
 	}
 
-	public function testGetFactory()
-	{
+	public function testGetFactory() {
 		$actual = $this->translators->getFactory();
 		$this->assertSame($this->factory, $actual);
 	}
 
-	public function testGet()
-	{
+	public function testGet() {
 		$actual = $this->translators->get('Vendor.Package');
 		$this->assertInstanceOf('Aura\Intl\Translator', $actual);
 	}
 
-	public function testGetPackages()
-	{
+	public function testGetPackages() {
 		$actual = $this->translators->getPackages();
 		$this->assertSame($this->packages, $actual);
 	}
 
-	public function testGetFormatterLocator()
-	{
+	public function testGetFormatterLocator() {
 		$actual = $this->translators->getFormatters();
 		$this->assertSame($this->formatters, $actual);
 	}
 
-	public function testIssue9()
-	{
+	public function testIssue9() {
 		$this->packages->set('Vendor.Package', 'en_UK', function () {
 			$package = new Package('mock');
 			$package->setMessages([
@@ -99,8 +91,7 @@ class TranslatorLocatorTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($translator->translate('FOO'), $expect);
 	}
 
-	public function testIssue9Failure()
-	{
+	public function testIssue9Failure() {
 		$package = new Package;
 		$package->setMessages([
 			'FOO' => 'The text for "foo."',

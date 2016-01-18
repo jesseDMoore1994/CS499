@@ -20,16 +20,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Form test case.
  */
-class FormTest extends TestCase
-{
+class FormTest extends TestCase {
 
 	/**
 	 * Test schema()
 	 *
 	 * @return void
 	 */
-	public function testSchema()
-	{
+	public function testSchema() {
 		$form = new Form();
 		$schema = $form->schema();
 
@@ -46,8 +44,7 @@ class FormTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValidator()
-	{
+	public function testValidator() {
 		$form = new Form();
 		$validator = $form->validator();
 
@@ -64,8 +61,7 @@ class FormTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValidate()
-	{
+	public function testValidate() {
 		$form = new Form();
 		$form->validator()
 			->add('email', 'format', ['rule' => 'email'])
@@ -91,8 +87,7 @@ class FormTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrors()
-	{
+	public function testErrors() {
 		$form = new Form();
 		$form->validator()
 			->add('email', 'format', [
@@ -120,8 +115,7 @@ class FormTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExecuteInvalid()
-	{
+	public function testExecuteInvalid() {
 		$form = $this->getMock('Cake\Form\Form', ['_execute']);
 		$form->validator()
 			->add('email', 'format', ['rule' => 'email']);
@@ -139,8 +133,7 @@ class FormTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExecuteValid()
-	{
+	public function testExecuteValid() {
 		$form = $this->getMock('Cake\Form\Form', ['_execute']);
 		$form->validator()
 			->add('email', 'format', ['rule' => 'email']);
@@ -160,8 +153,7 @@ class FormTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDebugInfo()
-	{
+	public function testDebugInfo() {
 		$form = new Form();
 		$result = $form->__debugInfo();
 		$this->assertArrayHasKey('_schema', $result);

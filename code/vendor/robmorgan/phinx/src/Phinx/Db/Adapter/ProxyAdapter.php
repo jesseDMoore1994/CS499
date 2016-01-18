@@ -41,8 +41,7 @@ use Phinx\Migration\IrreversibleMigrationException;
  *
  * @author Rob Morgan <robbym@gmail.com>
  */
-class ProxyAdapter extends AdapterWrapper
-{
+class ProxyAdapter extends AdapterWrapper {
 	/**
 	 * @var array
 	 */
@@ -51,112 +50,98 @@ class ProxyAdapter extends AdapterWrapper
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getAdapterType()
-	{
+	public function getAdapterType() {
 		return 'ProxyAdapter';
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function createTable(Table $table)
-	{
+	public function createTable(Table $table) {
 		$this->recordCommand('createTable', array($table->getName()));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function renameTable($tableName, $newTableName)
-	{
+	public function renameTable($tableName, $newTableName) {
 		$this->recordCommand('renameTable', array($tableName, $newTableName));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropTable($tableName)
-	{
+	public function dropTable($tableName) {
 		$this->recordCommand('dropTable', array($tableName));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addColumn(Table $table, Column $column)
-	{
+	public function addColumn(Table $table, Column $column) {
 		$this->recordCommand('addColumn', array($table, $column));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function renameColumn($tableName, $columnName, $newColumnName)
-	{
+	public function renameColumn($tableName, $columnName, $newColumnName) {
 		$this->recordCommand('renameColumn', array($tableName, $columnName, $newColumnName));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function changeColumn($tableName, $columnName, Column $newColumn)
-	{
+	public function changeColumn($tableName, $columnName, Column $newColumn) {
 		$this->recordCommand('changeColumn', array($tableName, $columnName, $newColumn));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropColumn($tableName, $columnName)
-	{
+	public function dropColumn($tableName, $columnName) {
 		$this->recordCommand('dropColumn', array($tableName, $columnName));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addIndex(Table $table, Index $index)
-	{
+	public function addIndex(Table $table, Index $index) {
 		$this->recordCommand('addIndex', array($table, $index));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropIndex($tableName, $columns, $options = array())
-	{
+	public function dropIndex($tableName, $columns, $options = array()) {
 		$this->recordCommand('dropIndex', array($tableName, $columns, $options));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropIndexByName($tableName, $indexName)
-	{
+	public function dropIndexByName($tableName, $indexName) {
 		$this->recordCommand('dropIndexByName', array($tableName, $indexName));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addForeignKey(Table $table, ForeignKey $foreignKey)
-	{
+	public function addForeignKey(Table $table, ForeignKey $foreignKey) {
 		$this->recordCommand('addForeignKey', array($table, $foreignKey));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropForeignKey($tableName, $columns, $constraint = null)
-	{
+	public function dropForeignKey($tableName, $columns, $constraint = null) {
 		$this->recordCommand('dropForeignKey', array($columns, $constraint));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function createDatabase($name, $options = array())
-	{
+	public function createDatabase($name, $options = array()) {
 		$this->recordCommand('createDatabase', array($name, $options));
 	}
 
@@ -167,8 +152,7 @@ class ProxyAdapter extends AdapterWrapper
 	 * @param array $arguments Command Arguments
 	 * @return void
 	 */
-	public function recordCommand($name, $arguments)
-	{
+	public function recordCommand($name, $arguments) {
 		$this->commands[] = array(
 			'name' => $name,
 			'arguments' => $arguments
@@ -181,8 +165,7 @@ class ProxyAdapter extends AdapterWrapper
 	 * @param array $commands Commands
 	 * @return ProxyAdapter
 	 */
-	public function setCommands($commands)
-	{
+	public function setCommands($commands) {
 		$this->commands = $commands;
 		return $this;
 	}
@@ -192,8 +175,7 @@ class ProxyAdapter extends AdapterWrapper
 	 *
 	 * @return array
 	 */
-	public function getCommands()
-	{
+	public function getCommands() {
 		return $this->commands;
 	}
 
@@ -203,8 +185,7 @@ class ProxyAdapter extends AdapterWrapper
 	 * @throws IrreversibleMigrationException if a command cannot be reversed.
 	 * @return array
 	 */
-	public function getInvertedCommands()
-	{
+	public function getInvertedCommands() {
 		if (null === $this->getCommands()) {
 			return array();
 		}
@@ -237,8 +218,7 @@ class ProxyAdapter extends AdapterWrapper
 	 *
 	 * @return void
 	 */
-	public function executeCommands()
-	{
+	public function executeCommands() {
 		$commands = $this->getCommands();
 		foreach ($commands as $command) {
 			call_user_func_array(array($this->getAdapter(), $command['name']), $command['arguments']);
@@ -250,8 +230,7 @@ class ProxyAdapter extends AdapterWrapper
 	 *
 	 * @return void
 	 */
-	public function executeInvertedCommands()
-	{
+	public function executeInvertedCommands() {
 		$commands = $this->getInvertedCommands();
 		foreach ($commands as $command) {
 			call_user_func_array(array($this->getAdapter(), $command['name']), $command['arguments']);
@@ -264,8 +243,7 @@ class ProxyAdapter extends AdapterWrapper
 	 * @param array $args Method Arguments
 	 * @return array
 	 */
-	public function invertCreateTable($args)
-	{
+	public function invertCreateTable($args) {
 		return array('name' => 'dropTable', 'arguments' => array($args[0]));
 	}
 
@@ -275,8 +253,7 @@ class ProxyAdapter extends AdapterWrapper
 	 * @param array $args Method Arguments
 	 * @return array
 	 */
-	public function invertRenameTable($args)
-	{
+	public function invertRenameTable($args) {
 		return array('name' => 'renameTable', 'arguments' => array($args[1], $args[0]));
 	}
 
@@ -286,8 +263,7 @@ class ProxyAdapter extends AdapterWrapper
 	 * @param array $args Method Arguments
 	 * @return array
 	 */
-	public function invertAddColumn($args)
-	{
+	public function invertAddColumn($args) {
 		return array('name' => 'dropColumn', 'arguments' => array($args[0]->getName(), $args[1]->getName()));
 	}
 
@@ -297,8 +273,7 @@ class ProxyAdapter extends AdapterWrapper
 	 * @param array $args Method Arguments
 	 * @return array
 	 */
-	public function invertRenameColumn($args)
-	{
+	public function invertRenameColumn($args) {
 		return array('name' => 'renameColumn', 'arguments' => array($args[0], $args[2], $args[1]));
 	}
 
@@ -308,8 +283,7 @@ class ProxyAdapter extends AdapterWrapper
 	 * @param array $args Method Arguments
 	 * @return array
 	 */
-	public function invertAddIndex($args)
-	{
+	public function invertAddIndex($args) {
 		return array('name' => 'dropIndex', 'arguments' => array($args[0]->getName(), $args[1]->getColumns()));
 	}
 
@@ -319,8 +293,7 @@ class ProxyAdapter extends AdapterWrapper
 	 * @param array $args Method Arguments
 	 * @return array
 	 */
-	public function invertAddForeignKey($args)
-	{
+	public function invertAddForeignKey($args) {
 		return array('name' => 'dropForeignKey', 'arguments' => array($args[0]->getName(), $args[1]->getColumns()));
 	}
 }

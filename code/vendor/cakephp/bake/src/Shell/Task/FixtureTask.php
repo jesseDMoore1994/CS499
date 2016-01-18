@@ -27,8 +27,7 @@ use DateTime;
 /**
  * Task class for creating and updating fixtures files.
  */
-class FixtureTask extends BakeTask
-{
+class FixtureTask extends BakeTask {
 	/**
 	 * Tasks to be loaded by this Task
 	 *
@@ -44,8 +43,7 @@ class FixtureTask extends BakeTask
 	 *
 	 * @return string
 	 */
-	public function getPath()
-	{
+	public function getPath() {
 		$dir = 'Fixture/';
 		$path = defined('TESTS') ? TESTS . $dir : ROOT . DS . 'tests' . DS . $dir;
 		if (isset($this->plugin)) {
@@ -59,8 +57,7 @@ class FixtureTask extends BakeTask
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser = $parser->description(
@@ -99,8 +96,7 @@ class FixtureTask extends BakeTask
 	 * @param string|null $name The name of the fixture to bake.
 	 * @return void
 	 */
-	public function main($name = null)
-	{
+	public function main($name = null) {
 		parent::main();
 		$name = $this->_getName($name);
 
@@ -125,8 +121,7 @@ class FixtureTask extends BakeTask
 	 *
 	 * @return void
 	 */
-	public function all()
-	{
+	public function all() {
 		$tables = $this->Model->listUnskipped($this->connection, false);
 
 		foreach ($tables as $table) {
@@ -142,8 +137,7 @@ class FixtureTask extends BakeTask
 	 * @return string Baked fixture content
 	 * @throws \RuntimeException
 	 */
-	public function bake($model, $useTable = null)
-	{
+	public function bake($model, $useTable = null) {
 		$table = $schema = $records = $import = $modelImport = null;
 
 		if (!$useTable) {
@@ -203,8 +197,7 @@ class FixtureTask extends BakeTask
 	 * @param array $otherVars Contents of the fixture file.
 	 * @return string Content saved into fixture file.
 	 */
-	public function generateFixtureFile($model, array $otherVars)
-	{
+	public function generateFixtureFile($model, array $otherVars) {
 		$defaults = [
 			'name' => $model,
 			'table' => null,
@@ -239,8 +232,7 @@ class FixtureTask extends BakeTask
 	 * @param \Cake\Database\Schema\Table $table Table schema
 	 * @return string fields definitions
 	 */
-	protected function _generateSchema(Table $table)
-	{
+	protected function _generateSchema(Table $table) {
 		$cols = $indexes = $constraints = [];
 		foreach ($table->columns() as $field) {
 			$fieldData = $table->column($field);
@@ -281,8 +273,7 @@ class FixtureTask extends BakeTask
 	 * @param array $values options keys(type, null, default, key, length, extra)
 	 * @return array Formatted values
 	 */
-	protected function _values($values)
-	{
+	protected function _values($values) {
 		$vals = [];
 		if (!is_array($values)) {
 			return $vals;
@@ -312,8 +303,7 @@ class FixtureTask extends BakeTask
 	 * @param int $recordCount The number of records to generate.
 	 * @return array Array of records to use in the fixture.
 	 */
-	protected function _generateRecords(Table $table, $recordCount = 1)
-	{
+	protected function _generateRecords(Table $table, $recordCount = 1) {
 		$records = [];
 		for ($i = 0; $i < $recordCount; $i++) {
 			$record = [];
@@ -378,8 +368,7 @@ class FixtureTask extends BakeTask
 	 * @param array $records Array of records to be converted to string
 	 * @return string A string value of the $records array.
 	 */
-	protected function _makeRecordString($records)
-	{
+	protected function _makeRecordString($records) {
 		$out = "[\n";
 		foreach ($records as $record) {
 			$values = [];
@@ -409,8 +398,7 @@ class FixtureTask extends BakeTask
 	 * @param string|null $useTable Name of table to use.
 	 * @return array Array of records.
 	 */
-	protected function _getRecordsFromTable($modelName, $useTable = null)
-	{
+	protected function _getRecordsFromTable($modelName, $useTable = null) {
 		$recordCount = (isset($this->params['count']) ? $this->params['count'] : 10);
 		$conditions = (isset($this->params['conditions']) ? $this->params['conditions'] : '1=1');
 		if (TableRegistry::exists($modelName)) {

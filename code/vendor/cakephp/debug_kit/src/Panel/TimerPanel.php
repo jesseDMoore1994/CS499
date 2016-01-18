@@ -21,16 +21,14 @@ use DebugKit\DebugTimer;
 /**
  * Provides debug information on all timers used in a request.
  */
-class TimerPanel extends DebugPanel
-{
+class TimerPanel extends DebugPanel {
 
 	/**
 	 * Return an array of events to listen to.
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		$before = function ($name) {
 			return function () use ($name) {
 				DebugTimer::start($name, __d('debug_kit', $name));
@@ -105,8 +103,7 @@ class TimerPanel extends DebugPanel
 	 *
 	 * @return array
 	 */
-	public function data()
-	{
+	public function data() {
 		return [
 			'requestTime' => DebugTimer::requestTime(),
 			'timers' => DebugTimer::getAll(),
@@ -120,8 +117,7 @@ class TimerPanel extends DebugPanel
 	 *
 	 * @return string
 	 */
-	public function summary()
-	{
+	public function summary() {
 		$time = Number::precision(DebugTimer::requestTime(), 2) . ' s';
 		$memory = Number::toReadableSize(DebugMemory::getPeak());
 		return "$time / $memory";

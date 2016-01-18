@@ -12,8 +12,7 @@
  * @link       http://github.com/jdorn/sql-formatter
  * @version    1.2.17
  */
-class SqlFormatter
-{
+class SqlFormatter {
 	// Constants for token types
 	const TOKEN_TYPE_WHITESPACE = 0;
 	const TOKEN_TYPE_WORD = 1;
@@ -162,8 +161,7 @@ class SqlFormatter
 	 * Get stats about the token cache
 	 * @return Array An array containing the keys 'hits', 'misses', 'entries', and 'size' in bytes
 	 */
-	public static function getCacheStats()
-	{
+	public static function getCacheStats() {
 		return array(
 			'hits' => self::$cache_hits,
 			'misses' => self::$cache_misses,
@@ -175,8 +173,7 @@ class SqlFormatter
 	/**
 	 * Stuff that only needs to be done once.  Builds regular expressions and sorts the reserved words.
 	 */
-	protected static function init()
-	{
+	protected static function init() {
 		if (self::$init) return;
 
 		// Sort reserved word list from longest word to shortest, 3x faster than usort
@@ -204,8 +201,7 @@ class SqlFormatter
 	 *
 	 * @return Array An associative array containing the type and value of the token.
 	 */
-	protected static function getNextToken($string, $previous = null)
-	{
+	protected static function getNextToken($string, $previous = null) {
 		// Whitespace
 		if (preg_match('/^\s+/', $string, $matches)) {
 			return array(
@@ -329,8 +325,7 @@ class SqlFormatter
 		);
 	}
 
-	protected static function getQuotedString($string)
-	{
+	protected static function getQuotedString($string) {
 		$ret = null;
 
 		// This checks for the following patterns:
@@ -352,8 +347,7 @@ class SqlFormatter
 	 *
 	 * @return Array An array of tokens.
 	 */
-	protected static function tokenize($string)
-	{
+	protected static function tokenize($string) {
 		self::init();
 
 		$tokens = array();
@@ -425,8 +419,7 @@ class SqlFormatter
 	 *
 	 * @return String The SQL string with HTML styles and formatting wrapped in a <pre> tag
 	 */
-	public static function format($string, $highlight = true)
-	{
+	public static function format($string, $highlight = true) {
 		// This variable will be populated with formatted html
 		$return = '';
 
@@ -712,8 +705,7 @@ class SqlFormatter
 	 *
 	 * @return String The SQL string with HTML styles applied
 	 */
-	public static function highlight($string)
-	{
+	public static function highlight($string) {
 		$tokens = self::tokenize($string);
 
 		$return = '';
@@ -733,8 +725,7 @@ class SqlFormatter
 	 *
 	 * @return Array An array of individual query strings without trailing semicolons
 	 */
-	public static function splitQuery($string)
-	{
+	public static function splitQuery($string) {
 		$queries = array();
 		$current_query = '';
 		$empty = true;
@@ -774,8 +765,7 @@ class SqlFormatter
 	 *
 	 * @return String The SQL string without comments
 	 */
-	public static function removeComments($string)
-	{
+	public static function removeComments($string) {
 		$result = '';
 
 		$tokens = self::tokenize($string);
@@ -800,8 +790,7 @@ class SqlFormatter
 	 *
 	 * @return String The SQL string without comments
 	 */
-	public static function compress($string)
-	{
+	public static function compress($string) {
 		$result = '';
 
 		$tokens = self::tokenize($string);
@@ -842,8 +831,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightToken($token)
-	{
+	protected static function highlightToken($token) {
 		$type = $token[self::TOKEN_TYPE];
 
 		if (self::is_cli()) {
@@ -884,8 +872,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightQuote($value)
-	{
+	protected static function highlightQuote($value) {
 		if (self::is_cli()) {
 			return self::$cli_quote . $value . "\x1b[0m";
 		} else {
@@ -900,8 +887,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightBacktickQuote($value)
-	{
+	protected static function highlightBacktickQuote($value) {
 		if (self::is_cli()) {
 			return self::$cli_backtick_quote . $value . "\x1b[0m";
 		} else {
@@ -916,8 +902,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightReservedWord($value)
-	{
+	protected static function highlightReservedWord($value) {
 		if (self::is_cli()) {
 			return self::$cli_reserved . $value . "\x1b[0m";
 		} else {
@@ -932,8 +917,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightBoundary($value)
-	{
+	protected static function highlightBoundary($value) {
 		if ($value === '(' || $value === ')') return $value;
 
 		if (self::is_cli()) {
@@ -950,8 +934,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightNumber($value)
-	{
+	protected static function highlightNumber($value) {
 		if (self::is_cli()) {
 			return self::$cli_number . $value . "\x1b[0m";
 		} else {
@@ -966,8 +949,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightError($value)
-	{
+	protected static function highlightError($value) {
 		if (self::is_cli()) {
 			return self::$cli_error . $value . "\x1b[0m";
 		} else {
@@ -982,8 +964,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightComment($value)
-	{
+	protected static function highlightComment($value) {
 		if (self::is_cli()) {
 			return self::$cli_comment . $value . "\x1b[0m";
 		} else {
@@ -998,8 +979,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightWord($value)
-	{
+	protected static function highlightWord($value) {
 		if (self::is_cli()) {
 			return self::$cli_word . $value . "\x1b[0m";
 		} else {
@@ -1014,8 +994,7 @@ class SqlFormatter
 	 *
 	 * @return String HTML code of the highlighted token.
 	 */
-	protected static function highlightVariable($value)
-	{
+	protected static function highlightVariable($value) {
 		if (self::is_cli()) {
 			return self::$cli_variable . $value . "\x1b[0m";
 		} else {
@@ -1030,8 +1009,7 @@ class SqlFormatter
 	 *
 	 * @return String The quoted string
 	 */
-	private static function quote_regex($a)
-	{
+	private static function quote_regex($a) {
 		return preg_quote($a, '/');
 	}
 
@@ -1042,8 +1020,7 @@ class SqlFormatter
 	 *
 	 * @return String The quoted string
 	 */
-	private static function output($string)
-	{
+	private static function output($string) {
 		if (self::is_cli()) {
 			return $string . "\n";
 		} else {
@@ -1056,8 +1033,7 @@ class SqlFormatter
 		}
 	}
 
-	private static function is_cli()
-	{
+	private static function is_cli() {
 		if (isset(self::$cli)) return self::$cli;
 		else return php_sapi_name() === 'cli';
 	}

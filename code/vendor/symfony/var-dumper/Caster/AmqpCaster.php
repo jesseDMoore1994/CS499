@@ -18,8 +18,7 @@ use Symfony\Component\VarDumper\Cloner\Stub;
  *
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
-class AmqpCaster
-{
+class AmqpCaster {
 	private static $flags = array(
 		AMQP_DURABLE => 'AMQP_DURABLE',
 		AMQP_PASSIVE => 'AMQP_PASSIVE',
@@ -44,8 +43,7 @@ class AmqpCaster
 		AMQP_EX_TYPE_HEADERS => 'AMQP_EX_TYPE_HEADERS',
 	);
 
-	public static function castConnection(\AMQPConnection $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castConnection(\AMQPConnection $c, array $a, Stub $stub, $isNested) {
 		$prefix = Caster::PREFIX_VIRTUAL;
 
 		// BC layer in the amqp lib
@@ -68,8 +66,7 @@ class AmqpCaster
 		return $a;
 	}
 
-	public static function castChannel(\AMQPChannel $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castChannel(\AMQPChannel $c, array $a, Stub $stub, $isNested) {
 		$prefix = Caster::PREFIX_VIRTUAL;
 
 		$a += array(
@@ -83,8 +80,7 @@ class AmqpCaster
 		return $a;
 	}
 
-	public static function castQueue(\AMQPQueue $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castQueue(\AMQPQueue $c, array $a, Stub $stub, $isNested) {
 		$prefix = Caster::PREFIX_VIRTUAL;
 
 		$a += array(
@@ -98,8 +94,7 @@ class AmqpCaster
 		return $a;
 	}
 
-	public static function castExchange(\AMQPExchange $c, array $a, Stub $stub, $isNested)
-	{
+	public static function castExchange(\AMQPExchange $c, array $a, Stub $stub, $isNested) {
 		$prefix = Caster::PREFIX_VIRTUAL;
 
 		$a += array(
@@ -114,8 +109,7 @@ class AmqpCaster
 		return $a;
 	}
 
-	public static function castEnvelope(\AMQPEnvelope $c, array $a, Stub $stub, $isNested, $filter = 0)
-	{
+	public static function castEnvelope(\AMQPEnvelope $c, array $a, Stub $stub, $isNested, $filter = 0) {
 		$prefix = Caster::PREFIX_VIRTUAL;
 
 		if (!($filter & Caster::EXCLUDE_VERBOSE)) {
@@ -145,8 +139,7 @@ class AmqpCaster
 		return $a;
 	}
 
-	private static function extractFlags($flags)
-	{
+	private static function extractFlags($flags) {
 		$flagsArray = array();
 
 		foreach (self::$flags as $value => $name) {

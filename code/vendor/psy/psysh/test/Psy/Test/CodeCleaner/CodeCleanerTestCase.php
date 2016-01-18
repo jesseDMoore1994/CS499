@@ -18,15 +18,13 @@ use Psy\CodeCleaner\CodeCleanerPass;
 use Psy\Exception\ParseErrorException;
 use Psy\ParserFactory;
 
-class CodeCleanerTestCase extends \PHPUnit_Framework_TestCase
-{
+class CodeCleanerTestCase extends \PHPUnit_Framework_TestCase {
 	protected $pass;
 	protected $traverser;
 	private $parser;
 	private $printer;
 
-	protected function setPass(CodeCleanerPass $pass)
-	{
+	protected function setPass(CodeCleanerPass $pass) {
 		$this->pass = $pass;
 		if (!isset($this->traverser)) {
 			$this->traverser = new NodeTraverser();
@@ -34,8 +32,7 @@ class CodeCleanerTestCase extends \PHPUnit_Framework_TestCase
 		$this->traverser->addVisitor($this->pass);
 	}
 
-	protected function parse($code, $prefix = '<?php ')
-	{
+	protected function parse($code, $prefix = '<?php ') {
 		$code = $prefix . $code;
 		try {
 			return $this->getParser()->parse($code);
@@ -53,25 +50,21 @@ class CodeCleanerTestCase extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	protected function traverse(array $stmts)
-	{
+	protected function traverse(array $stmts) {
 		return $this->traverser->traverse($stmts);
 	}
 
-	protected function prettyPrint(array $stmts)
-	{
+	protected function prettyPrint(array $stmts) {
 		return $this->getPrinter()->prettyPrint($stmts);
 	}
 
-	protected function assertProcessesAs($from, $to)
-	{
+	protected function assertProcessesAs($from, $to) {
 		$stmts = $this->parse($from);
 		$stmts = $this->traverse($stmts);
 		$this->assertEquals($to, $this->prettyPrint($stmts));
 	}
 
-	private function getParser()
-	{
+	private function getParser() {
 		if (!isset($this->parser)) {
 			$parserFactory = new ParserFactory();
 			$this->parser = $parserFactory->createParser();
@@ -80,8 +73,7 @@ class CodeCleanerTestCase extends \PHPUnit_Framework_TestCase
 		return $this->parser;
 	}
 
-	private function getPrinter()
-	{
+	private function getPrinter() {
 		if (!isset($this->printer)) {
 			$this->printer = new Printer();
 		}
@@ -89,8 +81,7 @@ class CodeCleanerTestCase extends \PHPUnit_Framework_TestCase
 		return $this->printer;
 	}
 
-	private function parseErrorIsEOF(\PhpParser\Error $e)
-	{
+	private function parseErrorIsEOF(\PhpParser\Error $e) {
 		$msg = $e->getRawMessage();
 
 		return ($msg === 'Unexpected token EOF') || (strpos($msg, 'Syntax error, unexpected EOF') !== false);

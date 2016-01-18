@@ -20,8 +20,7 @@ use Cake\Core\InstanceConfigTrait;
  * Abstract password hashing class
  *
  */
-abstract class AbstractPasswordHasher
-{
+abstract class AbstractPasswordHasher {
 
 	use InstanceConfigTrait;
 
@@ -39,8 +38,7 @@ abstract class AbstractPasswordHasher
 	 *
 	 * @param array $config Array of config.
 	 */
-	public function __construct(array $config = [])
-	{
+	public function __construct(array $config = []) {
 		$this->config($config);
 	}
 
@@ -73,8 +71,7 @@ abstract class AbstractPasswordHasher
 	 * @param string $password The password to verify
 	 * @return bool
 	 */
-	public function needsRehash($password)
-	{
+	public function needsRehash($password) {
 		return password_needs_rehash($password, PASSWORD_DEFAULT);
 	}
 }

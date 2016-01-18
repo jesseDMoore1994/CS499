@@ -23,8 +23,7 @@ use Cake\View\Form\ContextInterface;
  * input elements like hidden, text, email, tel and other
  * types.
  */
-class BasicWidget implements WidgetInterface
-{
+class BasicWidget implements WidgetInterface {
 
 	/**
 	 * StringTemplate instance.
@@ -38,8 +37,7 @@ class BasicWidget implements WidgetInterface
 	 *
 	 * @param \Cake\View\StringTemplate $templates Templates list.
 	 */
-	public function __construct($templates)
-	{
+	public function __construct($templates) {
 		$this->_templates = $templates;
 	}
 
@@ -58,8 +56,7 @@ class BasicWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	public function render(array $data, ContextInterface $context)
-	{
+	public function render(array $data, ContextInterface $context) {
 		$data += [
 			'name' => '',
 			'val' => null,
@@ -84,8 +81,7 @@ class BasicWidget implements WidgetInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function secureFields(array $data)
-	{
+	public function secureFields(array $data) {
 		if (!isset($data['name']) || $data['name'] === '') {
 			return [];
 		}

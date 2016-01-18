@@ -30,8 +30,7 @@ use Cake\Utility\Inflector;
  * parameters, routes are enumerated in the order they were connected. For more information on routes and
  * how to connect them see Router::connect().
  */
-class Router
-{
+class Router {
 
 	/**
 	 * Have routes been loaded
@@ -163,8 +162,7 @@ class Router
 	 * @param string|null $routeClass Class name.
 	 * @return string|null
 	 */
-	public static function defaultRouteClass($routeClass = null)
-	{
+	public static function defaultRouteClass($routeClass = null) {
 		if ($routeClass === null) {
 			return static::$_defaultRouteClass;
 		}
@@ -177,8 +175,7 @@ class Router
 	 * @return array Named route elements
 	 * @see Router::$_namedExpressions
 	 */
-	public static function getNamedExpressions()
-	{
+	public static function getNamedExpressions() {
 		return static::$_namedExpressions;
 	}
 
@@ -199,8 +196,7 @@ class Router
 	 * @see \Cake\Routing\RouteBuilder::connect()
 	 * @see \Cake\Routing\Router::scope()
 	 */
-	public static function connect($route, $defaults = [], $options = [])
-	{
+	public static function connect($route, $defaults = [], $options = []) {
 		static::$initialized = true;
 		static::scope('/', function ($routes) use ($route, $defaults, $options) {
 			$routes->connect($route, $defaults, $options);
@@ -220,8 +216,7 @@ class Router
 	 * @return void
 	 * @see \Cake\Routing\RouteBuilder::redirect()
 	 */
-	public static function redirect($route, $url, $options = [])
-	{
+	public static function redirect($route, $url, $options = []) {
 		$options['routeClass'] = 'Cake\Routing\Route\RedirectRoute';
 		if (is_string($url)) {
 			$url = ['redirect' => $url];
@@ -281,8 +276,7 @@ class Router
 	 * @see \Cake\Routing\RouteBuilder::resources()
 	 * @return void
 	 */
-	public static function mapResources($controller, $options = [])
-	{
+	public static function mapResources($controller, $options = []) {
 		foreach ((array)$controller as $name) {
 			list($plugin, $name) = pluginSplit($name);
 
@@ -327,8 +321,7 @@ class Router
 	 * @return array Parsed elements from URL
 	 * @throws \Cake\Routing\Exception\MissingRouteException When a route cannot be handled
 	 */
-	public static function parse($url)
-	{
+	public static function parse($url) {
 		if (!static::$initialized) {
 			static::_loadRoutes();
 		}
@@ -352,8 +345,7 @@ class Router
 	 * @param \Cake\Network\Request|array $request Parameters and path information or a Cake\Network\Request object.
 	 * @return void
 	 */
-	public static function setRequestInfo($request)
-	{
+	public static function setRequestInfo($request) {
 		if ($request instanceof Request) {
 			static::pushRequest($request);
 		} else {
@@ -377,8 +369,7 @@ class Router
 	 * @param \Cake\Network\Request $request Request instance.
 	 * @return void
 	 */
-	public static function pushRequest(Request $request)
-	{
+	public static function pushRequest(Request $request) {
 		static::$_requests[] = $request;
 		static::_setContext($request);
 	}
@@ -389,8 +380,7 @@ class Router
 	 * @param \Cake\Network\Request $request The request instance.
 	 * @return void
 	 */
-	protected static function _setContext($request)
-	{
+	protected static function _setContext($request) {
 		static::$_requestContext = [
 			'_base' => $request->base,
 			'_port' => $request->port(),
@@ -406,8 +396,7 @@ class Router
 	 * @see Router::pushRequest()
 	 * @see Object::requestAction()
 	 */
-	public static function popRequest()
-	{
+	public static function popRequest() {
 		$removed = array_pop(static::$_requests);
 		$last = end(static::$_requests);
 		if ($last) {
@@ -423,8 +412,7 @@ class Router
 	 * @param bool $current True to get the current request, or false to get the first one.
 	 * @return \Cake\Network\Request|null.
 	 */
-	public static function getRequest($current = false)
-	{
+	public static function getRequest($current = false) {
 		if ($current) {
 			return end(static::$_requests);
 		}
@@ -437,8 +425,7 @@ class Router
 	 *
 	 * @return void
 	 */
-	public static function reload()
-	{
+	public static function reload() {
 		if (empty(static::$_initialState)) {
 			static::$_collection = new RouteCollection();
 			static::$_initialState = get_class_vars(get_called_class());
@@ -481,8 +468,7 @@ class Router
 	 * @param callable $function The function to add
 	 * @return void
 	 */
-	public static function addUrlFilter(callable $function)
-	{
+	public static function addUrlFilter(callable $function) {
 		static::$_urlFilters[] = $function;
 	}
 
@@ -494,8 +480,7 @@ class Router
 	 * @see Router::url()
 	 * @see Router::addUrlFilter()
 	 */
-	protected static function _applyUrlFilters($url)
-	{
+	protected static function _applyUrlFilters($url) {
 		$request = static::getRequest(true);
 		foreach (static::$_urlFilters as $filter) {
 			$url = $filter($url, $request);
@@ -541,8 +526,7 @@ class Router
 	 * @return string Full translated URL with base path.
 	 * @throws \Cake\Core\Exception\Exception When the route name is not found
 	 */
-	public static function url($url = null, $full = false)
-	{
+	public static function url($url = null, $full = false) {
 		if (!static::$initialized) {
 			static::_loadRoutes();
 		}
@@ -657,8 +641,7 @@ class Router
 	 * For example: ``http://example.com``
 	 * @return string
 	 */
-	public static function fullBaseUrl($base = null)
-	{
+	public static function fullBaseUrl($base = null) {
 		if ($base !== null) {
 			static::$_fullBaseUrl = $base;
 			Configure::write('App.fullBaseUrl', $base);
@@ -685,8 +668,7 @@ class Router
 	 *     protocol when reversing the URL.
 	 * @return string The string that is the reversed result of the array
 	 */
-	public static function reverse($params, $full = false)
-	{
+	public static function reverse($params, $full = false) {
 		$url = [];
 		if ($params instanceof Request) {
 			$url = $params->query;
@@ -724,8 +706,7 @@ class Router
 	 * @param array|string $url URL to normalize Either an array or a string URL.
 	 * @return string Normalized URL
 	 */
-	public static function normalize($url = '/')
-	{
+	public static function normalize($url = '/') {
 		if (is_array($url)) {
 			$url = Router::url($url);
 		}
@@ -770,8 +751,7 @@ class Router
 	 *   Defaults to `true`.
 	 * @return array Array of extensions Router is configured to parse.
 	 */
-	public static function extensions($extensions = null, $merge = true)
-	{
+	public static function extensions($extensions = null, $merge = true) {
 		$collection = static::$_collection;
 		if ($extensions === null) {
 			if (!static::$initialized) {
@@ -802,8 +782,7 @@ class Router
 	 * @param array $options The array of options.
 	 * @return \Cake\Network\Request The modified request
 	 */
-	public static function parseNamedParams(Request $request, array $options = [])
-	{
+	public static function parseNamedParams(Request $request, array $options = []) {
 		$options += ['separator' => ':'];
 		if (empty($request->params['pass'])) {
 			$request->params['named'] = [];
@@ -875,8 +854,7 @@ class Router
 	 * @throws \InvalidArgumentException When an invalid callable is provided.
 	 * @return void
 	 */
-	public static function scope($path, $params = [], $callback = null)
-	{
+	public static function scope($path, $params = [], $callback = null) {
 		$builder = new RouteBuilder(static::$_collection, '/', [], [
 			'routeClass' => static::defaultRouteClass(),
 			'extensions' => static::$_defaultExtensions,
@@ -904,8 +882,7 @@ class Router
 	 * @param callable $callback The callback to invoke that builds the prefixed routes.
 	 * @return void
 	 */
-	public static function prefix($name, $params = [], $callback = null)
-	{
+	public static function prefix($name, $params = [], $callback = null) {
 		if ($callback === null) {
 			$callback = $params;
 			$params = [];
@@ -934,8 +911,7 @@ class Router
 	 *   Only required when $options is defined
 	 * @return void
 	 */
-	public static function plugin($name, $options = [], $callback = null)
-	{
+	public static function plugin($name, $options = [], $callback = null) {
 		if ($callback === null) {
 			$callback = $options;
 			$options = [];
@@ -955,8 +931,7 @@ class Router
 	 *
 	 * @return array
 	 */
-	public static function routes()
-	{
+	public static function routes() {
 		if (!static::$initialized) {
 			static::_loadRoutes();
 		}
@@ -968,8 +943,7 @@ class Router
 	 *
 	 * @return void
 	 */
-	protected static function _loadRoutes()
-	{
+	protected static function _loadRoutes() {
 		static::$initialized = true;
 		include CONFIG . 'routes.php';
 	}

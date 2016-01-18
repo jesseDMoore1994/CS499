@@ -34,8 +34,7 @@ namespace Phinx\Config;
  * @package Phinx
  * @author  Woody Gilk
  */
-interface ConfigInterface extends \ArrayAccess
-{
+interface ConfigInterface extends \ArrayAccess {
 	/**
 	 * Class Constructor
 	 *

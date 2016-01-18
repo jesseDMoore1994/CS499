@@ -22,8 +22,7 @@ use Cake\Core\ObjectRegistry;
  * Registry for Helpers. Provides features
  * for lazily loading helpers.
  */
-class HelperRegistry extends ObjectRegistry
-{
+class HelperRegistry extends ObjectRegistry {
 
 	/**
 	 * Shell to use to set params to tasks.
@@ -38,8 +37,7 @@ class HelperRegistry extends ObjectRegistry
 	 * @param \Cake\Console\ConsoleIo $io An io instance.
 	 * @return void
 	 */
-	public function setIo(ConsoleIo $io)
-	{
+	public function setIo(ConsoleIo $io) {
 		$this->_io = $io;
 	}
 
@@ -51,8 +49,7 @@ class HelperRegistry extends ObjectRegistry
 	 * @param string $class Partial classname to resolve.
 	 * @return string|false Either the correct classname or false.
 	 */
-	protected function _resolveClassName($class)
-	{
+	protected function _resolveClassName($class) {
 		return App::className($class, 'Shell/Helper', 'Helper');
 	}
 
@@ -66,8 +63,7 @@ class HelperRegistry extends ObjectRegistry
 	 * @return void
 	 * @throws \Cake\Console\Exception\MissingHelperException
 	 */
-	protected function _throwMissingClassError($class, $plugin)
-	{
+	protected function _throwMissingClassError($class, $plugin) {
 		throw new MissingHelperException([
 			'class' => $class,
 			'plugin' => $plugin
@@ -84,8 +80,7 @@ class HelperRegistry extends ObjectRegistry
 	 * @param array $settings An array of settings to use for the helper.
 	 * @return \Cake\Console\Helper The constructed helper class.
 	 */
-	protected function _create($class, $alias, $settings)
-	{
+	protected function _create($class, $alias, $settings) {
 		return new $class($this->_io, $settings);
 	}
 }

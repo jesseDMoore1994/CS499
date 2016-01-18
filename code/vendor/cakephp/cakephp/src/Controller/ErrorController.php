@@ -22,8 +22,7 @@ use Cake\Routing\Router;
  *
  * Controller used by ErrorHandler to render error views.
  */
-class ErrorController extends Controller
-{
+class ErrorController extends Controller {
 
 	/**
 	 * Constructor
@@ -31,8 +30,7 @@ class ErrorController extends Controller
 	 * @param \Cake\Network\Request|null $request Request instance.
 	 * @param \Cake\Network\Response|null $response Response instance.
 	 */
-	public function __construct($request = null, $response = null)
-	{
+	public function __construct($request = null, $response = null) {
 		parent::__construct($request, $response);
 		if (count(Router::extensions()) &&
 			!isset($this->RequestHandler)
@@ -54,8 +52,7 @@ class ErrorController extends Controller
 	 * @param \Cake\Event\Event $event Event.
 	 * @return void
 	 */
-	public function beforeRender(Event $event)
-	{
+	public function beforeRender(Event $event) {
 		$this->viewBuilder()->templatePath('Error');
 	}
 }

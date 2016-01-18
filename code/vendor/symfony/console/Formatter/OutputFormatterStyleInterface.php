@@ -16,8 +16,7 @@ namespace Symfony\Component\Console\Formatter;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-interface OutputFormatterStyleInterface
-{
+interface OutputFormatterStyleInterface {
 	/**
 	 * Sets style foreground color.
 	 *

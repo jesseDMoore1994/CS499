@@ -24,8 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * This is like var_dump but *way* awesomer.
  */
-class DumpCommand extends ReflectingCommand implements PresenterAware
-{
+class DumpCommand extends ReflectingCommand implements PresenterAware {
 	private $presenter;
 
 	/**
@@ -33,16 +32,14 @@ class DumpCommand extends ReflectingCommand implements PresenterAware
 	 *
 	 * @param Presenter $presenter
 	 */
-	public function setPresenter(Presenter $presenter)
-	{
+	public function setPresenter(Presenter $presenter) {
 		$this->presenter = $presenter;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('dump')
 			->setDefinition(array(
@@ -67,8 +64,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$depth = $input->getOption('depth');
 		$target = $this->resolveTarget($input->getArgument('target'));
 		$output->page($this->presenter->present($target, $depth, $input->getOption('all') ? Presenter::VERBOSE : 0));
@@ -83,8 +79,7 @@ HELP
 	 *
 	 * @return mixed
 	 */
-	protected function resolveTarget($target)
-	{
+	protected function resolveTarget($target) {
 		$matches = array();
 		if (preg_match(self::INSTANCE, $target, $matches)) {
 			return $this->getScopeVariable($matches[1]);

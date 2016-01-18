@@ -13,37 +13,31 @@ namespace Symfony\Component\Config\Tests\Resource;
 
 use Symfony\Component\Config\Resource\FileResource;
 
-class FileResourceTest extends \PHPUnit_Framework_TestCase
-{
+class FileResourceTest extends \PHPUnit_Framework_TestCase {
 	protected $resource;
 	protected $file;
 	protected $time;
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->file = realpath(sys_get_temp_dir()) . '/tmp.xml';
 		$this->time = time();
 		touch($this->file, $this->time);
 		$this->resource = new FileResource($this->file);
 	}
 
-	protected function tearDown()
-	{
+	protected function tearDown() {
 		unlink($this->file);
 	}
 
-	public function testGetResource()
-	{
+	public function testGetResource() {
 		$this->assertSame(realpath($this->file), $this->resource->getResource(), '->getResource() returns the path to the resource');
 	}
 
-	public function testToString()
-	{
+	public function testToString() {
 		$this->assertSame(realpath($this->file), (string)$this->resource);
 	}
 
-	public function testIsFresh()
-	{
+	public function testIsFresh() {
 		$this->assertTrue($this->resource->isFresh($this->time), '->isFresh() returns true if the resource has not changed in same second');
 		$this->assertTrue($this->resource->isFresh($this->time + 10), '->isFresh() returns true if the resource has not changed');
 		$this->assertFalse($this->resource->isFresh($this->time - 86400), '->isFresh() returns false if the resource has been updated');
@@ -52,8 +46,7 @@ class FileResourceTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($resource->isFresh($this->time), '->isFresh() returns false if the resource does not exist');
 	}
 
-	public function testSerializeUnserialize()
-	{
+	public function testSerializeUnserialize() {
 		$unserialized = unserialize(serialize($this->resource));
 
 		$this->assertSame(realpath($this->file), $this->resource->getResource());

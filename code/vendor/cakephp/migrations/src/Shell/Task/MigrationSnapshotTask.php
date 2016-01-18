@@ -24,8 +24,7 @@ use Cake\ORM\TableRegistry;
 /**
  * Task class for generating migration snapshot files.
  */
-class MigrationSnapshotTask extends SimpleMigrationTask
-{
+class MigrationSnapshotTask extends SimpleMigrationTask {
 	/**
 	 * Tables to skip
 	 *
@@ -43,8 +42,7 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	/**
 	 * {@inheritDoc}
 	 */
-	public function bake($name)
-	{
+	public function bake($name) {
 		$collection = $this->getCollection($this->connection);
 		EventManager::instance()->on('Bake.initialize', function (Event $event) use ($collection) {
 			$event->subject->loadHelper('Migrations.Migration', [
@@ -61,8 +59,7 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	 *
 	 * {@inheritDoc}
 	 */
-	public function createFile($path, $contents)
-	{
+	public function createFile($path, $contents) {
 		$createFile = parent::createFile($path, $contents);
 
 		if ($createFile) {
@@ -79,8 +76,7 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	 * @param string $path Path to the newly created snapshot
 	 * @return void
 	 */
-	protected function markSnapshotApplied($path)
-	{
+	protected function markSnapshotApplied($path) {
 		$fileName = pathinfo($path, PATHINFO_FILENAME);
 		list($version,) = explode('_', $fileName, 2);
 
@@ -101,16 +97,14 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	/**
 	 * {@inheritDoc}
 	 */
-	public function template()
-	{
+	public function template() {
 		return 'Migrations.config/snapshot';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function templateData()
-	{
+	public function templateData() {
 		$namespace = Configure::read('App.namespace');
 		$pluginPath = '';
 		if ($this->plugin) {
@@ -162,8 +156,7 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	 * @param string $connection Database connection name.
 	 * @return \Cake\Database\Schema\Collection
 	 */
-	public function getCollection($connection)
-	{
+	public function getCollection($connection) {
 		$connection = ConnectionManager::get($connection);
 		return $connection->schemaCollection();
 	}
@@ -176,8 +169,7 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	 * @deprecated Will be removed in the next version
 	 * @return bool True if the model is to be added.
 	 */
-	public function tableToAdd($tableName, $pluginName = null)
-	{
+	public function tableToAdd($tableName, $pluginName = null) {
 		return true;
 	}
 
@@ -187,8 +179,7 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	 * @param string|null $pluginName Plugin name if exists.
 	 * @return array
 	 */
-	public function getTableNames($pluginName = null)
-	{
+	public function getTableNames($pluginName = null) {
 		if ($pluginName !== null && !Plugin::loaded($pluginName)) {
 			return [];
 		}
@@ -207,8 +198,7 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	 * @param string $pluginName Plugin name if exists.
 	 * @return array
 	 */
-	public function findTables($pluginName = null)
-	{
+	public function findTables($pluginName = null) {
 		$path = 'Model' . DS . 'Table' . DS;
 		if ($pluginName) {
 			$path = Plugin::path($pluginName) . 'src' . DS . $path;
@@ -232,8 +222,7 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	 * @param string|null $pluginName Plugin name if exists.
 	 * @return array
 	 */
-	public function fetchTableName($className, $pluginName = null)
-	{
+	public function fetchTableName($className, $pluginName = null) {
 		$tables = [];
 		$className = str_replace('Table.php', '', $className);
 		if ($pluginName !== null) {
@@ -256,8 +245,7 @@ class MigrationSnapshotTask extends SimpleMigrationTask
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->description(

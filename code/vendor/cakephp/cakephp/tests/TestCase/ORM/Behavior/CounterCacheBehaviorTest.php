@@ -27,11 +27,9 @@ use Cake\TestSuite\TestCase;
 /**
  * Used for testing counter cache with custom finder
  */
-class PostTable extends Table
-{
+class PostTable extends Table {
 
-	public function findPublished(Query $query, array $options)
-	{
+	public function findPublished(Query $query, array $options) {
 		return $query->where(['published' => true]);
 	}
 }
@@ -39,8 +37,7 @@ class PostTable extends Table
 /**
  * CounterCacheBehavior test case
  */
-class CounterCacheBehaviorTest extends TestCase
-{
+class CounterCacheBehaviorTest extends TestCase {
 
 	/**
 	 * Fixture
@@ -59,8 +56,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->connection = ConnectionManager::get('test');
 
@@ -92,8 +88,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 
 		unset($this->user, $this->post);
@@ -105,8 +100,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAdd()
-	{
+	public function testAdd() {
 		$this->post->belongsTo('Users');
 
 		$this->post->addBehavior('CounterCache', [
@@ -129,8 +123,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddScope()
-	{
+	public function testAddScope() {
 		$this->post->belongsTo('Users');
 
 		$this->post->addBehavior('CounterCache', [
@@ -157,8 +150,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDelete()
-	{
+	public function testDelete() {
 		$this->post->belongsTo('Users');
 
 		$this->post->addBehavior('CounterCache', [
@@ -181,8 +173,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUpdate()
-	{
+	public function testUpdate() {
 		$this->post->belongsTo('Users');
 		$this->post->belongsTo('Categories');
 
@@ -223,8 +214,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomFind()
-	{
+	public function testCustomFind() {
 		$this->post->belongsTo('Users');
 
 		$this->post->addBehavior('CounterCache', [
@@ -249,8 +239,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLambdaNumber()
-	{
+	public function testLambdaNumber() {
 		$this->post->belongsTo('Users');
 
 		$table = $this->post;
@@ -280,8 +269,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLambdaNumberUpdate()
-	{
+	public function testLambdaNumberUpdate() {
 		$this->post->belongsTo('Users');
 
 		$table = $this->post;
@@ -319,8 +307,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLambdaSubquery()
-	{
+	public function testLambdaSubquery() {
 		$this->post->belongsTo('Users');
 
 		$this->post->addBehavior('CounterCache', [
@@ -346,8 +333,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMultiple()
-	{
+	public function testMultiple() {
 		$this->post->belongsTo('Users');
 
 		$this->post->addBehavior('CounterCache', [
@@ -378,8 +364,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBindingKey()
-	{
+	public function testBindingKey() {
 		$this->post->hasMany('UserCategoryPosts', [
 			'bindingKey' => ['category_id', 'user_id'],
 			'foreignKey' => ['category_id', 'user_id']
@@ -407,8 +392,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return Entity
 	 */
-	protected function _getEntity()
-	{
+	protected function _getEntity() {
 		return new Entity([
 			'title' => 'Test 123',
 			'user_id' => 1
@@ -420,8 +404,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return Entity
 	 */
-	protected function _getUser($id = 1)
-	{
+	protected function _getUser($id = 1) {
 		return $this->user->get($id);
 	}
 
@@ -430,8 +413,7 @@ class CounterCacheBehaviorTest extends TestCase
 	 *
 	 * @return Entity
 	 */
-	protected function _getCategory($id = 1)
-	{
+	protected function _getCategory($id = 1) {
 		return $this->category->find('all')->where(['id' => $id])->first();
 	}
 }

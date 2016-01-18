@@ -22,8 +22,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class CaseExpression implements ExpressionInterface
-{
+class CaseExpression implements ExpressionInterface {
 
 	/**
 	 * A list of strings or other expression objects that represent the conditions of
@@ -58,8 +57,7 @@ class CaseExpression implements ExpressionInterface
 	 * @param array $types associative array of types to be associated with the values
 	 * passed in $values
 	 */
-	public function __construct($conditions = [], $values = [], $types = [])
-	{
+	public function __construct($conditions = [], $values = [], $types = []) {
 		if (!empty($conditions)) {
 			$this->add($conditions, $values, $types);
 		}
@@ -82,8 +80,7 @@ class CaseExpression implements ExpressionInterface
 	 *
 	 * @return $this
 	 */
-	public function add($conditions = [], $values = [], $types = [])
-	{
+	public function add($conditions = [], $values = [], $types = []) {
 		if (!is_array($conditions)) {
 			$conditions = [$conditions];
 		}
@@ -109,8 +106,7 @@ class CaseExpression implements ExpressionInterface
 	 *
 	 * @return void
 	 */
-	protected function _addExpressions($conditions, $values, $types)
-	{
+	protected function _addExpressions($conditions, $values, $types) {
 		$rawValues = array_values($values);
 		$keyValues = array_keys($values);
 		foreach ($conditions as $k => $c) {
@@ -148,8 +144,7 @@ class CaseExpression implements ExpressionInterface
 	 *
 	 * @return void
 	 */
-	public function elseValue($value = null, $type = null)
-	{
+	public function elseValue($value = null, $type = null) {
 		if (is_array($value)) {
 			end($value);
 			$value = key($value);
@@ -168,8 +163,7 @@ class CaseExpression implements ExpressionInterface
 	 *
 	 * @return string
 	 */
-	protected function _compile($part, ValueBinder $generator)
-	{
+	protected function _compile($part, ValueBinder $generator) {
 		if ($part instanceof ExpressionInterface) {
 			$part = $part->sql($generator);
 		} elseif (is_array($part)) {
@@ -188,8 +182,7 @@ class CaseExpression implements ExpressionInterface
 	 *
 	 * @return string
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		$parts = [];
 		$parts[] = 'CASE';
 		foreach ($this->_conditions as $k => $part) {
@@ -209,8 +202,7 @@ class CaseExpression implements ExpressionInterface
 	 * {@inheritDoc}
 	 *
 	 */
-	public function traverse(callable $visitor)
-	{
+	public function traverse(callable $visitor) {
 		foreach (['_conditions', '_values'] as $part) {
 			foreach ($this->{$part} as $c) {
 				if ($c instanceof ExpressionInterface) {

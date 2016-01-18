@@ -13,23 +13,19 @@ namespace Psy\Test\CodeCleaner;
 
 use Psy\CodeCleaner\UseStatementPass;
 
-class UseStatementPassTest extends CodeCleanerTestCase
-{
-	public function setUp()
-	{
+class UseStatementPassTest extends CodeCleanerTestCase {
+	public function setUp() {
 		$this->setPass(new UseStatementPass());
 	}
 
 	/**
 	 * @dataProvider useStatements
 	 */
-	public function testProcess($from, $to)
-	{
+	public function testProcess($from, $to) {
 		$this->assertProcessesAs($from, $to);
 	}
 
-	public function useStatements()
-	{
+	public function useStatements() {
 		return array(
 			array(
 				"use StdClass as NotSoStd;\n\$std = new NotSoStd();",

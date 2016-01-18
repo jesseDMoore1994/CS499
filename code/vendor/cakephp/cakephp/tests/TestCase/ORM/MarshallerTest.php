@@ -26,8 +26,7 @@ use Cake\Validation\Validator;
 /**
  * Test entity for mass assignment.
  */
-class OpenEntity extends Entity
-{
+class OpenEntity extends Entity {
 
 	protected $_accessible = [
 		'*' => true,
@@ -37,8 +36,7 @@ class OpenEntity extends Entity
 /**
  * Test entity for mass assignment.
  */
-class Tag extends Entity
-{
+class Tag extends Entity {
 
 	protected $_accessible = [
 		'tag' => true,
@@ -48,8 +46,7 @@ class Tag extends Entity
 /**
  * Test entity for mass assignment.
  */
-class ProtectedArticle extends Entity
-{
+class ProtectedArticle extends Entity {
 
 	protected $_accessible = [
 		'title' => true,
@@ -60,16 +57,14 @@ class ProtectedArticle extends Entity
 /**
  * Test stub for greedy find operations.
  */
-class GreedyCommentsTable extends Table
-{
+class GreedyCommentsTable extends Table {
 	/**
 	 * initialize hook
 	 *
 	 * @param $config Config data.
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		$this->table('comments');
 		$this->alias('Comments');
 	}
@@ -81,8 +76,7 @@ class GreedyCommentsTable extends Table
 	 * @param array $options find options
 	 * @return object
 	 */
-	public function find($type = 'all', $options = [])
-	{
+	public function find($type = 'all', $options = []) {
 		if (empty($options['conditions'])) {
 			$options['conditions'] = [];
 		}
@@ -94,8 +88,7 @@ class GreedyCommentsTable extends Table
 /**
  * Marshaller test case
  */
-class MarshallerTest extends TestCase
-{
+class MarshallerTest extends TestCase {
 
 	public $fixtures = [
 		'core.articles',
@@ -111,8 +104,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsTo('Users');
@@ -144,8 +136,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 		unset($this->articles, $this->comments, $this->users);
@@ -156,8 +147,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneSimple()
-	{
+	public function testOneSimple() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -180,8 +170,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneEmptyStringPrimaryKey()
-	{
+	public function testOneEmptyStringPrimaryKey() {
 		$data = [
 			'id' => '',
 			'username' => 'superuser',
@@ -201,8 +190,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneWithDatetimeField()
-	{
+	public function testOneWithDatetimeField() {
 		$data = [
 			'comment' => 'My Comment text',
 			'created' => [
@@ -251,8 +239,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneOnlyCastMatchingData()
-	{
+	public function testOneOnlyCastMatchingData() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -273,8 +260,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneAccessibleProperties()
-	{
+	public function testOneAccessibleProperties() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -295,8 +281,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneAccessibleFieldsOption()
-	{
+	public function testOneAccessibleFieldsOption() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -324,8 +309,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneAccessibleFieldsOptionForAssociations()
-	{
+	public function testOneAccessibleFieldsOptionForAssociations() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -355,8 +339,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneWithAdditionalName()
-	{
+	public function testOneWithAdditionalName() {
 		$data = [
 			'Articles' => [
 				'title' => 'My title',
@@ -383,8 +366,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneAssociationsSingle()
-	{
+	public function testOneAssociationsSingle() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -418,8 +400,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneAssociationsMany()
-	{
+	public function testOneAssociationsMany() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -455,8 +436,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneBelongsToManyJoinData()
-	{
+	public function testOneBelongsToManyJoinData() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -495,8 +475,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneBelongsToManyOnlyIdsRejectArray()
-	{
+	public function testOneBelongsToManyOnlyIdsRejectArray() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -518,8 +497,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneBelongsToManyOnlyIdsWithIds()
-	{
+	public function testOneBelongsToManyOnlyIdsWithIds() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -541,8 +519,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneBelongsToManyJoinDataAssociated()
-	{
+	public function testOneBelongsToManyJoinDataAssociated() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -589,8 +566,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneBelongsToManyJoinDataAssociatedWithIds()
-	{
+	public function testOneBelongsToManyJoinDataAssociatedWithIds() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -652,8 +628,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBelongsToManyWithMixedJoinData()
-	{
+	public function testBelongsToManyWithMixedJoinData() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -688,8 +663,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBelongsToManyAddingNewExisting()
-	{
+	public function testBelongsToManyAddingNewExisting() {
 		$this->tags->entityClass(__NAMESPACE__ . '\Tag');
 		$data = [
 			'title' => 'My title',
@@ -739,8 +713,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBelongsToManyWithMixedJoinDataOutOfOrder()
-	{
+	public function testBelongsToManyWithMixedJoinDataOutOfOrder() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -783,8 +756,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBelongsToManyInvalidData()
-	{
+	public function testBelongsToManyInvalidData() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -811,8 +783,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBelongsToManyWithMixedData()
-	{
+	public function testBelongsToManyWithMixedData() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -854,8 +825,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneHasManyWithIds()
-	{
+	public function testOneHasManyWithIds() {
 		$data = [
 			'title' => 'article',
 			'body' => 'some content',
@@ -876,8 +846,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneHasManyOnlyIdsRejectArray()
-	{
+	public function testOneHasManyOnlyIdsRejectArray() {
 		$data = [
 			'title' => 'article',
 			'body' => 'some content',
@@ -899,8 +868,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneHasManyOnlyIdsWithIds()
-	{
+	public function testOneHasManyOnlyIdsWithIds() {
 		$data = [
 			'title' => 'article',
 			'body' => 'some content',
@@ -922,8 +890,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneHasManyInvalidData()
-	{
+	public function testOneHasManyInvalidData() {
 		$data = [
 			'title' => 'new title',
 			'body' => 'some content',
@@ -946,8 +913,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneDeepAssociations()
-	{
+	public function testOneDeepAssociations() {
 		$data = [
 			'comment' => 'First post',
 			'user_id' => 2,
@@ -978,8 +944,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testManySimple()
-	{
+	public function testManySimple() {
 		$data = [
 			['comment' => 'First post', 'user_id' => 2],
 			['comment' => 'Second post', 'user_id' => 2],
@@ -999,8 +964,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testManyInvalidData()
-	{
+	public function testManyInvalidData() {
 		$data = [
 			['id' => 2, 'comment' => 'Changed 2', 'user_id' => 2],
 			['id' => 1, 'comment' => 'Changed 1', 'user_id' => 1],
@@ -1017,8 +981,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testManyAssociations()
-	{
+	public function testManyAssociations() {
 		$data = [
 			[
 				'comment' => 'First post',
@@ -1056,8 +1019,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneGenerateBelongsToManyEntitiesFromIds()
-	{
+	public function testOneGenerateBelongsToManyEntitiesFromIds() {
 		$data = [
 			'title' => 'Haz tags',
 			'body' => 'Some content here',
@@ -1110,8 +1072,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeSimple()
-	{
+	public function testMergeSimple() {
 		$data = [
 			'title' => 'My title',
 			'author_id' => 1,
@@ -1138,8 +1099,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeAccessibleFields()
-	{
+	public function testMergeAccessibleFields() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'New content',
@@ -1166,8 +1126,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function emptyProvider()
-	{
+	public function emptyProvider() {
 		return [
 			[0],
 			['0'],
@@ -1180,8 +1139,7 @@ class MarshallerTest extends TestCase
 	 * @dataProvider emptyProvider
 	 * @return void
 	 */
-	public function testMergeFalseyValues($value)
-	{
+	public function testMergeFalseyValues($value) {
 		$marshall = new Marshaller($this->articles);
 		$entity = new Entity();
 		$entity->accessible('*', true);
@@ -1196,8 +1154,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeWhitelist()
-	{
+	public function testMergeWhitelist() {
 		$data = [
 			'title' => 'My title',
 			'author_id' => 1,
@@ -1226,8 +1183,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeWithSingleAssociationAndFieldLists()
-	{
+	public function testMergeWithSingleAssociationAndFieldLists() {
 		$user = new Entity([
 			'username' => 'user',
 		]);
@@ -1260,8 +1216,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeDirty()
-	{
+	public function testMergeDirty() {
 		$marshall = new Marshaller($this->articles);
 		$entity = new Entity([
 			'title' => 'Foo',
@@ -1292,8 +1247,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeWithSingleAssociation()
-	{
+	public function testMergeWithSingleAssociation() {
 		$user = new Entity([
 			'username' => 'mark',
 			'password' => 'secret'
@@ -1326,8 +1280,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeCreateAssociation()
-	{
+	public function testMergeCreateAssociation() {
 		$entity = new Entity([
 			'title' => 'My Title'
 		]);
@@ -1354,8 +1307,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeMultipleAssociations()
-	{
+	public function testMergeMultipleAssociations() {
 		$user = new Entity(['username' => 'mark', 'password' => 'secret']);
 		$comment1 = new Entity(['id' => 1, 'comment' => 'A comment']);
 		$comment2 = new Entity(['id' => 2, 'comment' => 'Another comment']);
@@ -1430,8 +1382,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyEntitiesFromIds()
-	{
+	public function testMergeBelongsToManyEntitiesFromIds() {
 		$entity = new Entity([
 			'title' => 'Haz tags',
 			'body' => 'Some content here',
@@ -1461,8 +1412,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeFromIdsWithAutoAssociation()
-	{
+	public function testMergeFromIdsWithAutoAssociation() {
 		$entity = new Entity([
 			'title' => 'Haz tags',
 			'body' => 'Some content here',
@@ -1497,8 +1447,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyFromIdsWithConditions()
-	{
+	public function testMergeBelongsToManyFromIdsWithConditions() {
 		$this->articles->belongsToMany('Tags', [
 			'conditions' => ['ArticleTags.article_id' => 1]
 		]);
@@ -1529,8 +1478,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyFromArrayWithConditions()
-	{
+	public function testMergeBelongsToManyFromArrayWithConditions() {
 		$this->articles->belongsToMany('Tags', [
 			'conditions' => ['ArticleTags.article_id' => 1]
 		]);
@@ -1570,8 +1518,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyEntitiesFromIdsEmptyValue()
-	{
+	public function testMergeBelongsToManyEntitiesFromIdsEmptyValue() {
 		$entity = new Entity([
 			'title' => 'Haz tags',
 			'body' => 'Some content here',
@@ -1610,8 +1557,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyOnlyIdsRejectArray()
-	{
+	public function testMergeBelongsToManyOnlyIdsRejectArray() {
 		$entity = new Entity([
 			'title' => 'Haz tags',
 			'body' => 'Some content here',
@@ -1641,8 +1587,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyOnlyIdsWithIds()
-	{
+	public function testMergeBelongsToManyOnlyIdsWithIds() {
 		$entity = new Entity([
 			'title' => 'Haz tags',
 			'body' => 'Some content here',
@@ -1672,8 +1617,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyJoinDataScalar()
-	{
+	public function testMergeBelongsToManyJoinDataScalar() {
 		TableRegistry::clear();
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsToMany('Tags', [
@@ -1701,8 +1645,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyJoinDataNotAccessible()
-	{
+	public function testMergeBelongsToManyJoinDataNotAccessible() {
 		TableRegistry::clear();
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsToMany('Tags', [
@@ -1736,8 +1679,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyHandleJoinDataConsistently()
-	{
+	public function testMergeBelongsToManyHandleJoinDataConsistently() {
 		TableRegistry::clear();
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsToMany('Tags', [
@@ -1775,8 +1717,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyJoinDataAssociatedWithIds()
-	{
+	public function testMergeBelongsToManyJoinDataAssociatedWithIds() {
 		$data = [
 			'title' => 'My title',
 			'tags' => [
@@ -1831,8 +1772,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeBelongsToManyJoinData()
-	{
+	public function testMergeBelongsToManyJoinData() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -1892,8 +1832,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeJoinDataAssociations()
-	{
+	public function testMergeJoinDataAssociations() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -1963,8 +1902,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeManySimple()
-	{
+	public function testMergeManySimple() {
 		$entities = [
 			new OpenEntity(['id' => 1, 'comment' => 'First post', 'user_id' => 2]),
 			new OpenEntity(['id' => 2, 'comment' => 'Second post', 'user_id' => 2])
@@ -1993,8 +1931,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeManyInvalidData()
-	{
+	public function testMergeManyInvalidData() {
 		$entities = [
 			new OpenEntity(['id' => 1, 'comment' => 'First post', 'user_id' => 2]),
 			new OpenEntity(['id' => 2, 'comment' => 'Second post', 'user_id' => 2])
@@ -2020,8 +1957,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeManyWithAppend()
-	{
+	public function testMergeManyWithAppend() {
 		$entities = [
 			new OpenEntity(['comment' => 'First post', 'user_id' => 2]),
 			new OpenEntity(['id' => 2, 'comment' => 'Second post', 'user_id' => 2])
@@ -2052,8 +1988,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeManyCompositeKey()
-	{
+	public function testMergeManyCompositeKey() {
 		$articlesTags = TableRegistry::get('ArticlesTags');
 
 		$entities = [
@@ -2080,8 +2015,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeManyExistQueryFails()
-	{
+	public function testMergeManyExistQueryFails() {
 		$entities = [
 			new Entity(['id' => 1, 'comment' => 'First post', 'user_id' => 2]),
 			new Entity(['id' => 2, 'comment' => 'Second post', 'user_id' => 2])
@@ -2112,8 +2046,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeComplexType()
-	{
+	public function testMergeComplexType() {
 		$entity = new Entity(
 			['comment' => 'My Comment text'],
 			['markNew' => false, 'markClean' => true]
@@ -2136,8 +2069,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOneWithFieldList()
-	{
+	public function testOneWithFieldList() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -2156,8 +2088,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeWithFieldList()
-	{
+	public function testMergeWithFieldList() {
 		$data = [
 			'title' => 'My title',
 			'body' => null,
@@ -2190,8 +2121,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testManyFieldList()
-	{
+	public function testManyFieldList() {
 		$data = [
 			['comment' => 'First post', 'user_id' => 2, 'foo' => 'bar'],
 			['comment' => 'Second post', 'user_id' => 2, 'foo' => 'bar'],
@@ -2210,8 +2140,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeManyFieldList()
-	{
+	public function testMergeManyFieldList() {
 		$entities = [
 			new OpenEntity(['id' => 1, 'comment' => 'First post', 'user_id' => 2]),
 			new OpenEntity(['id' => 2, 'comment' => 'Second post', 'user_id' => 2])
@@ -2241,8 +2170,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssociatoinsFieldList()
-	{
+	public function testAssociatoinsFieldList() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -2275,8 +2203,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeAssociationWithfieldList()
-	{
+	public function testMergeAssociationWithfieldList() {
 		$user = new Entity([
 			'username' => 'mark',
 			'password' => 'secret'
@@ -2316,8 +2243,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJoinDataWhiteList()
-	{
+	public function testJoinDataWhiteList() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -2375,8 +2301,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeJoinDataWithFieldList()
-	{
+	public function testMergeJoinDataWithFieldList() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -2438,8 +2363,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValidationFail()
-	{
+	public function testValidationFail() {
 		$data = [
 			'title' => 'Thing',
 			'body' => 'hey'
@@ -2457,8 +2381,7 @@ class MarshallerTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testValidateInvalidType()
-	{
+	public function testValidateInvalidType() {
 		$data = ['title' => 'foo'];
 		$marshaller = new Marshaller($this->articles);
 		$marshaller->one($data, [
@@ -2471,8 +2394,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValidateWithAssociationsAndCustomValidator()
-	{
+	public function testValidateWithAssociationsAndCustomValidator() {
 		$data = [
 			'title' => 'foo',
 			'body' => 'bar',
@@ -2517,8 +2439,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSkipValidation()
-	{
+	public function testSkipValidation() {
 		$data = [
 			'title' => 'foo',
 			'body' => 'bar',
@@ -2549,8 +2470,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPassingCustomValidator()
-	{
+	public function testPassingCustomValidator() {
 		$data = [
 			'title' => 'Thing',
 			'body' => 'hey'
@@ -2568,8 +2488,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeWithValidation()
-	{
+	public function testMergeWithValidation() {
 		$data = [
 			'title' => 'My title',
 			'author_id' => 'foo',
@@ -2609,8 +2528,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeWithCreate()
-	{
+	public function testMergeWithCreate() {
 		$data = [
 			'title' => 'My title',
 			'author_id' => 'foo',
@@ -2647,8 +2565,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBeforeMarshalEvent()
-	{
+	public function testBeforeMarshalEvent() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -2680,8 +2597,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBeforeMarshalEventOnAssociations()
-	{
+	public function testBeforeMarshalEventOnAssociations() {
 		$data = [
 			'title' => 'My title',
 			'body' => 'My content',
@@ -2737,8 +2653,7 @@ class MarshallerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssociationNoChanges()
-	{
+	public function testAssociationNoChanges() {
 		$options = ['markClean' => true, 'isNew' => false];
 		$entity = new Entity([
 			'title' => 'My Title',

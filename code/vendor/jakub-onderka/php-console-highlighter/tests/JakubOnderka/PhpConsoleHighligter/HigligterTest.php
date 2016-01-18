@@ -1,13 +1,11 @@
 <?php
 namespace JakubOnderka\PhpConsoleHighlighter;
 
-class HighlighterTest extends \PHPUnit_Framework_TestCase
-{
+class HighlighterTest extends \PHPUnit_Framework_TestCase {
 	/** @var Highlighter */
 	private $uut;
 
-	protected function getConsoleColorMock()
-	{
+	protected function getConsoleColorMock() {
 		$mock = $this->getMock('\JakubOnderka\PhpConsoleColor\ConsoleColor');
 
 		$mock->expects($this->any())
@@ -23,19 +21,16 @@ class HighlighterTest extends \PHPUnit_Framework_TestCase
 		return $mock;
 	}
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->uut = new Highlighter($this->getConsoleColorMock());
 	}
 
-	protected function compare($original, $expected)
-	{
+	protected function compare($original, $expected) {
 		$output = $this->uut->getWholeFile($original);
 		$this->assertEquals($expected, $output);
 	}
 
-	public function testVariable()
-	{
+	public function testVariable() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -49,8 +44,7 @@ EOL
 		);
 	}
 
-	public function testInteger()
-	{
+	public function testInteger() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -64,8 +58,7 @@ EOL
 		);
 	}
 
-	public function testFloat()
-	{
+	public function testFloat() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -79,8 +72,7 @@ EOL
 		);
 	}
 
-	public function testHex()
-	{
+	public function testHex() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -94,8 +86,7 @@ EOL
 		);
 	}
 
-	public function testBasicFunction()
-	{
+	public function testBasicFunction() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -113,8 +104,7 @@ EOL
 		);
 	}
 
-	public function testStringNormal()
-	{
+	public function testStringNormal() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -128,8 +118,7 @@ EOL
 		);
 	}
 
-	public function testStringDouble()
-	{
+	public function testStringDouble() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -143,8 +132,7 @@ EOL
 		);
 	}
 
-	public function testInstanceof()
-	{
+	public function testInstanceof() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -161,8 +149,7 @@ EOL
 	/*
 	 * Constants
 	 */
-	public function testConstant()
-	{
+	public function testConstant() {
 		$constants = array(
 			'__FILE__',
 			'__LINE__',
@@ -192,8 +179,7 @@ EOL
 	/*
 	 * Comments
 	 */
-	public function testComment()
-	{
+	public function testComment() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -207,8 +193,7 @@ EOL
 		);
 	}
 
-	public function testDocComment()
-	{
+	public function testDocComment() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -222,8 +207,7 @@ EOL
 		);
 	}
 
-	public function testInlineComment()
-	{
+	public function testInlineComment() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -237,8 +221,7 @@ EOL
 		);
 	}
 
-	public function testHashComment()
-	{
+	public function testHashComment() {
 		$this->compare(
 			<<<EOL
 <?php
@@ -252,8 +235,7 @@ EOL
 		);
 	}
 
-	public function testEmpty()
-	{
+	public function testEmpty() {
 		$this->compare(
 			''
 			,

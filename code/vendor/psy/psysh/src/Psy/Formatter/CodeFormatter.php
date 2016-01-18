@@ -18,8 +18,7 @@ use Psy\Exception\RuntimeException;
 /**
  * A pretty-printer for code.
  */
-class CodeFormatter implements Formatter
-{
+class CodeFormatter implements Formatter {
 	/**
 	 * Format the code represented by $reflector.
 	 *
@@ -27,8 +26,7 @@ class CodeFormatter implements Formatter
 	 *
 	 * @return string formatted code
 	 */
-	public static function format(\Reflector $reflector)
-	{
+	public static function format(\Reflector $reflector) {
 		if ($fileName = $reflector->getFileName()) {
 			if (!is_file($fileName)) {
 				throw new RuntimeException('Source code unavailable.');

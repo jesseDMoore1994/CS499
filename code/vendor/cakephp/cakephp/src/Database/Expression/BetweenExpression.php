@@ -22,8 +22,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class BetweenExpression implements ExpressionInterface, FieldInterface
-{
+class BetweenExpression implements ExpressionInterface, FieldInterface {
 
 	use FieldTrait;
 
@@ -56,8 +55,7 @@ class BetweenExpression implements ExpressionInterface, FieldInterface
 	 * @param mixed $to The ending value in the comparison range.
 	 * @param string $type The data type name to bind the values with.
 	 */
-	public function __construct($field, $from, $to, $type = null)
-	{
+	public function __construct($field, $from, $to, $type = null) {
 		$this->_field = $field;
 		$this->_from = $from;
 		$this->_to = $to;
@@ -70,8 +68,7 @@ class BetweenExpression implements ExpressionInterface, FieldInterface
 	 * @param \Cake\Database\ValueBinder $generator Placeholder generator object
 	 * @return string
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		$parts = [
 			'from' => $this->_from,
 			'to' => $this->_to
@@ -97,8 +94,7 @@ class BetweenExpression implements ExpressionInterface, FieldInterface
 	 * {@inheritDoc}
 	 *
 	 */
-	public function traverse(callable $callable)
-	{
+	public function traverse(callable $callable) {
 		foreach ([$this->_field, $this->_from, $this->_to] as $part) {
 			if ($part instanceof ExpressionInterface) {
 				$callable($part);
@@ -114,8 +110,7 @@ class BetweenExpression implements ExpressionInterface, FieldInterface
 	 * @param string $type The type of $value
 	 * @return string generated placeholder
 	 */
-	protected function _bindValue($value, $generator, $type)
-	{
+	protected function _bindValue($value, $generator, $type) {
 		$placeholder = $generator->placeholder('c');
 		$generator->bind($placeholder, $value, $type);
 		return $placeholder;
@@ -126,8 +121,7 @@ class BetweenExpression implements ExpressionInterface, FieldInterface
 	 *
 	 * @return void
 	 */
-	public function __clone()
-	{
+	public function __clone() {
 		foreach (['_field', '_from', '_to'] as $part) {
 			if ($this->{$part} instanceof ExpressionInterface) {
 				$this->{$part} = clone $this->{$part};

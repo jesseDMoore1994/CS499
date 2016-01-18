@@ -22,13 +22,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Show the code for an object, class, constant, method or property.
  */
-class ShowCommand extends ReflectingCommand
-{
+class ShowCommand extends ReflectingCommand {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('show')
 			->setDefinition(array(
@@ -49,8 +47,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		list($value, $reflector) = $this->getTargetAndReflector($input->getArgument('value'));
 
 		try {

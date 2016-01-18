@@ -14,8 +14,7 @@ namespace Psy\Exception;
 /**
  * A custom error Exception for Psy with a formatted $message.
  */
-class ErrorException extends \ErrorException implements Exception
-{
+class ErrorException extends \ErrorException implements Exception {
 	private $rawMessage;
 
 	/**
@@ -28,8 +27,7 @@ class ErrorException extends \ErrorException implements Exception
 	 * @param int $lineno (default: null)
 	 * @param Exception $previous (default: null)
 	 */
-	public function __construct($message = '', $code = 0, $severity = 1, $filename = null, $lineno = null, $previous = null)
-	{
+	public function __construct($message = '', $code = 0, $severity = 1, $filename = null, $lineno = null, $previous = null) {
 		$this->rawMessage = $message;
 
 		if (!empty($filename) && preg_match('{Psy[/\\\\]ExecutionLoop}', $filename)) {
@@ -62,8 +60,7 @@ class ErrorException extends \ErrorException implements Exception
 	 *
 	 * @return string
 	 */
-	public function getRawMessage()
-	{
+	public function getRawMessage() {
 		return $this->rawMessage;
 	}
 
@@ -81,8 +78,7 @@ class ErrorException extends \ErrorException implements Exception
 	 * @param string $errfile Filename
 	 * @param int $errline Line number
 	 */
-	public static function throwException($errno, $errstr, $errfile, $errline)
-	{
+	public static function throwException($errno, $errstr, $errfile, $errline) {
 		throw new self($errstr, 0, $errno, $errfile, $errline);
 	}
 }

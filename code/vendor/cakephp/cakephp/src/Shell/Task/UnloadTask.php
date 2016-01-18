@@ -21,8 +21,7 @@ use Cake\Filesystem\File;
  * Task for unloading plugins.
  *
  */
-class UnloadTask extends Shell
-{
+class UnloadTask extends Shell {
 	/**
 	 * Path to the bootstrap file.
 	 *
@@ -36,8 +35,7 @@ class UnloadTask extends Shell
 	 * @param string $plugin The plugin name.
 	 * @return bool if action passed.
 	 */
-	public function main($plugin = null)
-	{
+	public function main($plugin = null) {
 		$this->bootstrap = ROOT . DS . 'config' . DS . 'bootstrap.php';
 
 		if (empty($plugin)) {
@@ -55,8 +53,7 @@ class UnloadTask extends Shell
 	 * @param string $plugin Name of plugin.
 	 * @return bool If modify passed.
 	 */
-	protected function _modifyBootstrap($plugin)
-	{
+	protected function _modifyBootstrap($plugin) {
 		$finder = "/\nPlugin::load\((.|.\n|\n\s\s|\n\t|)+'$plugin'(.|.\n|)+\);\n/";
 
 		$bootstrap = new File($this->bootstrap, false);
@@ -80,8 +77,7 @@ class UnloadTask extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->addArgument('plugin', [

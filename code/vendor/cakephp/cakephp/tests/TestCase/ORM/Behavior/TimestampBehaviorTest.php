@@ -24,8 +24,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Behavior test case
  */
-class TimestampBehaviorTest extends TestCase
-{
+class TimestampBehaviorTest extends TestCase {
 
 	/**
 	 * autoFixtures
@@ -50,8 +49,7 @@ class TimestampBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedEventsDefault()
-	{
+	public function testImplementedEventsDefault() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$this->Behavior = new TimestampBehavior($table);
 
@@ -68,8 +66,7 @@ class TimestampBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedEventsCustom()
-	{
+	public function testImplementedEventsCustom() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$settings = ['events' => ['Something.special' => ['date_specialed' => 'always']]];
 		$this->Behavior = new TimestampBehavior($table, $settings);
@@ -86,8 +83,7 @@ class TimestampBehaviorTest extends TestCase
 	 * @return void
 	 * @triggers Model.beforeSave
 	 */
-	public function testCreatedAbsent()
-	{
+	public function testCreatedAbsent() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$this->Behavior = new TimestampBehavior($table);
 		$ts = new \DateTime('2000-01-01');
@@ -108,8 +104,7 @@ class TimestampBehaviorTest extends TestCase
 	 * @return void
 	 * @triggers Model.beforeSave
 	 */
-	public function testCreatedPresent()
-	{
+	public function testCreatedPresent() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$this->Behavior = new TimestampBehavior($table);
 		$ts = new \DateTime('2000-01-01');
@@ -130,8 +125,7 @@ class TimestampBehaviorTest extends TestCase
 	 * @return void
 	 * @triggers Model.beforeSave
 	 */
-	public function testCreatedNotNew()
-	{
+	public function testCreatedNotNew() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$this->Behavior = new TimestampBehavior($table);
 		$ts = new \DateTime('2000-01-01');
@@ -152,8 +146,7 @@ class TimestampBehaviorTest extends TestCase
 	 * @return void
 	 * @triggers Model.beforeSave
 	 */
-	public function testModifiedAbsent()
-	{
+	public function testModifiedAbsent() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$this->Behavior = new TimestampBehavior($table);
 		$ts = new \DateTime('2000-01-01');
@@ -175,8 +168,7 @@ class TimestampBehaviorTest extends TestCase
 	 * @return void
 	 * @triggers Model.beforeSave
 	 */
-	public function testModifiedPresent()
-	{
+	public function testModifiedPresent() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$this->Behavior = new TimestampBehavior($table);
 		$ts = new \DateTime('2000-01-01');
@@ -202,8 +194,7 @@ class TimestampBehaviorTest extends TestCase
 	 * @return void
 	 * @triggers Model.beforeSave
 	 */
-	public function testInvalidEventConfig()
-	{
+	public function testInvalidEventConfig() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$settings = ['events' => ['Model.beforeSave' => ['created' => 'fat fingers']]];
 		$this->Behavior = new TimestampBehavior($table, $settings);
@@ -218,8 +209,7 @@ class TimestampBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetTimestamp()
-	{
+	public function testGetTimestamp() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$this->Behavior = new TimestampBehavior($table);
 
@@ -242,8 +232,7 @@ class TimestampBehaviorTest extends TestCase
 	 * @depends testGetTimestamp
 	 * @return void
 	 */
-	public function testGetTimestampPersists($behavior)
-	{
+	public function testGetTimestampPersists($behavior) {
 		$this->Behavior = $behavior;
 
 		$initialValue = $this->Behavior->timestamp();
@@ -262,8 +251,7 @@ class TimestampBehaviorTest extends TestCase
 	 * @depends testGetTimestamp
 	 * @return void
 	 */
-	public function testGetTimestampRefreshes($behavior)
-	{
+	public function testGetTimestampRefreshes($behavior) {
 		$this->Behavior = $behavior;
 
 		$initialValue = $this->Behavior->timestamp();
@@ -281,8 +269,7 @@ class TimestampBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetTimestampExplicit()
-	{
+	public function testSetTimestampExplicit() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$this->Behavior = new TimestampBehavior($table);
 
@@ -302,8 +289,7 @@ class TimestampBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTouch()
-	{
+	public function testTouch() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$this->Behavior = new TimestampBehavior($table);
 		$ts = new \DateTime('2000-01-01');
@@ -325,8 +311,7 @@ class TimestampBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTouchNoop()
-	{
+	public function testTouchNoop() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$config = [
 			'events' => [
@@ -352,8 +337,7 @@ class TimestampBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTouchCustomEvent()
-	{
+	public function testTouchCustomEvent() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$settings = ['events' => ['Something.special' => ['date_specialed' => 'always']]];
 		$this->Behavior = new TimestampBehavior($table, $settings);
@@ -376,8 +360,7 @@ class TimestampBehaviorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveTriggersInsert()
-	{
+	public function testSaveTriggersInsert() {
 		$this->loadFixtures('Users');
 
 		$table = TableRegistry::get('users');

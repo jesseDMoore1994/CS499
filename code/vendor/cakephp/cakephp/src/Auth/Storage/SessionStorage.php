@@ -21,8 +21,7 @@ use Cake\Network\Response;
 /**
  * Session based persistent storage for authenticated user record.
  */
-class SessionStorage implements StorageInterface
-{
+class SessionStorage implements StorageInterface {
 
 	use InstanceConfigTrait;
 
@@ -65,8 +64,7 @@ class SessionStorage implements StorageInterface
 	 * @param \Cake\Network\Response $response Response instance.
 	 * @param array $config Configuration list.
 	 */
-	public function __construct(Request $request, Response $response, array $config = [])
-	{
+	public function __construct(Request $request, Response $response, array $config = []) {
 		$this->_session = $request->session();
 		$this->config($config);
 	}
@@ -76,8 +74,7 @@ class SessionStorage implements StorageInterface
 	 *
 	 * @return array|null User record if available else null.
 	 */
-	public function read()
-	{
+	public function read() {
 		if ($this->_user !== null) {
 			return $this->_user ?: null;
 		}
@@ -94,8 +91,7 @@ class SessionStorage implements StorageInterface
 	 * @param array $user User record.
 	 * @return void
 	 */
-	public function write(array $user)
-	{
+	public function write(array $user) {
 		$this->_user = $user;
 
 		$this->_session->renew();
@@ -109,8 +105,7 @@ class SessionStorage implements StorageInterface
 	 *
 	 * @return void
 	 */
-	public function delete()
-	{
+	public function delete() {
 		$this->_user = false;
 
 		$this->_session->delete($this->_config['key']);
@@ -120,8 +115,7 @@ class SessionStorage implements StorageInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function redirectUrl($url = null)
-	{
+	public function redirectUrl($url = null) {
 		if ($url === null) {
 			return $this->_session->read($this->_config['redirect']);
 		}

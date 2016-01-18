@@ -16,8 +16,7 @@ use Cake\ORM\Entity;
 /**
  * Panel entity class.
  */
-class Panel extends Entity
-{
+class Panel extends Entity {
 
 	/**
 	 * Some fields should not be in JSON/array exports.
@@ -34,8 +33,7 @@ class Panel extends Entity
 	 *
 	 * @return string
 	 */
-	protected function _getContent($content)
-	{
+	protected function _getContent($content) {
 		if (is_resource($content)) {
 			return stream_get_contents($content);
 		}

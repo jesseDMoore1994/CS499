@@ -20,8 +20,7 @@ use Cake\TestSuite\Fixture\TestFixture;
  * Class SessionFixture
  *
  */
-class CakeSessionsFixture extends TestFixture
-{
+class CakeSessionsFixture extends TestFixture {
 
 	/**
 	 * fields property

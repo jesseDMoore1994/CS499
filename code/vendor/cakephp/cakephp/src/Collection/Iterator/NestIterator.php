@@ -23,8 +23,7 @@ use Traversable;
  * check or retrieve them
  *
  */
-class NestIterator extends Collection implements RecursiveIterator
-{
+class NestIterator extends Collection implements RecursiveIterator {
 
 	/**
 	 * The name of the property that contains the nested items for each element
@@ -40,8 +39,7 @@ class NestIterator extends Collection implements RecursiveIterator
 	 * @param string|callable $nestKey the property that contains the nested items
 	 * If a callable is passed, it should return the childrens for the passed item
 	 */
-	public function __construct($items, $nestKey)
-	{
+	public function __construct($items, $nestKey) {
 		parent::__construct($items);
 		$this->_nestKey = $nestKey;
 	}
@@ -51,8 +49,7 @@ class NestIterator extends Collection implements RecursiveIterator
 	 *
 	 * @return \Traversable
 	 */
-	public function getChildren()
-	{
+	public function getChildren() {
 		$property = $this->_propertyExtractor($this->_nestKey);
 		return new self($property($this->current()), $this->_nestKey);
 	}
@@ -63,8 +60,7 @@ class NestIterator extends Collection implements RecursiveIterator
 	 *
 	 * @return bool
 	 */
-	public function hasChildren()
-	{
+	public function hasChildren() {
 		$property = $this->_propertyExtractor($this->_nestKey);
 		$children = $property($this->current());
 

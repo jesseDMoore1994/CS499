@@ -14,13 +14,11 @@ namespace Symfony\Component\Config\Tests\Definition\Builder;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder as BaseNodeBuilder;
 use Symfony\Component\Config\Definition\Builder\VariableNodeDefinition as BaseVariableNodeDefinition;
 
-class NodeBuilderTest extends \PHPUnit_Framework_TestCase
-{
+class NodeBuilderTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @expectedException \RuntimeException
 	 */
-	public function testThrowsAnExceptionWhenTryingToCreateANonRegisteredNodeType()
-	{
+	public function testThrowsAnExceptionWhenTryingToCreateANonRegisteredNodeType() {
 		$builder = new BaseNodeBuilder();
 		$builder->node('', 'foobar');
 	}
@@ -28,16 +26,14 @@ class NodeBuilderTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \RuntimeException
 	 */
-	public function testThrowsAnExceptionWhenTheNodeClassIsNotFound()
-	{
+	public function testThrowsAnExceptionWhenTheNodeClassIsNotFound() {
 		$builder = new BaseNodeBuilder();
 		$builder
 			->setNodeClass('noclasstype', '\\foo\\bar\\noclass')
 			->node('', 'noclasstype');
 	}
 
-	public function testAddingANewNodeType()
-	{
+	public function testAddingANewNodeType() {
 		$class = __NAMESPACE__ . '\\SomeNodeDefinition';
 
 		$builder = new BaseNodeBuilder();
@@ -48,8 +44,7 @@ class NodeBuilderTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf($class, $node);
 	}
 
-	public function testOverridingAnExistingNodeType()
-	{
+	public function testOverridingAnExistingNodeType() {
 		$class = __NAMESPACE__ . '\\SomeNodeDefinition';
 
 		$builder = new BaseNodeBuilder();
@@ -60,8 +55,7 @@ class NodeBuilderTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf($class, $node);
 	}
 
-	public function testNodeTypesAreNotCaseSensitive()
-	{
+	public function testNodeTypesAreNotCaseSensitive() {
 		$builder = new BaseNodeBuilder();
 
 		$node1 = $builder->node('', 'VaRiAbLe');
@@ -77,8 +71,7 @@ class NodeBuilderTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf(get_class($node1), $node2);
 	}
 
-	public function testNumericNodeCreation()
-	{
+	public function testNumericNodeCreation() {
 		$builder = new BaseNodeBuilder();
 
 		$node = $builder->integerNode('foo')->min(3)->max(5);
@@ -89,6 +82,5 @@ class NodeBuilderTest extends \PHPUnit_Framework_TestCase
 	}
 }
 
-class SomeNodeDefinition extends BaseVariableNodeDefinition
-{
+class SomeNodeDefinition extends BaseVariableNodeDefinition {
 }

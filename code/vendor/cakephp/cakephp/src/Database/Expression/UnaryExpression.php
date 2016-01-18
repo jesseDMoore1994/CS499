@@ -22,8 +22,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class UnaryExpression implements ExpressionInterface
-{
+class UnaryExpression implements ExpressionInterface {
 
 	/**
 	 * Indicates that the operation is in pre-order
@@ -65,8 +64,7 @@ class UnaryExpression implements ExpressionInterface
 	 * @param mixed $value the value to use as the operand for the expression
 	 * @param int $mode either UnaryExpression::PREFIX or UnaryExpression::POSTFIX
 	 */
-	public function __construct($operator, $value, $mode = self::PREFIX)
-	{
+	public function __construct($operator, $value, $mode = self::PREFIX) {
 		$this->_operator = $operator;
 		$this->_value = $value;
 		$this->_mode = $mode;
@@ -78,8 +76,7 @@ class UnaryExpression implements ExpressionInterface
 	 * @param \Cake\Database\ValueBinder $generator Placeholder generator object
 	 * @return string
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		$operand = $this->_value;
 		if ($operand instanceof ExpressionInterface) {
 			$operand = $operand->sql($generator);
@@ -96,8 +93,7 @@ class UnaryExpression implements ExpressionInterface
 	 * {@inheritDoc}
 	 *
 	 */
-	public function traverse(callable $callable)
-	{
+	public function traverse(callable $callable) {
 		if ($this->_value instanceof ExpressionInterface) {
 			$callable($this->_value);
 		}
@@ -108,8 +104,7 @@ class UnaryExpression implements ExpressionInterface
 	 *
 	 * @return void
 	 */
-	public function __clone()
-	{
+	public function __clone() {
 		if ($this->_value instanceof ExpressionInterface) {
 			$this->_value = clone $this->_value;
 		}

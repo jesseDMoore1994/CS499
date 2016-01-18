@@ -19,13 +19,11 @@ namespace Symfony\Component\Config\Util;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Martin Hasoň <martin.hason@gmail.com>
  */
-class XmlUtils
-{
+class XmlUtils {
 	/**
 	 * This class should not be instantiated.
 	 */
-	private function __construct()
-	{
+	private function __construct() {
 	}
 
 	/**
@@ -38,8 +36,7 @@ class XmlUtils
 	 *
 	 * @throws \InvalidArgumentException When loading of XML file returns error
 	 */
-	public static function loadFile($file, $schemaOrCallable = null)
-	{
+	public static function loadFile($file, $schemaOrCallable = null) {
 		$content = @file_get_contents($file);
 		if ('' === trim($content)) {
 			throw new \InvalidArgumentException(sprintf('File %s does not contain valid XML, it is empty.', $file));
@@ -123,8 +120,7 @@ class XmlUtils
 	 *
 	 * @return array A PHP array
 	 */
-	public static function convertDomElementToArray(\DomElement $element, $checkPrefix = true)
-	{
+	public static function convertDomElementToArray(\DomElement $element, $checkPrefix = true) {
 		$prefix = (string)$element->prefix;
 		$empty = true;
 		$config = array();
@@ -181,8 +177,7 @@ class XmlUtils
 	 *
 	 * @return mixed
 	 */
-	public static function phpize($value)
-	{
+	public static function phpize($value) {
 		$value = (string)$value;
 		$lowercaseValue = strtolower($value);
 
@@ -216,8 +211,7 @@ class XmlUtils
 		}
 	}
 
-	protected static function getXmlErrors($internalErrors)
-	{
+	protected static function getXmlErrors($internalErrors) {
 		$errors = array();
 		foreach (libxml_get_errors() as $error) {
 			$errors[] = sprintf('[%s %s] %s (in %s - line %d, column %d)',

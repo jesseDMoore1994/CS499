@@ -28,14 +28,12 @@ use Cake\Test\Fixture\FixturizedTestCase;
 /**
  * Testing stub.
  */
-class SecondaryPostsTable extends Table
-{
+class SecondaryPostsTable extends Table {
 
 	/**
 	 * @return string
 	 */
-	public static function defaultConnectionName()
-	{
+	public static function defaultConnectionName() {
 		return 'secondary';
 	}
 }
@@ -44,16 +42,14 @@ class SecondaryPostsTable extends Table
  * TestCaseTest
  *
  */
-class TestCaseTest extends TestCase
-{
+class TestCaseTest extends TestCase {
 
 	/**
 	 * testAssertHtml
 	 *
 	 * @return void
 	 */
-	public function testAssertHtmlBasic()
-	{
+	public function testAssertHtmlBasic() {
 		$test = new AssertHtmlTestCase('testAssertHtmlQuotes');
 		$result = $test->run();
 		ob_start();
@@ -67,8 +63,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertHtmlQuoting()
-	{
+	public function testAssertHtmlQuoting() {
 		$input = '<a href="/test.html" class="active">My link</a>';
 		$pattern = [
 			'a' => ['href' => '/test.html', 'class' => 'active'],
@@ -119,8 +114,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertHtmlRuntimeComplexity()
-	{
+	public function testAssertHtmlRuntimeComplexity() {
 		$pattern = [
 			'div' => [
 				'attr1' => 'val1',
@@ -147,8 +141,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNumericValuesInExpectationForAssertHtml()
-	{
+	public function testNumericValuesInExpectationForAssertHtml() {
 		$test = new AssertHtmlTestCase('testNumericValuesInExpectationForAssertHtml');
 		$result = $test->run();
 		ob_start();
@@ -162,8 +155,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBadAssertHtml()
-	{
+	public function testBadAssertHtml() {
 		$test = new AssertHtmlTestCase('testBadAssertHtml');
 		$result = $test->run();
 		ob_start();
@@ -184,8 +176,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadFixturesOnDemand()
-	{
+	public function testLoadFixturesOnDemand() {
 		$test = new FixturizedTestCase('testFixtureLoadOnDemand');
 		$test->autoFixtures = false;
 		$manager = $this->getMock('Cake\TestSuite\Fixture\FixtureManager');
@@ -203,8 +194,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSkipIf()
-	{
+	public function testSkipIf() {
 		$test = new FixturizedTestCase('testSkipIfTrue');
 		$result = $test->run();
 		ob_start();
@@ -221,8 +211,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetupBackUpValues()
-	{
+	public function testSetupBackUpValues() {
 		$this->assertArrayHasKey('debug', $this->_configure);
 	}
 
@@ -231,8 +220,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertTextNotEquals()
-	{
+	public function testAssertTextNotEquals() {
 		$one = "\r\nOne\rTwooo";
 		$two = "\nOne\nTwo";
 		$this->assertTextNotEquals($one, $two);
@@ -243,8 +231,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertTextEquals()
-	{
+	public function testAssertTextEquals() {
 		$one = "\r\nOne\rTwo";
 		$two = "\nOne\nTwo";
 		$this->assertTextEquals($one, $two);
@@ -255,8 +242,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertTextStartsWith()
-	{
+	public function testAssertTextStartsWith() {
 		$stringDirty = "some\nstring\r\nwith\rdifferent\nline endings!";
 		$stringClean = "some\nstring\nwith\ndifferent\nline endings!";
 
@@ -273,8 +259,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertTextStartsNotWith()
-	{
+	public function testAssertTextStartsNotWith() {
 		$stringDirty = "some\nstring\r\nwith\rdifferent\nline endings!";
 		$stringClean = "some\nstring\nwith\ndifferent\nline endings!";
 
@@ -286,8 +271,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertTextEndsWith()
-	{
+	public function testAssertTextEndsWith() {
 		$stringDirty = "some\nstring\r\nwith\rdifferent\nline endings!";
 		$stringClean = "some\nstring\nwith\ndifferent\nline endings!";
 
@@ -300,8 +284,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertTextEndsNotWith()
-	{
+	public function testAssertTextEndsNotWith() {
 		$stringDirty = "some\nstring\r\nwith\rdifferent\nline endings!";
 		$stringClean = "some\nstring\nwith\ndifferent\nline endings!";
 
@@ -314,8 +297,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertTextContains()
-	{
+	public function testAssertTextContains() {
 		$stringDirty = "some\nstring\r\nwith\rdifferent\nline endings!";
 		$stringClean = "some\nstring\nwith\ndifferent\nline endings!";
 
@@ -330,8 +312,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertTextNotContains()
-	{
+	public function testAssertTextNotContains() {
 		$stringDirty = "some\nstring\r\nwith\rdifferent\nline endings!";
 		$stringClean = "some\nstring\nwith\ndifferent\nline endings!";
 
@@ -343,8 +324,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertWithinRange()
-	{
+	public function testAssertWithinRange() {
 		$this->assertWithinRange(21, 22, 1, 'Not within range');
 		$this->assertWithinRange(21.3, 22.2, 1.0, 'Not within range');
 	}
@@ -354,8 +334,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssertNotWithinRange()
-	{
+	public function testAssertNotWithinRange() {
 		$this->assertNotWithinRange(21, 23, 1, 'Within range');
 		$this->assertNotWithinRange(21.3, 22.2, 0.7, 'Within range');
 	}
@@ -365,8 +344,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetMockForModel()
-	{
+	public function testGetMockForModel() {
 		Configure::write('App.namespace', 'TestApp');
 		$Posts = $this->getMockForModel('Posts');
 		$entity = new \Cake\ORM\Entity([]);
@@ -395,8 +373,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetMockForModelSecondaryDatasource()
-	{
+	public function testGetMockForModelSecondaryDatasource() {
 		ConnectionManager::alias('test', 'secondary');
 
 		$post = $this->getMockForModel(__NAMESPACE__ . '\SecondaryPostsTable', ['save']);
@@ -408,8 +385,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetMockForModelWithPlugin()
-	{
+	public function testGetMockForModelWithPlugin() {
 		Configure::write('App.namespace', 'TestApp');
 		Plugin::load('TestPlugin');
 		$TestPluginComment = $this->getMockForModel('TestPlugin.TestPluginComments');
@@ -442,8 +418,7 @@ class TestCaseTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetMockForModelTable()
-	{
+	public function testGetMockForModelTable() {
 		$Mock = $this->getMockForModel(
 			'Table',
 			['save'],

@@ -23,8 +23,7 @@ use Cake\Event\EventDispatcherInterface;
  * This is done in Controller, TemplateTask and View for example.
  *
  */
-trait ViewVarsTrait
-{
+trait ViewVarsTrait {
 
 	/**
 	 * The name of default View class.
@@ -53,8 +52,7 @@ trait ViewVarsTrait
 	 *
 	 * @return \Cake\View\ViewBuilder
 	 */
-	public function viewBuilder()
-	{
+	public function viewBuilder() {
 		if (!isset($this->_viewBuilder)) {
 			$this->_viewBuilder = new ViewBuilder();
 		}
@@ -68,8 +66,7 @@ trait ViewVarsTrait
 	 * @return \Cake\View\View
 	 * @throws \Cake\View\Exception\MissingViewException If view class was not found.
 	 */
-	public function createView($viewClass = null)
-	{
+	public function createView($viewClass = null) {
 		$builder = $this->viewBuilder();
 		if ($viewClass === null) {
 			$viewClass = $this->viewClass;
@@ -127,8 +124,7 @@ trait ViewVarsTrait
 	 *   Unused if $name is an associative array, otherwise serves as the values to $name's keys.
 	 * @return $this
 	 */
-	public function set($name, $value = null)
-	{
+	public function set($name, $value = null) {
 		if (is_array($name)) {
 			if (is_array($value)) {
 				$data = array_combine($name, $value);
@@ -152,8 +148,7 @@ trait ViewVarsTrait
 	 *   Defaults to `true`.
 	 * @return array The updated view options as an array.
 	 */
-	public function viewOptions($options = null, $merge = true)
-	{
+	public function viewOptions($options = null, $merge = true) {
 		if (!isset($this->_validViewOptions)) {
 			$this->_validViewOptions = [];
 		}

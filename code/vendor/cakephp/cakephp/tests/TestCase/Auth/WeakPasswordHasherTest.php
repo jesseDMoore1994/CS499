@@ -23,16 +23,14 @@ use Cake\Utility\Security;
  * Test case for WeakPasswordHasher
  *
  */
-class WeakPasswordHasherTest extends TestCase
-{
+class WeakPasswordHasherTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		Security::salt('YJfIxfs2guVoUubWDYhG93b0qyJfIxfs2guwvniR2G0FgaC9mi');
@@ -44,8 +42,7 @@ class WeakPasswordHasherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNeedsRehash()
-	{
+	public function testNeedsRehash() {
 		$hasher = new WeakPasswordHasher();
 		$this->assertTrue($hasher->needsRehash(md5('foo')));
 		$this->assertTrue($hasher->needsRehash('bar'));
@@ -57,8 +54,7 @@ class WeakPasswordHasherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHashAndCheck()
-	{
+	public function testHashAndCheck() {
 		$hasher = new WeakPasswordHasher();
 		$hasher->config('hashType', 'md5');
 		$password = $hasher->hash('foo');

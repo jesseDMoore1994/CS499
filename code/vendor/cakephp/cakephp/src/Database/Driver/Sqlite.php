@@ -21,8 +21,7 @@ use Cake\Database\Statement\PDOStatement;
 use Cake\Database\Statement\SqliteStatement;
 use PDO;
 
-class Sqlite extends Driver
-{
+class Sqlite extends Driver {
 
 	use PDODriverTrait;
 	use SqliteDialectTrait;
@@ -47,8 +46,7 @@ class Sqlite extends Driver
 	 *
 	 * @return bool true on success
 	 */
-	public function connect()
-	{
+	public function connect() {
 		if ($this->_connection) {
 			return true;
 		}
@@ -74,8 +72,7 @@ class Sqlite extends Driver
 	 *
 	 * @return bool true if it is valid to use this driver
 	 */
-	public function enabled()
-	{
+	public function enabled() {
 		return in_array('sqlite', PDO::getAvailableDrivers());
 	}
 
@@ -85,8 +82,7 @@ class Sqlite extends Driver
 	 * @param string|\Cake\Database\Query $query The query to prepare.
 	 * @return \Cake\Database\StatementInterface
 	 */
-	public function prepare($query)
-	{
+	public function prepare($query) {
 		$this->connect();
 		$isObject = $query instanceof Query;
 		$statement = $this->_connection->prepare($isObject ? $query->sql() : $query);
@@ -100,8 +96,7 @@ class Sqlite extends Driver
 	/**
 	 * {@inheritDoc}
 	 */
-	public function supportsDynamicConstraints()
-	{
+	public function supportsDynamicConstraints() {
 		return false;
 	}
 }

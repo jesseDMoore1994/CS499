@@ -23,16 +23,14 @@ use TestApp\Core\TestApp;
  * AppTest class
  *
  */
-class AppTest extends TestCase
-{
+class AppTest extends TestCase {
 
 	/**
 	 * tearDown method
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Plugin::unload();
 	}
@@ -50,8 +48,7 @@ class AppTest extends TestCase
 	 * @return void
 	 * @dataProvider classnameProvider
 	 */
-	public function testClassname($class, $type, $suffix = '', $existsInBase = false, $expected = false)
-	{
+	public function testClassname($class, $type, $suffix = '', $existsInBase = false, $expected = false) {
 		Configure::write('App.namespace', 'TestApp');
 		$i = 0;
 		TestApp::$existsInBaseCallback = function ($name, $namespace) use ($existsInBase, $class, $expected, &$i) {
@@ -80,8 +77,7 @@ class AppTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function classnameProvider()
-	{
+	public function classnameProvider() {
 		return [
 			['Does', 'Not', 'Exist'],
 
@@ -129,8 +125,7 @@ class AppTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPathWithPlugins()
-	{
+	public function testPathWithPlugins() {
 		$basepath = TEST_APP . 'Plugin' . DS;
 		Plugin::load('TestPlugin');
 
@@ -148,8 +143,7 @@ class AppTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCore()
-	{
+	public function testCore() {
 		$model = App::core('Model');
 		$this->assertEquals([CAKE . 'Model' . DS], $model);
 

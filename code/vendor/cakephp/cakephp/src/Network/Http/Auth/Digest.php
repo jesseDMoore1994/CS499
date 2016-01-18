@@ -22,8 +22,7 @@ use Cake\Network\Http\Request;
  * Generally not directly constructed, but instead used by Cake\Network\Http\Client
  * when $options['auth']['type'] is 'digest'
  */
-class Digest
-{
+class Digest {
 
 	/**
 	 * Instance of Cake\Network\Http\Client
@@ -38,8 +37,7 @@ class Digest
 	 * @param \Cake\Network\Http\Client $client Http client object.
 	 * @param array|null $options Options list.
 	 */
-	public function __construct(Client $client, $options = null)
-	{
+	public function __construct(Client $client, $options = null) {
 		$this->_client = $client;
 	}
 
@@ -51,8 +49,7 @@ class Digest
 	 * @return void
 	 * @see http://www.ietf.org/rfc/rfc2617.txt
 	 */
-	public function authentication(Request $request, array $credentials)
-	{
+	public function authentication(Request $request, array $credentials) {
 		if (!isset($credentials['username'], $credentials['password'])) {
 			return;
 		}
@@ -77,8 +74,7 @@ class Digest
 	 * @param array $credentials Authentication credentials.
 	 * @return array modified credentials.
 	 */
-	protected function _getServerInfo(Request $request, $credentials)
-	{
+	protected function _getServerInfo(Request $request, $credentials) {
 		$response = $this->_client->get(
 			$request->url(),
 			[],
@@ -110,8 +106,7 @@ class Digest
 	 * @param array $credentials Authentication credentials.
 	 * @return string
 	 */
-	protected function _generateHeader(Request $request, $credentials)
-	{
+	protected function _generateHeader(Request $request, $credentials) {
 		$path = parse_url($request->url(), PHP_URL_PATH);
 		$a1 = md5($credentials['username'] . ':' . $credentials['realm'] . ':' . $credentials['password']);
 		$a2 = md5($request->method() . ':' . $path);

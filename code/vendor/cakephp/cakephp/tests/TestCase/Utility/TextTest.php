@@ -20,18 +20,15 @@ use Cake\Utility\Text;
  * TextTest class
  *
  */
-class TextTest extends TestCase
-{
+class TextTest extends TestCase {
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->encoding = mb_internal_encoding();
 		$this->Text = new Text();
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		mb_internal_encoding($this->encoding);
 		unset($this->Text);
@@ -42,8 +39,7 @@ class TextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUuidGeneration()
-	{
+	public function testUuidGeneration() {
 		$result = Text::uuid();
 		$pattern = "/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/";
 		$match = (bool)preg_match($pattern, $result);
@@ -55,8 +51,7 @@ class TextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMultipleUuidGeneration()
-	{
+	public function testMultipleUuidGeneration() {
 		$check = [];
 		$count = mt_rand(10, 1000);
 		$pattern = "/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/";
@@ -75,8 +70,7 @@ class TextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsert()
-	{
+	public function testInsert() {
 		$string = 'some string';
 		$expected = 'some string';
 		$result = Text::insert($string, []);
@@ -237,8 +231,7 @@ class TextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCleanInsert()
-	{
+	public function testCleanInsert() {
 		$result = Text::cleanInsert(':incomplete', [
 			'clean' => true, 'before' => ':', 'after' => ''
 		]);
@@ -282,8 +275,7 @@ class TextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAutoIgnoreBadInsertData()
-	{
+	public function testAutoIgnoreBadInsertData() {
 		$data = ['foo' => 'alpha', 'bar' => 'beta', 'fale' => []];
 		$result = Text::insert('(:foo > :bar || :fale!)', $data, ['clean' => 'text']);
 		$this->assertEquals('(alpha > beta || !)', $result);
@@ -294,8 +286,7 @@ class TextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTokenize()
-	{
+	public function testTokenize() {
 		$result = Text::tokenize('A,(short,boring test)');
 		$expected = ['A', '(short,boring test)'];
 		$this->assertEquals($expected, $result);
@@ -322,8 +313,7 @@ class TextTest extends TestCase
 		$this->assertEquals($expected, $result);
 	}
 
-	public function testReplaceWithQuestionMarkInString()
-	{
+	public function testReplaceWithQuestionMarkInString() {
 		$string = ':a, :b and :c?';
 		$expected = '2 and 3?';
 		$result = Text::insert($string, ['b' => 2, 'c' => 3], ['clean' => true]);
@@ -336,8 +326,7 @@ class TextTest extends TestCase
 	 * @dataProvider wordWrapProvider
 	 * @return void
 	 */
-	public function testWordWrap($text, $width, $break = "\n", $cut = false)
-	{
+	public function testWordWrap($text, $width, $break = "\n", $cut = false) {
 		$result = Text::wordWrap($text, $width, $break, $cut);
 		$expected = wordwrap($text, $width, $break, $cut);
 		$this->assertTextEquals($expected, $result, 'Text not wrapped same as built-in function.');
@@ -348,8 +337,7 @@ class TextTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function wordWrapProvider()
-	{
+	public function wordWrapProvider() {
 		return [
 			[
 				'The quick brown fox jumped over the lazy dog.',
@@ -371,8 +359,7 @@ class TextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWordWrapUnicodeAware()
-	{
+	public function testWordWrapUnicodeAware() {
 		$text = 'Но вим омниюм факёльиси элыктрам, мюнырэ лэгыры векж ыт. Выльёт квюандо нюмквуам ты кюм. Зыд эю рыбюм.';
 		$result = Text::wordWrap($text, 33, "\n", true);
 		$expected = <<<TEXT
@@ -399,8 +386,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testWordWrapNewlineAware()
-	{
+	public function testWordWrapNewlineAware() {
 		$text = 'This is a line that is almost the 55 chars long.
 This is a new sentence which is manually newlined, but is so long it needs two lines.';
 		$result = Text::wordWrap($text, 55);
@@ -417,8 +403,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testWrap()
-	{
+	public function testWrap() {
 		$text = 'This is the song that never ends. This is the song that never ends. This is the song that never ends.';
 		$result = Text::wrap($text, 33);
 		$expected = <<<TEXT
@@ -443,8 +428,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testWrapIndent()
-	{
+	public function testWrapIndent() {
 		$text = 'This is the song that never ends. This is the song that never ends. This is the song that never ends.';
 		$result = Text::wrap($text, ['width' => 33, 'indent' => "\t", 'indentAt' => 1]);
 		$expected = <<<TEXT
@@ -460,8 +444,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testWrapBlockIndenticalToWrap()
-	{
+	public function testWrapBlockIndenticalToWrap() {
 		$text = 'This is the song that never ends. This is the song that never ends. This is the song that never ends.';
 		$result = Text::wrapBlock($text, 33);
 		$expected = Text::wrap($text, 33);
@@ -477,8 +460,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testWrapBlockWithIndentAt0()
-	{
+	public function testWrapBlockWithIndentAt0() {
 		$text = 'This is the song that never ends. This is the song that never ends. This is the song that never ends.';
 		$result = Text::wrapBlock($text, ['width' => 33, 'indent' => "\t", 'indentAt' => 0]);
 		$expected = <<<TEXT
@@ -495,8 +477,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testWrapBlockWithIndentAt1()
-	{
+	public function testWrapBlockWithIndentAt1() {
 		$text = 'This is the song that never ends. This is the song that never ends. This is the song that never ends.';
 		$result = Text::wrapBlock($text, ['width' => 33, 'indent' => "\t", 'indentAt' => 1]);
 		$expected = <<<TEXT
@@ -513,8 +494,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testWrapBlockIndentWithMultibyte()
-	{
+	public function testWrapBlockIndentWithMultibyte() {
 		$text = 'This is the song that never ends. 这是永远不会结束的歌曲。 This is the song that never ends.';
 		$result = Text::wrapBlock($text, ['width' => 33, 'indent' => " → ", 'indentAt' => 1]);
 		$expected = <<<TEXT
@@ -530,8 +510,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testTruncate()
-	{
+	public function testTruncate() {
 		$text1 = 'The quick brown fox jumps over the lazy dog';
 		$text2 = 'Heiz&ouml;lr&uuml;cksto&szlig;abd&auml;mpfung';
 		$text3 = '<b>&copy; 2005-2007, Cake Software Foundation, Inc.</b><br />written by Alexander Wegener';
@@ -621,8 +600,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testTruncateLegacy()
-	{
+	public function testTruncateLegacy() {
 		mb_internal_encoding('ISO-8859-1');
 		$text = '<b>&copy; 2005-2007, Cake Software Foundation, Inc.</b><br />written by Alexander Wegener';
 		$result = $this->Text->truncate($text, 31, [
@@ -645,8 +623,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testTail()
-	{
+	public function testTail() {
 		$text1 = 'The quick brown fox jumps over the lazy dog';
 		$text2 = 'Heiz&ouml;lr&uuml;cksto&szlig;abd&auml;mpfung';
 		$text3 = 'El moño está en el lugar correcto. Eso fue lo que dijo la niña, ¿habrá dicho la verdad?';
@@ -689,8 +666,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testHighlight()
-	{
+	public function testHighlight() {
 		$text = 'This is a test text';
 		$phrases = ['This', 'text'];
 		$result = $this->Text->highlight($text, $phrases, ['format' => '<b>\1</b>']);
@@ -724,8 +700,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testHighlightHtml()
-	{
+	public function testHighlightHtml() {
 		$text1 = '<p>strongbow isn&rsquo;t real cider</p>';
 		$text2 = '<p>strongbow <strong>isn&rsquo;t</strong> real cider</p>';
 		$text3 = '<img src="what-a-strong-mouse.png" alt="What a strong mouse!" />';
@@ -751,8 +726,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testHighlightMulti()
-	{
+	public function testHighlightMulti() {
 		$text = 'This is a test text';
 		$phrases = ['This', 'text'];
 		$result = $this->Text->highlight($text, $phrases, ['format' => ['<b>\1</b>', '<em>\1</em>']]);
@@ -765,8 +739,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testStripLinks()
-	{
+	public function testStripLinks() {
 		$text = 'This is a test text';
 		$expected = 'This is a test text';
 		$result = $this->Text->stripLinks($text);
@@ -793,8 +766,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testHighlightCaseInsensitivity()
-	{
+	public function testHighlightCaseInsensitivity() {
 		$text = 'This is a Test text';
 		$expected = 'This is a <b>Test</b> text';
 
@@ -810,8 +782,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testExcerpt()
-	{
+	public function testExcerpt() {
 		$text = 'This is a phrase with test text to play with';
 
 		$expected = '...ase with test text to ...';
@@ -851,8 +822,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testExcerptCaseInsensitivity()
-	{
+	public function testExcerptCaseInsensitivity() {
 		$text = 'This is a phrase with test text to play with';
 
 		$expected = '...ase with test text to ...';
@@ -869,8 +839,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testListGeneration()
-	{
+	public function testListGeneration() {
 		$result = $this->Text->toList([]);
 		$this->assertEquals('', $result);
 
@@ -901,8 +870,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testUtf8()
-	{
+	public function testUtf8() {
 		$string = '!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
 		$result = Text::utf8($string);
 		$expected = [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
@@ -1222,8 +1190,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return void
 	 */
-	public function testAscii()
-	{
+	public function testAscii() {
 		$input = [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
 			58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82,
 			83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105,
@@ -1544,8 +1511,7 @@ podeís adquirirla.</span></p>
 	 * @dataProvider filesizes
 	 * @return void
 	 */
-	public function testparseFileSize($params, $expected)
-	{
+	public function testparseFileSize($params, $expected) {
 		$result = Text::parseFileSize($params['size'], $params['default']);
 		$this->assertEquals($expected, $result);
 	}
@@ -1556,8 +1522,7 @@ podeís adquirirla.</span></p>
 	 * @expectedException \InvalidArgumentException
 	 * @return void
 	 */
-	public function testparseFileSizeException()
-	{
+	public function testparseFileSizeException() {
 		Text::parseFileSize('bogus', false);
 	}
 
@@ -1566,8 +1531,7 @@ podeís adquirirla.</span></p>
 	 *
 	 * @return array
 	 */
-	public function filesizes()
-	{
+	public function filesizes() {
 		return [
 			[['size' => '512B', 'default' => false], 512],
 			[['size' => '1KB', 'default' => false], 1024],

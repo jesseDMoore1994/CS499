@@ -16,13 +16,11 @@ use Symfony\Component\Console\Input\InputInterface;
 /**
  * Function Enumerator class.
  */
-class FunctionEnumerator extends Enumerator
-{
+class FunctionEnumerator extends Enumerator {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
-	{
+	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null) {
 		// only list functions when no Reflector is present.
 		//
 		// TODO: make a NamespaceReflector and pass that in for commands like:
@@ -72,8 +70,7 @@ class FunctionEnumerator extends Enumerator
 	 *
 	 * @return array
 	 */
-	protected function getFunctions($type = null)
-	{
+	protected function getFunctions($type = null) {
 		$funcs = get_defined_functions();
 
 		if ($type) {
@@ -90,8 +87,7 @@ class FunctionEnumerator extends Enumerator
 	 *
 	 * @return array
 	 */
-	protected function prepareFunctions(array $functions)
-	{
+	protected function prepareFunctions(array $functions) {
 		natcasesort($functions);
 
 		// My kingdom for a generator.

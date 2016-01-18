@@ -19,8 +19,7 @@ use Cake\Database\Expression\Comparison;
 /**
  * Sql dialect trait
  */
-trait SqlDialectTrait
-{
+trait SqlDialectTrait {
 
 	/**
 	 * Quotes a database identifier (a column name, table name, etc..) to
@@ -29,8 +28,7 @@ trait SqlDialectTrait
 	 * @param string $identifier The identifier to quote.
 	 * @return string
 	 */
-	public function quoteIdentifier($identifier)
-	{
+	public function quoteIdentifier($identifier) {
 		$identifier = trim($identifier);
 
 		if ($identifier === '*') {
@@ -83,8 +81,7 @@ trait SqlDialectTrait
 	 * (select, insert, update, delete)
 	 * @return callable
 	 */
-	public function queryTranslator($type)
-	{
+	public function queryTranslator($type) {
 		return function ($query) use ($type) {
 			if ($this->autoQuoting()) {
 				$query = (new IdentifierQuoter($this))->quote($query);
@@ -114,8 +111,7 @@ trait SqlDialectTrait
 	 *
 	 * @return array
 	 */
-	protected function _expressionTranslators()
-	{
+	protected function _expressionTranslators() {
 		return [];
 	}
 
@@ -125,8 +121,7 @@ trait SqlDialectTrait
 	 * @param Query $query The query to translate
 	 * @return Query The modified query
 	 */
-	protected function _selectQueryTranslator($query)
-	{
+	protected function _selectQueryTranslator($query) {
 		return $this->_transformDistinct($query);
 	}
 
@@ -137,8 +132,7 @@ trait SqlDialectTrait
 	 * @param Query $query The query to be transformed
 	 * @return Query
 	 */
-	protected function _transformDistinct($query)
-	{
+	protected function _transformDistinct($query) {
 		if (is_array($query->clause('distinct'))) {
 			$query->group($query->clause('distinct'), true);
 			$query->distinct(false);
@@ -158,8 +152,7 @@ trait SqlDialectTrait
 	 * @param Query $query The query to translate
 	 * @return Query The modified query
 	 */
-	protected function _deleteQueryTranslator($query)
-	{
+	protected function _deleteQueryTranslator($query) {
 		$hadAlias = false;
 		$tables = [];
 		foreach ($query->clause('from') as $alias => $table) {
@@ -199,8 +192,7 @@ trait SqlDialectTrait
 	 * @param Query $query The query to translate
 	 * @return Query The modified query
 	 */
-	protected function _updateQueryTranslator($query)
-	{
+	protected function _updateQueryTranslator($query) {
 		return $query;
 	}
 
@@ -210,8 +202,7 @@ trait SqlDialectTrait
 	 * @param Query $query The query to translate
 	 * @return Query The modified query
 	 */
-	protected function _insertQueryTranslator($query)
-	{
+	protected function _insertQueryTranslator($query) {
 		return $query;
 	}
 
@@ -221,8 +212,7 @@ trait SqlDialectTrait
 	 * @param string $name save point name
 	 * @return string
 	 */
-	public function savePointSQL($name)
-	{
+	public function savePointSQL($name) {
 		return 'SAVEPOINT LEVEL' . $name;
 	}
 
@@ -232,8 +222,7 @@ trait SqlDialectTrait
 	 * @param string $name save point name
 	 * @return string
 	 */
-	public function releaseSavePointSQL($name)
-	{
+	public function releaseSavePointSQL($name) {
 		return 'RELEASE SAVEPOINT LEVEL' . $name;
 	}
 
@@ -243,8 +232,7 @@ trait SqlDialectTrait
 	 * @param string $name save point name
 	 * @return string
 	 */
-	public function rollbackSavePointSQL($name)
-	{
+	public function rollbackSavePointSQL($name) {
 		return 'ROLLBACK TO SAVEPOINT LEVEL' . $name;
 	}
 }

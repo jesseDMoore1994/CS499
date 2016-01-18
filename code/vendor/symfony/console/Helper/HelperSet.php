@@ -19,8 +19,7 @@ use Symfony\Component\Console\Exception\InvalidArgumentException;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class HelperSet implements \IteratorAggregate
-{
+class HelperSet implements \IteratorAggregate {
 	private $helpers = array();
 	private $command;
 
@@ -29,8 +28,7 @@ class HelperSet implements \IteratorAggregate
 	 *
 	 * @param Helper[] $helpers An array of helper.
 	 */
-	public function __construct(array $helpers = array())
-	{
+	public function __construct(array $helpers = array()) {
 		foreach ($helpers as $alias => $helper) {
 			$this->set($helper, is_int($alias) ? null : $alias);
 		}
@@ -42,8 +40,7 @@ class HelperSet implements \IteratorAggregate
 	 * @param HelperInterface $helper The helper instance
 	 * @param string $alias An alias
 	 */
-	public function set(HelperInterface $helper, $alias = null)
-	{
+	public function set(HelperInterface $helper, $alias = null) {
 		$this->helpers[$helper->getName()] = $helper;
 		if (null !== $alias) {
 			$this->helpers[$alias] = $helper;
@@ -59,8 +56,7 @@ class HelperSet implements \IteratorAggregate
 	 *
 	 * @return bool true if the helper is defined, false otherwise
 	 */
-	public function has($name)
-	{
+	public function has($name) {
 		return isset($this->helpers[$name]);
 	}
 
@@ -73,8 +69,7 @@ class HelperSet implements \IteratorAggregate
 	 *
 	 * @throws InvalidArgumentException if the helper is not defined
 	 */
-	public function get($name)
-	{
+	public function get($name) {
 		if (!$this->has($name)) {
 			throw new InvalidArgumentException(sprintf('The helper "%s" is not defined.', $name));
 		}
@@ -87,8 +82,7 @@ class HelperSet implements \IteratorAggregate
 	 *
 	 * @param Command $command A Command instance
 	 */
-	public function setCommand(Command $command = null)
-	{
+	public function setCommand(Command $command = null) {
 		$this->command = $command;
 	}
 
@@ -97,13 +91,11 @@ class HelperSet implements \IteratorAggregate
 	 *
 	 * @return Command A Command instance
 	 */
-	public function getCommand()
-	{
+	public function getCommand() {
 		return $this->command;
 	}
 
-	public function getIterator()
-	{
+	public function getIterator() {
 		return new \ArrayIterator($this->helpers);
 	}
 }

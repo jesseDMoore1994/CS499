@@ -28,8 +28,7 @@ use Exception;
  * @method void success(string $message, array $options = []) Set a message using "success" element
  * @method void error(string $message, array $options = []) Set a message using "error" element
  */
-class FlashComponent extends Component
-{
+class FlashComponent extends Component {
 
 	/**
 	 * The Session object instance
@@ -56,8 +55,7 @@ class FlashComponent extends Component
 	 * @param ComponentRegistry $registry A ComponentRegistry for this component
 	 * @param array $config Array of config.
 	 */
-	public function __construct(ComponentRegistry $registry, array $config = [])
-	{
+	public function __construct(ComponentRegistry $registry, array $config = []) {
 		parent::__construct($registry, $config);
 		$this->_session = $registry->getController()->request->session();
 	}
@@ -82,8 +80,7 @@ class FlashComponent extends Component
 	 * @param array $options An array of options
 	 * @return void
 	 */
-	public function set($message, array $options = [])
-	{
+	public function set($message, array $options = []) {
 		$options += $this->config();
 
 		if ($message instanceof Exception) {
@@ -136,8 +133,7 @@ class FlashComponent extends Component
 	 * @return void
 	 * @throws \Cake\Network\Exception\InternalErrorException If missing the flash message.
 	 */
-	public function __call($name, $args)
-	{
+	public function __call($name, $args) {
 		$element = Inflector::underscore($name);
 
 		if (count($args) < 1) {

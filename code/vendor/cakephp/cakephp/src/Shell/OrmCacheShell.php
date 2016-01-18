@@ -27,8 +27,7 @@ use Cake\Datasource\ConnectionManager;
  * versions of your application are deployed, or when migrations
  * requiring updated metadata are required.
  */
-class OrmCacheShell extends Shell
-{
+class OrmCacheShell extends Shell {
 
 	/**
 	 * Build metadata.
@@ -36,8 +35,7 @@ class OrmCacheShell extends Shell
 	 * @param string|null $name The name of the table to build cache data for.
 	 * @return bool
 	 */
-	public function build($name = null)
-	{
+	public function build($name = null) {
 		$schema = $this->_getSchema();
 		if (!$schema) {
 			return false;
@@ -60,8 +58,7 @@ class OrmCacheShell extends Shell
 	 * @param string|null $name The name of the table to clear cache data for.
 	 * @return bool
 	 */
-	public function clear($name = null)
-	{
+	public function clear($name = null) {
 		$schema = $this->_getSchema();
 		if (!$schema) {
 			return false;
@@ -90,8 +87,7 @@ class OrmCacheShell extends Shell
 	 *
 	 * @return false|\Cake\Database\Schema\Collection
 	 */
-	protected function _getSchema()
-	{
+	protected function _getSchema() {
 		$source = ConnectionManager::get($this->params['connection']);
 		if (!method_exists($source, 'schemaCollection')) {
 			$msg = sprintf(
@@ -115,8 +111,7 @@ class OrmCacheShell extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser->addSubcommand('clear', [
 			'help' => 'Clear all metadata caches for the connection. If a ' .

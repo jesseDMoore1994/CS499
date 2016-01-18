@@ -24,8 +24,7 @@ use PDOException;
  * Used to access information about the tables,
  * and other data in a database.
  */
-class Collection
-{
+class Collection {
 
 	/**
 	 * Connection object
@@ -46,8 +45,7 @@ class Collection
 	 *
 	 * @param \Cake\Datasource\ConnectionInterface $connection The connection instance.
 	 */
-	public function __construct(ConnectionInterface $connection)
-	{
+	public function __construct(ConnectionInterface $connection) {
 		$this->_connection = $connection;
 		$this->_dialect = $connection->driver()->schemaDialect();
 	}
@@ -57,8 +55,7 @@ class Collection
 	 *
 	 * @return array The list of tables in the connected database/schema.
 	 */
-	public function listTables()
-	{
+	public function listTables() {
 		list($sql, $params) = $this->_dialect->listTablesSql($this->_connection->config());
 		$result = [];
 		$statement = $this->_connection->execute($sql, $params);
@@ -85,8 +82,7 @@ class Collection
 	 * @return \Cake\Database\Schema\Table Object with column metadata.
 	 * @throws \Cake\Database\Exception when table cannot be described.
 	 */
-	public function describe($name, array $options = [])
-	{
+	public function describe($name, array $options = []) {
 		$config = $this->_connection->config();
 		if (strpos($name, '.')) {
 			list($config['schema'], $name) = explode('.', $name);
@@ -115,8 +111,7 @@ class Collection
 	 * @return void
 	 * @throws \Cake\Database\Exception on query failure.
 	 */
-	protected function _reflect($stage, $name, $config, $table)
-	{
+	protected function _reflect($stage, $name, $config, $table) {
 		$describeMethod = "describe{$stage}Sql";
 		$convertMethod = "convert{$stage}Description";
 

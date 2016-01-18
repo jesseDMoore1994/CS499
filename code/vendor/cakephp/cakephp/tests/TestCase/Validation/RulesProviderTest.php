@@ -21,8 +21,7 @@ use Cake\Validation\RulesProvider;
  * Tests RulesProvider class
  *
  */
-class RulesProviderTest extends TestCase
-{
+class RulesProviderTest extends TestCase {
 
 	/**
 	 * Tests that RulesProvider proxies the method correctly and removes the
@@ -31,8 +30,7 @@ class RulesProviderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testProxyToValidation()
-	{
+	public function testProxyToValidation() {
 		$provider = new RulesProvider;
 		$this->assertTrue($provider->extension('foo.jpg', compact('provider')));
 		$this->assertFalse($provider->extension('foo.jpg', ['png'], compact('provider')));
@@ -44,8 +42,7 @@ class RulesProviderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomObject()
-	{
+	public function testCustomObject() {
 		$mock = $this->getMock('\Cake\Validation\Validator', ['field']);
 		$mock->expects($this->once())
 			->method('field')

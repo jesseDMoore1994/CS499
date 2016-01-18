@@ -1,22 +1,18 @@
 <?php
 namespace Aura\Intl;
 
-class IntlFormatterTest extends BasicFormatterTest
-{
-	protected function newFormatter()
-	{
+class IntlFormatterTest extends BasicFormatterTest {
+	protected function newFormatter() {
 		return new IntlFormatter;
 	}
 
-	public function setUp()
-	{
+	public function setUp() {
 		if (!extension_loaded('intl')) {
 			$this->markTestSkipped('This test is skipped if the Intl Extension is not loaded.');
 		}
 	}
 
-	public function testIntlVersion()
-	{
+	public function testIntlVersion() {
 		$this->setExpectedException('Aura\Intl\Exception\IcuVersionTooLow');
 		$formatter = new IntlFormatter('4.7');
 	}
@@ -32,8 +28,7 @@ class IntlFormatterTest extends BasicFormatterTest
 	 * this string , so the msgfmt_format() throws expects parameter 1 to be
 	 * MessageFormatter, null given error.
 	 */
-	public function testFormat_plural()
-	{
+	public function testFormat_plural() {
 		$formatter = $this->newFormatter();
 		$locale = 'en_US';
 		$string = '{pages,plural,'
@@ -61,8 +56,7 @@ class IntlFormatterTest extends BasicFormatterTest
 	/**
 	 * @dataProvider provide_testFormat_select
 	 */
-	public function testFormat_select($tokens_values, $expect)
-	{
+	public function testFormat_select($tokens_values, $expect) {
 		$locale = 'en_US';
 		$string = "
             {gender, select,
@@ -97,8 +91,7 @@ class IntlFormatterTest extends BasicFormatterTest
 		$this->assertSame(trim($expect), trim($actual));
 	}
 
-	public function provide_testFormat_select()
-	{
+	public function provide_testFormat_select() {
 		return [
 			[array('gender' => 'female', 'count' => 0, 'from' => 'Alice', 'to' => 'Bob'), 'Alice does not give a party.'],
 			[array('gender' => 'male', 'count' => 1, 'from' => 'Bob', 'to' => 'Alice'), 'Bob invites Alice to his party.'],
@@ -107,8 +100,7 @@ class IntlFormatterTest extends BasicFormatterTest
 		];
 	}
 
-	public function testFormat_cannotInstantiateFormatter()
-	{
+	public function testFormat_cannotInstantiateFormatter() {
 		$locale = 'en_US';
 		// uses {count} instead of #, which should fail
 		$string = "
@@ -144,8 +136,7 @@ class IntlFormatterTest extends BasicFormatterTest
 	}
 
 	// @todo MAKE IT SO THAT WE CHECK FOR TOKENS IN THE ARRAY
-	public function testFormat_cannotFormat()
-	{
+	public function testFormat_cannotFormat() {
 		$locale = 'en_US';
 		$string = 'Hello {foo}';
 		$tokens_values = ['bar' => 'baz']; // no 'foo' token
@@ -165,8 +156,7 @@ class IntlFormatterTest extends BasicFormatterTest
 	/**
 	 * @dataProvider provide_testIssue6
 	 */
-	public function testIssue6($tokens_values, $expect)
-	{
+	public function testIssue6($tokens_values, $expect) {
 		$locale = 'en_US';
 		$string = '{gender, select, female{{name} is {gender} and she report bugs!} male{{name} is {gender} and he report bugs!} other{{name} report bugs!}}';
 		$formatter = $this->newFormatter();
@@ -174,8 +164,7 @@ class IntlFormatterTest extends BasicFormatterTest
 		$this->assertSame($expect, $actual);
 	}
 
-	public function provide_testIssue6()
-	{
+	public function provide_testIssue6() {
 		return [
 			[array('gender' => 'female', 'name' => 'Alice'), 'Alice is female and she report bugs!'],
 			[array('gender' => 'male', 'name' => 'Alexander'), 'Alexander is male and he report bugs!'],

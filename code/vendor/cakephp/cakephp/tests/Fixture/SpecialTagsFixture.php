@@ -20,8 +20,7 @@ use Cake\TestSuite\Fixture\TestFixture;
  * A fixture for a join table containing additional data
  *
  */
-class SpecialTagsFixture extends TestFixture
-{
+class SpecialTagsFixture extends TestFixture {
 
 	/**
 	 * fields property

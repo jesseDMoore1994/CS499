@@ -18,15 +18,13 @@ use Symfony\Component\Config\Definition\ScalarNode;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ScalarNodeDefinition extends VariableNodeDefinition
-{
+class ScalarNodeDefinition extends VariableNodeDefinition {
 	/**
 	 * Instantiate a Node.
 	 *
 	 * @return ScalarNode The node
 	 */
-	protected function instantiateNode()
-	{
+	protected function instantiateNode() {
 		return new ScalarNode($this->name, $this->parent);
 	}
 }

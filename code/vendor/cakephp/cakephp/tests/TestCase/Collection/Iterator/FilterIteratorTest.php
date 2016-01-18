@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * FilterIterator test
  *
  */
-class FilterIteratorTest extends TestCase
-{
+class FilterIteratorTest extends TestCase {
 
 	/**
 	 * Tests that the iterator works correctly
 	 *
 	 * @return void
 	 */
-	public function testFilter()
-	{
+	public function testFilter() {
 		$items = new \ArrayIterator([1, 2, 3]);
 		$callable = $this->getMock('stdClass', ['__invoke']);
 		$callable->expects($this->at(0))

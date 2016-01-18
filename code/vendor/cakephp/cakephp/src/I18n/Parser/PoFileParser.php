@@ -21,8 +21,7 @@ namespace Cake\I18n\Parser;
  * @copyright Copyright (c) 2012, Clemens Tolboom
  * @copyright Copyright (c) 2014, Fabien Potencier https://github.com/symfony/Translation/blob/master/LICENSE
  */
-class PoFileParser
-{
+class PoFileParser {
 
 	/**
 	 * Parses portable object (PO) format.
@@ -69,8 +68,7 @@ class PoFileParser
 	 *
 	 * @return array
 	 */
-	public function parse($resource)
-	{
+	public function parse($resource) {
 		$stream = fopen($resource, 'r');
 
 		$defaults = [
@@ -126,8 +124,7 @@ class PoFileParser
 	 * @param array $item The current item being inspected
 	 * @return void
 	 */
-	protected function _addMessage(array &$messages, array $item)
-	{
+	protected function _addMessage(array &$messages, array $item) {
 		if (empty($item['ids']['singular']) && empty($item['ids']['plural'])) {
 			return;
 		}

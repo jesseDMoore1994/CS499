@@ -28,8 +28,7 @@ use Exception;
  * Subclasses are required to implement the template methods to handle displaying
  * the errors in their environment.
  */
-abstract class BaseErrorHandler
-{
+abstract class BaseErrorHandler {
 
 	/**
 	 * Display an error message in an environment specific way.
@@ -59,8 +58,7 @@ abstract class BaseErrorHandler
 	 *
 	 * @return void
 	 */
-	public function register()
-	{
+	public function register() {
 		$level = -1;
 		if (isset($this->_options['errorLevel'])) {
 			$level = $this->_options['errorLevel'];
@@ -110,8 +108,7 @@ abstract class BaseErrorHandler
 	 * @param array|null $context Context
 	 * @return bool True if error was handled
 	 */
-	public function handleError($code, $description, $file = null, $line = null, $context = null)
-	{
+	public function handleError($code, $description, $file = null, $line = null, $context = null) {
 		if (error_reporting() === 0) {
 			return false;
 		}
@@ -149,8 +146,7 @@ abstract class BaseErrorHandler
 	 * @param Exception|Error $exception The exception to handle
 	 * @return void
 	 */
-	public function wrapAndHandleException($exception)
-	{
+	public function wrapAndHandleException($exception) {
 		if ($exception instanceof Error) {
 			$exception = new PHP7ErrorException($exception);
 		}
@@ -168,8 +164,7 @@ abstract class BaseErrorHandler
 	 * @throws \Exception When renderer class not found
 	 * @see http://php.net/manual/en/function.set-exception-handler.php
 	 */
-	public function handleException(Exception $exception)
-	{
+	public function handleException(Exception $exception) {
 		$this->_displayException($exception);
 		$this->_logException($exception);
 		$this->_stop($exception->getCode() ?: 1);
@@ -183,8 +178,7 @@ abstract class BaseErrorHandler
 	 * @param int $code Exit code.
 	 * @return void
 	 */
-	protected function _stop($code)
-	{
+	protected function _stop($code) {
 		// Do nothing.
 	}
 
@@ -197,8 +191,7 @@ abstract class BaseErrorHandler
 	 * @param int $line Line that triggered the error
 	 * @return bool
 	 */
-	public function handleFatalError($code, $description, $file, $line)
-	{
+	public function handleFatalError($code, $description, $file, $line) {
 		$data = [
 			'code' => $code,
 			'description' => $description,
@@ -219,8 +212,7 @@ abstract class BaseErrorHandler
 	 * @param array $data Array of error data.
 	 * @return bool
 	 */
-	protected function _logError($level, $data)
-	{
+	protected function _logError($level, $data) {
 		$message = sprintf(
 			'%s (%s): %s in [%s, line %s]',
 			$data['error'],
@@ -246,8 +238,7 @@ abstract class BaseErrorHandler
 	 * @param \Exception $exception Exception instance.
 	 * @return bool
 	 */
-	protected function _logException(Exception $exception)
-	{
+	protected function _logException(Exception $exception) {
 		$config = $this->_options;
 		$unwrapped = $exception instanceof PHP7ErrorException ?
 			$exception->getError() :
@@ -273,8 +264,7 @@ abstract class BaseErrorHandler
 	 * @param \Exception $exception Exception instance
 	 * @return string Formatted message
 	 */
-	protected function _getMessage(Exception $exception)
-	{
+	protected function _getMessage(Exception $exception) {
 		$exception = $exception instanceof PHP7ErrorException ?
 			$exception->getError() :
 			$exception;
@@ -310,8 +300,7 @@ abstract class BaseErrorHandler
 	 * @param int $code Error code to map
 	 * @return array Array of error word, and log location.
 	 */
-	public static function mapErrorCode($code)
-	{
+	public static function mapErrorCode($code) {
 		$levelMap = [
 			E_PARSE => 'error',
 			E_ERROR => 'error',

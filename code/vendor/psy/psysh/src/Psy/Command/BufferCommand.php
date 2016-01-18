@@ -21,13 +21,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * Shows and clears the buffer for the current multi-line expression.
  */
-class BufferCommand extends Command
-{
+class BufferCommand extends Command {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('buffer')
 			->setAliases(array('buf'))
@@ -47,8 +45,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$buf = $this->getApplication()->getCodeBuffer();
 		if ($input->getOption('clear')) {
 			$this->getApplication()->resetCodeBuffer();
@@ -66,8 +63,7 @@ HELP
 	 *
 	 * @return array Formatted strings
 	 */
-	protected function formatLines(array $lines, $type = 'return')
-	{
+	protected function formatLines(array $lines, $type = 'return') {
 		$template = sprintf('<%s>%%s</%s>', $type, $type);
 
 		return array_map(function ($line) use ($template) {

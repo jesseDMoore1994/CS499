@@ -30,8 +30,7 @@ use Cake\TestSuite\TestCase;
  * Tests BelongsToMany class
  *
  */
-class BelongsToManyTest extends TestCase
-{
+class BelongsToManyTest extends TestCase {
 	/**
 	 * Fixtures
 	 *
@@ -44,8 +43,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->tag = $this->getMock(
 			'Cake\ORM\Table',
@@ -78,8 +76,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -89,8 +86,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCanBeJoined()
-	{
+	public function testCanBeJoined() {
 		$assoc = new BelongsToMany('Test');
 		$this->assertFalse($assoc->canBeJoined());
 	}
@@ -100,8 +96,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSort()
-	{
+	public function testSort() {
 		$assoc = new BelongsToMany('Test');
 		$this->assertNull($assoc->sort());
 		$assoc->sort(['id' => 'ASC']);
@@ -113,8 +108,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequiresKeys()
-	{
+	public function testRequiresKeys() {
 		$assoc = new BelongsToMany('Test');
 		$this->assertTrue($assoc->requiresKeys());
 		$assoc->strategy(BelongsToMany::STRATEGY_SUBQUERY);
@@ -130,8 +124,7 @@ class BelongsToManyTest extends TestCase
 	 * @expectedExceptionMessage Invalid strategy "join" was provided
 	 * @return void
 	 */
-	public function testStrategyFailure()
-	{
+	public function testStrategyFailure() {
 		$assoc = new BelongsToMany('Test');
 		$assoc->strategy(BelongsToMany::STRATEGY_JOIN);
 	}
@@ -141,8 +134,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJunction()
-	{
+	public function testJunction() {
 		$assoc = new BelongsToMany('Test', [
 			'sourceTable' => $this->article,
 			'targetTable' => $this->tag
@@ -180,8 +172,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJunctionCustomKeys()
-	{
+	public function testJunctionCustomKeys() {
 		$this->article->belongsToMany('Tags', [
 			'joinTable' => 'articles_tags',
 			'foreignKey' => 'article',
@@ -206,8 +197,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJunctionWithDefaultTableName()
-	{
+	public function testJunctionWithDefaultTableName() {
 		$assoc = new BelongsToMany('Test', [
 			'sourceTable' => $this->article,
 			'targetTable' => $this->tag,
@@ -223,8 +213,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveStrategy()
-	{
+	public function testSaveStrategy() {
 		$assoc = new BelongsToMany('Test');
 		$this->assertEquals(BelongsToMany::SAVE_REPLACE, $assoc->saveStrategy());
 		$assoc->saveStrategy(BelongsToMany::SAVE_APPEND);
@@ -238,8 +227,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveStrategyInOptions()
-	{
+	public function testSaveStrategyInOptions() {
 		$assoc = new BelongsToMany('Test', ['saveStrategy' => BelongsToMany::SAVE_APPEND]);
 		$this->assertEquals(BelongsToMany::SAVE_APPEND, $assoc->saveStrategy());
 	}
@@ -251,8 +239,7 @@ class BelongsToManyTest extends TestCase
 	 * @expectedExceptionMessage Invalid save strategy "depsert"
 	 * @return void
 	 */
-	public function testSaveStrategyInvalid()
-	{
+	public function testSaveStrategyInvalid() {
 		$assoc = new BelongsToMany('Test', ['saveStrategy' => 'depsert']);
 	}
 
@@ -261,8 +248,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCascadeDelete()
-	{
+	public function testCascadeDelete() {
 		$articleTag = $this->getMock('Cake\ORM\Table', ['deleteAll'], []);
 		$config = [
 			'sourceTable' => $this->article,
@@ -291,8 +277,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCascadeDeleteDependent()
-	{
+	public function testCascadeDeleteDependent() {
 		$articleTag = $this->getMock('Cake\ORM\Table', ['delete', 'deleteAll'], []);
 		$config = [
 			'sourceTable' => $this->article,
@@ -320,8 +305,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCascadeDeleteWithCallbacks()
-	{
+	public function testCascadeDeleteWithCallbacks() {
 		$articleTag = TableRegistry::get('ArticlesTags');
 		$config = [
 			'sourceTable' => $this->article,
@@ -350,8 +334,7 @@ class BelongsToManyTest extends TestCase
 	 * @expectedExceptionMessage Source entity needs to be persisted before proceeding
 	 * @return void
 	 */
-	public function testLinkWithNotPersistedSource()
-	{
+	public function testLinkWithNotPersistedSource() {
 		$config = [
 			'sourceTable' => $this->article,
 			'targetTable' => $this->tag,
@@ -370,8 +353,7 @@ class BelongsToManyTest extends TestCase
 	 * @expectedExceptionMessage Cannot link not persisted entities
 	 * @return void
 	 */
-	public function testLinkWithNotPersistedTarget()
-	{
+	public function testLinkWithNotPersistedTarget() {
 		$config = [
 			'sourceTable' => $this->article,
 			'targetTable' => $this->tag,
@@ -388,8 +370,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLinkSuccess()
-	{
+	public function testLinkSuccess() {
 		$connection = ConnectionManager::get('test');
 		$joint = $this->getMock(
 			'\Cake\ORM\Table',
@@ -440,8 +421,7 @@ class BelongsToManyTest extends TestCase
 	 * @expectedExceptionMessage Source entity needs to be persisted before proceeding
 	 * @return void
 	 */
-	public function testUnlinkWithNotPersistedSource()
-	{
+	public function testUnlinkWithNotPersistedSource() {
 		$config = [
 			'sourceTable' => $this->article,
 			'targetTable' => $this->tag,
@@ -460,8 +440,7 @@ class BelongsToManyTest extends TestCase
 	 * @expectedExceptionMessage Cannot link not persisted entities
 	 * @return void
 	 */
-	public function testUnlinkWithNotPersistedTarget()
-	{
+	public function testUnlinkWithNotPersistedTarget() {
 		$config = [
 			'sourceTable' => $this->article,
 			'targetTable' => $this->tag,
@@ -478,8 +457,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUnlinkSuccess()
-	{
+	public function testUnlinkSuccess() {
 		$joint = TableRegistry::get('SpecialTags');
 		$articles = TableRegistry::get('Articles');
 		$tags = TableRegistry::get('Tags');
@@ -508,8 +486,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUnlinkWithoutPropertyClean()
-	{
+	public function testUnlinkWithoutPropertyClean() {
 		$joint = TableRegistry::get('SpecialTags');
 		$articles = TableRegistry::get('Articles');
 		$tags = TableRegistry::get('Tags');
@@ -541,8 +518,7 @@ class BelongsToManyTest extends TestCase
 	 * @expectedExceptionMessage Could not find primary key value for source entity
 	 * @return void
 	 */
-	public function testReplaceWithMissingPrimaryKey()
-	{
+	public function testReplaceWithMissingPrimaryKey() {
 		$config = [
 			'sourceTable' => $this->article,
 			'targetTable' => $this->tag,
@@ -559,8 +535,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReplaceLinksUpdateToEmptySet()
-	{
+	public function testReplaceLinksUpdateToEmptySet() {
 		$joint = TableRegistry::get('ArticlesTags');
 		$articles = TableRegistry::get('Articles');
 		$tags = TableRegistry::get('Tags');
@@ -590,8 +565,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReplaceLinkSuccess()
-	{
+	public function testReplaceLinkSuccess() {
 		$joint = TableRegistry::get('ArticlesTags');
 		$articles = TableRegistry::get('Articles');
 		$tags = TableRegistry::get('Tags');
@@ -630,8 +604,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReplaceLinkWithConditions()
-	{
+	public function testReplaceLinkWithConditions() {
 		$joint = TableRegistry::get('SpecialTags');
 		$articles = TableRegistry::get('Articles');
 		$tags = TableRegistry::get('Tags');
@@ -661,8 +634,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function emptyProvider()
-	{
+	public function emptyProvider() {
 		return [
 			[''],
 			[false],
@@ -678,8 +650,7 @@ class BelongsToManyTest extends TestCase
 	 * @expectedExceptionMessage Could not save tags, it cannot be traversed
 	 * @return void
 	 */
-	public function testSaveAssociatedNotEmptyNotIterable()
-	{
+	public function testSaveAssociatedNotEmptyNotIterable() {
 		$articles = TableRegistry::get('Articles');
 		$assoc = $articles->belongsToMany('Tags', [
 			'saveStrategy' => BelongsToMany::SAVE_APPEND,
@@ -699,8 +670,7 @@ class BelongsToManyTest extends TestCase
 	 * @dataProvider emptyProvider
 	 * @return void
 	 */
-	public function testSaveAssociatedEmptySetSuccess($value)
-	{
+	public function testSaveAssociatedEmptySetSuccess($value) {
 		$assoc = $this->getMock(
 			'\Cake\ORM\Association\BelongsToMany',
 			['_saveTarget', 'replaceLinks'],
@@ -725,8 +695,7 @@ class BelongsToManyTest extends TestCase
 	 * @dataProvider emptyProvider
 	 * @return void
 	 */
-	public function testSaveAssociatedEmptySetUpdateSuccess($value)
-	{
+	public function testSaveAssociatedEmptySetUpdateSuccess($value) {
 		$assoc = $this->getMock(
 			'\Cake\ORM\Association\BelongsToMany',
 			['_saveTarget', 'replaceLinks'],
@@ -754,8 +723,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveAssociatedWithReplace()
-	{
+	public function testSaveAssociatedWithReplace() {
 		$assoc = $this->getMock(
 			'\Cake\ORM\Association\BelongsToMany',
 			['replaceLinks'],
@@ -781,8 +749,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveAssociatedWithReplaceReturnFalse()
-	{
+	public function testSaveAssociatedWithReplaceReturnFalse() {
 		$assoc = $this->getMock(
 			'\Cake\ORM\Association\BelongsToMany',
 			['replaceLinks'],
@@ -808,8 +775,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveAssociatedOnlyEntitiesAppend()
-	{
+	public function testSaveAssociatedOnlyEntitiesAppend() {
 		$connection = ConnectionManager::get('test');
 		$mock = $this->getMock(
 			'Cake\ORM\Table',
@@ -845,8 +811,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTargetForeignKey()
-	{
+	public function testTargetForeignKey() {
 		$assoc = new BelongsToMany('Test', [
 			'sourceTable' => $this->article,
 			'targetTable' => $this->tag
@@ -869,8 +834,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJunctionWithCustomForeignKeys()
-	{
+	public function testJunctionWithCustomForeignKeys() {
 		$assoc = new BelongsToMany('Test', [
 			'sourceTable' => $this->article,
 			'targetTable' => $this->tag,
@@ -891,8 +855,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPropertyOption()
-	{
+	public function testPropertyOption() {
 		$config = ['propertyName' => 'thing_placeholder'];
 		$association = new BelongsToMany('Thing', $config);
 		$this->assertEquals('thing_placeholder', $association->property());
@@ -903,8 +866,7 @@ class BelongsToManyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPropertyNoPlugin()
-	{
+	public function testPropertyNoPlugin() {
 		$mock = $this->getMock('Cake\ORM\Table', [], [], '', false);
 		$config = [
 			'sourceTable' => $this->article,
@@ -921,8 +883,7 @@ class BelongsToManyTest extends TestCase
 	 * @see https://github.com/cakephp/cakephp/issues/7916
 	 * @return void
 	 */
-	public function testEagerLoadingBelongsToManyLimitedFields()
-	{
+	public function testEagerLoadingBelongsToManyLimitedFields() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsToMany('Tags');
 		$result = $table

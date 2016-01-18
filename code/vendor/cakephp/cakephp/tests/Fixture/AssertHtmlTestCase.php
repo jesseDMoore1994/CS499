@@ -7,16 +7,14 @@ use Cake\TestSuite\TestCase;
  * This class helps in indirectly testing the functionalities of TestCase::assertHtml
  *
  */
-class AssertHtmlTestCase extends TestCase
-{
+class AssertHtmlTestCase extends TestCase {
 
 	/**
 	 * test that assertHtml knows how to handle correct quoting.
 	 *
 	 * @return void
 	 */
-	public function testAssertHtmlQuotes()
-	{
+	public function testAssertHtmlQuotes() {
 		$input = '<a href="/test.html" class="active">My link</a>';
 		$pattern = [
 			'a' => ['href' => '/test.html', 'class' => 'active'],
@@ -47,8 +45,7 @@ class AssertHtmlTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNumericValuesInExpectationForAssertHtml()
-	{
+	public function testNumericValuesInExpectationForAssertHtml() {
 		$value = 220985;
 
 		$input = '<p><strong>' . $value . '</strong></p>';
@@ -97,8 +94,7 @@ class AssertHtmlTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBadAssertHtml()
-	{
+	public function testBadAssertHtml() {
 		$input = '<a href="/test.html" class="active">My link</a>';
 		$pattern = [
 			'a' => ['hRef' => '/test.html', 'clAss' => 'active'],
@@ -113,8 +109,7 @@ class AssertHtmlTestCase extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBadAssertHtml2()
-	{
+	public function testBadAssertHtml2() {
 		$input = '<a href="/test.html" class="active">My link</a>';
 		$pattern = [
 			'<a' => ['href' => '/test.html', 'class' => 'active'],

@@ -7,12 +7,10 @@ use Symfony\Component\Console\Output\StreamOutput;
 use Phinx\Config\Config;
 use Phinx\Console\Command\Create;
 
-class CreateTest extends \PHPUnit_Framework_TestCase
-{
+class CreateTest extends \PHPUnit_Framework_TestCase {
 	protected $config = array();
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->config = new Config(array(
 			'paths' => array(
 				'migrations' => sys_get_temp_dir(),
@@ -36,8 +34,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @expectedExceptionMessage The migration class name "MyDuplicateMigration" already exists
 	 */
-	public function testExecuteWithDuplicateMigrationNames()
-	{
+	public function testExecuteWithDuplicateMigrationNames() {
 		$application = new \Phinx\Console\PhinxApplication('testing');
 		$application->add(new Create());
 

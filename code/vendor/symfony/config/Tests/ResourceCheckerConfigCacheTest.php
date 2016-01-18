@@ -14,17 +14,14 @@ namespace Symfony\Component\Config\Tests;
 use Symfony\Component\Config\Tests\Resource\ResourceStub;
 use Symfony\Component\Config\ResourceCheckerConfigCache;
 
-class ResourceCheckerConfigCacheTest extends \PHPUnit_Framework_TestCase
-{
+class ResourceCheckerConfigCacheTest extends \PHPUnit_Framework_TestCase {
 	private $cacheFile = null;
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->cacheFile = tempnam(sys_get_temp_dir(), 'config_');
 	}
 
-	protected function tearDown()
-	{
+	protected function tearDown() {
 		$files = array($this->cacheFile, "{$this->cacheFile}.meta");
 
 		foreach ($files as $file) {
@@ -34,15 +31,13 @@ class ResourceCheckerConfigCacheTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testGetPath()
-	{
+	public function testGetPath() {
 		$cache = new ResourceCheckerConfigCache($this->cacheFile);
 
 		$this->assertSame($this->cacheFile, $cache->getPath());
 	}
 
-	public function testCacheIsNotFreshIfEmpty()
-	{
+	public function testCacheIsNotFreshIfEmpty() {
 		$checker = $this->getMock('\Symfony\Component\Config\ResourceCheckerInterface')
 			->expects($this->never())->method('supports');
 
@@ -55,16 +50,14 @@ class ResourceCheckerConfigCacheTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($cache->isFresh());
 	}
 
-	public function testCacheIsFreshIfNocheckerProvided()
-	{
+	public function testCacheIsFreshIfNocheckerProvided() {
 		/* For example in prod mode, you may choose not to run any checkers
 		   at all. In that case, the cache should always be considered fresh. */
 		$cache = new ResourceCheckerConfigCache($this->cacheFile);
 		$this->assertTrue($cache->isFresh());
 	}
 
-	public function testResourcesWithoutcheckersAreIgnoredAndConsideredFresh()
-	{
+	public function testResourcesWithoutcheckersAreIgnoredAndConsideredFresh() {
 		/* As in the previous test, but this time we have a resource. */
 		$cache = new ResourceCheckerConfigCache($this->cacheFile);
 		$cache->write('', array(new ResourceStub()));
@@ -72,8 +65,7 @@ class ResourceCheckerConfigCacheTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($cache->isFresh()); // no (matching) ResourceChecker passed
 	}
 
-	public function testIsFreshWithchecker()
-	{
+	public function testIsFreshWithchecker() {
 		$checker = $this->getMock('\Symfony\Component\Config\ResourceCheckerInterface');
 
 		$checker->expects($this->once())
@@ -90,8 +82,7 @@ class ResourceCheckerConfigCacheTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($cache->isFresh());
 	}
 
-	public function testIsNotFreshWithchecker()
-	{
+	public function testIsNotFreshWithchecker() {
 		$checker = $this->getMock('\Symfony\Component\Config\ResourceCheckerInterface');
 
 		$checker->expects($this->once())
@@ -108,8 +99,7 @@ class ResourceCheckerConfigCacheTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($cache->isFresh());
 	}
 
-	public function testCacheKeepsContent()
-	{
+	public function testCacheKeepsContent() {
 		$cache = new ResourceCheckerConfigCache($this->cacheFile);
 		$cache->write('FOOBAR');
 

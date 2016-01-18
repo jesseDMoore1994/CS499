@@ -22,11 +22,9 @@ use Cake\TestSuite\TestCase;
  * Test case for LogTrait
  *
  */
-class LogTraitTest extends TestCase
-{
+class LogTraitTest extends TestCase {
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Log::drop('trait_test');
 	}
@@ -36,8 +34,7 @@ class LogTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLog()
-	{
+	public function testLog() {
 		$mock = $this->getMock('Psr\Log\LoggerInterface');
 		$mock->expects($this->at(0))
 			->method('log')

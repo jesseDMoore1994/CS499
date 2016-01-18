@@ -17,8 +17,7 @@ namespace Cake\Database;
 /**
  * An interface used by Expression objects.
  */
-interface ExpressionInterface
-{
+interface ExpressionInterface {
 
 	/**
 	 * Converts the Node into a SQL string fragment.

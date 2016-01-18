@@ -18,8 +18,7 @@ use Symfony\Component\Config\Resource\ResourceInterface;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-interface ConfigCacheInterface
-{
+interface ConfigCacheInterface {
 	/**
 	 * Gets the cache file path.
 	 *

@@ -35,8 +35,7 @@ use Phinx\Seed\AbstractSeed;
 use Phinx\Seed\SeedInterface;
 use Phinx\Util\Util;
 
-class Manager
-{
+class Manager {
 	/**
 	 * @var ConfigInterface
 	 */
@@ -78,8 +77,7 @@ class Manager
 	 * @param ConfigInterface $config Configuration Object
 	 * @param OutputInterface $output Console Output
 	 */
-	public function __construct(ConfigInterface $config, OutputInterface $output)
-	{
+	public function __construct(ConfigInterface $config, OutputInterface $output) {
 		$this->setConfig($config);
 		$this->setOutput($output);
 	}
@@ -91,8 +89,7 @@ class Manager
 	 * @param null $format
 	 * @return integer 0 if all migrations are up, or an error code
 	 */
-	public function printStatus($environment, $format = null)
-	{
+	public function printStatus($environment, $format = null) {
 		$output = $this->getOutput();
 		$migrations = array();
 		$hasDownMigration = false;
@@ -172,8 +169,7 @@ class Manager
 	 *
 	 * @return void
 	 */
-	public function migrateToDateTime($environment, \DateTime $dateTime)
-	{
+	public function migrateToDateTime($environment, \DateTime $dateTime) {
 		$env = $this->getEnvironment($environment);
 		$versions = array_keys($this->getMigrations());
 		$dateString = $dateTime->format('Ymdhis');
@@ -206,8 +202,7 @@ class Manager
 	 *
 	 * @return void
 	 */
-	public function rollbackToDateTime($environment, \DateTime $dateTime)
-	{
+	public function rollbackToDateTime($environment, \DateTime $dateTime) {
 		$env = $this->getEnvironment($environment);
 		$versions = $env->getVersions();
 		$dateString = $dateTime->format('Ymdhis');
@@ -234,8 +229,7 @@ class Manager
 	 * @param int $version
 	 * @return void
 	 */
-	public function migrate($environment, $version = null)
-	{
+	public function migrate($environment, $version = null) {
 		$migrations = $this->getMigrations();
 		$env = $this->getEnvironment($environment);
 		$versions = $env->getVersions();
@@ -294,8 +288,7 @@ class Manager
 	 * @param string $direction Direction
 	 * @return void
 	 */
-	public function executeMigration($name, MigrationInterface $migration, $direction = MigrationInterface::UP)
-	{
+	public function executeMigration($name, MigrationInterface $migration, $direction = MigrationInterface::UP) {
 		$this->getOutput()->writeln('');
 		$this->getOutput()->writeln(
 			' =='
@@ -323,8 +316,7 @@ class Manager
 	 * @param SeedInterface $seed Seed
 	 * @return void
 	 */
-	public function executeSeed($name, SeedInterface $seed)
-	{
+	public function executeSeed($name, SeedInterface $seed) {
 		$this->getOutput()->writeln('');
 		$this->getOutput()->writeln(
 			' =='
@@ -352,8 +344,7 @@ class Manager
 	 * @param int $version
 	 * @return void
 	 */
-	public function rollback($environment, $version = null)
-	{
+	public function rollback($environment, $version = null) {
 		$migrations = $this->getMigrations();
 		$env = $this->getEnvironment($environment);
 		$versions = $env->getVersions();
@@ -408,8 +399,7 @@ class Manager
 	 * @param string $seed Seeder
 	 * @return void
 	 */
-	public function seed($environment, $seed = null)
-	{
+	public function seed($environment, $seed = null) {
 		$seeds = $this->getSeeds();
 		$env = $this->getEnvironment($environment);
 
@@ -436,8 +426,7 @@ class Manager
 	 * @param array $environments Environments
 	 * @return Manager
 	 */
-	public function setEnvironments($environments = array())
-	{
+	public function setEnvironments($environments = array()) {
 		$this->environments = $environments;
 		return $this;
 	}
@@ -449,8 +438,7 @@ class Manager
 	 * @throws \InvalidArgumentException
 	 * @return Environment
 	 */
-	public function getEnvironment($name)
-	{
+	public function getEnvironment($name) {
 		if (isset($this->environments[$name])) {
 			return $this->environments[$name];
 		}
@@ -477,8 +465,7 @@ class Manager
 	 * @param OutputInterface $output Output
 	 * @return Manager
 	 */
-	public function setOutput(OutputInterface $output)
-	{
+	public function setOutput(OutputInterface $output) {
 		$this->output = $output;
 		return $this;
 	}
@@ -488,8 +475,7 @@ class Manager
 	 *
 	 * @return OutputInterface
 	 */
-	public function getOutput()
-	{
+	public function getOutput() {
 		return $this->output;
 	}
 
@@ -499,8 +485,7 @@ class Manager
 	 * @param array $migrations Migrations
 	 * @return Manager
 	 */
-	public function setMigrations(array $migrations)
-	{
+	public function setMigrations(array $migrations) {
 		$this->migrations = $migrations;
 		return $this;
 	}
@@ -511,8 +496,7 @@ class Manager
 	 * @throws \InvalidArgumentException
 	 * @return AbstractMigration[]
 	 */
-	public function getMigrations()
-	{
+	public function getMigrations() {
 		if (null === $this->migrations) {
 			$config = $this->getConfig();
 			$phpFiles = glob($config->getMigrationPath() . DIRECTORY_SEPARATOR . '*.php');
@@ -583,8 +567,7 @@ class Manager
 	 * @param array $seeds Seeders
 	 * @return Manager
 	 */
-	public function setSeeds(array $seeds)
-	{
+	public function setSeeds(array $seeds) {
 		$this->seeds = $seeds;
 		return $this;
 	}
@@ -595,8 +578,7 @@ class Manager
 	 * @throws \InvalidArgumentException
 	 * @return AbstractSeed[]
 	 */
-	public function getSeeds()
-	{
+	public function getSeeds() {
 		if (null === $this->seeds) {
 			$config = $this->getConfig();
 			$phpFiles = glob($config->getSeedPath() . DIRECTORY_SEPARATOR . '*.php');
@@ -652,8 +634,7 @@ class Manager
 	 * @param  ConfigInterface $config Configuration Object
 	 * @return Manager
 	 */
-	public function setConfig(ConfigInterface $config)
-	{
+	public function setConfig(ConfigInterface $config) {
 		$this->config = $config;
 		return $this;
 	}
@@ -663,8 +644,7 @@ class Manager
 	 *
 	 * @return ConfigInterface
 	 */
-	public function getConfig()
-	{
+	public function getConfig() {
 		return $this->config;
 	}
 }

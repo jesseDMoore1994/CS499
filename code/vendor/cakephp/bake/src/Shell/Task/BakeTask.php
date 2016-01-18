@@ -25,8 +25,7 @@ use Cake\Filesystem\File;
  * Base class for Bake Tasks.
  *
  */
-class BakeTask extends Shell
-{
+class BakeTask extends Shell {
 	use ConventionsTrait;
 
 	/**
@@ -56,8 +55,7 @@ class BakeTask extends Shell
 	 *
 	 * @return void
 	 */
-	public function startup()
-	{
+	public function startup() {
 		Configure::write('debug', true);
 		Cache::disable();
 	}
@@ -69,8 +67,7 @@ class BakeTask extends Shell
 	 *
 	 * @return void
 	 */
-	public function initialize()
-	{
+	public function initialize() {
 		if (empty($this->connection) && !empty($this->params['connection'])) {
 			$this->connection = $this->params['connection'];
 		}
@@ -83,8 +80,7 @@ class BakeTask extends Shell
 	 *
 	 * @return string The inflected prefix path.
 	 */
-	protected function _getPrefix()
-	{
+	protected function _getPrefix() {
 		$prefix = $this->param('prefix');
 		if (!$prefix) {
 			return '';
@@ -99,8 +95,7 @@ class BakeTask extends Shell
 	 *
 	 * @return string Path to output.
 	 */
-	public function getPath()
-	{
+	public function getPath() {
 		$path = APP . $this->pathFragment;
 		if (isset($this->plugin)) {
 			$path = $this->_pluginPath($this->plugin) . 'src/' . $this->pathFragment;
@@ -118,8 +113,7 @@ class BakeTask extends Shell
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		if (isset($this->params['plugin'])) {
 			$this->plugin = $this->params['plugin'];
 			if (strpos($this->plugin, '\\')) {
@@ -138,8 +132,7 @@ class BakeTask extends Shell
 	 * @return void
 	 * @throws \RuntimeException if any errors occurred during the execution
 	 */
-	public function callProcess($command)
-	{
+	public function callProcess($command) {
 		$descriptorSpec = [
 			0 => ['pipe', 'r'],
 			1 => ['pipe', 'w'],
@@ -179,8 +172,7 @@ class BakeTask extends Shell
 	 * @param string $name The name to possibly split.
 	 * @return string The name without the plugin prefix.
 	 */
-	protected function _getName($name)
-	{
+	protected function _getName($name) {
 		if (strpos($name, '.')) {
 			list($plugin, $name) = pluginSplit($name);
 			$this->plugin = $this->params['plugin'] = $plugin;
@@ -194,8 +186,7 @@ class BakeTask extends Shell
 	 * @param string $path Path to folder which contains 'empty' file.
 	 * @return void
 	 */
-	protected function _deleteEmptyFile($path)
-	{
+	protected function _deleteEmptyFile($path) {
 		$File = new File($path);
 		if ($File->exists()) {
 			$File->delete();
@@ -210,8 +201,7 @@ class BakeTask extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$bakeThemes = [];

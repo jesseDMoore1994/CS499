@@ -23,8 +23,7 @@ use Cake\TestSuite\TestCase;
  * Class PhpConfigTest
  *
  */
-class PhpConfigTest extends TestCase
-{
+class PhpConfigTest extends TestCase {
 
 	/**
 	 * Test data to serialize and unserialize.
@@ -51,8 +50,7 @@ class PhpConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->path = CONFIG;
 	}
@@ -62,8 +60,7 @@ class PhpConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRead()
-	{
+	public function testRead() {
 		$engine = new PhpConfig($this->path);
 		$values = $engine->read('var_test');
 		$this->assertEquals('value', $values['Read']);
@@ -76,8 +73,7 @@ class PhpConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadWithExistentFileWithoutExtension()
-	{
+	public function testReadWithExistentFileWithoutExtension() {
 		$engine = new PhpConfig($this->path);
 		$engine->read('no_php_extension');
 	}
@@ -88,8 +84,7 @@ class PhpConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadWithNonExistentFile()
-	{
+	public function testReadWithNonExistentFile() {
 		$engine = new PhpConfig($this->path);
 		$engine->read('fake_values');
 	}
@@ -100,8 +95,7 @@ class PhpConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadEmptyFile()
-	{
+	public function testReadEmptyFile() {
 		$engine = new PhpConfig($this->path);
 		$engine->read('empty');
 	}
@@ -112,8 +106,7 @@ class PhpConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadWithDots()
-	{
+	public function testReadWithDots() {
 		$engine = new PhpConfig($this->path);
 		$engine->read('../empty');
 	}
@@ -123,8 +116,7 @@ class PhpConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadPluginValue()
-	{
+	public function testReadPluginValue() {
 		Plugin::load('TestPlugin');
 		$engine = new PhpConfig($this->path);
 		$result = $engine->read('TestPlugin.load');
@@ -138,8 +130,7 @@ class PhpConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDump()
-	{
+	public function testDump() {
 		$engine = new PhpConfig(TMP);
 		$result = $engine->dump('test', $this->testData);
 		$this->assertTrue($result > 0);
@@ -182,8 +173,7 @@ PHP;
 	 *
 	 * @return void
 	 */
-	public function testDumpRead()
-	{
+	public function testDumpRead() {
 		$engine = new PhpConfig(TMP);
 		$engine->dump('test', $this->testData);
 		$result = $engine->read('test');

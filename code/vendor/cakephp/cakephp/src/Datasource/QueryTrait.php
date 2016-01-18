@@ -23,8 +23,7 @@ use Cake\Datasource\Exception\RecordNotFoundException;
  * can retrieve results based on any criteria.
  *
  */
-trait QueryTrait
-{
+trait QueryTrait {
 
 	/**
 	 * Instance of a table object this query is bound to
@@ -91,8 +90,7 @@ trait QueryTrait
 	 * @param \Cake\Datasource\RepositoryInterface|null $table The default table object to use
 	 * @return \Cake\Datasource\RepositoryInterface|$this
 	 */
-	public function repository(RepositoryInterface $table = null)
-	{
+	public function repository(RepositoryInterface $table = null) {
 		if ($table === null) {
 			return $this->_repository;
 		}
@@ -112,8 +110,7 @@ trait QueryTrait
 	 * @param \Cake\Datasource\ResultSetInterface $results The results this query should return.
 	 * @return $this The query instance.
 	 */
-	public function setResult($results)
-	{
+	public function setResult($results) {
 		$this->_results = $results;
 		return $this;
 	}
@@ -126,8 +123,7 @@ trait QueryTrait
 	 *
 	 * @return \Iterator
 	 */
-	public function getIterator()
-	{
+	public function getIterator() {
 		return $this->all();
 	}
 
@@ -167,8 +163,7 @@ trait QueryTrait
 	 *   a cache config instance.
 	 * @return $this This instance
 	 */
-	public function cache($key, $config = 'default')
-	{
+	public function cache($key, $config = 'default') {
 		if ($key === false) {
 			$this->_cache = null;
 			return $this;
@@ -184,8 +179,7 @@ trait QueryTrait
 	 * @param bool|null $value Whether or not to eager load.
 	 * @return $this|\Cake\ORM\Query
 	 */
-	public function eagerLoaded($value = null)
-	{
+	public function eagerLoaded($value = null) {
 		if ($value === null) {
 			return $this->_eagerLoaded;
 		}
@@ -205,8 +199,7 @@ trait QueryTrait
 	 * @param string $alias the alias used to prefix the field
 	 * @return array
 	 */
-	public function aliasField($field, $alias = null)
-	{
+	public function aliasField($field, $alias = null) {
 		$namespaced = strpos($field, '.') !== false;
 		$aliasedField = $field;
 
@@ -234,8 +227,7 @@ trait QueryTrait
 	 * @param string|null $defaultAlias The default alias
 	 * @return array
 	 */
-	public function aliasFields($fields, $defaultAlias = null)
-	{
+	public function aliasFields($fields, $defaultAlias = null) {
 		$aliased = [];
 		foreach ($fields as $alias => $field) {
 			if (is_numeric($alias) && is_string($field)) {
@@ -259,8 +251,7 @@ trait QueryTrait
 	 *
 	 * @return \Cake\Datasource\ResultSetInterface
 	 */
-	public function all()
-	{
+	public function all() {
 		if (isset($this->_results)) {
 			return $this->_results;
 		}
@@ -283,8 +274,7 @@ trait QueryTrait
 	 *
 	 * @return array
 	 */
-	public function toArray()
-	{
+	public function toArray() {
 		return $this->all()->toArray();
 	}
 
@@ -307,8 +297,7 @@ trait QueryTrait
 	 * @return $this|array
 	 * @see \Cake\Collection\Iterator\MapReduce for details on how to use emit data to the map reducer.
 	 */
-	public function mapReduce(callable $mapper = null, callable $reducer = null, $overwrite = false)
-	{
+	public function mapReduce(callable $mapper = null, callable $reducer = null, $overwrite = false) {
 		if ($overwrite) {
 			$this->_mapReduce = [];
 		}
@@ -357,8 +346,7 @@ trait QueryTrait
 	 * @param bool|int $mode Whether or not to overwrite, append or prepend the formatter.
 	 * @return $this|array
 	 */
-	public function formatResults(callable $formatter = null, $mode = 0)
-	{
+	public function formatResults(callable $formatter = null, $mode = 0) {
 		if ($mode === self::OVERWRITE) {
 			$this->_formatters = [];
 		}
@@ -387,8 +375,7 @@ trait QueryTrait
 	 *
 	 * @return mixed the first result from the ResultSet
 	 */
-	public function first()
-	{
+	public function first() {
 		if ($this->_dirty) {
 			$this->limit(1);
 		}
@@ -401,8 +388,7 @@ trait QueryTrait
 	 * @throws \Cake\Datasource\Exception\RecordNotFoundException When there is no first record.
 	 * @return mixed The first result from the ResultSet.
 	 */
-	public function firstOrFail()
-	{
+	public function firstOrFail() {
 		$entity = $this->first();
 		if ($entity) {
 			return $entity;
@@ -428,8 +414,7 @@ trait QueryTrait
 	 * be processed by this class and not returned by this function
 	 * @return array
 	 */
-	public function getOptions()
-	{
+	public function getOptions() {
 		return $this->_options;
 	}
 
@@ -441,8 +426,7 @@ trait QueryTrait
 	 * @return mixed
 	 * @throws \BadMethodCallException if no such method exists in result set
 	 */
-	public function __call($method, $arguments)
-	{
+	public function __call($method, $arguments) {
 		$resultSetClass = $this->_decoratorClass();
 		if (in_array($method, get_class_methods($resultSetClass))) {
 			$results = $this->all();
@@ -475,8 +459,7 @@ trait QueryTrait
 	 * @param \Traversable $result Original results
 	 * @return \Cake\Datasource\ResultSetInterface
 	 */
-	protected function _decorateResults($result)
-	{
+	protected function _decorateResults($result) {
 		$decorator = $this->_decoratorClass();
 		foreach ($this->_mapReduce as $functions) {
 			$result = new MapReduce($result, $functions['mapper'], $functions['reducer']);
@@ -502,8 +485,7 @@ trait QueryTrait
 	 *
 	 * @return string
 	 */
-	protected function _decoratorClass()
-	{
+	protected function _decoratorClass() {
 		return 'Cake\Datasource\ResultSetDecorator';
 	}
 }

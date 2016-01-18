@@ -17,13 +17,11 @@ use Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class PdoCasterTest extends \PHPUnit_Framework_TestCase
-{
+class PdoCasterTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @requires extension pdo_sqlite
 	 */
-	public function testCastPdo()
-	{
+	public function testCastPdo() {
 		$pdo = new \PDO('sqlite::memory:');
 		$pdo->setAttribute(\PDO::ATTR_STATEMENT_CLASS, array('PDOStatement', array($pdo)));
 

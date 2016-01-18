@@ -37,8 +37,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Rob Morgan <robbym@gmail.com>
  */
-interface SeedInterface
-{
+interface SeedInterface {
 	/**
 	 * @var string
 	 */

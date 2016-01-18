@@ -25,8 +25,7 @@ use Cake\Utility\Security;
 
 /**
  */
-class RequestActionTraitTest extends TestCase
-{
+class RequestActionTraitTest extends TestCase {
 
 	/**
 	 * fixtures
@@ -40,8 +39,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 		Security::salt('not-the-default');
@@ -57,8 +55,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		DispatcherFactory::clear();
 		Router::reload();
@@ -69,8 +66,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestAction()
-	{
+	public function testRequestAction() {
 		$this->assertNull(Router::getRequest(), 'request stack should be empty.');
 
 		$result = $this->object->requestAction('');
@@ -111,8 +107,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionPlugins()
-	{
+	public function testRequestActionPlugins() {
 		Plugin::load('TestPlugin');
 		Router::reload();
 		Router::connect('/test_plugin/tests/:action/*', ['controller' => 'Tests', 'plugin' => 'TestPlugin']);
@@ -148,8 +143,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionArray()
-	{
+	public function testRequestActionArray() {
 		Plugin::load(['TestPlugin']);
 
 		$result = $this->object->requestAction(
@@ -199,8 +193,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionArraySetParamNames()
-	{
+	public function testRequestActionArraySetParamNames() {
 		$result = $this->object->requestAction(
 			['controller' => 'RequestAction', 'action' => 'params_pass']
 		);
@@ -215,8 +208,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionRemoveReturnParam()
-	{
+	public function testRequestActionRemoveReturnParam() {
 		$result = $this->object->requestAction(
 			'/request_action/param_check',
 			['return']
@@ -229,8 +221,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionParamParseAndPass()
-	{
+	public function testRequestActionParamParseAndPass() {
 		$result = $this->object->requestAction('/request_action/params_pass');
 		$result = json_decode($result, true);
 		$this->assertEquals('request_action/params_pass', $result['url']);
@@ -244,8 +235,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionBaseAndWebroot()
-	{
+	public function testRequestActionBaseAndWebroot() {
 		$request = new Request([
 			'base' => '/subdir',
 			'webroot' => '/subdir/'
@@ -263,8 +253,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionNoPostPassing()
-	{
+	public function testRequestActionNoPostPassing() {
 		$_POST = [
 			'item' => 'value'
 		];
@@ -286,8 +275,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionWithQueryString()
-	{
+	public function testRequestActionWithQueryString() {
 		$query = ['page' => 1, 'sort' => 'title'];
 		$result = $this->object->requestAction(
 			['controller' => 'RequestAction', 'action' => 'query_pass'],
@@ -317,8 +305,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionPostWithData()
-	{
+	public function testRequestActionPostWithData() {
 		$data = [
 			'Post' => ['id' => 2]
 		];
@@ -342,8 +329,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionGetParameters()
-	{
+	public function testRequestActionGetParameters() {
 		$result = $this->object->requestAction(
 			'/request_action/params_pass?get=value&limit=5'
 		);
@@ -363,8 +349,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionCookies()
-	{
+	public function testRequestActionCookies() {
 		$cookies = [
 			'foo' => 'bar'
 		];
@@ -381,8 +366,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionEnvironment()
-	{
+	public function testRequestActionEnvironment() {
 		$result = $this->object->requestAction('/request_action/params_pass');
 		$result = json_decode($result, true);
 		$this->assertEquals('', $result['contentType'], 'Original content type not found.');
@@ -400,8 +384,7 @@ class RequestActionTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequestActionSession()
-	{
+	public function testRequestActionSession() {
 		$result = $this->object->requestAction('/request_action/session_test');
 		$this->assertNull($result);
 

@@ -22,8 +22,7 @@ use Cake\View\StringTemplateTrait;
  * TestStringTemplate
  *
  */
-class TestStringTemplate
-{
+class TestStringTemplate {
 
 	use InstanceConfigTrait;
 	use StringTemplateTrait;
@@ -40,16 +39,14 @@ class TestStringTemplate
  * StringTemplateTraitTest class
  *
  */
-class StringTemplateTraitTest extends TestCase
-{
+class StringTemplateTraitTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->Template = new TestStringTemplate;
 	}
@@ -59,8 +56,7 @@ class StringTemplateTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInitStringTemplates()
-	{
+	public function testInitStringTemplates() {
 		$templates = [
 			'text' => '<p>{{text}}</p>',
 		];
@@ -80,8 +76,7 @@ class StringTemplateTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInitStringTemplatesArrayForm()
-	{
+	public function testInitStringTemplatesArrayForm() {
 		$this->Template->config(
 			'templates.text',
 			'<p>{{text}}</p>'
@@ -101,8 +96,7 @@ class StringTemplateTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatStringTemplate()
-	{
+	public function testFormatStringTemplate() {
 		$templates = [
 			'text' => '<p>{{text}}</p>',
 		];
@@ -121,8 +115,7 @@ class StringTemplateTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetTemplater()
-	{
+	public function testGetTemplater() {
 		$templates = [
 			'text' => '<p>{{text}}</p>',
 		];

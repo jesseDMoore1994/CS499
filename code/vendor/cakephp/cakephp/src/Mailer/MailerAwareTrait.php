@@ -25,8 +25,7 @@ use InvalidArgumentException;
  * Example users of this trait are Cake\Controller\Controller and
  * Cake\Console\Shell.
  */
-trait MailerAwareTrait
-{
+trait MailerAwareTrait {
 
 	/**
 	 * Returns a mailer instance.
@@ -36,8 +35,7 @@ trait MailerAwareTrait
 	 * @return \Cake\Mailer\Mailer
 	 * @throws \Cake\Mailer\Exception\MissingMailerException if undefined mailer class.
 	 */
-	public function getMailer($name, Email $email = null)
-	{
+	public function getMailer($name, Email $email = null) {
 		if ($email === null) {
 			$email = new Email();
 		}

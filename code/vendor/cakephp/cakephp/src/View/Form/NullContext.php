@@ -22,8 +22,7 @@ use Cake\Network\Request;
  * This context provider simply fulfils the interface requirements
  * that FormHelper has and allows access to the request data.
  */
-class NullContext implements ContextInterface
-{
+class NullContext implements ContextInterface {
 
 	/**
 	 * The request object.
@@ -38,88 +37,77 @@ class NullContext implements ContextInterface
 	 * @param \Cake\Network\Request $request The request object.
 	 * @param array $context Context info.
 	 */
-	public function __construct(Request $request, array $context)
-	{
+	public function __construct(Request $request, array $context) {
 		$this->_request = $request;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function primaryKey()
-	{
+	public function primaryKey() {
 		return [];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function isPrimaryKey($field)
-	{
+	public function isPrimaryKey($field) {
 		return false;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function isCreate()
-	{
+	public function isCreate() {
 		return true;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function val($field)
-	{
+	public function val($field) {
 		return $this->_request->data($field);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function isRequired($field)
-	{
+	public function isRequired($field) {
 		return false;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function fieldNames()
-	{
+	public function fieldNames() {
 		return [];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function type($field)
-	{
+	public function type($field) {
 		return null;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function attributes($field)
-	{
+	public function attributes($field) {
 		return [];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function hasError($field)
-	{
+	public function hasError($field) {
 		return false;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function error($field)
-	{
+	public function error($field) {
 		return [];
 	}
 }

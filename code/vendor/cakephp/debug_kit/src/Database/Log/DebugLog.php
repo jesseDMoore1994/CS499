@@ -23,8 +23,7 @@ use Cake\Database\Log\QueryLogger;
  * and stores log messages internally so they can be displayed
  * or stored for future use.
  */
-class DebugLog extends QueryLogger
-{
+class DebugLog extends QueryLogger {
 
 	/**
 	 * Logs from the current request.
@@ -67,8 +66,7 @@ class DebugLog extends QueryLogger
 	 * @param Cake\Database\Log\QueryLogger $logger The logger to decorate and spy on.
 	 * @param string $name The name of the connection being logged.
 	 */
-	public function __construct($logger, $name)
-	{
+	public function __construct($logger, $name) {
 		$this->_logger = $logger;
 		$this->_connectionName = $name;
 	}
@@ -78,8 +76,7 @@ class DebugLog extends QueryLogger
 	 *
 	 * @return array
 	 */
-	public function name()
-	{
+	public function name() {
 		return $this->_connectionName;
 	}
 
@@ -88,8 +85,7 @@ class DebugLog extends QueryLogger
 	 *
 	 * @return array
 	 */
-	public function queries()
-	{
+	public function queries() {
 		return $this->_queries;
 	}
 
@@ -98,8 +94,7 @@ class DebugLog extends QueryLogger
 	 *
 	 * @return int
 	 */
-	public function totalTime()
-	{
+	public function totalTime() {
 		return $this->_totalTime;
 	}
 
@@ -108,8 +103,7 @@ class DebugLog extends QueryLogger
 	 *
 	 * @return int
 	 */
-	public function totalRows()
-	{
+	public function totalRows() {
 		return $this->_totalRows;
 	}
 
@@ -119,8 +113,7 @@ class DebugLog extends QueryLogger
 	 * @param \Cake\Database\Log\LoggedQuery $query The query being logged.
 	 * @return void
 	 */
-	public function log(LoggedQuery $query)
-	{
+	public function log(LoggedQuery $query) {
 		if ($this->_logger) {
 			$this->_logger->log($query);
 		}

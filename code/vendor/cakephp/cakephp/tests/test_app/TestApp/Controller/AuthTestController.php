@@ -20,8 +20,7 @@ use Cake\Routing\Router;
  * AuthTestController class
  *
  */
-class AuthTestController extends Controller
-{
+class AuthTestController extends Controller {
 
 	/**
 	 * components property
@@ -40,8 +39,7 @@ class AuthTestController extends Controller
 	/**
 	 * construct method
 	 */
-	public function __construct($request = null, $response = null)
-	{
+	public function __construct($request = null, $response = null) {
 		$request->addParams(Router::parse('/auth_test'));
 		$request->here = '/auth_test';
 		$request->webroot = '/';
@@ -54,8 +52,7 @@ class AuthTestController extends Controller
 	 *
 	 * @return void
 	 */
-	public function login()
-	{
+	public function login() {
 	}
 
 	/**
@@ -63,8 +60,7 @@ class AuthTestController extends Controller
 	 *
 	 * @return void
 	 */
-	public function logout()
-	{
+	public function logout() {
 	}
 
 	/**
@@ -72,8 +68,7 @@ class AuthTestController extends Controller
 	 *
 	 * @return void
 	 */
-	public function add()
-	{
+	public function add() {
 		echo "add";
 	}
 
@@ -82,8 +77,7 @@ class AuthTestController extends Controller
 	 *
 	 * @return void
 	 */
-	public function view()
-	{
+	public function view() {
 		echo "view";
 	}
 
@@ -92,8 +86,7 @@ class AuthTestController extends Controller
 	 *
 	 * @return void
 	 */
-	public function camelCase()
-	{
+	public function camelCase() {
 		echo "camelCase";
 	}
 
@@ -104,8 +97,7 @@ class AuthTestController extends Controller
 	 * @param mixed $status
 	 * @return void|\Cake\Network\Response
 	 */
-	public function redirect($url, $status = null)
-	{
+	public function redirect($url, $status = null) {
 		$this->testUrl = Router::url($url);
 		return parent::redirect($url, $status);
 	}
@@ -115,7 +107,6 @@ class AuthTestController extends Controller
 	 *
 	 * @return void
 	 */
-	public function isAuthorized()
-	{
+	public function isAuthorized() {
 	}
 }

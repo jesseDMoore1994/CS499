@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-class Package
-{
+class Package {
 	/**
 	 *
 	 * Message keys and translations in this package.
@@ -62,8 +61,7 @@ class Package
 		$formatter = 'basic',
 		$fallback = null,
 		array $messages = []
-	)
-	{
+	) {
 		$this->formatter = $formatter;
 		$this->fallback = $fallback;
 		$this->messages = $messages;
@@ -78,8 +76,7 @@ class Package
 	 * @return void
 	 *
 	 */
-	public function setMessages(array $messages)
-	{
+	public function setMessages(array $messages) {
 		$this->messages = $messages;
 	}
 
@@ -90,8 +87,7 @@ class Package
 	 * @return array
 	 *
 	 */
-	public function getMessages()
-	{
+	public function getMessages() {
 		return $this->messages;
 	}
 
@@ -104,8 +100,7 @@ class Package
 	 * @return void
 	 *
 	 */
-	public function setFormatter($formatter)
-	{
+	public function setFormatter($formatter) {
 		$this->formatter = $formatter;
 	}
 
@@ -116,8 +111,7 @@ class Package
 	 * @return string
 	 *
 	 */
-	public function getFormatter()
-	{
+	public function getFormatter() {
 		return $this->formatter;
 	}
 
@@ -130,8 +124,7 @@ class Package
 	 * @return void
 	 *
 	 */
-	public function setFallback($fallback)
-	{
+	public function setFallback($fallback) {
 		$this->fallback = $fallback;
 	}
 
@@ -142,8 +135,7 @@ class Package
 	 * @return string
 	 *
 	 */
-	public function getFallback()
-	{
+	public function getFallback() {
 		return $this->fallback;
 	}
 }

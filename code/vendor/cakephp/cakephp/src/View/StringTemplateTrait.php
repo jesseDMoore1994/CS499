@@ -18,8 +18,7 @@ namespace Cake\View;
  * Adds string template functionality to any class by providing methods to
  * load and parse string templates.
  */
-trait StringTemplateTrait
-{
+trait StringTemplateTrait {
 
 	/**
 	 * StringTemplate instance.
@@ -35,8 +34,7 @@ trait StringTemplateTrait
 	 *   allows templates to be added.
 	 * @return $this|string|array
 	 */
-	public function templates($templates = null)
-	{
+	public function templates($templates = null) {
 		if ($templates === null || is_string($templates)) {
 			return $this->templater()->get($templates);
 		}
@@ -52,8 +50,7 @@ trait StringTemplateTrait
 	 * @param array $data The data to insert.
 	 * @return string
 	 */
-	public function formatTemplate($name, $data)
-	{
+	public function formatTemplate($name, $data) {
 		return $this->templater()->format($name, $data);
 	}
 
@@ -62,8 +59,7 @@ trait StringTemplateTrait
 	 *
 	 * @return \Cake\View\StringTemplate
 	 */
-	public function templater()
-	{
+	public function templater() {
 		if (empty($this->_templater)) {
 			$class = $this->config('templateClass') ?: 'Cake\View\StringTemplate';
 			$this->_templater = new $class();

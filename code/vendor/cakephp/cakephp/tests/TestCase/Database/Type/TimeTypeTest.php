@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Test for the Time type.
  */
-class TimeTypeTest extends TestCase
-{
+class TimeTypeTest extends TestCase {
 
 	/**
 	 * Setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->type = Type::build('time');
 		$this->driver = $this->getMock('Cake\Database\Driver');
@@ -42,8 +40,7 @@ class TimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPHP()
-	{
+	public function testToPHP() {
 		$this->assertNull($this->type->toPHP(null, $this->driver));
 
 		$result = $this->type->toPHP('00:00:00', $this->driver);
@@ -64,8 +61,7 @@ class TimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToDatabase()
-	{
+	public function testToDatabase() {
 		$value = '16:30:15';
 		$result = $this->type->toDatabase($value, $this->driver);
 		$this->assertEquals($value, $result);
@@ -84,8 +80,7 @@ class TimeTypeTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function marshalProvider()
-	{
+	public function marshalProvider() {
 		$date = new Time('@1392387900');
 
 		return [
@@ -161,8 +156,7 @@ class TimeTypeTest extends TestCase
 	 * @dataProvider marshalProvider
 	 * @return void
 	 */
-	public function testMarshal($value, $expected)
-	{
+	public function testMarshal($value, $expected) {
 		$result = $this->type->marshal($value);
 		if (is_object($expected)) {
 			$this->assertEquals($expected, $result);
@@ -176,8 +170,7 @@ class TimeTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMarshalWithLocaleParsing()
-	{
+	public function testMarshalWithLocaleParsing() {
 		$this->type->useLocaleParser();
 		$expected = new Time('23:23:00');
 		$result = $this->type->marshal('11:23pm');

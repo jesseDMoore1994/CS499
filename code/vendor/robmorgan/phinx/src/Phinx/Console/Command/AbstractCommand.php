@@ -43,8 +43,7 @@ use Phinx\Db\Adapter\AdapterInterface;
  *
  * @author Rob Morgan <robbym@gmail.com>
  */
-abstract class AbstractCommand extends Command
-{
+abstract class AbstractCommand extends Command {
 	/**
 	 * The location of the default migration template.
 	 */
@@ -73,8 +72,7 @@ abstract class AbstractCommand extends Command
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this->addOption('--configuration', '-c', InputOption::VALUE_REQUIRED, 'The configuration file to load');
 		$this->addOption('--parser', '-p', InputOption::VALUE_REQUIRED, 'Parser used to read the config file. Defaults to YAML');
 	}
@@ -86,8 +84,7 @@ abstract class AbstractCommand extends Command
 	 * @param OutputInterface $output
 	 * @return void
 	 */
-	public function bootstrap(InputInterface $input, OutputInterface $output)
-	{
+	public function bootstrap(InputInterface $input, OutputInterface $output) {
 		if (!$this->getConfig()) {
 			$this->loadConfig($input, $output);
 		}
@@ -108,8 +105,7 @@ abstract class AbstractCommand extends Command
 	 * @param  ConfigInterface $config
 	 * @return AbstractCommand
 	 */
-	public function setConfig(ConfigInterface $config)
-	{
+	public function setConfig(ConfigInterface $config) {
 		$this->config = $config;
 		return $this;
 	}
@@ -119,8 +115,7 @@ abstract class AbstractCommand extends Command
 	 *
 	 * @return Config
 	 */
-	public function getConfig()
-	{
+	public function getConfig() {
 		return $this->config;
 	}
 
@@ -130,8 +125,7 @@ abstract class AbstractCommand extends Command
 	 * @param AdapterInterface $adapter
 	 * @return AbstractCommand
 	 */
-	public function setAdapter(AdapterInterface $adapter)
-	{
+	public function setAdapter(AdapterInterface $adapter) {
 		$this->adapter = $adapter;
 		return $this;
 	}
@@ -141,8 +135,7 @@ abstract class AbstractCommand extends Command
 	 *
 	 * @return AdapterInterface
 	 */
-	public function getAdapter()
-	{
+	public function getAdapter() {
 		return $this->adapter;
 	}
 
@@ -152,8 +145,7 @@ abstract class AbstractCommand extends Command
 	 * @param Manager $manager
 	 * @return AbstractCommand
 	 */
-	public function setManager(Manager $manager)
-	{
+	public function setManager(Manager $manager) {
 		$this->manager = $manager;
 		return $this;
 	}
@@ -163,8 +155,7 @@ abstract class AbstractCommand extends Command
 	 *
 	 * @return Manager
 	 */
-	public function getManager()
-	{
+	public function getManager() {
 		return $this->manager;
 	}
 
@@ -174,8 +165,7 @@ abstract class AbstractCommand extends Command
 	 * @param InputInterface $input
 	 * @return string
 	 */
-	protected function locateConfigFile(InputInterface $input)
-	{
+	protected function locateConfigFile(InputInterface $input) {
 		$configFile = $input->getOption('configuration');
 
 		$useDefault = false;
@@ -216,8 +206,7 @@ abstract class AbstractCommand extends Command
 	 * @throws \InvalidArgumentException
 	 * @return void
 	 */
-	protected function loadConfig(InputInterface $input, OutputInterface $output)
-	{
+	protected function loadConfig(InputInterface $input, OutputInterface $output) {
 		$configFilePath = $this->locateConfigFile($input);
 		$output->writeln('<info>using config file</info> .' . str_replace(getcwd(), '', realpath($configFilePath)));
 
@@ -265,8 +254,7 @@ abstract class AbstractCommand extends Command
 	 * @param OutputInterface $output
 	 * @return void
 	 */
-	protected function loadManager(OutputInterface $output)
-	{
+	protected function loadManager(OutputInterface $output) {
 		if (null === $this->getManager()) {
 			$manager = new Manager($this->getConfig(), $output);
 			$this->setManager($manager);
@@ -279,8 +267,7 @@ abstract class AbstractCommand extends Command
 	 * @throws InvalidArgumentException
 	 * @return void
 	 */
-	protected function verifyMigrationDirectory($path)
-	{
+	protected function verifyMigrationDirectory($path) {
 		if (!is_dir($path)) {
 			throw new \InvalidArgumentException(sprintf(
 				'Migration directory "%s" does not exist',
@@ -302,8 +289,7 @@ abstract class AbstractCommand extends Command
 	 * @throws InvalidArgumentException
 	 * @return void
 	 */
-	protected function verifySeedDirectory($path)
-	{
+	protected function verifySeedDirectory($path) {
 		if (!is_dir($path)) {
 			throw new \InvalidArgumentException(sprintf(
 				'Seed directory "%s" does not exist',
@@ -324,8 +310,7 @@ abstract class AbstractCommand extends Command
 	 *
 	 * @return string
 	 */
-	protected function getMigrationTemplateFilename()
-	{
+	protected function getMigrationTemplateFilename() {
 		return __DIR__ . self::DEFAULT_MIGRATION_TEMPLATE;
 	}
 
@@ -334,8 +319,7 @@ abstract class AbstractCommand extends Command
 	 *
 	 * @return string
 	 */
-	protected function getSeedTemplateFilename()
-	{
+	protected function getSeedTemplateFilename() {
 		return __DIR__ . self::DEFAULT_SEED_TEMPLATE;
 	}
 }

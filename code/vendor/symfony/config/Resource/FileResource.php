@@ -18,8 +18,7 @@ namespace Symfony\Component\Config\Resource;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FileResource implements SelfCheckingResourceInterface, \Serializable
-{
+class FileResource implements SelfCheckingResourceInterface, \Serializable {
 	/**
 	 * @var string|false
 	 */
@@ -30,32 +29,28 @@ class FileResource implements SelfCheckingResourceInterface, \Serializable
 	 *
 	 * @param string $resource The file path to the resource
 	 */
-	public function __construct($resource)
-	{
+	public function __construct($resource) {
 		$this->resource = realpath($resource);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		return (string)$this->resource;
 	}
 
 	/**
 	 * @return string|false The canonicalized, absolute path to the resource or false if the resource does not exist.
 	 */
-	public function getResource()
-	{
+	public function getResource() {
 		return $this->resource;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function isFresh($timestamp)
-	{
+	public function isFresh($timestamp) {
 		if (false === $this->resource || !file_exists($this->resource)) {
 			return false;
 		}
@@ -63,13 +58,11 @@ class FileResource implements SelfCheckingResourceInterface, \Serializable
 		return filemtime($this->resource) <= $timestamp;
 	}
 
-	public function serialize()
-	{
+	public function serialize() {
 		return serialize($this->resource);
 	}
 
-	public function unserialize($serialized)
-	{
+	public function unserialize($serialized) {
 		$this->resource = unserialize($serialized);
 	}
 }

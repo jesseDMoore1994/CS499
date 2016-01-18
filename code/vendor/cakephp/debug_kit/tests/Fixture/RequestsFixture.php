@@ -19,8 +19,7 @@ use Cake\TestSuite\Fixture\TestFixture;
  *
  * Used to create schema for tests and at runtime.
  */
-class RequestsFixture extends TestFixture
-{
+class RequestsFixture extends TestFixture {
 	/**
 	 * fields property
 	 *
@@ -58,8 +57,7 @@ class RequestsFixture extends TestFixture
 	 *
 	 * @param string $connection The connection name to use.
 	 */
-	public function __construct($connection = null)
-	{
+	public function __construct($connection = null) {
 		if ($connection) {
 			$this->connection = $connection;
 		}

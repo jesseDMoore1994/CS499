@@ -21,8 +21,7 @@ use Exception;
 /**
  * TestInstanceConfig
  */
-class TestInstanceConfig
-{
+class TestInstanceConfig {
 
 	use InstanceConfigTrait;
 
@@ -45,8 +44,7 @@ class TestInstanceConfig
 /**
  * ReadOnlyTestInstanceConfig
  */
-class ReadOnlyTestInstanceConfig
-{
+class ReadOnlyTestInstanceConfig {
 
 	use InstanceConfigTrait;
 
@@ -73,8 +71,7 @@ class ReadOnlyTestInstanceConfig
 	 * @param mixed $value
 	 * @return void
 	 */
-	protected function _configWrite($key, $value = null)
-	{
+	protected function _configWrite($key, $value = null) {
 		throw new Exception('This Instance is readonly');
 	}
 }
@@ -83,16 +80,14 @@ class ReadOnlyTestInstanceConfig
  * InstanceConfigTraitTest
  *
  */
-class InstanceConfigTraitTest extends TestCase
-{
+class InstanceConfigTraitTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->object = new TestInstanceConfig();
 	}
@@ -102,8 +97,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDefaultsAreSet()
-	{
+	public function testDefaultsAreSet() {
 		$this->assertSame(
 			[
 				'some' => 'string',
@@ -122,8 +116,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetSimple()
-	{
+	public function testGetSimple() {
 		$this->assertSame(
 			'string',
 			$this->object->config('some'),
@@ -142,8 +135,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetDot()
-	{
+	public function testGetDot() {
 		$this->assertSame(
 			'value',
 			$this->object->config('a.nested'),
@@ -156,8 +148,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetSimple()
-	{
+	public function testSetSimple() {
 		$this->object->config('foo', 'bar');
 		$this->assertSame(
 			'bar',
@@ -193,8 +184,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetNested()
-	{
+	public function testSetNested() {
 		$this->object->config('new.foo', 'bar');
 		$this->assertSame(
 			'bar',
@@ -225,8 +215,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetArray()
-	{
+	public function testSetArray() {
 		$this->object->config(['foo' => 'bar']);
 		$this->assertSame(
 			'bar',
@@ -282,8 +271,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfigShallow()
-	{
+	public function testConfigShallow() {
 		$this->object->configShallow(['a' => ['new_nested' => true], 'new' => 'bar']);
 
 		$this->assertSame(
@@ -304,8 +292,7 @@ class InstanceConfigTraitTest extends TestCase
 	 * @expectedExceptionMessage Cannot set a.nested.value
 	 * @return void
 	 */
-	public function testSetClobber()
-	{
+	public function testSetClobber() {
 		$this->object->config(['a.nested.value' => 'not possible'], null, false);
 		$result = $this->object->config();
 	}
@@ -315,8 +302,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMerge()
-	{
+	public function testMerge() {
 		$this->object->config(['a' => ['nother' => 'value']]);
 
 		$this->assertSame(
@@ -338,8 +324,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeDotKey()
-	{
+	public function testMergeDotKey() {
 		$this->object->config('a.nother', 'value');
 
 		$this->assertSame(
@@ -377,8 +362,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetDefaultsMerge()
-	{
+	public function testSetDefaultsMerge() {
 		$this->object->config(['a' => ['nother' => 'value']]);
 
 		$this->assertSame(
@@ -400,8 +384,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetDefaultsNoMerge()
-	{
+	public function testSetDefaultsNoMerge() {
 		$this->object->config(['a' => ['nother' => 'value']], null, false);
 
 		$this->assertSame(
@@ -424,8 +407,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetMergeNoClobber()
-	{
+	public function testSetMergeNoClobber() {
 		$this->object->config(['a.nested.value' => 'it is possible']);
 
 		$this->assertSame(
@@ -450,8 +432,7 @@ class InstanceConfigTraitTest extends TestCase
 	 * @expectedExceptionMessage This Instance is readonly
 	 * @return void
 	 */
-	public function testReadOnlyConfig()
-	{
+	public function testReadOnlyConfig() {
 		$object = new ReadOnlyTestInstanceConfig();
 
 		$this->assertSame(
@@ -471,8 +452,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteSimple()
-	{
+	public function testDeleteSimple() {
 		$this->object->config('foo', null);
 		$this->assertNull(
 			$this->object->config('foo'),
@@ -499,8 +479,7 @@ class InstanceConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteNested()
-	{
+	public function testDeleteNested() {
 		$this->object->config('new.foo', null);
 		$this->assertNull(
 			$this->object->config('new.foo'),
@@ -538,8 +517,7 @@ class InstanceConfigTraitTest extends TestCase
 		);
 	}
 
-	public function testDeleteArray()
-	{
+	public function testDeleteArray() {
 		$this->object->config('a', null);
 		$this->assertNull(
 			$this->object->config('a'),
@@ -561,8 +539,7 @@ class InstanceConfigTraitTest extends TestCase
 	 * @expectedExceptionMessage Cannot unset a.nested.value.whoops
 	 * @return void
 	 */
-	public function testDeleteClobber()
-	{
+	public function testDeleteClobber() {
 		$this->object->config('a.nested.value.whoops', null);
 	}
 }

@@ -14,10 +14,8 @@ namespace Symfony\Component\Config\Tests\Fixtures\Configuration;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
-class ExampleConfiguration implements ConfigurationInterface
-{
-	public function getConfigTreeBuilder()
-	{
+class ExampleConfiguration implements ConfigurationInterface {
+	public function getConfigTreeBuilder() {
 		$treeBuilder = new TreeBuilder();
 		$rootNode = $treeBuilder->root('acme_root');
 

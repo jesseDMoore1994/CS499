@@ -14,8 +14,7 @@ namespace Psy\Readline;
 /**
  * An interface abstracting the various readline_* functions.
  */
-interface Readline
-{
+interface Readline {
 	/**
 	 * Check whether this Readline class is supported by the current system.
 	 *

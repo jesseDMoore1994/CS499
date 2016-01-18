@@ -24,8 +24,7 @@ use PDO;
  *
  * Use to convert bool data between PHP and the database types.
  */
-class BoolType extends Type
-{
+class BoolType extends Type {
 
 	/**
 	 * Convert bool data into the database format.
@@ -34,8 +33,7 @@ class BoolType extends Type
 	 * @param Driver $driver The driver instance to convert with.
 	 * @return bool|null
 	 */
-	public function toDatabase($value, Driver $driver)
-	{
+	public function toDatabase($value, Driver $driver) {
 		if ($value === true || $value === false || $value === null) {
 			return $value;
 		}
@@ -54,8 +52,7 @@ class BoolType extends Type
 	 * @param Driver $driver The driver instance to convert with.
 	 * @return bool|null
 	 */
-	public function toPHP($value, Driver $driver)
-	{
+	public function toPHP($value, Driver $driver) {
 		if ($value === null) {
 			return null;
 		}
@@ -72,8 +69,7 @@ class BoolType extends Type
 	 * @param Driver $driver The driver.
 	 * @return int
 	 */
-	public function toStatement($value, Driver $driver)
-	{
+	public function toStatement($value, Driver $driver) {
 		if ($value === null) {
 			return PDO::PARAM_NULL;
 		}
@@ -87,8 +83,7 @@ class BoolType extends Type
 	 * @param mixed $value The value to convert.
 	 * @return mixed Converted value.
 	 */
-	public function marshal($value)
-	{
+	public function marshal($value) {
 		if ($value === null) {
 			return null;
 		}

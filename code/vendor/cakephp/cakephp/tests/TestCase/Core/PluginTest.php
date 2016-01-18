@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
  * PluginTest class
  *
  */
-class PluginTest extends TestCase
-{
+class PluginTest extends TestCase {
 
 	/**
 	 * Reverts the changes done to the environment while testing
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Plugin::unload();
 	}
@@ -41,8 +39,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadSingle()
-	{
+	public function testLoadSingle() {
 		Plugin::unload();
 		Plugin::load('TestPlugin');
 		$expected = ['TestPlugin'];
@@ -54,8 +51,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUnload()
-	{
+	public function testUnload() {
 		Plugin::load('TestPlugin');
 		$expected = ['TestPlugin'];
 		$this->assertEquals($expected, Plugin::loaded());
@@ -76,8 +72,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadSingleWithAutoload()
-	{
+	public function testLoadSingleWithAutoload() {
 		$this->assertFalse(class_exists('Company\TestPluginThree\Utility\Hello'));
 		Plugin::load('Company/TestPluginThree', [
 			'autoload' => true,
@@ -93,8 +88,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadSingleWithAutoloadAndBootstrap()
-	{
+	public function testLoadSingleWithAutoloadAndBootstrap() {
 		$this->assertFalse(class_exists('Company\TestPluginFive\Utility\Hello'));
 		Plugin::load(
 			'Company/TestPluginFive',
@@ -116,8 +110,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadSingleWithBootstrap()
-	{
+	public function testLoadSingleWithBootstrap() {
 		Plugin::load('TestPlugin', ['bootstrap' => true]);
 		$this->assertTrue(Plugin::loaded('TestPlugin'));
 		$this->assertEquals('loaded plugin bootstrap', Configure::read('PluginTest.test_plugin.bootstrap'));
@@ -132,8 +125,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadSingleWithBootstrapAndRoutes()
-	{
+	public function testLoadSingleWithBootstrapAndRoutes() {
 		Plugin::load('TestPlugin', ['bootstrap' => true, 'routes' => true]);
 		$this->assertTrue(Plugin::loaded('TestPlugin'));
 		$this->assertEquals('loaded plugin bootstrap', Configure::read('PluginTest.test_plugin.bootstrap'));
@@ -147,8 +139,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadSingleWithPathConfig()
-	{
+	public function testLoadSingleWithPathConfig() {
 		Configure::write('plugins.TestPlugin', APP);
 		Plugin::load('TestPlugin');
 		$this->assertEquals(APP . 'src' . DS, Plugin::classPath('TestPlugin'));
@@ -159,8 +150,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadMultiple()
-	{
+	public function testLoadMultiple() {
 		Plugin::load(['TestPlugin', 'TestPluginTwo']);
 		$expected = ['TestPlugin', 'TestPluginTwo'];
 		$this->assertEquals($expected, Plugin::loaded());
@@ -171,8 +161,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadMultipleWithDefaults()
-	{
+	public function testLoadMultipleWithDefaults() {
 		Plugin::load(['TestPlugin', 'TestPluginTwo'], ['bootstrap' => true, 'routes' => false]);
 		$expected = ['TestPlugin', 'TestPluginTwo'];
 		$this->assertEquals($expected, Plugin::loaded());
@@ -185,8 +174,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadMultipleWithDefaultsAndOverride()
-	{
+	public function testLoadMultipleWithDefaultsAndOverride() {
 		Plugin::load(
 			['TestPlugin', 'TestPluginTwo' => ['routes' => false]],
 			['bootstrap' => true, 'routes' => true]
@@ -203,8 +191,7 @@ class PluginTest extends TestCase
 	 * @return void
 	 * @expectedException \PHPUNIT_FRAMEWORK_ERROR_WARNING
 	 */
-	public function testLoadMultipleWithDefaultsMissingFile()
-	{
+	public function testLoadMultipleWithDefaultsMissingFile() {
 		Plugin::load(['TestPlugin', 'TestPluginTwo'], ['bootstrap' => true, 'routes' => true]);
 		Plugin::routes();
 	}
@@ -214,8 +201,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIgnoreMissingFiles()
-	{
+	public function testIgnoreMissingFiles() {
 		Plugin::loadAll([[
 			'bootstrap' => true,
 			'routes' => true,
@@ -230,8 +216,7 @@ class PluginTest extends TestCase
 	 * @return void
 	 * @expectedException \Cake\Core\Exception\MissingPluginException
 	 */
-	public function testLoadNotFound()
-	{
+	public function testLoadNotFound() {
 		Plugin::load('MissingPlugin');
 	}
 
@@ -240,8 +225,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPath()
-	{
+	public function testPath() {
 		Plugin::load(['TestPlugin', 'TestPluginTwo', 'Company/TestPluginThree']);
 		$expected = TEST_APP . 'Plugin' . DS . 'TestPlugin' . DS;
 		$this->assertPathEquals(Plugin::path('TestPlugin'), $expected);
@@ -259,8 +243,7 @@ class PluginTest extends TestCase
 	 * @return void
 	 * @expectedException \Cake\Core\Exception\MissingPluginException
 	 */
-	public function testPathNotFound()
-	{
+	public function testPathNotFound() {
 		Plugin::path('TestPlugin');
 	}
 
@@ -269,8 +252,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClassPath()
-	{
+	public function testClassPath() {
 		Plugin::load(['TestPlugin', 'TestPluginTwo', 'Company/TestPluginThree']);
 		$expected = TEST_APP . 'Plugin' . DS . 'TestPlugin' . DS . 'src' . DS;
 		$this->assertPathEquals(Plugin::classPath('TestPlugin'), $expected);
@@ -288,8 +270,7 @@ class PluginTest extends TestCase
 	 * @return void
 	 * @expectedException \Cake\Core\Exception\MissingPluginException
 	 */
-	public function testClassPathNotFound()
-	{
+	public function testClassPathNotFound() {
 		Plugin::classPath('TestPlugin');
 	}
 
@@ -298,8 +279,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadAll()
-	{
+	public function testLoadAll() {
 		Plugin::loadAll();
 		$expected = ['Company', 'PluginJs', 'TestPlugin', 'TestPluginFour', 'TestPluginTwo', 'TestTheme'];
 		$this->assertEquals($expected, Plugin::loaded());
@@ -310,8 +290,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadAllWithPathConfig()
-	{
+	public function testLoadAllWithPathConfig() {
 		Configure::write('plugins.FakePlugin', APP);
 		Plugin::loadAll();
 		$this->assertContains('FakePlugin', Plugin::loaded());
@@ -322,8 +301,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadAllWithPluginAlreadyLoaded()
-	{
+	public function testLoadAllWithPluginAlreadyLoaded() {
 		Plugin::load('Company/TestPluginThree', ['bootstrap' => false]);
 		Plugin::loadAll(['bootstrap' => true, 'ignoreMissing' => true]);
 		$this->assertEmpty(Configure::read('PluginTest.test_plugin_three.bootstrap'));
@@ -334,8 +312,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadAllWithDefaults()
-	{
+	public function testLoadAllWithDefaults() {
 		$defaults = ['bootstrap' => true, 'ignoreMissing' => true];
 		Plugin::loadAll([$defaults]);
 		$expected = ['Company', 'PluginJs', 'TestPlugin', 'TestPluginFour', 'TestPluginTwo', 'TestTheme'];
@@ -351,8 +328,7 @@ class PluginTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadAllWithDefaultsAndOverride()
-	{
+	public function testLoadAllWithDefaultsAndOverride() {
 		Plugin::loadAll([
 			['bootstrap' => true, 'ignoreMissing' => true],
 			'TestPlugin' => ['routes' => true],

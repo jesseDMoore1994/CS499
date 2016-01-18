@@ -18,8 +18,7 @@ namespace Psy\TabCompletion\Matcher;
  *
  * @author Marc Garcia <markcial@gmail.com>
  */
-class KeywordsMatcher extends AbstractMatcher
-{
+class KeywordsMatcher extends AbstractMatcher {
 	protected $keywords = array(
 		'array', 'clone', 'declare', 'die', 'echo', 'empty', 'eval', 'exit', 'include',
 		'include_once', 'isset', 'list', 'print', 'require', 'require_once', 'unset',
@@ -34,8 +33,7 @@ class KeywordsMatcher extends AbstractMatcher
 	 *
 	 * @return array
 	 */
-	public function getKeywords()
-	{
+	public function getKeywords() {
 		return $this->keywords;
 	}
 
@@ -46,16 +44,14 @@ class KeywordsMatcher extends AbstractMatcher
 	 *
 	 * @return bool
 	 */
-	public function isKeyword($keyword)
-	{
+	public function isKeyword($keyword) {
 		return in_array($keyword, $this->keywords);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getMatches(array $tokens, array $info = array())
-	{
+	public function getMatches(array $tokens, array $info = array()) {
 		$input = $this->getInput($tokens);
 
 		return array_filter($this->keywords, function ($keyword) use ($input) {
@@ -66,8 +62,7 @@ class KeywordsMatcher extends AbstractMatcher
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasMatched(array $tokens)
-	{
+	public function hasMatched(array $tokens) {
 		$token = array_pop($tokens);
 		$prevToken = array_pop($tokens);
 

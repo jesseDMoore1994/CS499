@@ -23,15 +23,13 @@ use Psy\Exception\ErrorException;
  * The called class pass throws warnings for get_class() and get_called_class()
  * outside a class context.
  */
-class CalledClassPass extends CodeCleanerPass
-{
+class CalledClassPass extends CodeCleanerPass {
 	private $inClass;
 
 	/**
 	 * @param array $nodes
 	 */
-	public function beforeTraverse(array $nodes)
-	{
+	public function beforeTraverse(array $nodes) {
 		$this->inClass = false;
 	}
 
@@ -40,8 +38,7 @@ class CalledClassPass extends CodeCleanerPass
 	 *
 	 * @param Node $node
 	 */
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		if ($node instanceof ClassStmt || $node instanceof TraitStmt) {
 			$this->inClass = true;
 		} elseif ($node instanceof FuncCall && !$this->inClass) {
@@ -69,15 +66,13 @@ class CalledClassPass extends CodeCleanerPass
 	/**
 	 * @param Node $node
 	 */
-	public function leaveNode(Node $node)
-	{
+	public function leaveNode(Node $node) {
 		if ($node instanceof ClassStmt) {
 			$this->inClass = false;
 		}
 	}
 
-	private function isNull(Node $node)
-	{
+	private function isNull(Node $node) {
 		return $node->value instanceof ConstFetch && strtolower($node->value->name) === 'null';
 	}
 }

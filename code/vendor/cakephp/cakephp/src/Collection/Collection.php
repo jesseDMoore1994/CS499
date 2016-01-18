@@ -25,8 +25,7 @@ use Traversable;
  * A collection is an immutable list of elements with a handful of functions to
  * iterate, group, transform and extract information from it.
  */
-class Collection extends IteratorIterator implements CollectionInterface, Serializable
-{
+class Collection extends IteratorIterator implements CollectionInterface, Serializable {
 
 	use CollectionTrait;
 
@@ -36,8 +35,7 @@ class Collection extends IteratorIterator implements CollectionInterface, Serial
 	 * @param array|\Traversable $items Items.
 	 * @throws InvalidArgumentException If passed incorrect type for items.
 	 */
-	public function __construct($items)
-	{
+	public function __construct($items) {
 		if (is_array($items)) {
 			$items = new ArrayIterator($items);
 		}
@@ -56,8 +54,7 @@ class Collection extends IteratorIterator implements CollectionInterface, Serial
 	 *
 	 * @return string
 	 */
-	public function serialize()
-	{
+	public function serialize() {
 		return serialize($this->buffered());
 	}
 
@@ -67,8 +64,7 @@ class Collection extends IteratorIterator implements CollectionInterface, Serial
 	 * @param string $collection The serialized collection
 	 * @return void
 	 */
-	public function unserialize($collection)
-	{
+	public function unserialize($collection) {
 		$this->__construct(unserialize($collection));
 	}
 
@@ -81,8 +77,7 @@ class Collection extends IteratorIterator implements CollectionInterface, Serial
 	 * @return void
 	 * @throws \LogicException
 	 */
-	public function count()
-	{
+	public function count() {
 		throw new LogicException('You cannot issue a count on a Collection.');
 	}
 
@@ -92,8 +87,7 @@ class Collection extends IteratorIterator implements CollectionInterface, Serial
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		return [
 			'count' => iterator_count($this),
 		];

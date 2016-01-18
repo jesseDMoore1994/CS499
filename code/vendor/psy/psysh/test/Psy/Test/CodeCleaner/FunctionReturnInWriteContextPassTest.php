@@ -15,10 +15,8 @@ use PhpParser\NodeTraverser;
 use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 use Psy\Exception\FatalErrorException;
 
-class FunctionReturnInWriteContextPassTest extends CodeCleanerTestCase
-{
-	public function setUp()
-	{
+class FunctionReturnInWriteContextPassTest extends CodeCleanerTestCase {
+	public function setUp() {
 		$this->pass = new FunctionReturnInWriteContextPass();
 		$this->traverser = new NodeTraverser();
 		$this->traverser->addVisitor($this->pass);
@@ -29,14 +27,12 @@ class FunctionReturnInWriteContextPassTest extends CodeCleanerTestCase
 	 * @expectedException \Psy\Exception\FatalErrorException
 	 * @expectedExceptionMessage Can't use function return value in write context
 	 */
-	public function testProcessStatementFails($code)
-	{
+	public function testProcessStatementFails($code) {
 		$stmts = $this->parse($code);
 		$this->traverser->traverse($stmts);
 	}
 
-	public function invalidStatements()
-	{
+	public function invalidStatements() {
 		return array(
 			array('f(&g())'),
 			array('array(& $object->method())'),
@@ -46,8 +42,7 @@ class FunctionReturnInWriteContextPassTest extends CodeCleanerTestCase
 		);
 	}
 
-	public function testIsset()
-	{
+	public function testIsset() {
 		try {
 			$this->traverser->traverse($this->parse('isset(strtolower("A"))'));
 			$this->fail();
@@ -67,8 +62,7 @@ class FunctionReturnInWriteContextPassTest extends CodeCleanerTestCase
 	 * @expectedException \Psy\Exception\FatalErrorException
 	 * @expectedExceptionMessage Can't use function return value in write context
 	 */
-	public function testEmpty()
-	{
+	public function testEmpty() {
 		if (version_compare(PHP_VERSION, '5.5', '>=')) {
 			$this->markTestSkipped();
 		}

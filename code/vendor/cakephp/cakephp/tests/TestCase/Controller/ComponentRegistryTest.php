@@ -27,20 +27,17 @@ use Cake\TestSuite\TestCase;
 /**
  * Extended CookieComponent
  */
-class CookieAliasComponent extends CookieComponent
-{
+class CookieAliasComponent extends CookieComponent {
 }
 
-class ComponentRegistryTest extends TestCase
-{
+class ComponentRegistryTest extends TestCase {
 
 	/**
 	 * setUp
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$controller = new Controller(new Request(), new Response());
 		$this->Components = new ComponentRegistry($controller);
@@ -51,8 +48,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->Components);
 	}
@@ -62,8 +58,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoad()
-	{
+	public function testLoad() {
 		$result = $this->Components->load('Cookie');
 		$this->assertInstanceOf('Cake\Controller\Component\CookieComponent', $result);
 		$this->assertInstanceOf('Cake\Controller\Component\CookieComponent', $this->Components->Cookie);
@@ -80,8 +75,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithAlias()
-	{
+	public function testLoadWithAlias() {
 		$result = $this->Components->load('Cookie', ['className' => __NAMESPACE__ . '\CookieAliasComponent', 'somesetting' => true]);
 		$this->assertInstanceOf(__NAMESPACE__ . '\CookieAliasComponent', $result);
 		$this->assertInstanceOf(__NAMESPACE__ . '\CookieAliasComponent', $this->Components->Cookie);
@@ -107,8 +101,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithEnableFalse()
-	{
+	public function testLoadWithEnableFalse() {
 		$mock = $this->getMock('Cake\Event\EventManager');
 		$mock->expects($this->never())
 			->method('attach');
@@ -126,8 +119,7 @@ class ComponentRegistryTest extends TestCase
 	 * @expectedException \Cake\Controller\Exception\MissingComponentException
 	 * @return void
 	 */
-	public function testLoadMissingComponent()
-	{
+	public function testLoadMissingComponent() {
 		$this->Components->load('ThisComponentShouldAlwaysBeMissing');
 	}
 
@@ -136,8 +128,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadPluginComponent()
-	{
+	public function testLoadPluginComponent() {
 		Plugin::load('TestPlugin');
 		$result = $this->Components->load('TestPlugin.Other');
 		$this->assertInstanceOf('TestPlugin\Controller\Component\OtherComponent', $result, 'Component class is wrong.');
@@ -149,8 +140,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithAliasAndPlugin()
-	{
+	public function testLoadWithAliasAndPlugin() {
 		Plugin::load('TestPlugin');
 		$result = $this->Components->load('AliasedOther', ['className' => 'TestPlugin.Other']);
 		$this->assertInstanceOf('TestPlugin\Controller\Component\OtherComponent', $result);
@@ -165,8 +155,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetController()
-	{
+	public function testGetController() {
 		$result = $this->Components->getController();
 		$this->assertInstanceOf('Cake\Controller\Controller', $result);
 	}
@@ -176,8 +165,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReset()
-	{
+	public function testReset() {
 		$eventManager = $this->Components->getController()->eventManager();
 		$instance = $this->Components->load('Auth');
 		$this->assertSame(
@@ -198,8 +186,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUnload()
-	{
+	public function testUnload() {
 		$eventManager = $this->Components->getController()->eventManager();
 
 		$result = $this->Components->load('Auth');
@@ -214,8 +201,7 @@ class ComponentRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSet()
-	{
+	public function testSet() {
 		$eventManager = $this->Components->getController()->eventManager();
 		$this->assertCount(0, $eventManager->listeners('Controller.startup'));
 

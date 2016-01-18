@@ -23,8 +23,7 @@ use Iterator;
  * passing a callback function to each of the elements and taking them out if
  * it does not return true.
  */
-class FilterIterator extends Collection
-{
+class FilterIterator extends Collection {
 
 	/**
 	 * Creates a filtered iterator using the callback to determine which items are
@@ -37,8 +36,7 @@ class FilterIterator extends Collection
 	 * @param Iterator $items The items to be filtered.
 	 * @param callable $callback Callback.
 	 */
-	public function __construct(Iterator $items, callable $callback)
-	{
+	public function __construct(Iterator $items, callable $callback) {
 		$wrapper = new CallbackFilterIterator($items, $callback);
 		parent::__construct($wrapper);
 	}

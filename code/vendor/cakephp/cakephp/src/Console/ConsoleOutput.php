@@ -42,8 +42,7 @@ namespace Cake\Console;
  * at this time.
  *
  */
-class ConsoleOutput
-{
+class ConsoleOutput {
 
 	/**
 	 * Raw output constant - no modification of output text.
@@ -159,8 +158,7 @@ class ConsoleOutput
 	 *
 	 * @param string $stream The identifier of the stream to write output to.
 	 */
-	public function __construct($stream = 'php://stdout')
-	{
+	public function __construct($stream = 'php://stdout') {
 		$this->_output = fopen($stream, 'w');
 
 		if ((DS === '\\' && !(bool)env('ANSICON') && env('ConEmuANSI') !== 'ON') ||
@@ -178,8 +176,7 @@ class ConsoleOutput
 	 * @param int $newlines Number of newlines to append
 	 * @return int Returns the number of bytes returned from writing to stdout.
 	 */
-	public function write($message, $newlines = 1)
-	{
+	public function write($message, $newlines = 1) {
 		if (is_array($message)) {
 			$message = implode(static::LF, $message);
 		}
@@ -192,8 +189,7 @@ class ConsoleOutput
 	 * @param string $text Text with styling tags.
 	 * @return string String with color codes added.
 	 */
-	public function styleText($text)
-	{
+	public function styleText($text) {
 		if ($this->_outputAs == static::RAW) {
 			return $text;
 		}
@@ -214,8 +210,7 @@ class ConsoleOutput
 	 * @param array $matches An array of matches to replace.
 	 * @return string
 	 */
-	protected function _replaceTags($matches)
-	{
+	protected function _replaceTags($matches) {
 		$style = $this->styles($matches['tag']);
 		if (empty($style)) {
 			return '<' . $matches['tag'] . '>' . $matches['text'] . '</' . $matches['tag'] . '>';
@@ -243,8 +238,7 @@ class ConsoleOutput
 	 * @param string $message Message to write.
 	 * @return bool success
 	 */
-	protected function _write($message)
-	{
+	protected function _write($message) {
 		return fwrite($this->_output, $message);
 	}
 
@@ -281,8 +275,7 @@ class ConsoleOutput
 	 * @return mixed If you are getting styles, the style or null will be returned. If you are creating/modifying
 	 *   styles true will be returned.
 	 */
-	public function styles($style = null, $definition = null)
-	{
+	public function styles($style = null, $definition = null) {
 		if ($style === null && $definition === null) {
 			return static::$_styles;
 		}
@@ -303,8 +296,7 @@ class ConsoleOutput
 	 * @param int|null $type The output type to use. Should be one of the class constants.
 	 * @return int|null  Either null or the value if getting.
 	 */
-	public function outputAs($type = null)
-	{
+	public function outputAs($type = null) {
 		if ($type === null) {
 			return $this->_outputAs;
 		}
@@ -314,8 +306,7 @@ class ConsoleOutput
 	/**
 	 * Clean up and close handles
 	 */
-	public function __destruct()
-	{
+	public function __destruct() {
 		if (is_resource($this->_output)) {
 			fclose($this->_output);
 		}

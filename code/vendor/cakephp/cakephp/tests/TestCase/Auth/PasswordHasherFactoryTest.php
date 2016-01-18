@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
  * Test case for PasswordHasherFactory
  *
  */
-class PasswordHasherFactoryTest extends TestCase
-{
+class PasswordHasherFactoryTest extends TestCase {
 
 	/**
 	 * test passwordhasher instance building
 	 *
 	 * @return void
 	 */
-	public function testBuild()
-	{
+	public function testBuild() {
 		$hasher = PasswordHasherFactory::build('Default');
 		$this->assertInstanceof('Cake\Auth\DefaultPasswordHasher', $hasher);
 
@@ -54,8 +52,7 @@ class PasswordHasherFactoryTest extends TestCase
 	 * @expectedExceptionMessage Password hasher class "FooBar" was not found.
 	 * @return void
 	 */
-	public function testBuildException()
-	{
+	public function testBuildException() {
 		$hasher = PasswordHasherFactory::build('FooBar');
 	}
 }

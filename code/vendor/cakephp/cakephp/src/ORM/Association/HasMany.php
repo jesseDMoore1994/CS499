@@ -29,8 +29,7 @@ use Traversable;
  *
  * An example of a HasMany association would be Author has many Articles.
  */
-class HasMany extends Association
-{
+class HasMany extends Association {
 
 	use DependentDeleteTrait;
 	use ExternalAssociationTrait {
@@ -87,8 +86,7 @@ class HasMany extends Association
 	 * @param \Cake\ORM\Table $side The potential Table with ownership
 	 * @return bool
 	 */
-	public function isOwningSide(Table $side)
-	{
+	public function isOwningSide(Table $side) {
 		return $side === $this->source();
 	}
 
@@ -100,8 +98,7 @@ class HasMany extends Association
 	 * @throws \InvalidArgumentException if an invalid strategy name is passed
 	 * @return string the strategy to be used for saving
 	 */
-	public function saveStrategy($strategy = null)
-	{
+	public function saveStrategy($strategy = null) {
 		if ($strategy === null) {
 			return $this->_saveStrategy;
 		}
@@ -126,8 +123,7 @@ class HasMany extends Association
 	 * @see Table::save()
 	 * @throws \InvalidArgumentException when the association data cannot be traversed.
 	 */
-	public function saveAssociated(EntityInterface $entity, array $options = [])
-	{
+	public function saveAssociated(EntityInterface $entity, array $options = []) {
 		$targetEntities = $entity->get($this->property());
 		if (empty($targetEntities) && $this->_saveStrategy !== self::SAVE_REPLACE) {
 			return $entity;
@@ -211,8 +207,7 @@ class HasMany extends Association
 	 * @param array $options list of options to be passed to the internal `save` call
 	 * @return bool true on success, false otherwise
 	 */
-	public function link(EntityInterface $sourceEntity, array $targetEntities, array $options = [])
-	{
+	public function link(EntityInterface $sourceEntity, array $targetEntities, array $options = []) {
 		$saveStrategy = $this->saveStrategy();
 		$this->saveStrategy(self::SAVE_APPEND);
 		$property = $this->property();
@@ -279,8 +274,7 @@ class HasMany extends Association
 	 * any of them is lacking a primary key value
 	 * @return void
 	 */
-	public function unlink(EntityInterface $sourceEntity, array $targetEntities, $options = [])
-	{
+	public function unlink(EntityInterface $sourceEntity, array $targetEntities, $options = []) {
 		if (is_bool($options)) {
 			$options = [
 				'cleanProperty' => $options
@@ -363,8 +357,7 @@ class HasMany extends Association
 	 * any of them is lacking a primary key value
 	 * @return bool success
 	 */
-	public function replace(EntityInterface $sourceEntity, array $targetEntities, array $options = [])
-	{
+	public function replace(EntityInterface $sourceEntity, array $targetEntities, array $options = []) {
 		$property = $this->property();
 		$sourceEntity->set($property, $targetEntities);
 		$saveStrategy = $this->saveStrategy();
@@ -390,8 +383,7 @@ class HasMany extends Association
 	 * @param array $options list of options accepted by `Table::delete()`
 	 * @return bool success
 	 */
-	protected function _unlinkAssociated(array $properties, EntityInterface $entity, Table $target, array $remainingEntities = [], array $options = [])
-	{
+	protected function _unlinkAssociated(array $properties, EntityInterface $entity, Table $target, array $remainingEntities = [], array $options = []) {
 		$primaryKey = (array)$target->primaryKey();
 		$exclusions = new Collection($remainingEntities);
 		$exclusions = $exclusions->map(
@@ -430,8 +422,7 @@ class HasMany extends Association
 	 * @param array $options list of options accepted by `Table::delete()`
 	 * @return bool success
 	 */
-	protected function _unlink(array $foreignKey, Table $target, array $conditions = [], array $options = [])
-	{
+	protected function _unlink(array $foreignKey, Table $target, array $conditions = [], array $options = []) {
 		$mustBeDependent = (!$this->_foreignKeyAcceptsNull($target, $foreignKey) || $this->dependent());
 
 		if ($mustBeDependent) {
@@ -461,8 +452,7 @@ class HasMany extends Association
 	 * @param array $properties the list of fields that compose the foreign key
 	 * @return bool
 	 */
-	protected function _foreignKeyAcceptsNull(Table $table, array $properties)
-	{
+	protected function _foreignKeyAcceptsNull(Table $table, array $properties) {
 		return !in_array(
 			false,
 			array_map(
@@ -477,8 +467,7 @@ class HasMany extends Association
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function _linkField($options)
-	{
+	protected function _linkField($options) {
 		$links = [];
 		$name = $this->alias();
 		if ($options['foreignKey'] === false) {
@@ -503,8 +492,7 @@ class HasMany extends Association
 	 *
 	 * @return string
 	 */
-	public function type()
-	{
+	public function type() {
 		return self::ONE_TO_MANY;
 	}
 
@@ -514,8 +502,7 @@ class HasMany extends Association
 	 * @param array $opts original list of options passed in constructor
 	 * @return void
 	 */
-	protected function _options(array $opts)
-	{
+	protected function _options(array $opts) {
 		$this->_externalOptions($opts);
 		if (!empty($opts['saveStrategy'])) {
 			$this->saveStrategy($opts['saveStrategy']);

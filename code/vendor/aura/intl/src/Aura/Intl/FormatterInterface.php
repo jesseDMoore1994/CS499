@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-interface FormatterInterface
-{
+interface FormatterInterface {
 	/**
 	 *
 	 * Format message

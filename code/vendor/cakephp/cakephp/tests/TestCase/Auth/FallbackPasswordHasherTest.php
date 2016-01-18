@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
  * Test case for FallbackPasswordHasher
  *
  */
-class FallbackPasswordHasherTest extends TestCase
-{
+class FallbackPasswordHasherTest extends TestCase {
 
 	/**
 	 * Tests that only the first hasher is user for hashing a password
 	 *
 	 * @return void
 	 */
-	public function testHash()
-	{
+	public function testHash() {
 		$hasher = new FallbackPasswordHasher(['hashers' => ['Weak', 'Default']]);
 		$weak = new WeakPasswordHasher();
 		$this->assertSame($weak->hash('foo'), $hasher->hash('foo'));
@@ -48,8 +46,7 @@ class FallbackPasswordHasherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheck()
-	{
+	public function testCheck() {
 		$hasher = new FallbackPasswordHasher(['hashers' => ['Weak', 'Default']]);
 		$weak = new WeakPasswordHasher();
 		$simple = new DefaultPasswordHasher();
@@ -66,8 +63,7 @@ class FallbackPasswordHasherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckWithConfigs()
-	{
+	public function testCheckWithConfigs() {
 		$hasher = new FallbackPasswordHasher(['hashers' => ['Default', 'Weak' => ['hashType' => 'md5']]]);
 		$legacy = new WeakPasswordHasher(['hashType' => 'md5']);
 		$simple = new DefaultPasswordHasher();
@@ -84,8 +80,7 @@ class FallbackPasswordHasherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNeedsRehash()
-	{
+	public function testNeedsRehash() {
 		$hasher = new FallbackPasswordHasher(['hashers' => ['Default', 'Weak']]);
 		$weak = new WeakPasswordHasher();
 		$otherHash = $weak->hash('foo');

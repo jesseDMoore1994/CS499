@@ -16,8 +16,7 @@ namespace Psy\Reflection;
  *
  * ReflectionConstant corrects that omission.
  */
-class ReflectionConstant implements \Reflector
-{
+class ReflectionConstant implements \Reflector {
 	private $class;
 	private $name;
 	private $value;
@@ -28,8 +27,7 @@ class ReflectionConstant implements \Reflector
 	 * @param mixed $class
 	 * @param string $name
 	 */
-	public function __construct($class, $name)
-	{
+	public function __construct($class, $name) {
 		if (!$class instanceof \ReflectionClass) {
 			$class = new \ReflectionClass($class);
 		}
@@ -50,8 +48,7 @@ class ReflectionConstant implements \Reflector
 	 *
 	 * @return string
 	 */
-	public function getDeclaringClass()
-	{
+	public function getDeclaringClass() {
 		return $this->class;
 	}
 
@@ -60,8 +57,7 @@ class ReflectionConstant implements \Reflector
 	 *
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->name;
 	}
 
@@ -70,8 +66,7 @@ class ReflectionConstant implements \Reflector
 	 *
 	 * @return mixed
 	 */
-	public function getValue()
-	{
+	public function getValue() {
 		return $this->value;
 	}
 
@@ -81,8 +76,7 @@ class ReflectionConstant implements \Reflector
 	 * Currently returns null, because if it returns a file name the signature
 	 * formatter will barf.
 	 */
-	public function getFileName()
-	{
+	public function getFileName() {
 		return;
 		// return $this->class->getFileName();
 	}
@@ -92,8 +86,7 @@ class ReflectionConstant implements \Reflector
 	 *
 	 * @throws \RuntimeException
 	 */
-	public function getStartLine()
-	{
+	public function getStartLine() {
 		throw new \RuntimeException('Not yet implemented because it\'s unclear what I should do here :)');
 	}
 
@@ -102,8 +95,7 @@ class ReflectionConstant implements \Reflector
 	 *
 	 * @throws \RuntimeException
 	 */
-	public function getEndLine()
-	{
+	public function getEndLine() {
 		return $this->getStartLine();
 	}
 
@@ -112,8 +104,7 @@ class ReflectionConstant implements \Reflector
 	 *
 	 * @return false
 	 */
-	public function getDocComment()
-	{
+	public function getDocComment() {
 		return false;
 	}
 
@@ -122,8 +113,7 @@ class ReflectionConstant implements \Reflector
 	 *
 	 * @throws \RuntimeException
 	 */
-	public static function export()
-	{
+	public static function export() {
 		throw new \RuntimeException('Not yet implemented because it\'s unclear what I should do here :)');
 	}
 
@@ -132,8 +122,7 @@ class ReflectionConstant implements \Reflector
 	 *
 	 * @return string
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		return $this->getName();
 	}
 }

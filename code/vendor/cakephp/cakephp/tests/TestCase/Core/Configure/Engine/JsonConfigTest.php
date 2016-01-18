@@ -23,8 +23,7 @@ use Cake\TestSuite\TestCase;
  * Class JsonConfigTest
  *
  */
-class JsonConfigTest extends TestCase
-{
+class JsonConfigTest extends TestCase {
 
 	/**
 	 * Test data to serialize and unserialize.
@@ -51,8 +50,7 @@ class JsonConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->path = CONFIG;
 	}
@@ -62,8 +60,7 @@ class JsonConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRead()
-	{
+	public function testRead() {
 		$engine = new JsonConfig($this->path);
 		$values = $engine->read('json_test');
 		$this->assertEquals('value', $values['Json']);
@@ -76,8 +73,7 @@ class JsonConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadWithExistentFileWithoutExtension()
-	{
+	public function testReadWithExistentFileWithoutExtension() {
 		$engine = new JsonConfig($this->path);
 		$engine->read('no_json_extension');
 	}
@@ -88,8 +84,7 @@ class JsonConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadWithNonExistentFile()
-	{
+	public function testReadWithNonExistentFile() {
 		$engine = new JsonConfig($this->path);
 		$engine->read('fake_values');
 	}
@@ -101,8 +96,7 @@ class JsonConfigTest extends TestCase
 	 * @expcetedExceptionMessage Decoding JSON config file "empty.json" did not return any array
 	 * @return void
 	 */
-	public function testReadEmptyFile()
-	{
+	public function testReadEmptyFile() {
 		$engine = new JsonConfig($this->path);
 		$config = $engine->read('empty');
 	}
@@ -114,8 +108,7 @@ class JsonConfigTest extends TestCase
 	 * @expectedExceptionMessage Error parsing JSON string fetched from config file "invalid.json"
 	 * @return void
 	 */
-	public function testReadWithInvalidJson()
-	{
+	public function testReadWithInvalidJson() {
 		$engine = new JsonConfig($this->path);
 		$engine->read('invalid');
 	}
@@ -126,8 +119,7 @@ class JsonConfigTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testReadWithDots()
-	{
+	public function testReadWithDots() {
 		$engine = new JsonConfig($this->path);
 		$engine->read('../empty');
 	}
@@ -137,8 +129,7 @@ class JsonConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadPluginValue()
-	{
+	public function testReadPluginValue() {
 		Plugin::load('TestPlugin');
 		$engine = new JsonConfig($this->path);
 		$result = $engine->read('TestPlugin.load');
@@ -152,8 +143,7 @@ class JsonConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDump()
-	{
+	public function testDump() {
 		$engine = new JsonConfig(TMP);
 		$result = $engine->dump('test', $this->testData);
 		$this->assertTrue($result > 0);
@@ -177,8 +167,7 @@ class JsonConfigTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDumpRead()
-	{
+	public function testDumpRead() {
 		$engine = new JsonConfig(TMP);
 		$engine->dump('test', $this->testData);
 		$result = $engine->read('test');

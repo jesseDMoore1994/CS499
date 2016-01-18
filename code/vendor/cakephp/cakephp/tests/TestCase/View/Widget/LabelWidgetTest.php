@@ -21,16 +21,14 @@ use Cake\View\Widget\LabelWidget;
 /**
  * Label test case.
  */
-class LabelWidgetTest extends TestCase
-{
+class LabelWidgetTest extends TestCase {
 
 	/**
 	 * setup method.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$templates = [
 			'label' => '<label{{attrs}}>{{text}}</label>',
@@ -44,8 +42,7 @@ class LabelWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRender()
-	{
+	public function testRender() {
 		$label = new LabelWidget($this->templates);
 		$data = [
 			'text' => 'My text',
@@ -64,8 +61,7 @@ class LabelWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderEscape()
-	{
+	public function testRenderEscape() {
 		$label = new LabelWidget($this->templates);
 		$data = [
 			'text' => 'My > text',
@@ -86,8 +82,7 @@ class LabelWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderAttributes()
-	{
+	public function testRenderAttributes() {
 		$label = new LabelWidget($this->templates);
 		$data = [
 			'text' => 'My > text',
@@ -109,8 +104,7 @@ class LabelWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderTemplateVars()
-	{
+	public function testRenderTemplateVars() {
 		$this->templates->add([
 			'label' => '<label custom="{{custom}}" {{attrs}}>{{text}}</label>',
 		]);

@@ -8,18 +8,15 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use PhpParser\Node\Expr;
 
-class NameResolverTest extends \PHPUnit_Framework_TestCase
-{
-	private function canonicalize($string)
-	{
+class NameResolverTest extends \PHPUnit_Framework_TestCase {
+	private function canonicalize($string) {
 		return str_replace("\r\n", "\n", $string);
 	}
 
 	/**
 	 * @covers PhpParser\NodeVisitor\NameResolver
 	 */
-	public function testResolveNames()
-	{
+	public function testResolveNames() {
 		$code = <<<'EOC'
 <?php
 
@@ -184,8 +181,7 @@ EOC;
 	/**
 	 * @covers PhpParser\NodeVisitor\NameResolver
 	 */
-	public function testResolveLocations()
-	{
+	public function testResolveLocations() {
 		$code = <<<'EOC'
 <?php
 namespace NS;
@@ -272,8 +268,7 @@ EOC;
 		);
 	}
 
-	public function testNoResolveSpecialName()
-	{
+	public function testNoResolveSpecialName() {
 		$stmts = array(new Node\Expr\New_(new Name('self')));
 
 		$traverser = new PhpParser\NodeTraverser;
@@ -282,8 +277,7 @@ EOC;
 		$this->assertEquals($stmts, $traverser->traverse($stmts));
 	}
 
-	public function testAddNamespacedName()
-	{
+	public function testAddNamespacedName() {
 		$nsStmts = array(
 			new Stmt\Class_('A'),
 			new Stmt\Interface_('B'),
@@ -318,8 +312,7 @@ EOC;
 	/**
 	 * @dataProvider provideTestError
 	 */
-	public function testError(Node $stmt, $errorMsg)
-	{
+	public function testError(Node $stmt, $errorMsg) {
 		$this->setExpectedException('PhpParser\Error', $errorMsg);
 
 		$traverser = new PhpParser\NodeTraverser;
@@ -327,8 +320,7 @@ EOC;
 		$traverser->traverse(array($stmt));
 	}
 
-	public function provideTestError()
-	{
+	public function provideTestError() {
 		return array(
 			array(
 				new Stmt\Use_(array(
@@ -370,8 +362,7 @@ EOC;
 		);
 	}
 
-	public function testClassNameIsCaseInsensitive()
-	{
+	public function testClassNameIsCaseInsensitive() {
 		$source = <<<'EOC'
 <?php
 namespace Foo;
@@ -391,8 +382,7 @@ EOC;
 		$this->assertSame(array('Bar', 'Baz'), $stmt->stmts[1]->expr->class->parts);
 	}
 
-	public function testSpecialClassNamesAreCaseInsensitive()
-	{
+	public function testSpecialClassNamesAreCaseInsensitive() {
 		$source = <<<'EOC'
 <?php
 namespace Foo;

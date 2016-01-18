@@ -19,8 +19,7 @@ use Cake\Utility\Inflector;
 /**
  * Mailer code generator.
  */
-class MailerTask extends SimpleBakeTask
-{
+class MailerTask extends SimpleBakeTask {
 	/**
 	 * Task name used in path generation.
 	 *
@@ -31,24 +30,21 @@ class MailerTask extends SimpleBakeTask
 	/**
 	 * {@inheritDoc}
 	 */
-	public function name()
-	{
+	public function name() {
 		return 'mailer';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function fileName($name)
-	{
+	public function fileName($name) {
 		return $name . 'Mailer.php';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function template()
-	{
+	public function template() {
 		return 'Mailer/mailer';
 	}
 
@@ -58,8 +54,7 @@ class MailerTask extends SimpleBakeTask
 	 * @param string $name The name of the mailer to make.
 	 * @return void
 	 */
-	public function bake($name)
-	{
+	public function bake($name) {
 		$this->bakeLayouts($name);
 		return parent::bake($name);
 	}
@@ -70,8 +65,7 @@ class MailerTask extends SimpleBakeTask
 	 * @param string $name The name of the mailer layouts are needed for.
 	 * @return void
 	 */
-	public function bakeLayouts($name)
-	{
+	public function bakeLayouts($name) {
 		$restore = $this->pathFragment;
 		$layoutsPath = implode(DS, ['Template', 'Layout', 'Email']);
 

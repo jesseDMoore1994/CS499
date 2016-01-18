@@ -23,17 +23,14 @@ use Symfony\Component\Yaml\Inline;
  *
  * @author Kevin Bond <kevinbond@gmail.com>
  */
-class YamlReferenceDumper
-{
+class YamlReferenceDumper {
 	private $reference;
 
-	public function dump(ConfigurationInterface $configuration)
-	{
+	public function dump(ConfigurationInterface $configuration) {
 		return $this->dumpNode($configuration->getConfigTreeBuilder()->buildTree());
 	}
 
-	public function dumpNode(NodeInterface $node)
-	{
+	public function dumpNode(NodeInterface $node) {
 		$this->reference = '';
 		$this->writeNode($node);
 		$ref = $this->reference;
@@ -46,8 +43,7 @@ class YamlReferenceDumper
 	 * @param NodeInterface $node
 	 * @param int $depth
 	 */
-	private function writeNode(NodeInterface $node, $depth = 0)
-	{
+	private function writeNode(NodeInterface $node, $depth = 0) {
 		$comments = array();
 		$default = '';
 		$defaultArray = null;
@@ -170,16 +166,14 @@ class YamlReferenceDumper
 	 * @param string $text
 	 * @param int $indent
 	 */
-	private function writeLine($text, $indent = 0)
-	{
+	private function writeLine($text, $indent = 0) {
 		$indent = strlen($text) + $indent;
 		$format = '%' . $indent . 's';
 
 		$this->reference .= sprintf($format, $text) . "\n";
 	}
 
-	private function writeArray(array $array, $depth)
-	{
+	private function writeArray(array $array, $depth) {
 		$isIndexed = array_values($array) === $array;
 
 		foreach ($array as $key => $value) {

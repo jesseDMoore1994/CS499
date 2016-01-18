@@ -21,15 +21,13 @@ use Cake\TestSuite\TestCase;
 /**
  * Tests the integration between the ORM and the domain checker
  */
-class RulesCheckerTest extends TestCase
-{
+class RulesCheckerTest extends TestCase {
 	/**
 	 * Test adding rule for update mode
 	 *
 	 * @return void
 	 */
-	public function testAddingRuleDeleteMode()
-	{
+	public function testAddingRuleDeleteMode() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -57,8 +55,7 @@ class RulesCheckerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddingRuleUpdateMode()
-	{
+	public function testAddingRuleUpdateMode() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -86,8 +83,7 @@ class RulesCheckerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddingRuleCreateMode()
-	{
+	public function testAddingRuleCreateMode() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -115,8 +111,7 @@ class RulesCheckerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddingRuleWithName()
-	{
+	public function testAddingRuleWithName() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -139,8 +134,7 @@ class RulesCheckerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddWithErrorMessage()
-	{
+	public function testAddWithErrorMessage() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -162,8 +156,7 @@ class RulesCheckerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddWithMessageOption()
-	{
+	public function testAddWithMessageOption() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -185,8 +178,7 @@ class RulesCheckerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddWithoutFields()
-	{
+	public function testAddWithoutFields() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);

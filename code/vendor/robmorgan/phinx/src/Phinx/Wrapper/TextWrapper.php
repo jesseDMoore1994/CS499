@@ -37,8 +37,7 @@ use Symfony\Component\Console\Output\StreamOutput;
  *
  * @author Woody Gilk <woody.gilk@gmail.com>
  */
-class TextWrapper
-{
+class TextWrapper {
 	/**
 	 * @var PhinxApplication
 	 */
@@ -58,8 +57,7 @@ class TextWrapper
 	 * @param PhinxApplication $app
 	 * @param array $options
 	 */
-	public function __construct(PhinxApplication $app, array $options = array())
-	{
+	public function __construct(PhinxApplication $app, array $options = array()) {
 		$options += array(
 			'environment' => 'development',
 		);
@@ -73,8 +71,7 @@ class TextWrapper
 	 *
 	 * @return PhinxApplication
 	 */
-	public function getApp()
-	{
+	public function getApp() {
 		return $this->app;
 	}
 
@@ -82,8 +79,7 @@ class TextWrapper
 	 * Returns the exit code from the last run command.
 	 * @return integer
 	 */
-	public function getExitCode()
-	{
+	public function getExitCode() {
 		return $this->exit_code;
 	}
 
@@ -93,8 +89,7 @@ class TextWrapper
 	 * @param  string $env environment name (optional)
 	 * @return string
 	 */
-	public function getStatus($env = null)
-	{
+	public function getStatus($env = null) {
 		$command = array(
 			'status',
 			'-e' => $env ?: $this->getOption('environment'),
@@ -110,8 +105,7 @@ class TextWrapper
 	 * @param  string $target target version (optional)
 	 * @return string
 	 */
-	public function getMigrate($env = null, $target = null)
-	{
+	public function getMigrate($env = null, $target = null) {
 		$command = array(
 			'migrate',
 			'-e' => $env ?: $this->getOption('environment'),
@@ -130,8 +124,7 @@ class TextWrapper
 	 * @param  mixed $target target version, or 0 (zero) fully revert (optional)
 	 * @return string
 	 */
-	public function getRollback($env = null, $target = null)
-	{
+	public function getRollback($env = null, $target = null) {
 		$command = array(
 			'rollback',
 			'-e' => $env ?: $this->getOption('environment'),
@@ -152,8 +145,7 @@ class TextWrapper
 	 * @param  string $key
 	 * @return string
 	 */
-	protected function getOption($key)
-	{
+	protected function getOption($key) {
 		if (!isset($this->options[$key])) {
 			return null;
 		}
@@ -167,8 +159,7 @@ class TextWrapper
 	 * @param  string $value
 	 * @return object
 	 */
-	public function setOption($key, $value)
-	{
+	public function setOption($key, $value) {
 		$this->options[$key] = $value;
 		return $this;
 	}
@@ -179,8 +170,7 @@ class TextWrapper
 	 * @param  array $command
 	 * @return string
 	 */
-	protected function executeRun(array $command)
-	{
+	protected function executeRun(array $command) {
 		// Output will be written to a temporary stream, so that it can be
 		// collected after running the command.
 		$stream = fopen('php://temp', 'w+');

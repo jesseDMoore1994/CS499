@@ -25,8 +25,7 @@ use Cake\Utility\Inflector;
  *
  * An example of a HasOne association would be User has one Profile.
  */
-class HasOne extends Association
-{
+class HasOne extends Association {
 
 	use DependentDeleteTrait;
 	use SelectableAssociationTrait;
@@ -45,8 +44,7 @@ class HasOne extends Association
 	 * @param string|null $key the key to be used to link both tables together
 	 * @return string
 	 */
-	public function foreignKey($key = null)
-	{
+	public function foreignKey($key = null) {
 		if ($key === null) {
 			if ($this->_foreignKey === null) {
 				$this->_foreignKey = $this->_modelKey($this->source()->alias());
@@ -64,8 +62,7 @@ class HasOne extends Association
 	 * @param string|null $name The name of the property. Pass null to read the current value.
 	 * @return string
 	 */
-	public function property($name = null)
-	{
+	public function property($name = null) {
 		if ($name !== null) {
 			return parent::property($name);
 		}
@@ -84,8 +81,7 @@ class HasOne extends Association
 	 * @param \Cake\ORM\Table $side The potential Table with ownership
 	 * @return bool
 	 */
-	public function isOwningSide(Table $side)
-	{
+	public function isOwningSide(Table $side) {
 		return $side === $this->source();
 	}
 
@@ -94,8 +90,7 @@ class HasOne extends Association
 	 *
 	 * @return string
 	 */
-	public function type()
-	{
+	public function type() {
 		return self::ONE_TO_ONE;
 	}
 
@@ -112,8 +107,7 @@ class HasOne extends Association
 	 * the saved entity
 	 * @see Table::save()
 	 */
-	public function saveAssociated(EntityInterface $entity, array $options = [])
-	{
+	public function saveAssociated(EntityInterface $entity, array $options = []) {
 		$targetEntity = $entity->get($this->property());
 		if (empty($targetEntity) || !($targetEntity instanceof EntityInterface)) {
 			return $entity;
@@ -136,8 +130,7 @@ class HasOne extends Association
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function _linkField($options)
-	{
+	protected function _linkField($options) {
 		$links = [];
 		$name = $this->alias();
 
@@ -155,8 +148,7 @@ class HasOne extends Association
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function _buildResultMap($fetchQuery, $options)
-	{
+	protected function _buildResultMap($fetchQuery, $options) {
 		$resultMap = [];
 		$key = (array)$options['foreignKey'];
 

@@ -27,8 +27,7 @@ use Cake\TestSuite\TestCase;
 /**
  * ResultSet test case.
  */
-class ResultSetTest extends TestCase
-{
+class ResultSetTest extends TestCase {
 
 	public $fixtures = ['core.articles', 'core.authors', 'core.comments'];
 
@@ -37,8 +36,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->connection = ConnectionManager::get('test');
 		$this->table = new Table([
@@ -58,8 +56,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRewind()
-	{
+	public function testRewind() {
 		$query = $this->table->find('all');
 		$results = $query->all();
 		$first = $second = [];
@@ -77,8 +74,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRewindStreaming()
-	{
+	public function testRewindStreaming() {
 		$query = $this->table->find('all')->bufferResults(false);
 		$results = $query->all();
 		$first = $second = [];
@@ -99,8 +95,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSerialization()
-	{
+	public function testSerialization() {
 		$query = $this->table->find('all');
 		$results = $query->all();
 		$expected = $results->toArray();
@@ -117,8 +112,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIteratorAfterSerializationNoHydration()
-	{
+	public function testIteratorAfterSerializationNoHydration() {
 		$query = $this->table->find('all')->hydrate(false);
 		$results = unserialize(serialize($query->all()));
 
@@ -133,8 +127,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIteratorAfterSerializationHydrated()
-	{
+	public function testIteratorAfterSerializationHydrated() {
 		$query = $this->table->find('all');
 		$results = unserialize(serialize($query->all()));
 
@@ -153,8 +146,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJsonSerialize()
-	{
+	public function testJsonSerialize() {
 		$query = $this->table->find('all');
 		$results = $query->all();
 
@@ -167,8 +159,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFirst()
-	{
+	public function testFirst() {
 		$query = $this->table->find('all');
 		$results = $query->hydrate(false)->all();
 
@@ -184,8 +175,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFirstAfterSerialize()
-	{
+	public function testFirstAfterSerialize() {
 		$query = $this->table->find('all');
 		$results = $query->hydrate(false)->all();
 		$results = unserialize(serialize($results));
@@ -202,8 +192,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCount()
-	{
+	public function testCount() {
 		$query = $this->table->find('all');
 		$results = $query->all();
 
@@ -215,8 +204,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountAfterSerialize()
-	{
+	public function testCountAfterSerialize() {
 		$query = $this->table->find('all');
 		$results = $query->all();
 		$results = unserialize(serialize($results));
@@ -229,8 +217,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupBy()
-	{
+	public function testGroupBy() {
 		$query = $this->table->find('all');
 		$results = $query->all()->groupBy('author_id')->toArray();
 		$options = [
@@ -255,8 +242,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDebugInfo()
-	{
+	public function testDebugInfo() {
 		$query = $this->table->find('all');
 		$results = $query->all();
 		$expected = [
@@ -270,8 +256,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBelongsToEagerLoaderLeavesEmptyAssocation()
-	{
+	public function testBelongsToEagerLoaderLeavesEmptyAssocation() {
 		$comments = TableRegistry::get('Comments');
 		$comments->belongsTo('Articles');
 
@@ -297,8 +282,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHasOneEagerLoaderLeavesEmptyAssocation()
-	{
+	public function testHasOneEagerLoaderLeavesEmptyAssocation() {
 		$this->table->hasOne('Comments');
 
 		// Clear the comments table so we can trigger an empty hasOne.
@@ -325,8 +309,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFetchMissingDefaultAlias()
-	{
+	public function testFetchMissingDefaultAlias() {
 		$comments = TableRegistry::get('Comments');
 		$query = $comments->find()->select(['Other__field' => 'test']);
 		$query->autoFields(false);
@@ -349,8 +332,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSourceOnContainAssociations()
-	{
+	public function testSourceOnContainAssociations() {
 		Plugin::load('TestPlugin');
 		$comments = TableRegistry::get('TestPlugin.Comments');
 		$comments->belongsTo('Authors', [
@@ -374,8 +356,7 @@ class ResultSetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsEmptyDoesNotConsumeData()
-	{
+	public function testIsEmptyDoesNotConsumeData() {
 		$table = TableRegistry::get('Comments');
 		$query = $table->find()
 			->formatResults(function ($results) {

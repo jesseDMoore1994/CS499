@@ -28,8 +28,7 @@ use Cake\TestSuite\TestCase;
  * Test case for DigestAuthentication
  *
  */
-class DigestAuthenticateTest extends TestCase
-{
+class DigestAuthenticateTest extends TestCase {
 
 	/**
 	 * Fixtures
@@ -43,8 +42,7 @@ class DigestAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->Collection = $this->getMock('Cake\Controller\ComponentRegistry');
@@ -66,8 +64,7 @@ class DigestAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructor()
-	{
+	public function testConstructor() {
 		$object = new DigestAuthenticate($this->Collection, [
 			'userModel' => 'AuthUser',
 			'fields' => ['username' => 'user', 'password' => 'pass'],
@@ -84,8 +81,7 @@ class DigestAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateNoData()
-	{
+	public function testAuthenticateNoData() {
 		$request = new Request('posts/index');
 
 		$this->response->expects($this->never())
@@ -101,8 +97,7 @@ class DigestAuthenticateTest extends TestCase
 	 * @expectedExceptionCode 401
 	 * @return void
 	 */
-	public function testAuthenticateWrongUsername()
-	{
+	public function testAuthenticateWrongUsername() {
 		$request = new Request('posts/index');
 		$request->addParams(['pass' => []]);
 
@@ -127,8 +122,7 @@ DIGEST;
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateChallenge()
-	{
+	public function testAuthenticateChallenge() {
 		$request = new Request([
 			'url' => 'posts/index',
 			'environment' => ['REQUEST_METHOD' => 'GET']
@@ -151,8 +145,7 @@ DIGEST;
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateSuccess()
-	{
+	public function testAuthenticateSuccess() {
 		$request = new Request([
 			'url' => 'posts/index',
 			'environment' => ['REQUEST_METHOD' => 'GET']
@@ -187,8 +180,7 @@ DIGEST;
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateSuccessSimulatedRequestMethod()
-	{
+	public function testAuthenticateSuccessSimulatedRequestMethod() {
 		$request = new Request([
 			'url' => 'posts/index',
 			'post' => ['_method' => 'PUT'],
@@ -226,8 +218,7 @@ DIGEST;
 	 * @expectedExceptionCode 401
 	 * @return void
 	 */
-	public function testAuthenticateFailReChallenge()
-	{
+	public function testAuthenticateFailReChallenge() {
 		$this->auth->config('scope.username', 'nate');
 		$request = new Request([
 			'url' => 'posts/index',
@@ -256,8 +247,7 @@ DIGEST;
 	 *
 	 * @return void
 	 */
-	public function testLoginHeaders()
-	{
+	public function testLoginHeaders() {
 		$request = new Request([
 			'environment' => ['SERVER_NAME' => 'localhost']
 		]);
@@ -275,8 +265,7 @@ DIGEST;
 	 *
 	 * @return void
 	 */
-	public function testParseAuthData()
-	{
+	public function testParseAuthData() {
 		$digest = <<<DIGEST
 			Digest username="Mufasa",
 			realm="testrealm@host.com",
@@ -311,8 +300,7 @@ DIGEST;
 	 *
 	 * @return void
 	 */
-	public function testParseAuthDataFullUri()
-	{
+	public function testParseAuthDataFullUri() {
 		$digest = <<<DIGEST
 			Digest username="admin",
 			realm="192.168.0.2",
@@ -335,8 +323,7 @@ DIGEST;
 	 *
 	 * @return void
 	 */
-	public function testParseAuthEmailAddress()
-	{
+	public function testParseAuthEmailAddress() {
 		$digest = <<<DIGEST
 			Digest username="mark@example.com",
 			realm="testrealm@host.com",
@@ -368,8 +355,7 @@ DIGEST;
 	 *
 	 * @return void
 	 */
-	public function testPassword()
-	{
+	public function testPassword() {
 		$result = DigestAuthenticate::password('mark', 'password', 'localhost');
 		$expected = md5('mark:localhost:password');
 		$this->assertEquals($expected, $result);

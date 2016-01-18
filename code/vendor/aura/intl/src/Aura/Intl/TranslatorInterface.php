@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-interface TranslatorInterface
-{
+interface TranslatorInterface {
 	/**
 	 *
 	 * translate

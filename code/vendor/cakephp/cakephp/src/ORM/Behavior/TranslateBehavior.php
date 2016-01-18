@@ -38,8 +38,7 @@ use Cake\Utility\Inflector;
  * If you want to bring all or certain languages for each of the fetched records,
  * you can use the custom `translations` finders that is exposed to the table.
  */
-class TranslateBehavior extends Behavior
-{
+class TranslateBehavior extends Behavior {
 
 	use LocatorAwareTrait;
 
@@ -91,8 +90,7 @@ class TranslateBehavior extends Behavior
 	 * @param \Cake\ORM\Table $table The table this behavior is attached to.
 	 * @param array $config The config for this behavior.
 	 */
-	public function __construct(Table $table, array $config = [])
-	{
+	public function __construct(Table $table, array $config = []) {
 		$config += [
 			'defaultLocale' => I18n::defaultLocale(),
 			'referenceName' => $this->_referenceName($table)
@@ -111,8 +109,7 @@ class TranslateBehavior extends Behavior
 	 * @param array $config The config for this behavior.
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		$this->_translationTable = $this->tableLocator()->get($this->_config['translationTable']);
 
 		$this->setupFieldAssociations(
@@ -137,8 +134,7 @@ class TranslateBehavior extends Behavior
 	 *
 	 * @return void
 	 */
-	public function setupFieldAssociations($fields, $table, $model, $strategy)
-	{
+	public function setupFieldAssociations($fields, $table, $model, $strategy) {
 		$targetAlias = $this->_translationTable->alias();
 		$alias = $this->_table->alias();
 		$filter = $this->_config['onlyTranslated'];
@@ -199,8 +195,7 @@ class TranslateBehavior extends Behavior
 	 * @param \ArrayObject $options The options for the query
 	 * @return void
 	 */
-	public function beforeFind(Event $event, Query $query, $options)
-	{
+	public function beforeFind(Event $event, Query $query, $options) {
 		$locale = $this->locale();
 
 		if ($locale === $this->config('defaultLocale')) {
@@ -261,8 +256,7 @@ class TranslateBehavior extends Behavior
 	 * @param \ArrayObject $options the options passed to the save method
 	 * @return void
 	 */
-	public function beforeSave(Event $event, EntityInterface $entity, ArrayObject $options)
-	{
+	public function beforeSave(Event $event, EntityInterface $entity, ArrayObject $options) {
 		$locale = $entity->get('_locale') ?: $this->locale();
 		$newOptions = [$this->_translationTable->alias() => ['validate' => false]];
 		$options['associated'] = $newOptions + $options['associated'];
@@ -321,8 +315,7 @@ class TranslateBehavior extends Behavior
 	 * @param \Cake\Datasource\EntityInterface $entity The entity that is going to be saved
 	 * @return void
 	 */
-	public function afterSave(Event $event, EntityInterface $entity)
-	{
+	public function afterSave(Event $event, EntityInterface $entity) {
 		$entity->unsetProperty('_i18n');
 	}
 
@@ -334,8 +327,7 @@ class TranslateBehavior extends Behavior
 	 * @param string|null $locale The locale to use for fetching translated records
 	 * @return string
 	 */
-	public function locale($locale = null)
-	{
+	public function locale($locale = null) {
 		if ($locale === null) {
 			return $this->_locale ?: I18n::locale();
 		}
@@ -364,8 +356,7 @@ class TranslateBehavior extends Behavior
 	 * @param array $options Options
 	 * @return \Cake\ORM\Query
 	 */
-	public function findTranslations(Query $query, array $options)
-	{
+	public function findTranslations(Query $query, array $options) {
 		$locales = isset($options['locales']) ? $options['locales'] : [];
 		$targetAlias = $this->_translationTable->alias();
 		return $query
@@ -389,8 +380,7 @@ class TranslateBehavior extends Behavior
 	 * @param \Cake\ORM\Table $table The table class to get a reference name for.
 	 * @return string
 	 */
-	protected function _referenceName(Table $table)
-	{
+	protected function _referenceName(Table $table) {
 		$name = namespaceSplit(get_class($table));
 		$name = substr(end($name), 0, -5);
 		if (empty($name)) {
@@ -409,8 +399,7 @@ class TranslateBehavior extends Behavior
 	 * @param string $locale Locale string
 	 * @return \Cake\Collection\Collection
 	 */
-	protected function _rowMapper($results, $locale)
-	{
+	protected function _rowMapper($results, $locale) {
 		return $results->map(function ($row) use ($locale) {
 			if ($row === null) {
 				return $row;
@@ -450,8 +439,7 @@ class TranslateBehavior extends Behavior
 	 * @param \Cake\Datasource\ResultSetInterface $results Results to modify.
 	 * @return \Cake\Collection\Collection
 	 */
-	public function groupTranslations($results)
-	{
+	public function groupTranslations($results) {
 		return $results->map(function ($row) {
 			if (!$row instanceof EntityInterface) {
 				return $row;
@@ -486,8 +474,7 @@ class TranslateBehavior extends Behavior
 	 * @param \Cake\Datasource\EntityInterface $entity Entity
 	 * @return void
 	 */
-	protected function _bundleTranslatedFields($entity)
-	{
+	protected function _bundleTranslatedFields($entity) {
 		$translations = (array)$entity->get('_translations');
 
 		if (empty($translations) && !$entity->dirty('_translations')) {
@@ -538,8 +525,7 @@ class TranslateBehavior extends Behavior
 	 * @param array $ruleSet an array of arary of conditions to be used for finding each
 	 * @return array
 	 */
-	protected function _findExistingTranslations($ruleSet)
-	{
+	protected function _findExistingTranslations($ruleSet) {
 		$association = $this->_table->association($this->_translationTable->alias());
 
 		$query = $association->find()

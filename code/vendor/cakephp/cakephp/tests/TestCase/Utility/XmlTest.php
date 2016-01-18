@@ -25,8 +25,7 @@ use Cake\Utility\Xml;
  * XmlTest class
  *
  */
-class XmlTest extends TestCase
-{
+class XmlTest extends TestCase {
 
 	/**
 	 * autoFixtures property
@@ -48,8 +47,7 @@ class XmlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->_appEncoding = Configure::read('App.encoding');
 		Configure::write('App.encoding', 'UTF-8');
@@ -60,8 +58,7 @@ class XmlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Configure::write('App.encoding', $this->_appEncoding);
 	}
@@ -71,8 +68,7 @@ class XmlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuild()
-	{
+	public function testBuild() {
 		$xml = '<tag>value</tag>';
 		$obj = Xml::build($xml);
 		$this->assertTrue($obj instanceof \SimpleXMLElement);
@@ -121,8 +117,7 @@ class XmlTest extends TestCase
 	 * @expectedException \Cake\Utility\Exception\XmlException
 	 * @return void
 	 */
-	public function testBuildFromFileWhenDisabled()
-	{
+	public function testBuildFromFileWhenDisabled() {
 		$xml = CORE_TESTS . 'Fixture/sample.xml';
 		$obj = Xml::build($xml, ['readFile' => false]);
 	}
@@ -132,8 +127,7 @@ class XmlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildCollection()
-	{
+	public function testBuildCollection() {
 		$xml = new Collection(['tag' => 'value']);
 		$obj = Xml::build($xml);
 
@@ -154,8 +148,7 @@ class XmlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildOrmEntity()
-	{
+	public function testBuildOrmEntity() {
 		$user = new Entity(['username' => 'mark', 'email' => 'mark@example.com']);
 		$xml = new Collection([
 			'response' => [
@@ -173,8 +166,7 @@ class XmlTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function invalidDataProvider()
-	{
+	public static function invalidDataProvider() {
 		return [
 			[null],
 			[false],
@@ -190,8 +182,7 @@ class XmlTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testBuildInvalidData($value)
-	{
+	public function testBuildInvalidData($value) {
 		Xml::build($value);
 	}
 
@@ -201,8 +192,7 @@ class XmlTest extends TestCase
 	 * @expectedException \Cake\Utility\Exception\XmlException
 	 * @return void
 	 */
-	public function testBuildInvalidDataSimpleXml()
-	{
+	public function testBuildInvalidDataSimpleXml() {
 		$input = '<derp';
 		Xml::build($input, ['return' => 'simplexml']);
 	}
@@ -212,8 +202,7 @@ class XmlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildEmptyTag()
-	{
+	public function testBuildEmptyTag() {
 		try {
 			Xml::build('<tag>');
 			$this->fail('No exception');
@@ -227,8 +216,7 @@ class XmlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFromArray()
-	{
+	public function testFromArray() {
 		$xml = ['tag' => 'value'];
 		$obj = Xml::fromArray($xml);
 		$this->assertEquals('tag', $obj->getName());
@@ -399,8 +387,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testFromArrayNonSequentialKeys()
-	{
+	public function testFromArrayNonSequentialKeys() {
 		$xmlArray = [
 			'Event' => [
 				[
@@ -437,8 +424,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testFromArrayPretty()
-	{
+	public function testFromArrayPretty() {
 		$xml = [
 			'tags' => [
 				'tag' => [
@@ -519,8 +505,7 @@ XML;
 	 *
 	 * @return array
 	 */
-	public static function invalidArrayDataProvider()
-	{
+	public static function invalidArrayDataProvider() {
 		return [
 			[''],
 			[null],
@@ -565,8 +550,7 @@ XML;
 	 * @expectedException \Exception
 	 * @return void
 	 */
-	public function testFromArrayFail($value)
-	{
+	public function testFromArrayFail($value) {
 		Xml::fromArray($value);
 	}
 
@@ -575,8 +559,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testFromArrayUnterminatedError()
-	{
+	public function testFromArrayUnterminatedError() {
 		$data = [
 			'product_ID' => 'GENERT-DL',
 			'deeplink' => 'http://example.com/deep',
@@ -611,8 +594,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testToArray()
-	{
+	public function testToArray() {
 		$xml = '<tag>name</tag>';
 		$obj = Xml::build($xml);
 		$this->assertEquals(['tag' => 'name'], Xml::toArray($obj));
@@ -774,8 +756,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testRss()
-	{
+	public function testRss() {
 		$rss = file_get_contents(CORE_TESTS . 'Fixture/rss.xml');
 		$rssAsArray = Xml::toArray(Xml::build($rss));
 		$this->assertEquals('2.0', $rssAsArray['rss']['@version']);
@@ -850,8 +831,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testXmlRpc()
-	{
+	public function testXmlRpc() {
 		$xml = Xml::build('<methodCall><methodName>test</methodName><params /></methodCall>');
 		$expected = [
 			'methodCall' => [
@@ -936,8 +916,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testSoap()
-	{
+	public function testSoap() {
 		$xmlRequest = Xml::build(CORE_TESTS . 'Fixture/soap_request.xml');
 		$expected = [
 			'Envelope' => [
@@ -995,8 +974,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testNamespace()
-	{
+	public function testNamespace() {
 		$xml = <<<XML
 <root xmlns:ns="http://cakephp.org">
 	<ns:tag id="1">
@@ -1113,8 +1091,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testCdata()
-	{
+	public function testCdata() {
 		$xml = '<' . '?xml version="1.0" encoding="UTF-8"?>' .
 			'<people><name><![CDATA[ Mark ]]></name></people>';
 
@@ -1127,8 +1104,7 @@ XML;
 	 *
 	 * @return array
 	 */
-	public static function invalidToArrayDataProvider()
-	{
+	public static function invalidToArrayDataProvider() {
 		return [
 			[new \DateTime()],
 			[[]]
@@ -1142,8 +1118,7 @@ XML;
 	 * @expectedException \Cake\Utility\Exception\XmlException
 	 * @return void
 	 */
-	public function testToArrayFail($value)
-	{
+	public function testToArrayFail($value) {
 		Xml::toArray($value);
 	}
 
@@ -1152,8 +1127,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testAmpInText()
-	{
+	public function testAmpInText() {
 		$data = [
 			'outer' => [
 				'inner' => ['name' => 'mark & mark']
@@ -1169,8 +1143,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testNoEntityLoading()
-	{
+	public function testNoEntityLoading() {
 		$file = str_replace(' ', '%20', CAKE . 'VERSION.txt');
 		$xml = <<<XML
 <!DOCTYPE cakephp [

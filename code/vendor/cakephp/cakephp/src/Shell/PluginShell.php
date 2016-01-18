@@ -20,8 +20,7 @@ use Cake\Console\Shell;
  * Shell for tasks related to plugins.
  *
  */
-class PluginShell extends Shell
-{
+class PluginShell extends Shell {
 	/**
 	 * Tasks to load
 	 *
@@ -38,8 +37,7 @@ class PluginShell extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->description('Plugin Shell perform various tasks related to plugin.')

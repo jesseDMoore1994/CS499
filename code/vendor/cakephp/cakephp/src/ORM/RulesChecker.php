@@ -25,8 +25,7 @@ use Cake\ORM\Rule\IsUnique;
  *
  * @see Cake\Datasource\RulesChecker
  */
-class RulesChecker extends BaseRulesChecker
-{
+class RulesChecker extends BaseRulesChecker {
 
 	/**
 	 * Returns a callable that can be used as a rule for checking the uniqueness of a value
@@ -42,8 +41,7 @@ class RulesChecker extends BaseRulesChecker
 	 * @param string $message The error message to show in case the rule does not pass.
 	 * @return callable
 	 */
-	public function isUnique(array $fields, $message = null)
-	{
+	public function isUnique(array $fields, $message = null) {
 		if (!$message) {
 			if ($this->_useI18n) {
 				$message = __d('cake', 'This value is already in use');
@@ -76,8 +74,7 @@ class RulesChecker extends BaseRulesChecker
 	 * @param string $message The error message to show in case the rule does not pass.
 	 * @return callable
 	 */
-	public function existsIn($field, $table, $message = null)
-	{
+	public function existsIn($field, $table, $message = null) {
 		if (!$message) {
 			if ($this->_useI18n) {
 				$message = __d('cake', 'This value does not exist');

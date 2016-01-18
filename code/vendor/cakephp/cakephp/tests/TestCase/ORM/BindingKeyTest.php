@@ -20,8 +20,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Integration tests for usinge the bindingKey in associations
  */
-class BindingKeyTest extends TestCase
-{
+class BindingKeyTest extends TestCase {
 
 	/**
 	 * Fixture to be used
@@ -39,8 +38,7 @@ class BindingKeyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function strategiesProviderJoinable()
-	{
+	public function strategiesProviderJoinable() {
 		return [['join'], ['select']];
 	}
 
@@ -49,8 +47,7 @@ class BindingKeyTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function strategiesProviderExternal()
-	{
+	public function strategiesProviderExternal() {
 		return [['subquery'], ['select']];
 	}
 
@@ -60,8 +57,7 @@ class BindingKeyTest extends TestCase
 	 * @dataProvider strategiesProviderJoinable
 	 * @return void
 	 */
-	public function testBelongsto($strategy)
-	{
+	public function testBelongsto($strategy) {
 		$users = TableRegistry::get('Users');
 		$users->belongsTo('AuthUsers', [
 			'bindingKey' => 'username',
@@ -92,8 +88,7 @@ class BindingKeyTest extends TestCase
 	 * @dataProvider strategiesProviderJoinable
 	 * @return void
 	 */
-	public function testHasOne($strategy)
-	{
+	public function testHasOne($strategy) {
 		$users = TableRegistry::get('Users');
 		$users->hasOne('SiteAuthors', [
 			'bindingKey' => 'username',
@@ -116,8 +111,7 @@ class BindingKeyTest extends TestCase
 	 * @dataProvider strategiesProviderExternal
 	 * @return void
 	 */
-	public function testHasMany($strategy)
-	{
+	public function testHasMany($strategy) {
 		$users = TableRegistry::get('Users');
 		$authors = $users->hasMany('SiteAuthors', [
 			'bindingKey' => 'username',

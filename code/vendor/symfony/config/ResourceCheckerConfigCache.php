@@ -21,8 +21,7 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ResourceCheckerConfigCache implements ConfigCacheInterface
-{
+class ResourceCheckerConfigCache implements ConfigCacheInterface {
 	/**
 	 * @var string
 	 */
@@ -37,8 +36,7 @@ class ResourceCheckerConfigCache implements ConfigCacheInterface
 	 * @param string $file The absolute cache path
 	 * @param ResourceCheckerInterface[] $resourceCheckers The ResourceCheckers to use for the freshness check
 	 */
-	public function __construct($file, array $resourceCheckers = array())
-	{
+	public function __construct($file, array $resourceCheckers = array()) {
 		$this->file = $file;
 		$this->resourceCheckers = $resourceCheckers;
 	}
@@ -46,8 +44,7 @@ class ResourceCheckerConfigCache implements ConfigCacheInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getPath()
-	{
+	public function getPath() {
 		return $this->file;
 	}
 
@@ -62,8 +59,7 @@ class ResourceCheckerConfigCache implements ConfigCacheInterface
 	 *
 	 * @return bool true if the cache is fresh, false otherwise
 	 */
-	public function isFresh()
-	{
+	public function isFresh() {
 		if (!is_file($this->file)) {
 			return false;
 		}
@@ -106,8 +102,7 @@ class ResourceCheckerConfigCache implements ConfigCacheInterface
 	 *
 	 * @throws \RuntimeException When cache file can't be written
 	 */
-	public function write($content, array $metadata = null)
-	{
+	public function write($content, array $metadata = null) {
 		$mode = 0666;
 		$umask = umask();
 		$filesystem = new Filesystem();
@@ -133,8 +128,7 @@ class ResourceCheckerConfigCache implements ConfigCacheInterface
 	 *
 	 * @return string The meta file path
 	 */
-	private function getMetaFile()
-	{
+	private function getMetaFile() {
 		return $this->file . '.meta';
 	}
 }

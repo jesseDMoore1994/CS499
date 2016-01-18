@@ -16,8 +16,7 @@ use PhpParser\Node\Stmt;
  *  * the preprocessing script grammar/rebuildParsers.php
  */
 
-class Php5 extends \PhpParser\ParserAbstract
-{
+class Php5 extends \PhpParser\ParserAbstract {
 	protected $tokenToSymbolMapSize = 392;
 	protected $actionTableSize = 1288;
 	protected $gotoTableSize = 596;
@@ -954,18 +953,15 @@ class Php5 extends \PhpParser\ParserAbstract
 		1, 1, 1
 	);
 
-	protected function reduceRule0()
-	{
+	protected function reduceRule0() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule1()
-	{
+	protected function reduceRule1() {
 		$this->semValue = $this->handleNamespaces($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule2()
-	{
+	protected function reduceRule2() {
 		if (is_array($this->semStack[$this->stackPos - (2 - 2)])) {
 			$this->semValue = array_merge($this->semStack[$this->stackPos - (2 - 1)], $this->semStack[$this->stackPos - (2 - 2)]);
 		} else {
@@ -974,551 +970,443 @@ class Php5 extends \PhpParser\ParserAbstract
 		};
 	}
 
-	protected function reduceRule3()
-	{
+	protected function reduceRule3() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule4()
-	{
+	protected function reduceRule4() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule5()
-	{
+	protected function reduceRule5() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule6()
-	{
+	protected function reduceRule6() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule7()
-	{
+	protected function reduceRule7() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule8()
-	{
+	protected function reduceRule8() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule9()
-	{
+	protected function reduceRule9() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule10()
-	{
+	protected function reduceRule10() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule11()
-	{
+	protected function reduceRule11() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule12()
-	{
+	protected function reduceRule12() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule13()
-	{
+	protected function reduceRule13() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule14()
-	{
+	protected function reduceRule14() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule15()
-	{
+	protected function reduceRule15() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule16()
-	{
+	protected function reduceRule16() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule17()
-	{
+	protected function reduceRule17() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule18()
-	{
+	protected function reduceRule18() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule19()
-	{
+	protected function reduceRule19() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule20()
-	{
+	protected function reduceRule20() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule21()
-	{
+	protected function reduceRule21() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule22()
-	{
+	protected function reduceRule22() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule23()
-	{
+	protected function reduceRule23() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule24()
-	{
+	protected function reduceRule24() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule25()
-	{
+	protected function reduceRule25() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule26()
-	{
+	protected function reduceRule26() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule27()
-	{
+	protected function reduceRule27() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule28()
-	{
+	protected function reduceRule28() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule29()
-	{
+	protected function reduceRule29() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule30()
-	{
+	protected function reduceRule30() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule31()
-	{
+	protected function reduceRule31() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule32()
-	{
+	protected function reduceRule32() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule33()
-	{
+	protected function reduceRule33() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule34()
-	{
+	protected function reduceRule34() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule35()
-	{
+	protected function reduceRule35() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule36()
-	{
+	protected function reduceRule36() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule37()
-	{
+	protected function reduceRule37() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule38()
-	{
+	protected function reduceRule38() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule39()
-	{
+	protected function reduceRule39() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule40()
-	{
+	protected function reduceRule40() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule41()
-	{
+	protected function reduceRule41() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule42()
-	{
+	protected function reduceRule42() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule43()
-	{
+	protected function reduceRule43() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule44()
-	{
+	protected function reduceRule44() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule45()
-	{
+	protected function reduceRule45() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule46()
-	{
+	protected function reduceRule46() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule47()
-	{
+	protected function reduceRule47() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule48()
-	{
+	protected function reduceRule48() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule49()
-	{
+	protected function reduceRule49() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule50()
-	{
+	protected function reduceRule50() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule51()
-	{
+	protected function reduceRule51() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule52()
-	{
+	protected function reduceRule52() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule53()
-	{
+	protected function reduceRule53() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule54()
-	{
+	protected function reduceRule54() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule55()
-	{
+	protected function reduceRule55() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule56()
-	{
+	protected function reduceRule56() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule57()
-	{
+	protected function reduceRule57() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule58()
-	{
+	protected function reduceRule58() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule59()
-	{
+	protected function reduceRule59() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule60()
-	{
+	protected function reduceRule60() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule61()
-	{
+	protected function reduceRule61() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule62()
-	{
+	protected function reduceRule62() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule63()
-	{
+	protected function reduceRule63() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule64()
-	{
+	protected function reduceRule64() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule65()
-	{
+	protected function reduceRule65() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule66()
-	{
+	protected function reduceRule66() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule67()
-	{
+	protected function reduceRule67() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule68()
-	{
+	protected function reduceRule68() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule69()
-	{
+	protected function reduceRule69() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule70()
-	{
+	protected function reduceRule70() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule71()
-	{
+	protected function reduceRule71() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule72()
-	{
+	protected function reduceRule72() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule73()
-	{
+	protected function reduceRule73() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule74()
-	{
+	protected function reduceRule74() {
 		$this->semValue = new Name($this->semStack[$this->stackPos - (1 - 1)], $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule75()
-	{
+	protected function reduceRule75() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule76()
-	{
+	protected function reduceRule76() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule77()
-	{
+	protected function reduceRule77() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule78()
-	{
+	protected function reduceRule78() {
 		$this->semValue = new Stmt\HaltCompiler($this->lexer->handleHaltCompiler(), $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule79()
-	{
+	protected function reduceRule79() {
 		$this->semValue = new Stmt\Namespace_($this->semStack[$this->stackPos - (3 - 2)], null, $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule80()
-	{
+	protected function reduceRule80() {
 		$this->semValue = new Stmt\Namespace_($this->semStack[$this->stackPos - (5 - 2)], $this->semStack[$this->stackPos - (5 - 4)], $this->startAttributeStack[$this->stackPos - (5 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule81()
-	{
+	protected function reduceRule81() {
 		$this->semValue = new Stmt\Namespace_(null, $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule82()
-	{
+	protected function reduceRule82() {
 		$this->semValue = new Stmt\Use_($this->semStack[$this->stackPos - (3 - 2)], Stmt\Use_::TYPE_NORMAL, $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule83()
-	{
+	protected function reduceRule83() {
 		$this->semValue = new Stmt\Use_($this->semStack[$this->stackPos - (4 - 3)], $this->semStack[$this->stackPos - (4 - 2)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule84()
-	{
+	protected function reduceRule84() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule85()
-	{
+	protected function reduceRule85() {
 		$this->semValue = new Stmt\Const_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule86()
-	{
+	protected function reduceRule86() {
 		$this->semValue = Stmt\Use_::TYPE_FUNCTION;
 	}
 
-	protected function reduceRule87()
-	{
+	protected function reduceRule87() {
 		$this->semValue = Stmt\Use_::TYPE_CONSTANT;
 	}
 
-	protected function reduceRule88()
-	{
+	protected function reduceRule88() {
 		$this->semValue = new Stmt\GroupUse(new Name($this->semStack[$this->stackPos - (7 - 3)], $this->startAttributeStack[$this->stackPos - (7 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (7 - 6)], $this->semStack[$this->stackPos - (7 - 2)], $this->startAttributeStack[$this->stackPos - (7 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule89()
-	{
+	protected function reduceRule89() {
 		$this->semValue = new Stmt\GroupUse(new Name($this->semStack[$this->stackPos - (8 - 4)], $this->startAttributeStack[$this->stackPos - (8 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (8 - 7)], $this->semStack[$this->stackPos - (8 - 2)], $this->startAttributeStack[$this->stackPos - (8 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule90()
-	{
+	protected function reduceRule90() {
 		$this->semValue = new Stmt\GroupUse(new Name($this->semStack[$this->stackPos - (6 - 2)], $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (6 - 5)], Stmt\Use_::TYPE_UNKNOWN, $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule91()
-	{
+	protected function reduceRule91() {
 		$this->semValue = new Stmt\GroupUse(new Name($this->semStack[$this->stackPos - (7 - 3)], $this->startAttributeStack[$this->stackPos - (7 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (7 - 6)], Stmt\Use_::TYPE_UNKNOWN, $this->startAttributeStack[$this->stackPos - (7 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule92()
-	{
+	protected function reduceRule92() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule93()
-	{
+	protected function reduceRule93() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule94()
-	{
+	protected function reduceRule94() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule95()
-	{
+	protected function reduceRule95() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule96()
-	{
+	protected function reduceRule96() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule97()
-	{
+	protected function reduceRule97() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule98()
-	{
+	protected function reduceRule98() {
 		$this->semValue = new Stmt\UseUse($this->semStack[$this->stackPos - (1 - 1)], null, Stmt\Use_::TYPE_UNKNOWN, $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule99()
-	{
+	protected function reduceRule99() {
 		$this->semValue = new Stmt\UseUse($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], Stmt\Use_::TYPE_UNKNOWN, $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule100()
-	{
+	protected function reduceRule100() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule101()
-	{
+	protected function reduceRule101() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 2)];
 	}
 
-	protected function reduceRule102()
-	{
+	protected function reduceRule102() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 		$this->semValue->type = Stmt\Use_::TYPE_NORMAL;
 	}
 
-	protected function reduceRule103()
-	{
+	protected function reduceRule103() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue->type = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule104()
-	{
+	protected function reduceRule104() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule105()
-	{
+	protected function reduceRule105() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule106()
-	{
+	protected function reduceRule106() {
 		$this->semValue = new Node\Const_($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule107()
-	{
+	protected function reduceRule107() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule108()
-	{
+	protected function reduceRule108() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule109()
-	{
+	protected function reduceRule109() {
 		$this->semValue = new Node\Const_($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule110()
-	{
+	protected function reduceRule110() {
 		if (is_array($this->semStack[$this->stackPos - (2 - 2)])) {
 			$this->semValue = array_merge($this->semStack[$this->stackPos - (2 - 1)], $this->semStack[$this->stackPos - (2 - 2)]);
 		} else {
@@ -1527,1371 +1415,1101 @@ class Php5 extends \PhpParser\ParserAbstract
 		};
 	}
 
-	protected function reduceRule111()
-	{
+	protected function reduceRule111() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule112()
-	{
+	protected function reduceRule112() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule113()
-	{
+	protected function reduceRule113() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule114()
-	{
+	protected function reduceRule114() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule115()
-	{
+	protected function reduceRule115() {
 		throw new Error('__HALT_COMPILER() can only be used from the outermost scope', $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule116()
-	{
+	protected function reduceRule116() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule117()
-	{
+	protected function reduceRule117() {
 		$this->semValue = new Stmt\If_($this->semStack[$this->stackPos - (5 - 2)], ['stmts' => is_array($this->semStack[$this->stackPos - (5 - 3)]) ? $this->semStack[$this->stackPos - (5 - 3)] : array($this->semStack[$this->stackPos - (5 - 3)]), 'elseifs' => $this->semStack[$this->stackPos - (5 - 4)], 'else' => $this->semStack[$this->stackPos - (5 - 5)]], $this->startAttributeStack[$this->stackPos - (5 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule118()
-	{
+	protected function reduceRule118() {
 		$this->semValue = new Stmt\If_($this->semStack[$this->stackPos - (8 - 2)], ['stmts' => $this->semStack[$this->stackPos - (8 - 4)], 'elseifs' => $this->semStack[$this->stackPos - (8 - 5)], 'else' => $this->semStack[$this->stackPos - (8 - 6)]], $this->startAttributeStack[$this->stackPos - (8 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule119()
-	{
+	protected function reduceRule119() {
 		$this->semValue = new Stmt\While_($this->semStack[$this->stackPos - (3 - 2)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule120()
-	{
+	protected function reduceRule120() {
 		$this->semValue = new Stmt\Do_($this->semStack[$this->stackPos - (5 - 4)], is_array($this->semStack[$this->stackPos - (5 - 2)]) ? $this->semStack[$this->stackPos - (5 - 2)] : array($this->semStack[$this->stackPos - (5 - 2)]), $this->startAttributeStack[$this->stackPos - (5 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule121()
-	{
+	protected function reduceRule121() {
 		$this->semValue = new Stmt\For_(['init' => $this->semStack[$this->stackPos - (9 - 3)], 'cond' => $this->semStack[$this->stackPos - (9 - 5)], 'loop' => $this->semStack[$this->stackPos - (9 - 7)], 'stmts' => $this->semStack[$this->stackPos - (9 - 9)]], $this->startAttributeStack[$this->stackPos - (9 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule122()
-	{
+	protected function reduceRule122() {
 		$this->semValue = new Stmt\Switch_($this->semStack[$this->stackPos - (3 - 2)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule123()
-	{
+	protected function reduceRule123() {
 		$this->semValue = new Stmt\Break_(null, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule124()
-	{
+	protected function reduceRule124() {
 		$this->semValue = new Stmt\Break_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule125()
-	{
+	protected function reduceRule125() {
 		$this->semValue = new Stmt\Continue_(null, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule126()
-	{
+	protected function reduceRule126() {
 		$this->semValue = new Stmt\Continue_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule127()
-	{
+	protected function reduceRule127() {
 		$this->semValue = new Stmt\Return_(null, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule128()
-	{
+	protected function reduceRule128() {
 		$this->semValue = new Stmt\Return_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule129()
-	{
+	protected function reduceRule129() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule130()
-	{
+	protected function reduceRule130() {
 		$this->semValue = new Stmt\Global_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule131()
-	{
+	protected function reduceRule131() {
 		$this->semValue = new Stmt\Static_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule132()
-	{
+	protected function reduceRule132() {
 		$this->semValue = new Stmt\Echo_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule133()
-	{
+	protected function reduceRule133() {
 		$this->semValue = new Stmt\InlineHTML($this->semStack[$this->stackPos - (1 - 1)], $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule134()
-	{
+	protected function reduceRule134() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule135()
-	{
+	protected function reduceRule135() {
 		$this->semValue = new Stmt\Unset_($this->semStack[$this->stackPos - (5 - 3)], $this->startAttributeStack[$this->stackPos - (5 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule136()
-	{
+	protected function reduceRule136() {
 		$this->semValue = new Stmt\Foreach_($this->semStack[$this->stackPos - (7 - 3)], $this->semStack[$this->stackPos - (7 - 5)][0], ['keyVar' => null, 'byRef' => $this->semStack[$this->stackPos - (7 - 5)][1], 'stmts' => $this->semStack[$this->stackPos - (7 - 7)]], $this->startAttributeStack[$this->stackPos - (7 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule137()
-	{
+	protected function reduceRule137() {
 		$this->semValue = new Stmt\Foreach_($this->semStack[$this->stackPos - (9 - 3)], $this->semStack[$this->stackPos - (9 - 7)][0], ['keyVar' => $this->semStack[$this->stackPos - (9 - 5)], 'byRef' => $this->semStack[$this->stackPos - (9 - 7)][1], 'stmts' => $this->semStack[$this->stackPos - (9 - 9)]], $this->startAttributeStack[$this->stackPos - (9 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule138()
-	{
+	protected function reduceRule138() {
 		$this->semValue = new Stmt\Declare_($this->semStack[$this->stackPos - (5 - 3)], $this->semStack[$this->stackPos - (5 - 5)], $this->startAttributeStack[$this->stackPos - (5 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule139()
-	{
+	protected function reduceRule139() {
 		$this->semValue = array(); /* means: no statement */
 	}
 
-	protected function reduceRule140()
-	{
+	protected function reduceRule140() {
 		$this->semValue = new Stmt\TryCatch($this->semStack[$this->stackPos - (6 - 3)], $this->semStack[$this->stackPos - (6 - 5)], $this->semStack[$this->stackPos - (6 - 6)], $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule141()
-	{
+	protected function reduceRule141() {
 		$this->semValue = new Stmt\Throw_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule142()
-	{
+	protected function reduceRule142() {
 		$this->semValue = new Stmt\Goto_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule143()
-	{
+	protected function reduceRule143() {
 		$this->semValue = new Stmt\Label($this->semStack[$this->stackPos - (2 - 1)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule144()
-	{
+	protected function reduceRule144() {
 		$this->semValue = array(); /* means: no statement */
 	}
 
-	protected function reduceRule145()
-	{
+	protected function reduceRule145() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule146()
-	{
+	protected function reduceRule146() {
 		$this->semStack[$this->stackPos - (2 - 1)][] = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule147()
-	{
+	protected function reduceRule147() {
 		$this->semValue = new Stmt\Catch_($this->semStack[$this->stackPos - (8 - 3)], substr($this->semStack[$this->stackPos - (8 - 4)], 1), $this->semStack[$this->stackPos - (8 - 7)], $this->startAttributeStack[$this->stackPos - (8 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule148()
-	{
+	protected function reduceRule148() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule149()
-	{
+	protected function reduceRule149() {
 		$this->semValue = $this->semStack[$this->stackPos - (4 - 3)];
 	}
 
-	protected function reduceRule150()
-	{
+	protected function reduceRule150() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule151()
-	{
+	protected function reduceRule151() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule152()
-	{
+	protected function reduceRule152() {
 		$this->semValue = false;
 	}
 
-	protected function reduceRule153()
-	{
+	protected function reduceRule153() {
 		$this->semValue = true;
 	}
 
-	protected function reduceRule154()
-	{
+	protected function reduceRule154() {
 		$this->semValue = false;
 	}
 
-	protected function reduceRule155()
-	{
+	protected function reduceRule155() {
 		$this->semValue = true;
 	}
 
-	protected function reduceRule156()
-	{
+	protected function reduceRule156() {
 		$this->semValue = new Stmt\Function_($this->semStack[$this->stackPos - (10 - 3)], ['byRef' => $this->semStack[$this->stackPos - (10 - 2)], 'params' => $this->semStack[$this->stackPos - (10 - 5)], 'returnType' => $this->semStack[$this->stackPos - (10 - 7)], 'stmts' => $this->semStack[$this->stackPos - (10 - 9)]], $this->startAttributeStack[$this->stackPos - (10 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule157()
-	{
+	protected function reduceRule157() {
 		$this->semValue = new Stmt\Class_($this->semStack[$this->stackPos - (7 - 2)], ['type' => $this->semStack[$this->stackPos - (7 - 1)], 'extends' => $this->semStack[$this->stackPos - (7 - 3)], 'implements' => $this->semStack[$this->stackPos - (7 - 4)], 'stmts' => $this->semStack[$this->stackPos - (7 - 6)]], $this->startAttributeStack[$this->stackPos - (7 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule158()
-	{
+	protected function reduceRule158() {
 		$this->semValue = new Stmt\Interface_($this->semStack[$this->stackPos - (6 - 2)], ['extends' => $this->semStack[$this->stackPos - (6 - 3)], 'stmts' => $this->semStack[$this->stackPos - (6 - 5)]], $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule159()
-	{
+	protected function reduceRule159() {
 		$this->semValue = new Stmt\Trait_($this->semStack[$this->stackPos - (5 - 2)], $this->semStack[$this->stackPos - (5 - 4)], $this->startAttributeStack[$this->stackPos - (5 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule160()
-	{
+	protected function reduceRule160() {
 		$this->semValue = 0;
 	}
 
-	protected function reduceRule161()
-	{
+	protected function reduceRule161() {
 		$this->semValue = Stmt\Class_::MODIFIER_ABSTRACT;
 	}
 
-	protected function reduceRule162()
-	{
+	protected function reduceRule162() {
 		$this->semValue = Stmt\Class_::MODIFIER_FINAL;
 	}
 
-	protected function reduceRule163()
-	{
+	protected function reduceRule163() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule164()
-	{
+	protected function reduceRule164() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 2)];
 	}
 
-	protected function reduceRule165()
-	{
+	protected function reduceRule165() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule166()
-	{
+	protected function reduceRule166() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 2)];
 	}
 
-	protected function reduceRule167()
-	{
+	protected function reduceRule167() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule168()
-	{
+	protected function reduceRule168() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 2)];
 	}
 
-	protected function reduceRule169()
-	{
+	protected function reduceRule169() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule170()
-	{
+	protected function reduceRule170() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule171()
-	{
+	protected function reduceRule171() {
 		$this->semValue = is_array($this->semStack[$this->stackPos - (1 - 1)]) ? $this->semStack[$this->stackPos - (1 - 1)] : array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule172()
-	{
+	protected function reduceRule172() {
 		$this->semValue = $this->semStack[$this->stackPos - (4 - 2)];
 	}
 
-	protected function reduceRule173()
-	{
+	protected function reduceRule173() {
 		$this->semValue = is_array($this->semStack[$this->stackPos - (1 - 1)]) ? $this->semStack[$this->stackPos - (1 - 1)] : array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule174()
-	{
+	protected function reduceRule174() {
 		$this->semValue = $this->semStack[$this->stackPos - (4 - 2)];
 	}
 
-	protected function reduceRule175()
-	{
+	protected function reduceRule175() {
 		$this->semValue = is_array($this->semStack[$this->stackPos - (1 - 1)]) ? $this->semStack[$this->stackPos - (1 - 1)] : array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule176()
-	{
+	protected function reduceRule176() {
 		$this->semValue = $this->semStack[$this->stackPos - (4 - 2)];
 	}
 
-	protected function reduceRule177()
-	{
+	protected function reduceRule177() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule178()
-	{
+	protected function reduceRule178() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule179()
-	{
+	protected function reduceRule179() {
 		$this->semValue = new Stmt\DeclareDeclare($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule180()
-	{
+	protected function reduceRule180() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule181()
-	{
+	protected function reduceRule181() {
 		$this->semValue = $this->semStack[$this->stackPos - (4 - 3)];
 	}
 
-	protected function reduceRule182()
-	{
+	protected function reduceRule182() {
 		$this->semValue = $this->semStack[$this->stackPos - (4 - 2)];
 	}
 
-	protected function reduceRule183()
-	{
+	protected function reduceRule183() {
 		$this->semValue = $this->semStack[$this->stackPos - (5 - 3)];
 	}
 
-	protected function reduceRule184()
-	{
+	protected function reduceRule184() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule185()
-	{
+	protected function reduceRule185() {
 		$this->semStack[$this->stackPos - (2 - 1)][] = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule186()
-	{
+	protected function reduceRule186() {
 		$this->semValue = new Stmt\Case_($this->semStack[$this->stackPos - (4 - 2)], $this->semStack[$this->stackPos - (4 - 4)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule187()
-	{
+	protected function reduceRule187() {
 		$this->semValue = new Stmt\Case_(null, $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule188()
-	{
+	protected function reduceRule188() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule189()
-	{
+	protected function reduceRule189() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule190()
-	{
+	protected function reduceRule190() {
 		$this->semValue = is_array($this->semStack[$this->stackPos - (1 - 1)]) ? $this->semStack[$this->stackPos - (1 - 1)] : array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule191()
-	{
+	protected function reduceRule191() {
 		$this->semValue = $this->semStack[$this->stackPos - (4 - 2)];
 	}
 
-	protected function reduceRule192()
-	{
+	protected function reduceRule192() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule193()
-	{
+	protected function reduceRule193() {
 		$this->semStack[$this->stackPos - (2 - 1)][] = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule194()
-	{
+	protected function reduceRule194() {
 		$this->semValue = new Stmt\ElseIf_($this->semStack[$this->stackPos - (3 - 2)], is_array($this->semStack[$this->stackPos - (3 - 3)]) ? $this->semStack[$this->stackPos - (3 - 3)] : array($this->semStack[$this->stackPos - (3 - 3)]), $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule195()
-	{
+	protected function reduceRule195() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule196()
-	{
+	protected function reduceRule196() {
 		$this->semStack[$this->stackPos - (2 - 1)][] = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule197()
-	{
+	protected function reduceRule197() {
 		$this->semValue = new Stmt\ElseIf_($this->semStack[$this->stackPos - (4 - 2)], $this->semStack[$this->stackPos - (4 - 4)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule198()
-	{
+	protected function reduceRule198() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule199()
-	{
+	protected function reduceRule199() {
 		$this->semValue = new Stmt\Else_(is_array($this->semStack[$this->stackPos - (2 - 2)]) ? $this->semStack[$this->stackPos - (2 - 2)] : array($this->semStack[$this->stackPos - (2 - 2)]), $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule200()
-	{
+	protected function reduceRule200() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule201()
-	{
+	protected function reduceRule201() {
 		$this->semValue = new Stmt\Else_($this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule202()
-	{
+	protected function reduceRule202() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)], false);
 	}
 
-	protected function reduceRule203()
-	{
+	protected function reduceRule203() {
 		$this->semValue = array($this->semStack[$this->stackPos - (2 - 2)], true);
 	}
 
-	protected function reduceRule204()
-	{
+	protected function reduceRule204() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)], false);
 	}
 
-	protected function reduceRule205()
-	{
+	protected function reduceRule205() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule206()
-	{
+	protected function reduceRule206() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule207()
-	{
+	protected function reduceRule207() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule208()
-	{
+	protected function reduceRule208() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule209()
-	{
+	protected function reduceRule209() {
 		$this->semValue = new Node\Param(substr($this->semStack[$this->stackPos - (4 - 4)], 1), null, $this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 2)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule210()
-	{
+	protected function reduceRule210() {
 		$this->semValue = new Node\Param(substr($this->semStack[$this->stackPos - (6 - 4)], 1), $this->semStack[$this->stackPos - (6 - 6)], $this->semStack[$this->stackPos - (6 - 1)], $this->semStack[$this->stackPos - (6 - 2)], $this->semStack[$this->stackPos - (6 - 3)], $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule211()
-	{
+	protected function reduceRule211() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule212()
-	{
+	protected function reduceRule212() {
 		$this->semValue = 'array';
 	}
 
-	protected function reduceRule213()
-	{
+	protected function reduceRule213() {
 		$this->semValue = 'callable';
 	}
 
-	protected function reduceRule214()
-	{
+	protected function reduceRule214() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule215()
-	{
+	protected function reduceRule215() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule216()
-	{
+	protected function reduceRule216() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule217()
-	{
+	protected function reduceRule217() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 2)];
 	}
 
-	protected function reduceRule218()
-	{
+	protected function reduceRule218() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule219()
-	{
+	protected function reduceRule219() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule220()
-	{
+	protected function reduceRule220() {
 		$this->semValue = array(new Node\Arg($this->semStack[$this->stackPos - (3 - 2)], false, false, $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes));
 	}
 
-	protected function reduceRule221()
-	{
+	protected function reduceRule221() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule222()
-	{
+	protected function reduceRule222() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule223()
-	{
+	protected function reduceRule223() {
 		$this->semValue = new Node\Arg($this->semStack[$this->stackPos - (1 - 1)], false, false, $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule224()
-	{
+	protected function reduceRule224() {
 		$this->semValue = new Node\Arg($this->semStack[$this->stackPos - (2 - 2)], true, false, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule225()
-	{
+	protected function reduceRule225() {
 		$this->semValue = new Node\Arg($this->semStack[$this->stackPos - (2 - 2)], false, true, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule226()
-	{
+	protected function reduceRule226() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule227()
-	{
+	protected function reduceRule227() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule228()
-	{
+	protected function reduceRule228() {
 		$this->semValue = new Expr\Variable(substr($this->semStack[$this->stackPos - (1 - 1)], 1), $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule229()
-	{
+	protected function reduceRule229() {
 		$this->semValue = new Expr\Variable($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule230()
-	{
+	protected function reduceRule230() {
 		$this->semValue = new Expr\Variable($this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule231()
-	{
+	protected function reduceRule231() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule232()
-	{
+	protected function reduceRule232() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule233()
-	{
+	protected function reduceRule233() {
 		$this->semValue = new Stmt\StaticVar(substr($this->semStack[$this->stackPos - (1 - 1)], 1), null, $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule234()
-	{
+	protected function reduceRule234() {
 		$this->semValue = new Stmt\StaticVar(substr($this->semStack[$this->stackPos - (3 - 1)], 1), $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule235()
-	{
+	protected function reduceRule235() {
 		$this->semStack[$this->stackPos - (2 - 1)][] = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule236()
-	{
+	protected function reduceRule236() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule237()
-	{
+	protected function reduceRule237() {
 		$this->semValue = new Stmt\Property($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule238()
-	{
+	protected function reduceRule238() {
 		$this->semValue = new Stmt\ClassConst($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule239()
-	{
+	protected function reduceRule239() {
 		$this->semValue = new Stmt\ClassMethod($this->semStack[$this->stackPos - (9 - 4)], ['type' => $this->semStack[$this->stackPos - (9 - 1)], 'byRef' => $this->semStack[$this->stackPos - (9 - 3)], 'params' => $this->semStack[$this->stackPos - (9 - 6)], 'returnType' => $this->semStack[$this->stackPos - (9 - 8)], 'stmts' => $this->semStack[$this->stackPos - (9 - 9)]], $this->startAttributeStack[$this->stackPos - (9 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule240()
-	{
+	protected function reduceRule240() {
 		$this->semValue = new Stmt\TraitUse($this->semStack[$this->stackPos - (3 - 2)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule241()
-	{
+	protected function reduceRule241() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule242()
-	{
+	protected function reduceRule242() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule243()
-	{
+	protected function reduceRule243() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule244()
-	{
+	protected function reduceRule244() {
 		$this->semStack[$this->stackPos - (2 - 1)][] = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule245()
-	{
+	protected function reduceRule245() {
 		$this->semValue = new Stmt\TraitUseAdaptation\Precedence($this->semStack[$this->stackPos - (4 - 1)][0], $this->semStack[$this->stackPos - (4 - 1)][1], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule246()
-	{
+	protected function reduceRule246() {
 		$this->semValue = new Stmt\TraitUseAdaptation\Alias($this->semStack[$this->stackPos - (5 - 1)][0], $this->semStack[$this->stackPos - (5 - 1)][1], $this->semStack[$this->stackPos - (5 - 3)], $this->semStack[$this->stackPos - (5 - 4)], $this->startAttributeStack[$this->stackPos - (5 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule247()
-	{
+	protected function reduceRule247() {
 		$this->semValue = new Stmt\TraitUseAdaptation\Alias($this->semStack[$this->stackPos - (4 - 1)][0], $this->semStack[$this->stackPos - (4 - 1)][1], $this->semStack[$this->stackPos - (4 - 3)], null, $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule248()
-	{
+	protected function reduceRule248() {
 		$this->semValue = new Stmt\TraitUseAdaptation\Alias($this->semStack[$this->stackPos - (4 - 1)][0], $this->semStack[$this->stackPos - (4 - 1)][1], null, $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule249()
-	{
+	protected function reduceRule249() {
 		$this->semValue = new Stmt\TraitUseAdaptation\Alias($this->semStack[$this->stackPos - (4 - 1)][0], $this->semStack[$this->stackPos - (4 - 1)][1], null, $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule250()
-	{
+	protected function reduceRule250() {
 		$this->semValue = array($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)]);
 	}
 
-	protected function reduceRule251()
-	{
+	protected function reduceRule251() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule252()
-	{
+	protected function reduceRule252() {
 		$this->semValue = array(null, $this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule253()
-	{
+	protected function reduceRule253() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule254()
-	{
+	protected function reduceRule254() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule255()
-	{
+	protected function reduceRule255() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule256()
-	{
+	protected function reduceRule256() {
 		$this->semValue = 0;
 	}
 
-	protected function reduceRule257()
-	{
+	protected function reduceRule257() {
 		$this->semValue = 0;
 	}
 
-	protected function reduceRule258()
-	{
+	protected function reduceRule258() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule259()
-	{
+	protected function reduceRule259() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule260()
-	{
+	protected function reduceRule260() {
 		Stmt\Class_::verifyModifier($this->semStack[$this->stackPos - (2 - 1)], $this->semStack[$this->stackPos - (2 - 2)]);
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)] | $this->semStack[$this->stackPos - (2 - 2)];
 	}
 
-	protected function reduceRule261()
-	{
+	protected function reduceRule261() {
 		$this->semValue = Stmt\Class_::MODIFIER_PUBLIC;
 	}
 
-	protected function reduceRule262()
-	{
+	protected function reduceRule262() {
 		$this->semValue = Stmt\Class_::MODIFIER_PROTECTED;
 	}
 
-	protected function reduceRule263()
-	{
+	protected function reduceRule263() {
 		$this->semValue = Stmt\Class_::MODIFIER_PRIVATE;
 	}
 
-	protected function reduceRule264()
-	{
+	protected function reduceRule264() {
 		$this->semValue = Stmt\Class_::MODIFIER_STATIC;
 	}
 
-	protected function reduceRule265()
-	{
+	protected function reduceRule265() {
 		$this->semValue = Stmt\Class_::MODIFIER_ABSTRACT;
 	}
 
-	protected function reduceRule266()
-	{
+	protected function reduceRule266() {
 		$this->semValue = Stmt\Class_::MODIFIER_FINAL;
 	}
 
-	protected function reduceRule267()
-	{
+	protected function reduceRule267() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule268()
-	{
+	protected function reduceRule268() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule269()
-	{
+	protected function reduceRule269() {
 		$this->semValue = new Stmt\PropertyProperty(substr($this->semStack[$this->stackPos - (1 - 1)], 1), null, $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule270()
-	{
+	protected function reduceRule270() {
 		$this->semValue = new Stmt\PropertyProperty(substr($this->semStack[$this->stackPos - (3 - 1)], 1), $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule271()
-	{
+	protected function reduceRule271() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule272()
-	{
+	protected function reduceRule272() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule273()
-	{
+	protected function reduceRule273() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule274()
-	{
+	protected function reduceRule274() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule275()
-	{
+	protected function reduceRule275() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule276()
-	{
+	protected function reduceRule276() {
 		$this->semValue = new Expr\Assign($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule277()
-	{
+	protected function reduceRule277() {
 		$this->semValue = new Expr\Assign($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule278()
-	{
+	protected function reduceRule278() {
 		$this->semValue = new Expr\AssignRef($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 4)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule279()
-	{
+	protected function reduceRule279() {
 		$this->semValue = new Expr\AssignRef($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 4)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule280()
-	{
+	protected function reduceRule280() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule281()
-	{
+	protected function reduceRule281() {
 		$this->semValue = new Expr\Clone_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule282()
-	{
+	protected function reduceRule282() {
 		$this->semValue = new Expr\AssignOp\Plus($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule283()
-	{
+	protected function reduceRule283() {
 		$this->semValue = new Expr\AssignOp\Minus($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule284()
-	{
+	protected function reduceRule284() {
 		$this->semValue = new Expr\AssignOp\Mul($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule285()
-	{
+	protected function reduceRule285() {
 		$this->semValue = new Expr\AssignOp\Div($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule286()
-	{
+	protected function reduceRule286() {
 		$this->semValue = new Expr\AssignOp\Concat($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule287()
-	{
+	protected function reduceRule287() {
 		$this->semValue = new Expr\AssignOp\Mod($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule288()
-	{
+	protected function reduceRule288() {
 		$this->semValue = new Expr\AssignOp\BitwiseAnd($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule289()
-	{
+	protected function reduceRule289() {
 		$this->semValue = new Expr\AssignOp\BitwiseOr($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule290()
-	{
+	protected function reduceRule290() {
 		$this->semValue = new Expr\AssignOp\BitwiseXor($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule291()
-	{
+	protected function reduceRule291() {
 		$this->semValue = new Expr\AssignOp\ShiftLeft($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule292()
-	{
+	protected function reduceRule292() {
 		$this->semValue = new Expr\AssignOp\ShiftRight($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule293()
-	{
+	protected function reduceRule293() {
 		$this->semValue = new Expr\AssignOp\Pow($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule294()
-	{
+	protected function reduceRule294() {
 		$this->semValue = new Expr\PostInc($this->semStack[$this->stackPos - (2 - 1)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule295()
-	{
+	protected function reduceRule295() {
 		$this->semValue = new Expr\PreInc($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule296()
-	{
+	protected function reduceRule296() {
 		$this->semValue = new Expr\PostDec($this->semStack[$this->stackPos - (2 - 1)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule297()
-	{
+	protected function reduceRule297() {
 		$this->semValue = new Expr\PreDec($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule298()
-	{
+	protected function reduceRule298() {
 		$this->semValue = new Expr\BinaryOp\BooleanOr($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule299()
-	{
+	protected function reduceRule299() {
 		$this->semValue = new Expr\BinaryOp\BooleanAnd($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule300()
-	{
+	protected function reduceRule300() {
 		$this->semValue = new Expr\BinaryOp\LogicalOr($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule301()
-	{
+	protected function reduceRule301() {
 		$this->semValue = new Expr\BinaryOp\LogicalAnd($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule302()
-	{
+	protected function reduceRule302() {
 		$this->semValue = new Expr\BinaryOp\LogicalXor($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule303()
-	{
+	protected function reduceRule303() {
 		$this->semValue = new Expr\BinaryOp\BitwiseOr($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule304()
-	{
+	protected function reduceRule304() {
 		$this->semValue = new Expr\BinaryOp\BitwiseAnd($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule305()
-	{
+	protected function reduceRule305() {
 		$this->semValue = new Expr\BinaryOp\BitwiseXor($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule306()
-	{
+	protected function reduceRule306() {
 		$this->semValue = new Expr\BinaryOp\Concat($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule307()
-	{
+	protected function reduceRule307() {
 		$this->semValue = new Expr\BinaryOp\Plus($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule308()
-	{
+	protected function reduceRule308() {
 		$this->semValue = new Expr\BinaryOp\Minus($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule309()
-	{
+	protected function reduceRule309() {
 		$this->semValue = new Expr\BinaryOp\Mul($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule310()
-	{
+	protected function reduceRule310() {
 		$this->semValue = new Expr\BinaryOp\Div($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule311()
-	{
+	protected function reduceRule311() {
 		$this->semValue = new Expr\BinaryOp\Mod($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule312()
-	{
+	protected function reduceRule312() {
 		$this->semValue = new Expr\BinaryOp\ShiftLeft($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule313()
-	{
+	protected function reduceRule313() {
 		$this->semValue = new Expr\BinaryOp\ShiftRight($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule314()
-	{
+	protected function reduceRule314() {
 		$this->semValue = new Expr\BinaryOp\Pow($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule315()
-	{
+	protected function reduceRule315() {
 		$this->semValue = new Expr\UnaryPlus($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule316()
-	{
+	protected function reduceRule316() {
 		$this->semValue = new Expr\UnaryMinus($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule317()
-	{
+	protected function reduceRule317() {
 		$this->semValue = new Expr\BooleanNot($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule318()
-	{
+	protected function reduceRule318() {
 		$this->semValue = new Expr\BitwiseNot($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule319()
-	{
+	protected function reduceRule319() {
 		$this->semValue = new Expr\BinaryOp\Identical($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule320()
-	{
+	protected function reduceRule320() {
 		$this->semValue = new Expr\BinaryOp\NotIdentical($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule321()
-	{
+	protected function reduceRule321() {
 		$this->semValue = new Expr\BinaryOp\Equal($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule322()
-	{
+	protected function reduceRule322() {
 		$this->semValue = new Expr\BinaryOp\NotEqual($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule323()
-	{
+	protected function reduceRule323() {
 		$this->semValue = new Expr\BinaryOp\Spaceship($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule324()
-	{
+	protected function reduceRule324() {
 		$this->semValue = new Expr\BinaryOp\Smaller($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule325()
-	{
+	protected function reduceRule325() {
 		$this->semValue = new Expr\BinaryOp\SmallerOrEqual($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule326()
-	{
+	protected function reduceRule326() {
 		$this->semValue = new Expr\BinaryOp\Greater($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule327()
-	{
+	protected function reduceRule327() {
 		$this->semValue = new Expr\BinaryOp\GreaterOrEqual($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule328()
-	{
+	protected function reduceRule328() {
 		$this->semValue = new Expr\Instanceof_($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule329()
-	{
+	protected function reduceRule329() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule330()
-	{
+	protected function reduceRule330() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule331()
-	{
+	protected function reduceRule331() {
 		$this->semValue = new Expr\Ternary($this->semStack[$this->stackPos - (5 - 1)], $this->semStack[$this->stackPos - (5 - 3)], $this->semStack[$this->stackPos - (5 - 5)], $this->startAttributeStack[$this->stackPos - (5 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule332()
-	{
+	protected function reduceRule332() {
 		$this->semValue = new Expr\Ternary($this->semStack[$this->stackPos - (4 - 1)], null, $this->semStack[$this->stackPos - (4 - 4)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule333()
-	{
+	protected function reduceRule333() {
 		$this->semValue = new Expr\BinaryOp\Coalesce($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule334()
-	{
+	protected function reduceRule334() {
 		$this->semValue = new Expr\Isset_($this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule335()
-	{
+	protected function reduceRule335() {
 		$this->semValue = new Expr\Empty_($this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule336()
-	{
+	protected function reduceRule336() {
 		$this->semValue = new Expr\Include_($this->semStack[$this->stackPos - (2 - 2)], Expr\Include_::TYPE_INCLUDE, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule337()
-	{
+	protected function reduceRule337() {
 		$this->semValue = new Expr\Include_($this->semStack[$this->stackPos - (2 - 2)], Expr\Include_::TYPE_INCLUDE_ONCE, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule338()
-	{
+	protected function reduceRule338() {
 		$this->semValue = new Expr\Eval_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule339()
-	{
+	protected function reduceRule339() {
 		$this->semValue = new Expr\Include_($this->semStack[$this->stackPos - (2 - 2)], Expr\Include_::TYPE_REQUIRE, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule340()
-	{
+	protected function reduceRule340() {
 		$this->semValue = new Expr\Include_($this->semStack[$this->stackPos - (2 - 2)], Expr\Include_::TYPE_REQUIRE_ONCE, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule341()
-	{
+	protected function reduceRule341() {
 		$this->semValue = new Expr\Cast\Int_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule342()
-	{
+	protected function reduceRule342() {
 		$this->semValue = new Expr\Cast\Double($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule343()
-	{
+	protected function reduceRule343() {
 		$this->semValue = new Expr\Cast\String_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule344()
-	{
+	protected function reduceRule344() {
 		$this->semValue = new Expr\Cast\Array_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule345()
-	{
+	protected function reduceRule345() {
 		$this->semValue = new Expr\Cast\Object_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule346()
-	{
+	protected function reduceRule346() {
 		$this->semValue = new Expr\Cast\Bool_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule347()
-	{
+	protected function reduceRule347() {
 		$this->semValue = new Expr\Cast\Unset_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule348()
-	{
+	protected function reduceRule348() {
 		$this->semValue = new Expr\Exit_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule349()
-	{
+	protected function reduceRule349() {
 		$this->semValue = new Expr\ErrorSuppress($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule350()
-	{
+	protected function reduceRule350() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule351()
-	{
+	protected function reduceRule351() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule352()
-	{
+	protected function reduceRule352() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule353()
-	{
+	protected function reduceRule353() {
 		$this->semValue = new Expr\ShellExec($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule354()
-	{
+	protected function reduceRule354() {
 		$this->semValue = new Expr\Print_($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule355()
-	{
+	protected function reduceRule355() {
 		$this->semValue = new Expr\Yield_(null, null, $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule356()
-	{
+	protected function reduceRule356() {
 		$this->semValue = new Expr\YieldFrom($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule357()
-	{
+	protected function reduceRule357() {
 		$this->semValue = new Expr\Closure(['static' => false, 'byRef' => $this->semStack[$this->stackPos - (10 - 2)], 'params' => $this->semStack[$this->stackPos - (10 - 4)], 'uses' => $this->semStack[$this->stackPos - (10 - 6)], 'returnType' => $this->semStack[$this->stackPos - (10 - 7)], 'stmts' => $this->semStack[$this->stackPos - (10 - 9)]], $this->startAttributeStack[$this->stackPos - (10 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule358()
-	{
+	protected function reduceRule358() {
 		$this->semValue = new Expr\Closure(['static' => true, 'byRef' => $this->semStack[$this->stackPos - (11 - 3)], 'params' => $this->semStack[$this->stackPos - (11 - 5)], 'uses' => $this->semStack[$this->stackPos - (11 - 7)], 'returnType' => $this->semStack[$this->stackPos - (11 - 8)], 'stmts' => $this->semStack[$this->stackPos - (11 - 10)]], $this->startAttributeStack[$this->stackPos - (11 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule359()
-	{
+	protected function reduceRule359() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule360()
-	{
+	protected function reduceRule360() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule361()
-	{
+	protected function reduceRule361() {
 		$this->semValue = new Expr\Yield_($this->semStack[$this->stackPos - (2 - 2)], null, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule362()
-	{
+	protected function reduceRule362() {
 		$this->semValue = new Expr\Yield_($this->semStack[$this->stackPos - (4 - 4)], $this->semStack[$this->stackPos - (4 - 2)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule363()
-	{
+	protected function reduceRule363() {
 		$this->semValue = new Expr\Array_($this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule364()
-	{
+	protected function reduceRule364() {
 		$this->semValue = new Expr\Array_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule365()
-	{
+	protected function reduceRule365() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule366()
-	{
+	protected function reduceRule366() {
 		$this->semValue = new Expr\ArrayDimFetch(new Scalar\String_(Scalar\String_::parse($this->semStack[$this->stackPos - (4 - 1)], false), $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule367()
-	{
+	protected function reduceRule367() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule368()
-	{
+	protected function reduceRule368() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule369()
-	{
+	protected function reduceRule369() {
 		$this->semValue = array(new Stmt\Class_(null, ['type' => 0, 'extends' => $this->semStack[$this->stackPos - (7 - 3)], 'implements' => $this->semStack[$this->stackPos - (7 - 4)], 'stmts' => $this->semStack[$this->stackPos - (7 - 6)]], $this->startAttributeStack[$this->stackPos - (7 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (7 - 2)]);
 	}
 
-	protected function reduceRule370()
-	{
+	protected function reduceRule370() {
 		$this->semValue = new Expr\New_($this->semStack[$this->stackPos - (3 - 2)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule371()
-	{
+	protected function reduceRule371() {
 		list($class, $ctorArgs) = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue = new Expr\New_($class, $ctorArgs, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule372()
-	{
+	protected function reduceRule372() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule373()
-	{
+	protected function reduceRule373() {
 		$this->semValue = $this->semStack[$this->stackPos - (4 - 3)];
 	}
 
-	protected function reduceRule374()
-	{
+	protected function reduceRule374() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule375()
-	{
+	protected function reduceRule375() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule376()
-	{
+	protected function reduceRule376() {
 		$this->semValue = new Expr\ClosureUse(substr($this->semStack[$this->stackPos - (2 - 2)], 1), $this->semStack[$this->stackPos - (2 - 1)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule377()
-	{
+	protected function reduceRule377() {
 		$this->semValue = new Expr\FuncCall($this->semStack[$this->stackPos - (2 - 1)], $this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule378()
-	{
+	protected function reduceRule378() {
 		$this->semValue = new Expr\StaticCall($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->semStack[$this->stackPos - (4 - 4)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule379()
-	{
+	protected function reduceRule379() {
 		$this->semValue = new Expr\StaticCall($this->semStack[$this->stackPos - (6 - 1)], $this->semStack[$this->stackPos - (6 - 4)], $this->semStack[$this->stackPos - (6 - 6)], $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule380()
-	{
+	protected function reduceRule380() {
 
 		if ($this->semStack[$this->stackPos - (2 - 1)] instanceof Node\Expr\StaticPropertyFetch) {
 			$this->semValue = new Expr\StaticCall($this->semStack[$this->stackPos - (2 - 1)]->class, new Expr\Variable($this->semStack[$this->stackPos - (2 - 1)]->name, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
@@ -2909,118 +2527,95 @@ class Php5 extends \PhpParser\ParserAbstract
 
 	}
 
-	protected function reduceRule381()
-	{
+	protected function reduceRule381() {
 		$this->semValue = new Expr\FuncCall($this->semStack[$this->stackPos - (2 - 1)], $this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule382()
-	{
+	protected function reduceRule382() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule383()
-	{
+	protected function reduceRule383() {
 		$this->semValue = new Name($this->semStack[$this->stackPos - (1 - 1)], $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule384()
-	{
+	protected function reduceRule384() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule385()
-	{
+	protected function reduceRule385() {
 		$this->semValue = new Name($this->semStack[$this->stackPos - (1 - 1)], $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule386()
-	{
+	protected function reduceRule386() {
 		$this->semValue = new Name\FullyQualified($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule387()
-	{
+	protected function reduceRule387() {
 		$this->semValue = new Name\Relative($this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule388()
-	{
+	protected function reduceRule388() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule389()
-	{
+	protected function reduceRule389() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule390()
-	{
+	protected function reduceRule390() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule391()
-	{
+	protected function reduceRule391() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule392()
-	{
+	protected function reduceRule392() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule393()
-	{
+	protected function reduceRule393() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule394()
-	{
+	protected function reduceRule394() {
 		$this->semValue = new Expr\PropertyFetch($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule395()
-	{
+	protected function reduceRule395() {
 		$this->semValue = new Expr\PropertyFetch($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule396()
-	{
+	protected function reduceRule396() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule397()
-	{
+	protected function reduceRule397() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule398()
-	{
+	protected function reduceRule398() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule399()
-	{
+	protected function reduceRule399() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule400()
-	{
+	protected function reduceRule400() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule401()
-	{
+	protected function reduceRule401() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule402()
-	{
+	protected function reduceRule402() {
 		$this->semValue = array(new Scalar\EncapsedStringPart(Scalar\String_::parseEscapeSequences($this->semStack[$this->stackPos - (1 - 1)], '`', false), $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes));
 	}
 
-	protected function reduceRule403()
-	{
+	protected function reduceRule403() {
 		foreach ($this->semStack[$this->stackPos - (1 - 1)] as $s) {
 			if ($s instanceof Node\Scalar\EncapsedStringPart) {
 				$s->value = Node\Scalar\String_::parseEscapeSequences($s->value, '`', false);
@@ -3029,298 +2624,239 @@ class Php5 extends \PhpParser\ParserAbstract
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule404()
-	{
+	protected function reduceRule404() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule405()
-	{
+	protected function reduceRule405() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule406()
-	{
+	protected function reduceRule406() {
 		$this->semValue = new Scalar\LNumber(Scalar\LNumber::parse($this->semStack[$this->stackPos - (1 - 1)]), $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule407()
-	{
+	protected function reduceRule407() {
 		$this->semValue = new Scalar\DNumber(Scalar\DNumber::parse($this->semStack[$this->stackPos - (1 - 1)]), $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule408()
-	{
+	protected function reduceRule408() {
 		$this->semValue = new Scalar\String_(Scalar\String_::parse($this->semStack[$this->stackPos - (1 - 1)], false), $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule409()
-	{
+	protected function reduceRule409() {
 		$this->semValue = new Scalar\MagicConst\Line($this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule410()
-	{
+	protected function reduceRule410() {
 		$this->semValue = new Scalar\MagicConst\File($this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule411()
-	{
+	protected function reduceRule411() {
 		$this->semValue = new Scalar\MagicConst\Dir($this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule412()
-	{
+	protected function reduceRule412() {
 		$this->semValue = new Scalar\MagicConst\Class_($this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule413()
-	{
+	protected function reduceRule413() {
 		$this->semValue = new Scalar\MagicConst\Trait_($this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule414()
-	{
+	protected function reduceRule414() {
 		$this->semValue = new Scalar\MagicConst\Method($this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule415()
-	{
+	protected function reduceRule415() {
 		$this->semValue = new Scalar\MagicConst\Function_($this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule416()
-	{
+	protected function reduceRule416() {
 		$this->semValue = new Scalar\MagicConst\Namespace_($this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule417()
-	{
+	protected function reduceRule417() {
 		$this->semValue = new Scalar\String_(Scalar\String_::parseDocString($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 2)], false), $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule418()
-	{
+	protected function reduceRule418() {
 		$this->semValue = new Scalar\String_('', $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule419()
-	{
+	protected function reduceRule419() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule420()
-	{
+	protected function reduceRule420() {
 		$this->semValue = new Expr\ClassConstFetch($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule421()
-	{
+	protected function reduceRule421() {
 		$this->semValue = new Expr\ConstFetch($this->semStack[$this->stackPos - (1 - 1)], $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule422()
-	{
+	protected function reduceRule422() {
 		$this->semValue = new Expr\Array_($this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule423()
-	{
+	protected function reduceRule423() {
 		$this->semValue = new Expr\Array_($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule424()
-	{
+	protected function reduceRule424() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule425()
-	{
+	protected function reduceRule425() {
 		$this->semValue = new Expr\BinaryOp\BooleanOr($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule426()
-	{
+	protected function reduceRule426() {
 		$this->semValue = new Expr\BinaryOp\BooleanAnd($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule427()
-	{
+	protected function reduceRule427() {
 		$this->semValue = new Expr\BinaryOp\LogicalOr($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule428()
-	{
+	protected function reduceRule428() {
 		$this->semValue = new Expr\BinaryOp\LogicalAnd($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule429()
-	{
+	protected function reduceRule429() {
 		$this->semValue = new Expr\BinaryOp\LogicalXor($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule430()
-	{
+	protected function reduceRule430() {
 		$this->semValue = new Expr\BinaryOp\BitwiseOr($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule431()
-	{
+	protected function reduceRule431() {
 		$this->semValue = new Expr\BinaryOp\BitwiseAnd($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule432()
-	{
+	protected function reduceRule432() {
 		$this->semValue = new Expr\BinaryOp\BitwiseXor($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule433()
-	{
+	protected function reduceRule433() {
 		$this->semValue = new Expr\BinaryOp\Concat($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule434()
-	{
+	protected function reduceRule434() {
 		$this->semValue = new Expr\BinaryOp\Plus($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule435()
-	{
+	protected function reduceRule435() {
 		$this->semValue = new Expr\BinaryOp\Minus($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule436()
-	{
+	protected function reduceRule436() {
 		$this->semValue = new Expr\BinaryOp\Mul($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule437()
-	{
+	protected function reduceRule437() {
 		$this->semValue = new Expr\BinaryOp\Div($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule438()
-	{
+	protected function reduceRule438() {
 		$this->semValue = new Expr\BinaryOp\Mod($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule439()
-	{
+	protected function reduceRule439() {
 		$this->semValue = new Expr\BinaryOp\ShiftLeft($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule440()
-	{
+	protected function reduceRule440() {
 		$this->semValue = new Expr\BinaryOp\ShiftRight($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule441()
-	{
+	protected function reduceRule441() {
 		$this->semValue = new Expr\BinaryOp\Pow($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule442()
-	{
+	protected function reduceRule442() {
 		$this->semValue = new Expr\UnaryPlus($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule443()
-	{
+	protected function reduceRule443() {
 		$this->semValue = new Expr\UnaryMinus($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule444()
-	{
+	protected function reduceRule444() {
 		$this->semValue = new Expr\BooleanNot($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule445()
-	{
+	protected function reduceRule445() {
 		$this->semValue = new Expr\BitwiseNot($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule446()
-	{
+	protected function reduceRule446() {
 		$this->semValue = new Expr\BinaryOp\Identical($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule447()
-	{
+	protected function reduceRule447() {
 		$this->semValue = new Expr\BinaryOp\NotIdentical($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule448()
-	{
+	protected function reduceRule448() {
 		$this->semValue = new Expr\BinaryOp\Equal($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule449()
-	{
+	protected function reduceRule449() {
 		$this->semValue = new Expr\BinaryOp\NotEqual($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule450()
-	{
+	protected function reduceRule450() {
 		$this->semValue = new Expr\BinaryOp\Smaller($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule451()
-	{
+	protected function reduceRule451() {
 		$this->semValue = new Expr\BinaryOp\SmallerOrEqual($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule452()
-	{
+	protected function reduceRule452() {
 		$this->semValue = new Expr\BinaryOp\Greater($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule453()
-	{
+	protected function reduceRule453() {
 		$this->semValue = new Expr\BinaryOp\GreaterOrEqual($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule454()
-	{
+	protected function reduceRule454() {
 		$this->semValue = new Expr\Ternary($this->semStack[$this->stackPos - (5 - 1)], $this->semStack[$this->stackPos - (5 - 3)], $this->semStack[$this->stackPos - (5 - 5)], $this->startAttributeStack[$this->stackPos - (5 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule455()
-	{
+	protected function reduceRule455() {
 		$this->semValue = new Expr\Ternary($this->semStack[$this->stackPos - (4 - 1)], null, $this->semStack[$this->stackPos - (4 - 4)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule456()
-	{
+	protected function reduceRule456() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule457()
-	{
+	protected function reduceRule457() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule458()
-	{
+	protected function reduceRule458() {
 		$this->semValue = new Expr\ConstFetch($this->semStack[$this->stackPos - (1 - 1)], $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule459()
-	{
+	protected function reduceRule459() {
 		$this->semValue = new Expr\ClassConstFetch($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule460()
-	{
+	protected function reduceRule460() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule461()
-	{
+	protected function reduceRule461() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule462()
-	{
+	protected function reduceRule462() {
 		foreach ($this->semStack[$this->stackPos - (3 - 2)] as $s) {
 			if ($s instanceof Node\Scalar\EncapsedStringPart) {
 				$s->value = Node\Scalar\String_::parseEscapeSequences($s->value, '"', false);
@@ -3329,8 +2865,7 @@ class Php5 extends \PhpParser\ParserAbstract
 		$this->semValue = new Scalar\Encapsed($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule463()
-	{
+	protected function reduceRule463() {
 		foreach ($this->semStack[$this->stackPos - (3 - 2)] as $s) {
 			if ($s instanceof Node\Scalar\EncapsedStringPart) {
 				$s->value = Node\Scalar\String_::parseEscapeSequences($s->value, null, false);
@@ -3341,353 +2876,284 @@ class Php5 extends \PhpParser\ParserAbstract
 		$this->semValue = new Scalar\Encapsed($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule464()
-	{
+	protected function reduceRule464() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule465()
-	{
+	protected function reduceRule465() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule466()
-	{
+	protected function reduceRule466() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule467()
-	{
+	protected function reduceRule467() {
 		$this->semValue = $this->semStack[$this->stackPos];
 	}
 
-	protected function reduceRule468()
-	{
+	protected function reduceRule468() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule469()
-	{
+	protected function reduceRule469() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule470()
-	{
+	protected function reduceRule470() {
 		$this->semValue = new Expr\ArrayItem($this->semStack[$this->stackPos - (3 - 3)], $this->semStack[$this->stackPos - (3 - 1)], false, $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule471()
-	{
+	protected function reduceRule471() {
 		$this->semValue = new Expr\ArrayItem($this->semStack[$this->stackPos - (1 - 1)], null, false, $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule472()
-	{
+	protected function reduceRule472() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule473()
-	{
+	protected function reduceRule473() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule474()
-	{
+	protected function reduceRule474() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule475()
-	{
+	protected function reduceRule475() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule476()
-	{
+	protected function reduceRule476() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (6 - 2)], $this->semStack[$this->stackPos - (6 - 5)], $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule477()
-	{
+	protected function reduceRule477() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule478()
-	{
+	protected function reduceRule478() {
 		$this->semValue = new Expr\PropertyFetch($this->semStack[$this->stackPos - (3 - 1)], $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule479()
-	{
+	protected function reduceRule479() {
 		$this->semValue = new Expr\MethodCall($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->semStack[$this->stackPos - (4 - 4)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule480()
-	{
+	protected function reduceRule480() {
 		$this->semValue = new Expr\FuncCall($this->semStack[$this->stackPos - (2 - 1)], $this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule481()
-	{
+	protected function reduceRule481() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule482()
-	{
+	protected function reduceRule482() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule483()
-	{
+	protected function reduceRule483() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule484()
-	{
+	protected function reduceRule484() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule485()
-	{
+	protected function reduceRule485() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule486()
-	{
+	protected function reduceRule486() {
 		$this->semValue = new Expr\Variable($this->semStack[$this->stackPos - (2 - 2)], $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule487()
-	{
+	protected function reduceRule487() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule488()
-	{
+	protected function reduceRule488() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule489()
-	{
+	protected function reduceRule489() {
 		$this->semValue = new Expr\StaticPropertyFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 4)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule490()
-	{
+	protected function reduceRule490() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule491()
-	{
+	protected function reduceRule491() {
 		$this->semValue = new Expr\StaticPropertyFetch($this->semStack[$this->stackPos - (3 - 1)], substr($this->semStack[$this->stackPos - (3 - 3)], 1), $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule492()
-	{
+	protected function reduceRule492() {
 		$this->semValue = new Expr\StaticPropertyFetch($this->semStack[$this->stackPos - (6 - 1)], $this->semStack[$this->stackPos - (6 - 5)], $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule493()
-	{
+	protected function reduceRule493() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule494()
-	{
+	protected function reduceRule494() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule495()
-	{
+	protected function reduceRule495() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule496()
-	{
+	protected function reduceRule496() {
 		$this->semValue = new Expr\ArrayDimFetch($this->semStack[$this->stackPos - (4 - 1)], $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule497()
-	{
+	protected function reduceRule497() {
 		$this->semValue = new Expr\Variable(substr($this->semStack[$this->stackPos - (1 - 1)], 1), $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule498()
-	{
+	protected function reduceRule498() {
 		$this->semValue = new Expr\Variable($this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule499()
-	{
+	protected function reduceRule499() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule500()
-	{
+	protected function reduceRule500() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule501()
-	{
+	protected function reduceRule501() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule502()
-	{
+	protected function reduceRule502() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule503()
-	{
+	protected function reduceRule503() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule504()
-	{
+	protected function reduceRule504() {
 		$this->semValue = new Expr\List_($this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule505()
-	{
+	protected function reduceRule505() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule506()
-	{
+	protected function reduceRule506() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule507()
-	{
+	protected function reduceRule507() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule508()
-	{
+	protected function reduceRule508() {
 		$this->semValue = $this->semStack[$this->stackPos - (1 - 1)];
 	}
 
-	protected function reduceRule509()
-	{
+	protected function reduceRule509() {
 		$this->semValue = null;
 	}
 
-	protected function reduceRule510()
-	{
+	protected function reduceRule510() {
 		$this->semValue = array();
 	}
 
-	protected function reduceRule511()
-	{
+	protected function reduceRule511() {
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule512()
-	{
+	protected function reduceRule512() {
 		$this->semStack[$this->stackPos - (3 - 1)][] = $this->semStack[$this->stackPos - (3 - 3)];
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 1)];
 	}
 
-	protected function reduceRule513()
-	{
+	protected function reduceRule513() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule514()
-	{
+	protected function reduceRule514() {
 		$this->semValue = new Expr\ArrayItem($this->semStack[$this->stackPos - (3 - 3)], $this->semStack[$this->stackPos - (3 - 1)], false, $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule515()
-	{
+	protected function reduceRule515() {
 		$this->semValue = new Expr\ArrayItem($this->semStack[$this->stackPos - (1 - 1)], null, false, $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule516()
-	{
+	protected function reduceRule516() {
 		$this->semValue = new Expr\ArrayItem($this->semStack[$this->stackPos - (4 - 4)], $this->semStack[$this->stackPos - (4 - 1)], true, $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule517()
-	{
+	protected function reduceRule517() {
 		$this->semValue = new Expr\ArrayItem($this->semStack[$this->stackPos - (2 - 2)], null, true, $this->startAttributeStack[$this->stackPos - (2 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule518()
-	{
+	protected function reduceRule518() {
 		$this->semStack[$this->stackPos - (2 - 1)][] = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule519()
-	{
+	protected function reduceRule519() {
 		$this->semStack[$this->stackPos - (2 - 1)][] = $this->semStack[$this->stackPos - (2 - 2)];
 		$this->semValue = $this->semStack[$this->stackPos - (2 - 1)];
 	}
 
-	protected function reduceRule520()
-	{
+	protected function reduceRule520() {
 		$this->semValue = array($this->semStack[$this->stackPos - (1 - 1)]);
 	}
 
-	protected function reduceRule521()
-	{
+	protected function reduceRule521() {
 		$this->semValue = array($this->semStack[$this->stackPos - (2 - 1)], $this->semStack[$this->stackPos - (2 - 2)]);
 	}
 
-	protected function reduceRule522()
-	{
+	protected function reduceRule522() {
 		$this->semValue = new Scalar\EncapsedStringPart($this->semStack[$this->stackPos - (1 - 1)], $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule523()
-	{
+	protected function reduceRule523() {
 		$this->semValue = new Expr\Variable(substr($this->semStack[$this->stackPos - (1 - 1)], 1), $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule524()
-	{
+	protected function reduceRule524() {
 		$this->semValue = new Expr\ArrayDimFetch(new Expr\Variable(substr($this->semStack[$this->stackPos - (4 - 1)], 1), $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (4 - 3)], $this->startAttributeStack[$this->stackPos - (4 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule525()
-	{
+	protected function reduceRule525() {
 		$this->semValue = new Expr\PropertyFetch(new Expr\Variable(substr($this->semStack[$this->stackPos - (3 - 1)], 1), $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (3 - 3)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule526()
-	{
+	protected function reduceRule526() {
 		$this->semValue = new Expr\Variable($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule527()
-	{
+	protected function reduceRule527() {
 		$this->semValue = new Expr\Variable($this->semStack[$this->stackPos - (3 - 2)], $this->startAttributeStack[$this->stackPos - (3 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule528()
-	{
+	protected function reduceRule528() {
 		$this->semValue = new Expr\ArrayDimFetch(new Expr\Variable($this->semStack[$this->stackPos - (6 - 2)], $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes), $this->semStack[$this->stackPos - (6 - 4)], $this->startAttributeStack[$this->stackPos - (6 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule529()
-	{
+	protected function reduceRule529() {
 		$this->semValue = $this->semStack[$this->stackPos - (3 - 2)];
 	}
 
-	protected function reduceRule530()
-	{
+	protected function reduceRule530() {
 		$this->semValue = new Scalar\String_($this->semStack[$this->stackPos - (1 - 1)], $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule531()
-	{
+	protected function reduceRule531() {
 		$this->semValue = new Scalar\String_($this->semStack[$this->stackPos - (1 - 1)], $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 
-	protected function reduceRule532()
-	{
+	protected function reduceRule532() {
 		$this->semValue = new Expr\Variable(substr($this->semStack[$this->stackPos - (1 - 1)], 1), $this->startAttributeStack[$this->stackPos - (1 - 1)] + $this->endAttributes);
 	}
 }

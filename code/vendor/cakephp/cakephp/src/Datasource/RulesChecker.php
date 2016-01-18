@@ -37,8 +37,7 @@ use InvalidArgumentException;
  * invoke the checks by calling RulesChecker::checkCreate(), RulesChecker::checkUpdate() or
  * RulesChecker::checkDelete().
  */
-class RulesChecker
-{
+class RulesChecker {
 	/**
 	 * Indicates that the checking rules to apply are those used for creating entities
 	 *
@@ -107,8 +106,7 @@ class RulesChecker
 	 *
 	 * @param array $options The options to pass to every rule
 	 */
-	public function __construct(array $options = [])
-	{
+	public function __construct(array $options = []) {
 		$this->_options = $options;
 		$this->_useI18n = function_exists('__d');
 	}
@@ -132,8 +130,7 @@ class RulesChecker
 	 * second argument.
 	 * @return $this
 	 */
-	public function add(callable $rule, $name = null, array $options = [])
-	{
+	public function add(callable $rule, $name = null, array $options = []) {
 		$this->_rules[] = $this->_addError($rule, $name, $options);
 		return $this;
 	}
@@ -156,8 +153,7 @@ class RulesChecker
 	 * second argument.
 	 * @return $this
 	 */
-	public function addCreate(callable $rule, $name = null, array $options = [])
-	{
+	public function addCreate(callable $rule, $name = null, array $options = []) {
 		$this->_createRules[] = $this->_addError($rule, $name, $options);
 		return $this;
 	}
@@ -180,8 +176,7 @@ class RulesChecker
 	 * second argument.
 	 * @return $this
 	 */
-	public function addUpdate(callable $rule, $name = null, array $options = [])
-	{
+	public function addUpdate(callable $rule, $name = null, array $options = []) {
 		$this->_updateRules[] = $this->_addError($rule, $name, $options);
 		return $this;
 	}
@@ -204,8 +199,7 @@ class RulesChecker
 	 * second argument.
 	 * @return $this
 	 */
-	public function addDelete(callable $rule, $name = null, array $options = [])
-	{
+	public function addDelete(callable $rule, $name = null, array $options = []) {
 		$this->_deleteRules[] = $this->_addError($rule, $name, $options);
 		return $this;
 	}
@@ -221,8 +215,7 @@ class RulesChecker
 	 * @return bool
 	 * @throws \InvalidArgumentException if an invalid mode is passed.
 	 */
-	public function check(EntityInterface $entity, $mode, array $options = [])
-	{
+	public function check(EntityInterface $entity, $mode, array $options = []) {
 		if ($mode === self::CREATE) {
 			return $this->checkCreate($entity, $options);
 		}
@@ -246,8 +239,7 @@ class RulesChecker
 	 * @param array $options Extra options to pass to checker functions.
 	 * @return bool
 	 */
-	public function checkCreate(EntityInterface $entity, array $options = [])
-	{
+	public function checkCreate(EntityInterface $entity, array $options = []) {
 		return $this->_checkRules($entity, $options, array_merge($this->_rules, $this->_createRules));
 	}
 
@@ -259,8 +251,7 @@ class RulesChecker
 	 * @param array $options Extra options to pass to checker functions.
 	 * @return bool
 	 */
-	public function checkUpdate(EntityInterface $entity, array $options = [])
-	{
+	public function checkUpdate(EntityInterface $entity, array $options = []) {
 		return $this->_checkRules($entity, $options, array_merge($this->_rules, $this->_updateRules));
 	}
 
@@ -272,8 +263,7 @@ class RulesChecker
 	 * @param array $options Extra options to pass to checker functions.
 	 * @return bool
 	 */
-	public function checkDelete(EntityInterface $entity, array $options = [])
-	{
+	public function checkDelete(EntityInterface $entity, array $options = []) {
 		return $this->_checkRules($entity, $options, $this->_deleteRules);
 	}
 
@@ -286,8 +276,7 @@ class RulesChecker
 	 * @param array $rules The list of rules that must be checked.
 	 * @return bool
 	 */
-	protected function _checkRules(EntityInterface $entity, array $options = [], array $rules = [])
-	{
+	protected function _checkRules(EntityInterface $entity, array $options = [], array $rules = []) {
 		$success = true;
 		$options = $options + $this->_options;
 		foreach ($rules as $rule) {
@@ -305,8 +294,7 @@ class RulesChecker
 	 * @param array $options The options containing the error message and field.
 	 * @return callable
 	 */
-	protected function _addError($rule, $name, $options)
-	{
+	protected function _addError($rule, $name, $options) {
 		if (is_array($name)) {
 			$options = $name;
 			$name = null;

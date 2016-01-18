@@ -23,16 +23,14 @@ use \PDO;
 /**
  * Test for the Float type.
  */
-class FloatTypeTest extends TestCase
-{
+class FloatTypeTest extends TestCase {
 
 	/**
 	 * Setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->type = Type::build('float');
 		$this->driver = $this->getMock('Cake\Database\Driver');
@@ -47,8 +45,7 @@ class FloatTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		I18n::locale($this->locale);
 		FloatType::$numberClass = $this->numberClass;
@@ -59,8 +56,7 @@ class FloatTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPHP()
-	{
+	public function testToPHP() {
 		$this->assertNull($this->type->toPHP(null, $this->driver));
 
 		$result = $this->type->toPHP('some data', $this->driver);
@@ -81,8 +77,7 @@ class FloatTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToDatabase()
-	{
+	public function testToDatabase() {
 		$result = $this->type->toDatabase('', $this->driver);
 		$this->assertNull($result);
 
@@ -107,8 +102,7 @@ class FloatTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMarshal()
-	{
+	public function testMarshal() {
 		$result = $this->type->marshal('some data', $this->driver);
 		$this->assertSame('some data', $result);
 
@@ -130,8 +124,7 @@ class FloatTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMarshalWithLocaleParsing()
-	{
+	public function testMarshalWithLocaleParsing() {
 		I18n::locale('de_DE');
 		$this->type->useLocaleParser();
 		$expected = 1234.53;
@@ -157,8 +150,7 @@ class FloatTypeTest extends TestCase
 	 * @expectedException RuntimeException
 	 * @return void
 	 */
-	public function testUseLocaleParsingInvalid()
-	{
+	public function testUseLocaleParsingInvalid() {
 		FloatType::$numberClass = 'stdClass';
 		$this->type->useLocaleParser();
 	}
@@ -168,8 +160,7 @@ class FloatTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToStatement()
-	{
+	public function testToStatement() {
 		$this->assertEquals(PDO::PARAM_STR, $this->type->toStatement('', $this->driver));
 	}
 }

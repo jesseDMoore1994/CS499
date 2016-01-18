@@ -25,16 +25,14 @@ use Cake\TestSuite\TestCase;
 /**
  * CsrfComponent test.
  */
-class CsrfComponentTest extends TestCase
-{
+class CsrfComponentTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
@@ -47,8 +45,7 @@ class CsrfComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->component);
 	}
@@ -59,8 +56,7 @@ class CsrfComponentTest extends TestCase
 	 * @return void
 	 * @triggers Controller.startup $controller
 	 */
-	public function testSettingCookie()
-	{
+	public function testSettingCookie() {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => ['REQUEST_METHOD' => 'GET'],
@@ -85,8 +81,7 @@ class CsrfComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public static function safeHttpMethodProvider()
-	{
+	public static function safeHttpMethodProvider() {
 		return [
 			['GET'], ['OPTIONS'], ['HEAD']
 		];
@@ -98,8 +93,7 @@ class CsrfComponentTest extends TestCase
 	 * @dataProvider safeHttpMethodProvider
 	 * @return void
 	 */
-	public function testSafeMethodNoCsrfRequired($method)
-	{
+	public function testSafeMethodNoCsrfRequired($method) {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => [
@@ -120,8 +114,7 @@ class CsrfComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public static function httpMethodProvider()
-	{
+	public static function httpMethodProvider() {
 		return [
 			['PATCH'], ['PUT'], ['POST'], ['DELETE'], ['PURGE'], ['INVALIDMETHOD']
 		];
@@ -134,8 +127,7 @@ class CsrfComponentTest extends TestCase
 	 * @return void
 	 * @triggers Controller.startup $controller
 	 */
-	public function testValidTokenInHeader($method)
-	{
+	public function testValidTokenInHeader($method) {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => [
@@ -159,8 +151,7 @@ class CsrfComponentTest extends TestCase
 	 * @return void
 	 * @triggers Controller.startup $controller
 	 */
-	public function testInvalidTokenInHeader($method)
-	{
+	public function testInvalidTokenInHeader($method) {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => [
@@ -182,8 +173,7 @@ class CsrfComponentTest extends TestCase
 	 * @return void
 	 * @triggers Controller.startup $controller
 	 */
-	public function testValidTokenRequestData($method)
-	{
+	public function testValidTokenRequestData($method) {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => [
@@ -207,8 +197,7 @@ class CsrfComponentTest extends TestCase
 	 * @expectedException \Cake\Network\Exception\InvalidCsrfTokenException
 	 * @return void
 	 */
-	public function testInvalidTokenRequestData($method)
-	{
+	public function testInvalidTokenRequestData($method) {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => [
@@ -229,8 +218,7 @@ class CsrfComponentTest extends TestCase
 	 * @expectedException \Cake\Network\Exception\InvalidCsrfTokenException
 	 * @return void
 	 */
-	public function testInvalidTokenRequestDataMissing()
-	{
+	public function testInvalidTokenRequestDataMissing() {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => [
@@ -252,8 +240,7 @@ class CsrfComponentTest extends TestCase
 	 * @expectedException \Cake\Network\Exception\InvalidCsrfTokenException
 	 * @return void
 	 */
-	public function testInvalidTokenMissingCookie($method)
-	{
+	public function testInvalidTokenMissingCookie($method) {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => [
@@ -274,8 +261,7 @@ class CsrfComponentTest extends TestCase
 	 * @return void
 	 * @triggers Controller.startup $controller
 	 */
-	public function testCsrfValidationSkipsRequestAction()
-	{
+	public function testCsrfValidationSkipsRequestAction() {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => ['REQUEST_METHOD' => 'POST'],
@@ -297,8 +283,7 @@ class CsrfComponentTest extends TestCase
 	 * @return void
 	 * @triggers Controller.startup $controller
 	 */
-	public function testConfigurationCookieCreate()
-	{
+	public function testConfigurationCookieCreate() {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => ['REQUEST_METHOD' => 'GET'],
@@ -332,8 +317,7 @@ class CsrfComponentTest extends TestCase
 	 * @return void
 	 * @triggers Controller.startup $controller
 	 */
-	public function testConfigurationValidate()
-	{
+	public function testConfigurationValidate() {
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$controller->request = new Request([
 			'environment' => ['REQUEST_METHOD' => 'POST'],

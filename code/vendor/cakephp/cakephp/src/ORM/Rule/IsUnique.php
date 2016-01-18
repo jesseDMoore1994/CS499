@@ -19,8 +19,7 @@ use Cake\Datasource\EntityInterface;
 /**
  * Checks that a list of fields from an entity are unique in the table
  */
-class IsUnique
-{
+class IsUnique {
 
 	/**
 	 * The list of fields to check
@@ -34,8 +33,7 @@ class IsUnique
 	 *
 	 * @param array $fields The list of fields to check uniqueness for
 	 */
-	public function __construct(array $fields)
-	{
+	public function __construct(array $fields) {
 		$this->_fields = $fields;
 	}
 
@@ -47,8 +45,7 @@ class IsUnique
 	 * where the `repository` key is required.
 	 * @return bool
 	 */
-	public function __invoke(EntityInterface $entity, array $options)
-	{
+	public function __invoke(EntityInterface $entity, array $options) {
 		if (!$entity->extract($this->_fields, true)) {
 			return true;
 		}
@@ -73,8 +70,7 @@ class IsUnique
 	 * @param array $conditions The conditions to alias.
 	 * @return array
 	 */
-	protected function _alias($alias, $conditions)
-	{
+	protected function _alias($alias, $conditions) {
 		$aliased = [];
 		foreach ($conditions as $key => $value) {
 			$aliased["$alias.$key"] = $value;

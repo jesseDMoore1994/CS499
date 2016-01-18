@@ -20,8 +20,7 @@ use Traversable;
  * Provides utility protected methods for extracting a property or column
  * from an array or object.
  */
-trait ExtractTrait
-{
+trait ExtractTrait {
 
 	/**
 	 * Returns a callable that can be used to extract a property or column from
@@ -32,8 +31,7 @@ trait ExtractTrait
 	 * of doing that.
 	 * @return callable
 	 */
-	protected function _propertyExtractor($callback)
-	{
+	protected function _propertyExtractor($callback) {
 		if (!is_string($callback)) {
 			return $callback;
 		}
@@ -60,8 +58,7 @@ trait ExtractTrait
 	 * @param array $path Path to extract from.
 	 * @return mixed
 	 */
-	protected function _extract($data, $path)
-	{
+	protected function _extract($data, $path) {
 		$value = null;
 		$collectionTransform = false;
 
@@ -100,8 +97,7 @@ trait ExtractTrait
 	 * @param array $path Path to extract from.
 	 * @return mixed
 	 */
-	protected function _simpleExtract($data, $path)
-	{
+	protected function _simpleExtract($data, $path) {
 		$value = null;
 		foreach ($path as $column) {
 			if (!isset($data[$column])) {
@@ -122,8 +118,7 @@ trait ExtractTrait
 	 * value to be compared the item with.
 	 * @return callable
 	 */
-	protected function _createMatcherFilter(array $conditions)
-	{
+	protected function _createMatcherFilter(array $conditions) {
 		$matchers = [];
 		foreach ($conditions as $property => $value) {
 			$extractor = $this->_propertyExtractor($property);

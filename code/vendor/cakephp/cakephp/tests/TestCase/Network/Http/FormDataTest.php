@@ -20,16 +20,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Test case for FormData.
  */
-class FormDataTest extends TestCase
-{
+class FormDataTest extends TestCase {
 
 	/**
 	 * Test getting the boundary.
 	 *
 	 * @return void
 	 */
-	public function testBoundary()
-	{
+	public function testBoundary() {
 		$data = new FormData();
 		$result = $data->boundary();
 		$this->assertRegExp('/^[a-f0-9]{32}$/', $result);
@@ -43,8 +41,7 @@ class FormDataTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddReturnThis()
-	{
+	public function testAddReturnThis() {
 		$data = new FormData();
 		$return = $data->add('test', 'value');
 		$this->assertSame($data, $return);
@@ -55,8 +52,7 @@ class FormDataTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddSimple()
-	{
+	public function testAddSimple() {
 		$data = new FormData();
 		$data->add('test', 'value')
 			->add('empty', '')
@@ -75,8 +71,7 @@ class FormDataTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddPartObject()
-	{
+	public function testAddPartObject() {
 		$data = new FormData();
 		$boundary = $data->boundary();
 
@@ -105,8 +100,7 @@ class FormDataTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddArray()
-	{
+	public function testAddArray() {
 		$data = new FormData();
 		$data->add('Article', [
 			'title' => 'first post',
@@ -124,8 +118,7 @@ class FormDataTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddArrayWithFile()
-	{
+	public function testAddArrayWithFile() {
 		$errorLevel = error_reporting();
 		error_reporting($errorLevel & ~E_USER_DEPRECATED);
 
@@ -164,8 +157,7 @@ class FormDataTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddFile()
-	{
+	public function testAddFile() {
 		$file = CORE_PATH . 'VERSION.txt';
 		$contents = file_get_contents($file);
 
@@ -192,8 +184,7 @@ class FormDataTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddFileHandle()
-	{
+	public function testAddFileHandle() {
 		$file = CORE_PATH . 'VERSION.txt';
 		$fh = fopen($file, 'r');
 

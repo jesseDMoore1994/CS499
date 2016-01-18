@@ -21,8 +21,7 @@ use Cake\Datasource\EntityInterface;
  *
  * Included by HasOne and HasMany association classes.
  */
-trait DependentDeleteTrait
-{
+trait DependentDeleteTrait {
 
 	/**
 	 * Cascade a delete to remove dependent records.
@@ -33,8 +32,7 @@ trait DependentDeleteTrait
 	 * @param array $options The options for the original delete.
 	 * @return bool Success.
 	 */
-	public function cascadeDelete(EntityInterface $entity, array $options = [])
-	{
+	public function cascadeDelete(EntityInterface $entity, array $options = []) {
 		if (!$this->dependent()) {
 			return true;
 		}

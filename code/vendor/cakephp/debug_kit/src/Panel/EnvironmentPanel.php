@@ -22,8 +22,7 @@ use DebugKit\DebugPanel;
  * Provides information about your PHP and CakePHP environment to assist with debugging.
  *
  */
-class EnvironmentPanel extends DebugPanel
-{
+class EnvironmentPanel extends DebugPanel {
 
 	/**
 	 * Get necessary data about environment to pass back to controller
@@ -31,8 +30,7 @@ class EnvironmentPanel extends DebugPanel
 	 * @param \Cake\Controller\Controller $controller The controller.
 	 * @return array
 	 */
-	protected function _prepare(Controller $controller)
-	{
+	protected function _prepare(Controller $controller) {
 		$return = [];
 
 		// PHP Data
@@ -82,8 +80,7 @@ class EnvironmentPanel extends DebugPanel
 	 * @param \Cake\Event\Event $event Event
 	 * @return void
 	 */
-	public function shutdown(Event $event)
-	{
+	public function shutdown(Event $event) {
 		$this->_data = $this->_prepare($event->subject());
 	}
 }

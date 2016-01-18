@@ -18,8 +18,7 @@ namespace Cake\Auth\Storage;
  * Describes the methods that any class representing an Auth data storage should
  * comply with.
  */
-interface StorageInterface
-{
+interface StorageInterface {
 	/**
 	 * Read user record.
 	 *

@@ -51,8 +51,7 @@ class <%= $name %>Table extends Table
 	 * @return void
 	 */
 	public
-	function initialize(array $config)
-	{
+	function initialize(array $config) {
 		parent::initialize($config);
 
 		<%
@@ -60,33 +59,33 @@ class <%= $name %>Table extends Table
 			$this->table('<%= $table %>');
 			<% endif %>
 <% if (!empty($displayField)): %>
-		$this->displayField('<%= $displayField %>');
-		<% endif %>
-<% if (!empty($primaryKey)): %>
-		<%
-		if (count($primaryKey) > 1): %>
-			$this->primaryKey([<%= $this->Bake->stringifyList((array)$primaryKey, ['indent' => false]) %>]);
-<%
-		else: %>
-			$this->primaryKey('<%= current((array)$primaryKey) %>');
+			$this->displayField('<%= $displayField %>');
 			<% endif %>
+<% if (!empty($primaryKey)): %>
+			<%
+			if (count($primaryKey) > 1): %>
+				$this->primaryKey([<%= $this->Bake->stringifyList((array)$primaryKey, ['indent' => false]) %>]);
+<%
+			else: %>
+				$this->primaryKey('<%= current((array)$primaryKey) %>');
+				<% endif %>
 <% endif %>
 <% if (!empty($behaviors)): %>
 
-		<% endif; %>
+			<% endif; %>
 <% foreach ($behaviors as $behavior => $behaviorData): %>
-		$this->addBehavior('<%= $behavior %>' <%= $behaviorData ? ", [" . implode(', ', $behaviorData) . ']' : '' %>);
-		<% endforeach %>
+			$this->addBehavior('<%= $behavior %>' <%= $behaviorData ? ", [" . implode(', ', $behaviorData) . ']' : '' %>);
+			<% endforeach %>
 <% if (!empty($associations)): %>
 
-		<% endif; %>
+			<% endif; %>
 <% foreach ($associations as $type => $assocs): %>
-		<%
-		foreach ($assocs as $assoc):
-			$alias = $assoc['alias'];
-			unset($assoc['alias']);
-			%>
-			$this-><%= $type %>('<%= $alias %>', [<%= $this->Bake->stringifyList($assoc, ['indent' => 3]) %>]);
+			<%
+			foreach ($assocs as $assoc):
+				$alias = $assoc['alias'];
+				unset($assoc['alias']);
+				%>
+				$this-><%= $type %>('<%= $alias %>', [<%= $this->Bake->stringifyList($assoc, ['indent' => 3]) %>]);
 <% endforeach %>
 <% endforeach %>
     }
@@ -101,8 +100,7 @@ class <%= $name %>Table extends Table
 		 * @return \Cake\Validation\Validator
 		 */
 		public
-		function validationDefault(Validator $validator)
-		{
+		function validationDefault(Validator $validator) {
 			<%
 			foreach ($validation as $field => $rules):
 				$validationMethods = [];
@@ -176,13 +174,12 @@ class <%= $name %>Table extends Table
 	 * @return \Cake\ORM\RulesChecker
 	 */
 	public
-	function buildRules(RulesChecker $rules)
-	{
+	function buildRules(RulesChecker $rules) {
 		<%
 		- foreach ($rulesChecker as $field => $rule): %>
-		$rules->add($rules-><%= $rule['name'] %>(['<%= $field %>'] <%= !empty($rule['extra']) ? ", '$rule[extra]'" : '' %>));
-		<%
-		- endforeach; %>
+			$rules->add($rules-><%= $rule['name'] %>(['<%= $field %>'] <%= !empty($rule['extra']) ? ", '$rule[extra]'" : '' %>));
+			<%
+			- endforeach; %>
         return $rules;
     }
 
@@ -195,8 +192,7 @@ class <%= $name %>Table extends Table
 	 * @return string
 	 */
 	public
-	static function defaultConnectionName()
-	{
+	static function defaultConnectionName() {
 		return '<%= $connection %>';
 	}
 <% endif; %>

@@ -22,8 +22,7 @@ use DebugKit\DebugPanel;
  * Provides a list of included files for the current request
  *
  */
-class IncludePanel extends DebugPanel
-{
+class IncludePanel extends DebugPanel {
 
 	/**
 	 * The list of plugins within the application
@@ -46,8 +45,7 @@ class IncludePanel extends DebugPanel
 	/**
 	 * Get a list of plugins on construct for later use
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		foreach (Plugin::loaded() as $plugin) {
 			$this->_pluginPaths[$plugin] = Plugin::path($plugin);
 		}
@@ -58,8 +56,7 @@ class IncludePanel extends DebugPanel
 	 *
 	 * @return array
 	 */
-	protected function _prepare()
-	{
+	protected function _prepare() {
 		$return = ['core' => [], 'app' => [], 'plugins' => []];
 
 		foreach (get_included_files() as $file) {
@@ -87,8 +84,7 @@ class IncludePanel extends DebugPanel
 	 *
 	 * @return array
 	 */
-	protected function _includePaths()
-	{
+	protected function _includePaths() {
 		$paths = array_flip(array_filter(explode(PATH_SEPARATOR, get_include_path())));
 
 		unset($paths['.']);
@@ -101,8 +97,7 @@ class IncludePanel extends DebugPanel
 	 * @param string $file File to check
 	 * @return bool
 	 */
-	protected function _isCoreFile($file)
-	{
+	protected function _isCoreFile($file) {
 		return strstr($file, CAKE);
 	}
 
@@ -112,8 +107,7 @@ class IncludePanel extends DebugPanel
 	 * @param string $file File to check
 	 * @return bool
 	 */
-	protected function _isAppFile($file)
-	{
+	protected function _isAppFile($file) {
 		return strstr($file, APP);
 	}
 
@@ -123,8 +117,7 @@ class IncludePanel extends DebugPanel
 	 * @param string $file File to check
 	 * @return bool
 	 */
-	protected function _isPluginFile($file)
-	{
+	protected function _isPluginFile($file) {
 		foreach ($this->_pluginPaths as $plugin => $path) {
 			if (strstr($file, $path)) {
 				return $plugin;
@@ -143,8 +136,7 @@ class IncludePanel extends DebugPanel
 	 *  - PluginName for the name of a plugin
 	 * @return bool
 	 */
-	protected function _niceFileName($file, $type)
-	{
+	protected function _niceFileName($file, $type) {
 		switch ($type) {
 			case 'app':
 				return str_replace(APP, 'APP/', $file);
@@ -163,8 +155,7 @@ class IncludePanel extends DebugPanel
 	 * @param string $file File to check.
 	 * @return string
 	 */
-	protected function _getFileType($file)
-	{
+	protected function _getFileType($file) {
 		foreach ($this->_fileTypes as $type) {
 			if (stripos($file, '/' . $type . '/') !== false) {
 				return $type;
@@ -180,8 +171,7 @@ class IncludePanel extends DebugPanel
 	 * @param \Cake\Event\Event $event Event
 	 * @return void
 	 */
-	public function shutdown(Event $event)
-	{
+	public function shutdown(Event $event) {
 		$this->_data = $this->_prepare();
 	}
 
@@ -190,8 +180,7 @@ class IncludePanel extends DebugPanel
 	 *
 	 * @return string
 	 */
-	public function summary()
-	{
+	public function summary() {
 		$data = $this->_data;
 		if (empty($data)) {
 			$data = $this->_prepare();

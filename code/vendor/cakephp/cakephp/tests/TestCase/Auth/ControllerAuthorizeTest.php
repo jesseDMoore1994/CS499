@@ -25,16 +25,14 @@ use Cake\TestSuite\TestCase;
  * Class ControllerAuthorizeTest
  *
  */
-class ControllerAuthorizeTest extends TestCase
-{
+class ControllerAuthorizeTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->controller = $this->getMock('Cake\Controller\Controller', ['isAuthorized'], [], '', false);
 		$this->components = $this->getMock('Cake\Controller\ComponentRegistry');
@@ -49,8 +47,7 @@ class ControllerAuthorizeTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testControllerErrorOnMissingMethod()
-	{
+	public function testControllerErrorOnMissingMethod() {
 		$this->auth->controller(new Controller());
 	}
 
@@ -59,8 +56,7 @@ class ControllerAuthorizeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthorizeFailure()
-	{
+	public function testAuthorizeFailure() {
 		$user = [];
 		$request = new Request('/posts/index');
 		$this->assertFalse($this->auth->authorize($user, $request));
@@ -71,8 +67,7 @@ class ControllerAuthorizeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthorizeSuccess()
-	{
+	public function testAuthorizeSuccess() {
 		$user = ['User' => ['username' => 'mark']];
 		$request = new Request('/posts/index');
 

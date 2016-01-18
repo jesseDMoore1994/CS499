@@ -16,16 +16,14 @@ namespace Symfony\Component\Config\Definition\Builder;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class NodeBuilder implements NodeParentInterface
-{
+class NodeBuilder implements NodeParentInterface {
 	protected $parent;
 	protected $nodeMapping;
 
 	/**
 	 * Constructor.
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		$this->nodeMapping = array(
 			'variable' => __NAMESPACE__ . '\\VariableNodeDefinition',
 			'scalar' => __NAMESPACE__ . '\\ScalarNodeDefinition',
@@ -44,8 +42,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return NodeBuilder This node builder
 	 */
-	public function setParent(ParentNodeDefinitionInterface $parent = null)
-	{
+	public function setParent(ParentNodeDefinitionInterface $parent = null) {
 		$this->parent = $parent;
 
 		return $this;
@@ -58,8 +55,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return ArrayNodeDefinition The child node
 	 */
-	public function arrayNode($name)
-	{
+	public function arrayNode($name) {
 		return $this->node($name, 'array');
 	}
 
@@ -70,8 +66,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return ScalarNodeDefinition The child node
 	 */
-	public function scalarNode($name)
-	{
+	public function scalarNode($name) {
 		return $this->node($name, 'scalar');
 	}
 
@@ -82,8 +77,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return BooleanNodeDefinition The child node
 	 */
-	public function booleanNode($name)
-	{
+	public function booleanNode($name) {
 		return $this->node($name, 'boolean');
 	}
 
@@ -94,8 +88,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return IntegerNodeDefinition The child node
 	 */
-	public function integerNode($name)
-	{
+	public function integerNode($name) {
 		return $this->node($name, 'integer');
 	}
 
@@ -106,8 +99,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return FloatNodeDefinition The child node
 	 */
-	public function floatNode($name)
-	{
+	public function floatNode($name) {
 		return $this->node($name, 'float');
 	}
 
@@ -118,8 +110,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return EnumNodeDefinition
 	 */
-	public function enumNode($name)
-	{
+	public function enumNode($name) {
 		return $this->node($name, 'enum');
 	}
 
@@ -130,8 +121,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return VariableNodeDefinition The builder of the child node
 	 */
-	public function variableNode($name)
-	{
+	public function variableNode($name) {
 		return $this->node($name, 'variable');
 	}
 
@@ -140,8 +130,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return ParentNodeDefinitionInterface The parent node
 	 */
-	public function end()
-	{
+	public function end() {
 		return $this->parent;
 	}
 
@@ -156,8 +145,7 @@ class NodeBuilder implements NodeParentInterface
 	 * @throws \RuntimeException When the node type is not registered
 	 * @throws \RuntimeException When the node class is not found
 	 */
-	public function node($name, $type)
-	{
+	public function node($name, $type) {
 		$class = $this->getNodeClass($type);
 
 		$node = new $class($name);
@@ -184,8 +172,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return NodeBuilder This node builder
 	 */
-	public function append(NodeDefinition $node)
-	{
+	public function append(NodeDefinition $node) {
 		if ($node instanceof ParentNodeDefinitionInterface) {
 			$builder = clone $this;
 			$builder->setParent(null);
@@ -209,8 +196,7 @@ class NodeBuilder implements NodeParentInterface
 	 *
 	 * @return NodeBuilder This node builder
 	 */
-	public function setNodeClass($type, $class)
-	{
+	public function setNodeClass($type, $class) {
 		$this->nodeMapping[strtolower($type)] = $class;
 
 		return $this;
@@ -226,8 +212,7 @@ class NodeBuilder implements NodeParentInterface
 	 * @throws \RuntimeException When the node type is not registered
 	 * @throws \RuntimeException When the node class is not found
 	 */
-	protected function getNodeClass($type)
-	{
+	protected function getNodeClass($type) {
 		$type = strtolower($type);
 
 		if (!isset($this->nodeMapping[$type])) {

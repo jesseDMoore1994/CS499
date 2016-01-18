@@ -24,16 +24,14 @@ use Cake\TestSuite\TestCase;
  * test case for PluginShortRoute
  *
  */
-class PluginShortRouteTest extends TestCase
-{
+class PluginShortRouteTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('Routing', ['admin' => null, 'prefixes' => []]);
 		Router::reload();
@@ -44,8 +42,7 @@ class PluginShortRouteTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParsing()
-	{
+	public function testParsing() {
 		$route = new PluginShortRoute('/:plugin', ['action' => 'index'], ['plugin' => 'foo|bar']);
 
 		$result = $route->parse('/foo');
@@ -62,8 +59,7 @@ class PluginShortRouteTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMatch()
-	{
+	public function testMatch() {
 		$route = new PluginShortRoute('/:plugin', ['action' => 'index'], ['plugin' => 'foo|bar']);
 
 		$result = $route->match(['plugin' => 'foo', 'controller' => 'posts', 'action' => 'index']);

@@ -25,8 +25,7 @@ use Cake\View\View;
  * @link http://book.cakephp.org/3.0/en/views/helpers/session.html
  * @deprecated 3.0.2 Use request->session() instead.
  */
-class SessionHelper extends Helper
-{
+class SessionHelper extends Helper {
 
 	/**
 	 *  Constructor
@@ -34,8 +33,7 @@ class SessionHelper extends Helper
 	 * @param \Cake\View\View $View The View this helper is being attached to.
 	 * @param array $config Configuration settings for the helper.
 	 */
-	public function __construct(View $View, array $config = [])
-	{
+	public function __construct(View $View, array $config = []) {
 		trigger_error('SessionHelper has been deprecated. Use request->session() instead.', E_USER_DEPRECATED);
 		parent::__construct($View, $config);
 	}
@@ -52,8 +50,7 @@ class SessionHelper extends Helper
 	 * @param string|null $name The name of the session key you want to read
 	 * @return mixed Values from the session vars
 	 */
-	public function read($name = null)
-	{
+	public function read($name = null) {
 		return $this->request->session()->read($name);
 	}
 
@@ -68,8 +65,7 @@ class SessionHelper extends Helper
 	 * @param string $name Session key to check.
 	 * @return bool
 	 */
-	public function check($name)
-	{
+	public function check($name) {
 		return $this->request->session()->check($name);
 	}
 
@@ -78,8 +74,7 @@ class SessionHelper extends Helper
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 }

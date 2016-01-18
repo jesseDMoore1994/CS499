@@ -13,21 +13,18 @@ namespace Symfony\Component\Yaml\Tests;
 
 use Symfony\Component\Yaml\Inline;
 
-class InlineTest extends \PHPUnit_Framework_TestCase
-{
+class InlineTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider getTestsForParse
 	 */
-	public function testParse($yaml, $value)
-	{
+	public function testParse($yaml, $value) {
 		$this->assertSame($value, Inline::parse($yaml), sprintf('::parse() converts an inline YAML to a PHP structure (%s)', $yaml));
 	}
 
 	/**
 	 * @dataProvider getTestsForParseWithMapObjects
 	 */
-	public function testParseWithMapObjects($yaml, $value)
-	{
+	public function testParseWithMapObjects($yaml, $value) {
 		$actual = Inline::parse($yaml, false, false, true);
 
 		$this->assertSame(serialize($value), serialize($actual));
@@ -36,15 +33,13 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getTestsForDump
 	 */
-	public function testDump($yaml, $value)
-	{
+	public function testDump($yaml, $value) {
 		$this->assertEquals($yaml, Inline::dump($value), sprintf('::dump() converts a PHP structure to an inline YAML (%s)', $yaml));
 
 		$this->assertSame($value, Inline::parse(Inline::dump($value)), 'check consistency');
 	}
 
-	public function testDumpNumericValueWithLocale()
-	{
+	public function testDumpNumericValueWithLocale() {
 		$locale = setlocale(LC_NUMERIC, 0);
 		if (false === $locale) {
 			$this->markTestSkipped('Your platform does not support locales.');
@@ -63,8 +58,7 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testHashStringsResemblingExponentialNumericsShouldNotBeChangedToINF()
-	{
+	public function testHashStringsResemblingExponentialNumericsShouldNotBeChangedToINF() {
 		$value = '686e444';
 
 		$this->assertSame($value, Inline::parse(Inline::dump($value)));
@@ -74,24 +68,21 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \Symfony\Component\Yaml\Exception\ParseException
 	 * @expectedExceptionMessage Found unknown escape character "\V".
 	 */
-	public function testParseScalarWithNonEscapedBlackslashShouldThrowException()
-	{
+	public function testParseScalarWithNonEscapedBlackslashShouldThrowException() {
 		Inline::parse('"Foo\Var"');
 	}
 
 	/**
 	 * @expectedException \Symfony\Component\Yaml\Exception\ParseException
 	 */
-	public function testParseScalarWithNonEscapedBlackslashAtTheEndShouldThrowException()
-	{
+	public function testParseScalarWithNonEscapedBlackslashAtTheEndShouldThrowException() {
 		Inline::parse('"Foo\\"');
 	}
 
 	/**
 	 * @expectedException \Symfony\Component\Yaml\Exception\ParseException
 	 */
-	public function testParseScalarWithIncorrectlyQuotedStringShouldThrowException()
-	{
+	public function testParseScalarWithIncorrectlyQuotedStringShouldThrowException() {
 		$value = "'don't do somthin' like that'";
 		Inline::parse($value);
 	}
@@ -99,8 +90,7 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \Symfony\Component\Yaml\Exception\ParseException
 	 */
-	public function testParseScalarWithIncorrectlyDoubleQuotedStringShouldThrowException()
-	{
+	public function testParseScalarWithIncorrectlyDoubleQuotedStringShouldThrowException() {
 		$value = '"don"t do somthin" like that"';
 		Inline::parse($value);
 	}
@@ -108,8 +98,7 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \Symfony\Component\Yaml\Exception\ParseException
 	 */
-	public function testParseInvalidMappingKeyShouldThrowException()
-	{
+	public function testParseInvalidMappingKeyShouldThrowException() {
 		$value = '{ "foo " bar": "bar" }';
 		Inline::parse($value);
 	}
@@ -117,21 +106,18 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \Symfony\Component\Yaml\Exception\ParseException
 	 */
-	public function testParseInvalidMappingShouldThrowException()
-	{
+	public function testParseInvalidMappingShouldThrowException() {
 		Inline::parse('[foo] bar');
 	}
 
 	/**
 	 * @expectedException \Symfony\Component\Yaml\Exception\ParseException
 	 */
-	public function testParseInvalidSequenceShouldThrowException()
-	{
+	public function testParseInvalidSequenceShouldThrowException() {
 		Inline::parse('{ foo: bar } bar');
 	}
 
-	public function testParseScalarWithCorrectlyQuotedStringShouldReturnString()
-	{
+	public function testParseScalarWithCorrectlyQuotedStringShouldReturnString() {
 		$value = "'don''t do somthin'' like that'";
 		$expect = "don't do somthin' like that";
 
@@ -141,13 +127,11 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getDataForParseReferences
 	 */
-	public function testParseReferences($yaml, $expected)
-	{
+	public function testParseReferences($yaml, $expected) {
 		$this->assertSame($expected, Inline::parse($yaml, false, false, false, array('var' => 'var-value')));
 	}
 
-	public function getDataForParseReferences()
-	{
+	public function getDataForParseReferences() {
 		return array(
 			'scalar' => array('*var', 'var-value'),
 			'list' => array('[ *var ]', array('var-value')),
@@ -160,8 +144,7 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testParseMapReferenceInSequence()
-	{
+	public function testParseMapReferenceInSequence() {
 		$foo = array(
 			'a' => 'Steve',
 			'b' => 'Clark',
@@ -174,8 +157,7 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \Symfony\Component\Yaml\Exception\ParseException
 	 * @expectedExceptionMessage A reference must contain at least one character.
 	 */
-	public function testParseUnquotedAsterisk()
-	{
+	public function testParseUnquotedAsterisk() {
 		Inline::parse('{ foo: * }');
 	}
 
@@ -183,8 +165,7 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \Symfony\Component\Yaml\Exception\ParseException
 	 * @expectedExceptionMessage A reference must contain at least one character.
 	 */
-	public function testParseUnquotedAsteriskFollowedByAComment()
-	{
+	public function testParseUnquotedAsteriskFollowedByAComment() {
 		Inline::parse('{ foo: * #foo }');
 	}
 
@@ -193,13 +174,11 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException Symfony\Component\Yaml\Exception\ParseException
 	 * @expectedExceptionMessage cannot start a plain scalar; you need to quote the scalar.
 	 */
-	public function testParseUnquotedScalarStartingWithReservedIndicator($indicator)
-	{
+	public function testParseUnquotedScalarStartingWithReservedIndicator($indicator) {
 		Inline::parse(sprintf('{ foo: %sfoo }', $indicator));
 	}
 
-	public function getReservedIndicators()
-	{
+	public function getReservedIndicators() {
 		return array(array('@'), array('`'));
 	}
 
@@ -208,18 +187,15 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException Symfony\Component\Yaml\Exception\ParseException
 	 * @expectedExceptionMessage cannot start a plain scalar; you need to quote the scalar.
 	 */
-	public function testParseUnquotedScalarStartingWithScalarIndicator($indicator)
-	{
+	public function testParseUnquotedScalarStartingWithScalarIndicator($indicator) {
 		Inline::parse(sprintf('{ foo: %sfoo }', $indicator));
 	}
 
-	public function getScalarIndicators()
-	{
+	public function getScalarIndicators() {
 		return array(array('|'), array('>'));
 	}
 
-	public function getTestsForParse()
-	{
+	public function getTestsForParse() {
 		return array(
 			array('', ''),
 			array('null', null),
@@ -293,8 +269,7 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function getTestsForParseWithMapObjects()
-	{
+	public function getTestsForParseWithMapObjects() {
 		return array(
 			array('', ''),
 			array('null', null),
@@ -372,8 +347,7 @@ class InlineTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function getTestsForDump()
-	{
+	public function getTestsForDump() {
 		return array(
 			array('null', null),
 			array('false', false),

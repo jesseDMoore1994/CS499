@@ -20,16 +20,14 @@ use Cake\Utility\Crypto\OpenSsl;
 /**
  * Openssl engine tests.
  */
-class OpenSslTest extends TestCase
-{
+class OpenSslTest extends TestCase {
 
 	/**
 	 * Setup function.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->skipIf(!function_exists('openssl_encrypt'), 'No openssl skipping tests');
 		$this->crypt = new OpenSsl();
@@ -41,8 +39,7 @@ class OpenSslTest extends TestCase
 	 * @expectedException \LogicException
 	 * @return void
 	 */
-	public function testRijndael()
-	{
+	public function testRijndael() {
 		$txt = 'The quick brown fox jumped over the lazy dog.';
 		$key = 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi';
 
@@ -54,8 +51,7 @@ class OpenSslTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEncryptDecrypt()
-	{
+	public function testEncryptDecrypt() {
 		$txt = 'The quick brown fox';
 		$key = 'This key is enough bytes';
 		$result = $this->crypt->encrypt($txt, $key);
@@ -69,8 +65,7 @@ class OpenSslTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDecryptKeyFailure()
-	{
+	public function testDecryptKeyFailure() {
 		$txt = 'The quick brown fox';
 		$key = 'This key is enough bytes';
 		$result = $this->crypt->encrypt($txt, $key);

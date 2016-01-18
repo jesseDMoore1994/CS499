@@ -23,16 +23,14 @@ use NoRewindIterator;
  * BufferedIterator Test
  *
  */
-class BufferedIteratorTest extends TestCase
-{
+class BufferedIteratorTest extends TestCase {
 
 	/**
 	 * Tests that items are cached once iterated over them
 	 *
 	 * @return void
 	 */
-	public function testBuffer()
-	{
+	public function testBuffer() {
 		$items = new ArrayObject([
 			'a' => 1,
 			'b' => 2,
@@ -52,8 +50,7 @@ class BufferedIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCount()
-	{
+	public function testCount() {
 		$items = new ArrayObject([
 			'a' => 1,
 			'b' => 2,

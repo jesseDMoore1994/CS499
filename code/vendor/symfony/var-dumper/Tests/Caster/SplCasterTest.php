@@ -16,12 +16,10 @@ use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 /**
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
-class SplCasterTest extends \PHPUnit_Framework_TestCase
-{
+class SplCasterTest extends \PHPUnit_Framework_TestCase {
 	use VarDumperTestTrait;
 
-	public function getCastFileInfoTests()
-	{
+	public function getCastFileInfoTests() {
 		return array(
 			array(__FILE__, <<<'EOTXT'
 SplFileInfo {
@@ -70,13 +68,11 @@ EOTXT
 	}
 
 	/** @dataProvider getCastFileInfoTests */
-	public function testCastFileInfo($file, $dump)
-	{
+	public function testCastFileInfo($file, $dump) {
 		$this->assertDumpMatchesFormat($dump, new \SplFileInfo($file));
 	}
 
-	public function testCastFileObject()
-	{
+	public function testCastFileObject() {
 		$var = new \SplFileObject(__FILE__);
 		$var->setFlags(\SplFileObject::DROP_NEW_LINE | \SplFileObject::SKIP_EMPTY);
 		$dump = <<<'EOTXT'

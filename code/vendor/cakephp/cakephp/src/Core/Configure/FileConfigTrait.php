@@ -20,8 +20,7 @@ use Cake\Core\Plugin;
 /**
  * Trait providing utility methods for file based config engines.
  */
-trait FileConfigTrait
-{
+trait FileConfigTrait {
 	/**
 	 * The path this engine finds files on.
 	 *
@@ -39,8 +38,7 @@ trait FileConfigTrait
 	 * @throws \Cake\Core\Exception\Exception When files don't exist or when
 	 *  files contain '..' as this could lead to abusive reads.
 	 */
-	protected function _getFilePath($key, $checkExists = false)
-	{
+	protected function _getFilePath($key, $checkExists = false) {
 		if (strpos($key, '..') !== false) {
 			throw new Exception('Cannot load/dump configuration files with ../ in them.');
 		}

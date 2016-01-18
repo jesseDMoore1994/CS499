@@ -15,8 +15,7 @@ namespace Symfony\Component\Filesystem\Tests\Fixtures\MockStream;
  * Mock stream class to be used with stream_wrapper_register.
  * stream_wrapper_register('mock', 'Symfony\Component\Filesystem\Tests\Fixtures\MockStream\MockStream').
  */
-class MockStream
-{
+class MockStream {
 	/**
 	 * Opens file or URL.
 	 *
@@ -28,8 +27,7 @@ class MockStream
 	 *
 	 * @return bool
 	 */
-	public function stream_open($path, $mode, $options, &$opened_path)
-	{
+	public function stream_open($path, $mode, $options, &$opened_path) {
 		return true;
 	}
 
@@ -39,8 +37,7 @@ class MockStream
 	 *
 	 * @return array File stats
 	 */
-	public function url_stat($path, $flags)
-	{
+	public function url_stat($path, $flags) {
 		return array();
 	}
 }

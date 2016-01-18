@@ -13,10 +13,8 @@ namespace Symfony\Component\Config\Tests\Loader;
 
 use Symfony\Component\Config\Loader\LoaderResolver;
 
-class LoaderResolverTest extends \PHPUnit_Framework_TestCase
-{
-	public function testConstructor()
-	{
+class LoaderResolverTest extends \PHPUnit_Framework_TestCase {
+	public function testConstructor() {
 		$resolver = new LoaderResolver(array(
 			$loader = $this->getMock('Symfony\Component\Config\Loader\LoaderInterface'),
 		));
@@ -24,8 +22,7 @@ class LoaderResolverTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array($loader), $resolver->getLoaders(), '__construct() takes an array of loaders as its first argument');
 	}
 
-	public function testResolve()
-	{
+	public function testResolve() {
 		$loader = $this->getMock('Symfony\Component\Config\Loader\LoaderInterface');
 		$resolver = new LoaderResolver(array($loader));
 		$this->assertFalse($resolver->resolve('foo.foo'), '->resolve() returns false if no loader is able to load the resource');
@@ -37,8 +34,7 @@ class LoaderResolverTest extends \PHPUnit_Framework_TestCase
 		}), '->resolve() returns the loader for the given resource');
 	}
 
-	public function testLoaders()
-	{
+	public function testLoaders() {
 		$resolver = new LoaderResolver();
 		$resolver->addLoader($loader = $this->getMock('Symfony\Component\Config\Loader\LoaderInterface'));
 

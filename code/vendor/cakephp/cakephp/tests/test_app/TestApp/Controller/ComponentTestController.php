@@ -19,8 +19,7 @@ use Cake\Controller\Controller;
  * ComponentTestController class
  *
  */
-class ComponentTestController extends Controller
-{
+class ComponentTestController extends Controller {
 
 	/**
 	 * uses property

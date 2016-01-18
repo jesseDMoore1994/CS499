@@ -24,8 +24,7 @@ use Cake\Log\Log;
  * consistent interface for shells to use. This class also makes mocking streams
  * easy to do in unit tests.
  */
-class ConsoleIo
-{
+class ConsoleIo {
 
 	/**
 	 * The output stream
@@ -99,8 +98,7 @@ class ConsoleIo
 	 * @param \Cake\Console\ConsoleInput|null $in A ConsoleInput object for stdin.
 	 * @param \Cake\Console\HelperRegistry|null $helpers A HelperRegistry instance
 	 */
-	public function __construct(ConsoleOutput $out = null, ConsoleOutput $err = null, ConsoleInput $in = null, HelperRegistry $helpers = null)
-	{
+	public function __construct(ConsoleOutput $out = null, ConsoleOutput $err = null, ConsoleInput $in = null, HelperRegistry $helpers = null) {
 		$this->_out = $out ? $out : new ConsoleOutput('php://stdout');
 		$this->_err = $err ? $err : new ConsoleOutput('php://stderr');
 		$this->_in = $in ? $in : new ConsoleInput('php://stdin');
@@ -114,8 +112,7 @@ class ConsoleIo
 	 * @param null|int $level The current output level.
 	 * @return int The current output level.
 	 */
-	public function level($level = null)
-	{
+	public function level($level = null) {
 		if ($level !== null) {
 			$this->_level = $level;
 		}
@@ -129,8 +126,7 @@ class ConsoleIo
 	 * @param int $newlines Number of newlines to append
 	 * @return int|bool Returns the number of bytes returned from writing to stdout.
 	 */
-	public function verbose($message, $newlines = 1)
-	{
+	public function verbose($message, $newlines = 1) {
 		return $this->out($message, $newlines, self::VERBOSE);
 	}
 
@@ -141,8 +137,7 @@ class ConsoleIo
 	 * @param int $newlines Number of newlines to append
 	 * @return int|bool Returns the number of bytes returned from writing to stdout.
 	 */
-	public function quiet($message, $newlines = 1)
-	{
+	public function quiet($message, $newlines = 1) {
 		return $this->out($message, $newlines, self::QUIET);
 	}
 
@@ -162,8 +157,7 @@ class ConsoleIo
 	 * @param int $level The message's output level, see above.
 	 * @return int|bool Returns the number of bytes returned from writing to stdout.
 	 */
-	public function out($message = '', $newlines = 1, $level = ConsoleIo::NORMAL)
-	{
+	public function out($message = '', $newlines = 1, $level = ConsoleIo::NORMAL) {
 		if ($level <= $this->_level) {
 			$this->_lastWritten = $this->_out->write($message, $newlines);
 			return $this->_lastWritten;
@@ -185,8 +179,7 @@ class ConsoleIo
 	 *    length of the last message output.
 	 * @return void
 	 */
-	public function overwrite($message, $newlines = 1, $size = null)
-	{
+	public function overwrite($message, $newlines = 1, $size = null) {
 		$size = $size ?: $this->_lastWritten;
 
 		// Output backspaces.
@@ -212,8 +205,7 @@ class ConsoleIo
 	 * @param int $newlines Number of newlines to append
 	 * @return void
 	 */
-	public function err($message = '', $newlines = 1)
-	{
+	public function err($message = '', $newlines = 1) {
 		$this->_err->write($message, $newlines);
 	}
 
@@ -223,8 +215,7 @@ class ConsoleIo
 	 * @param int $multiplier Number of times the linefeed sequence should be repeated
 	 * @return string
 	 */
-	public function nl($multiplier = 1)
-	{
+	public function nl($multiplier = 1) {
 		return str_repeat(ConsoleOutput::LF, $multiplier);
 	}
 
@@ -235,8 +226,7 @@ class ConsoleIo
 	 * @param int $width Width of the line, defaults to 79
 	 * @return void
 	 */
-	public function hr($newlines = 0, $width = 79)
-	{
+	public function hr($newlines = 0, $width = 79) {
 		$this->out(null, $newlines);
 		$this->out(str_repeat('-', $width));
 		$this->out(null, $newlines);
@@ -249,8 +239,7 @@ class ConsoleIo
 	 * @param string|null $default Default input value.
 	 * @return mixed Either the default value, or the user-provided input.
 	 */
-	public function ask($prompt, $default = null)
-	{
+	public function ask($prompt, $default = null) {
 		return $this->_getInput($prompt, null, $default);
 	}
 
@@ -261,8 +250,7 @@ class ConsoleIo
 	 * @return void
 	 * @see \Cake\Console\ConsoleOutput::outputAs()
 	 */
-	public function outputAs($mode)
-	{
+	public function outputAs($mode) {
 		$this->_out->outputAs($mode);
 	}
 
@@ -276,8 +264,7 @@ class ConsoleIo
 	 *   styles true will be returned.
 	 * @see \Cake\Console\ConsoleOutput::styles()
 	 */
-	public function styles($style = null, $definition = null)
-	{
+	public function styles($style = null, $definition = null) {
 		$this->_out->styles($style, $definition);
 	}
 
@@ -289,8 +276,7 @@ class ConsoleIo
 	 * @param string|null $default Default input value.
 	 * @return mixed Either the default value, or the user-provided input.
 	 */
-	public function askChoice($prompt, $options, $default = null)
-	{
+	public function askChoice($prompt, $options, $default = null) {
 		if ($options && is_string($options)) {
 			if (strpos($options, ',')) {
 				$options = explode(',', $options);
@@ -322,8 +308,7 @@ class ConsoleIo
 	 * @param string|null $default Default input value. Pass null to omit.
 	 * @return string Either the default value, or the user-provided input.
 	 */
-	protected function _getInput($prompt, $options, $default)
-	{
+	protected function _getInput($prompt, $options, $default) {
 		$optionsText = '';
 		if (isset($options)) {
 			$optionsText = " $options ";
@@ -356,8 +341,7 @@ class ConsoleIo
 	 *   QUIET disables notice, info and debug logs.
 	 * @return void
 	 */
-	public function setLoggers($enable)
-	{
+	public function setLoggers($enable) {
 		Log::drop('stdout');
 		Log::drop('stderr');
 		if ($enable === false) {
@@ -391,8 +375,7 @@ class ConsoleIo
 	 * @param array $settings Configuration data for the helper.
 	 * @return \Cake\Console\Helper The created helper instance.
 	 */
-	public function helper($name, array $settings = [])
-	{
+	public function helper($name, array $settings = []) {
 		$name = ucfirst($name);
 		return $this->_helpers->load($name, $settings);
 	}

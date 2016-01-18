@@ -4,8 +4,7 @@ namespace PhpParser\Node\Expr;
 
 use PhpParser\Node\Expr;
 
-class PreInc extends Expr
-{
+class PreInc extends Expr {
 	/** @var Expr Variable */
 	public $var;
 
@@ -15,14 +14,12 @@ class PreInc extends Expr
 	 * @param Expr $var Variable
 	 * @param array $attributes Additional attributes
 	 */
-	public function __construct(Expr $var, array $attributes = array())
-	{
+	public function __construct(Expr $var, array $attributes = array()) {
 		parent::__construct($attributes);
 		$this->var = $var;
 	}
 
-	public function getSubNodeNames()
-	{
+	public function getSubNodeNames() {
 		return array('var');
 	}
 }

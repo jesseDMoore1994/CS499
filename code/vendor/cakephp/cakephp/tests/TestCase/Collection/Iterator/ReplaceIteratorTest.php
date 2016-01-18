@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * ReplaceIterator Test
  *
  */
-class ReplaceIteratorTest extends TestCase
-{
+class ReplaceIteratorTest extends TestCase {
 
 	/**
 	 * Tests that the iterator works correctly
 	 *
 	 * @return void
 	 */
-	public function testReplace()
-	{
+	public function testReplace() {
 		$items = new \ArrayIterator([1, 2, 3]);
 		$callable = $this->getMock('stdClass', ['__invoke']);
 		$callable->expects($this->at(0))

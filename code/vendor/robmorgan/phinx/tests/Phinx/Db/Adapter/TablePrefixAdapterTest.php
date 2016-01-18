@@ -7,8 +7,7 @@ use Phinx\Db\Table;
 use Phinx\Db\Table\Column;
 use Phinx\Db\Table\ForeignKey;
 
-class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
-{
+class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @var \Phinx\Db\Adapter\TablePrefixAdapter
 	 */
@@ -19,8 +18,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 	 */
 	private $mock;
 
-	public function setUp()
-	{
+	public function setUp() {
 		$options = array(
 			'table_prefix' => 'pre_',
 			'table_suffix' => '_suf',
@@ -42,20 +40,17 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter = new TablePrefixAdapter($this->mock);
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($this->adapter);
 		unset($this->mock);
 	}
 
-	public function testGetAdapterTableName()
-	{
+	public function testGetAdapterTableName() {
 		$tableName = $this->adapter->getAdapterTableName('table');
 		$this->assertEquals('pre_table_suf', $tableName);
 	}
 
-	public function testHasTable()
-	{
+	public function testHasTable() {
 		$this->mock
 			->expects($this->once())
 			->method('hasTable')
@@ -64,8 +59,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->hasTable('table');
 	}
 
-	public function testCreateTable()
-	{
+	public function testCreateTable() {
 		$table = new Table('table');
 
 		$this->mock
@@ -80,8 +74,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->createTable($table);
 	}
 
-	public function testRenameTable()
-	{
+	public function testRenameTable() {
 		$this->mock
 			->expects($this->once())
 			->method('renameTable')
@@ -93,8 +86,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->renameTable('old', 'new');
 	}
 
-	public function testDropTable()
-	{
+	public function testDropTable() {
 		$this->mock
 			->expects($this->once())
 			->method('dropTable')
@@ -103,8 +95,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->dropTable('table');
 	}
 
-	public function testGetColumns()
-	{
+	public function testGetColumns() {
 		$this->mock
 			->expects($this->once())
 			->method('getColumns')
@@ -113,8 +104,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->getColumns('table');
 	}
 
-	public function testHasColumn()
-	{
+	public function testHasColumn() {
 		$this->mock
 			->expects($this->once())
 			->method('hasColumn')
@@ -126,8 +116,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->hasColumn('table', 'column');
 	}
 
-	public function testAddColumn()
-	{
+	public function testAddColumn() {
 		$table = new Table('table');
 		$column = new Column();
 
@@ -144,8 +133,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->addColumn($table, $column);
 	}
 
-	public function testRenameColumn()
-	{
+	public function testRenameColumn() {
 		$this->mock
 			->expects($this->once())
 			->method('renameColumn')
@@ -158,8 +146,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->renameColumn('table', 'column', 'new_column');
 	}
 
-	public function testChangeColumn()
-	{
+	public function testChangeColumn() {
 		$newColumn = new Column();
 
 		$this->mock
@@ -174,8 +161,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->changeColumn('table', 'column', $newColumn);
 	}
 
-	public function testDropColumn()
-	{
+	public function testDropColumn() {
 		$this->mock
 			->expects($this->once())
 			->method('dropColumn')
@@ -187,8 +173,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->dropColumn('table', 'column');
 	}
 
-	public function testHasIndex()
-	{
+	public function testHasIndex() {
 		$columns = array();
 
 		$this->mock
@@ -202,8 +187,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->hasIndex('table', $columns);
 	}
 
-	public function testDropIndex()
-	{
+	public function testDropIndex() {
 		$columns = array();
 		$options = null;
 
@@ -219,8 +203,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->dropIndex('table', $columns, $options);
 	}
 
-	public function testDropIndexByName()
-	{
+	public function testDropIndexByName() {
 		$this->mock
 			->expects($this->once())
 			->method('dropIndexByName')
@@ -232,8 +215,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->dropIndexByName('table', 'index');
 	}
 
-	public function testHasForeignKey()
-	{
+	public function testHasForeignKey() {
 		$columns = array();
 		$constraint = null;
 
@@ -249,8 +231,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->hasForeignKey('table', $columns, $constraint);
 	}
 
-	public function testAddForeignKey()
-	{
+	public function testAddForeignKey() {
 		$table = new Table('table');
 		$foreignKey = new ForeignKey();
 
@@ -267,8 +248,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->addForeignKey($table, $foreignKey);
 	}
 
-	public function testDropForeignKey()
-	{
+	public function testDropForeignKey() {
 		$columns = array();
 		$constraint = null;
 
@@ -284,8 +264,7 @@ class TablePrefixAdapterTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->dropForeignKey('table', $columns, $constraint);
 	}
 
-	public function testAddTableWithForeignKey()
-	{
+	public function testAddTableWithForeignKey() {
 		$this->mock
 			->expects($this->any())
 			->method('isValidColumnType')

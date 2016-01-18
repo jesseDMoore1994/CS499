@@ -23,8 +23,7 @@ use Cake\Network\Response;
  * Currently only switches the default layout and sets the response type - which just maps to
  * text/html by default.
  */
-class AjaxView extends View
-{
+class AjaxView extends View {
 
 	/**
 	 *
@@ -45,8 +44,7 @@ class AjaxView extends View
 		Response $response = null,
 		EventManager $eventManager = null,
 		array $viewOptions = []
-	)
-	{
+	) {
 		parent::__construct($request, $response, $eventManager, $viewOptions);
 
 		if ($response && $response instanceof Response) {

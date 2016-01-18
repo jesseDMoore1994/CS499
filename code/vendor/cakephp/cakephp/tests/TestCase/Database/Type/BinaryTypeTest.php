@@ -22,16 +22,14 @@ use \PDO;
 /**
  * Test for the Binary type.
  */
-class BinaryTypeTest extends TestCase
-{
+class BinaryTypeTest extends TestCase {
 
 	/**
 	 * Setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->type = Type::build('binary');
 		$this->driver = $this->getMock('Cake\Database\Driver');
@@ -42,8 +40,7 @@ class BinaryTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPHP()
-	{
+	public function testToPHP() {
 		$this->assertNull($this->type->toPHP(null, $this->driver));
 
 		$result = $this->type->toPHP('some data', $this->driver);
@@ -61,8 +58,7 @@ class BinaryTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPHPSqlserver()
-	{
+	public function testToPHPSqlserver() {
 		$driver = $this->getMock('Cake\Database\Driver\Sqlserver', [], [], '', false);
 		$result = $this->type->toPHP('536F6D652076616C7565', $driver);
 		$this->assertInternalType('resource', $result);
@@ -75,8 +71,7 @@ class BinaryTypeTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @expectedExceptionMessage Unable to convert array into binary.
 	 */
-	public function testToPHPFailure()
-	{
+	public function testToPHPFailure() {
 		$this->type->toPHP([], $this->driver);
 	}
 
@@ -85,8 +80,7 @@ class BinaryTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToDatabase()
-	{
+	public function testToDatabase() {
 		$value = 'some data';
 		$result = $this->type->toDatabase($value, $this->driver);
 		$this->assertEquals($value, $result);
@@ -101,8 +95,7 @@ class BinaryTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToStatement()
-	{
+	public function testToStatement() {
 		$this->assertEquals(PDO::PARAM_LOB, $this->type->toStatement('', $this->driver));
 	}
 }

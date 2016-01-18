@@ -25,16 +25,14 @@ use \PDO;
  * Tests Mysql driver
  *
  */
-class MysqlTest extends TestCase
-{
+class MysqlTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setup()
-	{
+	public function setup() {
 		parent::setUp();
 		$config = ConnectionManager::config('test');
 		$this->skipIf(strpos($config['driver'], 'Mysql') === false, 'Not using Mysql for test config');
@@ -45,8 +43,7 @@ class MysqlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectionConfigDefault()
-	{
+	public function testConnectionConfigDefault() {
 		$driver = $this->getMock('Cake\Database\Driver\Mysql', ['_connect', 'connection']);
 		$dsn = 'mysql:host=localhost;port=3306;dbname=cake;charset=utf8';
 		$expected = [
@@ -83,8 +80,7 @@ class MysqlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectionConfigCustom()
-	{
+	public function testConnectionConfigCustom() {
 		$config = [
 			'persistent' => false,
 			'host' => 'foo',
@@ -134,8 +130,7 @@ class MysqlTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsConnected()
-	{
+	public function testIsConnected() {
 		$connection = ConnectionManager::get('test');
 		$connection->disconnect();
 		$this->assertFalse($connection->isConnected(), 'Not connected now.');

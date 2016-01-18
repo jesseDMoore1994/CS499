@@ -23,8 +23,7 @@ use RecursiveIteratorIterator;
  * all Collection methods
  *
  */
-class TreeIterator extends RecursiveIteratorIterator
-{
+class TreeIterator extends RecursiveIteratorIterator {
 
 	use CollectionTrait;
 
@@ -42,8 +41,7 @@ class TreeIterator extends RecursiveIteratorIterator
 	 * @param int $mode Iterator mode.
 	 * @param int $flags Iterator flags.
 	 */
-	public function __construct(RecursiveIterator $items, $mode = RecursiveIteratorIterator::SELF_FIRST, $flags = 0)
-	{
+	public function __construct(RecursiveIterator $items, $mode = RecursiveIteratorIterator::SELF_FIRST, $flags = 0) {
 		parent::__construct($items, $mode, $flags);
 		$this->_mode = $mode;
 	}
@@ -86,8 +84,7 @@ class TreeIterator extends RecursiveIteratorIterator
 	 * their depth in the tree
 	 * @return \Cake\Collection\Iterator\TreePrinter
 	 */
-	public function printer($valuePath, $keyPath = null, $spacer = '__')
-	{
+	public function printer($valuePath, $keyPath = null, $spacer = '__') {
 		if (!$keyPath) {
 			$counter = 0;
 			$keyPath = function () use (&$counter) {

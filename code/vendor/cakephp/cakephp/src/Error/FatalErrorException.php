@@ -18,8 +18,7 @@ use Cake\Core\Exception\Exception;
  * Represents a fatal error
  *
  */
-class FatalErrorException extends Exception
-{
+class FatalErrorException extends Exception {
 
 	/**
 	 * Constructor
@@ -29,8 +28,7 @@ class FatalErrorException extends Exception
 	 * @param string|null $file File name.
 	 * @param int|null $line Line number.
 	 */
-	public function __construct($message, $code = 500, $file = null, $line = null)
-	{
+	public function __construct($message, $code = 500, $file = null, $line = null) {
 		parent::__construct($message, $code);
 		if ($file) {
 			$this->file = $file;

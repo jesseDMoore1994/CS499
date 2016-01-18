@@ -16,13 +16,11 @@ use Symfony\Component\Console\Input\InputInterface;
 /**
  * Constant Enumerator class.
  */
-class ConstantEnumerator extends Enumerator
-{
+class ConstantEnumerator extends Enumerator {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
-	{
+	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null) {
 		// only list constants when no Reflector is present.
 		//
 		// TODO: make a NamespaceReflector and pass that in for commands like:
@@ -62,8 +60,7 @@ class ConstantEnumerator extends Enumerator
 	 *
 	 * @return array
 	 */
-	protected function getConstants($category = null)
-	{
+	protected function getConstants($category = null) {
 		if (!$category) {
 			return get_defined_constants();
 		}
@@ -80,8 +77,7 @@ class ConstantEnumerator extends Enumerator
 	 *
 	 * @return array
 	 */
-	protected function prepareConstants(array $constants)
-	{
+	protected function prepareConstants(array $constants) {
 		// My kingdom for a generator.
 		$ret = array();
 

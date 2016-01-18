@@ -23,8 +23,7 @@ use SimpleXmlElement;
  *
  * @see ConsoleOptionParser::addOption()
  */
-class ConsoleInputOption
-{
+class ConsoleInputOption {
 
 	/**
 	 * Name of the option
@@ -79,8 +78,7 @@ class ConsoleInputOption
 	 * @param array $choices Valid choices for this option.
 	 * @throws \Cake\Console\Exception\ConsoleException
 	 */
-	public function __construct($name, $short = '', $help = '', $boolean = false, $default = '', $choices = [])
-	{
+	public function __construct($name, $short = '', $help = '', $boolean = false, $default = '', $choices = []) {
 		if (is_array($name) && isset($name['name'])) {
 			foreach ($name as $key => $value) {
 				$this->{'_' . $key} = $value;
@@ -105,8 +103,7 @@ class ConsoleInputOption
 	 *
 	 * @return string Value of this->_name.
 	 */
-	public function name()
-	{
+	public function name() {
 		return $this->_name;
 	}
 
@@ -115,8 +112,7 @@ class ConsoleInputOption
 	 *
 	 * @return string Value of this->_short.
 	 */
-	public function short()
-	{
+	public function short() {
 		return $this->_short;
 	}
 
@@ -126,8 +122,7 @@ class ConsoleInputOption
 	 * @param int $width The width to make the name of the option.
 	 * @return string
 	 */
-	public function help($width = 0)
-	{
+	public function help($width = 0) {
 		$default = $short = '';
 		if (!empty($this->_default) && $this->_default !== true) {
 			$default = sprintf(' <comment>(default: %s)</comment>', $this->_default);
@@ -150,8 +145,7 @@ class ConsoleInputOption
 	 *
 	 * @return string
 	 */
-	public function usage()
-	{
+	public function usage() {
 		$name = (strlen($this->_short) > 0) ? ('-' . $this->_short) : ('--' . $this->_name);
 		$default = '';
 		if (strlen($this->_default) > 0 && $this->_default !== true) {
@@ -168,8 +162,7 @@ class ConsoleInputOption
 	 *
 	 * @return mixed
 	 */
-	public function defaultValue()
-	{
+	public function defaultValue() {
 		return $this->_default;
 	}
 
@@ -178,8 +171,7 @@ class ConsoleInputOption
 	 *
 	 * @return bool
 	 */
-	public function isBoolean()
-	{
+	public function isBoolean() {
 		return (bool)$this->_boolean;
 	}
 
@@ -190,8 +182,7 @@ class ConsoleInputOption
 	 * @return bool
 	 * @throws \Cake\Console\Exception\ConsoleException
 	 */
-	public function validChoice($value)
-	{
+	public function validChoice($value) {
 		if (empty($this->_choices)) {
 			return true;
 		}
@@ -214,8 +205,7 @@ class ConsoleInputOption
 	 * @param \SimpleXmlElement $parent The parent element.
 	 * @return \SimpleXmlElement The parent with this option appended.
 	 */
-	public function xml(SimpleXmlElement $parent)
-	{
+	public function xml(SimpleXmlElement $parent) {
 		$option = $parent->addChild('option');
 		$option->addAttribute('name', '--' . $this->_name);
 		$short = '';

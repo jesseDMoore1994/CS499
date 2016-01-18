@@ -22,8 +22,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class OrderClauseExpression implements ExpressionInterface, FieldInterface
-{
+class OrderClauseExpression implements ExpressionInterface, FieldInterface {
 	use FieldTrait;
 
 	/**
@@ -39,8 +38,7 @@ class OrderClauseExpression implements ExpressionInterface, FieldInterface
 	 * @param \Cake\Database\ExpressionInterface|string $field The field to order on.
 	 * @param string $direction The direction to sort on.
 	 */
-	public function __construct($field, $direction)
-	{
+	public function __construct($field, $direction) {
 		$this->_field = $field;
 		$this->_direction = strtolower($direction) === 'asc' ? 'ASC' : 'DESC';
 	}
@@ -48,8 +46,7 @@ class OrderClauseExpression implements ExpressionInterface, FieldInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		$field = $this->_field;
 		if ($field instanceof ExpressionInterface) {
 			$field = $field->sql($generator);
@@ -60,8 +57,7 @@ class OrderClauseExpression implements ExpressionInterface, FieldInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function traverse(callable $visitor)
-	{
+	public function traverse(callable $visitor) {
 		if ($this->_field instanceof ExpressionInterface) {
 			$visitor($this->_field);
 			$this->_field->traverse($visitor);
@@ -73,8 +69,7 @@ class OrderClauseExpression implements ExpressionInterface, FieldInterface
 	 *
 	 * @return void
 	 */
-	public function __clone()
-	{
+	public function __clone() {
 		if ($this->_field instanceof ExpressionInterface) {
 			$this->_field = clone $this->_field;
 		}

@@ -49,8 +49,7 @@ use Cake\Network\Response;
  * `AuthComponent::$loginAction`, or '/'. If unauthorizedRedirect is set to
  * false, a ForbiddenException exception is thrown instead of redirecting.
  */
-class BasicAuthenticate extends BaseAuthenticate
-{
+class BasicAuthenticate extends BaseAuthenticate {
 
 	/**
 	 * Authenticate a user using HTTP auth. Will use the configured User model and attempt a
@@ -60,8 +59,7 @@ class BasicAuthenticate extends BaseAuthenticate
 	 * @param \Cake\Network\Response $response The response to add headers to.
 	 * @return mixed Either false on failure, or an array of user data on success.
 	 */
-	public function authenticate(Request $request, Response $response)
-	{
+	public function authenticate(Request $request, Response $response) {
 		return $this->getUser($request);
 	}
 
@@ -71,8 +69,7 @@ class BasicAuthenticate extends BaseAuthenticate
 	 * @param \Cake\Network\Request $request Request object.
 	 * @return mixed Either false or an array of user information
 	 */
-	public function getUser(Request $request)
-	{
+	public function getUser(Request $request) {
 		$username = $request->env('PHP_AUTH_USER');
 		$pass = $request->env('PHP_AUTH_PW');
 
@@ -90,8 +87,7 @@ class BasicAuthenticate extends BaseAuthenticate
 	 * @return void
 	 * @throws \Cake\Network\Exception\UnauthorizedException
 	 */
-	public function unauthenticated(Request $request, Response $response)
-	{
+	public function unauthenticated(Request $request, Response $response) {
 		$Exception = new UnauthorizedException();
 		$Exception->responseHeader([$this->loginHeaders($request)]);
 		throw $Exception;
@@ -103,8 +99,7 @@ class BasicAuthenticate extends BaseAuthenticate
 	 * @param \Cake\Network\Request $request Request object.
 	 * @return string Headers for logging in.
 	 */
-	public function loginHeaders(Request $request)
-	{
+	public function loginHeaders(Request $request) {
 		$realm = $this->config('realm') ?: $request->env('SERVER_NAME');
 		return sprintf('WWW-Authenticate: Basic realm="%s"', $realm);
 	}

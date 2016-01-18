@@ -19,13 +19,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * Just what it says on the tin.
  */
-class ClearCommand extends Command
-{
+class ClearCommand extends Command {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('clear')
 			->setDefinition(array())
@@ -42,8 +40,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$output->write(sprintf('%c[2J%c[0;0f', 27, 27));
 	}
 }

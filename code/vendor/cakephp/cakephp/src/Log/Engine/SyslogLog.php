@@ -17,8 +17,7 @@ namespace Cake\Log\Engine;
 /**
  * Syslog stream for Logging. Writes logs to the system logger
  */
-class SyslogLog extends BaseLog
-{
+class SyslogLog extends BaseLog {
 
 	/**
 	 * Default config for this class
@@ -91,8 +90,7 @@ class SyslogLog extends BaseLog
 	 * @param array $context Additional information about the logged message
 	 * @return bool success of write.
 	 */
-	public function log($level, $message, array $context = [])
-	{
+	public function log($level, $message, array $context = []) {
 		if (!$this->_open) {
 			$config = $this->_config;
 			$this->_open($config['prefix'], $config['flag'], $config['facility']);
@@ -122,8 +120,7 @@ class SyslogLog extends BaseLog
 	 * @param int $facility the stream or facility to log to
 	 * @return void
 	 */
-	protected function _open($ident, $options, $facility)
-	{
+	protected function _open($ident, $options, $facility) {
 		openlog($ident, $options, $facility);
 	}
 
@@ -135,16 +132,14 @@ class SyslogLog extends BaseLog
 	 * @param string $message Message to log.
 	 * @return bool
 	 */
-	protected function _write($priority, $message)
-	{
+	protected function _write($priority, $message) {
 		return syslog($priority, $message);
 	}
 
 	/**
 	 * Closes the logger connection
 	 */
-	public function __destruct()
-	{
+	public function __destruct() {
 		closelog();
 	}
 }

@@ -8,20 +8,17 @@ use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Input\InputOption;
 
-class ConfigFileTest extends \PHPUnit_Framework_TestCase
-{
+class ConfigFileTest extends \PHPUnit_Framework_TestCase {
 	private $previousDir;
 
 	private $baseDir;
 
-	public function setUp()
-	{
+	public function setUp() {
 		$this->previousDir = getcwd();
 		$this->baseDir = realpath(__DIR__ . '/_rootDirectories');
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		chdir($this->previousDir);
 	}
 
@@ -34,8 +31,7 @@ class ConfigFileTest extends \PHPUnit_Framework_TestCase
 	 * @param $dir
 	 * @param $expectedFile
 	 */
-	public function testWorkingGetConfigFile($input, $dir, $expectedFile)
-	{
+	public function testWorkingGetConfigFile($input, $dir, $expectedFile) {
 		$foundPath = $this->runLocateFile($input, $dir);
 		$expectedPath = $this->baseDir . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $expectedFile;
 
@@ -51,8 +47,7 @@ class ConfigFileTest extends \PHPUnit_Framework_TestCase
 	 * @param $dir
 	 * @expectedException \InvalidArgumentException
 	 */
-	public function testNotWorkingGetConfigFile($input, $dir)
-	{
+	public function testNotWorkingGetConfigFile($input, $dir) {
 		$this->runLocateFile($input, $dir);
 	}
 
@@ -63,8 +58,7 @@ class ConfigFileTest extends \PHPUnit_Framework_TestCase
 	 * @param $dir
 	 * @return string
 	 */
-	protected function runLocateFile($arg, $dir)
-	{
+	protected function runLocateFile($arg, $dir) {
 		chdir($this->baseDir . '/' . $dir);
 		$definition = new InputDefinition(array(new InputOption('configuration')));
 		$input = new ArgvInput(array(), $definition);
@@ -81,8 +75,7 @@ class ConfigFileTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return array
 	 */
-	public function workingProvider()
-	{
+	public function workingProvider() {
 		return array(
 			//explicit yaml
 			array('phinx.yml', 'OnlyYaml', 'phinx.yml'),
@@ -104,8 +97,7 @@ class ConfigFileTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return array
 	 */
-	public function notWorkingProvider()
-	{
+	public function notWorkingProvider() {
 		return array(
 			//no valid file available
 			array(null, 'NoValidFile'),
@@ -122,10 +114,8 @@ class ConfigFileTest extends \PHPUnit_Framework_TestCase
  *
  * @package Test\Phinx\Config
  */
-class VoidCommand extends AbstractCommand
-{
-	public function locateConfigFile(InputInterface $input)
-	{
+class VoidCommand extends AbstractCommand {
+	public function locateConfigFile(InputInterface $input) {
 		return parent::locateConfigFile($input);
 	}
 }

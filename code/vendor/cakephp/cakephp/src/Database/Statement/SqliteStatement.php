@@ -19,8 +19,7 @@ namespace Cake\Database\Statement;
  *
  * @internal
  */
-class SqliteStatement extends StatementDecorator
-{
+class SqliteStatement extends StatementDecorator {
 
 	use BufferResultsTrait;
 
@@ -28,8 +27,7 @@ class SqliteStatement extends StatementDecorator
 	 * {@inheritDoc}
 	 *
 	 */
-	public function execute($params = null)
-	{
+	public function execute($params = null) {
 		if ($this->_statement instanceof BufferedStatement) {
 			$this->_statement = $this->_statement->getInnerStatement();
 		}
@@ -46,8 +44,7 @@ class SqliteStatement extends StatementDecorator
 	 *
 	 * @return int
 	 */
-	public function rowCount()
-	{
+	public function rowCount() {
 		if (preg_match('/^(?:DELETE|UPDATE|INSERT)/i', $this->_statement->queryString)) {
 			$changes = $this->_driver->prepare('SELECT CHANGES()');
 			$changes->execute();

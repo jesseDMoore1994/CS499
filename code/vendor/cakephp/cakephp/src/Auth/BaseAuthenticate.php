@@ -24,8 +24,7 @@ use Cake\ORM\TableRegistry;
  * Base Authentication class with common methods and properties.
  *
  */
-abstract class BaseAuthenticate implements EventListenerInterface
-{
+abstract class BaseAuthenticate implements EventListenerInterface {
 
 	use InstanceConfigTrait;
 
@@ -83,8 +82,7 @@ abstract class BaseAuthenticate implements EventListenerInterface
 	 * @param \Cake\Controller\ComponentRegistry $registry The Component registry used on this request.
 	 * @param array $config Array of config to use.
 	 */
-	public function __construct(ComponentRegistry $registry, array $config = [])
-	{
+	public function __construct(ComponentRegistry $registry, array $config = []) {
 		$this->_registry = $registry;
 		$this->config($config);
 	}
@@ -100,8 +98,7 @@ abstract class BaseAuthenticate implements EventListenerInterface
 	 *   and result of find is returned.
 	 * @return bool|array Either false on failure, or an array of user data.
 	 */
-	protected function _findUser($username, $password = null)
-	{
+	protected function _findUser($username, $password = null) {
 		$result = $this->_query($username)->first();
 
 		if (empty($result)) {
@@ -128,8 +125,7 @@ abstract class BaseAuthenticate implements EventListenerInterface
 	 * @param string $username The username/identifier.
 	 * @return \Cake\ORM\Query
 	 */
-	protected function _query($username)
-	{
+	protected function _query($username) {
 		$config = $this->_config;
 		$table = TableRegistry::get($config['userModel']);
 
@@ -156,8 +152,7 @@ abstract class BaseAuthenticate implements EventListenerInterface
 	 * @throws \RuntimeException If password hasher class not found or
 	 *   it does not extend AbstractPasswordHasher
 	 */
-	public function passwordHasher()
-	{
+	public function passwordHasher() {
 		if ($this->_passwordHasher) {
 			return $this->_passwordHasher;
 		}
@@ -172,8 +167,7 @@ abstract class BaseAuthenticate implements EventListenerInterface
 	 *
 	 * @return bool
 	 */
-	public function needsPasswordRehash()
-	{
+	public function needsPasswordRehash() {
 		return $this->_needsPasswordRehash;
 	}
 
@@ -193,8 +187,7 @@ abstract class BaseAuthenticate implements EventListenerInterface
 	 * @param \Cake\Network\Request $request Request object.
 	 * @return mixed Either false or an array of user information
 	 */
-	public function getUser(Request $request)
-	{
+	public function getUser(Request $request) {
 		return false;
 	}
 
@@ -210,8 +203,7 @@ abstract class BaseAuthenticate implements EventListenerInterface
 	 * @param \Cake\Network\Response $response A response object.
 	 * @return void
 	 */
-	public function unauthenticated(Request $request, Response $response)
-	{
+	public function unauthenticated(Request $request, Response $response) {
 	}
 
 	/**
@@ -230,8 +222,7 @@ abstract class BaseAuthenticate implements EventListenerInterface
 	 *
 	 * @return array List of events this class listens to. Defaults to `[]`.
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 }

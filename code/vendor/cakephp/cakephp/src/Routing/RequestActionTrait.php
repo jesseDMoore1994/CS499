@@ -22,8 +22,7 @@ use Cake\Network\Session;
  * Provides the requestAction() method for doing sub-requests
  *
  */
-trait RequestActionTrait
-{
+trait RequestActionTrait {
 
 	/**
 	 * Calls a controller's method from any location. Can be used to connect controllers together
@@ -95,8 +94,7 @@ trait RequestActionTrait
 	 * @return mixed Boolean true or false on success/failure, or contents
 	 *    of rendered action if 'return' is set in $extra.
 	 */
-	public function requestAction($url, array $extra = [])
-	{
+	public function requestAction($url, array $extra = []) {
 		if (empty($url)) {
 			return false;
 		}

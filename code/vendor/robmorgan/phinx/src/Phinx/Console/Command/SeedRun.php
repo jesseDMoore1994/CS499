@@ -32,13 +32,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SeedRun extends AbstractCommand
-{
+class SeedRun extends AbstractCommand {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		parent::configure();
 
 		$this->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment');
@@ -65,8 +63,7 @@ EOT
 	 * @param OutputInterface $output
 	 * @return void
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->bootstrap($input, $output);
 
 		$seed = $input->getOption('seed');

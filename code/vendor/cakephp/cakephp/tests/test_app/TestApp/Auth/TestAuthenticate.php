@@ -22,28 +22,24 @@ use Cake\Network\Response;
  * TestAuthenticate class
  *
  */
-class TestAuthenticate extends BaseAuthenticate
-{
+class TestAuthenticate extends BaseAuthenticate {
 
 	public $callStack = [];
 
 	public $authenticationProvider;
 
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [
 			'Auth.afterIdentify' => 'afterIdentify',
 			'Auth.logout' => 'logout'
 		];
 	}
 
-	public function authenticate(Request $request, Response $response)
-	{
+	public function authenticate(Request $request, Response $response) {
 		return ['id' => 1, 'username' => 'admad'];
 	}
 
-	public function afterIdentify(Event $event, array $user)
-	{
+	public function afterIdentify(Event $event, array $user) {
 		$this->callStack[] = __FUNCTION__;
 		$this->authenticationProvider = $event->data[1];
 
@@ -52,8 +48,7 @@ class TestAuthenticate extends BaseAuthenticate
 		}
 	}
 
-	public function logout(Event $event, array $user)
-	{
+	public function logout(Event $event, array $user) {
 		$this->callStack[] = __FUNCTION__;
 	}
 }

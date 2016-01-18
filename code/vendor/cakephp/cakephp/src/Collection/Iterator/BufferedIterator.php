@@ -23,8 +23,7 @@ use SplDoublyLinkedList;
  * Creates an iterator from another iterator that will keep the results of the inner
  * iterator in memory, so that results don't have to be re-calculated.
  */
-class BufferedIterator extends Collection implements Countable, Serializable
-{
+class BufferedIterator extends Collection implements Countable, Serializable {
 
 	/**
 	 * The in-memory cache containing results from previous iterators
@@ -75,8 +74,7 @@ class BufferedIterator extends Collection implements Countable, Serializable
 	 *
 	 * @param array|\Traversable $items The items to be filtered.
 	 */
-	public function __construct($items)
-	{
+	public function __construct($items) {
 		$this->_buffer = new SplDoublyLinkedList;
 		parent::__construct($items);
 	}
@@ -86,8 +84,7 @@ class BufferedIterator extends Collection implements Countable, Serializable
 	 *
 	 * @return mixed
 	 */
-	public function key()
-	{
+	public function key() {
 		return $this->_key;
 	}
 
@@ -96,8 +93,7 @@ class BufferedIterator extends Collection implements Countable, Serializable
 	 *
 	 * @return mixed
 	 */
-	public function current()
-	{
+	public function current() {
 		return $this->_current;
 	}
 
@@ -106,8 +102,7 @@ class BufferedIterator extends Collection implements Countable, Serializable
 	 *
 	 * @return void
 	 */
-	public function rewind()
-	{
+	public function rewind() {
 		if ($this->_index === 0 && !$this->_started) {
 			$this->_started = true;
 			parent::rewind();
@@ -122,8 +117,7 @@ class BufferedIterator extends Collection implements Countable, Serializable
 	 *
 	 * @return bool
 	 */
-	public function valid()
-	{
+	public function valid() {
 		if ($this->_buffer->offsetExists($this->_index)) {
 			$current = $this->_buffer->offsetGet($this->_index);
 			$this->_current = $current['value'];
@@ -151,8 +145,7 @@ class BufferedIterator extends Collection implements Countable, Serializable
 	 *
 	 * @return void
 	 */
-	public function next()
-	{
+	public function next() {
 		$this->_index++;
 
 		if (!$this->_finished) {
@@ -165,8 +158,7 @@ class BufferedIterator extends Collection implements Countable, Serializable
 	 *
 	 * @return int
 	 */
-	public function count()
-	{
+	public function count() {
 		if (!$this->_started) {
 			$this->rewind();
 		}
@@ -184,8 +176,7 @@ class BufferedIterator extends Collection implements Countable, Serializable
 	 *
 	 * @return string
 	 */
-	public function serialize()
-	{
+	public function serialize() {
 		if (!$this->_finished) {
 			$this->count();
 		}
@@ -199,8 +190,7 @@ class BufferedIterator extends Collection implements Countable, Serializable
 	 * @param string $buffer The serialized buffer iterator
 	 * @return void
 	 */
-	public function unserialize($buffer)
-	{
+	public function unserialize($buffer) {
 		$this->__construct([]);
 		$this->_buffer = unserialize($buffer);
 		$this->_started = true;

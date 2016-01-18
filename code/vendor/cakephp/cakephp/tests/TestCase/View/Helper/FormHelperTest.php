@@ -34,16 +34,14 @@ use Cake\View\View;
 /**
  * Test stub.
  */
-class Article extends Entity
-{
+class Article extends Entity {
 }
 
 /**
  * Contact class
  *
  */
-class ContactsTable extends Table
-{
+class ContactsTable extends Table {
 
 	/**
 	 * Default schema
@@ -68,8 +66,7 @@ class ContactsTable extends Table
 	 *
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		$this->schema($this->_schema);
 	}
 }
@@ -78,8 +75,7 @@ class ContactsTable extends Table
  * ValidateUser class
  *
  */
-class ValidateUsersTable extends Table
-{
+class ValidateUsersTable extends Table {
 
 	/**
 	 * schema method
@@ -105,8 +101,7 @@ class ValidateUsersTable extends Table
 	 *
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		$this->schema($this->_schema);
 	}
 }
@@ -116,8 +111,7 @@ class ValidateUsersTable extends Table
  *
  * @property FormHelper $Form
  */
-class FormHelperTest extends TestCase
-{
+class FormHelperTest extends TestCase {
 
 	/**
 	 * Fixtures to be used
@@ -138,8 +132,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		Configure::write('Config.language', 'eng');
@@ -191,8 +184,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->Form, $this->Controller, $this->View);
 		TableRegistry::clear();
@@ -203,8 +195,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructTemplatesFile()
-	{
+	public function testConstructTemplatesFile() {
 		$helper = new FormHelper($this->View, [
 			'templates' => 'htmlhelper_tags'
 		]);
@@ -218,8 +209,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructWithWidgets()
-	{
+	public function testConstructWithWidgets() {
 		$config = [
 			'widgets' => [
 				'datetime' => ['Cake\View\Widget\LabelWidget', 'select']
@@ -236,8 +226,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructWithWidgetsConfig()
-	{
+	public function testConstructWithWidgetsConfig() {
 		$helper = new FormHelper($this->View, ['widgets' => ['test_widgets']]);
 		$registry = $helper->widgetRegistry();
 		$this->assertInstanceOf('Cake\View\Widget\LabelWidget', $registry->get('text'));
@@ -248,8 +237,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddWidgetAndRenderWidget()
-	{
+	public function testAddWidgetAndRenderWidget() {
 		$data = [
 			'val' => 1
 		];
@@ -269,8 +257,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOrderForRenderingWidgetAndFetchingSecureFields()
-	{
+	public function testOrderForRenderingWidgetAndFetchingSecureFields() {
 		$data = [
 			'val' => 1,
 			'name' => 'test'
@@ -298,8 +285,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderingWidgetWithEmptyName()
-	{
+	public function testRenderingWidgetWithEmptyName() {
 		$this->assertEquals([], $this->Form->fields);
 
 		$result = $this->Form->widget('select', ['secure' => true, 'name' => '']);
@@ -317,8 +303,7 @@ class FormHelperTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testAddWidgetInvalid()
-	{
+	public function testAddWidgetInvalid() {
 		$mock = new \StdClass();
 		$this->Form->addWidget('test', $mock);
 		$this->Form->widget('test');
@@ -329,8 +314,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddContextProvider()
-	{
+	public function testAddContextProvider() {
 		$context = 'My data';
 		$stub = $this->getMock('Cake\View\Form\ContextInterface');
 		$this->Form->addContextProvider('test', function ($request, $data) use ($context, $stub) {
@@ -348,8 +332,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddContextProviderReplace()
-	{
+	public function testAddContextProviderReplace() {
 		$entity = new Article();
 		$stub = $this->getMock('Cake\View\Form\ContextInterface');
 		$this->Form->addContextProvider('orm', function ($request, $data) use ($stub) {
@@ -365,8 +348,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddContextProviderAdd()
-	{
+	public function testAddContextProviderAdd() {
 		$entity = new Article();
 		$stub = $this->getMock('Cake\View\Form\ContextInterface');
 		$this->Form->addContextProvider('newshiny', function ($request, $data) use ($stub) {
@@ -386,8 +368,7 @@ class FormHelperTest extends TestCase
 	 * @expectedExceptionMessage Context objects must implement Cake\View\Form\ContextInterface
 	 * @return void
 	 */
-	public function testAddContextProviderInvalid()
-	{
+	public function testAddContextProviderInvalid() {
 		$context = 'My data';
 		$this->Form->addContextProvider('test', function ($request, $data) use ($context) {
 			return new \StdClass();
@@ -400,8 +381,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function contextSelectionProvider()
-	{
+	public function contextSelectionProvider() {
 		$entity = new Article();
 		$collection = $this->getMock('Cake\Collection\Collection', ['extract'], [[$entity]]);
 		$emptyCollection = new Collection([]);
@@ -432,8 +412,7 @@ class FormHelperTest extends TestCase
 	 * @dataProvider contextSelectionProvider
 	 * @return void
 	 */
-	public function testCreateContextSelectionBuiltIn($data, $class)
-	{
+	public function testCreateContextSelectionBuiltIn($data, $class) {
 		$this->loadFixtures('Articles');
 		$this->Form->create($data);
 		$this->assertInstanceOf($class, $this->Form->context());
@@ -444,8 +423,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function requestTypeProvider()
-	{
+	public static function requestTypeProvider() {
 		return [
 			// type, method, override
 			['post', 'post', 'POST'],
@@ -460,8 +438,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateFile()
-	{
+	public function testCreateFile() {
 		$encoding = strtolower(Configure::read('App.encoding'));
 		$result = $this->Form->create(false, ['type' => 'file']);
 		$expected = [
@@ -481,8 +458,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateGet()
-	{
+	public function testCreateGet() {
 		$encoding = strtolower(Configure::read('App.encoding'));
 		$result = $this->Form->create(false, ['type' => 'get']);
 		$expected = ['form' => [
@@ -497,8 +473,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateTemplatesArray()
-	{
+	public function testCreateTemplatesArray() {
 		$result = $this->Form->create($this->article, [
 			'templates' => [
 				'formStart' => '<form class="form-horizontal"{{attrs}}>',
@@ -520,8 +495,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateTemplatesFile()
-	{
+	public function testCreateTemplatesFile() {
 		$result = $this->Form->create($this->article, [
 			'templates' => 'htmlhelper_tags',
 		]);
@@ -539,8 +513,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateEndRestoreTemplates()
-	{
+	public function testCreateEndRestoreTemplates() {
 		$this->Form->create($this->article, [
 			'templates' => ['input' => 'custom input element']
 		]);
@@ -553,8 +526,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputTemplateVars()
-	{
+	public function testInputTemplateVars() {
 		$result = $this->Form->input('text', [
 			'templates' => [
 				'input' => '<input custom="{{forinput}}" type="{{type}}" name="{{name}}"{{attrs}}/>',
@@ -587,8 +559,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubmitTemplateVars()
-	{
+	public function testSubmitTemplateVars() {
 		$this->Form->templates([
 			'inputSubmit' => '<input custom="{{forinput}}" type="{{type}}"{{attrs}}/>',
 			'submitContainer' => '<div class="submit">{{content}}{{forcontainer}}</div>'
@@ -614,8 +585,7 @@ class FormHelperTest extends TestCase
 	 * @dataProvider requestTypeProvider
 	 * @return void
 	 */
-	public function testCreateTypeOptions($type, $method, $override)
-	{
+	public function testCreateTypeOptions($type, $method, $override) {
 		$encoding = strtolower(Configure::read('App.encoding'));
 		$result = $this->Form->create(false, ['type' => $type]);
 		$expected = [
@@ -635,8 +605,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateUpdateForm()
-	{
+	public function testCreateUpdateForm() {
 		$encoding = strtolower(Configure::read('App.encoding'));
 
 		$this->Form->request->here = '/articles/edit/1';
@@ -662,8 +631,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateAutoUrl()
-	{
+	public function testCreateAutoUrl() {
 		$encoding = strtolower(Configure::read('App.encoding'));
 
 		$this->Form->request['action'] = 'delete';
@@ -739,8 +707,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateNoUrl()
-	{
+	public function testCreateNoUrl() {
 		$result = $this->Form->create(false, ['url' => false]);
 		$expected = [
 			'form' => [
@@ -762,8 +729,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateCustomRoute()
-	{
+	public function testCreateCustomRoute() {
 		Router::connect('/login', ['controller' => 'users', 'action' => 'login']);
 		$encoding = strtolower(Configure::read('App.encoding'));
 
@@ -804,8 +770,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateWithAcceptCharset()
-	{
+	public function testCreateWithAcceptCharset() {
 		$result = $this->Form->create(
 			$this->article,
 			[
@@ -828,8 +793,7 @@ class FormHelperTest extends TestCase
 	 * Test base form URL when url param is passed with multiple parameters (&)
 	 *
 	 */
-	public function testCreateQuerystringrequest()
-	{
+	public function testCreateQuerystringrequest() {
 		$encoding = strtolower(Configure::read('App.encoding'));
 		$result = $this->Form->create($this->article, [
 			'type' => 'post',
@@ -869,8 +833,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateWithMultipleIdInData()
-	{
+	public function testCreateWithMultipleIdInData() {
 		$encoding = strtolower(Configure::read('App.encoding'));
 
 		$this->Form->request->data['Article']['id'] = [1, 2];
@@ -893,8 +856,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreatePassedArgs()
-	{
+	public function testCreatePassedArgs() {
 		$encoding = strtolower(Configure::read('App.encoding'));
 		$this->Form->request->data['Article']['id'] = 1;
 		$result = $this->Form->create($this->article, [
@@ -923,8 +885,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetFormCreate()
-	{
+	public function testGetFormCreate() {
 		$encoding = strtolower(Configure::read('App.encoding'));
 		$result = $this->Form->create($this->article, ['type' => 'get']);
 		$expected = ['form' => [
@@ -958,8 +919,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetFormWithFalseModel()
-	{
+	public function testGetFormWithFalseModel() {
 		$encoding = strtolower(Configure::read('App.encoding'));
 		$this->Form->request['controller'] = 'contact_test';
 		$result = $this->Form->create(false, [
@@ -986,8 +946,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateWithSecurity()
-	{
+	public function testCreateWithSecurity() {
 		$this->Form->request->params['_csrfToken'] = 'testKey';
 		$encoding = strtolower(Configure::read('App.encoding'));
 		$result = $this->Form->create($this->article, [
@@ -1016,8 +975,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateEndGetNoSecurity()
-	{
+	public function testCreateEndGetNoSecurity() {
 		$this->Form->request->params['_csrfToken'] = 'testKey';
 		$encoding = strtolower(Configure::read('App.encoding'));
 		$article = new Article();
@@ -1036,8 +994,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateClearingFields()
-	{
+	public function testCreateClearingFields() {
 		$this->Form->fields = ['model_id'];
 		$this->Form->create($this->article);
 		$this->assertEquals([], $this->Form->fields);
@@ -1048,8 +1005,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValidateHashNoModel()
-	{
+	public function testValidateHashNoModel() {
 		$this->Form->request->params['_Token'] = 'foo';
 
 		$result = $this->Form->secure(['anything']);
@@ -1061,8 +1017,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNoCheckboxLocking()
-	{
+	public function testNoCheckboxLocking() {
 		$this->Form->request->params['_Token'] = 'foo';
 		$this->assertSame([], $this->Form->fields);
 
@@ -1077,8 +1032,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecurityFields()
-	{
+	public function testFormSecurityFields() {
 		$fields = ['Model.password', 'Model.username', 'Model.valid' => '0'];
 
 		$this->Form->request->params['_Token'] = 'testKey';
@@ -1110,8 +1064,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTextFieldGenerationForFloats()
-	{
+	public function testTextFieldGenerationForFloats() {
 		$this->article['schema'] = [
 			'foo' => [
 				'type' => 'float',
@@ -1160,8 +1113,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTextFieldTypeNumberGenerationForIntegers()
-	{
+	public function testTextFieldTypeNumberGenerationForIntegers() {
 		TableRegistry::get('Contacts', [
 			'className' => __NAMESPACE__ . '\ContactsTable'
 		]);
@@ -1186,8 +1138,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFileUploadFieldTypeGenerationForBinaries()
-	{
+	public function testFileUploadFieldTypeGenerationForBinaries() {
 		$table = TableRegistry::get('Contacts', [
 			'className' => __NAMESPACE__ . '\ContactsTable'
 		]);
@@ -1221,8 +1172,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecurityMultipleFields()
-	{
+	public function testFormSecurityMultipleFields() {
 		$this->Form->request->params['_Token'] = 'foo';
 
 		$fields = [
@@ -1257,8 +1207,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecurityMultipleSubmitButtons()
-	{
+	public function testFormSecurityMultipleSubmitButtons() {
 		$this->Form->request->params['_Token'] = 'testKey';
 
 		$this->Form->create($this->article);
@@ -1304,8 +1253,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecurityButtonNestedNamed()
-	{
+	public function testSecurityButtonNestedNamed() {
 		$key = 'testKey';
 		$this->Form->request->params['_csrfToken'] = $key;
 
@@ -1320,8 +1268,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecuritySubmitNestedNamed()
-	{
+	public function testSecuritySubmitNestedNamed() {
 		$this->Form->request->params['_Token'] = 'testKey';
 
 		$this->Form->create($this->article);
@@ -1335,8 +1282,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecuritySubmitImageNoName()
-	{
+	public function testSecuritySubmitImageNoName() {
 		$key = 'testKey';
 		$this->Form->request->params['_Token'] = 'testKey';
 
@@ -1356,8 +1302,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecuritySubmitImageName()
-	{
+	public function testSecuritySubmitImageName() {
 		$this->Form->request->params['_Token'] = 'testKey';
 
 		$this->Form->create(null);
@@ -1378,8 +1323,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecurityMultipleInputFields()
-	{
+	public function testFormSecurityMultipleInputFields() {
 		$this->Form->request->params['_Token'] = 'testKey';
 		$this->Form->create();
 
@@ -1425,8 +1369,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecurityArrayFields()
-	{
+	public function testFormSecurityArrayFields() {
 		$this->Form->request->params['_Token'] = 'testKey';
 
 		$this->Form->create();
@@ -1444,8 +1387,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecurityMultipleInputDisabledFields()
-	{
+	public function testFormSecurityMultipleInputDisabledFields() {
 		$this->Form->request->params['_Token'] = [
 			'unlockedFields' => ['first_name', 'address']
 		];
@@ -1493,8 +1435,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecurityInputUnlockedFields()
-	{
+	public function testFormSecurityInputUnlockedFields() {
 		$this->Form->request['_Token'] = [
 			'unlockedFields' => ['first_name', 'address']
 		];
@@ -1543,8 +1484,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecureWithCustomNameAttribute()
-	{
+	public function testFormSecureWithCustomNameAttribute() {
 		$this->Form->request->params['_Token'] = 'testKey';
 
 		$this->Form->text('UserForm.published', ['name' => 'User[custom]']);
@@ -1561,8 +1501,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecuredInput()
-	{
+	public function testFormSecuredInput() {
 		$this->Form->request->params['_csrfToken'] = 'testKey';
 		$this->Form->request->params['_Token'] = 'stuff';
 		$this->article['schema'] = [
@@ -1709,8 +1648,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecuredInputCustomName()
-	{
+	public function testSecuredInputCustomName() {
 		$this->Form->request->params['_Token'] = 'testKey';
 		$this->assertEquals([], $this->Form->fields);
 
@@ -1733,8 +1671,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecuredInputDuplicate()
-	{
+	public function testSecuredInputDuplicate() {
 		$this->Form->request->params['_Token'] = ['key' => 'testKey'];
 		$this->assertEquals([], $this->Form->fields);
 
@@ -1757,8 +1694,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecuredFileInput()
-	{
+	public function testFormSecuredFileInput() {
 		$this->assertEquals([], $this->Form->fields);
 
 		$this->Form->file('Attachment.file');
@@ -1775,8 +1711,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecuredMultipleSelect()
-	{
+	public function testFormSecuredMultipleSelect() {
 		$this->Form->request->params['_csrfToken'] = 'testKey';
 		$this->assertEquals([], $this->Form->fields);
 		$options = ['1' => 'one', '2' => 'two'];
@@ -1795,8 +1730,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecuredRadio()
-	{
+	public function testFormSecuredRadio() {
 		$this->Form->request->params['_Token'] = 'testKey';
 
 		$this->assertEquals([], $this->Form->fields);
@@ -1824,8 +1758,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecuredAndDisabledNotAssoc()
-	{
+	public function testFormSecuredAndDisabledNotAssoc() {
 		$this->Form->request->params['_Token'] = 'testKey';
 
 		$this->Form->select('Model.select', [1, 2], ['disabled']);
@@ -1847,8 +1780,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormSecuredAndDisabled()
-	{
+	public function testFormSecuredAndDisabled() {
 		$this->Form->request->params['_Token'] = 'testKey';
 
 		$this->Form->checkbox('Model.checkbox', ['disabled' => true]);
@@ -1875,8 +1807,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDisableSecurityUsingForm()
-	{
+	public function testDisableSecurityUsingForm() {
 		$this->Form->request['_Token'] = [
 			'disabledFields' => []
 		];
@@ -1900,8 +1831,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUnlockFieldAddsToList()
-	{
+	public function testUnlockFieldAddsToList() {
 		$this->Form->request['_Token'] = [
 			'unlockedFields' => []
 		];
@@ -1917,8 +1847,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUnlockFieldRemovingFromFields()
-	{
+	public function testUnlockFieldRemovingFromFields() {
 		$this->Form->request['_Token'] = [
 			'unlockedFields' => []
 		];
@@ -1939,8 +1868,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecuredFormUrlIgnoresHost()
-	{
+	public function testSecuredFormUrlIgnoresHost() {
 		$this->Form->request['_Token'] = ['key' => 'testKey'];
 
 		$expected = '0ff0c85cd70584d8fd18fa136846d22c66c21e2d%3A';
@@ -1968,8 +1896,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecuredFormUrlHasHtmlAndIdentifer()
-	{
+	public function testSecuredFormUrlHasHtmlAndIdentifer() {
 		$this->Form->request['_Token'] = ['key' => 'testKey'];
 
 		$expected = 'ece0693fb1b19ca116133db1832ac29baaf41ce5%3A';
@@ -2006,8 +1933,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorMessageDisplay()
-	{
+	public function testErrorMessageDisplay() {
 		$this->article['errors'] = [
 			'Article' => ['title' => 'error message']
 		];
@@ -2055,8 +1981,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEmptyErrorValidation()
-	{
+	public function testEmptyErrorValidation() {
 		$this->article['errors'] = [
 			'Article' => ['title' => '']
 		];
@@ -2085,8 +2010,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEmptyInputErrorValidation()
-	{
+	public function testEmptyInputErrorValidation() {
 		$this->article['errors'] = [
 			'Article' => ['title' => 'error message']
 		];
@@ -2115,8 +2039,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputErrorMessage()
-	{
+	public function testInputErrorMessage() {
 		$this->article['errors'] = [
 			'title' => ['error message']
 		];
@@ -2170,8 +2093,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormValidationAssociated()
-	{
+	public function testFormValidationAssociated() {
 		$nested = new Entity(['foo' => 'bar']);
 		$nested->errors('foo', ['not a valid bar']);
 		$entity = new Entity(['nested' => $nested]);
@@ -2188,8 +2110,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormValidationAssociatedSecondLevel()
-	{
+	public function testFormValidationAssociatedSecondLevel() {
 		$inner = new Entity(['bar' => 'baz']);
 		$nested = new Entity(['foo' => $inner]);
 		$entity = new Entity(['nested' => $nested]);
@@ -2206,8 +2127,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormValidationMultiRecord()
-	{
+	public function testFormValidationMultiRecord() {
 		$one = new Entity;
 		$two = new Entity;
 		TableRegistry::get('Contacts', [
@@ -2262,8 +2182,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInput()
-	{
+	public function testInput() {
 		TableRegistry::get('ValidateUsers', [
 			'className' => __NAMESPACE__ . '\ValidateUsersTable'
 		]);
@@ -2307,8 +2226,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputCustomization()
-	{
+	public function testInputCustomization() {
 		TableRegistry::get('Contacts', [
 			'className' => __NAMESPACE__ . '\ContactsTable'
 		]);
@@ -2521,8 +2439,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputWithTemplateFile()
-	{
+	public function testInputWithTemplateFile() {
 		$result = $this->Form->input('field', [
 			'templates' => 'htmlhelper_tags'
 		]);
@@ -2543,8 +2460,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestedInputsEndWithBrackets()
-	{
+	public function testNestedInputsEndWithBrackets() {
 		$result = $this->Form->text('nested.text[]');
 		$expected = [
 			'input' => [
@@ -2566,8 +2482,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCreateIdPrefix()
-	{
+	public function testCreateIdPrefix() {
 		$this->Form->create(false, ['idPrefix' => 'prefix']);
 
 		$result = $this->Form->input('field');
@@ -2661,8 +2576,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputZero()
-	{
+	public function testInputZero() {
 		TableRegistry::get('Contacts', [
 			'className' => __NAMESPACE__ . '\ContactsTable'
 		]);
@@ -2682,8 +2596,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputCheckbox()
-	{
+	public function testInputCheckbox() {
 		$result = $this->Form->input('User.active', ['label' => false, 'checked' => true]);
 		$expected = [
 			'div' => ['class' => 'input checkbox'],
@@ -2739,8 +2652,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputHidden()
-	{
+	public function testInputHidden() {
 		TableRegistry::get('ValidateUsers', [
 			'className' => __NAMESPACE__ . '\ValidateUsersTable'
 		]);
@@ -2764,8 +2676,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputDatetime()
-	{
+	public function testInputDatetime() {
 		$this->Form = $this->getMock(
 			'Cake\View\Helper\FormHelper',
 			['datetime'],
@@ -2805,8 +2716,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputDatetimeIdPrefix()
-	{
+	public function testInputDatetimeIdPrefix() {
 		$this->Form = $this->getMock(
 			'Cake\View\Helper\FormHelper',
 			['datetime'],
@@ -2849,8 +2759,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputCheckboxWithDisabledElements()
-	{
+	public function testInputCheckboxWithDisabledElements() {
 		$options = [1 => 'One', 2 => 'Two', '3' => 'Three'];
 		$result = $this->Form->input('Contact.multiple', [
 			'multiple' => 'checkbox',
@@ -2919,8 +2828,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputWithLeadingInteger()
-	{
+	public function testInputWithLeadingInteger() {
 		$result = $this->Form->text('0.Node.title');
 		$expected = [
 			'input' => ['name' => '0[Node][title]', 'type' => 'text']
@@ -2933,8 +2841,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputSelectType()
-	{
+	public function testInputSelectType() {
 		$result = $this->Form->input(
 			'email',
 			[
@@ -3094,8 +3001,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputWithNonStandardPrimaryKeyMakesHidden()
-	{
+	public function testInputWithNonStandardPrimaryKeyMakesHidden() {
 		$this->article['schema']['_constraints']['primary']['columns'] = ['title'];
 		$this->Form->create($this->article);
 		$result = $this->Form->input('title');
@@ -3124,8 +3030,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputOverridingMagicSelectType()
-	{
+	public function testInputOverridingMagicSelectType() {
 		$this->View->viewVars['users'] = ['value' => 'good', 'other' => 'bad'];
 		$result = $this->Form->input('Model.user_id', ['type' => 'text']);
 		$expected = [
@@ -3156,8 +3061,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputMagicTypeDoesNotOverride()
-	{
+	public function testInputMagicTypeDoesNotOverride() {
 		$this->View->viewVars['users'] = ['value' => 'good', 'other' => 'bad'];
 		$result = $this->Form->input('Model.user', ['type' => 'checkbox']);
 		$expected = [
@@ -3223,8 +3127,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputMagicSelectForTypeNumber()
-	{
+	public function testInputMagicSelectForTypeNumber() {
 		TableRegistry::get('ValidateUsers', [
 			'className' => __NAMESPACE__ . '\ValidateUsersTable'
 		]);
@@ -3258,8 +3161,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputMagicSelectChangeToRadio()
-	{
+	public function testInputMagicSelectChangeToRadio() {
 		$this->View->viewVars['users'] = ['value' => 'good', 'other' => 'bad'];
 		$result = $this->Form->input('Model.user_id', ['type' => 'radio']);
 		$this->assertContains('input type="radio"', $result);
@@ -3272,8 +3174,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormInputSubmit()
-	{
+	public function testFormInputSubmit() {
 		$result = $this->Form->input('Test Submit', ['type' => 'submit', 'class' => 'foobar']);
 		$expected = [
 			'div' => ['class' => 'submit'],
@@ -3290,8 +3191,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormInputsLegendFieldset()
-	{
+	public function testFormInputsLegendFieldset() {
 		$this->Form->create($this->article);
 		$result = $this->Form->allInputs([], ['legend' => 'The Legend']);
 		$expected = [
@@ -3364,8 +3264,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormInputs()
-	{
+	public function testFormInputs() {
 		$this->Form->create($this->article);
 		$result = $this->Form->allInputs();
 		$expected = [
@@ -3446,8 +3345,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormInputsBlacklist()
-	{
+	public function testFormInputsBlacklist() {
 		$this->Form->create($this->article);
 		$result = $this->Form->allInputs([
 			'id' => false
@@ -3495,8 +3393,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectAsCheckbox()
-	{
+	public function testSelectAsCheckbox() {
 		$result = $this->Form->select(
 			'Model.multi_field',
 			['first', 'second', 'third'],
@@ -3549,8 +3446,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLabel()
-	{
+	public function testLabel() {
 		$result = $this->Form->label('Person.name');
 		$expected = ['label' => ['for' => 'person-name'], 'Name', '/label'];
 		$this->assertHtml($expected, $result);
@@ -3589,8 +3485,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLabelContainInput()
-	{
+	public function testLabelContainInput() {
 		$this->Form->templates([
 			'label' => '<label{{attrs}}>{{input}}{{text}}</label>',
 		]);
@@ -3613,8 +3508,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTextbox()
-	{
+	public function testTextbox() {
 		$result = $this->Form->text('Model.field');
 		$expected = ['input' => ['type' => 'text', 'name' => 'Model[field]']];
 		$this->assertHtml($expected, $result);
@@ -3633,8 +3527,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTextBoxDataAndError()
-	{
+	public function testTextBoxDataAndError() {
 		$this->article['errors'] = [
 			'Contact' => ['text' => 'wrong']
 		];
@@ -3672,8 +3565,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTextDefaultValue()
-	{
+	public function testTextDefaultValue() {
 		$this->Form->request->data['Model']['field'] = 'test';
 		$result = $this->Form->text('Model.field', ['default' => 'default value']);
 		$expected = ['input' => ['type' => 'text', 'name' => 'Model[field]', 'value' => 'test']];
@@ -3692,8 +3584,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testError()
-	{
+	public function testError() {
 		$this->article['errors'] = [
 			'Article' => ['field' => 'email']
 		];
@@ -3729,8 +3620,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorMessages()
-	{
+	public function testErrorMessages() {
 		$this->article['errors'] = [
 			'Article' => ['field' => 'email']
 		];
@@ -3752,8 +3642,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorMultipleMessages()
-	{
+	public function testErrorMultipleMessages() {
 		$this->article['errors'] = [
 			'field' => ['notBlank', 'email', 'Something else']
 		];
@@ -3782,8 +3671,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPassword()
-	{
+	public function testPassword() {
 		$this->article['errors'] = [
 			'Contact' => [
 				'passwd' => 1
@@ -3808,8 +3696,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRadio()
-	{
+	public function testRadio() {
 		$result = $this->Form->radio('Model.field', ['option A']);
 		$expected = [
 			'input' => ['type' => 'hidden', 'name' => 'Model[field]', 'value' => ''],
@@ -3897,8 +3784,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputRadio()
-	{
+	public function testInputRadio() {
 		$result = $this->Form->input('test', [
 			'type' => 'radio',
 			'options' => ['A', 'B'],
@@ -3970,8 +3856,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRadioNoLabel()
-	{
+	public function testRadioNoLabel() {
 		$result = $this->Form->radio('Model.field', ['A', 'B'], ['label' => false]);
 		$expected = [
 			'input' => ['type' => 'hidden', 'name' => 'Model[field]', 'value' => ''],
@@ -3986,8 +3871,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRadioInputInsideLabel()
-	{
+	public function testRadioInputInsideLabel() {
 		$this->Form->templates([
 			'label' => '<label{{attrs}}>{{input}}{{text}}</label>',
 			'radioWrapper' => '{{label}}'
@@ -4029,8 +3913,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRadioHiddenInputDisabling()
-	{
+	public function testRadioHiddenInputDisabling() {
 		$result = $this->Form->radio('Model.1.field', ['option A'], ['hiddenField' => false]);
 		$expected = [
 			'label' => ['for' => 'model-1-field-0'],
@@ -4048,8 +3931,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRadioOutOfRange()
-	{
+	public function testRadioOutOfRange() {
 		$result = $this->Form->radio('Model.field', ['v' => 'value'], ['value' => 'nope']);
 		$expected = [
 			'input' => ['type' => 'hidden', 'name' => 'Model[field]', 'value' => ''],
@@ -4068,8 +3950,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelect()
-	{
+	public function testSelect() {
 		$result = $this->Form->select('Model.field', []);
 		$expected = [
 			'select' => ['name' => 'Model[field]'],
@@ -4162,8 +4043,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectEscapeHtml()
-	{
+	public function testSelectEscapeHtml() {
 		$result = $this->Form->select(
 			'Model.field',
 			['first' => 'first "html" <chars>', 'second' => 'value'],
@@ -4204,8 +4084,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectRequired()
-	{
+	public function testSelectRequired() {
 		$this->article['required'] = [
 			'user_id' => true
 		];
@@ -4240,8 +4119,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestedSelect()
-	{
+	public function testNestedSelect() {
 		$result = $this->Form->select(
 			'Model.field',
 			[1 => 'One', 2 => 'Two', 'Three' => [
@@ -4280,8 +4158,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectMultiple()
-	{
+	public function testSelectMultiple() {
 		$options = ['first', 'second', 'third'];
 		$result = $this->Form->select(
 			'Model.multi_field',
@@ -4326,8 +4203,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckboxZeroValue()
-	{
+	public function testCheckboxZeroValue() {
 		$result = $this->Form->input('User.get_spam', [
 			'type' => 'checkbox',
 			'value' => '0',
@@ -4356,8 +4232,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHabtmSelectBox()
-	{
+	public function testHabtmSelectBox() {
 		$this->loadFixtures('Articles');
 		$options = [
 			1 => 'blue',
@@ -4467,8 +4342,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsForBelongsToManySelect()
-	{
+	public function testErrorsForBelongsToManySelect() {
 		$spacecraft = [
 			1 => 'Orion',
 			2 => 'Helios'
@@ -4511,8 +4385,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectMultipleCheckboxes()
-	{
+	public function testSelectMultipleCheckboxes() {
 		$result = $this->Form->select(
 			'Model.multi_field',
 			['first', 'second', 'third'],
@@ -4637,8 +4510,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectMultipleCheckboxRequestData()
-	{
+	public function testSelectMultipleCheckboxRequestData() {
 		$this->Form->request->data = ['Model' => ['tags' => [1]]];
 		$result = $this->Form->select(
 			'Model.tags',
@@ -4677,8 +4549,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectMultipleCheckboxSecurity()
-	{
+	public function testSelectMultipleCheckboxSecurity() {
 		$this->Form->request->params['_Token'] = 'testKey';
 		$this->assertEquals([], $this->Form->fields);
 
@@ -4700,8 +4571,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectMultipleSecureWithNoOptions()
-	{
+	public function testSelectMultipleSecureWithNoOptions() {
 		$this->assertEquals([], $this->Form->fields);
 
 		$this->Form->select(
@@ -4718,8 +4588,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectNoSecureWithNoOptions()
-	{
+	public function testSelectNoSecureWithNoOptions() {
 		$this->Form->request->params['_Token'] = 'testkey';
 		$this->assertEquals([], $this->Form->fields);
 
@@ -4744,8 +4613,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputMultipleCheckboxes()
-	{
+	public function testInputMultipleCheckboxes() {
 		$result = $this->Form->input('Model.multi_field', [
 			'options' => ['first', 'second', 'third'],
 			'multiple' => 'checkbox'
@@ -4818,8 +4686,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectHiddenFieldOmission()
-	{
+	public function testSelectHiddenFieldOmission() {
 		$result = $this->Form->select(
 			'Model.multi_field',
 			['first', 'second'],
@@ -4833,8 +4700,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectCheckboxMultipleOverrideName()
-	{
+	public function testSelectCheckboxMultipleOverrideName() {
 		$result = $this->Form->select('category', ['1', '2'], [
 			'multiple' => 'checkbox',
 			'name' => 'fish',
@@ -4872,8 +4738,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputMultiCheckbox()
-	{
+	public function testInputMultiCheckbox() {
 		$result = $this->Form->input('category', [
 			'type' => 'multicheckbox',
 			'options' => ['1', '2'],
@@ -4908,8 +4773,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckbox()
-	{
+	public function testCheckbox() {
 		$result = $this->Form->checkbox('Model.field');
 		$expected = [
 			'input' => ['type' => 'hidden', 'name' => 'Model[field]', 'value' => '0'],
@@ -4940,8 +4804,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckboxDefaultValue()
-	{
+	public function testCheckboxDefaultValue() {
 		$this->Form->request->data['Model']['field'] = false;
 		$result = $this->Form->checkbox('Model.field', ['default' => true, 'hiddenField' => false]);
 		$expected = ['input' => ['type' => 'checkbox', 'name' => 'Model[field]', 'value' => '1']];
@@ -4968,8 +4831,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckboxCheckedAndError()
-	{
+	public function testCheckboxCheckedAndError() {
 		$this->article['errors'] = [
 			'published' => true
 		];
@@ -5004,8 +4866,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckboxCustomNameAttribute()
-	{
+	public function testCheckboxCustomNameAttribute() {
 		$result = $this->Form->checkbox('Test.test', ['name' => 'myField']);
 		$expected = [
 			'input' => ['type' => 'hidden', 'name' => 'myField', 'value' => '0'],
@@ -5020,8 +4881,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCheckboxHiddenField()
-	{
+	public function testCheckboxHiddenField() {
 		$result = $this->Form->checkbox('UserForm.something', [
 			'hiddenField' => false
 		]);
@@ -5056,8 +4916,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTime()
-	{
+	public function testTime() {
 		$result = $this->Form->time('start_time', [
 			'timeFormat' => 12,
 			'interval' => 5,
@@ -5088,8 +4947,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void.
 	 */
-	public function testTimeFormat24NoMeridian()
-	{
+	public function testTimeFormat24NoMeridian() {
 		$result = $this->Form->time('start_time', [
 			'timeFormat' => 24,
 			'interval' => 5,
@@ -5109,8 +4967,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDate()
-	{
+	public function testDate() {
 		$result = $this->Form->date('start_day', [
 			'value' => ['year' => '2014', 'month' => '03', 'day' => '08']
 		]);
@@ -5130,8 +4987,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDateTime()
-	{
+	public function testDateTime() {
 		extract($this->dateRegex);
 
 		$result = $this->Form->dateTime('Contact.date', ['default' => true]);
@@ -5231,8 +5087,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDateTimeSecured()
-	{
+	public function testDateTimeSecured() {
 		$this->Form->request->params['_Token'] = ['unlockedFields' => []];
 		$this->Form->dateTime('Contact.date');
 		$expected = [
@@ -5259,8 +5114,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDateTimeSecuredDisabled()
-	{
+	public function testDateTimeSecuredDisabled() {
 		$this->Form->request->params['_Token'] = ['unlockedFields' => []];
 		$this->Form->dateTime('Contact.date', ['secure' => false]);
 		$expected = [];
@@ -5277,8 +5131,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDatetimeEmpty()
-	{
+	public function testDatetimeEmpty() {
 		extract($this->dateRegex);
 		$now = strtotime('now');
 
@@ -5333,8 +5186,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDatetimeMinuteInterval()
-	{
+	public function testDatetimeMinuteInterval() {
 		extract($this->dateRegex);
 		$now = strtotime('now');
 
@@ -5390,8 +5242,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDateTimeRounding()
-	{
+	public function testDateTimeRounding() {
 		$this->Form->request->data['Contact'] = [
 			'date' => [
 				'day' => '13',
@@ -5418,8 +5269,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDatetimeWithDefault()
-	{
+	public function testDatetimeWithDefault() {
 		$result = $this->Form->dateTime('Contact.updated', ['value' => '2009-06-01 11:15:30']);
 		$this->assertRegExp('/<option[^<>]+value="2009"[^<>]+selected="selected"[^>]*>2009<\/option>/', $result);
 		$this->assertRegExp('/<option[^<>]+value="01"[^<>]+selected="selected"[^>]*>1<\/option>/', $result);
@@ -5438,8 +5288,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDateTimeAllZeros()
-	{
+	public function testDateTimeAllZeros() {
 		$result = $this->Form->dateTime('Contact.date', [
 			'timeFormat' => false,
 			'empty' => ['day' => '-', 'month' => '-', 'year' => '-'],
@@ -5455,8 +5304,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDateTimeEmptyAsArray()
-	{
+	public function testDateTimeEmptyAsArray() {
 		$result = $this->Form->dateTime('Contact.date', [
 			'empty' => [
 				'day' => 'DAY',
@@ -5493,8 +5341,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormDateTimeMulti()
-	{
+	public function testFormDateTimeMulti() {
 		extract($this->dateRegex);
 
 		$result = $this->Form->dateTime('Contact.1.updated');
@@ -5511,8 +5358,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDateTimeLabelIdMatchesFirstInput()
-	{
+	public function testDateTimeLabelIdMatchesFirstInput() {
 		$result = $this->Form->input('Model.date', ['type' => 'date']);
 		$this->assertContains('<label>Date</label>', $result);
 
@@ -5528,8 +5374,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDateTimeSecondOptions()
-	{
+	public function testDateTimeSecondOptions() {
 		$result = $this->Form->dateTime('updated', ['second' => true]);
 		$this->assertContains('updated[second]', $result, 'Should have seconds');
 
@@ -5548,8 +5393,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMonth()
-	{
+	public function testMonth() {
 		$result = $this->Form->month('Model.field', ['value' => '']);
 		$expected = [
 			['select' => ['name' => 'Model[field][month]']],
@@ -5642,8 +5486,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDay()
-	{
+	public function testDay() {
 		extract($this->dateRegex);
 
 		$result = $this->Form->day('Model.field', ['value' => '', 'class' => 'form-control']);
@@ -5737,8 +5580,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMinute()
-	{
+	public function testMinute() {
 		extract($this->dateRegex);
 
 		$result = $this->Form->minute('Model.field', ['value' => '']);
@@ -5830,8 +5672,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMeridian()
-	{
+	public function testMeridian() {
 		extract($this->dateRegex);
 
 		$now = new \DateTime();
@@ -5854,8 +5695,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHour()
-	{
+	public function testHour() {
 		extract($this->dateRegex);
 
 		$result = $this->Form->hour('Model.field', ['format' => 12, 'value' => '']);
@@ -5953,8 +5793,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testYear()
-	{
+	public function testYear() {
 		$result = $this->Form->year('Model.field', ['value' => '', 'minYear' => 2006, 'maxYear' => 2007]);
 		$expected = [
 			['select' => ['name' => 'Model[field][year]']],
@@ -6019,8 +5858,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputDatetimePreEpoch()
-	{
+	public function testInputDatetimePreEpoch() {
 		$start = date('Y') - 80;
 		$end = date('Y') - 18;
 		$result = $this->Form->input('birth_year', [
@@ -6041,8 +5879,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testYearAutoExpandRange()
-	{
+	public function testYearAutoExpandRange() {
 		$this->Form->request->data['User']['birthday'] = '1930-10-10';
 		$result = $this->Form->year('User.birthday');
 		preg_match_all('/<option value="([\d]+)"/', $result, $matches);
@@ -6076,8 +5913,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputDate()
-	{
+	public function testInputDate() {
 		$this->Form->request->data = [
 			'month_year' => ['month' => date('m')],
 		];
@@ -6097,8 +5933,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputLabelFalse()
-	{
+	public function testInputLabelFalse() {
 		$this->Form->create($this->article);
 		$result = $this->Form->input('title', ['label' => false]);
 		$expected = [
@@ -6117,8 +5952,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputDateMaxYear()
-	{
+	public function testInputDateMaxYear() {
 		$this->Form->request->data = [];
 		$this->Form->create($this->article);
 		$result = $this->Form->input('birthday', [
@@ -6139,8 +5973,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTextArea()
-	{
+	public function testTextArea() {
 		$this->Form->request->data = ['field' => 'some test data'];
 		$result = $this->Form->textarea('field');
 		$expected = [
@@ -6192,8 +6025,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTextAreaWithStupidCharacters()
-	{
+	public function testTextAreaWithStupidCharacters() {
 		$result = $this->Form->textarea('Post.content', [
 			'value' => "GREAT®",
 			'rows' => '15',
@@ -6212,8 +6044,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTextAreaMaxLength()
-	{
+	public function testTextAreaMaxLength() {
 		$this->Form->create([
 			'schema' => [
 				'stuff' => ['type' => 'string', 'length' => 10],
@@ -6249,8 +6080,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHiddenField()
-	{
+	public function testHiddenField() {
 		$this->article['errors'] = [
 			'field' => true
 		];
@@ -6273,8 +6103,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFileUploadField()
-	{
+	public function testFileUploadField() {
 		$expected = ['input' => ['type' => 'file', 'name' => 'Model[upload]']];
 
 		$result = $this->Form->file('Model.upload');
@@ -6297,8 +6126,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFileUploadOnOtherModel()
-	{
+	public function testFileUploadOnOtherModel() {
 		$this->Form->create($this->article, ['type' => 'file']);
 		$result = $this->Form->file('ValidateProfile.city');
 		$expected = [
@@ -6312,8 +6140,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testButton()
-	{
+	public function testButton() {
 		$result = $this->Form->button('Hi');
 		$expected = ['button' => ['type' => 'submit'], 'Hi', '/button'];
 		$this->assertHtml($expected, $result);
@@ -6346,8 +6173,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testButtonUnlockedByDefault()
-	{
+	public function testButtonUnlockedByDefault() {
 		$this->Form->request->params['_csrfToken'] = 'secured';
 		$this->Form->button('Save', ['name' => 'save']);
 		$this->Form->button('Clear');
@@ -6361,8 +6187,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostButton()
-	{
+	public function testPostButton() {
 		$result = $this->Form->postButton('Hi', '/controller/action');
 		$expected = [
 			'form' => ['method' => 'post', 'action' => '/controller/action', 'accept-charset' => 'utf-8'],
@@ -6385,8 +6210,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostButtonNestedData()
-	{
+	public function testPostButtonNestedData() {
 		$data = [
 			'one' => [
 				'two' => [
@@ -6405,8 +6229,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSecurePostButton()
-	{
+	public function testSecurePostButton() {
 		$this->Form->request->params['_csrfToken'] = 'testkey';
 		$this->Form->request->params['_Token'] = ['unlockedFields' => []];
 
@@ -6436,8 +6259,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostLink()
-	{
+	public function testPostLink() {
 		$result = $this->Form->postLink('Delete', '/posts/delete/1');
 		$expected = [
 			'form' => [
@@ -6535,8 +6357,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostLinkWithQuery()
-	{
+	public function testPostLinkWithQuery() {
 		$result = $this->Form->postLink(
 			'Delete',
 			['controller' => 'posts', 'action' => 'delete', 1, '?' => ['a' => 'b', 'c' => 'd']]
@@ -6560,8 +6381,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostLinkWithData()
-	{
+	public function testPostLinkWithData() {
 		$result = $this->Form->postLink('Delete', '/posts/delete', ['data' => ['id' => 1]]);
 		$this->assertContains('<input type="hidden" name="id" value="1"', $result);
 
@@ -6581,8 +6401,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostLinkSecurityHash()
-	{
+	public function testPostLinkSecurityHash() {
 		$hash = Security::hash(
 			'/posts/delete/1' .
 			serialize(['id' => '1']) .
@@ -6621,8 +6440,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostLinkNestedData()
-	{
+	public function testPostLinkNestedData() {
 		$data = [
 			'one' => [
 				'two' => [
@@ -6641,8 +6459,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostLinkAfterGetForm()
-	{
+	public function testPostLinkAfterGetForm() {
 		$this->Form->request->params['_csrfToken'] = 'testkey';
 		$this->Form->request->params['_Token'] = 'val';
 
@@ -6674,8 +6491,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostLinkFormBuffer()
-	{
+	public function testPostLinkFormBuffer() {
 		$result = $this->Form->postLink('Delete', '/posts/delete/1', ['block' => true]);
 		$expected = [
 			'a' => ['href' => '#', 'onclick' => 'preg:/document\.post_\w+\.submit\(\); event\.returnValue = false; return false;/'],
@@ -6751,8 +6567,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubmitButton()
-	{
+	public function testSubmitButton() {
 		$result = $this->Form->submit('');
 		$expected = [
 			'div' => ['class' => 'submit'],
@@ -6799,8 +6614,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubmitImage()
-	{
+	public function testSubmitImage() {
 		$result = $this->Form->submit('http://example.com/cake.power.gif');
 		$expected = [
 			'div' => ['class' => 'submit'],
@@ -6840,8 +6654,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubmitUnlockedByDefault()
-	{
+	public function testSubmitUnlockedByDefault() {
 		$this->Form->request->params['_Token'] = 'secured';
 		$this->Form->submit('Go go');
 		$this->Form->submit('Save', ['name' => 'save']);
@@ -6855,8 +6668,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubmitImageTimestamp()
-	{
+	public function testSubmitImageTimestamp() {
 		Configure::write('Asset.timestamp', 'force');
 
 		$result = $this->Form->submit('cake.power.gif');
@@ -6873,8 +6685,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDateTimeWithGetForms()
-	{
+	public function testDateTimeWithGetForms() {
 		extract($this->dateRegex);
 		$this->Form->create($this->article, ['type' => 'get']);
 		$result = $this->Form->datetime('created');
@@ -6891,8 +6702,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testForMagicInputNonExistingNorValidated()
-	{
+	public function testForMagicInputNonExistingNorValidated() {
 		$result = $this->Form->create($this->article);
 		$this->Form->templates(['inputContainer' => '{{content}}']);
 		$result = $this->Form->input('non_existing_nor_validated');
@@ -6940,8 +6750,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormMagicInputLabel()
-	{
+	public function testFormMagicInputLabel() {
 		TableRegistry::get('Contacts', [
 			'className' => __NAMESPACE__ . '\ContactsTable'
 		]);
@@ -7028,8 +6837,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormEnd()
-	{
+	public function testFormEnd() {
 		$this->assertEquals('</form>', $this->Form->end());
 	}
 
@@ -7038,8 +6846,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMultiRecordForm()
-	{
+	public function testMultiRecordForm() {
 		$this->loadFixtures('Articles', 'Comments');
 		$articles = TableRegistry::get('Articles');
 		$articles->hasMany('Comments');
@@ -7136,8 +6943,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHtml5Inputs()
-	{
+	public function testHtml5Inputs() {
 		$result = $this->Form->email('User.email');
 		$expected = [
 			'input' => ['type' => 'email', 'name' => 'User[email]']
@@ -7168,8 +6974,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHtml5InputWithInput()
-	{
+	public function testHtml5InputWithInput() {
 		$this->Form->create();
 		$this->Form->templates(['inputContainer' => '{{content}}']);
 		$result = $this->Form->input('website', [
@@ -7189,8 +6994,7 @@ class FormHelperTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testHtml5InputException()
-	{
+	public function testHtml5InputException() {
 		$this->Form->email();
 	}
 
@@ -7199,8 +7003,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequiredAttribute()
-	{
+	public function testRequiredAttribute() {
 		$this->article['required'] = [
 			'title' => true,
 			'body' => false,
@@ -7250,8 +7053,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputsNotNested()
-	{
+	public function testInputsNotNested() {
 		$this->Form->templates([
 			'nestingLabel' => '{{hidden}}{{input}}<label{{attrs}}>{{text}}</label>',
 			'formGroup' => '{{input}}{{label}}',
@@ -7326,8 +7128,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputContainerTemplates()
-	{
+	public function testInputContainerTemplates() {
 		$this->Form->templates([
 			'checkboxContainer' => '<div class="check">{{content}}</div>',
 			'radioContainer' => '<div class="rad">{{content}}</div>',
@@ -7377,8 +7178,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormGroupTemplates()
-	{
+	public function testFormGroupTemplates() {
 		$this->Form->templates([
 			'radioFormGroup' => '<div class="radio">{{label}}{{input}}</div>',
 		]);
@@ -7397,8 +7197,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResetTemplates()
-	{
+	public function testResetTemplates() {
 		$this->Form->templates(['input' => '<input/>']);
 		$this->assertEquals('<input/>', $this->Form->templater()->get('input'));
 
@@ -7411,8 +7210,7 @@ class FormHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContext()
-	{
+	public function testContext() {
 		$result = $this->Form->context();
 		$this->assertInstanceOf('Cake\View\Form\ContextInterface', $result);
 

@@ -22,8 +22,7 @@ use InvalidArgumentException;
  * can create multiple instances of this object to manage local events or keep a single instance
  * and pass it around to manage all events in your app.
  */
-class EventManager
-{
+class EventManager {
 
 	/**
 	 * The default priority queue value for new, attached listeners
@@ -64,8 +63,7 @@ class EventManager
 	 * @param \Cake\Event\EventManager $manager Event manager instance.
 	 * @return \Cake\Event\EventManager the global event manager
 	 */
-	public static function instance($manager = null)
-	{
+	public static function instance($manager = null) {
 		if ($manager instanceof EventManager) {
 			static::$_generalManager = $manager;
 		}
@@ -97,8 +95,7 @@ class EventManager
 	 *   instance of Cake\Event\EventListenerInterface.
 	 * @deprecated 3.0.0 Use on() instead.
 	 */
-	public function attach($callable, $eventKey = null, array $options = [])
-	{
+	public function attach($callable, $eventKey = null, array $options = []) {
 		if ($eventKey === null) {
 			$this->on($callable);
 			return;
@@ -148,8 +145,7 @@ class EventManager
 	 * @throws \InvalidArgumentException When event key is missing or callable is not an
 	 *   instance of Cake\Event\EventListenerInterface.
 	 */
-	public function on($eventKey = null, $options = [], $callable = null)
-	{
+	public function on($eventKey = null, $options = [], $callable = null) {
 		if ($eventKey instanceof EventListenerInterface) {
 			$this->_attachSubscriber($eventKey);
 			return;
@@ -178,8 +174,7 @@ class EventManager
 	 * @param \Cake\Event\EventListenerInterface $subscriber Event listener.
 	 * @return void
 	 */
-	protected function _attachSubscriber(EventListenerInterface $subscriber)
-	{
+	protected function _attachSubscriber(EventListenerInterface $subscriber) {
 		foreach ((array)$subscriber->implementedEvents() as $eventKey => $function) {
 			$options = [];
 			$method = $function;
@@ -207,8 +202,7 @@ class EventManager
 	 * @param \Cake\Event\EventListenerInterface $object The handler object
 	 * @return callback
 	 */
-	protected function _extractCallable($function, $object)
-	{
+	protected function _extractCallable($function, $object) {
 		$method = $function['callable'];
 		$options = $function;
 		unset($options['callable']);
@@ -226,8 +220,7 @@ class EventManager
 	 * @return void
 	 * @deprecated 3.0.0 Use off() instead.
 	 */
-	public function detach($callable, $eventKey = null)
-	{
+	public function detach($callable, $eventKey = null) {
 		if ($eventKey === null) {
 			$this->off($callable);
 			return;
@@ -267,8 +260,7 @@ class EventManager
 	 * @param callback $callable The callback you want to detach.
 	 * @return void
 	 */
-	public function off($eventKey, $callable = null)
-	{
+	public function off($eventKey, $callable = null) {
 		if ($eventKey instanceof EventListenerInterface) {
 			$this->_detachSubscriber($eventKey);
 			return;
@@ -307,8 +299,7 @@ class EventManager
 	 * @param string|null $eventKey optional event key name to unsubscribe the listener from
 	 * @return void
 	 */
-	protected function _detachSubscriber(EventListenerInterface $subscriber, $eventKey = null)
-	{
+	protected function _detachSubscriber(EventListenerInterface $subscriber, $eventKey = null) {
 		$events = (array)$subscriber->implementedEvents();
 		if (!empty($eventKey) && empty($events[$eventKey])) {
 			return;
@@ -337,8 +328,7 @@ class EventManager
 	 * @return \Cake\Event\Event
 	 * @triggers $event
 	 */
-	public function dispatch($event)
-	{
+	public function dispatch($event) {
 		if (is_string($event)) {
 			$event = new Event($event);
 		}
@@ -373,8 +363,7 @@ class EventManager
 	 * @param \Cake\Event\Event $event Event instance.
 	 * @return mixed The result of the $listener function.
 	 */
-	protected function _callListener(callable $listener, Event $event)
-	{
+	protected function _callListener(callable $listener, Event $event) {
 		$data = $event->data();
 		$length = count($data);
 		if ($length) {
@@ -401,8 +390,7 @@ class EventManager
 	 * @param string $eventKey Event key.
 	 * @return array
 	 */
-	public function listeners($eventKey)
-	{
+	public function listeners($eventKey) {
 		$localListeners = [];
 		if (!$this->_isGlobal) {
 			$localListeners = $this->prioritisedListeners($eventKey);
@@ -433,8 +421,7 @@ class EventManager
 	 * @param string $eventKey Event key.
 	 * @return array
 	 */
-	public function prioritisedListeners($eventKey)
-	{
+	public function prioritisedListeners($eventKey) {
 		if (empty($this->_listeners[$eventKey])) {
 			return [];
 		}
@@ -446,8 +433,7 @@ class EventManager
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		$properties = get_object_vars($this);
 		$properties['_generalManager'] = '(object) EventManager';
 		$properties['_listeners'] = [];

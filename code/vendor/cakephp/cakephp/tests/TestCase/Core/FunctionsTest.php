@@ -19,13 +19,11 @@ use Cake\TestSuite\TestCase;
 /**
  * Test cases for functions in Core\functions.php
  */
-class FunctionsTest extends TestCase
-{
+class FunctionsTest extends TestCase {
 	/**
 	 * Test cases for env()
 	 */
-	public function testEnv()
-	{
+	public function testEnv() {
 		$_ENV['DOES_NOT_EXIST'] = null;
 		$this->assertNull(env('DOES_NOT_EXIST'));
 		$this->assertEquals('default', env('DOES_NOT_EXIST', 'default'));

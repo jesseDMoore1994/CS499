@@ -25,8 +25,7 @@ use JsonSerializable;
  * formatting helpers
  *
  */
-class Time extends Carbon implements JsonSerializable
-{
+class Time extends Carbon implements JsonSerializable {
 
 	/**
 	 * The format to use when formatting a time using `Cake\I18n\Time::i18nFormat()`
@@ -128,8 +127,7 @@ class Time extends Carbon implements JsonSerializable
 	/**
 	 * {@inheritDoc}
 	 */
-	public function __construct($time = null, $tz = null)
-	{
+	public function __construct($time = null, $tz = null) {
 		if ($time instanceof DateTime) {
 			$tz = $time->getTimeZone();
 			$time = $time->format('Y-m-d H:i:s');
@@ -153,8 +151,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param string|null $locale The locale name in which the date should be displayed (e.g. pt-BR)
 	 * @return string Formatted date string
 	 */
-	public function nice($timezone = null, $locale = null)
-	{
+	public function nice($timezone = null, $locale = null) {
 		return $this->i18nFormat(static::$niceFormat, $timezone, $locale);
 	}
 
@@ -163,8 +160,7 @@ class Time extends Carbon implements JsonSerializable
 	 *
 	 * @return bool
 	 */
-	public function isThisWeek()
-	{
+	public function isThisWeek() {
 		return static::now($this->getTimezone())->format('W o') == $this->format('W o');
 	}
 
@@ -173,8 +169,7 @@ class Time extends Carbon implements JsonSerializable
 	 *
 	 * @return bool
 	 */
-	public function isThisMonth()
-	{
+	public function isThisMonth() {
 		return static::now($this->getTimezone())->format('m Y') == $this->format('m Y');
 	}
 
@@ -183,8 +178,7 @@ class Time extends Carbon implements JsonSerializable
 	 *
 	 * @return bool
 	 */
-	public function isThisYear()
-	{
+	public function isThisYear() {
 		return static::now($this->getTimezone())->format('Y') == $this->format('Y');
 	}
 
@@ -194,8 +188,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param bool $range Range.
 	 * @return mixed 1, 2, 3, or 4 quarter of year or array if $range true
 	 */
-	public function toQuarter($range = false)
-	{
+	public function toQuarter($range = false) {
 		$quarter = ceil($this->format('m') / 3);
 		if ($range === false) {
 			return $quarter;
@@ -219,8 +212,7 @@ class Time extends Carbon implements JsonSerializable
 	 *
 	 * @return string UNIX timestamp
 	 */
-	public function toUnixString()
-	{
+	public function toUnixString() {
 		return $this->format('U');
 	}
 
@@ -261,8 +253,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param array $options Array of options.
 	 * @return string Relative time string.
 	 */
-	public function timeAgoInWords(array $options = [])
-	{
+	public function timeAgoInWords(array $options = []) {
 		$time = $this;
 
 		$timezone = null;
@@ -465,8 +456,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @return string
 	 * @see Time::timeAgoInWords()
 	 */
-	public function diffForHumans(Carbon $other = null, array $options = [])
-	{
+	public function diffForHumans(Carbon $other = null, array $options = []) {
 		$options = ['from' => $other] + $options;
 		return $this->timeAgoInWords($options);
 	}
@@ -478,8 +468,7 @@ class Time extends Carbon implements JsonSerializable
 	 *    Example of valid types: 6 hours, 2 days, 1 minute.
 	 * @return bool
 	 */
-	public function wasWithinLast($timeInterval)
-	{
+	public function wasWithinLast($timeInterval) {
 		$tmp = str_replace(' ', '', $timeInterval);
 		if (is_numeric($tmp)) {
 			$timeInterval = $tmp . ' days';
@@ -498,8 +487,7 @@ class Time extends Carbon implements JsonSerializable
 	 *    Example of valid types: 6 hours, 2 days, 1 minute.
 	 * @return bool
 	 */
-	public function isWithinNext($timeInterval)
-	{
+	public function isWithinNext($timeInterval) {
 		$tmp = str_replace(' ', '', $timeInterval);
 		if (is_numeric($tmp)) {
 			$timeInterval = $tmp . ' days';
@@ -563,8 +551,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param string|null $locale The locale name in which the date should be displayed (e.g. pt-BR)
 	 * @return string Formatted and translated date string
 	 */
-	public function i18nFormat($format = null, $timezone = null, $locale = null)
-	{
+	public function i18nFormat($format = null, $timezone = null, $locale = null) {
 		$time = $this;
 
 		if ($timezone) {
@@ -586,8 +573,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param string $locale The locale name in which the date should be displayed.
 	 * @return string
 	 */
-	protected function _formatObject($date, $format, $locale)
-	{
+	protected function _formatObject($date, $format, $locale) {
 		$pattern = $dateFormat = $timeFormat = $calendar = null;
 
 		if (is_array($format)) {
@@ -630,8 +616,7 @@ class Time extends Carbon implements JsonSerializable
 	/**
 	 * {@inheritDoc}
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		return $this->i18nFormat();
 	}
 
@@ -650,8 +635,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @return array List of timezone identifiers
 	 * @since 2.2
 	 */
-	public static function listTimezones($filter = null, $country = null, $options = [])
-	{
+	public static function listTimezones($filter = null, $country = null, $options = []) {
 		if (is_bool($options)) {
 			$options = [
 				'group' => $options,
@@ -716,8 +700,7 @@ class Time extends Carbon implements JsonSerializable
 	 *
 	 * @return void
 	 */
-	public static function resetToStringFormat()
-	{
+	public static function resetToStringFormat() {
 		static::setToStringFormat([IntlDateFormatter::SHORT, IntlDateFormatter::SHORT]);
 	}
 
@@ -727,8 +710,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param string|array|int $format Format.
 	 * @return void
 	 */
-	public static function setToStringFormat($format)
-	{
+	public static function setToStringFormat($format) {
 		static::$_toStringFormat = $format;
 	}
 
@@ -738,8 +720,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param string|array|int $format Format.
 	 * @return void
 	 */
-	public static function setJsonEncodeFormat($format)
-	{
+	public static function setJsonEncodeFormat($format) {
 		static::$_jsonEncodeFormat = $format;
 	}
 
@@ -765,8 +746,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param string|array $format Any format accepted by IntlDateFormatter.
 	 * @return static|null
 	 */
-	public static function parseDateTime($time, $format = null)
-	{
+	public static function parseDateTime($time, $format = null) {
 		$dateFormat = $format ?: static::$_toStringFormat;
 		$timeFormat = $pattern = null;
 
@@ -817,8 +797,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param string|int $format Any format accepted by IntlDateFormatter.
 	 * @return static|null
 	 */
-	public static function parseDate($date, $format = null)
-	{
+	public static function parseDate($date, $format = null) {
 		if (is_int($format)) {
 			$format = [$format, -1];
 		}
@@ -846,8 +825,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param string|int $format Any format accepted by IntlDateFormatter.
 	 * @return static|null
 	 */
-	public static function parseTime($time, $format = null)
-	{
+	public static function parseTime($time, $format = null) {
 		if (is_int($format)) {
 			$format = [-1, $format];
 		}
@@ -861,8 +839,7 @@ class Time extends Carbon implements JsonSerializable
 	 * @param \DateTime|\DateTimeImmutable $datetime The date to get the remaining time from.
 	 * @return \DateInterval|bool The DateInterval object representing the difference between the two dates or FALSE on failure.
 	 */
-	public static function fromNow($datetime)
-	{
+	public static function fromNow($datetime) {
 		$timeNow = new Time();
 		return $timeNow->diff($datetime);
 	}
@@ -872,8 +849,7 @@ class Time extends Carbon implements JsonSerializable
 	 *
 	 * @return string
 	 */
-	public function jsonSerialize()
-	{
+	public function jsonSerialize() {
 		return $this->i18nFormat(static::$_jsonEncodeFormat);
 	}
 
@@ -882,8 +858,7 @@ class Time extends Carbon implements JsonSerializable
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		return [
 			'time' => $this->format(static::ISO8601),
 			'timezone' => $this->getTimezone()->getName(),

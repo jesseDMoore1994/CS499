@@ -14,10 +14,8 @@ namespace Psy\Test\Exception;
 use Psy\Exception\ErrorException;
 use Psy\Exception\Exception;
 
-class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
-{
-	public function testInstance()
-	{
+class ErrorExceptionTest extends \PHPUnit_Framework_TestCase {
+	public function testInstance() {
 		$e = new ErrorException();
 
 		$this->assertTrue($e instanceof Exception);
@@ -25,8 +23,7 @@ class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($e instanceof ErrorException);
 	}
 
-	public function testMessage()
-	{
+	public function testMessage() {
 		$e = new ErrorException('foo');
 
 		$this->assertContains('foo', $e->getMessage());
@@ -36,8 +33,7 @@ class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getLevels
 	 */
-	public function testErrorLevels($level, $type)
-	{
+	public function testErrorLevels($level, $type) {
 		$e = new ErrorException('foo', 0, $level);
 		$this->assertContains('PHP ' . $type, $e->getMessage());
 	}
@@ -45,8 +41,7 @@ class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getLevels
 	 */
-	public function testThrowException($level, $type)
-	{
+	public function testThrowException($level, $type) {
 		try {
 			ErrorException::throwException($level, '{whot}', '{file}', '13');
 		} catch (ErrorException $e) {
@@ -57,8 +52,7 @@ class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function getLevels()
-	{
+	public function getLevels() {
 		return array(
 			array(E_WARNING, 'warning'),
 			array(E_CORE_WARNING, 'warning'),
@@ -72,8 +66,7 @@ class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getUserLevels
 	 */
-	public function testThrowExceptionAsErrorHandler($level, $type)
-	{
+	public function testThrowExceptionAsErrorHandler($level, $type) {
 		set_error_handler(array('Psy\Exception\ErrorException', 'throwException'));
 		try {
 			trigger_error('{whot}', $level);
@@ -84,8 +77,7 @@ class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
 		restore_error_handler();
 	}
 
-	public function getUserLevels()
-	{
+	public function getUserLevels() {
 		return array(
 			array(E_USER_ERROR, 'error'),
 			array(E_USER_WARNING, 'warning'),
@@ -94,8 +86,7 @@ class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testIgnoreExecutionLoopFilename()
-	{
+	public function testIgnoreExecutionLoopFilename() {
 		$e = new ErrorException('{{message}}', 0, 1, '/fake/path/to/Psy/ExecutionLoop/Loop.php');
 		$this->assertEmpty($e->getFile());
 

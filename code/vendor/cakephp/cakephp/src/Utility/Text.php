@@ -20,8 +20,7 @@ use InvalidArgumentException;
  * Text handling methods.
  *
  */
-class Text
-{
+class Text {
 
 	/**
 	 * Generate a random UUID version 4
@@ -33,8 +32,7 @@ class Text
 	 * @return string RFC 4122 UUID
 	 * @copyright Matt Farina MIT License https://github.com/lootils/uuid/blob/master/LICENSE
 	 */
-	public static function uuid()
-	{
+	public static function uuid() {
 		return sprintf(
 			'%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
 			// 32 bits for "time_low"
@@ -65,8 +63,7 @@ class Text
 	 * @param string $rightBound The right boundary to ignore separators in.
 	 * @return mixed Array of tokens in $data or original input if empty.
 	 */
-	public static function tokenize($data, $separator = ',', $leftBound = '(', $rightBound = ')')
-	{
+	public static function tokenize($data, $separator = ',', $leftBound = '(', $rightBound = ')') {
 		if (empty($data)) {
 			return [];
 		}
@@ -157,8 +154,7 @@ class Text
 	 * @param array $options An array of options, see description above
 	 * @return string
 	 */
-	public static function insert($str, $data, array $options = [])
-	{
+	public static function insert($str, $data, array $options = []) {
 		$defaults = [
 			'before' => ':', 'after' => null, 'escape' => '\\', 'format' => null, 'clean' => false
 		];
@@ -222,8 +218,7 @@ class Text
 	 * @return string
 	 * @see \Cake\Utility\Text::insert()
 	 */
-	public static function cleanInsert($str, array $options)
-	{
+	public static function cleanInsert($str, array $options) {
 		$clean = $options['clean'];
 		if (!$clean) {
 			return $str;
@@ -291,8 +286,7 @@ class Text
 	 * @param array|int $options Array of options to use, or an integer to wrap the text to.
 	 * @return string Formatted text.
 	 */
-	public static function wrap($text, $options = [])
-	{
+	public static function wrap($text, $options = []) {
 		if (is_numeric($options)) {
 			$options = ['width' => $options];
 		}
@@ -327,8 +321,7 @@ class Text
 	 * @param array|int $options Array of options to use, or an integer to wrap the text to.
 	 * @return string Formatted text.
 	 */
-	public static function wrapBlock($text, $options = [])
-	{
+	public static function wrapBlock($text, $options = []) {
 		if (is_numeric($options)) {
 			$options = ['width' => $options];
 		}
@@ -374,8 +367,7 @@ class Text
 	 * @param bool $cut If the cut is set to true, the string is always wrapped at the specified width.
 	 * @return string Formatted text.
 	 */
-	public static function wordWrap($text, $width = 72, $break = "\n", $cut = false)
-	{
+	public static function wordWrap($text, $width = 72, $break = "\n", $cut = false) {
 		$paragraphs = explode($break, $text);
 		foreach ($paragraphs as &$paragraph) {
 			$paragraph = static::_wordWrap($paragraph, $width, $break, $cut);
@@ -392,8 +384,7 @@ class Text
 	 * @param bool $cut If the cut is set to true, the string is always wrapped at the specified width.
 	 * @return string Formatted text.
 	 */
-	protected static function _wordWrap($text, $width = 72, $break = "\n", $cut = false)
-	{
+	protected static function _wordWrap($text, $width = 72, $break = "\n", $cut = false) {
 		if ($cut) {
 			$parts = [];
 			while (mb_strlen($text) > 0) {
@@ -449,8 +440,7 @@ class Text
 	 * @return string The highlighted text
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/string.html#highlighting-substrings
 	 */
-	public static function highlight($text, $phrase, array $options = [])
-	{
+	public static function highlight($text, $phrase, array $options = []) {
 		if (empty($phrase)) {
 			return $text;
 		}
@@ -494,8 +484,7 @@ class Text
 	 * @param string $text Text
 	 * @return string The text without links
 	 */
-	public static function stripLinks($text)
-	{
+	public static function stripLinks($text) {
 		return preg_replace('|<a\s+[^>]+>|im', '', preg_replace('|<\/a>|im', '', $text));
 	}
 
@@ -515,8 +504,7 @@ class Text
 	 * @param array $options An array of options.
 	 * @return string Trimmed string.
 	 */
-	public static function tail($text, $length = 100, array $options = [])
-	{
+	public static function tail($text, $length = 100, array $options = []) {
 		$default = [
 			'ellipsis' => '...', 'exact' => true
 		];
@@ -554,8 +542,7 @@ class Text
 	 * @return string Trimmed string.
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/string.html#truncating-text
 	 */
-	public static function truncate($text, $length = 100, array $options = [])
-	{
+	public static function truncate($text, $length = 100, array $options = []) {
 		$default = [
 			'ellipsis' => '...', 'exact' => true, 'html' => false
 		];
@@ -675,8 +662,7 @@ class Text
 	 * @return string Modified string
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/string.html#extracting-an-excerpt
 	 */
-	public static function excerpt($text, $phrase, $radius = 100, $ellipsis = '...')
-	{
+	public static function excerpt($text, $phrase, $radius = 100, $ellipsis = '...') {
 		if (empty($text) || empty($phrase)) {
 			return static::truncate($text, $radius * 2, ['ellipsis' => $ellipsis]);
 		}
@@ -718,8 +704,7 @@ class Text
 	 * @return string The glued together string.
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/string.html#converting-an-array-to-sentence-form
 	 */
-	public static function toList(array $list, $and = null, $separator = ', ')
-	{
+	public static function toList(array $list, $and = null, $separator = ', ') {
 		if ($and === null) {
 			$and = __d('cake', 'and');
 		}
@@ -736,8 +721,7 @@ class Text
 	 * @param string $string value to test
 	 * @return bool
 	 */
-	public static function isMultibyte($string)
-	{
+	public static function isMultibyte($string) {
 		$length = strlen($string);
 
 		for ($i = 0; $i < $length; $i++) {
@@ -756,8 +740,7 @@ class Text
 	 * @param string $string String to convert.
 	 * @return array
 	 */
-	public static function utf8($string)
-	{
+	public static function utf8($string) {
 		$map = [];
 
 		$values = [];
@@ -796,8 +779,7 @@ class Text
 	 * @param array $array Array
 	 * @return string
 	 */
-	public static function ascii(array $array)
-	{
+	public static function ascii(array $array) {
 		$ascii = '';
 
 		foreach ($array as $utf8) {
@@ -824,8 +806,7 @@ class Text
 	 * @throws \InvalidArgumentException On invalid Unit type.
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/helpers/text.html
 	 */
-	public static function parseFileSize($size, $default = false)
-	{
+	public static function parseFileSize($size, $default = false) {
 		if (ctype_digit($size)) {
 			return (int)$size;
 		}

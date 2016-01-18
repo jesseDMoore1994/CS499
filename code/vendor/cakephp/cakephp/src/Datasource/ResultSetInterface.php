@@ -22,6 +22,5 @@ use Serializable;
  * Describes how a collection of datasource results should look like
  *
  */
-interface ResultSetInterface extends CollectionInterface, Countable, Serializable
-{
+interface ResultSetInterface extends CollectionInterface, Countable, Serializable {
 }

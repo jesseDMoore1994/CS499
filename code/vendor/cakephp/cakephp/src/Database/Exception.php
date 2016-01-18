@@ -19,7 +19,6 @@ use Cake\Core\Exception\Exception as CakeException;
 /**
  * Exception for the database package.
  */
-class Exception extends CakeException
-{
+class Exception extends CakeException {
 
 }

@@ -17,8 +17,7 @@ namespace Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-class ResourceCheckerConfigCacheFactory implements ConfigCacheFactoryInterface
-{
+class ResourceCheckerConfigCacheFactory implements ConfigCacheFactoryInterface {
 	/**
 	 * @var ResourceCheckerInterface[]
 	 */
@@ -27,16 +26,14 @@ class ResourceCheckerConfigCacheFactory implements ConfigCacheFactoryInterface
 	/**
 	 * @param ResourceCheckerInterface[] $resourceCheckers
 	 */
-	public function __construct(array $resourceCheckers = array())
-	{
+	public function __construct(array $resourceCheckers = array()) {
 		$this->resourceCheckers = $resourceCheckers;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function cache($file, $callback)
-	{
+	public function cache($file, $callback) {
 		if (!is_callable($callback)) {
 			throw new \InvalidArgumentException(sprintf('Invalid type for callback argument. Expected callable, but got "%s".', gettype($callback)));
 		}

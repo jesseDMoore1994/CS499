@@ -21,16 +21,14 @@ use DebugKit\DebugPanel;
  * Log Panel - Reads log entries made this request.
  *
  */
-class LogPanel extends DebugPanel
-{
+class LogPanel extends DebugPanel {
 
 	/**
 	 * Initialize hook - sets up the log listener.
 	 *
 	 * @return \LogPanel
 	 */
-	public function initialize()
-	{
+	public function initialize() {
 		if (Log::config('debug_kit_log_panel')) {
 			return;
 		}
@@ -44,8 +42,7 @@ class LogPanel extends DebugPanel
 	 *
 	 * @return void
 	 */
-	public function data()
-	{
+	public function data() {
 		return [
 			'logger' => Log::engine('debug_kit_log_panel')
 		];
@@ -56,8 +53,7 @@ class LogPanel extends DebugPanel
 	 *
 	 * @return string
 	 */
-	public function summary()
-	{
+	public function summary() {
 		$logger = Log::engine('debug_kit_log_panel');
 		if (!$logger) {
 			return 0;

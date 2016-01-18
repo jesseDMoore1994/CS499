@@ -25,8 +25,7 @@ use Cake\Database\SqliteCompiler;
  *
  * @internal
  */
-trait SqliteDialectTrait
-{
+trait SqliteDialectTrait {
 
 	use SqlDialectTrait;
 	use TupleComparisonTranslatorTrait;
@@ -73,8 +72,7 @@ trait SqliteDialectTrait
 	 *
 	 * @return array
 	 */
-	protected function _expressionTranslators()
-	{
+	protected function _expressionTranslators() {
 		$namespace = 'Cake\Database\Expression';
 		return [
 			$namespace . '\FunctionExpression' => '_transformFunctionExpression',
@@ -90,8 +88,7 @@ trait SqliteDialectTrait
 	 *   to translate for SQLite.
 	 * @return void
 	 */
-	protected function _transformFunctionExpression(FunctionExpression $expression)
-	{
+	protected function _transformFunctionExpression(FunctionExpression $expression) {
 		switch ($expression->name()) {
 			case 'CONCAT':
 				// CONCAT function is expressed as exp1 || exp2
@@ -159,8 +156,7 @@ trait SqliteDialectTrait
 	 * @param \Cake\Database\Query $query The query to translate
 	 * @return \Cake\Database\Query
 	 */
-	protected function _insertQueryTranslator($query)
-	{
+	protected function _insertQueryTranslator($query) {
 		$v = $query->clause('values');
 		if (count($v->values()) === 1 || $v->query()) {
 			return $query;
@@ -210,8 +206,7 @@ trait SqliteDialectTrait
 	 *
 	 * @return \Cake\Database\Schema\SqliteSchema
 	 */
-	public function schemaDialect()
-	{
+	public function schemaDialect() {
 		if (!$this->_schemaDialect) {
 			$this->_schemaDialect = new SqliteSchema($this);
 		}
@@ -221,16 +216,14 @@ trait SqliteDialectTrait
 	/**
 	 * {@inheritDoc}
 	 */
-	public function disableForeignKeySQL()
-	{
+	public function disableForeignKeySQL() {
 		return 'PRAGMA foreign_keys = OFF';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function enableForeignKeySQL()
-	{
+	public function enableForeignKeySQL() {
 		return 'PRAGMA foreign_keys = ON';
 	}
 
@@ -239,8 +232,7 @@ trait SqliteDialectTrait
 	 *
 	 * @return \Cake\Database\SqliteCompiler
 	 */
-	public function newCompiler()
-	{
+	public function newCompiler() {
 		return new SqliteCompiler();
 	}
 }

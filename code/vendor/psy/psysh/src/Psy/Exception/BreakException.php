@@ -14,15 +14,13 @@ namespace Psy\Exception;
 /**
  * A break exception, used for halting the Psy Shell.
  */
-class BreakException extends \Exception implements Exception
-{
+class BreakException extends \Exception implements Exception {
 	private $rawMessage;
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct($message = '', $code = 0, \Exception $previous = null)
-	{
+	public function __construct($message = '', $code = 0, \Exception $previous = null) {
 		$this->rawMessage = $message;
 		parent::__construct(sprintf('Exit:  %s', $message), $code, $previous);
 	}
@@ -32,8 +30,7 @@ class BreakException extends \Exception implements Exception
 	 *
 	 * @return string
 	 */
-	public function getRawMessage()
-	{
+	public function getRawMessage() {
 		return $this->rawMessage;
 	}
 }

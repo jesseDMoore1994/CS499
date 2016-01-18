@@ -20,8 +20,7 @@ use DebugKit\DebugTimer;
 /**
  * Class TimedBehavior
  */
-class TimedBehavior extends Behavior
-{
+class TimedBehavior extends Behavior {
 
 	/**
 	 * beforeFind, starts a timer for a find operation.
@@ -30,8 +29,7 @@ class TimedBehavior extends Behavior
 	 * @param \Cake\ORM\Query $query Query
 	 * @return bool true
 	 */
-	public function beforeFind(Event $event, $query)
-	{
+	public function beforeFind(Event $event, $query) {
 		$alias = $event->subject()->alias();
 		DebugTimer::start($alias . '_find', $alias . '->find()');
 		return $query->formatResults(function ($results) use ($alias) {
@@ -46,8 +44,7 @@ class TimedBehavior extends Behavior
 	 * @param Cake\Event\Event $event The beforeSave event
 	 * @return void
 	 */
-	public function beforeSave(Event $event)
-	{
+	public function beforeSave(Event $event) {
 		$alias = $event->subject()->alias();
 		DebugTimer::start($alias . '_save', $alias . '->save()');
 	}
@@ -58,8 +55,7 @@ class TimedBehavior extends Behavior
 	 * @param Cake\Event\Event $event The afterSave event
 	 * @return void
 	 */
-	public function afterSave(Event $event)
-	{
+	public function afterSave(Event $event) {
 		$alias = $event->subject()->alias();
 		DebugTimer::stop($alias . '_save');
 	}

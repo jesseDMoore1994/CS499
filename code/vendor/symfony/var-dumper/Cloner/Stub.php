@@ -16,8 +16,7 @@ namespace Symfony\Component\VarDumper\Cloner;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class Stub
-{
+class Stub {
 	const TYPE_REF = 'ref';
 	const TYPE_STRING = 'string';
 	const TYPE_ARRAY = 'array';

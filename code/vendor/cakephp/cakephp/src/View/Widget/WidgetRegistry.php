@@ -36,8 +36,7 @@ use RuntimeException;
  *
  * Widgets can ask for the current view by using the `_view` widget.
  */
-class WidgetRegistry
-{
+class WidgetRegistry {
 
 	/**
 	 * Array of widgets + widget configuration.
@@ -60,8 +59,7 @@ class WidgetRegistry
 	 * @param \Cake\View\View $view The view instance to set as a widget.
 	 * @param string|array $widgets See add() method for more information.
 	 */
-	public function __construct(StringTemplate $templates, View $view, $widgets = [])
-	{
+	public function __construct(StringTemplate $templates, View $view, $widgets = []) {
 		$this->_templates = $templates;
 		if (!empty($widgets)) {
 			$this->add($widgets);
@@ -85,8 +83,7 @@ class WidgetRegistry
 	 * @param string $file The file to load
 	 * @return void
 	 */
-	public function load($file)
-	{
+	public function load($file) {
 		$loader = new PhpConfig();
 		$widgets = $loader->read($file);
 		$this->add($widgets);
@@ -112,8 +109,7 @@ class WidgetRegistry
 	 * @return void
 	 * @throws \RuntimeException When class does not implement WidgetInterface.
 	 */
-	public function add(array $widgets)
-	{
+	public function add(array $widgets) {
 		foreach ($widgets as $object) {
 			if (gettype($object) === 'object' &&
 				!($object instanceof WidgetInterface)
@@ -138,8 +134,7 @@ class WidgetRegistry
 	 * @return WidgetInterface widget interface class.
 	 * @throws \RuntimeException when widget is undefined.
 	 */
-	public function get($name)
-	{
+	public function get($name) {
 		if (!isset($this->_widgets[$name]) && empty($this->_widgets['_default'])) {
 			throw new RuntimeException(sprintf('Unknown widget "%s"', $name));
 		}
@@ -155,8 +150,7 @@ class WidgetRegistry
 	 *
 	 * @return void
 	 */
-	public function clear()
-	{
+	public function clear() {
 		$this->_widgets = [];
 	}
 
@@ -168,8 +162,7 @@ class WidgetRegistry
 	 * @throws \RuntimeException when class cannot be loaded or does not
 	 *   implement WidgetInterface.
 	 */
-	protected function _resolveWidget($widget)
-	{
+	protected function _resolveWidget($widget) {
 		$type = gettype($widget);
 		if ($type === 'object') {
 			return $widget;

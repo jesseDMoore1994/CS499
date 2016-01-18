@@ -20,13 +20,11 @@ $unusedNonterminals = array_flip(array(
 	'case_separator', 'optional_comma'
 ));
 
-function regex($regex)
-{
+function regex($regex) {
 	return '~' . LIB . '(?:' . str_replace('~', '\~', $regex) . ')~';
 }
 
-function magicSplit($regex, $string)
-{
+function magicSplit($regex, $string) {
 	$pieces = preg_split(regex('(?:(?&string)|(?&comment)|(?&code))(*SKIP)(*FAIL)|' . $regex), $string);
 
 	foreach ($pieces as &$piece) {

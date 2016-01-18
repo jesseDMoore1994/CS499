@@ -22,8 +22,7 @@ use Symfony\Component\Console\Exception\InvalidArgumentException;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class StringInput extends ArgvInput
-{
+class StringInput extends ArgvInput {
 	const REGEX_STRING = '([^\s]+?)(?:\s|(?<!\\\\)"|(?<!\\\\)\'|$)';
 	const REGEX_QUOTED_STRING = '(?:"([^"\\\\]*(?:\\\\.[^"\\\\]*)*)"|\'([^\'\\\\]*(?:\\\\.[^\'\\\\]*)*)\')';
 
@@ -32,8 +31,7 @@ class StringInput extends ArgvInput
 	 *
 	 * @param string $input An array of parameters from the CLI (in the argv format)
 	 */
-	public function __construct($input)
-	{
+	public function __construct($input) {
 		parent::__construct(array());
 
 		$this->setTokens($this->tokenize($input));
@@ -48,8 +46,7 @@ class StringInput extends ArgvInput
 	 *
 	 * @throws InvalidArgumentException When unable to parse input (should never happen)
 	 */
-	private function tokenize($input)
-	{
+	private function tokenize($input) {
 		$tokens = array();
 		$length = strlen($input);
 		$cursor = 0;

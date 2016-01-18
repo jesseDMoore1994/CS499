@@ -17,6 +17,5 @@ namespace Symfony\Component\Config\Definition\Exception;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ForbiddenOverwriteException extends InvalidConfigurationException
-{
+class ForbiddenOverwriteException extends InvalidConfigurationException {
 }

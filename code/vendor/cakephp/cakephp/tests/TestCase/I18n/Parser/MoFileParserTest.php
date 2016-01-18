@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * Tests the MoFileLoader
  *
  */
-class MoFileParserTest extends TestCase
-{
+class MoFileParserTest extends TestCase {
 
 	/**
 	 * Tests parsing a file with plurals and message context
 	 *
 	 * @return void
 	 */
-	public function testParse()
-	{
+	public function testParse() {
 		$parser = new MoFileParser;
 		$file = APP . 'Locale' . DS . 'rule_1_mo' . DS . 'core.mo';
 		$messages = $parser->parse($file);
@@ -51,8 +49,7 @@ class MoFileParserTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParse2()
-	{
+	public function testParse2() {
 		$parser = new MoFileParser;
 		$file = APP . 'Locale' . DS . 'rule_9_mo' . DS . 'core.mo';
 		$messages = $parser->parse($file);
@@ -74,8 +71,7 @@ class MoFileParserTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseFull()
-	{
+	public function testParseFull() {
 		$parser = new MoFileParser;
 		$file = APP . 'Locale' . DS . 'rule_0_mo' . DS . 'default.mo';
 		$messages = $parser->parse($file);

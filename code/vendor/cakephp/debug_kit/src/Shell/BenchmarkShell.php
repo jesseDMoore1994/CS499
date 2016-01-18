@@ -27,16 +27,14 @@ use Cake\Utility\Text;
  * @todo Export/graphing of data to .dot format for graphviz visualization
  * @todo Make calculated results round to leading significant digit position of std dev.
  */
-class BenchmarkShell extends Shell
-{
+class BenchmarkShell extends Shell {
 
 	/**
 	 * Main execution of shell
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		$url = $this->args[0];
 		$defaults = ['t' => 100, 'n' => 10];
 		$options = array_merge($defaults, $this->params);
@@ -64,8 +62,7 @@ class BenchmarkShell extends Shell
 	 * @param array $times Array of time values
 	 * @return void
 	 */
-	protected function _results($times)
-	{
+	protected function _results($times) {
 		$duration = array_sum($times);
 		$requests = count($times);
 
@@ -106,8 +103,7 @@ class BenchmarkShell extends Shell
 	 *                           variance from a finite sample.
 	 * @return float Variance
 	 */
-	protected function _variance($times, $sample = true)
-	{
+	protected function _variance($times, $sample = true) {
 		$n = $mean = $M2 = 0;
 
 		foreach ($times as $time) {
@@ -131,8 +127,7 @@ class BenchmarkShell extends Shell
 	 * @param bool $sample ''
 	 * @return float Standard deviation
 	 */
-	protected function _deviation($times, $sample = true)
-	{
+	protected function _deviation($times, $sample = true) {
 		return sqrt($this->_variance($times, $sample));
 	}
 
@@ -141,8 +136,7 @@ class BenchmarkShell extends Shell
 	 *
 	 * @return \Cake\Console\OptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser->description(__d(
 			'debug_kit',

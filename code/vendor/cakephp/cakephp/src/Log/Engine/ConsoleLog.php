@@ -20,8 +20,7 @@ use InvalidArgumentException;
 /**
  * Console logging. Writes logs to console output.
  */
-class ConsoleLog extends BaseLog
-{
+class ConsoleLog extends BaseLog {
 
 	/**
 	 * Default config for this class
@@ -55,8 +54,7 @@ class ConsoleLog extends BaseLog
 	 * @param array $config Options for the FileLog, see above.
 	 * @throws \InvalidArgumentException
 	 */
-	public function __construct(array $config = [])
-	{
+	public function __construct(array $config = []) {
 		if ((DS === '\\' && !(bool)env('ANSICON') && env('ConEmuANSI') !== 'ON') ||
 			(function_exists('posix_isatty') && !posix_isatty($this->_output))
 		) {
@@ -86,8 +84,7 @@ class ConsoleLog extends BaseLog
 	 * @param array $context Additional information about the logged message
 	 * @return bool success of write.
 	 */
-	public function log($level, $message, array $context = [])
-	{
+	public function log($level, $message, array $context = []) {
 		$message = $this->_format($message, $context);
 		$output = date('Y-m-d H:i:s') . ' ' . ucfirst($level) . ': ' . $message;
 		return $this->_output->write(sprintf('<%s>%s</%s>', $level, $output, $level));

@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
  * ApcEngineTest class
  *
  */
-class ApcEngineTest extends TestCase
-{
+class ApcEngineTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->skipIf(!function_exists('apc_store'), 'Apc is not installed or configured properly.');
 
@@ -49,8 +47,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Cache::drop('apc');
 		Cache::drop('apc_groups');
@@ -62,8 +59,7 @@ class ApcEngineTest extends TestCase
 	 * @param array $config
 	 * @return void
 	 */
-	protected function _configCache($config = [])
-	{
+	protected function _configCache($config = []) {
 		$defaults = [
 			'className' => 'Apc',
 			'prefix' => 'cake_',
@@ -77,8 +73,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadAndWriteCache()
-	{
+	public function testReadAndWriteCache() {
 		$this->_configCache(['duration' => 1]);
 
 		$result = Cache::read('test', 'apc');
@@ -101,8 +96,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadWriteDurationZero()
-	{
+	public function testReadWriteDurationZero() {
 		Cache::drop('apc');
 		Cache::config('apc', ['engine' => 'Apc', 'duration' => 0, 'prefix' => 'cake_']);
 		Cache::write('zero', 'Should save', 'apc');
@@ -117,8 +111,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExpiry()
-	{
+	public function testExpiry() {
 		$this->_configCache(['duration' => 1]);
 
 		$result = Cache::read('test', 'apc');
@@ -138,8 +131,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDeleteCache()
-	{
+	public function testDeleteCache() {
 		$data = 'this is a test of the emergency broadcasting system';
 		$result = Cache::write('delete_test', $data, 'apc');
 		$this->assertTrue($result);
@@ -153,8 +145,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDecrement()
-	{
+	public function testDecrement() {
 		$this->skipIf(!function_exists('apc_dec'), 'No apc_dec() function, cannot test decrement().');
 
 		$result = Cache::write('test_decrement', 5, 'apc');
@@ -178,8 +169,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIncrement()
-	{
+	public function testIncrement() {
 		$this->skipIf(!function_exists('apc_inc'), 'No apc_inc() function, cannot test increment().');
 
 		$result = Cache::write('test_increment', 5, 'apc');
@@ -203,8 +193,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClear()
-	{
+	public function testClear() {
 		apc_store('not_cake', 'survive');
 		Cache::write('some_value', 'value', 'apc');
 
@@ -222,8 +211,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupsReadWrite()
-	{
+	public function testGroupsReadWrite() {
 		Cache::config('apc_groups', [
 			'engine' => 'Apc',
 			'duration' => 0,
@@ -249,8 +237,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupDelete()
-	{
+	public function testGroupDelete() {
 		Cache::config('apc_groups', [
 			'engine' => 'Apc',
 			'duration' => 0,
@@ -269,8 +256,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGroupClear()
-	{
+	public function testGroupClear() {
 		Cache::config('apc_groups', [
 			'engine' => 'Apc',
 			'duration' => 0,
@@ -292,8 +278,7 @@ class ApcEngineTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAdd()
-	{
+	public function testAdd() {
 		Cache::delete('test_add_key', 'apc');
 
 		$result = Cache::add('test_add_key', 'test data', 'apc');

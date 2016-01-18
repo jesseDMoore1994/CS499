@@ -4,19 +4,16 @@
  * @license     MIT License https://github.com/serbanghita/Mobile-Detect/blob/master/LICENSE.txt
  * @link        http://mobiledetect.net
  */
-class UserAgentTest extends PHPUnit_Framework_TestCase
-{
+class UserAgentTest extends PHPUnit_Framework_TestCase {
 	protected $detect;
 	protected static $ualist = array();
 	protected static $json;
 
-	public function setUp()
-	{
+	public function setUp() {
 		$this->detect = new Mobile_Detect;
 	}
 
-	public static function generateJson()
-	{
+	public static function generateJson() {
 		//in case this gets run multiple times
 		if (isset(self::$json)) {
 			return self::$json;
@@ -112,8 +109,7 @@ class UserAgentTest extends PHPUnit_Framework_TestCase
 		return self::$json;
 	}
 
-	public static function setUpBeforeClass()
-	{
+	public static function setUpBeforeClass() {
 		//generate json file first
 		self::generateJson();
 
@@ -134,8 +130,7 @@ class UserAgentTest extends PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function userAgentData()
-	{
+	public function userAgentData() {
 		if (!count(self::$ualist)) {
 			self::setUpBeforeClass();
 		}
@@ -147,8 +142,7 @@ class UserAgentTest extends PHPUnit_Framework_TestCase
 	 * @medium
 	 * @dataProvider userAgentData
 	 */
-	public function testUserAgents($userAgent, $isMobile, $isTablet, $version, $model, $vendor)
-	{
+	public function testUserAgents($userAgent, $isMobile, $isTablet, $version, $model, $vendor) {
 		//make sure we're passed valid data
 		if (!is_string($userAgent) || !is_bool($isMobile) || !is_bool($isTablet)) {
 			$this->markTestIncomplete("The User-Agent $userAgent does not have sufficient information for testing.");

@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-interface PackageLocatorInterface
-{
+interface PackageLocatorInterface {
 	/**
 	 *
 	 * Sets a Package object.

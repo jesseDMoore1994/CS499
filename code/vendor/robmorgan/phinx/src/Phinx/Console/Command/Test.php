@@ -36,13 +36,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Leonid Kuzmin <lndkuzmin@gmail.com>
  */
-class Test extends AbstractCommand
-{
+class Test extends AbstractCommand {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		parent::configure();
 
 		$this->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment');
@@ -69,8 +67,7 @@ EOT
 	 * @throws \InvalidArgumentException
 	 * @return void
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->loadConfig($input, $output);
 		$this->loadManager($output);
 

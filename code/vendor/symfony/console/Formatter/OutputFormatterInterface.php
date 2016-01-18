@@ -16,8 +16,7 @@ namespace Symfony\Component\Console\Formatter;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
-interface OutputFormatterInterface
-{
+interface OutputFormatterInterface {
 	/**
 	 * Sets the decorated flag.
 	 *

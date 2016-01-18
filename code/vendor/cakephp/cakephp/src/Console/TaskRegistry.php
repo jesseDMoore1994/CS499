@@ -22,8 +22,7 @@ use Cake\Core\ObjectRegistry;
  * Registry for Tasks. Provides features
  * for lazily loading tasks.
  */
-class TaskRegistry extends ObjectRegistry
-{
+class TaskRegistry extends ObjectRegistry {
 
 	/**
 	 * Shell to use to set params to tasks.
@@ -37,8 +36,7 @@ class TaskRegistry extends ObjectRegistry
 	 *
 	 * @param Shell $Shell Shell instance
 	 */
-	public function __construct(Shell $Shell)
-	{
+	public function __construct(Shell $Shell) {
 		$this->_Shell = $Shell;
 	}
 
@@ -50,8 +48,7 @@ class TaskRegistry extends ObjectRegistry
 	 * @param string $class Partial classname to resolve.
 	 * @return string|false Either the correct classname or false.
 	 */
-	protected function _resolveClassName($class)
-	{
+	protected function _resolveClassName($class) {
 		return App::className($class, 'Shell/Task', 'Task');
 	}
 
@@ -65,8 +62,7 @@ class TaskRegistry extends ObjectRegistry
 	 * @return void
 	 * @throws \Cake\Console\Exception\MissingTaskException
 	 */
-	protected function _throwMissingClassError($class, $plugin)
-	{
+	protected function _throwMissingClassError($class, $plugin) {
 		throw new MissingTaskException([
 			'class' => $class,
 			'plugin' => $plugin
@@ -83,8 +79,7 @@ class TaskRegistry extends ObjectRegistry
 	 * @param array $settings An array of settings to use for the task.
 	 * @return \Cake\Console\Shell The constructed task class.
 	 */
-	protected function _create($class, $alias, $settings)
-	{
+	protected function _create($class, $alias, $settings) {
 		return new $class($this->_Shell->io());
 	}
 }

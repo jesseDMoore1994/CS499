@@ -18,9 +18,7 @@ use Cake\View\Cell;
 /**
  * Class naming test stub.
  */
-class CelloCell extends Cell
-{
-	public function display()
-	{
+class CelloCell extends Cell {
+	public function display() {
 	}
 }

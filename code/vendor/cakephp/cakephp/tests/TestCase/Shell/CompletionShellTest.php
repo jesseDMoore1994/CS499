@@ -27,13 +27,11 @@ use Cake\TestSuite\TestCase;
  * Class TestCompletionStringOutput
  *
  */
-class TestCompletionStringOutput extends ConsoleOutput
-{
+class TestCompletionStringOutput extends ConsoleOutput {
 
 	public $output = '';
 
-	protected function _write($message)
-	{
+	protected function _write($message) {
 		$this->output .= $message;
 	}
 }
@@ -41,16 +39,14 @@ class TestCompletionStringOutput extends ConsoleOutput
 /**
  * Class CompletionShellTest
  */
-class CompletionShellTest extends TestCase
-{
+class CompletionShellTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 		Plugin::load(['TestPlugin', 'TestPluginTwo']);
@@ -76,8 +72,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->Shell);
 		Configure::write('App.namespace', 'App');
@@ -89,8 +84,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStartup()
-	{
+	public function testStartup() {
 		$this->Shell->runCommand(['main']);
 		$output = $this->out->output;
 
@@ -103,8 +97,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMain()
-	{
+	public function testMain() {
 		$this->Shell->runCommand(['main']);
 		$output = $this->out->output;
 
@@ -117,8 +110,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCommands()
-	{
+	public function testCommands() {
 		$this->Shell->runCommand(['commands']);
 		$output = $this->out->output;
 
@@ -132,8 +124,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOptionsNoArguments()
-	{
+	public function testOptionsNoArguments() {
 		$this->Shell->runCommand(['options']);
 		$output = $this->out->output;
 
@@ -146,8 +137,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOptionsNonExistingCommand()
-	{
+	public function testOptionsNonExistingCommand() {
 		$this->Shell->runCommand(['options', 'foo']);
 		$output = $this->out->output;
 		$expected = "";
@@ -159,8 +149,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOptions()
-	{
+	public function testOptions() {
 		$this->Shell->runCommand(['options', 'orm_cache']);
 		$output = $this->out->output;
 
@@ -173,8 +162,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOptionsTask()
-	{
+	public function testOptionsTask() {
 		$this->Shell->runCommand(['options', 'sample', 'sample']);
 		$output = $this->out->output;
 
@@ -187,8 +175,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommandsCorePlugin()
-	{
+	public function testSubCommandsCorePlugin() {
 		$this->Shell->runCommand(['subcommands', 'CORE.orm_cache']);
 		$output = $this->out->output;
 
@@ -201,8 +188,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommandsAppPlugin()
-	{
+	public function testSubCommandsAppPlugin() {
 		$this->Shell->runCommand(['subcommands', 'app.sample']);
 		$output = $this->out->output;
 
@@ -216,8 +202,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommandsPlugin()
-	{
+	public function testSubCommandsPlugin() {
 		$this->Shell->runCommand(['subcommands', 'welcome']);
 		$output = $this->out->output;
 
@@ -230,8 +215,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommandsPluginDotNotationBackwardCompatibility()
-	{
+	public function testSubCommandsPluginDotNotationBackwardCompatibility() {
 		$this->Shell->runCommand(['subcommands', 'TestPluginTwo.welcome']);
 		$output = $this->out->output;
 
@@ -244,8 +228,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommandsPluginDotNotation()
-	{
+	public function testSubCommandsPluginDotNotation() {
 		$this->Shell->runCommand(['subcommands', 'TestPluginTwo.example']);
 		$output = $this->out->output;
 
@@ -259,8 +242,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommandsAppDuplicatePluginNoDot()
-	{
+	public function testSubCommandsAppDuplicatePluginNoDot() {
 		$this->Shell->runCommand(['subcommands', 'sample']);
 		$output = $this->out->output;
 
@@ -273,8 +255,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommandsPluginDuplicateApp()
-	{
+	public function testSubCommandsPluginDuplicateApp() {
 		$this->Shell->runCommand(['subcommands', 'TestPlugin.sample']);
 		$output = $this->out->output;
 
@@ -287,8 +268,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommandsNoArguments()
-	{
+	public function testSubCommandsNoArguments() {
 		$this->Shell->runCommand(['subcommands']);
 		$output = $this->out->output;
 
@@ -301,8 +281,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommandsNonExistingCommand()
-	{
+	public function testSubCommandsNonExistingCommand() {
 		$this->Shell->runCommand(['subcommands', 'foo']);
 		$output = $this->out->output;
 
@@ -315,8 +294,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubCommands()
-	{
+	public function testSubCommands() {
 		$this->Shell->runCommand(['subcommands', 'orm_cache']);
 		$output = $this->out->output;
 
@@ -329,8 +307,7 @@ class CompletionShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFuzzy()
-	{
+	public function testFuzzy() {
 		$this->Shell->runCommand(['fuzzy']);
 		$output = $this->out->output;
 

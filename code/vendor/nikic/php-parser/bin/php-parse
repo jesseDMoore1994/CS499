@@ -86,8 +86,7 @@ foreach ($files as $file) {
 	}
 }
 
-function showHelp($error)
-{
+function showHelp($error) {
 	die($error . "\n\n" .
 		<<<OUTPUT
 Usage: php-parse [operations] file1.php [file2.php ...]
@@ -113,8 +112,7 @@ OUTPUT
 	);
 }
 
-function parseArgs($args)
-{
+function parseArgs($args) {
 	$operations = array();
 	$files = array();
 	$attributes = array(

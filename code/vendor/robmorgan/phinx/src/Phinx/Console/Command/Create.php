@@ -36,8 +36,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 
-class Create extends AbstractCommand
-{
+class Create extends AbstractCommand {
 	/**
 	 * The name of the interface that any external template creation class is required to implement.
 	 */
@@ -46,8 +45,7 @@ class Create extends AbstractCommand
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		parent::configure();
 
 		$this->setName('create')
@@ -73,8 +71,7 @@ class Create extends AbstractCommand
 	 *
 	 * @return ConfirmationQuestion
 	 */
-	protected function getCreateMigrationDirectoryQuestion()
-	{
+	protected function getCreateMigrationDirectoryQuestion() {
 		return new ConfirmationQuestion('Create migrations directory? [y]/n ', true);
 	}
 
@@ -87,8 +84,7 @@ class Create extends AbstractCommand
 	 * @throws \InvalidArgumentException
 	 * @return void
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->bootstrap($input, $output);
 
 		// get the migration path from the config

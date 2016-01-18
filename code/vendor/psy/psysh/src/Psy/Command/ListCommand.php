@@ -34,8 +34,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * List available local variables, object properties, etc.
  */
-class ListCommand extends ReflectingCommand implements PresenterAware
-{
+class ListCommand extends ReflectingCommand implements PresenterAware {
 	protected $presenter;
 	protected $enumerators;
 
@@ -44,16 +43,14 @@ class ListCommand extends ReflectingCommand implements PresenterAware
 	 *
 	 * @param Presenter $manager
 	 */
-	public function setPresenter(Presenter $presenter)
-	{
+	public function setPresenter(Presenter $presenter) {
 		$this->presenter = $presenter;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('ls')
 			->setAliases(array('list', 'dir'))
@@ -108,8 +105,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->validateInput($input);
 		$this->initEnumerators();
 
@@ -138,8 +134,7 @@ HELP
 	/**
 	 * Initialize Enumerators.
 	 */
-	protected function initEnumerators()
-	{
+	protected function initEnumerators() {
 		if (!isset($this->enumerators)) {
 			$mgr = $this->presenter;
 
@@ -164,8 +159,7 @@ HELP
 	 * @param OutputInterface $output
 	 * @param null|array $result List of enumerated items.
 	 */
-	protected function write(OutputInterface $output, array $result = null)
-	{
+	protected function write(OutputInterface $output, array $result = null) {
 		if ($result === null) {
 			return;
 		}
@@ -184,8 +178,7 @@ HELP
 	 * @param OutputInterface $output
 	 * @param null|array $result List of enumerated items.
 	 */
-	protected function writeLong(OutputInterface $output, array $result = null)
-	{
+	protected function writeLong(OutputInterface $output, array $result = null) {
 		if ($result === null) {
 			return;
 		}
@@ -216,8 +209,7 @@ HELP
 	 *
 	 * @return string
 	 */
-	private function formatItemName($item)
-	{
+	private function formatItemName($item) {
 		return sprintf('<%s>%s</%s>', $item['style'], OutputFormatter::escape($item['name']), $item['style']);
 	}
 
@@ -228,8 +220,7 @@ HELP
 	 *
 	 * @param InputInterface $input
 	 */
-	private function validateInput(InputInterface $input)
-	{
+	private function validateInput(InputInterface $input) {
 		// grep, invert and insensitive
 		if (!$input->getOption('grep')) {
 			foreach (array('invert', 'insensitive') as $option) {

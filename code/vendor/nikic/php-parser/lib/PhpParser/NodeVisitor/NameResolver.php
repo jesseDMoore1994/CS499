@@ -10,21 +10,18 @@ use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Stmt;
 
-class NameResolver extends NodeVisitorAbstract
-{
+class NameResolver extends NodeVisitorAbstract {
 	/** @var null|Name Current namespace */
 	protected $namespace;
 
 	/** @var array Map of format [aliasType => [aliasName => originalName]] */
 	protected $aliases;
 
-	public function beforeTraverse(array $nodes)
-	{
+	public function beforeTraverse(array $nodes) {
 		$this->resetState();
 	}
 
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		if ($node instanceof Stmt\Namespace_) {
 			$this->resetState($node->name);
 		} elseif ($node instanceof Stmt\Use_) {
@@ -103,8 +100,7 @@ class NameResolver extends NodeVisitorAbstract
 		}
 	}
 
-	protected function resetState(Name $namespace = null)
-	{
+	protected function resetState(Name $namespace = null) {
 		$this->namespace = $namespace;
 		$this->aliases = array(
 			Stmt\Use_::TYPE_NORMAL => array(),
@@ -113,8 +109,7 @@ class NameResolver extends NodeVisitorAbstract
 		);
 	}
 
-	protected function addAlias(Stmt\UseUse $use, $type, Name $prefix = null)
-	{
+	protected function addAlias(Stmt\UseUse $use, $type, Name $prefix = null) {
 		// Add prefix for group uses
 		$name = $prefix ? Name::concat($prefix, $use->name) : $use->name;
 		// Type is determined either by individual element or whole use declaration
@@ -147,8 +142,7 @@ class NameResolver extends NodeVisitorAbstract
 	}
 
 	/** @param Stmt\Function_|Stmt\ClassMethod|Expr\Closure $node */
-	private function resolveSignature($node)
-	{
+	private function resolveSignature($node) {
 		foreach ($node->params as $param) {
 			if ($param->type instanceof Name) {
 				$param->type = $this->resolveClassName($param->type);
@@ -159,8 +153,7 @@ class NameResolver extends NodeVisitorAbstract
 		}
 	}
 
-	protected function resolveClassName(Name $name)
-	{
+	protected function resolveClassName(Name $name) {
 		// don't resolve special class names
 		if (in_array(strtolower($name->toString()), array('self', 'parent', 'static'))) {
 			if (!$name->isUnqualified()) {
@@ -193,8 +186,7 @@ class NameResolver extends NodeVisitorAbstract
 		return new FullyQualified($name->parts, $name->getAttributes());
 	}
 
-	protected function resolveOtherName(Name $name, $type)
-	{
+	protected function resolveOtherName(Name $name, $type) {
 		// fully qualified names are already resolved
 		if ($name->isFullyQualified()) {
 			return $name;
@@ -230,8 +222,7 @@ class NameResolver extends NodeVisitorAbstract
 		return new FullyQualified($name->parts, $name->getAttributes());
 	}
 
-	protected function addNamespacedName(Node $node)
-	{
+	protected function addNamespacedName(Node $node) {
 		if (null !== $this->namespace) {
 			$node->namespacedName = Name::concat($this->namespace, $node->name);
 		} else {

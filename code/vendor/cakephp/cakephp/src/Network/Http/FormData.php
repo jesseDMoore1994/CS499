@@ -25,8 +25,7 @@ use finfo;
  * and files.
  *
  */
-class FormData implements Countable
-{
+class FormData implements Countable {
 
 	/**
 	 * Boundary marker.
@@ -61,8 +60,7 @@ class FormData implements Countable
 	 *
 	 * @return string
 	 */
-	public function boundary()
-	{
+	public function boundary() {
 		if ($this->_boundary) {
 			return $this->_boundary;
 		}
@@ -77,8 +75,7 @@ class FormData implements Countable
 	 * @param string $value The value to add.
 	 * @return \Cake\Network\Http\FormData\Part
 	 */
-	public function newPart($name, $value)
-	{
+	public function newPart($name, $value) {
 		return new Part($name, $value);
 	}
 
@@ -96,8 +93,7 @@ class FormData implements Countable
 	 * @param mixed $value The value for the part.
 	 * @return $this
 	 */
-	public function add($name, $value = null)
-	{
+	public function add($name, $value = null) {
 		if (is_array($value)) {
 			$this->addRecursive($name, $value);
 		} elseif (is_resource($value)) {
@@ -126,8 +122,7 @@ class FormData implements Countable
 	 * @param array $data Array of data to add.
 	 * @return $this
 	 */
-	public function addMany(array $data)
-	{
+	public function addMany(array $data) {
 		foreach ($data as $name => $value) {
 			$this->add($name, $value);
 		}
@@ -142,8 +137,7 @@ class FormData implements Countable
 	 * @param mixed $value Either a string filename, or a filehandle.
 	 * @return \Cake\Network\Http\FormData\Part
 	 */
-	public function addFile($name, $value)
-	{
+	public function addFile($name, $value) {
 		$this->_hasFile = true;
 
 		$filename = false;
@@ -178,8 +172,7 @@ class FormData implements Countable
 	 * @param mixed $value The value to add.
 	 * @return void
 	 */
-	public function addRecursive($name, $value)
-	{
+	public function addRecursive($name, $value) {
 		foreach ($value as $key => $value) {
 			$key = $name . '[' . $key . ']';
 			$this->add($key, $value);
@@ -191,8 +184,7 @@ class FormData implements Countable
 	 *
 	 * @return int
 	 */
-	public function count()
-	{
+	public function count() {
 		return count($this->_parts);
 	}
 
@@ -202,8 +194,7 @@ class FormData implements Countable
 	 *
 	 * @return bool Whether or not there is a file in this payload.
 	 */
-	public function hasFile()
-	{
+	public function hasFile() {
 		return $this->_hasFile;
 	}
 
@@ -216,8 +207,7 @@ class FormData implements Countable
 	 *
 	 * @return bool Whether or not the payload is multipart.
 	 */
-	public function isMultipart()
-	{
+	public function isMultipart() {
 		return $this->hasFile() || $this->_hasComplexPart;
 	}
 
@@ -229,8 +219,7 @@ class FormData implements Countable
 	 *
 	 * @return string
 	 */
-	public function contentType()
-	{
+	public function contentType() {
 		if (!$this->isMultipart()) {
 			return 'application/x-www-form-urlencoded';
 		}
@@ -243,8 +232,7 @@ class FormData implements Countable
 	 *
 	 * @return string
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		if ($this->isMultipart()) {
 			$boundary = $this->boundary();
 			$out = '';

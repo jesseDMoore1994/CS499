@@ -20,14 +20,12 @@ use Phinx\Console\Command\Create;
  * when using the CakePHP migrations shell plugin. It has no effect on the
  * migrations process.
  */
-class CreateTask extends CommandTask
-{
+class CreateTask extends CommandTask {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser
 			->addArgument('name', [

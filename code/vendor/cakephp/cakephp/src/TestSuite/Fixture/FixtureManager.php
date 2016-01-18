@@ -25,8 +25,7 @@ use UnexpectedValueException;
  * A factory class to manage the life cycle of test fixtures
  *
  */
-class FixtureManager
-{
+class FixtureManager {
 
 	/**
 	 * Was this instance already initialized?
@@ -77,8 +76,7 @@ class FixtureManager
 	 * @param bool $debug Whether or not fixture debug mode is enabled.
 	 * @return void
 	 */
-	public function setDebug($debug)
-	{
+	public function setDebug($debug) {
 		$this->_debug = $debug;
 	}
 
@@ -88,8 +86,7 @@ class FixtureManager
 	 * @param \Cake\TestSuite\TestCase $test The test case to inspect.
 	 * @return void
 	 */
-	public function fixturize($test)
-	{
+	public function fixturize($test) {
 		$this->_initDb();
 		if (empty($test->fixtures) || !empty($this->_processed[get_class($test)])) {
 			return;
@@ -106,8 +103,7 @@ class FixtureManager
 	 *
 	 * @return array
 	 */
-	public function loaded()
-	{
+	public function loaded() {
 		return $this->_loaded;
 	}
 
@@ -119,8 +115,7 @@ class FixtureManager
 	 *
 	 * @return void
 	 */
-	protected function _aliasConnections()
-	{
+	protected function _aliasConnections() {
 		$connections = ConnectionManager::configured();
 		ConnectionManager::alias('test', 'default');
 		$map = [];
@@ -147,8 +142,7 @@ class FixtureManager
 	 *
 	 * @return void
 	 */
-	protected function _initDb()
-	{
+	protected function _initDb() {
 		if ($this->_initialized) {
 			return;
 		}
@@ -163,8 +157,7 @@ class FixtureManager
 	 * @return void
 	 * @throws \UnexpectedValueException when a referenced fixture does not exist.
 	 */
-	protected function _loadFixtures($test)
-	{
+	protected function _loadFixtures($test) {
 		if (empty($test->fixtures)) {
 			return;
 		}
@@ -224,8 +217,7 @@ class FixtureManager
 	 * @param bool $drop whether drop the fixture if it is already created or not
 	 * @return void
 	 */
-	protected function _setupTable($fixture, $db, array $sources, $drop = true)
-	{
+	protected function _setupTable($fixture, $db, array $sources, $drop = true) {
 		$configName = $db->configName();
 		if ($this->isFixtureSetup($configName, $fixture)) {
 			return;
@@ -253,8 +245,7 @@ class FixtureManager
 	 * @return void
 	 * @throws \Cake\Core\Exception\Exception When fixture records cannot be inserted.
 	 */
-	public function load($test)
-	{
+	public function load($test) {
 		if (empty($test->fixtures)) {
 			return;
 		}
@@ -312,8 +303,7 @@ class FixtureManager
 	 * @param callable $operation The operation to run on each connection + fixture set.
 	 * @return void
 	 */
-	protected function _runOperation($fixtures, $operation)
-	{
+	protected function _runOperation($fixtures, $operation) {
 		$dbs = $this->_fixtureConnections($fixtures);
 		foreach ($dbs as $connection => $fixtures) {
 			$db = ConnectionManager::get($connection, false);
@@ -338,8 +328,7 @@ class FixtureManager
 	 * @param array $fixtures The array of fixtures a list of connections is needed from.
 	 * @return array An array of connection names.
 	 */
-	protected function _fixtureConnections($fixtures)
-	{
+	protected function _fixtureConnections($fixtures) {
 		$dbs = [];
 		foreach ($fixtures as $f) {
 			if (!empty($this->_loaded[$f])) {
@@ -356,8 +345,7 @@ class FixtureManager
 	 * @param \Cake\TestSuite\TestCase $test The test to inspect for fixture unloading.
 	 * @return void
 	 */
-	public function unload($test)
-	{
+	public function unload($test) {
 		if (empty($test->fixtures)) {
 			return;
 		}
@@ -388,8 +376,7 @@ class FixtureManager
 	 * @return void
 	 * @throws \UnexpectedValueException if $name is not a previously loaded class
 	 */
-	public function loadSingle($name, $db = null, $dropTables = true)
-	{
+	public function loadSingle($name, $db = null, $dropTables = true) {
 		if (isset($this->_fixtureMap[$name])) {
 			$fixture = $this->_fixtureMap[$name];
 			if (!$db) {
@@ -418,8 +405,7 @@ class FixtureManager
 	 *
 	 * @return void
 	 */
-	public function shutDown()
-	{
+	public function shutDown() {
 		$shutdown = function ($db, $fixtures) {
 			$connection = $db->configName();
 			foreach ($fixtures as $fixture) {
@@ -440,8 +426,7 @@ class FixtureManager
 	 * @param \Cake\Datasource\FixtureInterface $fixture The fixture to check.
 	 * @return bool
 	 */
-	public function isFixtureSetup($connection, $fixture)
-	{
+	public function isFixtureSetup($connection, $fixture) {
 		return isset($this->_insertionMap[$connection]) && in_array($fixture, $this->_insertionMap[$connection]);
 	}
 }

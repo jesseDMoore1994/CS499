@@ -26,8 +26,7 @@ use SimpleXmlElement;
  *
  * Xml output is useful for integration with other tools like IDE's or other build tools.
  */
-class HelpFormatter
-{
+class HelpFormatter {
 
 	/**
 	 * The maximum number of arguments shown when generating usage.
@@ -55,8 +54,7 @@ class HelpFormatter
 	 *
 	 * @param \Cake\Console\ConsoleOptionParser $parser The option parser help is being generated for.
 	 */
-	public function __construct(ConsoleOptionParser $parser)
-	{
+	public function __construct(ConsoleOptionParser $parser) {
 		$this->_parser = $parser;
 	}
 
@@ -66,8 +64,7 @@ class HelpFormatter
 	 * @param int $width The width of the help output.
 	 * @return string
 	 */
-	public function text($width = 72)
-	{
+	public function text($width = 72) {
 		$parser = $this->_parser;
 		$out = [];
 		$description = $parser->description();
@@ -139,8 +136,7 @@ class HelpFormatter
 	 *
 	 * @return string
 	 */
-	protected function _generateUsage()
-	{
+	protected function _generateUsage() {
 		$usage = ['cake ' . $this->_parser->command()];
 		$subcommands = $this->_parser->subcommands();
 		if (!empty($subcommands)) {
@@ -171,8 +167,7 @@ class HelpFormatter
 	 * @param array $collection The collection to find a max length of.
 	 * @return int
 	 */
-	protected function _getMaxLength($collection)
-	{
+	protected function _getMaxLength($collection) {
 		$max = 0;
 		foreach ($collection as $item) {
 			$max = (strlen($item->name()) > $max) ? strlen($item->name()) : $max;
@@ -186,8 +181,7 @@ class HelpFormatter
 	 * @param bool $string Return the SimpleXml object or a string. Defaults to true.
 	 * @return string|\SimpleXmlElement See $string
 	 */
-	public function xml($string = true)
-	{
+	public function xml($string = true) {
 		$parser = $this->_parser;
 		$xml = new SimpleXmlElement('<shell></shell>');
 		$xml->addChild('command', $parser->command());

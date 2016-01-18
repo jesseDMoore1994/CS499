@@ -19,8 +19,7 @@ use Psy\Exception\FatalErrorException;
 /**
  * The abstract class pass handles abstract classes and methods, complaining if there are too few or too many of either.
  */
-class AbstractClassPass extends CodeCleanerPass
-{
+class AbstractClassPass extends CodeCleanerPass {
 	private $class;
 	private $abstractMethods;
 
@@ -29,8 +28,7 @@ class AbstractClassPass extends CodeCleanerPass
 	 *
 	 * @param Node $node
 	 */
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		if ($node instanceof ClassStmt) {
 			$this->class = $node;
 			$this->abstractMethods = array();
@@ -51,8 +49,7 @@ class AbstractClassPass extends CodeCleanerPass
 	 *
 	 * @param Node $node
 	 */
-	public function leaveNode(Node $node)
-	{
+	public function leaveNode(Node $node) {
 		if ($node instanceof ClassStmt) {
 			$count = count($this->abstractMethods);
 			if ($count > 0 && !$node->isAbstract()) {

@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
 /**
  * ProgressHelper test.
  */
-class ProgressHelperTest extends TestCase
-{
+class ProgressHelperTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->stub = new ConsoleOutput();
@@ -44,8 +42,7 @@ class ProgressHelperTest extends TestCase
 	 *
 	 * @expectedException \RuntimeException
 	 */
-	public function testOutputFailure()
-	{
+	public function testOutputFailure() {
 		$this->helper->output(['not a callback']);
 	}
 
@@ -54,8 +51,7 @@ class ProgressHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputSuccess()
-	{
+	public function testOutputSuccess() {
 		$this->helper->output([function ($progress) {
 			$progress->increment(20);
 		}]);
@@ -80,8 +76,7 @@ class ProgressHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputSuccessOptions()
-	{
+	public function testOutputSuccessOptions() {
 		$this->helper->output([
 			'total' => 10,
 			'width' => 20,
@@ -110,8 +105,7 @@ class ProgressHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIncrementAndRender()
-	{
+	public function testIncrementAndRender() {
 		$this->helper->init();
 
 		$this->helper->increment(20);
@@ -139,8 +133,7 @@ class ProgressHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIncrementWithNegatives()
-	{
+	public function testIncrementWithNegatives() {
 		$this->helper->init();
 
 		$this->helper->increment(40);
@@ -168,8 +161,7 @@ class ProgressHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIncrementWithOptions()
-	{
+	public function testIncrementWithOptions() {
 		$this->helper->init([
 			'total' => 10,
 			'width' => 20,
@@ -198,8 +190,7 @@ class ProgressHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIncrementFloatPad()
-	{
+	public function testIncrementFloatPad() {
 		$this->helper->init([
 			'total' => 50
 		]);

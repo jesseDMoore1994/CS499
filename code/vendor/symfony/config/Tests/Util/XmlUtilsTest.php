@@ -13,10 +13,8 @@ namespace Symfony\Component\Config\Tests\Loader;
 
 use Symfony\Component\Config\Util\XmlUtils;
 
-class XmlUtilsTest extends \PHPUnit_Framework_TestCase
-{
-	public function testLoadFile()
-	{
+class XmlUtilsTest extends \PHPUnit_Framework_TestCase {
+	public function testLoadFile() {
 		$fixtures = __DIR__ . '/../Fixtures/Util/';
 
 		try {
@@ -61,8 +59,7 @@ class XmlUtilsTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame(array(), libxml_get_errors());
 	}
 
-	public function testLoadFileWithInternalErrorsEnabled()
-	{
+	public function testLoadFileWithInternalErrorsEnabled() {
 		$internalErrors = libxml_use_internal_errors(true);
 
 		$this->assertSame(array(), libxml_get_errors());
@@ -76,16 +73,14 @@ class XmlUtilsTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getDataForConvertDomToArray
 	 */
-	public function testConvertDomToArray($expected, $xml, $root = false, $checkPrefix = true)
-	{
+	public function testConvertDomToArray($expected, $xml, $root = false, $checkPrefix = true) {
 		$dom = new \DOMDocument();
 		$dom->loadXML($root ? $xml : '<root>' . $xml . '</root>');
 
 		$this->assertSame($expected, XmlUtils::convertDomElementToArray($dom->documentElement, $checkPrefix));
 	}
 
-	public function getDataForConvertDomToArray()
-	{
+	public function getDataForConvertDomToArray() {
 		return array(
 			array(null, ''),
 			array('bar', 'bar'),
@@ -110,13 +105,11 @@ class XmlUtilsTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getDataForPhpize
 	 */
-	public function testPhpize($expected, $value)
-	{
+	public function testPhpize($expected, $value) {
 		$this->assertSame($expected, XmlUtils::phpize($value));
 	}
 
-	public function getDataForPhpize()
-	{
+	public function getDataForPhpize() {
 		return array(
 			array('', ''),
 			array(null, 'null'),
@@ -147,16 +140,14 @@ class XmlUtilsTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testLoadEmptyXmlFile()
-	{
+	public function testLoadEmptyXmlFile() {
 		$file = __DIR__ . '/../Fixtures/foo.xml';
 		$this->setExpectedException('InvalidArgumentException', sprintf('File %s does not contain valid XML, it is empty.', $file));
 		XmlUtils::loadFile($file);
 	}
 
 	// test for issue https://github.com/symfony/symfony/issues/9731
-	public function testLoadWrongEmptyXMLWithErrorHandler()
-	{
+	public function testLoadWrongEmptyXMLWithErrorHandler() {
 		$originalDisableEntities = libxml_disable_entity_loader(false);
 		$errorReporting = error_reporting(-1);
 
@@ -189,7 +180,6 @@ class XmlUtilsTest extends \PHPUnit_Framework_TestCase
 	}
 }
 
-interface Validator
-{
+interface Validator {
 	public function validate();
 }

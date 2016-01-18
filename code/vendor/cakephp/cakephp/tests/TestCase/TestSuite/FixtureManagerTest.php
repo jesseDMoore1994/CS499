@@ -25,22 +25,19 @@ use Cake\TestSuite\TestCase;
 /**
  * Fixture manager test case.
  */
-class FixtureManagerTest extends TestCase
-{
+class FixtureManagerTest extends TestCase {
 
 	/**
 	 * Setup method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->manager = new FixtureManager();
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Log::reset();
 	}
@@ -50,8 +47,7 @@ class FixtureManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFixturizeCore()
-	{
+	public function testFixturizeCore() {
 		$test = $this->getMock('Cake\TestSuite\TestCase');
 		$test->fixtures = ['core.articles'];
 		$this->manager->fixturize($test);
@@ -66,8 +62,7 @@ class FixtureManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLogSchemaWithDebug()
-	{
+	public function testLogSchemaWithDebug() {
 		$db = ConnectionManager::get('test');
 		$restore = $db->logQueries();
 		$db->logQueries(true);
@@ -97,8 +92,7 @@ class FixtureManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFixturizeCoreConstraint()
-	{
+	public function testFixturizeCoreConstraint() {
 		$test = $this->getMock('Cake\TestSuite\TestCase');
 		$test->fixtures = ['core.articles', 'core.articles_tags', 'core.tags'];
 		$this->manager->fixturize($test);
@@ -148,8 +142,7 @@ class FixtureManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFixturizePlugin()
-	{
+	public function testFixturizePlugin() {
 		Plugin::load('TestPlugin');
 
 		$test = $this->getMock('Cake\TestSuite\TestCase');
@@ -169,8 +162,7 @@ class FixtureManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFixturizeCustom()
-	{
+	public function testFixturizeCustom() {
 		$test = $this->getMock('Cake\TestSuite\TestCase');
 		$test->fixtures = ['plugin.Company/TestPluginThree.articles'];
 		$this->manager->fixturize($test);
@@ -189,8 +181,7 @@ class FixtureManagerTest extends TestCase
 	 * @expectedException \UnexpectedValueException
 	 * @expectedExceptionMessage Referenced fixture class "Test\Fixture\Derp.derpFixture" not found. Fixture "derp.derp" was referenced
 	 */
-	public function testFixturizeInvalidType()
-	{
+	public function testFixturizeInvalidType() {
 		$test = $this->getMock('Cake\TestSuite\TestCase');
 		$test->fixtures = ['derp.derp'];
 		$this->manager->fixturize($test);
@@ -201,8 +192,7 @@ class FixtureManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadSingle()
-	{
+	public function testLoadSingle() {
 		$test = $this->getMock('Cake\TestSuite\TestCase');
 		$test->autoFixtures = false;
 		$test->fixtures = ['core.articles', 'core.articles_tags', 'core.tags'];

@@ -21,8 +21,7 @@ use Cake\Network\Exception\NotFoundException;
 /**
  * Provides utility features need by the toolbar.
  */
-class ToolbarController extends Controller
-{
+class ToolbarController extends Controller {
 
 	/**
 	 * components
@@ -45,8 +44,7 @@ class ToolbarController extends Controller
 	 * @return void
 	 * @throws \Cake\Network\Exception\NotFoundException
 	 */
-	public function beforeFilter(Event $event)
-	{
+	public function beforeFilter(Event $event) {
 		// TODO add config override.
 		if (!Configure::read('debug')) {
 			throw new NotFoundException();
@@ -59,8 +57,7 @@ class ToolbarController extends Controller
 	 * @return void
 	 * @throws \Cake\Network\Exception\NotFoundException
 	 */
-	public function clearCache()
-	{
+	public function clearCache() {
 		$this->request->allowMethod('post');
 		if (!$this->request->data('name')) {
 			throw new NotFoundException('Invalid cache engine name.');

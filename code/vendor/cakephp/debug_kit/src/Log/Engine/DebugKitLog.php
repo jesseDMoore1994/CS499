@@ -18,8 +18,7 @@ use Cake\Log\Engine\BaseLog;
  * A CakeLog listener which saves having to munge files or other configured loggers.
  *
  */
-class DebugKitLog extends BaseLog
-{
+class DebugKitLog extends BaseLog {
 
 	/**
 	 * logs
@@ -36,8 +35,7 @@ class DebugKitLog extends BaseLog
 	 * @param array $context Additional context data
 	 * @return void
 	 */
-	public function log($type, $message, array $context = [])
-	{
+	public function log($type, $message, array $context = []) {
 		if (!isset($this->logs[$type])) {
 			$this->logs[$type] = [];
 		}
@@ -49,8 +47,7 @@ class DebugKitLog extends BaseLog
 	 *
 	 * @return array
 	 */
-	public function all()
-	{
+	public function all() {
 		return $this->_logs;
 	}
 
@@ -59,8 +56,7 @@ class DebugKitLog extends BaseLog
 	 *
 	 * @return int
 	 */
-	public function count()
-	{
+	public function count() {
 		return array_reduce($this->_logs, function ($sum, $v) {
 			return $sum + count($v);
 		}, 0);
@@ -71,8 +67,7 @@ class DebugKitLog extends BaseLog
 	 *
 	 * @return bool
 	 */
-	public function noLogs()
-	{
+	public function noLogs() {
 		return empty($this->_logs);
 	}
 }

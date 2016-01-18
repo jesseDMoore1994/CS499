@@ -18,8 +18,7 @@ namespace Cake\Console;
  * Object wrapper for interacting with stdin
  *
  */
-class ConsoleInput
-{
+class ConsoleInput {
 
 	/**
 	 * Input value.
@@ -44,8 +43,7 @@ class ConsoleInput
 	 *
 	 * @param string $handle The location of the stream to use as input.
 	 */
-	public function __construct($handle = 'php://stdin')
-	{
+	public function __construct($handle = 'php://stdin') {
 		$this->_canReadline = extension_loaded('readline') && $handle === 'php://stdin' ? true : false;
 		$this->_input = fopen($handle, 'r');
 	}
@@ -55,8 +53,7 @@ class ConsoleInput
 	 *
 	 * @return mixed The value of the stream
 	 */
-	public function read()
-	{
+	public function read() {
 		if ($this->_canReadline) {
 			$line = readline('');
 			if (strlen($line) > 0) {
@@ -73,8 +70,7 @@ class ConsoleInput
 	 * @param int $timeout An optional time to wait for data
 	 * @return bool True for data available, false otherwise
 	 */
-	public function dataAvailable($timeout = 0)
-	{
+	public function dataAvailable($timeout = 0) {
 		$readFds = [$this->_input];
 		$readyFds = stream_select($readFds, $writeFds, $errorFds, $timeout);
 		return ($readyFds > 0);

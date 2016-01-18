@@ -16,8 +16,7 @@ namespace Symfony\Component\Yaml;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Dumper
-{
+class Dumper {
 	/**
 	 * The amount of spaces to use for indentation of nested nodes.
 	 *
@@ -30,8 +29,7 @@ class Dumper
 	 *
 	 * @param int $num The amount of spaces to use for indentation of nested nodes.
 	 */
-	public function setIndentation($num)
-	{
+	public function setIndentation($num) {
 		$this->indentation = (int)$num;
 	}
 
@@ -46,8 +44,7 @@ class Dumper
 	 *
 	 * @return string The YAML representation of the PHP value
 	 */
-	public function dump($input, $inline = 0, $indent = 0, $exceptionOnInvalidType = false, $objectSupport = false)
-	{
+	public function dump($input, $inline = 0, $indent = 0, $exceptionOnInvalidType = false, $objectSupport = false) {
 		$output = '';
 		$prefix = $indent ? str_repeat(' ', $indent) : '';
 

@@ -17,8 +17,7 @@ namespace Bake\Shell\Task;
 /**
  * Task for creating cells.
  */
-class CellTask extends SimpleBakeTask
-{
+class CellTask extends SimpleBakeTask {
 	/**
 	 * Task name used in path generation.
 	 *
@@ -29,24 +28,21 @@ class CellTask extends SimpleBakeTask
 	/**
 	 * {@inheritDoc}
 	 */
-	public function name()
-	{
+	public function name() {
 		return 'cell';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function fileName($name)
-	{
+	public function fileName($name) {
 		return $name . 'Cell.php';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function template()
-	{
+	public function template() {
 		return 'View/cell';
 	}
 
@@ -56,8 +52,7 @@ class CellTask extends SimpleBakeTask
 	 * @param string $name The name of the cell to make.
 	 * @return void
 	 */
-	public function bake($name)
-	{
+	public function bake($name) {
 		$this->bakeTemplate($name);
 		return parent::bake($name);
 	}
@@ -68,8 +63,7 @@ class CellTask extends SimpleBakeTask
 	 * @param string $name The name of the cell a template is needed for.
 	 * @return void
 	 */
-	public function bakeTemplate($name)
-	{
+	public function bakeTemplate($name) {
 		$templatePath = implode(DS, ['Template', 'Cell', $name, 'display.ctp']);
 		$restore = $this->pathFragment;
 		$this->pathFragment = $templatePath;

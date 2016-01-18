@@ -21,8 +21,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class PrototypedArrayNode extends ArrayNode
-{
+class PrototypedArrayNode extends ArrayNode {
 	protected $prototype;
 	protected $keyAttribute;
 	protected $removeKeyAttribute = false;
@@ -36,8 +35,7 @@ class PrototypedArrayNode extends ArrayNode
 	 *
 	 * @param int $number
 	 */
-	public function setMinNumberOfElements($number)
-	{
+	public function setMinNumberOfElements($number) {
 		$this->minNumberOfElements = $number;
 	}
 
@@ -65,8 +63,7 @@ class PrototypedArrayNode extends ArrayNode
 	 * @param string $attribute The name of the attribute which value is to be used as a key
 	 * @param bool $remove Whether or not to remove the key
 	 */
-	public function setKeyAttribute($attribute, $remove = true)
-	{
+	public function setKeyAttribute($attribute, $remove = true) {
 		$this->keyAttribute = $attribute;
 		$this->removeKeyAttribute = $remove;
 	}
@@ -76,8 +73,7 @@ class PrototypedArrayNode extends ArrayNode
 	 *
 	 * @return string The name of the attribute
 	 */
-	public function getKeyAttribute()
-	{
+	public function getKeyAttribute() {
 		return $this->keyAttribute;
 	}
 
@@ -88,8 +84,7 @@ class PrototypedArrayNode extends ArrayNode
 	 *
 	 * @throws \InvalidArgumentException if the default value is not an array
 	 */
-	public function setDefaultValue($value)
-	{
+	public function setDefaultValue($value) {
 		if (!is_array($value)) {
 			throw new \InvalidArgumentException($this->getPath() . ': the default value of an array node has to be an array.');
 		}
@@ -102,8 +97,7 @@ class PrototypedArrayNode extends ArrayNode
 	 *
 	 * @return bool
 	 */
-	public function hasDefaultValue()
-	{
+	public function hasDefaultValue() {
 		return true;
 	}
 
@@ -112,8 +106,7 @@ class PrototypedArrayNode extends ArrayNode
 	 *
 	 * @param int|string|array|null $children The number of children|The child name|The children names to be added
 	 */
-	public function setAddChildrenIfNoneSet($children = array('defaults'))
-	{
+	public function setAddChildrenIfNoneSet($children = array('defaults')) {
 		if (null === $children) {
 			$this->defaultChildren = array('defaults');
 		} else {
@@ -129,8 +122,7 @@ class PrototypedArrayNode extends ArrayNode
 	 *
 	 * @return array The default value
 	 */
-	public function getDefaultValue()
-	{
+	public function getDefaultValue() {
 		if (null !== $this->defaultChildren) {
 			$default = $this->prototype->hasDefaultValue() ? $this->prototype->getDefaultValue() : array();
 			$defaults = array();
@@ -149,8 +141,7 @@ class PrototypedArrayNode extends ArrayNode
 	 *
 	 * @param PrototypeNodeInterface $node
 	 */
-	public function setPrototype(PrototypeNodeInterface $node)
-	{
+	public function setPrototype(PrototypeNodeInterface $node) {
 		$this->prototype = $node;
 	}
 
@@ -159,8 +150,7 @@ class PrototypedArrayNode extends ArrayNode
 	 *
 	 * @return PrototypeNodeInterface The prototype
 	 */
-	public function getPrototype()
-	{
+	public function getPrototype() {
 		return $this->prototype;
 	}
 
@@ -171,8 +161,7 @@ class PrototypedArrayNode extends ArrayNode
 	 *
 	 * @throws Exception
 	 */
-	public function addChild(NodeInterface $node)
-	{
+	public function addChild(NodeInterface $node) {
 		throw new Exception('A prototyped array node can not have concrete children.');
 	}
 
@@ -186,8 +175,7 @@ class PrototypedArrayNode extends ArrayNode
 	 * @throws UnsetKeyException
 	 * @throws InvalidConfigurationException if the node doesn't have enough children
 	 */
-	protected function finalizeValue($value)
-	{
+	protected function finalizeValue($value) {
 		if (false === $value) {
 			$msg = sprintf('Unsetting key for path "%s", value: %s', $this->getPath(), json_encode($value));
 			throw new UnsetKeyException($msg);
@@ -223,8 +211,7 @@ class PrototypedArrayNode extends ArrayNode
 	 * @throws InvalidConfigurationException
 	 * @throws DuplicateKeyException
 	 */
-	protected function normalizeValue($value)
-	{
+	protected function normalizeValue($value) {
 		if (false === $value) {
 			return $value;
 		}
@@ -286,8 +273,7 @@ class PrototypedArrayNode extends ArrayNode
 	 * @throws InvalidConfigurationException
 	 * @throws \RuntimeException
 	 */
-	protected function mergeValues($leftSide, $rightSide)
-	{
+	protected function mergeValues($leftSide, $rightSide) {
 		if (false === $rightSide) {
 			// if this is still false after the last config has been merged the
 			// finalization pass will take care of removing this key entirely

@@ -15,10 +15,8 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class DescriptorCommand2 extends Command
-{
-	protected function configure()
-	{
+class DescriptorCommand2 extends Command {
+	protected function configure() {
 		$this
 			->setName('descriptor:command2')
 			->setDescription('command 2 description')

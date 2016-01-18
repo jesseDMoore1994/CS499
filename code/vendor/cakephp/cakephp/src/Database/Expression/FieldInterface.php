@@ -20,8 +20,7 @@ namespace Cake\Database\Expression;
  *
  * @internal
  */
-interface FieldInterface
-{
+interface FieldInterface {
 
 	/**
 	 * Sets the field name

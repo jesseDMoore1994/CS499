@@ -24,8 +24,7 @@ use Psy\Exception\FatalErrorException;
  *
  * @author Martin Hasoň <martin.hason@gmail.com>
  */
-class CallTimePassByReferencePass extends CodeCleanerPass
-{
+class CallTimePassByReferencePass extends CodeCleanerPass {
 	/**
 	 * Validate of use call-time pass-by-reference.
 	 *
@@ -33,8 +32,7 @@ class CallTimePassByReferencePass extends CodeCleanerPass
 	 *
 	 * @param Node $node
 	 */
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		if (version_compare(PHP_VERSION, '5.4', '<')) {
 			return;
 		}

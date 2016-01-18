@@ -34,8 +34,7 @@ use Cake\Utility\Security;
  *
  * @link http://book.cakephp.org/3.0/en/controllers/components/cookie.html
  */
-class CookieComponent extends Component
-{
+class CookieComponent extends Component {
 	use CookieCryptTrait;
 
 	/**
@@ -113,8 +112,7 @@ class CookieComponent extends Component
 	 * @param array $config The config data.
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		if (!$this->_config['key']) {
 			$this->config('key', Security::salt());
 		}
@@ -161,8 +159,7 @@ class CookieComponent extends Component
 	 * @param string|null $value Either the value to set, or empty when $option is an array.
 	 * @return array|null
 	 */
-	public function configKey($keyname, $option = null, $value = null)
-	{
+	public function configKey($keyname, $option = null, $value = null) {
 		if ($option === null) {
 			$default = $this->_config;
 			$local = isset($this->_keyConfig[$keyname]) ? $this->_keyConfig[$keyname] : [];
@@ -180,8 +177,7 @@ class CookieComponent extends Component
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 
@@ -195,8 +191,7 @@ class CookieComponent extends Component
 	 * @param mixed $value Value
 	 * @return void
 	 */
-	public function write($key, $value = null)
-	{
+	public function write($key, $value = null) {
 		if (!is_array($key)) {
 			$key = [$key => $value];
 		}
@@ -224,8 +219,7 @@ class CookieComponent extends Component
 	 * @param string|null $key Key of the value to be obtained.
 	 * @return string or null, value for specified key
 	 */
-	public function read($key = null)
-	{
+	public function read($key = null) {
 		$this->_load($key);
 		return Hash::get($this->_values, $key);
 	}
@@ -239,8 +233,7 @@ class CookieComponent extends Component
 	 * @param string|array $key The key to load.
 	 * @return void
 	 */
-	protected function _load($key)
-	{
+	protected function _load($key) {
 		$parts = explode('.', $key);
 		$first = array_shift($parts);
 		if (isset($this->_loaded[$first])) {
@@ -261,8 +254,7 @@ class CookieComponent extends Component
 	 * @param string|null $key Key to check for
 	 * @return bool True if the key exists
 	 */
-	public function check($key = null)
-	{
+	public function check($key = null) {
 		if (empty($key)) {
 			return false;
 		}
@@ -281,8 +273,7 @@ class CookieComponent extends Component
 	 * @param string $key Key of the value to be deleted
 	 * @return void
 	 */
-	public function delete($key)
-	{
+	public function delete($key) {
 		$this->_load($key);
 
 		$this->_values = Hash::remove($this->_values, $key);
@@ -303,8 +294,7 @@ class CookieComponent extends Component
 	 * @param string $value Value for cookie
 	 * @return void
 	 */
-	protected function _write($name, $value)
-	{
+	protected function _write($name, $value) {
 		$config = $this->configKey($name);
 		$expires = new Time($config['expires']);
 
@@ -328,8 +318,7 @@ class CookieComponent extends Component
 	 * @param string $name Name of cookie
 	 * @return void
 	 */
-	protected function _delete($name)
-	{
+	protected function _delete($name) {
 		$config = $this->configKey($name);
 		$expires = new Time('now');
 
@@ -349,8 +338,7 @@ class CookieComponent extends Component
 	 *
 	 * @return string
 	 */
-	protected function _getCookieEncryptionKey()
-	{
+	protected function _getCookieEncryptionKey() {
 		return $this->_config['key'];
 	}
 }

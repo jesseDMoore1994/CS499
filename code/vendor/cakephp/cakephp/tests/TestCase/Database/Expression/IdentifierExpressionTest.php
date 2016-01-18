@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
  * Tests IdentifierExpression class
  *
  */
-class IdentifierExpressionTest extends TestCase
-{
+class IdentifierExpressionTest extends TestCase {
 
 	/**
 	 * Tests getting and setting the field
 	 *
 	 * @return void
 	 */
-	public function testGetAndSet()
-	{
+	public function testGetAndSet() {
 		$expression = new IdentifierExpression('foo');
 		$this->assertEquals('foo', $expression->getIdentifier());
 		$expression->setIdentifier('bar');
@@ -44,8 +42,7 @@ class IdentifierExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSQL()
-	{
+	public function testSQL() {
 		$expression = new IdentifierExpression('foo');
 		$this->assertEquals('foo', $expression->sql(new ValueBinder));
 	}

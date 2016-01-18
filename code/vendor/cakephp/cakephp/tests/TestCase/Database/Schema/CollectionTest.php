@@ -25,8 +25,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Test case for Collection
  */
-class CollectionTest extends TestCase
-{
+class CollectionTest extends TestCase {
 
 	public $fixtures = [
 		'core.users'
@@ -37,8 +36,7 @@ class CollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->connection = ConnectionManager::get('test');
 		Cache::clear(false, '_cake_model_');
@@ -50,8 +48,7 @@ class CollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->connection);
 	}
@@ -65,8 +62,7 @@ class CollectionTest extends TestCase
 	 * @expectedException \Cake\Database\Exception
 	 * @return void
 	 */
-	public function testDescribeIncorrectTable()
-	{
+	public function testDescribeIncorrectTable() {
 		$schema = new Collection($this->connection);
 		$this->assertNull($schema->describe('derp'));
 	}
@@ -76,8 +72,7 @@ class CollectionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDescribeCache()
-	{
+	public function testDescribeCache() {
 		$schema = $this->connection->schemaCollection();
 		$table = $this->connection->schemaCollection()->describe('users');
 

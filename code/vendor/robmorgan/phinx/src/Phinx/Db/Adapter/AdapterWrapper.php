@@ -43,8 +43,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Woody Gilk <woody.gilk@gmail.com>
  */
-abstract class AdapterWrapper implements AdapterInterface, WrapperInterface
-{
+abstract class AdapterWrapper implements AdapterInterface, WrapperInterface {
 	/**
 	 * @var AdapterInterface
 	 */
@@ -53,16 +52,14 @@ abstract class AdapterWrapper implements AdapterInterface, WrapperInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct(AdapterInterface $adapter)
-	{
+	public function __construct(AdapterInterface $adapter) {
 		$this->setAdapter($adapter);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setAdapter(AdapterInterface $adapter)
-	{
+	public function setAdapter(AdapterInterface $adapter) {
 		$this->adapter = $adapter;
 		return $this;
 	}
@@ -70,16 +67,14 @@ abstract class AdapterWrapper implements AdapterInterface, WrapperInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getAdapter()
-	{
+	public function getAdapter() {
 		return $this->adapter;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setOptions(array $options)
-	{
+	public function setOptions(array $options) {
 		$this->adapter->setOptions($options);
 		return $this;
 	}
@@ -87,32 +82,28 @@ abstract class AdapterWrapper implements AdapterInterface, WrapperInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getOptions()
-	{
+	public function getOptions() {
 		return $this->adapter->getOptions();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasOption($name)
-	{
+	public function hasOption($name) {
 		return $this->adapter->hasOption($name);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getOption($name)
-	{
+	public function getOption($name) {
 		return $this->adapter->getOption($name);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setOutput(OutputInterface $output)
-	{
+	public function setOutput(OutputInterface $output) {
 		$this->adapter->setOutput($output);
 		return $this;
 	}
@@ -120,80 +111,70 @@ abstract class AdapterWrapper implements AdapterInterface, WrapperInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getOutput()
-	{
+	public function getOutput() {
 		return $this->adapter->getOutput();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function connect()
-	{
+	public function connect() {
 		return $this->getAdapter()->connect();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function disconnect()
-	{
+	public function disconnect() {
 		return $this->getAdapter()->disconnect();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function execute($sql)
-	{
+	public function execute($sql) {
 		return $this->getAdapter()->execute($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function query($sql)
-	{
+	public function query($sql) {
 		return $this->getAdapter()->query($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function insert(Table $table, $row)
-	{
+	public function insert(Table $table, $row) {
 		return $this->getAdapter()->insert($table, $row);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function fetchRow($sql)
-	{
+	public function fetchRow($sql) {
 		return $this->getAdapter()->fetchRow($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function fetchAll($sql)
-	{
+	public function fetchAll($sql) {
 		return $this->getAdapter()->fetchAll($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getVersions()
-	{
+	public function getVersions() {
 		return $this->getAdapter()->getVersions();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function migrated(MigrationInterface $migration, $direction, $startTime, $endTime)
-	{
+	public function migrated(MigrationInterface $migration, $direction, $startTime, $endTime) {
 		$this->getAdapter()->migrated($migration, $direction, $startTime, $endTime);
 		return $this;
 	}
@@ -201,256 +182,224 @@ abstract class AdapterWrapper implements AdapterInterface, WrapperInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasSchemaTable()
-	{
+	public function hasSchemaTable() {
 		return $this->getAdapter()->hasSchemaTable();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function createSchemaTable()
-	{
+	public function createSchemaTable() {
 		return $this->getAdapter()->createSchemaTable();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getColumnTypes()
-	{
+	public function getColumnTypes() {
 		return $this->getAdapter()->getColumnTypes();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function isValidColumnType(Column $column)
-	{
+	public function isValidColumnType(Column $column) {
 		return $this->getAdapter()->isValidColumnType($column);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasTransactions()
-	{
+	public function hasTransactions() {
 		return $this->getAdapter()->hasTransactions();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function beginTransaction()
-	{
+	public function beginTransaction() {
 		return $this->getAdapter()->beginTransaction();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function commitTransaction()
-	{
+	public function commitTransaction() {
 		return $this->getAdapter()->commitTransaction();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function rollbackTransaction()
-	{
+	public function rollbackTransaction() {
 		return $this->getAdapter()->rollbackTransaction();
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function quoteTableName($tableName)
-	{
+	public function quoteTableName($tableName) {
 		return $this->getAdapter()->quoteTableName($tableName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function quoteColumnName($columnName)
-	{
+	public function quoteColumnName($columnName) {
 		return $this->getAdapter()->quoteColumnName($columnName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasTable($tableName)
-	{
+	public function hasTable($tableName) {
 		return $this->getAdapter()->hasTable($tableName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function createTable(Table $table)
-	{
+	public function createTable(Table $table) {
 		return $this->getAdapter()->createTable($table);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function renameTable($tableName, $newTableName)
-	{
+	public function renameTable($tableName, $newTableName) {
 		return $this->getAdapter()->renameTable($tableName, $newTableName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropTable($tableName)
-	{
+	public function dropTable($tableName) {
 		return $this->getAdapter()->dropTable($tableName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getColumns($tableName)
-	{
+	public function getColumns($tableName) {
 		return $this->getAdapter()->getColumns($tableName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasColumn($tableName, $columnName)
-	{
+	public function hasColumn($tableName, $columnName) {
 		return $this->getAdapter()->hasColumn($tableName, $columnName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addColumn(Table $table, Column $column)
-	{
+	public function addColumn(Table $table, Column $column) {
 		return $this->getAdapter()->addColumn($table, $column);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function renameColumn($tableName, $columnName, $newColumnName)
-	{
+	public function renameColumn($tableName, $columnName, $newColumnName) {
 		return $this->getAdapter()->renameColumn($tableName, $columnName, $newColumnName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function changeColumn($tableName, $columnName, Column $newColumn)
-	{
+	public function changeColumn($tableName, $columnName, Column $newColumn) {
 		return $this->getAdapter()->changeColumn($tableName, $columnName, $newColumn);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropColumn($tableName, $columnName)
-	{
+	public function dropColumn($tableName, $columnName) {
 		return $this->getAdapter()->dropColumn($tableName, $columnName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasIndex($tableName, $columns)
-	{
+	public function hasIndex($tableName, $columns) {
 		return $this->getAdapter()->hasIndex($tableName, $columns);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasIndexByName($tableName, $indexName)
-	{
+	public function hasIndexByName($tableName, $indexName) {
 		return $this->getAdapter()->hasIndexByName($tableName, $indexName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addIndex(Table $table, Index $index)
-	{
+	public function addIndex(Table $table, Index $index) {
 		return $this->getAdapter()->addIndex($table, $index);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropIndex($tableName, $columns, $options = array())
-	{
+	public function dropIndex($tableName, $columns, $options = array()) {
 		return $this->getAdapter()->dropIndex($tableName, $columns, $options);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropIndexByName($tableName, $indexName)
-	{
+	public function dropIndexByName($tableName, $indexName) {
 		return $this->getAdapter()->dropIndexByName($tableName, $indexName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasForeignKey($tableName, $columns, $constraint = null)
-	{
+	public function hasForeignKey($tableName, $columns, $constraint = null) {
 		return $this->getAdapter()->hasForeignKey($tableName, $columns, $constraint);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addForeignKey(Table $table, ForeignKey $foreignKey)
-	{
+	public function addForeignKey(Table $table, ForeignKey $foreignKey) {
 		return $this->getAdapter()->addForeignKey($table, $foreignKey);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropForeignKey($tableName, $columns, $constraint = null)
-	{
+	public function dropForeignKey($tableName, $columns, $constraint = null) {
 		return $this->getAdapter()->dropForeignKey($tableName, $columns, $constraint);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getSqlType($type, $limit = null)
-	{
+	public function getSqlType($type, $limit = null) {
 		return $this->getAdapter()->getSqlType($type, $limit);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function createDatabase($name, $options = array())
-	{
+	public function createDatabase($name, $options = array()) {
 		return $this->getAdapter()->createDatabase($name, $options);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasDatabase($name)
-	{
+	public function hasDatabase($name) {
 		return $this->getAdapter()->hasDatabase($name);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropDatabase($name)
-	{
+	public function dropDatabase($name) {
 		return $this->getAdapter()->dropDatabase($name);
 	}
 }

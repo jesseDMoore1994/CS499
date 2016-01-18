@@ -21,16 +21,14 @@ use Cake\View\Widget\FileWidget;
 /**
  * File input test.
  */
-class FileWidgetTest extends TestCase
-{
+class FileWidgetTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$templates = [
 			'file' => '<input type="file" name="{{name}}"{{attrs}}>',
@@ -44,8 +42,7 @@ class FileWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSimple()
-	{
+	public function testRenderSimple() {
 		$input = new FileWidget($this->templates);
 		$result = $input->render(['name' => 'image'], $this->context);
 		$expected = [
@@ -59,8 +56,7 @@ class FileWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderAttributes()
-	{
+	public function testRenderAttributes() {
 		$input = new FileWidget($this->templates);
 		$data = ['name' => 'image', 'required' => true, 'val' => 'nope'];
 		$result = $input->render($data, $this->context);
@@ -75,8 +71,7 @@ class FileWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderTemplateVars()
-	{
+	public function testRenderTemplateVars() {
 		$this->templates->add([
 			'file' => '<input custom="{{custom}}" type="file" name="{{name}}"{{attrs}}>',
 		]);

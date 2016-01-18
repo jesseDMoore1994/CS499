@@ -22,8 +22,7 @@ use Cake\Core\Exception\Exception;
  * JSON engine allows Configure to load configuration values from
  * files containing JSON strings.
  */
-class JsonConfig implements ConfigEngineInterface
-{
+class JsonConfig implements ConfigEngineInterface {
 
 	use FileConfigTrait;
 
@@ -39,8 +38,7 @@ class JsonConfig implements ConfigEngineInterface
 	 *
 	 * @param string|null $path The path to read config files from. Defaults to CONFIG.
 	 */
-	public function __construct($path = null)
-	{
+	public function __construct($path = null) {
 		if ($path === null) {
 			$path = CONFIG;
 		}
@@ -60,8 +58,7 @@ class JsonConfig implements ConfigEngineInterface
 	 *   files contain '..' (as this could lead to abusive reads) or when there
 	 *   is an error parsing the JSON string.
 	 */
-	public function read($key)
-	{
+	public function read($key) {
 		$file = $this->_getFilePath($key, true);
 
 		$values = json_decode(file_get_contents($file), true);
@@ -90,8 +87,7 @@ class JsonConfig implements ConfigEngineInterface
 	 * @param array $data Data to dump.
 	 * @return bool Success
 	 */
-	public function dump($key, array $data)
-	{
+	public function dump($key, array $data) {
 		$filename = $this->_getFilePath($key);
 		return file_put_contents($filename, json_encode($data)) > 0;
 	}

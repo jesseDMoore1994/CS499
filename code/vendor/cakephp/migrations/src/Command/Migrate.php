@@ -19,8 +19,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Migrate extends MigrateCommand
-{
+class Migrate extends MigrateCommand {
 
 	use ConfigurationTrait {
 		execute as parentExecute;
@@ -30,8 +29,7 @@ class Migrate extends MigrateCommand
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this->setName('migrate')
 			->setDescription('Migrate the database')
 			->setHelp('runs all available migrations, optionally up to a specific version')
@@ -50,8 +48,7 @@ class Migrate extends MigrateCommand
 	 * @param \Symfony\Component\Console\Output\OutputInterface $output the output object
 	 * @return mixed
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$event = $this->dispatchEvent('Migration.beforeMigrate');
 		if ($event->isStopped()) {
 			return $event->result;

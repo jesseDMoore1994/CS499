@@ -20,8 +20,7 @@ use Psy\Exception\ParseErrorException;
  * Validate that the user did not call the language construct `empty()` on a
  * statement in PHP < 5.5.
  */
-class LegacyEmptyPass extends CodeCleanerPass
-{
+class LegacyEmptyPass extends CodeCleanerPass {
 	/**
 	 * Validate use of empty in PHP < 5.5.
 	 *
@@ -29,8 +28,7 @@ class LegacyEmptyPass extends CodeCleanerPass
 	 *
 	 * @param Node $node
 	 */
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		if (version_compare(PHP_VERSION, '5.5', '>=')) {
 			return;
 		}
@@ -46,8 +44,7 @@ class LegacyEmptyPass extends CodeCleanerPass
 		}
 	}
 
-	private function getUnexpectedThing(Node $node)
-	{
+	private function getUnexpectedThing(Node $node) {
 		switch ($node->getType()) {
 			case 'Scalar_String':
 			case 'Scalar_LNumber':

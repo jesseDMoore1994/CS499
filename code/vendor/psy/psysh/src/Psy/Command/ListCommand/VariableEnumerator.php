@@ -18,8 +18,7 @@ use Symfony\Component\Console\Input\InputInterface;
 /**
  * Variable Enumerator class.
  */
-class VariableEnumerator extends Enumerator
-{
+class VariableEnumerator extends Enumerator {
 	private static $specialVars = array('_', '_e');
 	private $context;
 
@@ -32,8 +31,7 @@ class VariableEnumerator extends Enumerator
 	 * @param Presenter $presenter
 	 * @param Context $context
 	 */
-	public function __construct(Presenter $presenter, Context $context)
-	{
+	public function __construct(Presenter $presenter, Context $context) {
 		$this->context = $context;
 		parent::__construct($presenter);
 	}
@@ -41,8 +39,7 @@ class VariableEnumerator extends Enumerator
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null)
-	{
+	protected function listItems(InputInterface $input, \Reflector $reflector = null, $target = null) {
 		// only list variables when no Reflector is present.
 		if ($reflector !== null || $target !== null) {
 			return;
@@ -72,8 +69,7 @@ class VariableEnumerator extends Enumerator
 	 *
 	 * @return array
 	 */
-	protected function getVariables($showAll)
-	{
+	protected function getVariables($showAll) {
 		$scopeVars = $this->context->getAll();
 		uksort($scopeVars, function ($a, $b) {
 			if ($a === '_e') {
@@ -109,8 +105,7 @@ class VariableEnumerator extends Enumerator
 	 *
 	 * @return array
 	 */
-	protected function prepareVariables(array $variables)
-	{
+	protected function prepareVariables(array $variables) {
 		// My kingdom for a generator.
 		$ret = array();
 		foreach ($variables as $name => $val) {

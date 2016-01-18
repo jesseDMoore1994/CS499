@@ -18,8 +18,7 @@ namespace Cake\Database;
  * Represents a database statement. Concrete implementations
  * can either use PDOStatement or a native driver
  */
-interface StatementInterface
-{
+interface StatementInterface {
 
 	/**
 	 * Assign a value to a positional or named variable in prepared query. If using

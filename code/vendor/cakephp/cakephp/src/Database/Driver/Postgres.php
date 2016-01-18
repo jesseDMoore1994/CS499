@@ -18,8 +18,7 @@ use Cake\Database\Dialect\PostgresDialectTrait;
 use Cake\Database\Driver;
 use PDO;
 
-class Postgres extends Driver
-{
+class Postgres extends Driver {
 
 	use PDODriverTrait;
 	use PostgresDialectTrait;
@@ -48,8 +47,7 @@ class Postgres extends Driver
 	 *
 	 * @return bool true on success
 	 */
-	public function connect()
-	{
+	public function connect() {
 		if ($this->_connection) {
 			return true;
 		}
@@ -89,8 +87,7 @@ class Postgres extends Driver
 	 *
 	 * @return bool true if it is valid to use this driver
 	 */
-	public function enabled()
-	{
+	public function enabled() {
 		return in_array('pgsql', PDO::getAvailableDrivers());
 	}
 
@@ -100,8 +97,7 @@ class Postgres extends Driver
 	 * @param string $encoding The encoding to use.
 	 * @return void
 	 */
-	public function setEncoding($encoding)
-	{
+	public function setEncoding($encoding) {
 		$this->connect();
 		$this->_connection->exec('SET NAMES ' . $this->_connection->quote($encoding));
 	}
@@ -113,8 +109,7 @@ class Postgres extends Driver
 	 * @param string $schema The schema names to set `search_path` to.
 	 * @return void
 	 */
-	public function setSchema($schema)
-	{
+	public function setSchema($schema) {
 		$this->connect();
 		$this->_connection->exec('SET search_path TO ' . $this->_connection->quote($schema));
 	}
@@ -122,8 +117,7 @@ class Postgres extends Driver
 	/**
 	 * {@inheritDoc}
 	 */
-	public function supportsDynamicConstraints()
-	{
+	public function supportsDynamicConstraints() {
 		return true;
 	}
 }

@@ -20,16 +20,14 @@ namespace TestPlugin\Shell;
 
 use Cake\Console\Shell;
 
-class ExampleShell extends Shell
-{
+class ExampleShell extends Shell {
 
 	/**
 	 * main method
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		$this->out('This is the main method called from TestPlugin.ExampleShell');
 	}
 }

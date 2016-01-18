@@ -2,15 +2,13 @@
 
 namespace PhpParser\Node\Name;
 
-class FullyQualified extends \PhpParser\Node\Name
-{
+class FullyQualified extends \PhpParser\Node\Name {
 	/**
 	 * Checks whether the name is unqualified. (E.g. Name)
 	 *
 	 * @return bool Whether the name is unqualified
 	 */
-	public function isUnqualified()
-	{
+	public function isUnqualified() {
 		return false;
 	}
 
@@ -19,8 +17,7 @@ class FullyQualified extends \PhpParser\Node\Name
 	 *
 	 * @return bool Whether the name is qualified
 	 */
-	public function isQualified()
-	{
+	public function isQualified() {
 		return false;
 	}
 
@@ -29,8 +26,7 @@ class FullyQualified extends \PhpParser\Node\Name
 	 *
 	 * @return bool Whether the name is fully qualified
 	 */
-	public function isFullyQualified()
-	{
+	public function isFullyQualified() {
 		return true;
 	}
 
@@ -39,8 +35,7 @@ class FullyQualified extends \PhpParser\Node\Name
 	 *
 	 * @return bool Whether the name is relative
 	 */
-	public function isRelative()
-	{
+	public function isRelative() {
 		return false;
 	}
 }

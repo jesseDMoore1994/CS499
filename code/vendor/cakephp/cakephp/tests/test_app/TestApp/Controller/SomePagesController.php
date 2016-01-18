@@ -20,8 +20,7 @@ use Cake\Network\Response;
  * SomePagesController class
  *
  */
-class SomePagesController extends Controller
-{
+class SomePagesController extends Controller {
 
 	/**
 	 * display method
@@ -29,8 +28,7 @@ class SomePagesController extends Controller
 	 * @param mixed $page
 	 * @return void
 	 */
-	public function display($page = null)
-	{
+	public function display($page = null) {
 	}
 
 	/**
@@ -38,8 +36,7 @@ class SomePagesController extends Controller
 	 *
 	 * @return void
 	 */
-	public function index()
-	{
+	public function index() {
 		return true;
 	}
 
@@ -48,13 +45,11 @@ class SomePagesController extends Controller
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function responseGenerator()
-	{
+	public function responseGenerator() {
 		$this->response->body('new response');
 		return $this->response;
 	}
 
-	protected function _fail()
-	{
+	protected function _fail() {
 	}
 }

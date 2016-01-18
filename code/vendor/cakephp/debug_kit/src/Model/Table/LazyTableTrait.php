@@ -22,8 +22,7 @@ use Cake\Core\App;
  *
  * This trait lets us dump fixture schema into a given database at runtime.
  */
-trait LazyTableTrait
-{
+trait LazyTableTrait {
 
 	/**
 	 * Ensures the tables for the given fixtures exist in the schema.
@@ -34,8 +33,7 @@ trait LazyTableTrait
 	 * @return void
 	 * @throws \RuntimeException When fixtures are missing/unknown/fail.
 	 */
-	public function ensureTables(array $fixtures)
-	{
+	public function ensureTables(array $fixtures) {
 		$connection = $this->connection();
 		$schema = $connection->schemaCollection();
 		$existing = $schema->listTables();

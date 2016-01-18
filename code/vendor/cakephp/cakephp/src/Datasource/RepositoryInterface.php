@@ -18,8 +18,7 @@ namespace Cake\Datasource;
  * Describes the methods that any class representing a data storage should
  * comply with.
  */
-interface RepositoryInterface
-{
+interface RepositoryInterface {
 
 	/**
 	 * Returns the table alias or sets a new one

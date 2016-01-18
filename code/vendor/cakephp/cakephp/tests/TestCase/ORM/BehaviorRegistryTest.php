@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Test case for BehaviorRegistry.
  */
-class BehaviorRegistryTest extends TestCase
-{
+class BehaviorRegistryTest extends TestCase {
 
 	/**
 	 * setup method.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->Table = new Table(['table' => 'articles']);
 		$this->EventManager = $this->Table->eventManager();
@@ -45,8 +43,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		Plugin::unload();
 		unset($this->Table, $this->EventManager, $this->Behaviors);
 		parent::tearDown();
@@ -57,8 +54,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoad()
-	{
+	public function testLoad() {
 		Plugin::load('TestPlugin');
 		$config = ['alias' => 'Sluggable', 'replacement' => '-'];
 		$result = $this->Behaviors->load('Sluggable', $config);
@@ -74,8 +70,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadBindEvents()
-	{
+	public function testLoadBindEvents() {
 		$result = $this->EventManager->listeners('Model.beforeFind');
 		$this->assertCount(0, $result);
 
@@ -91,8 +86,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadEnabledFalse()
-	{
+	public function testLoadEnabledFalse() {
 		$result = $this->EventManager->listeners('Model.beforeFind');
 		$this->assertCount(0, $result);
 
@@ -106,8 +100,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadPlugin()
-	{
+	public function testLoadPlugin() {
 		Plugin::load('TestPlugin');
 		$result = $this->Behaviors->load('TestPlugin.PersisterOne');
 
@@ -128,8 +121,7 @@ class BehaviorRegistryTest extends TestCase
 	 * @expectedException \Cake\ORM\Exception\MissingBehaviorException
 	 * @return void
 	 */
-	public function testLoadMissingClass()
-	{
+	public function testLoadMissingClass() {
 		$this->Behaviors->load('DoesNotExist');
 	}
 
@@ -140,8 +132,7 @@ class BehaviorRegistryTest extends TestCase
 	 * @expectedExceptionMessage TestApp\Model\Behavior\DuplicateBehavior contains duplicate method "slugify"
 	 * @return void
 	 */
-	public function testLoadDuplicateMethodError()
-	{
+	public function testLoadDuplicateMethodError() {
 		$this->Behaviors->load('Sluggable');
 		$this->Behaviors->load('Duplicate');
 	}
@@ -151,8 +142,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadDuplicateMethodAliasing()
-	{
+	public function testLoadDuplicateMethodAliasing() {
 		$this->Behaviors->load('Tree');
 		$this->Behaviors->load('Duplicate', [
 			'implementedFinders' => [
@@ -172,8 +162,7 @@ class BehaviorRegistryTest extends TestCase
 	 * @expectedExceptionMessage TestApp\Model\Behavior\DuplicateBehavior contains duplicate finder "children"
 	 * @return void
 	 */
-	public function testLoadDuplicateFinderError()
-	{
+	public function testLoadDuplicateFinderError() {
 		$this->Behaviors->load('Tree');
 		$this->Behaviors->load('Duplicate');
 	}
@@ -183,8 +172,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadDuplicateFinderAliasing()
-	{
+	public function testLoadDuplicateFinderAliasing() {
 		$this->Behaviors->load('Tree');
 		$this->Behaviors->load('Duplicate', [
 			'implementedFinders' => [
@@ -199,8 +187,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHasMethod()
-	{
+	public function testHasMethod() {
 		Plugin::load('TestPlugin');
 		$this->Behaviors->load('TestPlugin.PersisterOne');
 		$this->Behaviors->load('Sluggable');
@@ -225,8 +212,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHasFinder()
-	{
+	public function testHasFinder() {
 		$this->Behaviors->load('Sluggable');
 
 		$this->assertTrue($this->Behaviors->hasFinder('noSlug'));
@@ -246,8 +232,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCall()
-	{
+	public function testCall() {
 		$this->Behaviors->load('Sluggable');
 		$mockedBehavior = $this->getMockBuilder('Cake\ORM\Behavior')
 			->setMethods(['slugify'])
@@ -270,8 +255,7 @@ class BehaviorRegistryTest extends TestCase
 	 * @expectedException \BadMethodCallException
 	 * @expectedExceptionMessage Cannot call "nope"
 	 */
-	public function testCallError()
-	{
+	public function testCallError() {
 		$this->Behaviors->load('Sluggable');
 		$this->Behaviors->call('nope');
 	}
@@ -284,8 +268,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCallFinder()
-	{
+	public function testCallFinder() {
 		$this->Behaviors->load('Sluggable');
 		$mockedBehavior = $this->getMockBuilder('Cake\ORM\Behavior')
 			->setMethods(['findNoSlug'])
@@ -309,8 +292,7 @@ class BehaviorRegistryTest extends TestCase
 	 * @expectedException \BadMethodCallException
 	 * @expectedExceptionMessage Cannot call finder "nope"
 	 */
-	public function testCallFinderError()
-	{
+	public function testCallFinderError() {
 		$this->Behaviors->load('Sluggable');
 		$this->Behaviors->callFinder('nope');
 	}
@@ -321,8 +303,7 @@ class BehaviorRegistryTest extends TestCase
 	 * @expectedException \BadMethodCallException
 	 * @expectedExceptionMessage Cannot call "slugify" it does not belong to any attached behavior.
 	 */
-	public function testUnloadBehaviorThenCall()
-	{
+	public function testUnloadBehaviorThenCall() {
 		$this->Behaviors->load('Sluggable');
 		$this->Behaviors->unload('Sluggable');
 
@@ -335,8 +316,7 @@ class BehaviorRegistryTest extends TestCase
 	 * @expectedException \BadMethodCallException
 	 * @expectedExceptionMessage Cannot call finder "noslug" it does not belong to any attached behavior.
 	 */
-	public function testUnloadBehaviorThenCallFinder()
-	{
+	public function testUnloadBehaviorThenCallFinder() {
 		$this->Behaviors->load('Sluggable');
 		$this->Behaviors->unload('Sluggable');
 
@@ -348,8 +328,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUnloadBehaviorThenReload()
-	{
+	public function testUnloadBehaviorThenReload() {
 		$this->Behaviors->load('Sluggable');
 		$this->Behaviors->unload('Sluggable');
 
@@ -365,8 +344,7 @@ class BehaviorRegistryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetTable()
-	{
+	public function testSetTable() {
 		$table = $this->getMock('Cake\ORM\Table');
 		$table->expects($this->once())->method('eventManager');
 

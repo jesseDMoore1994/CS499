@@ -19,8 +19,7 @@ use MessageFormatter;
  * @package Aura.Intl
  *
  */
-class IntlFormatter implements FormatterInterface
-{
+class IntlFormatter implements FormatterInterface {
 	/**
 	 *
 	 * Constructor.
@@ -32,8 +31,7 @@ class IntlFormatter implements FormatterInterface
 	 * is too low for Aura.Intl to work properly.
 	 *
 	 */
-	public function __construct($icu_version = INTL_ICU_VERSION)
-	{
+	public function __construct($icu_version = INTL_ICU_VERSION) {
 		if (version_compare($icu_version, '4.8') < 0) {
 			throw new Exception\IcuVersionTooLow('ICU Version 4.8 or higher required.');
 		}
@@ -49,8 +47,7 @@ class IntlFormatter implements FormatterInterface
 	 * @return string
 	 * @throws Exception
 	 */
-	public function format($locale, $string, array $tokens_values)
-	{
+	public function format($locale, $string, array $tokens_values) {
 		// extract tokens and retain sequential positions
 		$tokens = [];
 		$i = 0;

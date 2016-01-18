@@ -5,8 +5,7 @@ namespace PhpParser\Node\Stmt;
 use PhpParser\Node;
 use PhpParser\Error;
 
-class Class_ extends ClassLike
-{
+class Class_ extends ClassLike {
 	const MODIFIER_PUBLIC = 1;
 	const MODIFIER_PROTECTED = 2;
 	const MODIFIER_PRIVATE = 4;
@@ -40,8 +39,7 @@ class Class_ extends ClassLike
 	 *                                'stmts'      => array(): Statements
 	 * @param array $attributes Additional attributes
 	 */
-	public function __construct($name, array $subNodes = array(), array $attributes = array())
-	{
+	public function __construct($name, array $subNodes = array(), array $attributes = array()) {
 		parent::__construct($attributes);
 		$this->type = isset($subNodes['type']) ? $subNodes['type'] : 0;
 		$this->name = $name;
@@ -70,31 +68,26 @@ class Class_ extends ClassLike
 		}
 	}
 
-	public function getSubNodeNames()
-	{
+	public function getSubNodeNames() {
 		return array('type', 'name', 'extends', 'implements', 'stmts');
 	}
 
-	public function isAbstract()
-	{
+	public function isAbstract() {
 		return (bool)($this->type & self::MODIFIER_ABSTRACT);
 	}
 
-	public function isFinal()
-	{
+	public function isFinal() {
 		return (bool)($this->type & self::MODIFIER_FINAL);
 	}
 
-	public function isAnonymous()
-	{
+	public function isAnonymous() {
 		return null === $this->name;
 	}
 
 	/**
 	 * @internal
 	 */
-	public static function verifyModifier($a, $b)
-	{
+	public static function verifyModifier($a, $b) {
 		if ($a & self::VISIBILITY_MODIFER_MASK && $b & self::VISIBILITY_MODIFER_MASK) {
 			throw new Error('Multiple access type modifiers are not allowed');
 		}

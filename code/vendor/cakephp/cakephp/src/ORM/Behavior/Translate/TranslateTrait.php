@@ -20,8 +20,7 @@ use Cake\Datasource\EntityInterface;
  * Contains a translation method aimed to help managing multiple translations
  * for an entity.
  */
-trait TranslateTrait
-{
+trait TranslateTrait {
 
 	/**
 	 * Returns the entity containing the translated fields for this object and for
@@ -32,8 +31,7 @@ trait TranslateTrait
 	 * @param string $language Language to return entity for.
 	 * @return $this|\Cake\ORM\Entity
 	 */
-	public function translation($language)
-	{
+	public function translation($language) {
 		if ($language === $this->get('_locale')) {
 			return $this;
 		}

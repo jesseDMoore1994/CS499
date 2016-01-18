@@ -22,8 +22,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Tests the integration between the ORM and the domain checker
  */
-class RulesCheckerIntegrationTest extends TestCase
-{
+class RulesCheckerIntegrationTest extends TestCase {
 
 	/**
 	 * Fixtures to be loaded
@@ -37,8 +36,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -49,8 +47,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testsSaveBelongsToWithValidationError()
-	{
+	public function testsSaveBelongsToWithValidationError() {
 		$entity = new Entity([
 			'title' => 'A Title',
 			'body' => 'A body'
@@ -87,8 +84,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testSaveHasOneWithValidationError()
-	{
+	public function testSaveHasOneWithValidationError() {
 		$entity = new \Cake\ORM\Entity([
 			'name' => 'Jose'
 		]);
@@ -125,8 +121,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveHasManyWithErrorsAtomic()
-	{
+	public function testSaveHasManyWithErrorsAtomic() {
 		$entity = new \Cake\ORM\Entity([
 			'name' => 'Jose'
 		]);
@@ -173,8 +168,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveHasManyWithErrorsNonAtomic()
-	{
+	public function testSaveHasManyWithErrorsNonAtomic() {
 		$entity = new \Cake\ORM\Entity([
 			'name' => 'Jose'
 		]);
@@ -217,8 +211,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testSaveBelongsToManyWithValidationErrorInJointEntity()
-	{
+	public function testSaveBelongsToManyWithValidationErrorInJointEntity() {
 		$entity = new \Cake\ORM\Entity([
 			'title' => 'A Title',
 			'body' => 'A body'
@@ -257,8 +250,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testSaveBelongsToManyWithValidationErrorInJointEntityNonAtomic()
-	{
+	public function testSaveBelongsToManyWithValidationErrorInJointEntityNonAtomic() {
 		$entity = new \Cake\ORM\Entity([
 			'title' => 'A Title',
 			'body' => 'A body'
@@ -297,8 +289,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testAddingRuleWithName()
-	{
+	public function testAddingRuleWithName() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -323,8 +314,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testIsUniqueDomainRule()
-	{
+	public function testIsUniqueDomainRule() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -350,8 +340,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testIsUniqueMultipleFields()
-	{
+	public function testIsUniqueMultipleFields() {
 		$entity = new Entity([
 			'author_id' => 1,
 			'title' => 'First Article'
@@ -375,8 +364,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testExistsInDomainRule()
-	{
+	public function testExistsInDomainRule() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 500
@@ -397,8 +385,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testExistsInDomainRuleWithObject()
-	{
+	public function testExistsInDomainRuleWithObject() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 500
@@ -417,8 +404,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 *
 	 * @return
 	 */
-	public function testExistsInNullValue()
-	{
+	public function testExistsInNullValue() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => null
@@ -438,8 +424,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 *
 	 * @return
 	 */
-	public function testExistsInWithBindingKey()
-	{
+	public function testExistsInWithBindingKey() {
 		$entity = new Entity([
 			'title' => 'An Article',
 		]);
@@ -468,8 +453,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @expectedExceptionMessage ExistsIn rule for 'author_id' is invalid. The 'NotValid' association is not defined.
 	 * @return void
 	 */
-	public function testExistsInInvalidAssociation()
-	{
+	public function testExistsInInvalidAssociation() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 500
@@ -489,8 +473,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testSkipRulesChecking()
-	{
+	public function testSkipRulesChecking() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 500
@@ -509,8 +492,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testUseBeforeRules()
-	{
+	public function testUseBeforeRules() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 500
@@ -548,8 +530,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testUseAfterRules()
-	{
+	public function testUseAfterRules() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 500
@@ -588,8 +569,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testUseBuildRulesEvent()
-	{
+	public function testUseBuildRulesEvent() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 500
@@ -609,8 +589,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testIsUniqueWithCleanFields()
-	{
+	public function testIsUniqueWithCleanFields() {
 		$table = TableRegistry::get('Articles');
 		$entity = $table->get(1);
 		$rules = $table->rulesChecker();
@@ -629,8 +608,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testIsUniqueAliasPrefix()
-	{
+	public function testIsUniqueAliasPrefix() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 1
@@ -655,8 +633,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testExistsInWithCleanFields()
-	{
+	public function testExistsInWithCleanFields() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors');
 		$rules = $table->rulesChecker();
@@ -675,8 +652,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testExistsInAliasPrefix()
-	{
+	public function testExistsInAliasPrefix() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 500
@@ -700,8 +676,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 *
 	 * @return
 	 */
-	public function testExistsInErrorWithArrayField()
-	{
+	public function testExistsInErrorWithArrayField() {
 		$entity = new Entity([
 			'title' => 'An Article',
 			'author_id' => 500
@@ -722,8 +697,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group delete
 	 * @return void
 	 */
-	public function testDeleteRules()
-	{
+	public function testDeleteRules() {
 		$table = TableRegistry::get('Articles');
 		$rules = $table->rulesChecker();
 		$rules->addDelete(function ($entity) {
@@ -740,8 +714,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testCustomOptionsPassingSave()
-	{
+	public function testCustomOptionsPassingSave() {
 		$entity = new Entity([
 			'name' => 'jose'
 		]);
@@ -763,8 +736,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group delete
 	 * @return void
 	 */
-	public function testCustomOptionsPassingDelete()
-	{
+	public function testCustomOptionsPassingDelete() {
 		$table = TableRegistry::get('Articles');
 		$rules = $table->rulesChecker();
 		$rules->addDelete(function ($entity, $options) {
@@ -783,8 +755,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testCustomErrorMessageFromRule()
-	{
+	public function testCustomErrorMessageFromRule() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -805,8 +776,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testCustomErrorMessageFromRuleNoErrorField()
-	{
+	public function testCustomErrorMessageFromRuleNoErrorField() {
 		$entity = new Entity([
 			'name' => 'larry'
 		]);
@@ -828,8 +798,7 @@ class RulesCheckerIntegrationTest extends TestCase
 	 * @group save
 	 * @return void
 	 */
-	public function testAvoidExistsInOnAutomaticSaving()
-	{
+	public function testAvoidExistsInOnAutomaticSaving() {
 		$entity = new \Cake\ORM\Entity([
 			'name' => 'Jose'
 		]);

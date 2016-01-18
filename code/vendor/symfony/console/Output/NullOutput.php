@@ -22,21 +22,18 @@ use Symfony\Component\Console\Formatter\OutputFormatterInterface;
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Tobias Schultze <http://tobion.de>
  */
-class NullOutput implements OutputInterface
-{
+class NullOutput implements OutputInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setFormatter(OutputFormatterInterface $formatter)
-	{
+	public function setFormatter(OutputFormatterInterface $formatter) {
 		// do nothing
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getFormatter()
-	{
+	public function getFormatter() {
 		// to comply with the interface we must return a OutputFormatterInterface
 		return new OutputFormatter();
 	}
@@ -44,68 +41,58 @@ class NullOutput implements OutputInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setDecorated($decorated)
-	{
+	public function setDecorated($decorated) {
 		// do nothing
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function isDecorated()
-	{
+	public function isDecorated() {
 		return false;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setVerbosity($level)
-	{
+	public function setVerbosity($level) {
 		// do nothing
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getVerbosity()
-	{
+	public function getVerbosity() {
 		return self::VERBOSITY_QUIET;
 	}
 
-	public function isQuiet()
-	{
+	public function isQuiet() {
 		return true;
 	}
 
-	public function isVerbose()
-	{
+	public function isVerbose() {
 		return false;
 	}
 
-	public function isVeryVerbose()
-	{
+	public function isVeryVerbose() {
 		return false;
 	}
 
-	public function isDebug()
-	{
+	public function isDebug() {
 		return false;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function writeln($messages, $options = self::OUTPUT_NORMAL)
-	{
+	public function writeln($messages, $options = self::OUTPUT_NORMAL) {
 		// do nothing
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function write($messages, $newline = false, $options = self::OUTPUT_NORMAL)
-	{
+	public function write($messages, $newline = false, $options = self::OUTPUT_NORMAL) {
 		// do nothing
 	}
 }

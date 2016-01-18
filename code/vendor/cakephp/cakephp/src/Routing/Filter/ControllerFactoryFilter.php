@@ -26,8 +26,7 @@ use ReflectionClass;
  * This filter resolves the request parameters into a controller
  * instance and attaches it to the event object.
  */
-class ControllerFactoryFilter extends DispatcherFilter
-{
+class ControllerFactoryFilter extends DispatcherFilter {
 
 	/**
 	 * Priority is set high to allow other filters to be called first.
@@ -43,8 +42,7 @@ class ControllerFactoryFilter extends DispatcherFilter
 	 * @param \Cake\Event\Event $event The event instance.
 	 * @return void
 	 */
-	public function beforeDispatch(Event $event)
-	{
+	public function beforeDispatch(Event $event) {
 		$request = $event->data['request'];
 		$response = $event->data['response'];
 		$event->data['controller'] = $this->_getController($request, $response);
@@ -57,8 +55,7 @@ class ControllerFactoryFilter extends DispatcherFilter
 	 * @param \Cake\Network\Response $response Response for the controller.
 	 * @return mixed name of controller if not loaded, or object if loaded
 	 */
-	protected function _getController($request, $response)
-	{
+	protected function _getController($request, $response) {
 		$pluginPath = $controller = null;
 		$namespace = 'Controller';
 		if (!empty($request->params['plugin'])) {

@@ -29,16 +29,14 @@ use TestApp\View\CustomJsonView;
  *
  * For testing both View\Cell & Utility\CellTrait
  */
-class CellTest extends TestCase
-{
+class CellTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 		Plugin::load(['TestPlugin', 'TestTheme']);
@@ -52,8 +50,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Plugin::unload('TestPlugin');
 		Plugin::unload('TestTheme');
@@ -65,8 +62,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCellRender()
-	{
+	public function testCellRender() {
 		$cell = $this->View->cell('Articles::teaserList');
 		$render = "{$cell}";
 
@@ -86,8 +82,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCellImplictRenderWithError()
-	{
+	public function testCellImplictRenderWithError() {
 		$capture = function ($errno, $msg) {
 			restore_error_handler();
 			$this->assertEquals(E_USER_WARNING, $errno);
@@ -108,8 +103,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCellWithArguments()
-	{
+	public function testCellWithArguments() {
 		$cell = $this->View->cell('Articles::doEcho', ['msg1' => 'dummy', 'msg2' => ' message']);
 		$render = "{$cell}";
 		$this->assertContains('dummy message', $render);
@@ -120,8 +114,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDefaultCellAction()
-	{
+	public function testDefaultCellAction() {
 		$appCell = $this->View->cell('Articles');
 
 		$this->assertEquals('display', $appCell->template);
@@ -137,8 +130,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCellManualRender()
-	{
+	public function testCellManualRender() {
 		$cell = $this->View->cell('Articles::doEcho', ['msg1' => 'dummy', 'msg2' => ' message']);
 		$this->assertContains('dummy message', $cell->render());
 
@@ -152,8 +144,7 @@ class CellTest extends TestCase
 	 * @expectedException \Cake\View\Exception\MissingCellViewException
 	 * @return void
 	 */
-	public function testCellManualRenderError()
-	{
+	public function testCellManualRenderError() {
 		$cell = $this->View->cell('Articles');
 		$cell->render('derp');
 	}
@@ -163,8 +154,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCellRenderThemed()
-	{
+	public function testCellRenderThemed() {
 		$this->View->theme = 'TestTheme';
 		$cell = $this->View->cell('Articles', ['msg' => 'hello world!']);
 
@@ -178,8 +168,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCellRenderPluginTemplate()
-	{
+	public function testCellRenderPluginTemplate() {
 		$cell = $this->View->cell('Articles');
 		$this->assertContains(
 			'TestPlugin Articles/display',
@@ -199,8 +188,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginCell()
-	{
+	public function testPluginCell() {
 		$cell = $this->View->cell('TestPlugin.Dummy::echoThis', ['msg' => 'hello world!']);
 		$this->assertContains('hello world!', "{$cell}");
 	}
@@ -210,8 +198,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginCellAlternateTemplate()
-	{
+	public function testPluginCellAlternateTemplate() {
 		$cell = $this->View->cell('TestPlugin.Dummy::echoThis', ['msg' => 'hello world!']);
 		$cell->template = '../../Element/translate';
 		$this->assertContains('This is a translatable string', "{$cell}");
@@ -222,8 +209,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginCellAlternateTemplateRenderParam()
-	{
+	public function testPluginCellAlternateTemplateRenderParam() {
 		$cell = $this->View->cell('TestPlugin.Dummy::echoThis', ['msg' => 'hello world!']);
 		$result = $cell->render('../../Element/translate');
 		$this->assertContains('This is a translatable string', $result);
@@ -235,8 +221,7 @@ class CellTest extends TestCase
 	 * @expectedException \Cake\View\Exception\MissingCellException
 	 * @return void
 	 */
-	public function testUnexistingCell()
-	{
+	public function testUnexistingCell() {
 		$cell = $this->View->cell('TestPlugin.Void::echoThis', ['arg1' => 'v1']);
 		$cell = $this->View->cell('Void::echoThis', ['arg1' => 'v1', 'arg2' => 'v2']);
 	}
@@ -248,8 +233,7 @@ class CellTest extends TestCase
 	 * @expectedExceptionMessage Class TestApp\View\Cell\ArticlesCell does not have a "nope" method.
 	 * @return void
 	 */
-	public function testCellMissingMethod()
-	{
+	public function testCellMissingMethod() {
 		$this->View->cell('Articles::nope');
 	}
 
@@ -258,8 +242,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCellOptions()
-	{
+	public function testCellOptions() {
 		$cell = $this->View->cell('Articles', [], ['limit' => 10, 'nope' => 'nope']);
 		$this->assertEquals(10, $cell->limit);
 		$this->assertFalse(property_exists('nope', $cell), 'Not a valid option');
@@ -270,8 +253,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCellInheritsHelperConfig()
-	{
+	public function testCellInheritsHelperConfig() {
 		$this->View->helpers = ['Url', 'Form', 'Banana'];
 		$cell = $this->View->cell('Articles');
 		$this->assertSame($this->View->helpers, $cell->helpers);
@@ -282,8 +264,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCellInheritsCustomViewClass()
-	{
+	public function testCellInheritsCustomViewClass() {
 		$request = $this->getMock('Cake\Network\Request');
 		$response = $this->getMock('Cake\Network\Response');
 		$view = new CustomJsonView($request, $response);
@@ -296,8 +277,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCachedRenderSimple()
-	{
+	public function testCachedRenderSimple() {
 		$mock = $this->getMock('Cake\Cache\CacheEngine');
 		$mock->method('init')
 			->will($this->returnValue(true));
@@ -319,8 +299,7 @@ class CellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCachedRenderArrayConfig()
-	{
+	public function testCachedRenderArrayConfig() {
 		$mock = $this->getMock('Cake\Cache\CacheEngine');
 		$mock->method('init')
 			->will($this->returnValue(true));

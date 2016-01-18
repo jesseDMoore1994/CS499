@@ -4,29 +4,25 @@ namespace Test\Phinx\Db\Table;
 
 use Phinx\Db\Table\ForeignKey;
 
-class ForeignKeyTest extends \PHPUnit_Framework_TestCase
-{
+class ForeignKeyTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @var ForeignKey
 	 */
 	private $fk = null;
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->fk = new ForeignKey();
 	}
 
-	public function testOnDeleteSetNullCanBeSetThroughOptions()
-	{
+	public function testOnDeleteSetNullCanBeSetThroughOptions() {
 		$this->assertEquals(
 			ForeignKey::SET_NULL,
 			$this->fk->setOptions(array('delete' => ForeignKey::SET_NULL))->getOnDelete()
 		);
 	}
 
-	public function testInitiallyActionsEmpty()
-	{
+	public function testInitiallyActionsEmpty() {
 		$this->assertNull($this->fk->getOnDelete());
 		$this->assertNull($this->fk->getOnUpdate());
 	}
@@ -36,8 +32,7 @@ class ForeignKeyTest extends \PHPUnit_Framework_TestCase
 	 * @param string $valueOfConstant
 	 * @dataProvider actionsProvider
 	 */
-	public function testBothActionsCanBeSetThroughSetters($dirtyValue, $valueOfConstant)
-	{
+	public function testBothActionsCanBeSetThroughSetters($dirtyValue, $valueOfConstant) {
 		$this->fk->setOnDelete($dirtyValue)->setOnUpdate($dirtyValue);
 		$this->assertEquals($valueOfConstant, $this->fk->getOnDelete());
 		$this->assertEquals($valueOfConstant, $this->fk->getOnUpdate());
@@ -48,8 +43,7 @@ class ForeignKeyTest extends \PHPUnit_Framework_TestCase
 	 * @param string $valueOfConstant
 	 * @dataProvider actionsProvider
 	 */
-	public function testBothActionsCanBeSetThroughOptions($dirtyValue, $valueOfConstant)
-	{
+	public function testBothActionsCanBeSetThroughOptions($dirtyValue, $valueOfConstant) {
 		$this->fk->setOptions(array(
 			'delete' => $dirtyValue,
 			'update' => $dirtyValue,
@@ -61,21 +55,18 @@ class ForeignKeyTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \InvalidArgumentException
 	 */
-	public function testUnknownActionsNotAlowedThroughSetter()
-	{
+	public function testUnknownActionsNotAlowedThroughSetter() {
 		$this->fk->setOnDelete('i m dump');
 	}
 
 	/**
 	 * @expectedException \InvalidArgumentException
 	 */
-	public function testUnknownActionsNotAlowedThroughOptions()
-	{
+	public function testUnknownActionsNotAlowedThroughOptions() {
 		$this->fk->setOptions(array('update' => 'no yu a dumb'));
 	}
 
-	public function actionsProvider()
-	{
+	public function actionsProvider() {
 		return array(
 			array(ForeignKey::CASCADE, ForeignKey::CASCADE),
 			array(ForeignKey::RESTRICT, ForeignKey::RESTRICT),

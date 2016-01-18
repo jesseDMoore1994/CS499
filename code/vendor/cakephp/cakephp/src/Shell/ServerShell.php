@@ -22,8 +22,7 @@ use Cake\Core\Configure;
  * built-in Server Shell
  *
  */
-class ServerShell extends Shell
-{
+class ServerShell extends Shell {
 
 	/**
 	 * Default ServerHost
@@ -65,8 +64,7 @@ class ServerShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function initialize()
-	{
+	public function initialize() {
 		$this->_host = self::DEFAULT_HOST;
 		$this->_port = self::DEFAULT_PORT;
 		$this->_documentRoot = WWW_ROOT;
@@ -82,8 +80,7 @@ class ServerShell extends Shell
 	 * @return void
 	 * @link http://book.cakephp.org/3.0/en/console-and-shells.html#hook-methods
 	 */
-	public function startup()
-	{
+	public function startup() {
 		if (!empty($this->params['host'])) {
 			$this->_host = $this->params['host'];
 		}
@@ -110,8 +107,7 @@ class ServerShell extends Shell
 	 *
 	 * @return void
 	 */
-	protected function _welcome()
-	{
+	protected function _welcome() {
 		$this->out();
 		$this->out(sprintf('<info>Welcome to CakePHP %s Console</info>', 'v' . Configure::version()));
 		$this->hr();
@@ -126,8 +122,7 @@ class ServerShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		$command = sprintf(
 			"php -S %s:%d -t %s %s",
 			$this->_host,
@@ -147,8 +142,7 @@ class ServerShell extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->description([

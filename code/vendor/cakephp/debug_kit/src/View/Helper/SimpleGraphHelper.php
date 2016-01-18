@@ -22,8 +22,7 @@ use Cake\View\Helper;
  *
  * @since         DebugKit 1.0
  */
-class SimpleGraphHelper extends Helper
-{
+class SimpleGraphHelper extends Helper {
 
 	/**
 	 * Default settings to be applied to each Simple Graph
@@ -51,8 +50,7 @@ class SimpleGraphHelper extends Helper
 	 * @param array|\Graph $options Graph options
 	 * @return string Html graph
 	 */
-	public function bar($value, $offset, $options = [])
-	{
+	public function bar($value, $offset, $options = []) {
 		$settings = array_merge($this->_defaultSettings, $options);
 		extract($settings);
 

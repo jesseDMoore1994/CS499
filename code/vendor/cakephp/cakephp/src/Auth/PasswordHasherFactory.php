@@ -21,8 +21,7 @@ use RuntimeException;
  * Builds password hashing objects
  *
  */
-class PasswordHasherFactory
-{
+class PasswordHasherFactory {
 
 	/**
 	 * Returns password hasher object out of a hasher name or a configuration array
@@ -33,8 +32,7 @@ class PasswordHasherFactory
 	 * @throws \RuntimeException If password hasher class not found or
 	 *   it does not extend Cake\Auth\AbstractPasswordHasher
 	 */
-	public static function build($passwordHasher)
-	{
+	public static function build($passwordHasher) {
 		$config = [];
 		if (is_string($passwordHasher)) {
 			$class = $passwordHasher;

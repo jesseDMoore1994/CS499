@@ -23,8 +23,7 @@ use Traversable;
  * An entity represents a single result row from a repository. It exposes the
  * methods for retrieving and storing properties associated in this row.
  */
-trait EntityTrait
-{
+trait EntityTrait {
 
 	/**
 	 * Holds all properties and their values for this entity
@@ -121,8 +120,7 @@ trait EntityTrait
 	 * @param string $property Name of the property to access
 	 * @return mixed
 	 */
-	public function &__get($property)
-	{
+	public function &__get($property) {
 		return $this->get($property);
 	}
 
@@ -133,8 +131,7 @@ trait EntityTrait
 	 * @param mixed $value The value to set to the property
 	 * @return void
 	 */
-	public function __set($property, $value)
-	{
+	public function __set($property, $value) {
 		$this->set($property, $value);
 	}
 
@@ -146,8 +143,7 @@ trait EntityTrait
 	 * @return bool
 	 * @see \Cake\ORM\Entity::has()
 	 */
-	public function __isset($property)
-	{
+	public function __isset($property) {
 		return $this->has($property);
 	}
 
@@ -157,8 +153,7 @@ trait EntityTrait
 	 * @param string $property The property to unset
 	 * @return void
 	 */
-	public function __unset($property)
-	{
+	public function __unset($property) {
 		$this->unsetProperty($property);
 	}
 
@@ -214,8 +209,7 @@ trait EntityTrait
 	 * @return $this
 	 * @throws \InvalidArgumentException
 	 */
-	public function set($property, $value = null, array $options = [])
-	{
+	public function set($property, $value = null, array $options = []) {
 		$isString = is_string($property);
 		if ($isString && $property !== '') {
 			$guard = false;
@@ -266,8 +260,7 @@ trait EntityTrait
 	 * @return mixed
 	 * @throws \InvalidArgumentException if an empty property name is passed
 	 */
-	public function &get($property)
-	{
+	public function &get($property) {
 		if (!strlen((string)$property)) {
 			throw new InvalidArgumentException('Cannot get an empty property');
 		}
@@ -293,8 +286,7 @@ trait EntityTrait
 	 * @return mixed
 	 * @throws \InvalidArgumentException if an empty property name is passed.
 	 */
-	public function getOriginal($property)
-	{
+	public function getOriginal($property) {
 		if (!strlen((string)$property)) {
 			throw new InvalidArgumentException('Cannot get an empty property');
 		}
@@ -323,8 +315,7 @@ trait EntityTrait
 	 * @param string|array $property The property or properties to check.
 	 * @return bool
 	 */
-	public function has($property)
-	{
+	public function has($property) {
 		foreach ((array)$property as $prop) {
 			if ($this->get($prop) === null) {
 				return false;
@@ -346,8 +337,7 @@ trait EntityTrait
 	 * @param string|array $property The property to unset.
 	 * @return $this
 	 */
-	public function unsetProperty($property)
-	{
+	public function unsetProperty($property) {
 		$property = (array)$property;
 		foreach ($property as $p) {
 			unset($this->_properties[$p]);
@@ -366,8 +356,7 @@ trait EntityTrait
 	 * @param null|array $properties Either an array of properties to hide or null to get properties
 	 * @return array|$this
 	 */
-	public function hiddenProperties($properties = null)
-	{
+	public function hiddenProperties($properties = null) {
 		if ($properties === null) {
 			return $this->_hidden;
 		}
@@ -384,8 +373,7 @@ trait EntityTrait
 	 * @param null|array $properties Either an array of properties to treat as virtual or null to get properties
 	 * @return array|$this
 	 */
-	public function virtualProperties($properties = null)
-	{
+	public function virtualProperties($properties = null) {
 		if ($properties === null) {
 			return $this->_virtual;
 		}
@@ -402,8 +390,7 @@ trait EntityTrait
 	 * @return array A list of properties that are 'visible' in all
 	 *     representations.
 	 */
-	public function visibleProperties()
-	{
+	public function visibleProperties() {
 		$properties = array_keys($this->_properties);
 		$properties = array_merge($properties, $this->_virtual);
 		return array_diff($properties, $this->_hidden);
@@ -418,8 +405,7 @@ trait EntityTrait
 	 *
 	 * @return array
 	 */
-	public function toArray()
-	{
+	public function toArray() {
 		$result = [];
 		foreach ($this->visibleProperties() as $property) {
 			$value = $this->get($property);
@@ -446,8 +432,7 @@ trait EntityTrait
 	 *
 	 * @return array
 	 */
-	public function jsonSerialize()
-	{
+	public function jsonSerialize() {
 		return $this->toArray();
 	}
 
@@ -457,8 +442,7 @@ trait EntityTrait
 	 * @param mixed $offset The offset to check.
 	 * @return bool Success
 	 */
-	public function offsetExists($offset)
-	{
+	public function offsetExists($offset) {
 		return $this->has($offset);
 	}
 
@@ -468,8 +452,7 @@ trait EntityTrait
 	 * @param mixed $offset The offset to get.
 	 * @return mixed
 	 */
-	public function &offsetGet($offset)
-	{
+	public function &offsetGet($offset) {
 		return $this->get($offset);
 	}
 
@@ -480,8 +463,7 @@ trait EntityTrait
 	 * @param mixed $value The value to set.
 	 * @return void
 	 */
-	public function offsetSet($offset, $value)
-	{
+	public function offsetSet($offset, $value) {
 		$this->set($offset, $value);
 	}
 
@@ -491,8 +473,7 @@ trait EntityTrait
 	 * @param mixed $offset The offset to remove.
 	 * @return void
 	 */
-	public function offsetUnset($offset)
-	{
+	public function offsetUnset($offset) {
 		$this->unsetProperty($offset);
 	}
 
@@ -502,8 +483,7 @@ trait EntityTrait
 	 * @param string $method the method to check for existence
 	 * @return bool true if method exists
 	 */
-	protected function _methodExists($method)
-	{
+	protected function _methodExists($method) {
 		if (empty(static::$_accessors[$this->_className])) {
 			static::$_accessors[$this->_className] = array_flip(get_class_methods($this));
 		}
@@ -518,8 +498,7 @@ trait EntityTrait
 	 * @param bool $onlyDirty Return the requested property only if it is dirty
 	 * @return array
 	 */
-	public function extract(array $properties, $onlyDirty = false)
-	{
+	public function extract(array $properties, $onlyDirty = false) {
 		$result = [];
 		foreach ($properties as $property) {
 			if (!$onlyDirty || $this->dirty($property)) {
@@ -539,8 +518,7 @@ trait EntityTrait
 	 * @param array $properties List of properties to be returned
 	 * @return array
 	 */
-	public function extractOriginal(array $properties)
-	{
+	public function extractOriginal(array $properties) {
 		$result = [];
 		foreach ($properties as $property) {
 			$result[$property] = $this->getOriginal($property);
@@ -558,8 +536,7 @@ trait EntityTrait
 	 * @param array $properties List of properties to be returned
 	 * @return array
 	 */
-	public function extractOriginalChanged(array $properties)
-	{
+	public function extractOriginalChanged(array $properties) {
 		$result = [];
 		foreach ($properties as $property) {
 			$original = $this->getOriginal($property);
@@ -584,8 +561,7 @@ trait EntityTrait
 	 * for that property
 	 * @return bool Whether the property was changed or not
 	 */
-	public function dirty($property = null, $isDirty = null)
-	{
+	public function dirty($property = null, $isDirty = null) {
 		if ($property === null) {
 			return !empty($this->_dirty);
 		}
@@ -611,8 +587,7 @@ trait EntityTrait
 	 *
 	 * @return void
 	 */
-	public function clean()
-	{
+	public function clean() {
 		$this->_dirty = [];
 		$this->_errors = [];
 	}
@@ -629,8 +604,7 @@ trait EntityTrait
 	 * @param bool|null $new true if it is known this instance was persisted
 	 * @return bool Whether or not the entity has been persisted.
 	 */
-	public function isNew($new = null)
-	{
+	public function isNew($new = null) {
 		if ($new === null) {
 			return $this->_new;
 		}
@@ -677,8 +651,7 @@ trait EntityTrait
 	 * @param bool $overwrite Whether or not to overwrite pre-existing errors for $field
 	 * @return array|$this
 	 */
-	public function errors($field = null, $errors = null, $overwrite = false)
-	{
+	public function errors($field = null, $errors = null, $overwrite = false) {
 		if ($field === null) {
 			$diff = array_diff_key($this->_properties, $this->_errors);
 			return $this->_errors + (new Collection($diff))
@@ -720,8 +693,7 @@ trait EntityTrait
 	 * @param string $field the field in this entity to check for errors
 	 * @return array errors in nested entity if any
 	 */
-	protected function _nestedErrors($field)
-	{
+	protected function _nestedErrors($field) {
 		$path = explode('.', $field);
 
 		// Only one path element, check for nested entity with error.
@@ -763,8 +735,7 @@ trait EntityTrait
 	 * @param string $path The field name for errors.
 	 * @return array
 	 */
-	protected function _readError($object, $path = null)
-	{
+	protected function _readError($object, $path = null) {
 		if ($object instanceof EntityInterface) {
 			return $object->errors($path);
 		}
@@ -812,8 +783,7 @@ trait EntityTrait
 	 * mark it as protected.
 	 * @return $this|bool
 	 */
-	public function accessible($property, $set = null)
-	{
+	public function accessible($property, $set = null) {
 		if ($set === null) {
 			$value = isset($this->_accessible[$property]) ?
 				$this->_accessible[$property] :
@@ -846,8 +816,7 @@ trait EntityTrait
 	 * @param string $alias the alias of the repository
 	 * @return string|$this
 	 */
-	public function source($alias = null)
-	{
+	public function source($alias = null) {
 		if ($alias === null) {
 			return $this->_registryAlias;
 		}
@@ -861,8 +830,7 @@ trait EntityTrait
 	 *
 	 * @return string
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		return json_encode($this, JSON_PRETTY_PRINT);
 	}
 
@@ -872,8 +840,7 @@ trait EntityTrait
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		return $this->_properties + [
 			'[new]' => $this->isNew(),
 			'[accessible]' => array_filter($this->_accessible),

@@ -43,8 +43,7 @@ use Serializable;
  * ```
  *
  */
-class ZipIterator extends MultipleIterator implements CollectionInterface, Serializable
-{
+class ZipIterator extends MultipleIterator implements CollectionInterface, Serializable {
 
 	use CollectionTrait;
 
@@ -69,8 +68,7 @@ class ZipIterator extends MultipleIterator implements CollectionInterface, Seria
 	 * @param array $sets The list of array or iterators to be zipped.
 	 * @param callable $callable The function to use for zipping the elements of each iterator.
 	 */
-	public function __construct(array $sets, $callable = null)
-	{
+	public function __construct(array $sets, $callable = null) {
 		$sets = array_map(function ($items) {
 			return (new Collection($items))->unwrap();
 		}, $sets);
@@ -90,8 +88,7 @@ class ZipIterator extends MultipleIterator implements CollectionInterface, Seria
 	 *
 	 * @return mixed
 	 */
-	public function current()
-	{
+	public function current() {
 		if ($this->_callback === null) {
 			return parent::current();
 		}
@@ -105,8 +102,7 @@ class ZipIterator extends MultipleIterator implements CollectionInterface, Seria
 	 *
 	 * @return string
 	 */
-	public function serialize()
-	{
+	public function serialize() {
 		return serialize($this->_iterators);
 	}
 
@@ -116,8 +112,7 @@ class ZipIterator extends MultipleIterator implements CollectionInterface, Seria
 	 * @param string $iterators The serialized iterators
 	 * @return void
 	 */
-	public function unserialize($iterators)
-	{
+	public function unserialize($iterators) {
 		parent::__construct(MultipleIterator::MIT_NEED_ALL | MultipleIterator::MIT_KEYS_NUMERIC);
 		$this->_iterators = unserialize($iterators);
 		foreach ($this->_iterators as $it) {

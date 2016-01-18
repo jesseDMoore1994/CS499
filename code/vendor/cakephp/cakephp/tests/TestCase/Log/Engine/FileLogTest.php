@@ -24,16 +24,14 @@ use JsonSerializable;
  * Class used for testing when an object is passed to a logger
  *
  */
-class StringObject
-{
+class StringObject {
 
 	/**
 	 * String representation of the object
 	 *
 	 * @return string
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		return 'Hey!';
 	}
 }
@@ -42,16 +40,14 @@ class StringObject
  * Class used for testing when an serializable is passed to a logger
  *
  */
-class JsonObject implements JsonSerializable
-{
+class JsonObject implements JsonSerializable {
 
 	/**
 	 * String representation of the object
 	 *
 	 * @return string
 	 */
-	public function jsonSerialize()
-	{
+	public function jsonSerialize() {
 		return ['hello' => 'world'];
 	}
 }
@@ -60,16 +56,14 @@ class JsonObject implements JsonSerializable
  * FileLogTest class
  *
  */
-class FileLogTest extends TestCase
-{
+class FileLogTest extends TestCase {
 
 	/**
 	 * testLogFileWriting method
 	 *
 	 * @return void
 	 */
-	public function testLogFileWriting()
-	{
+	public function testLogFileWriting() {
 		$this->_deleteLogs(LOGS);
 
 		$log = new FileLog(['path' => LOGS]);
@@ -114,8 +108,7 @@ class FileLogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPathSetting()
-	{
+	public function testPathSetting() {
 		$path = TMP . 'tests' . DS;
 		$this->_deleteLogs($path);
 
@@ -129,8 +122,7 @@ class FileLogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRotation()
-	{
+	public function testRotation() {
 		$path = TMP . 'tests' . DS;
 		$this->_deleteLogs($path);
 
@@ -208,8 +200,7 @@ class FileLogTest extends TestCase
 		$this->assertEquals(0, count(glob($path . 'debug.log.*')));
 	}
 
-	public function testMaskSetting()
-	{
+	public function testMaskSetting() {
 		if (DS === '\\') {
 			$this->markTestSkipped('File permission testing does not work on Windows.');
 		}
@@ -245,8 +236,7 @@ class FileLogTest extends TestCase
 	 * @param string $dir
 	 * @return void
 	 */
-	protected function _deleteLogs($dir)
-	{
+	protected function _deleteLogs($dir) {
 		$files = array_merge(glob($dir . '*.log'), glob($dir . '*.log.*'));
 		foreach ($files as $file) {
 			unlink($file);

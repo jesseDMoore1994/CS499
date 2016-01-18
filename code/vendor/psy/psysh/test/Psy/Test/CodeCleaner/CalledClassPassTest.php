@@ -14,10 +14,8 @@ namespace Psy\Test\CodeCleaner;
 use PhpParser\NodeTraverser;
 use Psy\CodeCleaner\CalledClassPass;
 
-class CalledClassPassTest extends CodeCleanerTestCase
-{
-	public function setUp()
-	{
+class CalledClassPassTest extends CodeCleanerTestCase {
+	public function setUp() {
 		$this->pass = new CalledClassPass();
 		$this->traverser = new NodeTraverser();
 		$this->traverser->addVisitor($this->pass);
@@ -27,14 +25,12 @@ class CalledClassPassTest extends CodeCleanerTestCase
 	 * @dataProvider invalidStatements
 	 * @expectedException \Psy\Exception\ErrorException
 	 */
-	public function testProcessStatementFails($code)
-	{
+	public function testProcessStatementFails($code) {
 		$stmts = $this->parse($code);
 		$this->traverser->traverse($stmts);
 	}
 
-	public function invalidStatements()
-	{
+	public function invalidStatements() {
 		return array(
 			array('get_class()'),
 			array('get_class(null)'),
@@ -50,14 +46,12 @@ class CalledClassPassTest extends CodeCleanerTestCase
 	/**
 	 * @dataProvider validStatements
 	 */
-	public function testProcessStatementPasses($code)
-	{
+	public function testProcessStatementPasses($code) {
 		$stmts = $this->parse($code);
 		$this->traverser->traverse($stmts);
 	}
 
-	public function validStatements()
-	{
+	public function validStatements() {
 		return array(
 			array('get_class($foo)'),
 			array('get_class(bar())'),
@@ -76,8 +70,7 @@ class CalledClassPassTest extends CodeCleanerTestCase
 	/**
 	 * @dataProvider validTraitStatements
 	 */
-	public function testProcessTraitStatementPasses($code)
-	{
+	public function testProcessTraitStatementPasses($code) {
 		if (version_compare(PHP_VERSION, '5.4', '<')) {
 			$this->markTestSkipped();
 		}
@@ -86,8 +79,7 @@ class CalledClassPassTest extends CodeCleanerTestCase
 		$this->traverser->traverse($stmts);
 	}
 
-	public function validTraitStatements()
-	{
+	public function validTraitStatements() {
 		return array(
 			array('trait Foo { function bar() { return get_class(); } }'),
 			array('trait Foo { function bar() { return get_class(null); } }'),

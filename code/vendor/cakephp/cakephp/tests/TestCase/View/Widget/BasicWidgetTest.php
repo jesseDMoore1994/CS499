@@ -21,11 +21,9 @@ use Cake\View\Widget\BasicWidget;
 /**
  * Basic input test.
  */
-class BasicWidgetTest extends TestCase
-{
+class BasicWidgetTest extends TestCase {
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$templates = [
 			'input' => '<input type="{{type}}" name="{{name}}"{{attrs}}>',
@@ -39,8 +37,7 @@ class BasicWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSimple()
-	{
+	public function testRenderSimple() {
 		$text = new BasicWidget($this->templates);
 		$result = $text->render(['name' => 'my_input'], $this->context);
 		$expected = [
@@ -54,8 +51,7 @@ class BasicWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderType()
-	{
+	public function testRenderType() {
 		$text = new BasicWidget($this->templates);
 		$data = [
 			'name' => 'my_input',
@@ -73,8 +69,7 @@ class BasicWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderWithValue()
-	{
+	public function testRenderWithValue() {
 		$text = new BasicWidget($this->templates);
 		$data = [
 			'name' => 'my_input',
@@ -97,8 +92,7 @@ class BasicWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderAttributes()
-	{
+	public function testRenderAttributes() {
 		$text = new BasicWidget($this->templates);
 		$data = [
 			'name' => 'my_input',
@@ -123,8 +117,7 @@ class BasicWidgetTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderTemplateParams()
-	{
+	public function testRenderTemplateParams() {
 		$text = new BasicWidget(new StringTemplate([
 			'input' => '<input type="{{type}}" name="{{name}}"{{attrs}}><span>{{help}}</span>',
 		]));

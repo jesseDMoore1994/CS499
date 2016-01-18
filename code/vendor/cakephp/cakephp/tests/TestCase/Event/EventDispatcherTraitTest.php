@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
  * EventDispatcherTrait test case
  *
  */
-class EventDispatcherTraitTest extends TestCase
-{
+class EventDispatcherTraitTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->subject = $this->getObjectForTrait('Cake\Event\EventDispatcherTrait');
@@ -42,8 +40,7 @@ class EventDispatcherTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsInitiallyEmpty()
-	{
+	public function testIsInitiallyEmpty() {
 		$this->assertAttributeEmpty('_eventManager', $this->subject);
 	}
 
@@ -53,8 +50,7 @@ class EventDispatcherTraitTest extends TestCase
 	 * @covers \Cake\Event\EventDispatcherTrait::eventManager
 	 * @return void
 	 */
-	public function testSettingEventManager()
-	{
+	public function testSettingEventManager() {
 		$eventManager = new EventManager();
 
 		$this->subject->eventManager($eventManager);
@@ -67,8 +63,7 @@ class EventDispatcherTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDispatchEvent()
-	{
+	public function testDispatchEvent() {
 		$event = $this->subject->dispatchEvent('some.event', ['foo' => 'bar']);
 
 		$this->assertInstanceOf('Cake\Event\Event', $event);

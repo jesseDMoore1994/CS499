@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Dispatcher filter test.
  */
-class DispatcherFilterTest extends TestCase
-{
+class DispatcherFilterTest extends TestCase {
 
 	/**
 	 * Test that the constructor takes config.
 	 *
 	 * @return void
 	 */
-	public function testConstructConfig()
-	{
+	public function testConstructConfig() {
 		$filter = new DispatcherFilter(['one' => 'value', 'on' => '/blog']);
 		$this->assertEquals('value', $filter->config('one'));
 	}
@@ -42,8 +40,7 @@ class DispatcherFilterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructPriority()
-	{
+	public function testConstructPriority() {
 		$filter = new DispatcherFilter();
 		$this->assertEquals(10, $filter->config('priority'));
 
@@ -56,8 +53,7 @@ class DispatcherFilterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImplementedEvents()
-	{
+	public function testImplementedEvents() {
 		$filter = new DispatcherFilter(['priority' => 100]);
 		$events = $filter->implementedEvents();
 		$this->assertEquals(100, $events['Dispatcher.beforeDispatch']['priority']);
@@ -71,8 +67,7 @@ class DispatcherFilterTest extends TestCase
 	 * @expectedExceptionMessage "when" conditions must be a callable.
 	 * @return void
 	 */
-	public function testConstructorInvalidWhen()
-	{
+	public function testConstructorInvalidWhen() {
 		new DispatcherFilter(['when' => 'nope']);
 	}
 
@@ -85,8 +80,7 @@ class DispatcherFilterTest extends TestCase
 	 * @triggers Dispatcher.beforeDispatch $this, compact('request')
 	 * @triggers Dispatcher.beforeDispatch $this, compact('request')
 	 */
-	public function testMatchesWithFor()
-	{
+	public function testMatchesWithFor() {
 		$request = new Request(['url' => '/articles/view']);
 		$event = new Event('Dispatcher.beforeDispatch', $this, compact('request'));
 		$filter = new DispatcherFilter(['for' => '/articles']);
@@ -112,8 +106,7 @@ class DispatcherFilterTest extends TestCase
 	 * @return void
 	 * @triggers Dispatcher.beforeDispatch $this, compact('response', 'request')
 	 */
-	public function testMatchesWithWhen()
-	{
+	public function testMatchesWithWhen() {
 		$matcher = function ($request, $response) {
 			$this->assertInstanceOf('Cake\Network\Request', $request);
 			$this->assertInstanceOf('Cake\Network\Response', $response);
@@ -139,8 +132,7 @@ class DispatcherFilterTest extends TestCase
 	 * @return void
 	 * @triggers Dispatcher.beforeDispatch $this, compact('response', 'request')
 	 */
-	public function testMatchesWithForAndWhen()
-	{
+	public function testMatchesWithForAndWhen() {
 		$request = new Request(['url' => '/articles/view']);
 		$response = new Response();
 
@@ -171,8 +163,7 @@ class DispatcherFilterTest extends TestCase
 	 * @triggers Dispatcher.beforeDispatch $this, compact('response', 'request')
 	 * @triggers Dispatcher.afterDispatch $this, compact('response', 'request')
 	 */
-	public function testImplementedEventsMethodName()
-	{
+	public function testImplementedEventsMethodName() {
 		$request = new Request(['url' => '/articles/view']);
 		$response = new Response();
 
@@ -197,8 +188,7 @@ class DispatcherFilterTest extends TestCase
 	 * @return void
 	 * @triggers Dispatcher.beforeDispatch $this, compact('response', 'request')
 	 */
-	public function testHandleAppliesFor()
-	{
+	public function testHandleAppliesFor() {
 		$request = new Request(['url' => '/articles/view']);
 		$response = new Response();
 
@@ -221,8 +211,7 @@ class DispatcherFilterTest extends TestCase
 	 * @return void
 	 * @triggers Dispatcher.beforeDispatch $this, compact('response', 'request')
 	 */
-	public function testHandleAppliesWhen()
-	{
+	public function testHandleAppliesWhen() {
 		$request = new Request(['url' => '/articles/view']);
 		$response = new Response();
 

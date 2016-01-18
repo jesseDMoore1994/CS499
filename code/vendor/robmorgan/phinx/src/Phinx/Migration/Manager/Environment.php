@@ -34,8 +34,7 @@ use Phinx\Migration\MigrationInterface;
 use Phinx\Seed\SeedInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Environment
-{
+class Environment {
 	/**
 	 * @var string
 	 */
@@ -73,8 +72,7 @@ class Environment
 	 * @param array $options Options
 	 * @return Environment
 	 */
-	public function __construct($name, $options)
-	{
+	public function __construct($name, $options) {
 		$this->name = $name;
 		$this->options = $options;
 	}
@@ -86,8 +84,7 @@ class Environment
 	 * @param string $direction Direction
 	 * @return void
 	 */
-	public function executeMigration(MigrationInterface $migration, $direction = MigrationInterface::UP)
-	{
+	public function executeMigration(MigrationInterface $migration, $direction = MigrationInterface::UP) {
 		$startTime = time();
 		$direction = ($direction === MigrationInterface::UP) ? MigrationInterface::UP : MigrationInterface::DOWN;
 		$migration->setAdapter($this->getAdapter());
@@ -133,8 +130,7 @@ class Environment
 	 * @param string $direction Direction
 	 * @return void
 	 */
-	public function executeSeed(SeedInterface $seed)
-	{
+	public function executeSeed(SeedInterface $seed) {
 		$startTime = time();
 		$seed->setAdapter($this->getAdapter());
 
@@ -160,8 +156,7 @@ class Environment
 	 * @param string $name Environment Name
 	 * @return Environment
 	 */
-	public function setName($name)
-	{
+	public function setName($name) {
 		$this->name = $name;
 		return $this;
 	}
@@ -171,8 +166,7 @@ class Environment
 	 *
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->name;
 	}
 
@@ -182,8 +176,7 @@ class Environment
 	 * @param array $options Environment Options
 	 * @return Environment
 	 */
-	public function setOptions($options)
-	{
+	public function setOptions($options) {
 		$this->options = $options;
 		return $this;
 	}
@@ -193,8 +186,7 @@ class Environment
 	 *
 	 * @return array
 	 */
-	public function getOptions()
-	{
+	public function getOptions() {
 		return $this->options;
 	}
 
@@ -204,8 +196,7 @@ class Environment
 	 * @param OutputInterface $output Output
 	 * @return Environment
 	 */
-	public function setOutput(OutputInterface $output)
-	{
+	public function setOutput(OutputInterface $output) {
 		$this->output = $output;
 		return $this;
 	}
@@ -215,8 +206,7 @@ class Environment
 	 *
 	 * @return OutputInterface
 	 */
-	public function getOutput()
-	{
+	public function getOutput() {
 		return $this->output;
 	}
 
@@ -225,8 +215,7 @@ class Environment
 	 *
 	 * @return array
 	 */
-	public function getVersions()
-	{
+	public function getVersions() {
 		return $this->getAdapter()->getVersions();
 	}
 
@@ -236,8 +225,7 @@ class Environment
 	 * @param int $version Environment Version
 	 * @return Environment
 	 */
-	public function setCurrentVersion($version)
-	{
+	public function setCurrentVersion($version) {
 		$this->currentVersion = $version;
 		return $this;
 	}
@@ -247,8 +235,7 @@ class Environment
 	 *
 	 * @return int
 	 */
-	public function getCurrentVersion()
-	{
+	public function getCurrentVersion() {
 		// We don't cache this code as the current version is pretty volatile.
 		// TODO - that means they're no point in a setter then?
 		// maybe we should cache and call a reset() method everytime a migration is run
@@ -269,8 +256,7 @@ class Environment
 	 * @param AdapterInterface $adapter Database Adapter
 	 * @return Environment
 	 */
-	public function setAdapter(AdapterInterface $adapter)
-	{
+	public function setAdapter(AdapterInterface $adapter) {
 		$this->adapter = $adapter;
 		return $this;
 	}
@@ -280,8 +266,7 @@ class Environment
 	 *
 	 * @return AdapterInterface
 	 */
-	public function getAdapter()
-	{
+	public function getAdapter() {
 		if (isset($this->adapter)) {
 			return $this->adapter;
 		}
@@ -325,8 +310,7 @@ class Environment
 	 * @param string $schemaTableName Schema Table Name
 	 * @return Environment
 	 */
-	public function setSchemaTableName($schemaTableName)
-	{
+	public function setSchemaTableName($schemaTableName) {
 		$this->schemaTableName = $schemaTableName;
 		return $this;
 	}
@@ -336,8 +320,7 @@ class Environment
 	 *
 	 * @return string
 	 */
-	public function getSchemaTableName()
-	{
+	public function getSchemaTableName() {
 		return $this->schemaTableName;
 	}
 }

@@ -56,14 +56,12 @@ require_once '../Mobile_Detect.php';
 
 // Your default site layouts.
 // Update this array if you have fewer layout types.
-function layoutTypes()
-{
+function layoutTypes() {
 	return array('classic', 'mobile', 'tablet');
 
 }
 
-function initLayoutType()
-{
+function initLayoutType() {
 	// Safety check.
 	if (!class_exists('Mobile_Detect')) {
 		return 'classic';

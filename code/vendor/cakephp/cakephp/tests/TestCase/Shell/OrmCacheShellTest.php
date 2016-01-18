@@ -22,8 +22,7 @@ use Cake\TestSuite\TestCase;
 /**
  * OrmCacheShell test.
  */
-class OrmCacheShellTest extends TestCase
-{
+class OrmCacheShellTest extends TestCase {
 
 	/**
 	 * Fixtures.
@@ -37,8 +36,7 @@ class OrmCacheShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->io = $this->getMock('Cake\Console\ConsoleIo');
 		$this->shell = new OrmCacheShell($this->io);
@@ -58,8 +56,7 @@ class OrmCacheShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Cache::drop('orm_cache');
 
@@ -72,8 +69,7 @@ class OrmCacheShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClearEnablesMetadataCache()
-	{
+	public function testClearEnablesMetadataCache() {
 		$ds = ConnectionManager::get('test');
 		$ds->cacheMetadata(false);
 
@@ -87,8 +83,7 @@ class OrmCacheShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildEnablesMetadataCache()
-	{
+	public function testBuildEnablesMetadataCache() {
 		$ds = ConnectionManager::get('test');
 		$ds->cacheMetadata(false);
 
@@ -102,8 +97,7 @@ class OrmCacheShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildNoArgs()
-	{
+	public function testBuildNoArgs() {
 		$this->cache->expects($this->at(2))
 			->method('write')
 			->with('test_articles');
@@ -117,8 +111,7 @@ class OrmCacheShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildNamedModel()
-	{
+	public function testBuildNamedModel() {
 		$this->cache->expects($this->once())
 			->method('write')
 			->with('test_articles');
@@ -134,8 +127,7 @@ class OrmCacheShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBuildOverwritesExistingData()
-	{
+	public function testBuildOverwritesExistingData() {
 		$this->cache->expects($this->once())
 			->method('write')
 			->with('test_articles');
@@ -154,8 +146,7 @@ class OrmCacheShellTest extends TestCase
 	 * @expectedException \Cake\Datasource\Exception\MissingDatasourceConfigException
 	 * @return void
 	 */
-	public function testBuildInvalidConnection()
-	{
+	public function testBuildInvalidConnection() {
 		$this->shell->params['connection'] = 'derpy-derp';
 		$this->shell->build('articles');
 	}
@@ -166,8 +157,7 @@ class OrmCacheShellTest extends TestCase
 	 * @expectedException \Cake\Datasource\Exception\MissingDatasourceConfigException
 	 * @return void
 	 */
-	public function testClearInvalidConnection()
-	{
+	public function testClearInvalidConnection() {
 		$this->shell->params['connection'] = 'derpy-derp';
 		$this->shell->clear('articles');
 	}
@@ -177,8 +167,7 @@ class OrmCacheShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClearNoArgs()
-	{
+	public function testClearNoArgs() {
 		$this->cache->expects($this->at(2))
 			->method('delete')
 			->with('test_articles');
@@ -192,8 +181,7 @@ class OrmCacheShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClearNamedModel()
-	{
+	public function testClearNamedModel() {
 		$this->cache->expects($this->never())
 			->method('write');
 		$this->cache->expects($this->once())

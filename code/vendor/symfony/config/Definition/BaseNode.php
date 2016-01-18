@@ -21,8 +21,7 @@ use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-abstract class BaseNode implements NodeInterface
-{
+abstract class BaseNode implements NodeInterface {
 	protected $name;
 	protected $parent;
 	protected $normalizationClosures = array();
@@ -40,8 +39,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @throws \InvalidArgumentException if the name contains a period.
 	 */
-	public function __construct($name, NodeInterface $parent = null)
-	{
+	public function __construct($name, NodeInterface $parent = null) {
 		if (false !== strpos($name, '.')) {
 			throw new \InvalidArgumentException('The name must not contain ".".');
 		}
@@ -50,33 +48,27 @@ abstract class BaseNode implements NodeInterface
 		$this->parent = $parent;
 	}
 
-	public function setAttribute($key, $value)
-	{
+	public function setAttribute($key, $value) {
 		$this->attributes[$key] = $value;
 	}
 
-	public function getAttribute($key, $default = null)
-	{
+	public function getAttribute($key, $default = null) {
 		return isset($this->attributes[$key]) ? $this->attributes[$key] : $default;
 	}
 
-	public function hasAttribute($key)
-	{
+	public function hasAttribute($key) {
 		return isset($this->attributes[$key]);
 	}
 
-	public function getAttributes()
-	{
+	public function getAttributes() {
 		return $this->attributes;
 	}
 
-	public function setAttributes(array $attributes)
-	{
+	public function setAttributes(array $attributes) {
 		$this->attributes = $attributes;
 	}
 
-	public function removeAttribute($key)
-	{
+	public function removeAttribute($key) {
 		unset($this->attributes[$key]);
 	}
 
@@ -85,8 +77,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @param string $info
 	 */
-	public function setInfo($info)
-	{
+	public function setInfo($info) {
 		$this->setAttribute('info', $info);
 	}
 
@@ -95,8 +86,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @return string The info text
 	 */
-	public function getInfo()
-	{
+	public function getInfo() {
 		return $this->getAttribute('info');
 	}
 
@@ -105,8 +95,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @param string|array $example
 	 */
-	public function setExample($example)
-	{
+	public function setExample($example) {
 		$this->setAttribute('example', $example);
 	}
 
@@ -115,8 +104,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @return string|array The example
 	 */
-	public function getExample()
-	{
+	public function getExample() {
 		return $this->getAttribute('example');
 	}
 
@@ -126,8 +114,7 @@ abstract class BaseNode implements NodeInterface
 	 * @param mixed $originalValue
 	 * @param mixed $equivalentValue
 	 */
-	public function addEquivalentValue($originalValue, $equivalentValue)
-	{
+	public function addEquivalentValue($originalValue, $equivalentValue) {
 		$this->equivalentValues[] = array($originalValue, $equivalentValue);
 	}
 
@@ -136,8 +123,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @param bool $boolean Required node
 	 */
-	public function setRequired($boolean)
-	{
+	public function setRequired($boolean) {
 		$this->required = (bool)$boolean;
 	}
 
@@ -146,8 +132,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @param bool $allow
 	 */
-	public function setAllowOverwrite($allow)
-	{
+	public function setAllowOverwrite($allow) {
 		$this->allowOverwrite = (bool)$allow;
 	}
 
@@ -156,8 +141,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @param \Closure[] $closures An array of Closures used for normalization
 	 */
-	public function setNormalizationClosures(array $closures)
-	{
+	public function setNormalizationClosures(array $closures) {
 		$this->normalizationClosures = $closures;
 	}
 
@@ -166,8 +150,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @param \Closure[] $closures An array of Closures used for final validation
 	 */
-	public function setFinalValidationClosures(array $closures)
-	{
+	public function setFinalValidationClosures(array $closures) {
 		$this->finalValidationClosures = $closures;
 	}
 
@@ -176,8 +159,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @return bool
 	 */
-	public function isRequired()
-	{
+	public function isRequired() {
 		return $this->required;
 	}
 
@@ -186,8 +168,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @return string The Node's name.
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->name;
 	}
 
@@ -196,8 +177,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @return string The Node's path
 	 */
-	public function getPath()
-	{
+	public function getPath() {
 		$path = $this->name;
 
 		if (null !== $this->parent) {
@@ -217,8 +197,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @throws ForbiddenOverwriteException
 	 */
-	final public function merge($leftSide, $rightSide)
-	{
+	final public function merge($leftSide, $rightSide) {
 		if (!$this->allowOverwrite) {
 			throw new ForbiddenOverwriteException(sprintf(
 				'Configuration path "%s" cannot be overwritten. You have to '
@@ -241,8 +220,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @return mixed The normalized value.
 	 */
-	final public function normalize($value)
-	{
+	final public function normalize($value) {
 		$value = $this->preNormalize($value);
 
 		// run custom normalization closures
@@ -271,8 +249,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @return $value The normalized array value
 	 */
-	protected function preNormalize($value)
-	{
+	protected function preNormalize($value) {
 		return $value;
 	}
 
@@ -281,8 +258,7 @@ abstract class BaseNode implements NodeInterface
 	 *
 	 * @return NodeInterface|null
 	 */
-	public function getParent()
-	{
+	public function getParent() {
 		return $this->parent;
 	}
 
@@ -296,8 +272,7 @@ abstract class BaseNode implements NodeInterface
 	 * @throws Exception
 	 * @throws InvalidConfigurationException
 	 */
-	final public function finalize($value)
-	{
+	final public function finalize($value) {
 		$this->validateType($value);
 
 		$value = $this->finalizeValue($value);

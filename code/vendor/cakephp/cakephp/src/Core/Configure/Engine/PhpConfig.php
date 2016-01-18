@@ -26,8 +26,7 @@ use Cake\Core\Exception\Exception;
  * contains all of the configuration data contained in the file.
  *
  */
-class PhpConfig implements ConfigEngineInterface
-{
+class PhpConfig implements ConfigEngineInterface {
 
 	use FileConfigTrait;
 
@@ -43,8 +42,7 @@ class PhpConfig implements ConfigEngineInterface
 	 *
 	 * @param string|null $path The path to read config files from. Defaults to CONFIG.
 	 */
-	public function __construct($path = null)
-	{
+	public function __construct($path = null) {
 		if ($path === null) {
 			$path = CONFIG;
 		}
@@ -65,8 +63,7 @@ class PhpConfig implements ConfigEngineInterface
 	 * @throws \Cake\Core\Exception\Exception when files don't exist or they don't contain `$config`.
 	 *  Or when files contain '..' as this could lead to abusive reads.
 	 */
-	public function read($key)
-	{
+	public function read($key) {
 		$file = $this->_getFilePath($key, true);
 
 		$return = include $file;
@@ -90,8 +87,7 @@ class PhpConfig implements ConfigEngineInterface
 	 * @param array $data Data to dump.
 	 * @return bool Success
 	 */
-	public function dump($key, array $data)
-	{
+	public function dump($key, array $data) {
 		$contents = '<?php' . "\n" . 'return ' . var_export($data, true) . ';';
 
 		$filename = $this->_getFilePath($key);

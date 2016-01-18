@@ -2,13 +2,11 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateUserLoginsTable extends AbstractMigration
-{
+class CreateUserLoginsTable extends AbstractMigration {
 	/**
 	 * Change.
 	 */
-	public function change()
-	{
+	public function change() {
 		// user logins table
 		$table = $this->table('user_logins');
 		$table->addColumn('user_id', 'integer')
@@ -23,16 +21,14 @@ class CreateUserLoginsTable extends AbstractMigration
 	/**
 	 * Migrate Up.
 	 */
-	public function up()
-	{
+	public function up() {
 
 	}
 
 	/**
 	 * Migrate Down.
 	 */
-	public function down()
-	{
+	public function down() {
 
 	}
 }

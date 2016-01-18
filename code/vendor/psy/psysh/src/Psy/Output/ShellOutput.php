@@ -18,8 +18,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 /**
  * A ConsoleOutput subclass specifically for Psy Shell output.
  */
-class ShellOutput extends ConsoleOutput
-{
+class ShellOutput extends ConsoleOutput {
 	const NUMBER_LINES = 128;
 
 	private $paging = 0;
@@ -33,8 +32,7 @@ class ShellOutput extends ConsoleOutput
 	 * @param OutputFormatterInterface $formatter (default: null)
 	 * @param null|string|OutputPager $pager (default: null)
 	 */
-	public function __construct($verbosity = self::VERBOSITY_NORMAL, $decorated = null, OutputFormatterInterface $formatter = null, $pager = null)
-	{
+	public function __construct($verbosity = self::VERBOSITY_NORMAL, $decorated = null, OutputFormatterInterface $formatter = null, $pager = null) {
 		parent::__construct($verbosity, $decorated, $formatter);
 
 		$this->initFormatters();
@@ -63,8 +61,7 @@ class ShellOutput extends ConsoleOutput
 	 * @param string|array|Closure $messages A string, array of strings or a callback.
 	 * @param int $type (default: 0)
 	 */
-	public function page($messages, $type = 0)
-	{
+	public function page($messages, $type = 0) {
 		if (is_string($messages)) {
 			$messages = (array)$messages;
 		}
@@ -87,16 +84,14 @@ class ShellOutput extends ConsoleOutput
 	/**
 	 * Start sending output to the output pager.
 	 */
-	public function startPaging()
-	{
+	public function startPaging() {
 		$this->paging++;
 	}
 
 	/**
 	 * Stop paging output and flush the output pager.
 	 */
-	public function stopPaging()
-	{
+	public function stopPaging() {
 		$this->paging--;
 		$this->closePager();
 	}
@@ -113,8 +108,7 @@ class ShellOutput extends ConsoleOutput
 	 * @param bool $newline Whether to add a newline or not
 	 * @param int $type The type of output
 	 */
-	public function write($messages, $newline = false, $type = 0)
-	{
+	public function write($messages, $newline = false, $type = 0) {
 		if ($this->getVerbosity() === self::VERBOSITY_QUIET) {
 			return;
 		}
@@ -148,8 +142,7 @@ class ShellOutput extends ConsoleOutput
 	 * @param string $message A message to write to the output
 	 * @param bool $newline Whether to add a newline or not
 	 */
-	public function doWrite($message, $newline)
-	{
+	public function doWrite($message, $newline) {
 		if ($this->paging > 0) {
 			$this->pager->doWrite($message, $newline);
 		} else {
@@ -160,8 +153,7 @@ class ShellOutput extends ConsoleOutput
 	/**
 	 * Flush and close the output pager.
 	 */
-	private function closePager()
-	{
+	private function closePager() {
 		if ($this->paging <= 0) {
 			$this->pager->close();
 		}
@@ -170,8 +162,7 @@ class ShellOutput extends ConsoleOutput
 	/**
 	 * Initialize output formatter styles.
 	 */
-	private function initFormatters()
-	{
+	private function initFormatters() {
 		$formatter = $this->getFormatter();
 
 		$formatter->setStyle('warning', new OutputFormatterStyle('black', 'yellow'));

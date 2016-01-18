@@ -21,8 +21,7 @@ use Cake\Event\Event;
  * AppleComponent class
  *
  */
-class AppleComponent extends Component
-{
+class AppleComponent extends Component {
 
 	/**
 	 * components property
@@ -38,7 +37,6 @@ class AppleComponent extends Component
 	 * @param mixed $controller
 	 * @return void
 	 */
-	public function startup(Event $event)
-	{
+	public function startup(Event $event) {
 	}
 }

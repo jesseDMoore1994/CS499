@@ -14,13 +14,11 @@ namespace Symfony\Component\Config\Tests\Definition;
 use Symfony\Component\Config\Definition\NodeInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
-class NormalizationTest extends \PHPUnit_Framework_TestCase
-{
+class NormalizationTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider getEncoderTests
 	 */
-	public function testNormalizeEncoders($denormalized)
-	{
+	public function testNormalizeEncoders($denormalized) {
 		$tb = new TreeBuilder();
 		$tree = $tb
 			->root('root_name', 'array')
@@ -50,8 +48,7 @@ class NormalizationTest extends \PHPUnit_Framework_TestCase
 		$this->assertNormalized($tree, $denormalized, $normalized);
 	}
 
-	public function getEncoderTests()
-	{
+	public function getEncoderTests() {
 		$configs = array();
 
 		// XML
@@ -95,8 +92,7 @@ class NormalizationTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getAnonymousKeysTests
 	 */
-	public function testAnonymousKeysArray($denormalized)
-	{
+	public function testAnonymousKeysArray($denormalized) {
 		$tb = new TreeBuilder();
 		$tree = $tb
 			->root('root', 'array')
@@ -118,8 +114,7 @@ class NormalizationTest extends \PHPUnit_Framework_TestCase
 		$this->assertNormalized($tree, $denormalized, $normalized);
 	}
 
-	public function getAnonymousKeysTests()
-	{
+	public function getAnonymousKeysTests() {
 		$configs = array();
 
 		$configs[] = array(
@@ -142,8 +137,7 @@ class NormalizationTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getNumericKeysTests
 	 */
-	public function testNumericKeysAsAttributes($denormalized)
-	{
+	public function testNumericKeysAsAttributes($denormalized) {
 		$normalized = array(
 			'thing' => array(42 => array('foo', 'bar'), 1337 => array('baz', 'qux')),
 		);
@@ -151,8 +145,7 @@ class NormalizationTest extends \PHPUnit_Framework_TestCase
 		$this->assertNormalized($this->getNumericKeysTestTree(), $denormalized, $normalized);
 	}
 
-	public function getNumericKeysTests()
-	{
+	public function getNumericKeysTests() {
 		$configs = array();
 
 		$configs[] = array(
@@ -176,8 +169,7 @@ class NormalizationTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
 	 * @expectedExceptionMessage The attribute "id" must be set for path "root.thing".
 	 */
-	public function testNonAssociativeArrayThrowsExceptionIfAttributeNotSet()
-	{
+	public function testNonAssociativeArrayThrowsExceptionIfAttributeNotSet() {
 		$denormalized = array(
 			'thing' => array(
 				array('foo', 'bar'), array('baz', 'qux'),
@@ -187,8 +179,7 @@ class NormalizationTest extends \PHPUnit_Framework_TestCase
 		$this->assertNormalized($this->getNumericKeysTestTree(), $denormalized, array());
 	}
 
-	public function testAssociativeArrayPreserveKeys()
-	{
+	public function testAssociativeArrayPreserveKeys() {
 		$tb = new TreeBuilder();
 		$tree = $tb
 			->root('root', 'array')
@@ -205,13 +196,11 @@ class NormalizationTest extends \PHPUnit_Framework_TestCase
 		$this->assertNormalized($tree, $data, $data);
 	}
 
-	public static function assertNormalized(NodeInterface $tree, $denormalized, $normalized)
-	{
+	public static function assertNormalized(NodeInterface $tree, $denormalized, $normalized) {
 		self::assertSame($normalized, $tree->normalize($denormalized));
 	}
 
-	private function getNumericKeysTestTree()
-	{
+	private function getNumericKeysTestTree() {
 		$tb = new TreeBuilder();
 		$tree = $tb
 			->root('root', 'array')

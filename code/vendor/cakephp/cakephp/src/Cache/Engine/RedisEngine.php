@@ -23,8 +23,7 @@ use RedisException;
  * Redis storage engine for cache.
  *
  */
-class RedisEngine extends CacheEngine
-{
+class RedisEngine extends CacheEngine {
 
 	/**
 	 * Redis wrapper.
@@ -76,8 +75,7 @@ class RedisEngine extends CacheEngine
 	 * @param array $config array of setting for the engine
 	 * @return bool True if the engine has been successfully initialized, false if not
 	 */
-	public function init(array $config = [])
-	{
+	public function init(array $config = []) {
 		if (!extension_loaded('redis')) {
 			return false;
 		}
@@ -95,8 +93,7 @@ class RedisEngine extends CacheEngine
 	 *
 	 * @return bool True if Redis server was connected
 	 */
-	protected function _connect()
-	{
+	protected function _connect() {
 		try {
 			$this->_Redis = new Redis();
 			if (!empty($this->_config['unix_socket'])) {
@@ -126,8 +123,7 @@ class RedisEngine extends CacheEngine
 	 * @param mixed $value Data to be cached
 	 * @return bool True if the data was successfully cached, false on failure
 	 */
-	public function write($key, $value)
-	{
+	public function write($key, $value) {
 		$key = $this->_key($key);
 
 		if (!is_int($value)) {
@@ -148,8 +144,7 @@ class RedisEngine extends CacheEngine
 	 * @param string $key Identifier for the data
 	 * @return mixed The cached data, or false if the data doesn't exist, has expired, or if there was an error fetching it
 	 */
-	public function read($key)
-	{
+	public function read($key) {
 		$key = $this->_key($key);
 
 		$value = $this->_Redis->get($key);
@@ -169,8 +164,7 @@ class RedisEngine extends CacheEngine
 	 * @param int $offset How much to increment
 	 * @return bool|int New incremented value, false otherwise
 	 */
-	public function increment($key, $offset = 1)
-	{
+	public function increment($key, $offset = 1) {
 		$key = $this->_key($key);
 
 		return (int)$this->_Redis->incrBy($key, $offset);
@@ -183,8 +177,7 @@ class RedisEngine extends CacheEngine
 	 * @param int $offset How much to subtract
 	 * @return bool|int New decremented value, false otherwise
 	 */
-	public function decrement($key, $offset = 1)
-	{
+	public function decrement($key, $offset = 1) {
 		$key = $this->_key($key);
 
 		return (int)$this->_Redis->decrBy($key, $offset);
@@ -196,8 +189,7 @@ class RedisEngine extends CacheEngine
 	 * @param string $key Identifier for the data
 	 * @return bool True if the value was successfully deleted, false if it didn't exist or couldn't be removed
 	 */
-	public function delete($key)
-	{
+	public function delete($key) {
 		$key = $this->_key($key);
 
 		return $this->_Redis->delete($key) > 0;
@@ -209,8 +201,7 @@ class RedisEngine extends CacheEngine
 	 * @param bool $check If true will check expiration, otherwise delete all.
 	 * @return bool True if the cache was successfully cleared, false otherwise
 	 */
-	public function clear($check)
-	{
+	public function clear($check) {
 		if ($check) {
 			return true;
 		}
@@ -229,8 +220,7 @@ class RedisEngine extends CacheEngine
 	 * @return bool True if the data was successfully cached, false on failure.
 	 * @link https://github.com/phpredis/phpredis#setnx
 	 */
-	public function add($key, $value)
-	{
+	public function add($key, $value) {
 		$duration = $this->_config['duration'];
 		$key = $this->_key($key);
 
@@ -252,8 +242,7 @@ class RedisEngine extends CacheEngine
 	 *
 	 * @return array
 	 */
-	public function groups()
-	{
+	public function groups() {
 		$result = [];
 		foreach ($this->_config['groups'] as $group) {
 			$value = $this->_Redis->get($this->_config['prefix'] . $group);
@@ -273,16 +262,14 @@ class RedisEngine extends CacheEngine
 	 * @param string $group name of the group to be cleared
 	 * @return bool success
 	 */
-	public function clearGroup($group)
-	{
+	public function clearGroup($group) {
 		return (bool)$this->_Redis->incr($this->_config['prefix'] . $group);
 	}
 
 	/**
 	 * Disconnects from the redis server
 	 */
-	public function __destruct()
-	{
+	public function __destruct() {
 		if (empty($this->_config['persistent']) && $this->_Redis instanceof Redis) {
 			$this->_Redis->close();
 		}

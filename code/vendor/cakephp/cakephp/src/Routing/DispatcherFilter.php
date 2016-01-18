@@ -64,8 +64,7 @@ use InvalidArgumentException;
  * callback as the conditions could change during the dispatch cycle.
  *
  */
-class DispatcherFilter implements EventListenerInterface
-{
+class DispatcherFilter implements EventListenerInterface {
 
 	use InstanceConfigTrait;
 
@@ -97,8 +96,7 @@ class DispatcherFilter implements EventListenerInterface
 	 * @param array $config Settings for the filter.
 	 * @throws \InvalidArgumentException When 'when' conditions are not callable.
 	 */
-	public function __construct($config = [])
-	{
+	public function __construct($config = []) {
 		if (!isset($config['priority'])) {
 			$config['priority'] = $this->_priority;
 		}
@@ -117,8 +115,7 @@ class DispatcherFilter implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [
 			'Dispatcher.beforeDispatch' => [
 				'callable' => 'handle',
@@ -137,8 +134,7 @@ class DispatcherFilter implements EventListenerInterface
 	 * @param \Cake\Event\Event $event The event instance.
 	 * @return mixed
 	 */
-	public function handle(Event $event)
-	{
+	public function handle(Event $event) {
 		$name = $event->name();
 		list(, $method) = explode('.', $name);
 		if (empty($this->_config['for']) && empty($this->_config['when'])) {
@@ -155,8 +151,7 @@ class DispatcherFilter implements EventListenerInterface
 	 * @param \Cake\Event\Event $event The event to match.
 	 * @return bool
 	 */
-	public function matches(Event $event)
-	{
+	public function matches(Event $event) {
 		$request = $event->data['request'];
 		$pass = true;
 		if (!empty($this->_config['for'])) {
@@ -192,8 +187,7 @@ class DispatcherFilter implements EventListenerInterface
 	 *    keys in the data property.
 	 * @return void
 	 */
-	public function beforeDispatch(Event $event)
-	{
+	public function beforeDispatch(Event $event) {
 	}
 
 	/**
@@ -208,7 +202,6 @@ class DispatcherFilter implements EventListenerInterface
 	 *    keys in the data property.
 	 * @return void
 	 */
-	public function afterDispatch(Event $event)
-	{
+	public function afterDispatch(Event $event) {
 	}
 }

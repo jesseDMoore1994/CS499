@@ -17,8 +17,7 @@ namespace Cake\Database;
 /**
  * Type converter trait
  */
-trait TypeConverterTrait
-{
+trait TypeConverterTrait {
 
 	/**
 	 * Converts a give value to a suitable database value based on type
@@ -28,8 +27,7 @@ trait TypeConverterTrait
 	 * @param \Cake\Database\Type|string $type The type name or type instance to use.
 	 * @return array list containing converted value and internal type
 	 */
-	public function cast($value, $type)
-	{
+	public function cast($value, $type) {
 		if (is_string($type)) {
 			$type = Type::build($type);
 		}
@@ -50,8 +48,7 @@ trait TypeConverterTrait
 	 * @param array $types list or associative array of types
 	 * @return array
 	 */
-	public function matchTypes($columns, $types)
-	{
+	public function matchTypes($columns, $types) {
 		if (!is_int(key($types))) {
 			$positions = array_intersect_key(array_flip($columns), $types);
 			$types = array_intersect_key($types, $positions);

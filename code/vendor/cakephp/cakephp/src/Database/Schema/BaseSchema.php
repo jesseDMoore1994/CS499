@@ -22,8 +22,7 @@ use Cake\Database\Driver;
  * This class contains methods that are common across
  * the various SQL dialects.
  */
-abstract class BaseSchema
-{
+abstract class BaseSchema {
 
 	/**
 	 * The driver instance being used.
@@ -40,8 +39,7 @@ abstract class BaseSchema
 	 *
 	 * @param \Cake\Database\Driver $driver The driver to use.
 	 */
-	public function __construct(Driver $driver)
-	{
+	public function __construct(Driver $driver) {
 		$driver->connect();
 		$this->_driver = $driver;
 	}
@@ -52,8 +50,7 @@ abstract class BaseSchema
 	 * @param string|null $on The on clause
 	 * @return string
 	 */
-	protected function _foreignOnClause($on)
-	{
+	protected function _foreignOnClause($on) {
 		if ($on === Table::ACTION_SET_NULL) {
 			return 'SET NULL';
 		}
@@ -77,8 +74,7 @@ abstract class BaseSchema
 	 * @param string $clause The on clause to convert.
 	 * @return string|null
 	 */
-	protected function _convertOnClause($clause)
-	{
+	protected function _convertOnClause($clause) {
 		if ($clause === 'CASCADE' || $clause === 'RESTRICT') {
 			return strtolower($clause);
 		}
@@ -95,8 +91,7 @@ abstract class BaseSchema
 	 * @param string|array $references The referenced columns of a foreign key constraint statement
 	 * @return string
 	 */
-	protected function _convertConstraintColumns($references)
-	{
+	protected function _convertConstraintColumns($references) {
 		if (is_string($references)) {
 			return $this->_driver->quoteIdentifier($references);
 		}
@@ -113,8 +108,7 @@ abstract class BaseSchema
 	 * @param \Cake\Database\Schema\Table $table Table instance
 	 * @return array SQL statements to drop a table.
 	 */
-	public function dropTableSql(Table $table)
-	{
+	public function dropTableSql(Table $table) {
 		$sql = sprintf(
 			'DROP TABLE %s',
 			$this->_driver->quoteIdentifier($table->name())
@@ -165,8 +159,7 @@ abstract class BaseSchema
 	 * @param array $config The connection configuration.
 	 * @return array SQL statements to get options for a table.
 	 */
-	public function describeOptionsSql($tableName, $config)
-	{
+	public function describeOptionsSql($tableName, $config) {
 		return ['', ''];
 	}
 
@@ -206,8 +199,7 @@ abstract class BaseSchema
 	 * @param array $row The row of data.
 	 * @return void
 	 */
-	public function convertOptionsDescription(Table $table, $row)
-	{
+	public function convertOptionsDescription(Table $table, $row) {
 	}
 
 	/**

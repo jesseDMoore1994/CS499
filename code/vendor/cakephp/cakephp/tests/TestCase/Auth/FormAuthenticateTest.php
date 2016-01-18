@@ -30,8 +30,7 @@ use Cake\Utility\Security;
  * Test case for FormAuthentication
  *
  */
-class FormAuthenticateTest extends TestCase
-{
+class FormAuthenticateTest extends TestCase {
 
 	/**
 	 * Fixtures
@@ -45,8 +44,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->Collection = $this->getMock('Cake\Controller\ComponentRegistry');
 		$this->auth = new FormAuthenticate($this->Collection, [
@@ -71,8 +69,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructor()
-	{
+	public function testConstructor() {
 		$object = new FormAuthenticate($this->Collection, [
 			'userModel' => 'AuthUsers',
 			'fields' => ['username' => 'user', 'password' => 'password']
@@ -86,8 +83,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateNoData()
-	{
+	public function testAuthenticateNoData() {
 		$request = new Request('posts/index');
 		$request->data = [];
 		$this->assertFalse($this->auth->authenticate($request, $this->response));
@@ -98,8 +94,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateNoUsername()
-	{
+	public function testAuthenticateNoUsername() {
 		$request = new Request('posts/index');
 		$request->data = ['password' => 'foobar'];
 		$this->assertFalse($this->auth->authenticate($request, $this->response));
@@ -110,8 +105,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateNoPassword()
-	{
+	public function testAuthenticateNoPassword() {
 		$request = new Request('posts/index');
 		$request->data = ['username' => 'mariano'];
 		$this->assertFalse($this->auth->authenticate($request, $this->response));
@@ -122,8 +116,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticatePasswordIsFalse()
-	{
+	public function testAuthenticatePasswordIsFalse() {
 		$request = new Request('posts/index', false);
 		$request->data = [
 			'username' => 'mariano',
@@ -138,8 +131,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticatePasswordIsEmptyString()
-	{
+	public function testAuthenticatePasswordIsEmptyString() {
 		$request = new Request('posts/index', false);
 		$request->data = [
 			'username' => 'mariano',
@@ -170,8 +162,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateFieldsAreNotString()
-	{
+	public function testAuthenticateFieldsAreNotString() {
 		$request = new Request('posts/index', false);
 		$request->data = [
 			'username' => ['mariano', 'phpnut'],
@@ -191,8 +182,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateInjection()
-	{
+	public function testAuthenticateInjection() {
 		$request = new Request('posts/index');
 		$request->data = [
 			'username' => '> 1',
@@ -206,8 +196,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateSuccess()
-	{
+	public function testAuthenticateSuccess() {
 		$request = new Request('posts/index');
 		$request->data = [
 			'username' => 'mariano',
@@ -228,8 +217,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateIncludesVirtualFields()
-	{
+	public function testAuthenticateIncludesVirtualFields() {
 		$users = TableRegistry::get('Users');
 		$users->entityClass('TestApp\Model\Entity\VirtualUser');
 
@@ -254,8 +242,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginModel()
-	{
+	public function testPluginModel() {
 		Plugin::load('TestPlugin');
 
 		$PluginModel = TableRegistry::get('TestPlugin.AuthUsers');
@@ -288,8 +275,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFinder()
-	{
+	public function testFinder() {
 		$request = new Request('posts/index');
 		$request->data = [
 			'username' => 'mariano',
@@ -314,8 +300,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPasswordHasherSettings()
-	{
+	public function testPasswordHasherSettings() {
 		$this->auth->config('passwordHasher', [
 			'className' => 'Default',
 			'hashType' => PASSWORD_BCRYPT
@@ -368,8 +353,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateNoRehash()
-	{
+	public function testAuthenticateNoRehash() {
 		$request = new Request('posts/index');
 		$request->data = [
 			'username' => 'mariano',
@@ -386,8 +370,7 @@ class FormAuthenticateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAuthenticateRehash()
-	{
+	public function testAuthenticateRehash() {
 		$this->auth = new FormAuthenticate($this->Collection, [
 			'userModel' => 'Users',
 			'passwordHasher' => 'Weak'

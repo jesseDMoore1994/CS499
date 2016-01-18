@@ -21,8 +21,7 @@ use PDO;
  * Encapsulates all conversion functions for values coming from database into PHP and
  * going from PHP into database.
  */
-class Type
-{
+class Type {
 
 	/**
 	 * List of supported database types. A human readable
@@ -82,8 +81,7 @@ class Type
 	 *
 	 * @param string $name The name identifying this type
 	 */
-	public function __construct($name = null)
-	{
+	public function __construct($name = null) {
 		$this->_name = $name;
 	}
 
@@ -94,8 +92,7 @@ class Type
 	 * @throws \InvalidArgumentException If type identifier is unknown
 	 * @return Type
 	 */
-	public static function build($name)
-	{
+	public static function build($name) {
 		if (isset(static::$_builtTypes[$name])) {
 			return static::$_builtTypes[$name];
 		}
@@ -112,8 +109,7 @@ class Type
 	 * @param \Cake\Database\Type $instance The type instance you want to set.
 	 * @return void
 	 */
-	public static function set($name, Type $instance)
-	{
+	public static function set($name, Type $instance) {
 		static::$_builtTypes[$name] = $instance;
 	}
 
@@ -127,8 +123,7 @@ class Type
 	 * @return array|string|null if $type is null then array with current map, if $className is null string
 	 * configured class name for give $type, null otherwise
 	 */
-	public static function map($type = null, $className = null)
-	{
+	public static function map($type = null, $className = null) {
 		if ($type === null) {
 			return self::$_types;
 		}
@@ -147,8 +142,7 @@ class Type
 	 *
 	 * @return void
 	 */
-	public static function clear()
-	{
+	public static function clear() {
 		self::$_types = [];
 		self::$_builtTypes = [];
 	}
@@ -158,8 +152,7 @@ class Type
 	 *
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->_name;
 	}
 
@@ -171,8 +164,7 @@ class Type
 	 *
 	 * @return string
 	 */
-	public function getBaseType()
-	{
+	public function getBaseType() {
 		return $this->_name;
 	}
 
@@ -183,8 +175,7 @@ class Type
 	 * @param Driver $driver object from which database preferences and configuration will be extracted
 	 * @return mixed
 	 */
-	public function toDatabase($value, Driver $driver)
-	{
+	public function toDatabase($value, Driver $driver) {
 		return $this->_basicTypeCast($value);
 	}
 
@@ -195,8 +186,7 @@ class Type
 	 * @param Driver $driver object from which database preferences and configuration will be extracted
 	 * @return mixed
 	 */
-	public function toPHP($value, Driver $driver)
-	{
+	public function toPHP($value, Driver $driver) {
 		return $this->_basicTypeCast($value);
 	}
 
@@ -208,8 +198,7 @@ class Type
 	 * @return mixed
 	 * @deprecated 3.1 All types should now be a specific class
 	 */
-	protected function _basicTypeCast($value)
-	{
+	protected function _basicTypeCast($value) {
 		if ($value === null) {
 			return null;
 		}
@@ -229,8 +218,7 @@ class Type
 	 * @param Driver $driver object from which database preferences and configuration will be extracted
 	 * @return mixed
 	 */
-	public function toStatement($value, Driver $driver)
-	{
+	public function toStatement($value, Driver $driver) {
 		if ($value === null) {
 			return PDO::PARAM_NULL;
 		}
@@ -246,8 +234,7 @@ class Type
 	 * @param mixed $value The value to convert to a boolean.
 	 * @return bool
 	 */
-	public static function boolval($value)
-	{
+	public static function boolval($value) {
 		if (is_string($value) && !is_numeric($value)) {
 			return strtolower($value) === 'true' ? true : false;
 		}
@@ -262,8 +249,7 @@ class Type
 	 * @param mixed $value The value to convert to a string.
 	 * @return bool
 	 */
-	public static function strval($value)
-	{
+	public static function strval($value) {
 		if (is_array($value)) {
 			$value = '';
 		}
@@ -279,8 +265,7 @@ class Type
 	 * @return mixed A new primary key value.
 	 * @see \Cake\Database\Type\UuidType
 	 */
-	public function newId()
-	{
+	public function newId() {
 		return null;
 	}
 
@@ -293,8 +278,7 @@ class Type
 	 * @param mixed $value The value to convert.
 	 * @return mixed Converted value.
 	 */
-	public function marshal($value)
-	{
+	public function marshal($value) {
 		return $this->_basicTypeCast($value);
 	}
 }

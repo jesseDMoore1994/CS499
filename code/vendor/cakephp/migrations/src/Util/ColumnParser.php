@@ -8,8 +8,7 @@ use ReflectionClass;
 /**
  * Utility class used to parse arguments passed to a ``bake migration`` class
  */
-class ColumnParser
-{
+class ColumnParser {
 
 	/**
 	 * Regex used to parse the column definition passed through the shell
@@ -31,8 +30,7 @@ class ColumnParser
 	 * @param array $arguments A list of arguments being parsed
 	 * @return array
 	 */
-	public function parseFields($arguments)
-	{
+	public function parseFields($arguments) {
 		$fields = [];
 		$arguments = $this->validArguments($arguments);
 		foreach ($arguments as $field) {
@@ -78,8 +76,7 @@ class ColumnParser
 	 * @param array $arguments A list of arguments being parsed
 	 * @return array
 	 */
-	public function parseIndexes($arguments)
-	{
+	public function parseIndexes($arguments) {
 		$indexes = [];
 		$arguments = $this->validArguments($arguments);
 		foreach ($arguments as $field) {
@@ -126,8 +123,7 @@ class ColumnParser
 	 * @param array $arguments A list of arguments being parsed
 	 * @return array
 	 */
-	public function parsePrimaryKey($arguments)
-	{
+	public function parsePrimaryKey($arguments) {
 		$primaryKey = [];
 		$arguments = $this->validArguments($arguments);
 		foreach ($arguments as $field) {
@@ -150,8 +146,7 @@ class ColumnParser
 	 * @param array $arguments A list of arguments
 	 * @return array
 	 */
-	public function validArguments($arguments)
-	{
+	public function validArguments($arguments) {
 		$collection = new Collection($arguments);
 		return $collection->filter(function ($value, $field) {
 			$value;
@@ -167,8 +162,7 @@ class ColumnParser
 	 * @return array First value is the field type, second value is the field length. If no length
 	 * can be extracted, null is returned for the second value
 	 */
-	public function getTypeAndLength($field, $type)
-	{
+	public function getTypeAndLength($field, $type) {
 		if (preg_match($this->regexpParseField, $type, $matches)) {
 			return [$matches[1], $matches[2]];
 		}
@@ -186,8 +180,7 @@ class ColumnParser
 	 * @param string $type User-specified type
 	 * @return string
 	 */
-	public function getType($field, $type)
-	{
+	public function getType($field, $type) {
 		$reflector = new ReflectionClass('Phinx\Db\Adapter\AdapterInterface');
 		$collection = new Collection($reflector->getConstants());
 
@@ -218,8 +211,7 @@ class ColumnParser
 	 * @param string $type User-specified type
 	 * @return int
 	 */
-	public function getLength($type)
-	{
+	public function getLength($type) {
 		$length = null;
 		if ($type === 'string') {
 			$length = 255;
@@ -241,8 +233,7 @@ class ColumnParser
 	 * @param bool $indexUnique Whether this is a unique index or not
 	 * @return string
 	 */
-	public function getIndexName($field, $indexType, $indexName, $indexUnique)
-	{
+	public function getIndexName($field, $indexType, $indexName, $indexUnique) {
 		if (empty($indexName)) {
 			$indexName = strtoupper('BY_' . $field);
 			if ($indexType === 'primary') {

@@ -21,8 +21,7 @@ namespace Psy\Util;
  * @author Paul Scott <paul@duedil.com>
  * @author Justin Hileman <justin@justinhileman.info>
  */
-class Docblock
-{
+class Docblock {
 	/**
 	 * Tags in the docblock that have a whitespace-delimited number of parameters
 	 * (such as `@param type var desc` and `@return type desc`) and the names of
@@ -71,8 +70,7 @@ class Docblock
 	 *
 	 * @param \Reflector $reflector
 	 */
-	public function __construct(\Reflector $reflector)
-	{
+	public function __construct(\Reflector $reflector) {
 		$this->reflector = $reflector;
 		$this->setComment($reflector->getDocComment());
 	}
@@ -82,8 +80,7 @@ class Docblock
 	 *
 	 * @param string $comment The docblock
 	 */
-	protected function setComment($comment)
-	{
+	protected function setComment($comment) {
 		$this->desc = '';
 		$this->tags = array();
 		$this->comment = $comment;
@@ -98,8 +95,7 @@ class Docblock
 	 *
 	 * @return int Prefix length
 	 */
-	protected static function prefixLength(array $lines)
-	{
+	protected static function prefixLength(array $lines) {
 		// find only lines with interesting things
 		$lines = array_filter($lines, function ($line) {
 			return substr($line, strspn($line, "* \t\n\r\0\x0B"));
@@ -127,8 +123,7 @@ class Docblock
 	 *
 	 * @param string $comment The docblock
 	 */
-	protected function parseComment($comment)
-	{
+	protected function parseComment($comment) {
 		// Strip the opening and closing tags of the docblock
 		$comment = substr($comment, 3, -2);
 
@@ -196,8 +191,7 @@ class Docblock
 	 *
 	 * @return bool
 	 */
-	public function hasTag($tag)
-	{
+	public function hasTag($tag) {
 		return is_array($this->tags) && array_key_exists($tag, $this->tags);
 	}
 
@@ -208,8 +202,7 @@ class Docblock
 	 *
 	 * @return array
 	 */
-	public function tag($tag)
-	{
+	public function tag($tag) {
 		return $this->hasTag($tag) ? $this->tags[$tag] : null;
 	}
 
@@ -220,8 +213,7 @@ class Docblock
 	 *
 	 * @return bool
 	 */
-	public static function isTagged($str)
-	{
+	public static function isTagged($str) {
 		return isset($str[1]) && $str[0] === '@' && ctype_alpha($str[1]);
 	}
 
@@ -232,8 +224,7 @@ class Docblock
 	 *
 	 * @return string|null
 	 */
-	public static function strTag($str)
-	{
+	public static function strTag($str) {
 		if (preg_match('/^@[a-z0-9_]+/', $str, $matches)) {
 			return $matches[0];
 		}

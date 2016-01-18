@@ -22,16 +22,14 @@ use RecursiveIterator;
  * a RecursiveIterator but do not want children. This iterator will
  * always behave as having no nested items.
  */
-class NoChildrenIterator extends Collection implements RecursiveIterator
-{
+class NoChildrenIterator extends Collection implements RecursiveIterator {
 
 	/**
 	 * Returns false as there are no children iterators in this collection
 	 *
 	 * @return bool
 	 */
-	public function hasChildren()
-	{
+	public function hasChildren() {
 		return false;
 	}
 
@@ -40,8 +38,7 @@ class NoChildrenIterator extends Collection implements RecursiveIterator
 	 *
 	 * @return null
 	 */
-	public function getChildren()
-	{
+	public function getChildren() {
 		return null;
 	}
 }

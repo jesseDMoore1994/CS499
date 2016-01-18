@@ -27,8 +27,7 @@ use Cake\View\View;
  * @link http://book.cakephp.org/3.0/en/views/helpers/number.html
  * @see \Cake\I18n\Number
  */
-class NumberHelper extends Helper
-{
+class NumberHelper extends Helper {
 
 	/**
 	 * Default config for this class
@@ -58,8 +57,7 @@ class NumberHelper extends Helper
 	 * @param array $config Configuration settings for the helper
 	 * @throws \Cake\Core\Exception\Exception When the engine class could not be found.
 	 */
-	public function __construct(View $View, array $config = [])
-	{
+	public function __construct(View $View, array $config = []) {
 		parent::__construct($View, $config);
 
 		$config = $this->_config;
@@ -79,8 +77,7 @@ class NumberHelper extends Helper
 	 * @param array $params Array of params for the method.
 	 * @return mixed Whatever is returned by called method, or false on failure
 	 */
-	public function __call($method, $params)
-	{
+	public function __call($method, $params) {
 		return call_user_func_array([$this->_engine, $method], $params);
 	}
 
@@ -93,8 +90,7 @@ class NumberHelper extends Helper
 	 * @see \Cake\I18n\Number::precision()
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/number.html#formatting-floating-point-numbers
 	 */
-	public function precision($number, $precision = 3)
-	{
+	public function precision($number, $precision = 3) {
 		return $this->_engine->precision($number, $precision);
 	}
 
@@ -106,8 +102,7 @@ class NumberHelper extends Helper
 	 * @see \Cake\I18n\Number::toReadableSize()
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/number.html#interacting-with-human-readable-values
 	 */
-	public function toReadableSize($size)
-	{
+	public function toReadableSize($size) {
 		return $this->_engine->toReadableSize($size);
 	}
 
@@ -125,8 +120,7 @@ class NumberHelper extends Helper
 	 * @see \Cake\I18n\Number::toPercentage()
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/number.html#formatting-percentages
 	 */
-	public function toPercentage($number, $precision = 2, array $options = [])
-	{
+	public function toPercentage($number, $precision = 2, array $options = []) {
 		return $this->_engine->toPercentage($number, $precision, $options);
 	}
 
@@ -147,8 +141,7 @@ class NumberHelper extends Helper
 	 * @return string Formatted number
 	 * @link http://book.cakephp.org/3.0/en/views/helpers/number.html#formatting-numbers
 	 */
-	public function format($number, array $options = [])
-	{
+	public function format($number, array $options = []) {
 		$formatted = $this->_engine->format($number, $options);
 		$options += ['escape' => true];
 		return $options['escape'] ? h($formatted) : $formatted;
@@ -178,8 +171,7 @@ class NumberHelper extends Helper
 	 * @param array $options Options list.
 	 * @return string Number formatted as a currency.
 	 */
-	public function currency($number, $currency = null, array $options = [])
-	{
+	public function currency($number, $currency = null, array $options = []) {
 		$formatted = $this->_engine->currency($number, $currency, $options);
 		$options += ['escape' => true];
 		return $options['escape'] ? h($formatted) : $formatted;
@@ -201,8 +193,7 @@ class NumberHelper extends Helper
 	 * @param array $options Options list.
 	 * @return string formatted delta
 	 */
-	public function formatDelta($value, array $options = [])
-	{
+	public function formatDelta($value, array $options = []) {
 		$formatted = $this->_engine->formatDelta($value, $options);
 		$options += ['escape' => true];
 		return $options['escape'] ? h($formatted) : $formatted;
@@ -216,8 +207,7 @@ class NumberHelper extends Helper
 	 * currently stored value
 	 * @return string Currency
 	 */
-	public function defaultCurrency($currency)
-	{
+	public function defaultCurrency($currency) {
 		return $this->_engine->defaultCurrency($currency);
 	}
 
@@ -226,8 +216,7 @@ class NumberHelper extends Helper
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 
@@ -238,8 +227,7 @@ class NumberHelper extends Helper
 	 * @param array $options An array with options.
 	 * @return string formatted number
 	 */
-	public function ordinal($value, array $options = [])
-	{
+	public function ordinal($value, array $options = []) {
 		return $this->_engine->ordinal($value, $options);
 	}
 }

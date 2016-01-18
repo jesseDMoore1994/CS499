@@ -29,8 +29,7 @@ use Exception;
  * Cell base.
  *
  */
-abstract class Cell
-{
+abstract class Cell {
 
 	use EventDispatcherTrait;
 	use LocatorAwareTrait;
@@ -125,8 +124,7 @@ abstract class Cell
 		Response $response = null,
 		EventManager $eventManager = null,
 		array $cellOptions = []
-	)
-	{
+	) {
 		$this->eventManager($eventManager);
 		$this->request = $request;
 		$this->response = $response;
@@ -150,8 +148,7 @@ abstract class Cell
 	 * @return string The rendered cell.
 	 * @throws \Cake\View\Exception\MissingCellViewException When a MissingTemplateException is raised during rendering.
 	 */
-	public function render($template = null)
-	{
+	public function render($template = null) {
 		if ($template !== null &&
 			strpos($template, '/') === false &&
 			strpos($template, '.') === false
@@ -199,8 +196,7 @@ abstract class Cell
 	 * @param string $template The template being rendered.
 	 * @return array The cache configuration.
 	 */
-	protected function _cacheConfig($template)
-	{
+	protected function _cacheConfig($template) {
 		if (empty($this->_cache)) {
 			return [];
 		}
@@ -226,8 +222,7 @@ abstract class Cell
 	 *
 	 * @return string Rendered cell
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		try {
 			return $this->render();
 		} catch (Exception $e) {
@@ -241,8 +236,7 @@ abstract class Cell
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		return [
 			'plugin' => $this->plugin,
 			'template' => $this->template,

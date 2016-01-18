@@ -22,14 +22,12 @@ use Cake\TestSuite\TestCase;
  * ConsoleLogTest class
  *
  */
-class ConsoleLogTest extends TestCase
-{
+class ConsoleLogTest extends TestCase {
 
 	/**
 	 * Test writing to ConsoleOutput
 	 */
-	public function testConsoleOutputlogs()
-	{
+	public function testConsoleOutputlogs() {
 		$output = $this->getMock('Cake\Console\ConsoleOutput');
 
 		$output->expects($this->at(0))
@@ -51,8 +49,7 @@ class ConsoleLogTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testlogToFileStream()
-	{
+	public function testlogToFileStream() {
 		$filename = tempnam(sys_get_temp_dir(), 'cake_log_test');
 		$log = new ConsoleLog([
 			'stream' => $filename
@@ -66,8 +63,7 @@ class ConsoleLogTest extends TestCase
 	/**
 	 * test default value of stream 'outputAs'
 	 */
-	public function testDefaultOutputAs()
-	{
+	public function testDefaultOutputAs() {
 		if ((DS === '\\' && !(bool)env('ANSICON') && env('ConEmuANSI') !== 'ON') ||
 			(function_exists('posix_isatty') && !posix_isatty(null))
 		) {

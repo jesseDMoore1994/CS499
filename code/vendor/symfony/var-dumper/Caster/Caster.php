@@ -16,8 +16,7 @@ namespace Symfony\Component\VarDumper\Caster;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class Caster
-{
+class Caster {
 	const EXCLUDE_VERBOSE = 1;
 	const EXCLUDE_VIRTUAL = 2;
 	const EXCLUDE_DYNAMIC = 4;
@@ -41,8 +40,7 @@ class Caster
 	 *
 	 * @return array The array-cast of the object, with prefixed dynamic properties.
 	 */
-	public static function castObject($obj, \ReflectionClass $reflector)
-	{
+	public static function castObject($obj, \ReflectionClass $reflector) {
 		if ($reflector->hasMethod('__debugInfo')) {
 			$a = $obj->__debugInfo();
 		} else {
@@ -76,8 +74,7 @@ class Caster
 	 *
 	 * @return array The filtered array
 	 */
-	public static function filter(array $a, $filter, array $listedProperties = array())
-	{
+	public static function filter(array $a, $filter, array $listedProperties = array()) {
 		foreach ($a as $k => $v) {
 			$type = self::EXCLUDE_STRICT & $filter;
 

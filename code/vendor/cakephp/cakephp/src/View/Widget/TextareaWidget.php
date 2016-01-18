@@ -22,8 +22,7 @@ use Cake\View\Form\ContextInterface;
  * This class is intended as an internal implementation detail
  * of Cake\View\Helper\FormHelper and is not intended for direct use.
  */
-class TextareaWidget extends BasicWidget
-{
+class TextareaWidget extends BasicWidget {
 	/**
 	 * Render a text area form widget.
 	 *
@@ -39,8 +38,7 @@ class TextareaWidget extends BasicWidget
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string HTML elements.
 	 */
-	public function render(array $data, ContextInterface $context)
-	{
+	public function render(array $data, ContextInterface $context) {
 		$data += [
 			'val' => '',
 			'name' => '',

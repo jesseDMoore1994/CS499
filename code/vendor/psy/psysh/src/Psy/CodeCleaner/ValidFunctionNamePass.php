@@ -24,15 +24,13 @@ use Psy\Exception\FatalErrorException;
  * This pass throws a FatalErrorException rather than letting PHP run
  * headfirst into a real fatal error and die.
  */
-class ValidFunctionNamePass extends NamespaceAwarePass
-{
+class ValidFunctionNamePass extends NamespaceAwarePass {
 	/**
 	 * Store newly defined function names on the way in, to allow recursion.
 	 *
 	 * @param Node $node
 	 */
-	public function enterNode(Node $node)
-	{
+	public function enterNode(Node $node) {
 		parent::enterNode($node);
 
 		if ($node instanceof FunctionStmt) {
@@ -54,8 +52,7 @@ class ValidFunctionNamePass extends NamespaceAwarePass
 	 *
 	 * @param Node $node
 	 */
-	public function leaveNode(Node $node)
-	{
+	public function leaveNode(Node $node) {
 		if ($node instanceof FuncCall) {
 			// if function name is an expression or a variable, give it a pass for now.
 			$name = $node->name;

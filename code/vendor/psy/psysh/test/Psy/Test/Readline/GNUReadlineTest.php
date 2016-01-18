@@ -13,12 +13,10 @@ namespace Psy\Test\Readline;
 
 use Psy\Readline\GNUReadline;
 
-class GNUReadlineTest extends \PHPUnit_Framework_TestCase
-{
+class GNUReadlineTest extends \PHPUnit_Framework_TestCase {
 	private $historyFile;
 
-	public function setUp()
-	{
+	public function setUp() {
 		if (!GNUReadline::isSupported()) {
 			$this->markTestSkipped('GNUReadline not enabled');
 		}
@@ -27,8 +25,7 @@ class GNUReadlineTest extends \PHPUnit_Framework_TestCase
 		file_put_contents($this->historyFile, "_HiStOrY_V2_\n");
 	}
 
-	public function testHistory()
-	{
+	public function testHistory() {
 		$readline = new GNUReadline($this->historyFile);
 		$this->assertEmpty($readline->listHistory());
 		$readline->addHistory('foo');
@@ -44,8 +41,7 @@ class GNUReadlineTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @depends testHistory
 	 */
-	public function testHistorySize()
-	{
+	public function testHistorySize() {
 		$readline = new GNUReadline($this->historyFile, 2);
 		$this->assertEmpty($readline->listHistory());
 		$readline->addHistory('foo');
@@ -62,8 +58,7 @@ class GNUReadlineTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @depends testHistory
 	 */
-	public function testHistoryEraseDups()
-	{
+	public function testHistoryEraseDups() {
 		$readline = new GNUReadline($this->historyFile, 0, true);
 		$this->assertEmpty($readline->listHistory());
 		$readline->addHistory('foo');

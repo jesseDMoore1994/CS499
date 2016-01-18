@@ -24,15 +24,13 @@ use Symfony\Component\Console\Input\InputOption;
  *
  * @internal
  */
-class XmlDescriptor extends Descriptor
-{
+class XmlDescriptor extends Descriptor {
 	/**
 	 * @param InputDefinition $definition
 	 *
 	 * @return \DOMDocument
 	 */
-	public function getInputDefinitionDocument(InputDefinition $definition)
-	{
+	public function getInputDefinitionDocument(InputDefinition $definition) {
 		$dom = new \DOMDocument('1.0', 'UTF-8');
 		$dom->appendChild($definitionXML = $dom->createElement('definition'));
 
@@ -54,8 +52,7 @@ class XmlDescriptor extends Descriptor
 	 *
 	 * @return \DOMDocument
 	 */
-	public function getCommandDocument(Command $command)
-	{
+	public function getCommandDocument(Command $command) {
 		$dom = new \DOMDocument('1.0', 'UTF-8');
 		$dom->appendChild($commandXML = $dom->createElement('command'));
 
@@ -89,8 +86,7 @@ class XmlDescriptor extends Descriptor
 	 *
 	 * @return \DOMDocument
 	 */
-	public function getApplicationDocument(Application $application, $namespace = null)
-	{
+	public function getApplicationDocument(Application $application, $namespace = null) {
 		$dom = new \DOMDocument('1.0', 'UTF-8');
 		$dom->appendChild($rootXml = $dom->createElement('symfony'));
 
@@ -133,40 +129,35 @@ class XmlDescriptor extends Descriptor
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function describeInputArgument(InputArgument $argument, array $options = array())
-	{
+	protected function describeInputArgument(InputArgument $argument, array $options = array()) {
 		$this->writeDocument($this->getInputArgumentDocument($argument));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function describeInputOption(InputOption $option, array $options = array())
-	{
+	protected function describeInputOption(InputOption $option, array $options = array()) {
 		$this->writeDocument($this->getInputOptionDocument($option));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function describeInputDefinition(InputDefinition $definition, array $options = array())
-	{
+	protected function describeInputDefinition(InputDefinition $definition, array $options = array()) {
 		$this->writeDocument($this->getInputDefinitionDocument($definition));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function describeCommand(Command $command, array $options = array())
-	{
+	protected function describeCommand(Command $command, array $options = array()) {
 		$this->writeDocument($this->getCommandDocument($command));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function describeApplication(Application $application, array $options = array())
-	{
+	protected function describeApplication(Application $application, array $options = array()) {
 		$this->writeDocument($this->getApplicationDocument($application, isset($options['namespace']) ? $options['namespace'] : null));
 	}
 
@@ -176,8 +167,7 @@ class XmlDescriptor extends Descriptor
 	 * @param \DOMNode $parentNode
 	 * @param \DOMNode $importedParent
 	 */
-	private function appendDocument(\DOMNode $parentNode, \DOMNode $importedParent)
-	{
+	private function appendDocument(\DOMNode $parentNode, \DOMNode $importedParent) {
 		foreach ($importedParent->childNodes as $childNode) {
 			$parentNode->appendChild($parentNode->ownerDocument->importNode($childNode, true));
 		}
@@ -190,8 +180,7 @@ class XmlDescriptor extends Descriptor
 	 *
 	 * @return \DOMDocument|string
 	 */
-	private function writeDocument(\DOMDocument $dom)
-	{
+	private function writeDocument(\DOMDocument $dom) {
 		$dom->formatOutput = true;
 		$this->write($dom->saveXML());
 	}
@@ -201,8 +190,7 @@ class XmlDescriptor extends Descriptor
 	 *
 	 * @return \DOMDocument
 	 */
-	private function getInputArgumentDocument(InputArgument $argument)
-	{
+	private function getInputArgumentDocument(InputArgument $argument) {
 		$dom = new \DOMDocument('1.0', 'UTF-8');
 
 		$dom->appendChild($objectXML = $dom->createElement('argument'));
@@ -227,8 +215,7 @@ class XmlDescriptor extends Descriptor
 	 *
 	 * @return \DOMDocument
 	 */
-	private function getInputOptionDocument(InputOption $option)
-	{
+	private function getInputOptionDocument(InputOption $option) {
 		$dom = new \DOMDocument('1.0', 'UTF-8');
 
 		$dom->appendChild($objectXML = $dom->createElement('option'));

@@ -24,8 +24,7 @@ use Cake\View\Helper;
  * @property TimeHelper $Time
  * @link http://book.cakephp.org/3.0/en/views/helpers/rss.html
  */
-class RssHelper extends Helper
-{
+class RssHelper extends Helper {
 
 	/**
 	 * Helpers used by RSS Helper
@@ -97,8 +96,7 @@ class RssHelper extends Helper
 	 * @param string|null $content Tag content.
 	 * @return string An RSS document
 	 */
-	public function document($attrib = [], $content = null)
-	{
+	public function document($attrib = [], $content = null) {
 		if ($content === null) {
 			$content = $attrib;
 			$attrib = [];
@@ -118,8 +116,7 @@ class RssHelper extends Helper
 	 * @param string|null $content Content (`<item />`'s belonging to this channel
 	 * @return string An RSS `<channel />`
 	 */
-	public function channel($attrib = [], $elements = [], $content = null)
-	{
+	public function channel($attrib = [], $elements = [], $content = null) {
 		if (!isset($elements['link'])) {
 			$elements['link'] = '/';
 		}
@@ -163,8 +160,7 @@ class RssHelper extends Helper
 	 *     and a string method name
 	 * @return string A set of RSS `<item />` elements
 	 */
-	public function items($items, $callback = null)
-	{
+	public function items($items, $callback = null) {
 		if ($callback) {
 			$items = array_map($callback, $items);
 		}
@@ -185,8 +181,7 @@ class RssHelper extends Helper
 	 * @param array $elements The list of elements contained in this `<item />`
 	 * @return string An RSS `<item />` element
 	 */
-	public function item($att = [], $elements = [])
-	{
+	public function item($att = [], $elements = []) {
 		$content = null;
 
 		if (isset($elements['link']) && !isset($elements['guid'])) {
@@ -275,8 +270,7 @@ class RssHelper extends Helper
 	 * @return string An RSS-formatted timestamp
 	 * @see TimeHelper::toRSS
 	 */
-	public function time($time)
-	{
+	public function time($time) {
 		return $this->Time->toRSS($time);
 	}
 
@@ -289,8 +283,7 @@ class RssHelper extends Helper
 	 * @param bool $endTag Whether the end tag of the element should be printed
 	 * @return string XML
 	 */
-	public function elem($name, $attrib = [], $content = null, $endTag = true)
-	{
+	public function elem($name, $attrib = [], $content = null, $endTag = true) {
 		$namespace = null;
 		if (isset($attrib['namespace'])) {
 			$namespace = $attrib['namespace'];
@@ -354,8 +347,7 @@ class RssHelper extends Helper
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 }

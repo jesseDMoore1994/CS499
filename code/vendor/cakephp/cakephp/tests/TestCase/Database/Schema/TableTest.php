@@ -24,11 +24,9 @@ use Cake\TestSuite\TestCase;
  * Mock class for testing baseType inheritance
  *
  */
-class FooType extends Type
-{
+class FooType extends Type {
 
-	public function getBaseType()
-	{
+	public function getBaseType() {
 		return 'integer';
 	}
 }
@@ -36,21 +34,18 @@ class FooType extends Type
 /**
  * Test case for Table
  */
-class TableTest extends TestCase
-{
+class TableTest extends TestCase {
 
 	public $fixtures = ['core.articles_tags', 'core.orders', 'core.products', 'core.tags'];
 
 	protected $_map;
 
-	public function setUp()
-	{
+	public function setUp() {
 		$this->_map = Type::map();
 		parent::setUp();
 	}
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		TableRegistry::clear();
 		Type::clear();
 		Type::map($this->_map);
@@ -62,8 +57,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructWithColumns()
-	{
+	public function testConstructWithColumns() {
 		$columns = [
 			'id' => [
 				'type' => 'integer',
@@ -83,8 +77,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddColumn()
-	{
+	public function testAddColumn() {
 		$table = new Table('articles');
 		$result = $table->addColumn('title', [
 			'type' => 'string',
@@ -104,8 +97,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsNullable()
-	{
+	public function testIsNullable() {
 		$table = new Table('articles');
 		$table->addColumn('title', [
 			'type' => 'string',
@@ -126,8 +118,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testColumnType()
-	{
+	public function testColumnType() {
 		$table = new Table('articles');
 		$table->addColumn('title', [
 			'type' => 'string',
@@ -143,8 +134,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testColumnTypeSet()
-	{
+	public function testColumnTypeSet() {
 		$table = new Table('articles');
 		$table->addColumn('title', [
 			'type' => 'string',
@@ -161,8 +151,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseColumnType()
-	{
+	public function testBaseColumnType() {
 		$table = new Table('articles');
 		$table->addColumn('title', [
 			'type' => 'json',
@@ -179,8 +168,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseColumnTypeInherited()
-	{
+	public function testBaseColumnTypeInherited() {
 		Type::map('foo', __NAMESPACE__ . '\FooType');
 		$table = new Table('articles');
 		$table->addColumn('thing', [
@@ -196,8 +184,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddColumnFiltersAttributes()
-	{
+	public function testAddColumnFiltersAttributes() {
 		$table = new Table('articles');
 		$table->addColumn('title', [
 			'type' => 'string'
@@ -251,8 +238,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDefaultValues()
-	{
+	public function testDefaultValues() {
 		$table = new Table('articles');
 		$table->addColumn('id', [
 			'type' => 'integer',
@@ -283,8 +269,7 @@ class TableTest extends TestCase
 	 * >
 	 * @return void
 	 */
-	public function testAddConstraint()
-	{
+	public function testAddConstraint() {
 		$table = new Table('articles');
 		$table->addColumn('id', [
 			'type' => 'integer'
@@ -302,8 +287,7 @@ class TableTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function addConstaintErrorProvider()
-	{
+	public static function addConstaintErrorProvider() {
 		return [
 			// No properties
 			[[]],
@@ -325,8 +309,7 @@ class TableTest extends TestCase
 	 * @expectedException \Cake\Database\Exception
 	 * @return void
 	 */
-	public function testAddConstraintError($props)
-	{
+	public function testAddConstraintError($props) {
 		$table = new Table('articles');
 		$table->addColumn('author_id', 'integer');
 		$table->addConstraint('author_idx', $props);
@@ -337,8 +320,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddIndex()
-	{
+	public function testAddIndex() {
 		$table = new Table('articles');
 		$table->addColumn('title', [
 			'type' => 'string'
@@ -356,8 +338,7 @@ class TableTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function addIndexErrorProvider()
-	{
+	public static function addIndexErrorProvider() {
 		return [
 			// Empty
 			[[]],
@@ -379,8 +360,7 @@ class TableTest extends TestCase
 	 * @expectedException \Cake\Database\Exception
 	 * @return void
 	 */
-	public function testAddIndexError($props)
-	{
+	public function testAddIndexError($props) {
 		$table = new Table('articles');
 		$table->addColumn('author_id', 'integer');
 		$table->addIndex('author_idx', $props);
@@ -391,8 +371,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddIndexTypes()
-	{
+	public function testAddIndexTypes() {
 		$table = new Table('articles');
 		$table->addColumn('id', 'integer')
 			->addColumn('title', 'string')
@@ -417,8 +396,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrimaryKey()
-	{
+	public function testPrimaryKey() {
 		$table = new Table('articles');
 		$table->addColumn('id', 'integer')
 			->addColumn('title', 'string')
@@ -444,8 +422,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOptions()
-	{
+	public function testOptions() {
 		$table = new Table('articles');
 		$options = [
 			'engine' => 'InnoDB'
@@ -460,8 +437,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddConstraintForeignKey()
-	{
+	public function testAddConstraintForeignKey() {
 		$table = new Table('articles');
 		$table->addColumn('author_id', 'integer')
 			->addConstraint('author_id_idx', [
@@ -479,8 +455,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstraintForeignKey()
-	{
+	public function testConstraintForeignKey() {
 		$table = TableRegistry::get('ArticlesTags');
 		$compositeConstraint = $table->schema()->constraint('tag_id_fk');
 		$expected = [
@@ -503,8 +478,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstraintForeignKeyTwoColumns()
-	{
+	public function testConstraintForeignKeyTwoColumns() {
 		$table = TableRegistry::get('Orders');
 		$compositeConstraint = $table->schema()->constraint('product_category_fk');
 		$expected = [
@@ -535,8 +509,7 @@ class TableTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function badForeignKeyProvider()
-	{
+	public static function badForeignKeyProvider() {
 		return [
 			'references is bad' => [[
 				'type' => Table::CONSTRAINT_FOREIGN,
@@ -566,8 +539,7 @@ class TableTest extends TestCase
 	 * @expectedException \Cake\Database\Exception
 	 * @return void
 	 */
-	public function testAddConstraintForeignKeyBadData($data)
-	{
+	public function testAddConstraintForeignKeyBadData($data) {
 		$table = new Table('articles');
 		$table->addColumn('author_id', 'integer')
 			->addConstraint('author_id_idx', $data);
@@ -578,8 +550,7 @@ class TableTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTemporary()
-	{
+	public function testTemporary() {
 		$table = new Table('articles');
 		$this->assertFalse($table->temporary());
 		$this->assertSame($table, $table->temporary(true));
@@ -599,8 +570,7 @@ class TableTest extends TestCase
 	 * @param bool $optional
 	 * @return void
 	 */
-	public function assertQuotedQuery($pattern, $query, $optional = false)
-	{
+	public function assertQuotedQuery($pattern, $query, $optional = false) {
 		if ($optional) {
 			$optional = '?';
 		}

@@ -22,16 +22,14 @@ use Cake\Validation\Validator;
  * Tests Validator class
  *
  */
-class ValidatorTest extends TestCase
-{
+class ValidatorTest extends TestCase {
 
 	/**
 	 * Testing you can dynamically add rules to a field
 	 *
 	 * @return void
 	 */
-	public function testAddingRulesToField()
-	{
+	public function testAddingRulesToField() {
 		$validator = new Validator;
 		$validator->add('title', 'not-blank', ['rule' => 'notBlank']);
 		$set = $validator->field('title');
@@ -51,8 +49,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddNestedSingle()
-	{
+	public function testAddNestedSingle() {
 		$validator = new Validator();
 		$inner = new Validator();
 		$inner->add('username', 'not-blank', ['rule' => 'notBlank']);
@@ -66,8 +63,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddNestedSingleProviders()
-	{
+	public function testAddNestedSingleProviders() {
 		$validator = new Validator();
 		$validator->provider('test', $this);
 
@@ -87,8 +83,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddNestedMany()
-	{
+	public function testAddNestedMany() {
 		$validator = new Validator();
 		$inner = new Validator();
 		$inner->add('comment', 'not-blank', ['rule' => 'notBlank']);
@@ -102,8 +97,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddNestedManyProviders()
-	{
+	public function testAddNestedManyProviders() {
 		$validator = new Validator();
 		$validator->provider('test', $this);
 
@@ -123,8 +117,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFieldDefault()
-	{
+	public function testFieldDefault() {
 		$validator = new Validator;
 		$this->assertFalse($validator->hasField('foo'));
 
@@ -139,8 +132,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFieldSetter()
-	{
+	public function testFieldSetter() {
 		$validator = new Validator;
 		$validationSet = new ValidationSet;
 		$validator->field('thing', $validationSet);
@@ -152,8 +144,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemove()
-	{
+	public function testRemove() {
 		$validator = new Validator;
 		$validator->add('title', 'not-blank', ['rule' => 'notBlank']);
 		$validator->add('title', 'foo', ['rule' => 'bar']);
@@ -175,8 +166,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequirePresence()
-	{
+	public function testRequirePresence() {
 		$validator = new Validator;
 		$this->assertSame($validator, $validator->requirePresence('title'));
 		$this->assertTrue($validator->field('title')->isPresenceRequired());
@@ -196,8 +186,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRequirePresenceCallback()
-	{
+	public function testRequirePresenceCallback() {
 		$validator = new Validator;
 		$require = true;
 		$validator->requirePresence('title', function ($context) use (&$require) {
@@ -218,8 +207,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsPresenceRequired()
-	{
+	public function testIsPresenceRequired() {
 		$validator = new Validator;
 		$this->assertSame($validator, $validator->requirePresence('title'));
 		$this->assertTrue($validator->isPresenceRequired('title', true));
@@ -243,8 +231,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsWithPresenceRequired()
-	{
+	public function testErrorsWithPresenceRequired() {
 		$validator = new Validator;
 		$validator->requirePresence('title');
 		$errors = $validator->errors(['foo' => 'something']);
@@ -262,8 +249,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsWithNestedFields()
-	{
+	public function testErrorsWithNestedFields() {
 		$validator = new Validator();
 		$user = new Validator();
 		$user->add('username', 'letter', ['rule' => 'alphanumeric']);
@@ -299,8 +285,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsWithNestedSingleInvalidType()
-	{
+	public function testErrorsWithNestedSingleInvalidType() {
 		$validator = new Validator();
 
 		$user = new Validator();
@@ -322,8 +307,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsWithNestedManyInvalidType()
-	{
+	public function testErrorsWithNestedManyInvalidType() {
 		$validator = new Validator();
 
 		$comments = new Validator();
@@ -345,8 +329,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsWithNestedManySomeInvalid()
-	{
+	public function testErrorsWithNestedManySomeInvalid() {
 		$validator = new Validator();
 
 		$comments = new Validator();
@@ -374,8 +357,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomErrorsWithPresenceRequired()
-	{
+	public function testCustomErrorsWithPresenceRequired() {
 		$validator = new Validator;
 		$validator->requirePresence('title', true, 'Custom message');
 		$errors = $validator->errors(['foo' => 'something']);
@@ -388,8 +370,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAllowEmpty()
-	{
+	public function testAllowEmpty() {
 		$validator = new Validator;
 		$this->assertSame($validator, $validator->allowEmpty('title'));
 		$this->assertTrue($validator->field('title')->isEmptyAllowed());
@@ -406,8 +387,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAllowEmptyDateTime()
-	{
+	public function testAllowEmptyDateTime() {
 		$validator = new Validator;
 		$validator->allowEmpty('created')
 			->add('created', 'date', ['rule' => 'date']);
@@ -452,8 +432,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAllowEmptyFileFields()
-	{
+	public function testAllowEmptyFileFields() {
 		$validator = new Validator;
 		$validator->allowEmpty('picture')
 			->add('picture', 'file', ['rule' => 'uploadedFile']);
@@ -486,8 +465,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNotEmpty()
-	{
+	public function testNotEmpty() {
 		$validator = new Validator;
 		$validator->notEmpty('title');
 		$this->assertFalse($validator->field('title')->isEmptyAllowed());
@@ -501,8 +479,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNotEmptyModes()
-	{
+	public function testNotEmptyModes() {
 		$validator = new Validator;
 		$validator->notEmpty('title', 'Need a title', 'create');
 		$this->assertFalse($validator->isEmptyAllowed('title', true));
@@ -526,8 +503,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNotEmptyAndIsAllowed()
-	{
+	public function testNotEmptyAndIsAllowed() {
 		$validator = new Validator;
 		$validator->allowEmpty('title')
 			->notEmpty('title', 'Need it', 'update');
@@ -550,8 +526,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAllowEmptyCallback()
-	{
+	public function testAllowEmptyCallback() {
 		$validator = new Validator;
 		$allow = true;
 		$validator->allowEmpty('title', function ($context) use (&$allow) {
@@ -571,8 +546,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNotEmptyCallback()
-	{
+	public function testNotEmptyCallback() {
 		$validator = new Validator;
 		$prevent = true;
 		$validator->notEmpty('title', 'error message', function ($context) use (&$prevent) {
@@ -592,8 +566,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsEmptyAllowed()
-	{
+	public function testIsEmptyAllowed() {
 		$validator = new Validator;
 		$this->assertSame($validator, $validator->allowEmpty('title'));
 		$this->assertTrue($validator->isEmptyAllowed('title', true));
@@ -617,8 +590,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsWithEmptyNotAllowed()
-	{
+	public function testErrorsWithEmptyNotAllowed() {
 		$validator = new Validator;
 		$validator->notEmpty('title');
 		$errors = $validator->errors(['title' => '']);
@@ -648,8 +620,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomErrorsWithEmptyNotAllowed()
-	{
+	public function testCustomErrorsWithEmptyNotAllowed() {
 		$validator = new Validator;
 		$validator->notEmpty('title', 'Custom message');
 		$errors = $validator->errors(['title' => '']);
@@ -662,8 +633,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsWithEmptyAllowed()
-	{
+	public function testErrorsWithEmptyAllowed() {
 		$validator = new Validator;
 		$validator->allowEmpty('title');
 		$errors = $validator->errors(['title' => '']);
@@ -693,8 +663,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testProvider()
-	{
+	public function testProvider() {
 		$validator = new Validator;
 		$object = new \stdClass;
 		$this->assertSame($validator, $validator->provider('foo', $object));
@@ -714,8 +683,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsFromDefaultProvider()
-	{
+	public function testErrorsFromDefaultProvider() {
 		$validator = new Validator;
 		$validator
 			->add('email', 'alpha', ['rule' => 'alphanumeric'])
@@ -737,8 +705,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsFromCustomProvider()
-	{
+	public function testErrorsFromCustomProvider() {
 		$validator = new Validator;
 		$validator
 			->add('email', 'alpha', ['rule' => 'alphanumeric'])
@@ -780,8 +747,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMethodsWithExtraArguments()
-	{
+	public function testMethodsWithExtraArguments() {
 		$validator = new Validator;
 		$validator->add('title', 'cool', [
 			'rule' => ['isCool', 'and', 'awesome'],
@@ -822,8 +788,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUsingClosureAsRule()
-	{
+	public function testUsingClosureAsRule() {
 		$validator = new Validator;
 		$validator->add('name', 'myRule', [
 			'rule' => function ($data, $provider) {
@@ -840,8 +805,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorsWithLastRule()
-	{
+	public function testErrorsWithLastRule() {
 		$validator = new Validator;
 		$validator
 			->add('email', 'alpha', ['rule' => 'alphanumeric', 'last' => true])
@@ -861,8 +825,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testArrayAccessGet()
-	{
+	public function testArrayAccessGet() {
 		$validator = new Validator;
 		$validator
 			->add('email', 'alpha', ['rule' => 'alphanumeric'])
@@ -876,8 +839,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testArrayAccessExists()
-	{
+	public function testArrayAccessExists() {
 		$validator = new Validator;
 		$validator
 			->add('email', 'alpha', ['rule' => 'alphanumeric'])
@@ -892,8 +854,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testArrayAccessSet()
-	{
+	public function testArrayAccessSet() {
 		$validator = new Validator;
 		$validator
 			->add('email', 'alpha', ['rule' => 'alphanumeric'])
@@ -909,8 +870,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testArrayAccessUset()
-	{
+	public function testArrayAccessUset() {
 		$validator = new Validator;
 		$validator
 			->add('email', 'alpha', ['rule' => 'alphanumeric'])
@@ -925,8 +885,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCount()
-	{
+	public function testCount() {
 		$validator = new Validator;
 		$validator
 			->add('email', 'alpha', ['rule' => 'alphanumeric'])
@@ -939,8 +898,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddMulitple()
-	{
+	public function testAddMulitple() {
 		$validator = new Validator;
 		$validator->add('title', [
 			'notBlank' => [
@@ -961,8 +919,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCompareWithIntegration()
-	{
+	public function testCompareWithIntegration() {
 		$validator = new Validator;
 		$validator->add('password', [
 			'compare' => [
@@ -981,8 +938,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDebugInfo()
-	{
+	public function testDebugInfo() {
 		$validator = new Validator();
 		$validator->provider('test', $this);
 		$validator->add('title', 'not-empty', ['rule' => 'notEmpty']);
@@ -1022,8 +978,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestedValidatorCreate()
-	{
+	public function testNestedValidatorCreate() {
 		$validator = new Validator();
 		$inner = new Validator();
 		$inner->add('username', 'email', ['rule' => 'email', 'on' => 'create']);
@@ -1038,8 +993,7 @@ class ValidatorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestedManyValidatorCreate()
-	{
+	public function testNestedManyValidatorCreate() {
 		$validator = new Validator();
 		$inner = new Validator();
 		$inner->add('username', 'email', ['rule' => 'email', 'on' => 'create']);

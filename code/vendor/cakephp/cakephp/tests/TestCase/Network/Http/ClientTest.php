@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
 /**
  * HTTP client test.
  */
-class ClientTest extends TestCase
-{
+class ClientTest extends TestCase {
 
 	/**
 	 * Test storing config options and modifying them.
 	 *
 	 * @return void
 	 */
-	public function testConstructConfig()
-	{
+	public function testConstructConfig() {
 		$config = [
 			'scheme' => 'http',
 			'host' => 'example.org',
@@ -62,8 +60,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function urlProvider()
-	{
+	public static function urlProvider() {
 		return [
 			[
 				'http://example.com/test.html',
@@ -141,8 +138,7 @@ class ClientTest extends TestCase
 	/**
 	 * @dataProvider urlProvider
 	 */
-	public function testBuildUrl($expected, $url, $query, $opts)
-	{
+	public function testBuildUrl($expected, $url, $query, $opts) {
 		$http = new Client();
 
 		$result = $http->buildUrl($url, $query, $opts);
@@ -154,8 +150,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetSimpleWithHeadersAndCookies()
-	{
+	public function testGetSimpleWithHeadersAndCookies() {
 		$response = new Response();
 
 		$headers = [
@@ -192,8 +187,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetQuerystring()
-	{
+	public function testGetQuerystring() {
 		$response = new Response();
 
 		$mock = $this->getMock('Cake\Network\Http\Adapter\Stream', ['send']);
@@ -222,8 +216,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetQuerystringString()
-	{
+	public function testGetQuerystringString() {
 		$response = new Response();
 
 		$mock = $this->getMock('Cake\Network\Http\Adapter\Stream', ['send']);
@@ -253,8 +246,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetWithContent()
-	{
+	public function testGetWithContent() {
 		$response = new Response();
 
 		$mock = $this->getMock('Cake\Network\Http\Adapter\Stream', ['send']);
@@ -284,8 +276,7 @@ class ClientTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testInvalidAuthenticationType()
-	{
+	public function testInvalidAuthenticationType() {
 		$mock = $this->getMock('Cake\Network\Http\Adapter\Stream', ['send']);
 		$mock->expects($this->never())
 			->method('send');
@@ -304,8 +295,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetWithAuthenticationAndProxy()
-	{
+	public function testGetWithAuthenticationAndProxy() {
 		$response = new Response();
 
 		$mock = $this->getMock('Cake\Network\Http\Adapter\Stream', ['send']);
@@ -341,8 +331,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function methodProvider()
-	{
+	public static function methodProvider() {
 		return [
 			[Request::METHOD_GET],
 			[Request::METHOD_POST],
@@ -360,8 +349,7 @@ class ClientTest extends TestCase
 	 * @dataProvider methodProvider
 	 * @return void
 	 */
-	public function testMethodsSimple($method)
-	{
+	public function testMethodsSimple($method) {
 		$response = new Response();
 
 		$mock = $this->getMock('Cake\Network\Http\Adapter\Stream', ['send']);
@@ -387,8 +375,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function typeProvider()
-	{
+	public static function typeProvider() {
 		return [
 			['application/json', 'application/json'],
 			['json', 'application/json'],
@@ -403,8 +390,7 @@ class ClientTest extends TestCase
 	 * @dataProvider typeProvider
 	 * @return void
 	 */
-	public function testPostWithTypeKey($type, $mime)
-	{
+	public function testPostWithTypeKey($type, $mime) {
 		$response = new Response();
 		$data = 'some data';
 		$headers = [
@@ -436,8 +422,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostWithStringDataDefaultsToFormEncoding()
-	{
+	public function testPostWithStringDataDefaultsToFormEncoding() {
 		$response = new Response();
 		$data = 'some=value&more=data';
 		$headers = [
@@ -470,8 +455,7 @@ class ClientTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @return void
 	 */
-	public function testExceptionOnUnknownType()
-	{
+	public function testExceptionOnUnknownType() {
 		$mock = $this->getMock('Cake\Network\Http\Adapter\Stream', ['send']);
 		$mock->expects($this->never())
 			->method('send');
@@ -488,8 +472,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCookieStorage()
-	{
+	public function testCookieStorage() {
 		$adapter = $this->getMock(
 			'Cake\Network\Http\Adapter\Stream',
 			['send']
@@ -530,8 +513,7 @@ class ClientTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHeadQuerystring()
-	{
+	public function testHeadQuerystring() {
 		$response = new Response();
 
 		$mock = $this->getMock('Cake\Network\Http\Adapter\Stream', ['send']);

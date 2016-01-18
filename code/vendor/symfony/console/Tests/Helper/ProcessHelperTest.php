@@ -17,13 +17,11 @@ use Symfony\Component\Console\Output\StreamOutput;
 use Symfony\Component\Console\Helper\ProcessHelper;
 use Symfony\Component\Process\Process;
 
-class ProcessHelperTest extends \PHPUnit_Framework_TestCase
-{
+class ProcessHelperTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provideCommandsAndOutput
 	 */
-	public function testVariousProcessRuns($expected, $cmd, $verbosity, $error)
-	{
+	public function testVariousProcessRuns($expected, $cmd, $verbosity, $error) {
 		$helper = new ProcessHelper();
 		$helper->setHelperSet(new HelperSet(array(new DebugFormatterHelper())));
 		$output = $this->getOutputStream($verbosity);
@@ -31,8 +29,7 @@ class ProcessHelperTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, $this->getOutput($output));
 	}
 
-	public function testPassedCallbackIsExecuted()
-	{
+	public function testPassedCallbackIsExecuted() {
 		$helper = new ProcessHelper();
 		$helper->setHelperSet(new HelperSet(array(new DebugFormatterHelper())));
 		$output = $this->getOutputStream(StreamOutput::VERBOSITY_NORMAL);
@@ -46,8 +43,7 @@ class ProcessHelperTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($executed);
 	}
 
-	public function provideCommandsAndOutput()
-	{
+	public function provideCommandsAndOutput() {
 		$successOutputVerbose = <<<EOT
   RUN  php -r "echo 42;"
   RES  Command ran successfully
@@ -105,13 +101,11 @@ EOT;
 		);
 	}
 
-	private function getOutputStream($verbosity)
-	{
+	private function getOutputStream($verbosity) {
 		return new StreamOutput(fopen('php://memory', 'r+', false), $verbosity, false);
 	}
 
-	private function getOutput(StreamOutput $output)
-	{
+	private function getOutput(StreamOutput $output) {
 		rewind($output->getStream());
 
 		return stream_get_contents($output->getStream());

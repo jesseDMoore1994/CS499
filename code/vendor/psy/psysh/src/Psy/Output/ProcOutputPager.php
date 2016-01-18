@@ -21,8 +21,7 @@ use Symfony\Component\Console\Output\StreamOutput;
  * gives that process the stream as stdout. This means regular *nix commands
  * like `less` and `more` can be used to page large amounts of output.
  */
-class ProcOutputPager extends StreamOutput implements OutputPager
-{
+class ProcOutputPager extends StreamOutput implements OutputPager {
 	private $proc;
 	private $pipe;
 	private $stream;
@@ -34,8 +33,7 @@ class ProcOutputPager extends StreamOutput implements OutputPager
 	 * @param StreamOutput $output
 	 * @param string $cmd Pager process command (default: 'less -R -S -F -X')
 	 */
-	public function __construct(StreamOutput $output, $cmd = 'less -R -S -F -X')
-	{
+	public function __construct(StreamOutput $output, $cmd = 'less -R -S -F -X') {
 		$this->stream = $output->getStream();
 		$this->cmd = $cmd;
 	}
@@ -48,8 +46,7 @@ class ProcOutputPager extends StreamOutput implements OutputPager
 	 *
 	 * @throws \RuntimeException When unable to write output (should never happen)
 	 */
-	public function doWrite($message, $newline)
-	{
+	public function doWrite($message, $newline) {
 		$pipe = $this->getPipe();
 		if (false === @fwrite($pipe, $message . ($newline ? PHP_EOL : ''))) {
 			// @codeCoverageIgnoreStart
@@ -64,8 +61,7 @@ class ProcOutputPager extends StreamOutput implements OutputPager
 	/**
 	 * Close the current pager process.
 	 */
-	public function close()
-	{
+	public function close() {
 		if (isset($this->pipe)) {
 			fclose($this->pipe);
 		}
@@ -85,8 +81,7 @@ class ProcOutputPager extends StreamOutput implements OutputPager
 	 *
 	 * If no active pager process exists, fork one and return its input pipe.
 	 */
-	private function getPipe()
-	{
+	private function getPipe() {
 		if (!isset($this->pipe) || !isset($this->proc)) {
 			$desc = array(array('pipe', 'r'), $this->stream, fopen('php://stderr', 'w'));
 			$this->proc = proc_open($this->cmd, $desc, $pipes);

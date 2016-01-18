@@ -19,8 +19,7 @@ use Symfony\Component\Config\Definition\Exception\InvalidDefinitionException;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-abstract class NodeDefinition implements NodeParentInterface
-{
+abstract class NodeDefinition implements NodeParentInterface {
 	protected $name;
 	protected $normalization;
 	protected $validation;
@@ -45,8 +44,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 * @param string $name The name of the node
 	 * @param NodeParentInterface|null $parent The parent
 	 */
-	public function __construct($name, NodeParentInterface $parent = null)
-	{
+	public function __construct($name, NodeParentInterface $parent = null) {
 		$this->parent = $parent;
 		$this->name = $name;
 	}
@@ -58,8 +56,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function setParent(NodeParentInterface $parent)
-	{
+	public function setParent(NodeParentInterface $parent) {
 		$this->parent = $parent;
 
 		return $this;
@@ -72,8 +69,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function info($info)
-	{
+	public function info($info) {
 		return $this->attribute('info', $info);
 	}
 
@@ -84,8 +80,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function example($example)
-	{
+	public function example($example) {
 		return $this->attribute('example', $example);
 	}
 
@@ -97,8 +92,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function attribute($key, $value)
-	{
+	public function attribute($key, $value) {
 		$this->attributes[$key] = $value;
 
 		return $this;
@@ -109,8 +103,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeParentInterface|null The builder of the parent node
 	 */
-	public function end()
-	{
+	public function end() {
 		return $this->parent;
 	}
 
@@ -121,8 +114,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeInterface
 	 */
-	public function getNode($forceRootNode = false)
-	{
+	public function getNode($forceRootNode = false) {
 		if ($forceRootNode) {
 			$this->parent = null;
 		}
@@ -148,8 +140,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function defaultValue($value)
-	{
+	public function defaultValue($value) {
 		$this->default = true;
 		$this->defaultValue = $value;
 
@@ -161,8 +152,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function isRequired()
-	{
+	public function isRequired() {
 		$this->required = true;
 
 		return $this;
@@ -175,8 +165,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function treatNullLike($value)
-	{
+	public function treatNullLike($value) {
 		$this->nullEquivalent = $value;
 
 		return $this;
@@ -189,8 +178,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function treatTrueLike($value)
-	{
+	public function treatTrueLike($value) {
 		$this->trueEquivalent = $value;
 
 		return $this;
@@ -203,8 +191,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function treatFalseLike($value)
-	{
+	public function treatFalseLike($value) {
 		$this->falseEquivalent = $value;
 
 		return $this;
@@ -215,8 +202,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function defaultNull()
-	{
+	public function defaultNull() {
 		return $this->defaultValue(null);
 	}
 
@@ -225,8 +211,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function defaultTrue()
-	{
+	public function defaultTrue() {
 		return $this->defaultValue(true);
 	}
 
@@ -235,8 +220,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function defaultFalse()
-	{
+	public function defaultFalse() {
 		return $this->defaultValue(false);
 	}
 
@@ -245,8 +229,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return ExprBuilder
 	 */
-	public function beforeNormalization()
-	{
+	public function beforeNormalization() {
 		return $this->normalization()->before();
 	}
 
@@ -255,8 +238,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function cannotBeEmpty()
-	{
+	public function cannotBeEmpty() {
 		$this->allowEmptyValue = false;
 
 		return $this;
@@ -271,8 +253,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return ExprBuilder
 	 */
-	public function validate()
-	{
+	public function validate() {
 		return $this->validation()->rule();
 	}
 
@@ -283,8 +264,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NodeDefinition|$this
 	 */
-	public function cannotBeOverwritten($deny = true)
-	{
+	public function cannotBeOverwritten($deny = true) {
 		$this->merge()->denyOverwrite($deny);
 
 		return $this;
@@ -295,8 +275,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return ValidationBuilder
 	 */
-	protected function validation()
-	{
+	protected function validation() {
 		if (null === $this->validation) {
 			$this->validation = new ValidationBuilder($this);
 		}
@@ -309,8 +288,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return MergeBuilder
 	 */
-	protected function merge()
-	{
+	protected function merge() {
 		if (null === $this->merge) {
 			$this->merge = new MergeBuilder($this);
 		}
@@ -323,8 +301,7 @@ abstract class NodeDefinition implements NodeParentInterface
 	 *
 	 * @return NormalizationBuilder
 	 */
-	protected function normalization()
-	{
+	protected function normalization() {
 		if (null === $this->normalization) {
 			$this->normalization = new NormalizationBuilder($this);
 		}

@@ -4,8 +4,7 @@ namespace PhpParser\Node;
 
 use PhpParser\Node;
 
-interface FunctionLike extends Node
-{
+interface FunctionLike extends Node {
 	/**
 	 * Whether to return by reference
 	 *

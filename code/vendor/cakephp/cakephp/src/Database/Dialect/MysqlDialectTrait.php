@@ -23,8 +23,7 @@ use Cake\Database\SqlDialectTrait;
  *
  * @internal
  */
-trait MysqlDialectTrait
-{
+trait MysqlDialectTrait {
 
 	use SqlDialectTrait;
 
@@ -57,8 +56,7 @@ trait MysqlDialectTrait
 	 *
 	 * @return \Cake\Database\Schema\MysqlSchema
 	 */
-	public function schemaDialect()
-	{
+	public function schemaDialect() {
 		if (!$this->_schemaDialect) {
 			$this->_schemaDialect = new MysqlSchema($this);
 		}
@@ -68,16 +66,14 @@ trait MysqlDialectTrait
 	/**
 	 * {@inheritDoc}
 	 */
-	public function disableForeignKeySQL()
-	{
+	public function disableForeignKeySQL() {
 		return 'SET foreign_key_checks = 0';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function enableForeignKeySQL()
-	{
+	public function enableForeignKeySQL() {
 		return 'SET foreign_key_checks = 1';
 	}
 }

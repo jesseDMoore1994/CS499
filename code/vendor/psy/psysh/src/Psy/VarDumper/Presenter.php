@@ -18,8 +18,7 @@ use Symfony\Component\VarDumper\Cloner\Stub;
 /**
  * A Presenter service.
  */
-class Presenter
-{
+class Presenter {
 	const VERBOSE = 1;
 
 	private $cloner;
@@ -46,8 +45,7 @@ class Presenter
 		'index' => 'number',
 	);
 
-	public function __construct(OutputFormatter $formatter)
-	{
+	public function __construct(OutputFormatter $formatter) {
 		$this->dumper = new Dumper($formatter);
 		$this->dumper->setStyles($this->styles);
 
@@ -72,8 +70,7 @@ class Presenter
 	 *
 	 * @param callable[] $casters A map of casters.
 	 */
-	public function addCasters(array $casters)
-	{
+	public function addCasters(array $casters) {
 		$this->cloner->addCasters($casters);
 	}
 
@@ -84,8 +81,7 @@ class Presenter
 	 *
 	 * @return string
 	 */
-	public function presentRef($value)
-	{
+	public function presentRef($value) {
 		return $this->present($value, 0);
 	}
 
@@ -100,8 +96,7 @@ class Presenter
 	 *
 	 * @return string
 	 */
-	public function present($value, $depth = null, $options = 0)
-	{
+	public function present($value, $depth = null, $options = 0) {
 		$data = $this->cloner->cloneVar($value, !($options & self::VERBOSE) ? Caster::EXCLUDE_VERBOSE : 0);
 
 		if (null !== $depth) {

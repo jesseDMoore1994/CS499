@@ -17,8 +17,7 @@ namespace TestApp\View\Cell;
  * TagCloudCell class
  *
  */
-class ArticlesCell extends \Cake\View\Cell
-{
+class ArticlesCell extends \Cake\View\Cell {
 
 	/**
 	 * valid cell options.
@@ -32,8 +31,7 @@ class ArticlesCell extends \Cake\View\Cell
 	 *
 	 * @return void
 	 */
-	public function display()
-	{
+	public function display() {
 	}
 
 	/**
@@ -41,8 +39,7 @@ class ArticlesCell extends \Cake\View\Cell
 	 *
 	 * @return void
 	 */
-	public function teaserList()
-	{
+	public function teaserList() {
 		$this->set('articles', [
 			['title' => 'Lorem ipsum', 'body' => 'dolorem sit amet'],
 			['title' => 'Usectetur adipiscing eli', 'body' => 'tortor, in tincidunt sem dictum vel'],
@@ -58,8 +55,7 @@ class ArticlesCell extends \Cake\View\Cell
 	 * @param string $msg2
 	 * @return void
 	 */
-	public function doEcho($msg1, $msg2)
-	{
+	public function doEcho($msg1, $msg2) {
 		$this->set('msg', $msg1 . $msg2);
 	}
 }

@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
 /**
  * I18nShell test.
  */
-class I18nShellTest extends TestCase
-{
+class I18nShellTest extends TestCase {
 
 	/**
 	 * setup method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->io = $this->getMock('Cake\Console\ConsoleIo');
 		$this->shell = new I18nShell($this->io);
@@ -44,8 +42,7 @@ class I18nShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 
 		$deDir = $this->localeDir . 'de_DE' . DS;
@@ -62,8 +59,7 @@ class I18nShellTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInit()
-	{
+	public function testInit() {
 		$deDir = $this->localeDir . 'de_DE' . DS;
 		if (!is_dir($deDir)) {
 			mkdir($deDir, 0770, true);

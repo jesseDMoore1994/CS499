@@ -25,8 +25,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class Comparison implements ExpressionInterface, FieldInterface
-{
+class Comparison implements ExpressionInterface, FieldInterface {
 
 	use FieldTrait;
 
@@ -59,8 +58,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 * @param string $type the type name used to cast the value
 	 * @param string $operator the operator used for comparing field and value
 	 */
-	public function __construct($field, $value, $type, $operator)
-	{
+	public function __construct($field, $value, $type, $operator) {
 		$this->setField($field);
 		$this->setValue($value);
 		$this->_operator = $operator;
@@ -76,8 +74,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 * @param mixed $value The value to compare
 	 * @return void
 	 */
-	public function setValue($value)
-	{
+	public function setValue($value) {
 		$this->_value = $value;
 	}
 
@@ -86,8 +83,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 *
 	 * @return mixed
 	 */
-	public function getValue()
-	{
+	public function getValue() {
 		return $this->_value;
 	}
 
@@ -97,8 +93,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 * @param string $operator The operator to be used for the comparison.
 	 * @return void
 	 */
-	public function setOperator($operator)
-	{
+	public function setOperator($operator) {
 		$this->_operator = $operator;
 	}
 
@@ -107,8 +102,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 *
 	 * @return string
 	 */
-	public function getOperator()
-	{
+	public function getOperator() {
 		return $this->_operator;
 	}
 
@@ -118,8 +112,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 * @param \Cake\Database\ValueBinder $generator Placeholder generator object
 	 * @return string
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		$field = $this->_field;
 
 		if ($field instanceof ExpressionInterface) {
@@ -140,8 +133,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 * {@inheritDoc}
 	 *
 	 */
-	public function traverse(callable $callable)
-	{
+	public function traverse(callable $callable) {
 		if ($this->_field instanceof ExpressionInterface) {
 			$callable($this->_field);
 			$this->_field->traverse($callable);
@@ -160,8 +152,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 *
 	 * @return void
 	 */
-	public function __clone()
-	{
+	public function __clone() {
 		foreach (['_value', '_field'] as $prop) {
 			if ($prop instanceof ExpressionInterface) {
 				$this->{$prop} = clone $this->{$prop};
@@ -176,8 +167,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 * @param \Cake\Database\ValueBinder $generator The value binder to use.
 	 * @return array First position containing the template and the second a placeholder
 	 */
-	protected function _stringExpression($generator)
-	{
+	protected function _stringExpression($generator) {
 		$template = '%s ';
 
 		if ($this->_field instanceof ExpressionInterface) {
@@ -213,8 +203,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 * @param string $type The type of $value
 	 * @return string generated placeholder
 	 */
-	protected function _bindValue($value, $generator, $type)
-	{
+	protected function _bindValue($value, $generator, $type) {
 		$placeholder = $generator->placeholder('c');
 		$generator->bind($placeholder, $value, $type);
 		return $placeholder;
@@ -229,8 +218,7 @@ class Comparison implements ExpressionInterface, FieldInterface
 	 * @param string|array $type the type to cast values to
 	 * @return string
 	 */
-	protected function _flattenValue($value, $generator, $type = null)
-	{
+	protected function _flattenValue($value, $generator, $type = null) {
 		$parts = [];
 		foreach ($value as $k => $v) {
 			$parts[] = $this->_bindValue($v, $generator, $type);

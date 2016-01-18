@@ -7,57 +7,45 @@ use Phinx\Db\Table\Column;
 use Phinx\Db\Table\Index;
 use Phinx\Db\Adapter\MysqlAdapter;
 
-class PDOMock extends \PDO
-{
-	public function __construct()
-	{
+class PDOMock extends \PDO {
+	public function __construct() {
 	}
 }
 
-class MysqlAdapterTester extends MysqlAdapter
-{
-	public function setMockConnection($connection)
-	{
+class MysqlAdapterTester extends MysqlAdapter {
+	public function setMockConnection($connection) {
 		$this->connection = $connection;
 	}
 
-	public function getConnection()
-	{
+	public function getConnection() {
 		return $this->connection;
 	}
 
 	// change visibility for testing
-	public function getDefaultValueDefinition($default)
-	{
+	public function getDefaultValueDefinition($default) {
 		return parent::getDefaultValueDefinition($default);
 	}
 
-	public function getColumnSqlDefinition(Column $column)
-	{
+	public function getColumnSqlDefinition(Column $column) {
 		return parent::getColumnSqlDefinition($column);
 	}
 
-	public function getIndexSqlDefinition(Index $index)
-	{
+	public function getIndexSqlDefinition(Index $index) {
 		return parent::getIndexSqlDefinition($index);
 	}
 
-	public function getIndexes($tableName)
-	{
+	public function getIndexes($tableName) {
 		return parent::getIndexes($tableName);
 	}
 
-	public function getForeignKeys($tableName)
-	{
+	public function getForeignKeys($tableName) {
 		return parent::getForeignKeys($tableName);
 	}
 }
 
-class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
-{
+class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase {
 
-	public function setUp()
-	{
+	public function setUp() {
 		if (!TESTS_PHINX_DB_ADAPTER_MYSQL_ENABLED) {
 			$this->markTestSkipped('Mysql tests disabled. See TESTS_PHINX_DB_ADAPTER_MYSQL_ENABLED constant.');
 		}
@@ -76,15 +64,13 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 	}
 
 	// helper methods for easy mocking
-	private function assertExecuteSql($expected_sql)
-	{
+	private function assertExecuteSql($expected_sql) {
 		$this->conn->expects($this->once())
 			->method('exec')
 			->with($this->equalTo($expected_sql));
 	}
 
-	private function assertQuerySql($expectedSql, $returnValue = null)
-	{
+	private function assertQuerySql($expectedSql, $returnValue = null) {
 		$expect = $this->conn->expects($this->once())
 			->method('query')
 			->with($this->equalTo($expectedSql));
@@ -93,8 +79,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	private function assertFetchRowSql($expectedSql, $returnValue)
-	{
+	private function assertFetchRowSql($expectedSql, $returnValue) {
 		$this->result->expects($this->once())
 			->method('fetch')
 			->will($this->returnValue($returnValue));
@@ -102,8 +87,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 	}
 
 
-	public function testDisconnect()
-	{
+	public function testDisconnect() {
 		$this->assertNotNull($this->adapter->getConnection());
 		$this->adapter->disconnect();
 		$this->assertNull($this->adapter->getConnection());
@@ -112,8 +96,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 
 	// database related tests
 
-	public function testHasDatabaseExists()
-	{
+	public function testHasDatabaseExists() {
 		$this->result->expects($this->at(0))
 			->method('fetch')
 			->will($this->returnValue(array('SCHEMA_NAME' => 'database_name')));
@@ -126,8 +109,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasDatabase('database_name'));
 	}
 
-	public function testHasDatabaseNotExists()
-	{
+	public function testHasDatabaseNotExists() {
 		$this->result->expects($this->once())
 			->method('fetch')
 			->will($this->returnValue(null));
@@ -137,57 +119,48 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasDatabase('database_name2'));
 	}
 
-	public function testDropDatabase()
-	{
+	public function testDropDatabase() {
 		$this->assertExecuteSql("DROP DATABASE IF EXISTS `database_name`");
 		$this->adapter->dropDatabase('database_name');
 	}
 
-	public function testCreateDatabase()
-	{
+	public function testCreateDatabase() {
 		$this->assertExecuteSql("CREATE DATABASE `database_name` DEFAULT CHARACTER SET `utf8`");
 		$this->adapter->createDatabase('database_name');
 	}
 
-	public function testCreateDatabaseWithCharset()
-	{
+	public function testCreateDatabaseWithCharset() {
 		$this->assertExecuteSql("CREATE DATABASE `database_name` DEFAULT CHARACTER SET `latin1`");
 		$this->adapter->createDatabase('database_name', array('charset' => 'latin1'));
 	}
 
-	public function testCreateDatabaseWithCharsetAndCollation()
-	{
+	public function testCreateDatabaseWithCharsetAndCollation() {
 		$this->assertExecuteSql("CREATE DATABASE `database_name` DEFAULT CHARACTER SET `latin1` COLLATE `latin1_swedish_ci`");
 		$this->adapter->createDatabase('database_name', array('charset' => 'latin1', 'collation' => 'latin1_swedish_ci'));
 	}
 
-	public function testHasTransactions()
-	{
+	public function testHasTransactions() {
 		$this->assertTrue($this->adapter->hasTransactions());
 	}
 
-	public function testBeginTransaction()
-	{
+	public function testBeginTransaction() {
 		$this->assertExecuteSql("START TRANSACTION");
 		$this->adapter->beginTransaction();
 	}
 
-	public function testCommitTransaction()
-	{
+	public function testCommitTransaction() {
 		$this->assertExecuteSql("COMMIT");
 		$this->adapter->commitTransaction();
 	}
 
-	public function testRollbackTransaction()
-	{
+	public function testRollbackTransaction() {
 		$this->assertExecuteSql("ROLLBACK");
 		$this->adapter->rollbackTransaction();
 	}
 
 	// table related tests
 
-	public function testDescribeTable()
-	{
+	public function testDescribeTable() {
 		$this->adapter->setOptions(array('name' => 'database_name'));
 
 		$expectedSql = "SELECT *
@@ -205,20 +178,17 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($returnValue, $described);
 	}
 
-	public function testRenameTable()
-	{
+	public function testRenameTable() {
 		$this->assertExecuteSql("RENAME TABLE `old_table_name` TO `new_table_name`");
 		$this->adapter->renameTable('old_table_name', 'new_table_name');
 	}
 
-	public function testDropTable()
-	{
+	public function testDropTable() {
 		$this->assertExecuteSql("DROP TABLE `table_name`");
 		$this->adapter->dropTable("table_name");
 	}
 
-	public function testHasTableExists()
-	{
+	public function testHasTableExists() {
 		$this->adapter->setOptions(array('name' => 'database_name'));
 		$this->result->expects($this->once())
 			->method('fetch')
@@ -230,8 +200,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasTable("table_name"));
 	}
 
-	public function testHasTableNotExists()
-	{
+	public function testHasTableNotExists() {
 		$this->adapter->setOptions(array('name' => 'database_name'));
 		$this->result->expects($this->once())
 			->method('fetch')
@@ -243,8 +212,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasTable("table_name"));
 	}
 
-	public function testCreateTableBasic()
-	{
+	public function testCreateTableBasic() {
 		$column1 = $this->getMockBuilder('Phinx\Db\Table\Column')
 			->disableOriginalConstructor()
 			->setMethods(array('getName', 'getAfter', 'getType', 'getLimit', 'setLimit'))
@@ -281,8 +249,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->createTable($table);
 	}
 
-	public function testCreateTablePrimaryKey()
-	{
+	public function testCreateTablePrimaryKey() {
 		$column1 = $this->getMockBuilder('Phinx\Db\Table\Column')
 			->disableOriginalConstructor()
 			->setMethods(array('getName', 'getAfter', 'getType', 'getLimit', 'setLimit'))
@@ -321,8 +288,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 	}
 
 
-	public function testCreateTableAdvanced()
-	{
+	public function testCreateTableAdvanced() {
 		$refTable = $this->getMockBuilder('Phinx\Db\Table')
 			->disableOriginalConstructor()
 			->setMethods(array('getName', 'getOptions', 'getPendingColumns', 'getIndexes', 'getForeignKeys'))
@@ -411,8 +377,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 	 * @todo not real unit, Column class is not mocked, improve dependency of Column removing new. Could be done calling protected newColumn() and override newColumn() in tester class
 	 *
 	 */
-	public function testGetColumns()
-	{
+	public function testGetColumns() {
 		$column1 = array('Field' => 'column1',
 			'Type' => 'int(15)',
 			'Null' => 'NO',
@@ -462,8 +427,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 
 	// column related tests
 
-	public function testHasColumnExists()
-	{
+	public function testHasColumnExists() {
 		$column1 = array('Field' => 'column1',
 			'Type' => 'int(15)',
 			'Null' => 'NO',
@@ -491,8 +455,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasColumn('table_name', 'column1'));
 	}
 
-	public function testGetColumnSqlDefinitionInteger()
-	{
+	public function testGetColumnSqlDefinitionInteger() {
 		$column = $this->getMockBuilder('Phinx\Db\Table\Column')
 			->disableOriginalConstructor()
 			->setMethods(array('getName', 'getAfter', 'getType', 'getLimit'))
@@ -507,8 +470,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 			$this->adapter->getColumnSqlDefinition($column));
 	}
 
-	public function testGetColumnSqlDefinitionFloat()
-	{
+	public function testGetColumnSqlDefinitionFloat() {
 		$column = $this->getMockBuilder('Phinx\Db\Table\Column')
 			->disableOriginalConstructor()
 			->setMethods(array('getName', 'getAfter', 'getType', 'getLimit', 'setLimit', 'getScale', 'getPrecision'))
@@ -527,8 +489,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @todo must enter in code that removes limit
 	 */
-	public function testGetColumnSqlDefinitionTextWithLimit()
-	{
+	public function testGetColumnSqlDefinitionTextWithLimit() {
 		$column = $this->getMockBuilder('Phinx\Db\Table\Column')
 			->disableOriginalConstructor()
 			->setMethods(array('getName', 'getAfter', 'getType', 'getLimit', 'setLimit'))
@@ -544,8 +505,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 			$this->adapter->getColumnSqlDefinition($column));
 	}
 
-	public function testGetColumnSqlDefinitionComplete()
-	{
+	public function testGetColumnSqlDefinitionComplete() {
 		$this->conn->expects($this->once())
 			->method('quote')
 			->with($this->equalTo('Custom Comment'))
@@ -578,8 +538,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 			$this->adapter->getColumnSqlDefinition($column));
 	}
 
-	public function testHasColumnExistsCaseInsensitive()
-	{
+	public function testHasColumnExistsCaseInsensitive() {
 		$column1 = array('Field' => 'column1',
 			'Type' => 'int(15)',
 			'Null' => 'NO',
@@ -607,8 +566,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($this->adapter->hasColumn('table_name', 'CoLumN1'));
 	}
 
-	public function testHasColumnNotExists()
-	{
+	public function testHasColumnNotExists() {
 		$column1 = array('Field' => 'column1',
 			'Type' => 'int(15)',
 			'Null' => 'NO',
@@ -636,15 +594,13 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($this->adapter->hasColumn('table_name', 'column3'));
 	}
 
-	public function testDropColumn()
-	{
+	public function testDropColumn() {
 		$this->assertExecuteSql("ALTER TABLE `table_name` DROP COLUMN `column1`");
 		$this->adapter->dropColumn('table_name', 'column1');
 	}
 
 
-	public function testAddColumn()
-	{
+	public function testAddColumn() {
 		$table = $this->getMockBuilder('Phinx\Db\Table')
 			->disableOriginalConstructor()
 			->setMethods(array('getName'))
@@ -666,8 +622,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->addColumn($table, $column);
 	}
 
-	public function testAddColumnWithAfter()
-	{
+	public function testAddColumnWithAfter() {
 		$table = $this->getMockBuilder('Phinx\Db\Table')
 			->disableOriginalConstructor()
 			->setMethods(array('getName'))
@@ -689,8 +644,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->addColumn($table, $column);
 	}
 
-	public function testChangeColumn()
-	{
+	public function testChangeColumn() {
 		$column = $this->getMockBuilder('Phinx\Db\Table\Column')
 			->disableOriginalConstructor()
 			->setMethods(array('getName', 'getAfter', 'getType', 'getLimit'))
@@ -704,8 +658,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->changeColumn('table_name', 'column1', $column);
 	}
 
-	public function testRenameColumnExists()
-	{
+	public function testRenameColumnExists() {
 		$column1 = array('Field' => 'column_old',
 			'Type' => 'int(15)',
 			'Null' => 'NO',
@@ -735,8 +688,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->renameColumn('table_name', 'column_old', 'column_new');
 	}
 
-	public function testRenameColumnNotExists()
-	{
+	public function testRenameColumnNotExists() {
 		$column1 = array('Field' => 'column1',
 			'Type' => 'int(15)',
 			'Null' => 'NO',
@@ -766,32 +718,27 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->renameColumn('table_name', 'column_old', 'column_new');
 	}
 
-	public function testGetDefaultValueDefinitionEmpty()
-	{
+	public function testGetDefaultValueDefinitionEmpty() {
 		$this->assertEquals('', $this->adapter->getDefaultValueDefinition(null));
 		$this->assertEquals('', $this->adapter->getDefaultValueDefinition('NULL'));
 	}
 
-	public function testGetDefaultValueDefinitionBoolean()
-	{
+	public function testGetDefaultValueDefinitionBoolean() {
 		$this->assertEquals(' DEFAULT 1',
 			$this->adapter->getDefaultValueDefinition(true));
 	}
 
-	public function testGetDefaultValueDefinitionInteger()
-	{
+	public function testGetDefaultValueDefinitionInteger() {
 		$this->assertEquals(' DEFAULT 5',
 			$this->adapter->getDefaultValueDefinition(5));
 	}
 
-	public function testGetDefaultValueDefinitionCurrentTimestamp()
-	{
+	public function testGetDefaultValueDefinitionCurrentTimestamp() {
 		$this->assertEquals(' DEFAULT CURRENT_TIMESTAMP',
 			$this->adapter->getDefaultValueDefinition('CURRENT_TIMESTAMP'));
 	}
 
-	public function testGetDefaultValueDefinitionString()
-	{
+	public function testGetDefaultValueDefinitionString() {
 		$this->conn->expects($this->once())
 			->method('quote')
 			->with($this->equalTo('str'))
@@ -800,8 +747,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 	}
 
 
-	public function testGetSqlTypeExists()
-	{
+	public function testGetSqlTypeExists() {
 		$this->assertEquals(array('name' => 'varchar', 'limit' => 255),
 			$this->adapter->getSqlType(MysqlAdapter::PHINX_TYPE_STRING));
 		$this->assertEquals(array('name' => 'char', 'limit' => 255),
@@ -908,14 +854,12 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 			$this->adapter->getSqlType(MysqlAdapter::PHINX_TYPE_SET));
 	}
 
-	public function testGetSqlTypeNotExists()
-	{
+	public function testGetSqlTypeNotExists() {
 		$this->setExpectedException('\RuntimeException', 'The type: "fake" is not supported.');
 		$this->adapter->getSqlType('fake');
 	}
 
-	public function testPhinxTypeExistsWithoutLimit()
-	{
+	public function testPhinxTypeExistsWithoutLimit() {
 		$this->assertEquals(array('name' => MysqlAdapter::PHINX_TYPE_STRING, 'limit' => null, 'precision' => null),
 			$this->adapter->getPhinxType('varchar'));
 		$this->assertEquals(array('name' => MysqlAdapter::PHINX_TYPE_CHAR, 'limit' => null, 'precision' => null),
@@ -970,8 +914,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 			$this->adapter->getPhinxType('polygon'));
 	}
 
-	public function testPhinxTypeExistsWithLimit()
-	{
+	public function testPhinxTypeExistsWithLimit() {
 		$this->assertEquals(array('name' => MysqlAdapter::PHINX_TYPE_STRING, 'limit' => 32, 'precision' => null),
 			$this->adapter->getPhinxType('varchar(32)'));
 		$this->assertEquals(array('name' => MysqlAdapter::PHINX_TYPE_CHAR, 'limit' => 32, 'precision' => null),
@@ -991,8 +934,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 	}
 
 
-	public function testPhinxTypeExistsWithLimitNull()
-	{
+	public function testPhinxTypeExistsWithLimitNull() {
 		$this->assertEquals(array('name' => MysqlAdapter::PHINX_TYPE_STRING, 'limit' => null, 'precision' => null),
 			$this->adapter->getPhinxType('varchar(255)'));
 		$this->assertEquals(array('name' => MysqlAdapter::PHINX_TYPE_CHAR, 'limit' => null, 'precision' => null),
@@ -1005,22 +947,19 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 			$this->adapter->getPhinxType('tinyint(1)'));
 	}
 
-	public function testPhinxTypeNotValidType()
-	{
+	public function testPhinxTypeNotValidType() {
 		$this->setExpectedException('\RuntimeException', 'The type: "fake" is not supported.');
 		$this->adapter->getPhinxType('fake');
 	}
 
-	public function testPhinxTypeNotValidTypeRegex()
-	{
+	public function testPhinxTypeNotValidTypeRegex() {
 		$this->setExpectedException('\RuntimeException', 'Column type ?int? is not supported');
 		$this->adapter->getPhinxType('?int?');
 	}
 
 	//index related tests
 
-	public function testGetIndexSqlDefinitionRegular()
-	{
+	public function testGetIndexSqlDefinitionRegular() {
 		$index = $this->getMockBuilder('Phinx\Db\Table\Index')
 			->disableOriginalConstructor()
 			->setMethods(array('getColumns', 'getName', 'getType'))
@@ -1032,8 +971,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(' KEY `index_name` (`column_name`)', $this->adapter->getIndexSqlDefinition($index));
 	}
 
-	public function testGetIndexSqlDefinitionUnique()
-	{
+	public function testGetIndexSqlDefinitionUnique() {
 		$index = $this->getMockBuilder('Phinx\Db\Table\Index')
 			->disableOriginalConstructor()
 			->setMethods(array('getColumns', 'getName', 'getType'))
@@ -1045,8 +983,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(' UNIQUE KEY `index_name` (`column_name`)', $this->adapter->getIndexSqlDefinition($index));
 	}
 
-	public function testGetIndexesEmpty()
-	{
+	public function testGetIndexesEmpty() {
 		$this->result->expects($this->once())
 			->method('fetch')
 			->will($this->returnValue(null));
@@ -1058,8 +995,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array(), $indexes);
 	}
 
-	private function prepareCaseIndexes()
-	{
+	private function prepareCaseIndexes() {
 		$index1 = array('Table' => 'table_name',
 			'Non_unique' => '0',
 			'Key_name' => 'PRIMARY',
@@ -1140,8 +1076,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		return array($index1, $index2, $index3, $index4);
 	}
 
-	public function testGetIndexes()
-	{
+	public function testGetIndexes() {
 		list($index1, $index2, $index3, $index4) = $this->prepareCaseIndexes();
 		$indexes = $this->adapter->getIndexes("table_name");
 
@@ -1153,32 +1088,27 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 	}
 
 
-	public function testHasIndexExistsAsString()
-	{
+	public function testHasIndexExistsAsString() {
 		$this->prepareCaseIndexes();
 		$this->assertTrue($this->adapter->hasIndex("table_name", "column_name"));
 	}
 
-	public function testHasIndexNotExistsAsString()
-	{
+	public function testHasIndexNotExistsAsString() {
 		$this->prepareCaseIndexes();
 		$this->assertFalse($this->adapter->hasIndex("table_name", "another_column_name"));
 	}
 
-	public function testHasIndexExistsAsArray()
-	{
+	public function testHasIndexExistsAsArray() {
 		$this->prepareCaseIndexes();
 		$this->assertTrue($this->adapter->hasIndex("table_name", array("column_name")));
 	}
 
-	public function testHasIndexNotExistsAsArray()
-	{
+	public function testHasIndexNotExistsAsArray() {
 		$this->prepareCaseIndexes();
 		$this->assertFalse($this->adapter->hasIndex("table_name", array("another_column_name")));
 	}
 
-	public function testAddIndex()
-	{
+	public function testAddIndex() {
 		$table = $this->getMockBuilder('Phinx\Db\Table')
 			->disableOriginalConstructor()
 			->setMethods(array('getName'))
@@ -1197,22 +1127,19 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->addIndex($table, $index);
 	}
 
-	public function testDropIndexAsString()
-	{
+	public function testDropIndexAsString() {
 		$this->prepareCaseIndexes();
 		$this->assertExecuteSql('ALTER TABLE `table_name` DROP INDEX `index_name`');
 		$this->adapter->dropIndex('table_name', 'column_name');
 	}
 
-	public function testDropIndexAsArray()
-	{
+	public function testDropIndexAsArray() {
 		$this->prepareCaseIndexes();
 		$this->assertExecuteSql('ALTER TABLE `table_name` DROP INDEX `index_name`');
 		$this->adapter->dropIndex('table_name', array('column_name'));
 	}
 
-	public function testDropIndexByName()
-	{
+	public function testDropIndexByName() {
 		$this->prepareCaseIndexes();
 		$this->assertExecuteSql('ALTER TABLE `table_name` DROP INDEX `index_name`');
 		$this->adapter->dropIndexByName('table_name', 'index_name');
@@ -1220,8 +1147,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 
 	//foregnkey related tests
 
-	private function prepareCaseForeignKeys()
-	{
+	private function prepareCaseForeignKeys() {
 		$fk = array('CONSTRAINT_NAME' => 'fk1',
 			'TABLE_NAME' => 'table_name',
 			'COLUMN_NAME' => 'other_table_id',
@@ -1272,8 +1198,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		return array($fk, $fk1, $fk2);
 	}
 
-	public function testGetForeignKeys()
-	{
+	public function testGetForeignKeys() {
 		list($fk, $fk1, $fk2) = $this->prepareCaseForeignKeys();
 		$foreignkeys = $this->adapter->getForeignKeys("table_name");
 
@@ -1285,56 +1210,47 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('id'), $foreignkeys['fk1']['referenced_columns']);
 	}
 
-	public function testHasForeignKeyExistsAsString()
-	{
+	public function testHasForeignKeyExistsAsString() {
 		$this->prepareCaseForeignKeys();
 		$this->assertTrue($this->adapter->hasForeignKey("table_name", "other_table_id"));
 	}
 
-	public function testHasForeignKeyExistsAsStringAndConstraint()
-	{
+	public function testHasForeignKeyExistsAsStringAndConstraint() {
 		$this->prepareCaseForeignKeys();
 		$this->assertTrue($this->adapter->hasForeignKey("table_name", "other_table_id", 'fk1'));
 	}
 
-	public function testHasForeignKeyNotExistsAsString()
-	{
+	public function testHasForeignKeyNotExistsAsString() {
 		$this->prepareCaseForeignKeys();
 		$this->assertFalse($this->adapter->hasForeignKey("table_name", "another_table_id"));
 	}
 
-	public function testHasForeignKeyNotExistsAsStringAndConstraint()
-	{
+	public function testHasForeignKeyNotExistsAsStringAndConstraint() {
 		$this->prepareCaseForeignKeys();
 		$this->assertFalse($this->adapter->hasForeignKey("table_name", "other_table_id", 'fk3'));
 	}
 
-	public function testHasForeignKeyExistsAsArray()
-	{
+	public function testHasForeignKeyExistsAsArray() {
 		$this->prepareCaseForeignKeys();
 		$this->assertTrue($this->adapter->hasForeignKey("table_name", array("other_table_id")));
 	}
 
-	public function testHasForeignKeyExistsAsArrayAndConstraint()
-	{
+	public function testHasForeignKeyExistsAsArrayAndConstraint() {
 		$this->prepareCaseForeignKeys();
 		$this->assertTrue($this->adapter->hasForeignKey("table_name", array("other_table_id"), 'fk1'));
 	}
 
-	public function testHasForeignKeyNotExistsAsArray()
-	{
+	public function testHasForeignKeyNotExistsAsArray() {
 		$this->prepareCaseForeignKeys();
 		$this->assertFalse($this->adapter->hasForeignKey("table_name", array("another_table_id")));
 	}
 
-	public function testHasForeignKeyNotExistsAsArrayAndConstraint()
-	{
+	public function testHasForeignKeyNotExistsAsArrayAndConstraint() {
 		$this->prepareCaseForeignKeys();
 		$this->assertFalse($this->adapter->hasForeignKey("table_name", array("other_table_id"), 'fk3'));
 	}
 
-	public function testAddForeignKeyBasic()
-	{
+	public function testAddForeignKeyBasic() {
 		$table = $this->getMockBuilder('Phinx\Db\Table')
 			->disableOriginalConstructor()
 			->setMethods(array('getName'))
@@ -1369,8 +1285,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 	}
 
 
-	public function testAddForeignKeyComplete()
-	{
+	public function testAddForeignKeyComplete() {
 		$table = $this->getMockBuilder('Phinx\Db\Table')
 			->disableOriginalConstructor()
 			->setMethods(array('getName'))
@@ -1404,8 +1319,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->addForeignKey($table, $foreignkey);
 	}
 
-	public function testDropForeignKeyAsString()
-	{
+	public function testDropForeignKeyAsString() {
 		$fk = array('CONSTRAINT_NAME' => 'fk1',
 			'TABLE_NAME' => 'table_name',
 			'COLUMN_NAME' => 'other_table_id',
@@ -1434,8 +1348,7 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->dropForeignKey('table_name', 'column_name');
 	}
 
-	public function _testDropForeignKeyAsArray()
-	{
+	public function _testDropForeignKeyAsArray() {
 		$fk = array('CONSTRAINT_NAME' => 'fk1',
 			'TABLE_NAME' => 'table_name',
 			'COLUMN_NAME' => 'other_table_id',
@@ -1464,14 +1377,12 @@ class MysqlAdapterUnitTest extends \PHPUnit_Framework_TestCase
 		$this->adapter->dropForeignKey('table_name', array('column_name'));
 	}
 
-	public function testDropForeignKeyAsStringByConstraint()
-	{
+	public function testDropForeignKeyAsStringByConstraint() {
 		$this->assertExecuteSql('ALTER TABLE `table_name` DROP FOREIGN KEY fk1');
 		$this->adapter->dropForeignKey('table_name', 'column_name', 'fk1');
 	}
 
-	public function _testDropForeignKeyAsArrayByConstraint()
-	{
+	public function _testDropForeignKeyAsArrayByConstraint() {
 		$this->assertExecuteSql('ALTER TABLE `table_name` DROP FOREIGN KEY fk1');
 		$this->adapter->dropForeignKey('table_name', array('column_name'), 'fk1');
 	}

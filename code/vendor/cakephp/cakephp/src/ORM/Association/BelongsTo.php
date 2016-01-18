@@ -27,8 +27,7 @@ use RuntimeException;
  *
  * An example of a BelongsTo association would be Article belongs to Author.
  */
-class BelongsTo extends Association
-{
+class BelongsTo extends Association {
 
 	use SelectableAssociationTrait;
 
@@ -46,8 +45,7 @@ class BelongsTo extends Association
 	 * @param string|null $key the key to be used to link both tables together
 	 * @return string
 	 */
-	public function foreignKey($key = null)
-	{
+	public function foreignKey($key = null) {
 		if ($key === null) {
 			if ($this->_foreignKey === null) {
 				$this->_foreignKey = $this->_modelKey($this->target()->alias());
@@ -66,8 +64,7 @@ class BelongsTo extends Association
 	 * @param array $options The options for the original delete.
 	 * @return bool Success.
 	 */
-	public function cascadeDelete(EntityInterface $entity, array $options = [])
-	{
+	public function cascadeDelete(EntityInterface $entity, array $options = []) {
 		return true;
 	}
 
@@ -79,8 +76,7 @@ class BelongsTo extends Association
 	 * @param string|null $name The property name, use null to read the current property.
 	 * @return string
 	 */
-	public function property($name = null)
-	{
+	public function property($name = null) {
 		if ($name !== null) {
 			return parent::property($name);
 		}
@@ -99,8 +95,7 @@ class BelongsTo extends Association
 	 * @param \Cake\ORM\Table $side The potential Table with ownership
 	 * @return bool
 	 */
-	public function isOwningSide(Table $side)
-	{
+	public function isOwningSide(Table $side) {
 		return $side === $this->target();
 	}
 
@@ -109,8 +104,7 @@ class BelongsTo extends Association
 	 *
 	 * @return string
 	 */
-	public function type()
-	{
+	public function type() {
 		return self::MANY_TO_ONE;
 	}
 
@@ -127,8 +121,7 @@ class BelongsTo extends Association
 	 * the saved entity
 	 * @see Table::save()
 	 */
-	public function saveAssociated(EntityInterface $entity, array $options = [])
-	{
+	public function saveAssociated(EntityInterface $entity, array $options = []) {
 		$targetEntity = $entity->get($this->property());
 		if (empty($targetEntity) || !($targetEntity instanceof EntityInterface)) {
 			return $entity;
@@ -157,8 +150,7 @@ class BelongsTo extends Association
 	 * @throws \RuntimeException if the number of columns in the foreignKey do not
 	 * match the number of columns in the target table primaryKey
 	 */
-	protected function _joinCondition($options)
-	{
+	protected function _joinCondition($options) {
 		$conditions = [];
 		$tAlias = $this->target()->alias();
 		$sAlias = $this->_sourceTable->alias();
@@ -187,8 +179,7 @@ class BelongsTo extends Association
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function _linkField($options)
-	{
+	protected function _linkField($options) {
 		$links = [];
 		$name = $this->alias();
 
@@ -206,8 +197,7 @@ class BelongsTo extends Association
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function _buildResultMap($fetchQuery, $options)
-	{
+	protected function _buildResultMap($fetchQuery, $options) {
 		$resultMap = [];
 		$key = (array)$this->bindingKey();
 

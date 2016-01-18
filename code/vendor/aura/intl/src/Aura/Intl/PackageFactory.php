@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-class PackageFactory
-{
+class PackageFactory {
 	/**
 	 *
 	 * Returns a new Package instance.
@@ -30,8 +29,7 @@ class PackageFactory
 	 * @return Package
 	 *
 	 */
-	public function newInstance(array $info)
-	{
+	public function newInstance(array $info) {
 		$package = new Package;
 		if (isset($info['fallback'])) {
 			$package->setFallback($info['fallback']);

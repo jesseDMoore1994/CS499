@@ -26,8 +26,7 @@ use Cake\Utility\Inflector;
  * serves the file to the client if appropriate.
  *
  */
-class AssetFilter extends DispatcherFilter
-{
+class AssetFilter extends DispatcherFilter {
 
 	/**
 	 * Default priority for all methods in this filter
@@ -50,8 +49,7 @@ class AssetFilter extends DispatcherFilter
 	 *
 	 * @param array $config Array of config.
 	 */
-	public function __construct($config = [])
-	{
+	public function __construct($config = []) {
 		if (!empty($config['cacheTime'])) {
 			$this->_cacheTime = $config['cacheTime'];
 		}
@@ -65,8 +63,7 @@ class AssetFilter extends DispatcherFilter
 	 * @return \Cake\Network\Response if the client is requesting a recognized asset, null otherwise
 	 * @throws \Cake\Network\Exception\NotFoundException When asset not found
 	 */
-	public function beforeDispatch(Event $event)
-	{
+	public function beforeDispatch(Event $event) {
 		$request = $event->data['request'];
 
 		$url = urldecode($request->url);
@@ -98,8 +95,7 @@ class AssetFilter extends DispatcherFilter
 	 * @param string $url Asset URL
 	 * @return string Absolute path for asset file
 	 */
-	protected function _getAssetFile($url)
-	{
+	protected function _getAssetFile($url) {
 		$parts = explode('/', $url);
 		$pluginPart = [];
 		for ($i = 0; $i < 2; $i++) {
@@ -126,8 +122,7 @@ class AssetFilter extends DispatcherFilter
 	 * @param string $ext The extension of the file to determine its mime type
 	 * @return void
 	 */
-	protected function _deliverAsset(Request $request, Response $response, $assetFile, $ext)
-	{
+	protected function _deliverAsset(Request $request, Response $response, $assetFile, $ext) {
 		$compressionEnabled = $response->compress();
 		if ($response->type($ext) === $ext) {
 			$contentType = 'application/octet-stream';

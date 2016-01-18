@@ -1,8 +1,7 @@
 <?php
 namespace JakubOnderka\PhpConsoleColor;
 
-class ConsoleColor
-{
+class ConsoleColor {
 	const FOREGROUND = 38,
 		BACKGROUND = 48;
 
@@ -69,8 +68,7 @@ class ConsoleColor
 	/** @var array */
 	private $themes = array();
 
-	public function __construct()
-	{
+	public function __construct() {
 		$this->isSupported = $this->isSupported();
 	}
 
@@ -81,8 +79,7 @@ class ConsoleColor
 	 * @throws InvalidStyleException
 	 * @throws \InvalidArgumentException
 	 */
-	public function apply($style, $text)
-	{
+	public function apply($style, $text) {
 		if (!$this->isStyleForced() && !$this->isSupported()) {
 			return $text;
 		}
@@ -120,16 +117,14 @@ class ConsoleColor
 	/**
 	 * @param bool $forceStyle
 	 */
-	public function setForceStyle($forceStyle)
-	{
+	public function setForceStyle($forceStyle) {
 		$this->forceStyle = (bool)$forceStyle;
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function isStyleForced()
-	{
+	public function isStyleForced() {
 		return $this->forceStyle;
 	}
 
@@ -138,8 +133,7 @@ class ConsoleColor
 	 * @throws InvalidStyleException
 	 * @throws \InvalidArgumentException
 	 */
-	public function setThemes(array $themes)
-	{
+	public function setThemes(array $themes) {
 		$this->themes = array();
 		foreach ($themes as $name => $styles) {
 			$this->addTheme($name, $styles);
@@ -152,8 +146,7 @@ class ConsoleColor
 	 * @throws \InvalidArgumentException
 	 * @throws InvalidStyleException
 	 */
-	public function addTheme($name, $styles)
-	{
+	public function addTheme($name, $styles) {
 		if (is_string($styles)) {
 			$styles = array($styles);
 		}
@@ -173,8 +166,7 @@ class ConsoleColor
 	/**
 	 * @return array
 	 */
-	public function getThemes()
-	{
+	public function getThemes() {
 		return $this->themes;
 	}
 
@@ -182,24 +174,21 @@ class ConsoleColor
 	 * @param string $name
 	 * @return bool
 	 */
-	public function hasTheme($name)
-	{
+	public function hasTheme($name) {
 		return isset($this->themes[$name]);
 	}
 
 	/**
 	 * @param string $name
 	 */
-	public function removeTheme($name)
-	{
+	public function removeTheme($name) {
 		unset($this->themes[$name]);
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function isSupported()
-	{
+	public function isSupported() {
 		if (DIRECTORY_SEPARATOR === '\\') {
 			return getenv('ANSICON') !== false || getenv('ConEmuANSI') === 'ON';
 		}
@@ -210,16 +199,14 @@ class ConsoleColor
 	/**
 	 * @return bool
 	 */
-	public function are256ColorsSupported()
-	{
+	public function are256ColorsSupported() {
 		return DIRECTORY_SEPARATOR === '/' && strpos(getenv('TERM'), '256color') !== false;
 	}
 
 	/**
 	 * @return array
 	 */
-	public function getPossibleStyles()
-	{
+	public function getPossibleStyles() {
 		return array_keys($this->styles);
 	}
 
@@ -228,8 +215,7 @@ class ConsoleColor
 	 * @return string
 	 * @throws InvalidStyleException
 	 */
-	private function themeSequence($name)
-	{
+	private function themeSequence($name) {
 		$sequences = array();
 		foreach ($this->themes[$name] as $style) {
 			$sequences[] = $this->styleSequence($style);
@@ -242,8 +228,7 @@ class ConsoleColor
 	 * @return string
 	 * @throws InvalidStyleException
 	 */
-	private function styleSequence($style)
-	{
+	private function styleSequence($style) {
 		if (array_key_exists($style, $this->styles)) {
 			return $this->styles[$style];
 		}
@@ -264,8 +249,7 @@ class ConsoleColor
 	 * @param string $style
 	 * @return bool
 	 */
-	private function isValidStyle($style)
-	{
+	private function isValidStyle($style) {
 		return array_key_exists($style, $this->styles) || preg_match(self::COLOR256_REGEXP, $style);
 	}
 
@@ -273,8 +257,7 @@ class ConsoleColor
 	 * @param string|int $value
 	 * @return string
 	 */
-	private function escSequence($value)
-	{
+	private function escSequence($value) {
 		return "\033[{$value}m";
 	}
 }

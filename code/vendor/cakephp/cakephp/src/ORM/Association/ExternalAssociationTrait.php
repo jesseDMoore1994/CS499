@@ -18,8 +18,7 @@ namespace Cake\ORM\Association;
  * Represents a type of association that that needs to be recovered by performing
  * an extra query.
  */
-trait ExternalAssociationTrait
-{
+trait ExternalAssociationTrait {
 
 	use SelectableAssociationTrait {
 		_defaultOptions as private _selectableOptions;
@@ -39,8 +38,7 @@ trait ExternalAssociationTrait
 	 * @return bool if the 'matching' key in $option is true then this function
 	 * will return true, false otherwise
 	 */
-	public function canBeJoined(array $options = [])
-	{
+	public function canBeJoined(array $options = []) {
 		return !empty($options['matching']);
 	}
 
@@ -51,8 +49,7 @@ trait ExternalAssociationTrait
 	 * @param string|null $key the key to be used to link both tables together
 	 * @return string
 	 */
-	public function foreignKey($key = null)
-	{
+	public function foreignKey($key = null) {
 		if ($key === null) {
 			if ($this->_foreignKey === null) {
 				$this->_foreignKey = $this->_modelKey($this->source()->table());
@@ -69,8 +66,7 @@ trait ExternalAssociationTrait
 	 * @param mixed $sort A find() compatible order clause
 	 * @return mixed
 	 */
-	public function sort($sort = null)
-	{
+	public function sort($sort = null) {
 		if ($sort !== null) {
 			$this->_sort = $sort;
 		}
@@ -80,8 +76,7 @@ trait ExternalAssociationTrait
 	/**
 	 * {@inheritDoc}
 	 */
-	public function defaultRowValue($row, $joined)
-	{
+	public function defaultRowValue($row, $joined) {
 		$sourceAlias = $this->source()->alias();
 		if (isset($row[$sourceAlias])) {
 			$row[$sourceAlias][$this->property()] = $joined ? null : [];
@@ -94,8 +89,7 @@ trait ExternalAssociationTrait
 	 *
 	 * @return array
 	 */
-	protected function _defaultOptions()
-	{
+	protected function _defaultOptions() {
 		return $this->_selectableOptions() + [
 			'sort' => $this->sort()
 		];
@@ -104,8 +98,7 @@ trait ExternalAssociationTrait
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function _buildResultMap($fetchQuery, $options)
-	{
+	protected function _buildResultMap($fetchQuery, $options) {
 		$resultMap = [];
 		$key = (array)$options['foreignKey'];
 
@@ -125,8 +118,7 @@ trait ExternalAssociationTrait
 	 * @param array $opts original list of options passed in constructor
 	 * @return void
 	 */
-	protected function _options(array $opts)
-	{
+	protected function _options(array $opts) {
 		if (isset($opts['sort'])) {
 			$this->sort($opts['sort']);
 		}

@@ -19,6 +19,5 @@ use Aura\Intl\Exception;
  * @package Aura.Intl
  *
  */
-class IcuVersionTooLow extends \Exception
-{
+class IcuVersionTooLow extends \Exception {
 }

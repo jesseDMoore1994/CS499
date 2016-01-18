@@ -16,8 +16,7 @@ namespace Symfony\Component\Config\Definition;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class Processor
-{
+class Processor {
 	/**
 	 * Processes an array of configurations.
 	 *
@@ -26,8 +25,7 @@ class Processor
 	 *
 	 * @return array The processed configuration
 	 */
-	public function process(NodeInterface $configTree, array $configs)
-	{
+	public function process(NodeInterface $configTree, array $configs) {
 		$currentConfig = array();
 		foreach ($configs as $config) {
 			$config = $configTree->normalize($config);
@@ -45,8 +43,7 @@ class Processor
 	 *
 	 * @return array The processed configuration
 	 */
-	public function processConfiguration(ConfigurationInterface $configuration, array $configs)
-	{
+	public function processConfiguration(ConfigurationInterface $configuration, array $configs) {
 		return $this->process($configuration->getConfigTreeBuilder()->buildTree(), $configs);
 	}
 
@@ -73,8 +70,7 @@ class Processor
 	 *
 	 * @return array
 	 */
-	public static function normalizeConfig($config, $key, $plural = null)
-	{
+	public static function normalizeConfig($config, $key, $plural = null) {
 		if (null === $plural) {
 			$plural = $key . 's';
 		}

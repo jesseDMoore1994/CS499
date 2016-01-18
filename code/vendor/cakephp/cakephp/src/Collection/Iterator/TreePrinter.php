@@ -22,8 +22,7 @@ use RecursiveIteratorIterator;
  * visual markers for their relative position in the tree
  *
  */
-class TreePrinter extends RecursiveIteratorIterator
-{
+class TreePrinter extends RecursiveIteratorIterator {
 
 	use CollectionTrait;
 
@@ -67,8 +66,7 @@ class TreePrinter extends RecursiveIteratorIterator
 	 * their depth in the tree.
 	 * @param int $mode Iterator mode.
 	 */
-	public function __construct($items, $valuePath, $keyPath, $spacer, $mode = RecursiveIteratorIterator::SELF_FIRST)
-	{
+	public function __construct($items, $valuePath, $keyPath, $spacer, $mode = RecursiveIteratorIterator::SELF_FIRST) {
 		parent::__construct($items, $mode);
 		$this->_value = $this->_propertyExtractor($valuePath);
 		$this->_key = $this->_propertyExtractor($keyPath);
@@ -80,8 +78,7 @@ class TreePrinter extends RecursiveIteratorIterator
 	 *
 	 * @return mixed
 	 */
-	public function key()
-	{
+	public function key() {
 		$extractor = $this->_key;
 		return $extractor($this->_fetchCurrent(), parent::key(), $this);
 	}
@@ -91,8 +88,7 @@ class TreePrinter extends RecursiveIteratorIterator
 	 *
 	 * @return string
 	 */
-	public function current()
-	{
+	public function current() {
 		$extractor = $this->_value;
 		$current = $this->_fetchCurrent();
 		$spacer = str_repeat($this->_spacer, $this->getDepth());
@@ -104,8 +100,7 @@ class TreePrinter extends RecursiveIteratorIterator
 	 *
 	 * @return void
 	 */
-	public function next()
-	{
+	public function next() {
 		parent::next();
 		$this->_current = null;
 	}
@@ -115,8 +110,7 @@ class TreePrinter extends RecursiveIteratorIterator
 	 *
 	 * @return mixed
 	 */
-	protected function _fetchCurrent()
-	{
+	protected function _fetchCurrent() {
 		if ($this->_current !== null) {
 			return $this->_current;
 		}

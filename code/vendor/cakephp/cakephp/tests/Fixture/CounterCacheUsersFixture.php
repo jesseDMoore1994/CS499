@@ -20,8 +20,7 @@ use Cake\TestSuite\Fixture\TestFixture;
  * Short description for class.
  *
  */
-class CounterCacheUsersFixture extends TestFixture
-{
+class CounterCacheUsersFixture extends TestFixture {
 
 	public $fields = [
 		'id' => ['type' => 'integer'],

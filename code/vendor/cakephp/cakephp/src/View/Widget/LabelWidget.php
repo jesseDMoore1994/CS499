@@ -22,8 +22,7 @@ use Cake\View\Form\ContextInterface;
  * Generally this element is used by other widgets,
  * and FormHelper itself.
  */
-class LabelWidget implements WidgetInterface
-{
+class LabelWidget implements WidgetInterface {
 
 	/**
 	 * Templates
@@ -49,8 +48,7 @@ class LabelWidget implements WidgetInterface
 	 *
 	 * @param \Cake\View\StringTemplate $templates Templates list.
 	 */
-	public function __construct($templates)
-	{
+	public function __construct($templates) {
 		$this->_templates = $templates;
 	}
 
@@ -69,8 +67,7 @@ class LabelWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	public function render(array $data, ContextInterface $context)
-	{
+	public function render(array $data, ContextInterface $context) {
 		$data += [
 			'text' => '',
 			'input' => '',
@@ -91,8 +88,7 @@ class LabelWidget implements WidgetInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function secureFields(array $data)
-	{
+	public function secureFields(array $data) {
 		return [];
 	}
 }

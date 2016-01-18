@@ -20,8 +20,7 @@ namespace Cake\Database\Statement;
  * This statement decorator will save fetched results in memory, allowing
  * the iterator to be rewound and reused.
  */
-class BufferedStatement extends StatementDecorator
-{
+class BufferedStatement extends StatementDecorator {
 
 	/**
 	 * Records count
@@ -56,8 +55,7 @@ class BufferedStatement extends StatementDecorator
 	 * @param \Cake\Database\StatementInterface|null $statement Statement implementation such as PDOStatement
 	 * @param \Cake\Database\Driver|null $driver Driver instance
 	 */
-	public function __construct($statement = null, $driver = null)
-	{
+	public function __construct($statement = null, $driver = null) {
 		parent::__construct($statement, $driver);
 		$this->_reset();
 	}
@@ -68,8 +66,7 @@ class BufferedStatement extends StatementDecorator
 	 * @param array|null $params list of values to be bound to query
 	 * @return bool true on success, false otherwise
 	 */
-	public function execute($params = null)
-	{
+	public function execute($params = null) {
 		$this->_reset();
 		return parent::execute($params);
 	}
@@ -80,8 +77,7 @@ class BufferedStatement extends StatementDecorator
 	 * @param string $type The type to fetch.
 	 * @return mixed
 	 */
-	public function fetch($type = 'num')
-	{
+	public function fetch($type = 'num') {
 		if ($this->_allFetched) {
 			$row = ($this->_counter < $this->_count) ? $this->_records[$this->_counter++] : false;
 			$row = ($row && $type === 'num') ? array_values($row) : $row;
@@ -108,8 +104,7 @@ class BufferedStatement extends StatementDecorator
 	 * @param string $type The type to fetch.
 	 * @return mixed
 	 */
-	public function fetchAll($type = 'num')
-	{
+	public function fetchAll($type = 'num') {
 		if ($this->_allFetched) {
 			return $this->_records;
 		}
@@ -124,8 +119,7 @@ class BufferedStatement extends StatementDecorator
 	/**
 	 * {@inheritDoc}
 	 */
-	public function rowCount()
-	{
+	public function rowCount() {
 		if (!$this->_allFetched) {
 			$counter = $this->_counter;
 			while ($this->fetch('assoc')) {
@@ -141,8 +135,7 @@ class BufferedStatement extends StatementDecorator
 	 *
 	 * @return void
 	 */
-	public function rewind()
-	{
+	public function rewind() {
 		$this->_counter = 0;
 	}
 
@@ -151,8 +144,7 @@ class BufferedStatement extends StatementDecorator
 	 *
 	 * @return void
 	 */
-	protected function _reset()
-	{
+	protected function _reset() {
 		$this->_count = $this->_counter = 0;
 		$this->_records = [];
 		$this->_allFetched = false;

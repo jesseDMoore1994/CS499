@@ -19,8 +19,7 @@ use Cake\Network\Exception\NotFoundException;
  * RequestActionController class
  *
  */
-class RequestActionController extends AppController
-{
+class RequestActionController extends AppController {
 
 	/**
 	 * The default model to use.
@@ -34,8 +33,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function test_request_action()
-	{
+	public function test_request_action() {
 		$this->response->body('This is a test');
 		return $this->response;
 	}
@@ -47,8 +45,7 @@ class RequestActionController extends AppController
 	 * @param mixed $other
 	 * @return \Cake\Network\Response
 	 */
-	public function another_ra_test($id, $other)
-	{
+	public function another_ra_test($id, $other) {
 		$this->response->body($id + $other);
 		return $this->response;
 	}
@@ -58,8 +55,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function normal_request_action()
-	{
+	public function normal_request_action() {
 		$this->response->body('Hello World');
 		return $this->response;
 	}
@@ -69,8 +65,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function return_here()
-	{
+	public function return_here() {
 		$this->response->body($this->here);
 		return $this->response;
 	}
@@ -80,8 +75,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return void
 	 */
-	public function paginate_request_action()
-	{
+	public function paginate_request_action() {
 		$data = $this->paginate();
 		$this->autoRender = false;
 	}
@@ -91,8 +85,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function post_pass()
-	{
+	public function post_pass() {
 		$this->response->body(json_encode($this->request->data));
 		return $this->response;
 	}
@@ -102,8 +95,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function query_pass()
-	{
+	public function query_pass() {
 		$this->response->body(json_encode($this->request->query));
 		return $this->response;
 	}
@@ -113,8 +105,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function cookie_pass()
-	{
+	public function cookie_pass() {
 		$this->response->body(json_encode($this->request->cookies));
 		return $this->response;
 	}
@@ -124,8 +115,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function params_pass()
-	{
+	public function params_pass() {
 		$this->response->body(json_encode([
 			'params' => $this->request->params,
 			'base' => $this->request->base,
@@ -144,8 +134,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function param_check()
-	{
+	public function param_check() {
 		$this->autoRender = false;
 		$content = '';
 		if (isset($this->request->params[0])) {
@@ -160,8 +149,7 @@ class RequestActionController extends AppController
 	 *
 	 * @return \Cake\Network\Response
 	 */
-	public function session_test()
-	{
+	public function session_test() {
 		$this->response->body($this->request->session()->read('foo'));
 		return $this->response;
 	}
@@ -172,8 +160,7 @@ class RequestActionController extends AppController
 	 * @throws \Cake\Network\Exception\NotFoundException
 	 * @return void
 	 */
-	public function error_method()
-	{
+	public function error_method() {
 		throw new NotFoundException('Not there or here.');
 	}
 }

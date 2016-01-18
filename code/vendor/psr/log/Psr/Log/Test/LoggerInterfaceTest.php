@@ -9,8 +9,7 @@ use Psr\Log\LogLevel;
  *
  * Implementors can extend the class and implement abstract methods to run this as part of their test suite
  */
-abstract class LoggerInterfaceTest extends \PHPUnit_Framework_TestCase
-{
+abstract class LoggerInterfaceTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @return LoggerInterface
 	 */
@@ -25,16 +24,14 @@ abstract class LoggerInterfaceTest extends \PHPUnit_Framework_TestCase
 	 */
 	abstract function getLogs();
 
-	public function testImplements()
-	{
+	public function testImplements() {
 		$this->assertInstanceOf('Psr\Log\LoggerInterface', $this->getLogger());
 	}
 
 	/**
 	 * @dataProvider provideLevelsAndMessages
 	 */
-	public function testLogsAtAllLevels($level, $message)
-	{
+	public function testLogsAtAllLevels($level, $message) {
 		$logger = $this->getLogger();
 		$logger->{$level}($message, array('user' => 'Bob'));
 		$logger->log($level, $message, array('user' => 'Bob'));
@@ -46,8 +43,7 @@ abstract class LoggerInterfaceTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, $this->getLogs());
 	}
 
-	public function provideLevelsAndMessages()
-	{
+	public function provideLevelsAndMessages() {
 		return array(
 			LogLevel::EMERGENCY => array(LogLevel::EMERGENCY, 'message of level emergency with context: {user}'),
 			LogLevel::ALERT => array(LogLevel::ALERT, 'message of level alert with context: {user}'),
@@ -63,14 +59,12 @@ abstract class LoggerInterfaceTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException Psr\Log\InvalidArgumentException
 	 */
-	public function testThrowsOnInvalidLevel()
-	{
+	public function testThrowsOnInvalidLevel() {
 		$logger = $this->getLogger();
 		$logger->log('invalid level', 'Foo');
 	}
 
-	public function testContextReplacement()
-	{
+	public function testContextReplacement() {
 		$logger = $this->getLogger();
 		$logger->info('{Message {nothing} {user} {foo.bar} a}', array('user' => 'Bob', 'foo.bar' => 'Bar'));
 
@@ -78,8 +72,7 @@ abstract class LoggerInterfaceTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, $this->getLogs());
 	}
 
-	public function testObjectCastToString()
-	{
+	public function testObjectCastToString() {
 		$dummy = $this->getMock('Psr\Log\Test\DummyTest', array('__toString'));
 		$dummy->expects($this->once())
 			->method('__toString')
@@ -88,8 +81,7 @@ abstract class LoggerInterfaceTest extends \PHPUnit_Framework_TestCase
 		$this->getLogger()->warning($dummy);
 	}
 
-	public function testContextCanContainAnything()
-	{
+	public function testContextCanContainAnything() {
 		$context = array(
 			'bool' => true,
 			'null' => null,
@@ -104,13 +96,11 @@ abstract class LoggerInterfaceTest extends \PHPUnit_Framework_TestCase
 		$this->getLogger()->warning('Crazy context data', $context);
 	}
 
-	public function testContextExceptionKeyCanBeExceptionOrOtherValues()
-	{
+	public function testContextExceptionKeyCanBeExceptionOrOtherValues() {
 		$this->getLogger()->warning('Random message', array('exception' => 'oops'));
 		$this->getLogger()->critical('Uncaught Exception!', array('exception' => new \LogicException('Fail')));
 	}
 }
 
-class DummyTest
-{
+class DummyTest {
 }

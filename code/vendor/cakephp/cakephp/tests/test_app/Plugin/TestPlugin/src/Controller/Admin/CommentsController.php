@@ -20,8 +20,7 @@ use Cake\Controller\Controller;
  *
  * For testing prefix routing.
  */
-class CommentsController extends Controller
-{
+class CommentsController extends Controller {
 
 	/**
 	 * components
@@ -35,7 +34,6 @@ class CommentsController extends Controller
 	 *
 	 * @return void
 	 */
-	public function index()
-	{
+	public function index() {
 	}
 }

@@ -23,8 +23,7 @@ use Countable;
  *
  * @return void
  */
-class ResultSetDecorator extends Collection implements ResultSetInterface
-{
+class ResultSetDecorator extends Collection implements ResultSetInterface {
 
 	/**
 	 * Make this object countable.
@@ -35,8 +34,7 @@ class ResultSetDecorator extends Collection implements ResultSetInterface
 	 *
 	 * @return int
 	 */
-	public function count()
-	{
+	public function count() {
 		if ($this->getInnerIterator() instanceof Countable) {
 			return $this->getInnerIterator()->count();
 		}

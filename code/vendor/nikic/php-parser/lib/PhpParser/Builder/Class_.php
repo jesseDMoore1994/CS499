@@ -6,8 +6,7 @@ use PhpParser;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 
-class Class_ extends Declaration
-{
+class Class_ extends Declaration {
 	protected $name;
 
 	protected $extends = null;
@@ -24,8 +23,7 @@ class Class_ extends Declaration
 	 *
 	 * @param string $name Name of the class
 	 */
-	public function __construct($name)
-	{
+	public function __construct($name) {
 		$this->name = $name;
 	}
 
@@ -36,8 +34,7 @@ class Class_ extends Declaration
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function extend($class)
-	{
+	public function extend($class) {
 		$this->extends = $this->normalizeName($class);
 
 		return $this;
@@ -51,8 +48,7 @@ class Class_ extends Declaration
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function implement()
-	{
+	public function implement() {
 		foreach (func_get_args() as $interface) {
 			$this->implements[] = $this->normalizeName($interface);
 		}
@@ -65,8 +61,7 @@ class Class_ extends Declaration
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function makeAbstract()
-	{
+	public function makeAbstract() {
 		$this->setModifier(Stmt\Class_::MODIFIER_ABSTRACT);
 
 		return $this;
@@ -77,8 +72,7 @@ class Class_ extends Declaration
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function makeFinal()
-	{
+	public function makeFinal() {
 		$this->setModifier(Stmt\Class_::MODIFIER_FINAL);
 
 		return $this;
@@ -91,8 +85,7 @@ class Class_ extends Declaration
 	 *
 	 * @return $this The builder instance (for fluid interface)
 	 */
-	public function addStmt($stmt)
-	{
+	public function addStmt($stmt) {
 		$stmt = $this->normalizeNode($stmt);
 
 		$targets = array(
@@ -117,8 +110,7 @@ class Class_ extends Declaration
 	 *
 	 * @return Stmt\Class_ The built class node
 	 */
-	public function getNode()
-	{
+	public function getNode() {
 		return new Stmt\Class_($this->name, array(
 			'type' => $this->type,
 			'extends' => $this->extends,

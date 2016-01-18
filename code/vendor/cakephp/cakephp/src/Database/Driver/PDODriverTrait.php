@@ -21,8 +21,7 @@ use PDO;
 /**
  * PDO driver trait
  */
-trait PDODriverTrait
-{
+trait PDODriverTrait {
 
 	/**
 	 * Instance of PDO.
@@ -38,8 +37,7 @@ trait PDODriverTrait
 	 * @param array $config configuration to be used for creating connection
 	 * @return bool true on success
 	 */
-	protected function _connect($dsn, array $config)
-	{
+	protected function _connect($dsn, array $config) {
 		$connection = new PDO(
 			$dsn,
 			$config['username'],
@@ -58,8 +56,7 @@ trait PDODriverTrait
 	 * @param null|\PDO $connection The PDO connection instance.
 	 * @return mixed connection object used internally
 	 */
-	public function connection($connection = null)
-	{
+	public function connection($connection = null) {
 		if ($connection !== null) {
 			$this->_connection = $connection;
 		}
@@ -71,8 +68,7 @@ trait PDODriverTrait
 	 *
 	 * @return void
 	 */
-	public function disconnect()
-	{
+	public function disconnect() {
 		$this->_connection = null;
 	}
 
@@ -81,8 +77,7 @@ trait PDODriverTrait
 	 *
 	 * @return bool
 	 */
-	public function isConnected()
-	{
+	public function isConnected() {
 		if ($this->_connection === null) {
 			$connected = false;
 		} else {
@@ -102,8 +97,7 @@ trait PDODriverTrait
 	 * @param string|\Cake\Database\Query $query The query to turn into a prepared statement.
 	 * @return \Cake\Database\StatementInterface
 	 */
-	public function prepare($query)
-	{
+	public function prepare($query) {
 		$this->connect();
 		$isObject = $query instanceof Query;
 		$statement = $this->_connection->prepare($isObject ? $query->sql() : $query);
@@ -115,8 +109,7 @@ trait PDODriverTrait
 	 *
 	 * @return bool true on success, false otherwise
 	 */
-	public function beginTransaction()
-	{
+	public function beginTransaction() {
 		$this->connect();
 		if ($this->_connection->inTransaction()) {
 			return true;
@@ -129,8 +122,7 @@ trait PDODriverTrait
 	 *
 	 * @return bool true on success, false otherwise
 	 */
-	public function commitTransaction()
-	{
+	public function commitTransaction() {
 		$this->connect();
 		if (!$this->_connection->inTransaction()) {
 			return false;
@@ -143,8 +135,7 @@ trait PDODriverTrait
 	 *
 	 * @return bool true on success, false otherwise
 	 */
-	public function rollbackTransaction()
-	{
+	public function rollbackTransaction() {
 		if (!$this->_connection->inTransaction()) {
 			return false;
 		}
@@ -158,8 +149,7 @@ trait PDODriverTrait
 	 * @param string $type Type to be used for determining kind of quoting to perform
 	 * @return string
 	 */
-	public function quote($value, $type)
-	{
+	public function quote($value, $type) {
 		$this->connect();
 		return $this->_connection->quote($value, $type);
 	}
@@ -171,8 +161,7 @@ trait PDODriverTrait
 	 * @param string|null $column the name of the column representing the primary key
 	 * @return string|int
 	 */
-	public function lastInsertId($table = null, $column = null)
-	{
+	public function lastInsertId($table = null, $column = null) {
 		$this->connect();
 		return $this->_connection->lastInsertId($table);
 	}
@@ -182,8 +171,7 @@ trait PDODriverTrait
 	 *
 	 * @return bool
 	 */
-	public function supportsQuoting()
-	{
+	public function supportsQuoting() {
 		$this->connect();
 		return $this->_connection->getAttribute(PDO::ATTR_DRIVER_NAME) !== 'odbc';
 	}

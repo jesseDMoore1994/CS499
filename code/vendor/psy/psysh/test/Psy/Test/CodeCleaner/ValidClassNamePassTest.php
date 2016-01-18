@@ -14,18 +14,15 @@ namespace Psy\Test\CodeCleaner;
 use Psy\CodeCleaner\ValidClassNamePass;
 use Psy\Exception\Exception;
 
-class ValidClassNamePassTest extends CodeCleanerTestCase
-{
-	public function setUp()
-	{
+class ValidClassNamePassTest extends CodeCleanerTestCase {
+	public function setUp() {
 		$this->setPass(new ValidClassNamePass());
 	}
 
 	/**
 	 * @dataProvider getInvalid
 	 */
-	public function testProcessInvalid($code, $php54 = false)
-	{
+	public function testProcessInvalid($code, $php54 = false) {
 		try {
 			$stmts = $this->parse($code);
 			$this->traverse($stmts);
@@ -39,8 +36,7 @@ class ValidClassNamePassTest extends CodeCleanerTestCase
 		}
 	}
 
-	public function getInvalid()
-	{
+	public function getInvalid() {
 		// class declarations
 		return array(
 			// core class
@@ -125,14 +121,12 @@ class ValidClassNamePassTest extends CodeCleanerTestCase
 	/**
 	 * @dataProvider getValid
 	 */
-	public function testProcessValid($code)
-	{
+	public function testProcessValid($code) {
 		$stmts = $this->parse($code);
 		$this->traverse($stmts);
 	}
 
-	public function getValid()
-	{
+	public function getValid() {
 		$valid = array(
 			// class declarations
 			array('class Psy_Test_CodeCleaner_ValidClassNamePass_Epsilon {}'),

@@ -40,8 +40,7 @@ use Phinx\Migration\MigrationInterface;
  *
  * @author Rob Morgan <robbym@gmail.com>
  */
-interface AdapterInterface
-{
+interface AdapterInterface {
 	const PHINX_TYPE_STRING = 'string';
 	const PHINX_TYPE_CHAR = 'char';
 	const PHINX_TYPE_TEXT = 'text';

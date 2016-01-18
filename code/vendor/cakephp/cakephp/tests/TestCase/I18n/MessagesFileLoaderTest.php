@@ -22,16 +22,14 @@ use Cake\TestSuite\TestCase;
  * MessagesFileLoaderTest class
  *
  */
-class MessagesFileLoaderTest extends TestCase
-{
+class MessagesFileLoaderTest extends TestCase {
 
 	/**
 	 * Set Up
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->localePaths = Configure::read('App.paths.locales');
 	}
@@ -41,8 +39,7 @@ class MessagesFileLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Configure::write('App.paths.locales', $this->localePaths);
 	}
@@ -52,8 +49,7 @@ class MessagesFileLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomLocalePath()
-	{
+	public function testCustomLocalePath() {
 		$loader = new MessagesFileLoader('default', 'en');
 		$package = $loader();
 		$messages = $package->getMessages();

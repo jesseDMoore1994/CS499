@@ -24,16 +24,14 @@ use Cake\TestSuite\TestCase;
  * ShellDispatcherTest
  *
  */
-class ShellDispatcherTest extends TestCase
-{
+class ShellDispatcherTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Plugin::load('TestPlugin');
 		Configure::write('App.namespace', 'TestApp');
@@ -45,8 +43,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		ShellDispatcher::resetAliases();
 	}
@@ -57,8 +54,7 @@ class ShellDispatcherTest extends TestCase
 	 * @expectedException \Cake\Console\Exception\MissingShellException
 	 * @return void
 	 */
-	public function testFindShellMissing()
-	{
+	public function testFindShellMissing() {
 		$this->dispatcher->findShell('nope');
 	}
 
@@ -68,8 +64,7 @@ class ShellDispatcherTest extends TestCase
 	 * @expectedException \Cake\Console\Exception\MissingShellException
 	 * @return void
 	 */
-	public function testFindShellMissingPlugin()
-	{
+	public function testFindShellMissingPlugin() {
 		$this->dispatcher->findShell('test_plugin.nope');
 	}
 
@@ -78,8 +73,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindShell()
-	{
+	public function testFindShell() {
 		$result = $this->dispatcher->findShell('sample');
 		$this->assertInstanceOf('TestApp\Shell\SampleShell', $result);
 
@@ -100,8 +94,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddShortPluginAlias()
-	{
+	public function testAddShortPluginAlias() {
 		$expected = [
 			'Example' => 'TestPlugin.example'
 		];
@@ -121,8 +114,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindShellAliased()
-	{
+	public function testFindShellAliased() {
 		ShellDispatcher::alias('short', 'test_plugin.example');
 
 		$result = $this->dispatcher->findShell('short');
@@ -138,8 +130,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFindShellAliasedAppShadow()
-	{
+	public function testFindShellAliasedAppShadow() {
 		ShellDispatcher::alias('sample', 'test_plugin.example');
 
 		$result = $this->dispatcher->findShell('sample');
@@ -153,8 +144,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDispatchShellWithMain()
-	{
+	public function testDispatchShellWithMain() {
 		$dispatcher = $this->getMock('Cake\Console\ShellDispatcher', ['findShell']);
 		$Shell = $this->getMock('Cake\Console\Shell');
 
@@ -185,8 +175,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDispatchShellWithoutMain()
-	{
+	public function testDispatchShellWithoutMain() {
 		$dispatcher = $this->getMock('Cake\Console\ShellDispatcher', ['findShell']);
 		$Shell = $this->getMock('Cake\Console\Shell');
 
@@ -210,8 +199,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDispatchShortPluginAlias()
-	{
+	public function testDispatchShortPluginAlias() {
 		$dispatcher = $this->getMock(
 			'Cake\Console\ShellDispatcher',
 			['_shellExists', '_createShell']
@@ -238,8 +226,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDispatchShortPluginAliasCamelized()
-	{
+	public function testDispatchShortPluginAliasCamelized() {
 		$dispatcher = $this->getMock(
 			'Cake\Console\ShellDispatcher',
 			['_shellExists', '_createShell']
@@ -266,8 +253,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDispatchShortPluginAliasConflict()
-	{
+	public function testDispatchShortPluginAliasConflict() {
 		$dispatcher = $this->getMock(
 			'Cake\Console\ShellDispatcher',
 			['_shellExists', '_createShell']
@@ -294,8 +280,7 @@ class ShellDispatcherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testShiftArgs()
-	{
+	public function testShiftArgs() {
 		$this->dispatcher->args = ['a', 'b', 'c'];
 		$this->assertEquals('a', $this->dispatcher->shiftArgs());
 		$this->assertSame($this->dispatcher->args, ['b', 'c']);

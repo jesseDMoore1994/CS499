@@ -26,16 +26,14 @@ use Cake\Utility\Xml;
  * Class TestRequest
  *
  */
-class RequestTest extends TestCase
-{
+class RequestTest extends TestCase {
 
 	/**
 	 * Setup callback
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->_case = null;
 		if (isset($_GET['case'])) {
@@ -51,8 +49,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		if (!empty($this->_case)) {
 			$_GET['case'] = $this->_case;
@@ -64,8 +61,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHeaderDetector()
-	{
+	public function testHeaderDetector() {
 		$request = new Request();
 		$request->addDetector('host', ['header' => ['host' => 'cakephp.org']]);
 
@@ -81,8 +77,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtensionDetector()
-	{
+	public function testExtensionDetector() {
 		$request = new Request();
 		$request->params['_ext'] = 'json';
 		$this->assertTrue($request->is('json'));
@@ -97,8 +92,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAcceptHeaderDetector()
-	{
+	public function testAcceptHeaderDetector() {
 		$request = new Request();
 		$request->env('HTTP_ACCEPT', 'application/json, text/plain, */*');
 		$this->assertTrue($request->is('json'));
@@ -113,8 +107,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNoAutoParseConstruction()
-	{
+	public function testNoAutoParseConstruction() {
 		$_GET = [
 			'one' => 'param'
 		];
@@ -127,8 +120,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructionQueryData()
-	{
+	public function testConstructionQueryData() {
 		$data = [
 			'query' => [
 				'one' => 'param',
@@ -146,8 +138,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testQueryStringParsingFromInputUrl()
-	{
+	public function testQueryStringParsingFromInputUrl() {
 		$_GET = [];
 		$request = new Request(['url' => 'some/path?one=something&two=else']);
 		$expected = ['one' => 'something', 'two' => 'else'];
@@ -160,8 +151,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testQueryStringAndNamedParams()
-	{
+	public function testQueryStringAndNamedParams() {
 		$_SERVER['REQUEST_URI'] = '/tasks/index?ts=123456';
 		$request = Request::createFromGlobals();
 		$this->assertEquals('tasks/index', $request->url);
@@ -184,8 +174,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddParams()
-	{
+	public function testAddParams() {
 		$request = new Request();
 		$request->params = ['controller' => 'posts', 'action' => 'view'];
 		$result = $request->addParams(['plugin' => null, 'action' => 'index']);
@@ -202,8 +191,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddPaths()
-	{
+	public function testAddPaths() {
 		$request = new Request();
 		$request->webroot = '/some/path/going/here/';
 		$result = $request->addPaths([
@@ -223,8 +211,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPostParsing()
-	{
+	public function testPostParsing() {
 		$post = [
 			'Article' => ['title']
 		];
@@ -248,8 +235,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPutParsing()
-	{
+	public function testPutParsing() {
 		$data = [
 			'Article' => ['title']
 		];
@@ -304,8 +290,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPutParsingJSON()
-	{
+	public function testPutParsingJSON() {
 		$data = '{"Article":["title"]}';
 		$request = new Request([
 			'input' => $data,
@@ -324,8 +309,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testProcessFilesNested()
-	{
+	public function testProcessFilesNested() {
 		$files = [
 			'image_main' => [
 				'name' => ['file' => 'born on.txt'],
@@ -425,8 +409,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testProcessFilesFlat()
-	{
+	public function testProcessFilesFlat() {
 		$files = [
 			'birth_cert' => [
 				'name' => 'born on.txt',
@@ -455,8 +438,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFilesZeroithIndex()
-	{
+	public function testFilesZeroithIndex() {
 		$files = [
 			0 => [
 				'name' => 'cake_sqlserver_patch.patch',
@@ -478,8 +460,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMethodOverrides()
-	{
+	public function testMethodOverrides() {
 		$post = ['_method' => 'POST'];
 		$request = new Request(compact('post'));
 		$this->assertEquals('POST', $request->env('REQUEST_METHOD'));
@@ -502,8 +483,7 @@ class RequestTest extends TestCase
 	/**
 	 * Tests the env() method returning a default value in case the requested environment variable is not set.
 	 */
-	public function testDefaultEnvValue()
-	{
+	public function testDefaultEnvValue() {
 		$_ENV['DOES_NOT_EXIST'] = null;
 		$request = new Request();
 		$this->assertNull($request->env('DOES_NOT_EXIST'));
@@ -530,8 +510,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testclientIp()
-	{
+	public function testclientIp() {
 		$request = new Request(['environment' => [
 			'HTTP_X_FORWARDED_FOR' => '192.168.1.5, 10.0.1.1, proxy.com',
 			'HTTP_CLIENT_IP' => '192.168.1.2',
@@ -559,8 +538,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReferer()
-	{
+	public function testReferer() {
 		$request = new Request();
 		$request->webroot = '/';
 
@@ -587,8 +565,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRefererBasePath()
-	{
+	public function testRefererBasePath() {
 		$request = new Request('some/path');
 		$request->url = 'users/login';
 		$request->webroot = '/waves/';
@@ -606,8 +583,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsHttpMethods()
-	{
+	public function testIsHttpMethods() {
 		$request = new Request();
 
 		$this->assertFalse($request->is('undefined-behavior'));
@@ -635,8 +611,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsJsonAndXml()
-	{
+	public function testIsJsonAndXml() {
 		$request = new Request();
 		$request->env('HTTP_ACCEPT', 'application/json, text/plain, */*');
 		$this->assertTrue($request->is('json'));
@@ -655,8 +630,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsMultiple()
-	{
+	public function testIsMultiple() {
 		$request = new Request();
 
 		$request->env('REQUEST_METHOD', 'GET');
@@ -674,8 +648,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsAll()
-	{
+	public function testIsAll() {
 		$request = new Request();
 
 		$request->env('HTTP_X_REQUESTED_WITH', 'XMLHttpRequest');
@@ -691,8 +664,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMethod()
-	{
+	public function testMethod() {
 		$request = new Request(['environment' => ['REQUEST_METHOD' => 'delete']]);
 
 		$this->assertEquals('delete', $request->method());
@@ -703,8 +675,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHost()
-	{
+	public function testHost() {
 		$request = new Request(['environment' => [
 			'HTTP_HOST' => 'localhost',
 			'HTTP_X_FORWARDED_HOST' => 'cakephp.org',
@@ -720,8 +691,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPort()
-	{
+	public function testPort() {
 		$request = new Request(['environment' => ['SERVER_PORT' => '80']]);
 
 		$this->assertEquals('80', $request->port());
@@ -739,8 +709,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDomain()
-	{
+	public function testDomain() {
 		$request = new Request(['environment' => ['HTTP_HOST' => 'something.example.com']]);
 
 		$this->assertEquals('example.com', $request->domain());
@@ -754,8 +723,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScheme()
-	{
+	public function testScheme() {
 		$request = new Request(['environment' => ['HTTPS' => 'on']]);
 
 		$this->assertEquals('https', $request->scheme());
@@ -773,8 +741,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSubdomain()
-	{
+	public function testSubdomain() {
 		$request = new Request(['environment' => ['HTTP_HOST' => 'something.example.com']]);
 
 		$this->assertEquals(['something'], $request->subdomains());
@@ -794,8 +761,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testisAjaxFlashAndFriends()
-	{
+	public function testisAjaxFlashAndFriends() {
 		$request = new Request();
 
 		$request->env('HTTP_USER_AGENT', 'Shockwave Flash');
@@ -818,8 +784,7 @@ class RequestTest extends TestCase
 	 * @expectedException \BadMethodCallException
 	 * @return void
 	 */
-	public function testMagicCallExceptionOnUnknownMethod()
-	{
+	public function testMagicCallExceptionOnUnknownMethod() {
 		$request = new Request();
 		$request->IamABanana();
 	}
@@ -829,8 +794,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsSsl()
-	{
+	public function testIsSsl() {
 		$request = new Request();
 
 		$request->env('HTTPS', 1);
@@ -860,8 +824,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMagicget()
-	{
+	public function testMagicget() {
 		$request = new Request();
 		$request->params = ['controller' => 'posts', 'action' => 'view', 'plugin' => 'blogs'];
 
@@ -876,8 +839,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMagicisset()
-	{
+	public function testMagicisset() {
 		$request = new Request();
 		$request->params = [
 			'controller' => 'posts',
@@ -895,8 +857,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testArrayAccess()
-	{
+	public function testArrayAccess() {
 		$request = new Request();
 		$request->params = ['controller' => 'posts', 'action' => 'view', 'plugin' => 'blogs'];
 
@@ -927,8 +888,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddDetector()
-	{
+	public function testAddDetector() {
 		$request = new Request();
 
 		Request::addDetector('closure', function ($request) {
@@ -1004,8 +964,7 @@ class RequestTest extends TestCase
 	 * @param $request
 	 * @return bool
 	 */
-	public function detectCallback($request)
-	{
+	public function detectCallback($request) {
 		return (bool)$request->return;
 	}
 
@@ -1014,8 +973,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHeader()
-	{
+	public function testHeader() {
 		$request = new Request(['environment' => [
 			'HTTP_HOST' => 'localhost',
 			'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-ca) AppleWebKit/534.8+ (KHTML, like Gecko) Version/5.0 Safari/533.16'
@@ -1030,8 +988,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAccepts()
-	{
+	public function testAccepts() {
 		$request = new Request(['environment' => [
 			'HTTP_ACCEPT' => 'text/xml,application/xml;q=0.9,application/xhtml+xml,text/html,text/plain,image/png'
 		]]);
@@ -1054,8 +1011,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAcceptWithWhitespace()
-	{
+	public function testAcceptWithWhitespace() {
 		$request = new Request(['environment' => [
 			'HTTP_ACCEPT' => 'text/xml  ,  text/html ,  text/plain,image/png'
 		]]);
@@ -1073,8 +1029,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAcceptWithQvalueSorting()
-	{
+	public function testAcceptWithQvalueSorting() {
 		$request = new Request(['environment' => [
 			'HTTP_ACCEPT' => 'text/html;q=0.8,application/json;q=0.7,application/xml;q=1.0'
 		]]);
@@ -1088,8 +1043,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseAcceptWithQValue()
-	{
+	public function testParseAcceptWithQValue() {
 		$request = new Request(['environment' => [
 			'HTTP_ACCEPT' => 'text/html;q=0.8,application/json;q=0.7,application/xml;q=1.0,image/png'
 		]]);
@@ -1107,8 +1061,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseAcceptNoQValues()
-	{
+	public function testParseAcceptNoQValues() {
 		$request = new Request(['environment' => [
 			'HTTP_ACCEPT' => 'application/json, text/plain, */*'
 		]]);
@@ -1124,8 +1077,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseAcceptIgnoreAcceptExtensions()
-	{
+	public function testParseAcceptIgnoreAcceptExtensions() {
 		$request = new Request(['environment' => [
 			'url' => '/',
 			'HTTP_ACCEPT' => 'application/json;level=1, text/plain, */*'
@@ -1145,8 +1097,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseAcceptInvalidSyntax()
-	{
+	public function testParseAcceptInvalidSyntax() {
 		$request = new Request(['environment' => [
 			'url' => '/',
 			'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;image/png,image/jpeg,image/*;q=0.9,*/*;q=0.8'
@@ -1165,8 +1116,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseUrlAndWebrootWithModRewrite()
-	{
+	public function testBaseUrlAndWebrootWithModRewrite() {
 		Configure::write('App.baseUrl', false);
 
 		$_SERVER['DOCUMENT_ROOT'] = '/cake/repo/branches';
@@ -1235,8 +1185,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseUrlwithModRewriteAlias()
-	{
+	public function testBaseUrlwithModRewriteAlias() {
 		$_SERVER['DOCUMENT_ROOT'] = '/home/aplusnur/public_html';
 		$_SERVER['PHP_SELF'] = '/control/index.php';
 
@@ -1272,8 +1221,7 @@ class RequestTest extends TestCase
 	 * @link https://cakephp.lighthouseapp.com/projects/42648-cakephp/tickets/3318
 	 * @return void
 	 */
-	public function testBaseUrlWithModRewriteAndIndexPhp()
-	{
+	public function testBaseUrlWithModRewriteAndIndexPhp() {
 		$_SERVER['REQUEST_URI'] = '/cakephp/webroot/index.php';
 		$_SERVER['PHP_SELF'] = '/cakephp/webroot/index.php';
 		unset($_SERVER['PATH_INFO']);
@@ -1331,8 +1279,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseUrlWithModRewriteAndExtraSlashes()
-	{
+	public function testBaseUrlWithModRewriteAndExtraSlashes() {
 		$_SERVER['REQUEST_URI'] = '/cakephp/webroot///index.php/bananas/eat';
 		$_SERVER['PHP_SELF'] = '/cakephp/webroot///index.php/bananas/eat';
 		$_SERVER['PATH_INFO'] = '/bananas/eat';
@@ -1349,8 +1296,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseUrlWithNoModRewrite()
-	{
+	public function testBaseUrlWithNoModRewrite() {
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites';
 		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake/index.php';
 		$_SERVER['PHP_SELF'] = '/cake/index.php/posts/index';
@@ -1374,8 +1320,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseUrlAndWebrootWithBaseUrl()
-	{
+	public function testBaseUrlAndWebrootWithBaseUrl() {
 		Configure::write('App.dir', 'App');
 		Configure::write('App.baseUrl', '/App/webroot/index.php');
 
@@ -1424,8 +1369,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseUrlNoRewriteTopLevelIndex()
-	{
+	public function testBaseUrlNoRewriteTopLevelIndex() {
 		Configure::write('App.baseUrl', '/index.php');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/cake_dev';
 		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake_dev/index.php';
@@ -1440,8 +1384,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseUrlWithAppAndWebrootInDirname()
-	{
+	public function testBaseUrlWithAppAndWebrootInDirname() {
 		Configure::write('App.baseUrl', '/approval/index.php');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/';
 		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/approval/index.php';
@@ -1464,8 +1407,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBaseUrlNoRewriteWebrootIndex()
-	{
+	public function testBaseUrlNoRewriteWebrootIndex() {
 		Configure::write('App.baseUrl', '/index.php');
 		$_SERVER['DOCUMENT_ROOT'] = '/Users/markstory/Sites/cake_dev/webroot';
 		$_SERVER['SCRIPT_FILENAME'] = '/Users/markstory/Sites/cake_dev/webroot/index.php';
@@ -1481,8 +1423,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetParamsWithDot()
-	{
+	public function testGetParamsWithDot() {
 		$_GET = [];
 		$_GET['/posts/index/add_add'] = '';
 		$_SERVER['PHP_SELF'] = '/webroot/index.php';
@@ -1505,8 +1446,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetParamWithUrlencodedElement()
-	{
+	public function testGetParamWithUrlencodedElement() {
 		$_GET = [];
 		$_GET['/posts/add/∂∂'] = '';
 		$_SERVER['PHP_SELF'] = '/webroot/index.php';
@@ -1529,8 +1469,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return array Environment array
 	 */
-	public static function environmentGenerator()
-	{
+	public static function environmentGenerator() {
 		return [
 			[
 				'IIS - No rewrite base path',
@@ -1936,8 +1875,7 @@ class RequestTest extends TestCase
 	 * @param $expected
 	 * @return void
 	 */
-	public function testEnvironmentDetection($name, $env, $expected)
-	{
+	public function testEnvironmentDetection($name, $env, $expected) {
 		$_GET = [];
 		$this->_loadEnvironment($env);
 
@@ -1955,8 +1893,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testQuery()
-	{
+	public function testQuery() {
 		$request = new Request([
 			'query' => ['foo' => 'bar', 'zero' => '0']
 		]);
@@ -1976,8 +1913,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testQueryWithArray()
-	{
+	public function testQueryWithArray() {
 		$get['test'] = ['foo', 'bar'];
 
 		$request = new Request([
@@ -1999,8 +1935,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testReadingParams()
-	{
+	public function testReadingParams() {
 		$request = new Request();
 		$request->addParams([
 			'controller' => 'posts',
@@ -2020,8 +1955,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDataReading()
-	{
+	public function testDataReading() {
 		$post = [
 			'Model' => [
 				'field' => 'value'
@@ -2043,8 +1977,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDataWriting()
-	{
+	public function testDataWriting() {
 		$_POST['data'] = [
 			'Model' => [
 				'field' => 'value'
@@ -2066,8 +1999,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDataWritingFalsey()
-	{
+	public function testDataWritingFalsey() {
 		$request = new Request();
 
 		$request->data('Post.null', null);
@@ -2088,8 +2020,7 @@ class RequestTest extends TestCase
 	 *
 	 * @dataProvider paramReadingDataProvider
 	 */
-	public function testParamReading($toRead, $expected)
-	{
+	public function testParamReading($toRead, $expected) {
 		$request = new Request('/');
 		$request->addParams([
 			'action' => 'index',
@@ -2111,8 +2042,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function paramReadingDataProvider()
-	{
+	public function paramReadingDataProvider() {
 		return [
 			[
 				'action',
@@ -2154,8 +2084,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParamWriting()
-	{
+	public function testParamWriting() {
 		$request = new Request('/');
 		$request->addParams([
 			'action' => 'index',
@@ -2185,8 +2114,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAcceptLanguage()
-	{
+	public function testAcceptLanguage() {
 		$request = new Request();
 
 		// Weird language
@@ -2231,8 +2159,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHere()
-	{
+	public function testHere() {
 		Configure::write('App.base', '/base_path');
 		$q = ['test' => 'value'];
 		$request = new Request([
@@ -2264,8 +2191,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHereWithSpaceInUrl()
-	{
+	public function testHereWithSpaceInUrl() {
 		Configure::write('App.base', '');
 		$_GET = ['/admin/settings/settings/prefix/Access_Control' => ''];
 		$request = new Request('/admin/settings/settings/prefix/Access%20Control');
@@ -2279,8 +2205,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetInput()
-	{
+	public function testSetInput() {
 		$request = new Request();
 
 		$request->setInput('I came from setInput');
@@ -2293,8 +2218,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInput()
-	{
+	public function testInput() {
 		$request = $this->getMock('Cake\Network\Request', ['_readInput']);
 		$request->expects($this->once())->method('_readInput')
 			->will($this->returnValue('I came from stdin'));
@@ -2308,8 +2232,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputDecode()
-	{
+	public function testInputDecode() {
 		$request = $this->getMock('Cake\Network\Request', ['_readInput']);
 		$request->expects($this->once())->method('_readInput')
 			->will($this->returnValue('{"name":"value"}'));
@@ -2323,8 +2246,7 @@ class RequestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInputDecodeExtraParams()
-	{
+	public function testInputDecodeExtraParams() {
 		$xml = <<<XML
 <?xml version="1.0" encoding="utf-8"?>
 <post>
@@ -2349,8 +2271,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testIsRequested()
-	{
+	public function testIsRequested() {
 		$request = new Request();
 		$request->addParams([
 			'controller' => 'posts',
@@ -2376,8 +2297,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testReadCookie()
-	{
+	public function testReadCookie() {
 		$request = new Request([
 			'cookies' => [
 				'testing' => 'A value in the cookie'
@@ -2395,8 +2315,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testAllowMethod()
-	{
+	public function testAllowMethod() {
 		$request = new Request(['environment' => [
 			'url' => '/posts/edit/1',
 			'REQUEST_METHOD' => 'PUT'
@@ -2413,8 +2332,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testAllowMethodException()
-	{
+	public function testAllowMethodException() {
 		$request = new Request([
 			'url' => '/posts/edit/1',
 			'environment' => ['REQUEST_METHOD' => 'PUT']
@@ -2436,8 +2354,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testSession()
-	{
+	public function testSession() {
 		$session = new Session;
 		$request = new Request(['session' => $session]);
 		$this->assertSame($session, $request->session());
@@ -2451,8 +2368,7 @@ XML;
 	 *
 	 * @return void
 	 */
-	public function testContentType()
-	{
+	public function testContentType() {
 		$_SERVER['HTTP_CONTENT_TYPE'] = 'application/json';
 		$request = Request::createFromGlobals();
 		$this->assertEquals('application/json', $request->contentType());
@@ -2468,8 +2384,7 @@ XML;
 	 * @param array $env
 	 * @return void
 	 */
-	protected function _loadEnvironment($env)
-	{
+	protected function _loadEnvironment($env) {
 		if (isset($env['App'])) {
 			Configure::write('App', $env['App']);
 		}

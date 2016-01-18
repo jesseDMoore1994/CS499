@@ -17,23 +17,20 @@ use Cake\Database\Driver\Sqlite;
 use Cake\Datasource\ConnectionManager;
 use Cake\TestSuite\TestCase;
 
-class FakeConnection
-{
+class FakeConnection {
 }
 
 /**
  * ConnectionManager Test
  */
-class ConnectionManagerTest extends TestCase
-{
+class ConnectionManagerTest extends TestCase {
 
 	/**
 	 * tearDown method
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Plugin::unload();
 		ConnectionManager::drop('test_variant');
@@ -45,8 +42,7 @@ class ConnectionManagerTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public static function configProvider()
-	{
+	public static function configProvider() {
 		return [
 			'Array of data using classname key.' => [[
 				'className' => __NAMESPACE__ . '\FakeConnection',
@@ -63,8 +59,7 @@ class ConnectionManagerTest extends TestCase
 	 * @dataProvider configProvider
 	 * @return void
 	 */
-	public function testConfigVariants($settings)
-	{
+	public function testConfigVariants($settings) {
 		$this->assertNotContains('test_variant', ConnectionManager::configured(), 'test_variant config should not exist.');
 		ConnectionManager::config('test_variant', $settings);
 
@@ -78,8 +73,7 @@ class ConnectionManagerTest extends TestCase
 	 *
 	 * @expectedException \Cake\Datasource\Exception\MissingDatasourceException
 	 */
-	public function testConfigInvalidOptions()
-	{
+	public function testConfigInvalidOptions() {
 		ConnectionManager::config('test_variant', [
 			'className' => 'Herp\Derp'
 		]);
@@ -93,8 +87,7 @@ class ConnectionManagerTest extends TestCase
 	 * @expectedExceptionMessage Cannot reconfigure existing key "test_variant"
 	 * @return void
 	 */
-	public function testConfigDuplicateConfig()
-	{
+	public function testConfigDuplicateConfig() {
 		$settings = [
 			'className' => __NAMESPACE__ . '\FakeConnection',
 			'database' => ':memory:',
@@ -110,8 +103,7 @@ class ConnectionManagerTest extends TestCase
 	 * @expectedExceptionMessage The datasource configuration "test_variant" was not found.
 	 * @return void
 	 */
-	public function testGetFailOnMissingConfig()
-	{
+	public function testGetFailOnMissingConfig() {
 		ConnectionManager::get('test_variant');
 	}
 
@@ -120,8 +112,7 @@ class ConnectionManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGet()
-	{
+	public function testGet() {
 		$config = ConnectionManager::config('test');
 		$this->skipIf(empty($config), 'No test config, skipping');
 
@@ -138,8 +129,7 @@ class ConnectionManagerTest extends TestCase
 	 * @expectedExceptionMessage The datasource configuration "other_name" was not found.
 	 * @return void
 	 */
-	public function testGetNoAlias()
-	{
+	public function testGetNoAlias() {
 		$config = ConnectionManager::config('test');
 		$this->skipIf(empty($config), 'No test config, skipping');
 
@@ -152,8 +142,7 @@ class ConnectionManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConfigured()
-	{
+	public function testConfigured() {
 		ConnectionManager::config('test_variant', [
 			'className' => __NAMESPACE__ . '\FakeConnection',
 			'database' => ':memory:'
@@ -167,8 +156,7 @@ class ConnectionManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetPluginDataSource()
-	{
+	public function testGetPluginDataSource() {
 		Plugin::load('TestPlugin');
 		$name = 'test_variant';
 		$config = ['className' => 'TestPlugin.TestSource', 'foo' => 'bar'];
@@ -185,8 +173,7 @@ class ConnectionManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDrop()
-	{
+	public function testDrop() {
 		ConnectionManager::config('test_variant', [
 			'className' => __NAMESPACE__ . '\FakeConnection',
 			'database' => ':memory:'
@@ -206,8 +193,7 @@ class ConnectionManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAlias()
-	{
+	public function testAlias() {
 		ConnectionManager::config('test_variant', [
 			'className' => __NAMESPACE__ . '\FakeConnection',
 			'database' => ':memory:'
@@ -223,8 +209,7 @@ class ConnectionManagerTest extends TestCase
 	 * @expectedException \Cake\Datasource\Exception\MissingDatasourceConfigException
 	 * @return void
 	 */
-	public function testAliasError()
-	{
+	public function testAliasError() {
 		$this->assertNotContains('test_kaboom', ConnectionManager::configured());
 		ConnectionManager::alias('test_kaboom', 'other_name');
 	}
@@ -234,8 +219,7 @@ class ConnectionManagerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseDsn()
-	{
+	public function testParseDsn() {
 		$result = ConnectionManager::parseDsn('mysql://root:secret@localhost:3306/database?log=1');
 		$expected = [
 			'scheme' => 'mysql',

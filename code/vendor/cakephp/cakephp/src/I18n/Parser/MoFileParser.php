@@ -22,8 +22,7 @@ use RuntimeException;
  * @copyright Copyright (c) 2010, Union of RAD http://union-of-rad.org (http://lithify.me/)
  * @copyright Copyright (c) 2014, Fabien Potencier https://github.com/symfony/Translation/blob/master/LICENSE
  */
-class MoFileParser
-{
+class MoFileParser {
 
 	/**
 	 * Magic used for validating the format of a MO file as well as
@@ -57,8 +56,7 @@ class MoFileParser
 	 * @return array List of messages extracted from the file
 	 * @throws \RuntimeException If stream content has an invalid format.
 	 */
-	public function parse($resource)
-	{
+	public function parse($resource) {
 		$stream = fopen($resource, 'r');
 
 		$stat = fstat($stream);
@@ -151,8 +149,7 @@ class MoFileParser
 	 * @param bool $isBigEndian Whether or not the current platform is Big Endian
 	 * @return int
 	 */
-	protected function _readLong($stream, $isBigEndian)
-	{
+	protected function _readLong($stream, $isBigEndian) {
 		$result = unpack($isBigEndian ? 'N1' : 'V1', fread($stream, 4));
 		$result = current($result);
 

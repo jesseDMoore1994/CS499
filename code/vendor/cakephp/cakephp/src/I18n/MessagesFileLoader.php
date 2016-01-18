@@ -27,8 +27,7 @@ use RuntimeException;
  *
  * This class is a callable, so it can be used as a package loader argument.
  */
-class MessagesFileLoader
-{
+class MessagesFileLoader {
 
 	/**
 	 * The package (domain) name.
@@ -90,8 +89,7 @@ class MessagesFileLoader
 	 * @param string $extension The file extension to use. This will also be mapped
 	 * to a messages parser class.
 	 */
-	public function __construct($name, $locale, $extension = 'po')
-	{
+	public function __construct($name, $locale, $extension = 'po') {
 		$this->_name = $name;
 		$this->_locale = $locale;
 		$this->_extension = $extension;
@@ -105,8 +103,7 @@ class MessagesFileLoader
 	 * @throws \RuntimeException if no file parser class could be found for the specified
 	 * file extension.
 	 */
-	public function __invoke()
-	{
+	public function __invoke() {
 		$package = new Package('default');
 		$folders = $this->translationsFolders();
 		$ext = $this->_extension;
@@ -147,8 +144,7 @@ class MessagesFileLoader
 	 *
 	 * @return array The list of folders where the translation file should be looked for
 	 */
-	public function translationsFolders()
-	{
+	public function translationsFolders() {
 		$locale = Locale::parseLocale($this->_locale) + ['region' => null];
 
 		$folders = [

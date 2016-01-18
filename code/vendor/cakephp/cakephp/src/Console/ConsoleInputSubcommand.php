@@ -24,8 +24,7 @@ use SimpleXmlElement;
  *
  * @see ConsoleOptionParser::addSubcommand()
  */
-class ConsoleInputSubcommand
-{
+class ConsoleInputSubcommand {
 
 	/**
 	 * Name of the subcommand
@@ -56,8 +55,7 @@ class ConsoleInputSubcommand
 	 * @param \Cake\Console\ConsoleOptionParser|array|null $parser A parser for this subcommand. Either a ConsoleOptionParser, or an
 	 *   array that can be used with ConsoleOptionParser::buildFromArray().
 	 */
-	public function __construct($name, $help = '', $parser = null)
-	{
+	public function __construct($name, $help = '', $parser = null) {
 		if (is_array($name) && isset($name['name'])) {
 			foreach ($name as $key => $value) {
 				$this->{'_' . $key} = $value;
@@ -78,8 +76,7 @@ class ConsoleInputSubcommand
 	 *
 	 * @return string Value of this->_name.
 	 */
-	public function name()
-	{
+	public function name() {
 		return $this->_name;
 	}
 
@@ -89,8 +86,7 @@ class ConsoleInputSubcommand
 	 * @param int $width The width to make the name of the subcommand.
 	 * @return string
 	 */
-	public function help($width = 0)
-	{
+	public function help($width = 0) {
 		$name = $this->_name;
 		if (strlen($name) < $width) {
 			$name = str_pad($name, $width, ' ');
@@ -103,8 +99,7 @@ class ConsoleInputSubcommand
 	 *
 	 * @return mixed Either false or a ConsoleOptionParser
 	 */
-	public function parser()
-	{
+	public function parser() {
 		if ($this->_parser instanceof ConsoleOptionParser) {
 			return $this->_parser;
 		}
@@ -117,8 +112,7 @@ class ConsoleInputSubcommand
 	 * @param \SimpleXmlElement $parent The parent element.
 	 * @return \SimpleXmlElement The parent with this subcommand appended.
 	 */
-	public function xml(SimpleXmlElement $parent)
-	{
+	public function xml(SimpleXmlElement $parent) {
 		$command = $parent->addChild('command');
 		$command->addAttribute('name', $this->_name);
 		$command->addAttribute('help', $this->_help);

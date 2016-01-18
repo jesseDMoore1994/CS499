@@ -16,8 +16,7 @@ namespace Symfony\Component\Config\Definition\Builder;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class MergeBuilder
-{
+class MergeBuilder {
 	protected $node;
 	public $allowFalse = false;
 	public $allowOverwrite = true;
@@ -27,8 +26,7 @@ class MergeBuilder
 	 *
 	 * @param NodeDefinition $node The related node
 	 */
-	public function __construct(NodeDefinition $node)
-	{
+	public function __construct(NodeDefinition $node) {
 		$this->node = $node;
 	}
 
@@ -39,8 +37,7 @@ class MergeBuilder
 	 *
 	 * @return MergeBuilder
 	 */
-	public function allowUnset($allow = true)
-	{
+	public function allowUnset($allow = true) {
 		$this->allowFalse = $allow;
 
 		return $this;
@@ -53,8 +50,7 @@ class MergeBuilder
 	 *
 	 * @return MergeBuilder
 	 */
-	public function denyOverwrite($deny = true)
-	{
+	public function denyOverwrite($deny = true) {
 		$this->allowOverwrite = !$deny;
 
 		return $this;
@@ -65,8 +61,7 @@ class MergeBuilder
 	 *
 	 * @return NodeDefinition
 	 */
-	public function end()
-	{
+	public function end() {
 		return $this->node;
 	}
 }

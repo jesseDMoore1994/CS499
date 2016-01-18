@@ -14,16 +14,13 @@ namespace Symfony\Component\Config\Tests\Loader;
 use Symfony\Component\Config\Loader\LoaderResolver;
 use Symfony\Component\Config\Loader\DelegatingLoader;
 
-class DelegatingLoaderTest extends \PHPUnit_Framework_TestCase
-{
-	public function testConstructor()
-	{
+class DelegatingLoaderTest extends \PHPUnit_Framework_TestCase {
+	public function testConstructor() {
 		$loader = new DelegatingLoader($resolver = new LoaderResolver());
 		$this->assertTrue(true, '__construct() takes a loader resolver as its first argument');
 	}
 
-	public function testGetSetResolver()
-	{
+	public function testGetSetResolver() {
 		$resolver = new LoaderResolver();
 		$loader = new DelegatingLoader($resolver);
 		$this->assertSame($resolver, $loader->getResolver(), '->getResolver() gets the resolver loader');
@@ -31,8 +28,7 @@ class DelegatingLoaderTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($resolver, $loader->getResolver(), '->setResolver() sets the resolver loader');
 	}
 
-	public function testSupports()
-	{
+	public function testSupports() {
 		$loader1 = $this->getMock('Symfony\Component\Config\Loader\LoaderInterface');
 		$loader1->expects($this->once())->method('supports')->will($this->returnValue(true));
 		$loader = new DelegatingLoader(new LoaderResolver(array($loader1)));
@@ -44,8 +40,7 @@ class DelegatingLoaderTest extends \PHPUnit_Framework_TestCase
 		$this->assertFalse($loader->supports('foo.foo'), '->supports() returns false if the resource is not loadable');
 	}
 
-	public function testLoad()
-	{
+	public function testLoad() {
 		$loader = $this->getMock('Symfony\Component\Config\Loader\LoaderInterface');
 		$loader->expects($this->once())->method('supports')->will($this->returnValue(true));
 		$loader->expects($this->once())->method('load');
@@ -58,8 +53,7 @@ class DelegatingLoaderTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \Symfony\Component\Config\Exception\FileLoaderLoadException
 	 */
-	public function testLoadThrowsAnExceptionIfTheResourceCannotBeLoaded()
-	{
+	public function testLoadThrowsAnExceptionIfTheResourceCannotBeLoaded() {
 		$loader = $this->getMock('Symfony\Component\Config\Loader\LoaderInterface');
 		$loader->expects($this->once())->method('supports')->will($this->returnValue(false));
 		$resolver = new LoaderResolver(array($loader));

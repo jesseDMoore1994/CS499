@@ -17,8 +17,7 @@ namespace Cake\Test\TestCase\Utility;
 use Cake\TestSuite\TestCase;
 use Cake\Utility\MergeVariablesTrait;
 
-class Base
-{
+class Base {
 
 	use MergeVariablesTrait;
 
@@ -28,14 +27,12 @@ class Base
 
 	public $assocProperty = ['Red'];
 
-	public function mergeVars($properties, $options = [])
-	{
+	public function mergeVars($properties, $options = []) {
 		return $this->_mergeVars($properties, $options);
 	}
 }
 
-class Child extends Base
-{
+class Child extends Base {
 
 	public $hasBoolean = ['test'];
 
@@ -56,8 +53,7 @@ class Child extends Base
 	];
 }
 
-class Grandchild extends Child
-{
+class Grandchild extends Child {
 
 	public $listProperty = ['Four', 'Five'];
 
@@ -80,16 +76,14 @@ class Grandchild extends Child
  * MergeVariablesTrait test case
  *
  */
-class MergeVariablesTraitTest extends TestCase
-{
+class MergeVariablesTraitTest extends TestCase {
 
 	/**
 	 * Test merging vars as a list.
 	 *
 	 * @return void
 	 */
-	public function testMergeVarsAsList()
-	{
+	public function testMergeVarsAsList() {
 		$object = new Grandchild();
 		$object->mergeVars(['listProperty']);
 
@@ -102,8 +96,7 @@ class MergeVariablesTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeVarsAsAssoc()
-	{
+	public function testMergeVarsAsAssoc() {
 		$object = new Grandchild();
 		$object->mergeVars(['assocProperty'], ['associative' => ['assocProperty']]);
 		$expected = [
@@ -121,8 +114,7 @@ class MergeVariablesTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeVarsAsAssocWithKeyValues()
-	{
+	public function testMergeVarsAsAssocWithKeyValues() {
 		$object = new Grandchild();
 		$object->mergeVars(['nestedProperty'], ['associative' => ['nestedProperty']]);
 
@@ -142,8 +134,7 @@ class MergeVariablesTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeVarsMixedModes()
-	{
+	public function testMergeVarsMixedModes() {
 		$object = new Grandchild();
 		$object->mergeVars(['assocProperty', 'listProperty'], ['associative' => ['assocProperty']]);
 		$expected = [
@@ -164,8 +155,7 @@ class MergeVariablesTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMergeVarsWithBoolean()
-	{
+	public function testMergeVarsWithBoolean() {
 		$object = new Child();
 		$object->mergeVars(['hasBoolean']);
 		$this->assertEquals(['test'], $object->hasBoolean);

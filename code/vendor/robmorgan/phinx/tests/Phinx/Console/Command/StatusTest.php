@@ -7,12 +7,10 @@ use Symfony\Component\Console\Output\StreamOutput;
 use Phinx\Config\Config;
 use Phinx\Console\Command\Status;
 
-class StatusTest extends \PHPUnit_Framework_TestCase
-{
+class StatusTest extends \PHPUnit_Framework_TestCase {
 	protected $config = array();
 
-	protected function setUp()
-	{
+	protected function setUp() {
 		$this->config = new Config(array(
 			'paths' => array(
 				'migrations' => __FILE__,
@@ -32,8 +30,7 @@ class StatusTest extends \PHPUnit_Framework_TestCase
 		));
 	}
 
-	public function testExecute()
-	{
+	public function testExecute() {
 		$application = new \Phinx\Console\PhinxApplication('testing');
 		$application->add(new Status());
 
@@ -58,8 +55,7 @@ class StatusTest extends \PHPUnit_Framework_TestCase
 		$this->assertRegExp('/no environment specified/', $commandTester->getDisplay());
 	}
 
-	public function testExecuteWithEnvironmentOption()
-	{
+	public function testExecuteWithEnvironmentOption() {
 		$application = new \Phinx\Console\PhinxApplication('testing');
 		$application->add(new Status());
 
@@ -83,8 +79,7 @@ class StatusTest extends \PHPUnit_Framework_TestCase
 		$this->assertRegExp('/using environment fakeenv/', $commandTester->getDisplay());
 	}
 
-	public function testFormatSpecified()
-	{
+	public function testFormatSpecified() {
 		$application = new \Phinx\Console\PhinxApplication('testing');
 		$application->add(new Status());
 

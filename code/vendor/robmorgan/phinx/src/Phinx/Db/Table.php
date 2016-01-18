@@ -37,8 +37,7 @@ use Phinx\Db\Adapter\AdapterInterface;
  *
  * This object is based loosely on: http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/Table.html.
  */
-class Table
-{
+class Table {
 	/**
 	 * @var string
 	 */
@@ -81,8 +80,7 @@ class Table
 	 * @param array $options Options
 	 * @param AdapterInterface $adapter Database Adapter
 	 */
-	public function __construct($name, $options = array(), AdapterInterface $adapter = null)
-	{
+	public function __construct($name, $options = array(), AdapterInterface $adapter = null) {
 		$this->setName($name);
 		$this->setOptions($options);
 
@@ -97,8 +95,7 @@ class Table
 	 * @param string $name Table Name
 	 * @return Table
 	 */
-	public function setName($name)
-	{
+	public function setName($name) {
 		$this->name = $name;
 		return $this;
 	}
@@ -108,8 +105,7 @@ class Table
 	 *
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->name;
 	}
 
@@ -119,8 +115,7 @@ class Table
 	 * @param array $options
 	 * @return Table
 	 */
-	public function setOptions($options)
-	{
+	public function setOptions($options) {
 		$this->options = $options;
 		return $this;
 	}
@@ -130,8 +125,7 @@ class Table
 	 *
 	 * @return array
 	 */
-	public function getOptions()
-	{
+	public function getOptions() {
 		return $this->options;
 	}
 
@@ -141,8 +135,7 @@ class Table
 	 * @param AdapterInterface $adapter Database Adapter
 	 * @return Table
 	 */
-	public function setAdapter(AdapterInterface $adapter)
-	{
+	public function setAdapter(AdapterInterface $adapter) {
 		$this->adapter = $adapter;
 		return $this;
 	}
@@ -152,8 +145,7 @@ class Table
 	 *
 	 * @return AdapterInterface
 	 */
-	public function getAdapter()
-	{
+	public function getAdapter() {
 		return $this->adapter;
 	}
 
@@ -162,8 +154,7 @@ class Table
 	 *
 	 * @return boolean
 	 */
-	public function exists()
-	{
+	public function exists() {
 		return $this->getAdapter()->hasTable($this->getName());
 	}
 
@@ -172,8 +163,7 @@ class Table
 	 *
 	 * @return void
 	 */
-	public function drop()
-	{
+	public function drop() {
 		$this->getAdapter()->dropTable($this->getName());
 	}
 
@@ -183,8 +173,7 @@ class Table
 	 * @param string $newTableName New Table Name
 	 * @return Table
 	 */
-	public function rename($newTableName)
-	{
+	public function rename($newTableName) {
 		$this->getAdapter()->renameTable($this->getName(), $newTableName);
 		$this->setName($newTableName);
 		return $this;
@@ -198,8 +187,7 @@ class Table
 	 * @param array $columns Columns
 	 * @return Table
 	 */
-	public function setColumns($columns)
-	{
+	public function setColumns($columns) {
 		$this->setPendingColumns($columns);
 	}
 
@@ -208,8 +196,7 @@ class Table
 	 *
 	 * @return Column[]
 	 */
-	public function getColumns()
-	{
+	public function getColumns() {
 		return $this->getAdapter()->getColumns($this->getName());
 	}
 
@@ -219,8 +206,7 @@ class Table
 	 * @param array $columns Columns
 	 * @return Table
 	 */
-	public function setPendingColumns($columns)
-	{
+	public function setPendingColumns($columns) {
 		$this->columns = $columns;
 		return $this;
 	}
@@ -230,8 +216,7 @@ class Table
 	 *
 	 * @return Column[]
 	 */
-	public function getPendingColumns()
-	{
+	public function getPendingColumns() {
 		return $this->columns;
 	}
 
@@ -241,8 +226,7 @@ class Table
 	 * @param array $indexes Indexes
 	 * @return Table
 	 */
-	public function setIndexes($indexes)
-	{
+	public function setIndexes($indexes) {
 		$this->indexes = $indexes;
 		return $this;
 	}
@@ -252,8 +236,7 @@ class Table
 	 *
 	 * @return array
 	 */
-	public function getIndexes()
-	{
+	public function getIndexes() {
 		return $this->indexes;
 	}
 
@@ -263,8 +246,7 @@ class Table
 	 * @param ForeignKey[] $foreignKeys foreign keys
 	 * @return Table
 	 */
-	public function setForeignKeys($foreignKeys)
-	{
+	public function setForeignKeys($foreignKeys) {
 		$this->foreignKeys = $foreignKeys;
 		return $this;
 	}
@@ -274,8 +256,7 @@ class Table
 	 *
 	 * @return array|ForeignKey[]
 	 */
-	public function getForeignKeys()
-	{
+	public function getForeignKeys() {
 		return $this->foreignKeys;
 	}
 
@@ -283,8 +264,7 @@ class Table
 	 * @param $data array of data to be inserted
 	 * @return Table
 	 */
-	public function setData($data)
-	{
+	public function setData($data) {
 		$this->data = $data;
 		return $this;
 	}
@@ -293,8 +273,7 @@ class Table
 	 * Gets the data waiting to be inserted
 	 * @return array
 	 */
-	public function getData()
-	{
+	public function getData() {
 		return $this->data;
 	}
 
@@ -303,8 +282,7 @@ class Table
 	 *
 	 * @return void
 	 */
-	public function reset()
-	{
+	public function reset() {
 		$this->setPendingColumns(array());
 		$this->setIndexes(array());
 		$this->setForeignKeys(array());
@@ -326,8 +304,7 @@ class Table
 	 * @throws \InvalidArgumentException
 	 * @return Table
 	 */
-	public function addColumn($columnName, $type = null, $options = array())
-	{
+	public function addColumn($columnName, $type = null, $options = array()) {
 		// we need an adapter set to add a column
 		if (null === $this->getAdapter()) {
 			throw new \RuntimeException('An adapter must be specified to add a column.');
@@ -362,8 +339,7 @@ class Table
 	 * @param string $columnName Column Name
 	 * @return Table
 	 */
-	public function removeColumn($columnName)
-	{
+	public function removeColumn($columnName) {
 		$this->getAdapter()->dropColumn($this->getName(), $columnName);
 		return $this;
 	}
@@ -375,8 +351,7 @@ class Table
 	 * @param string $newName New Column Name
 	 * @return Table
 	 */
-	public function renameColumn($oldName, $newName)
-	{
+	public function renameColumn($oldName, $newName) {
 		$this->getAdapter()->renameColumn($this->getName(), $oldName, $newName);
 		return $this;
 	}
@@ -389,8 +364,7 @@ class Table
 	 * @param array $options Options
 	 * @return Table
 	 */
-	public function changeColumn($columnName, $newColumnType, $options = array())
-	{
+	public function changeColumn($columnName, $newColumnType, $options = array()) {
 		// create a column object if one wasn't supplied
 		if (!$newColumnType instanceof Column) {
 			$newColumn = new Column();
@@ -416,8 +390,7 @@ class Table
 	 * @param array $options Options
 	 * @return boolean
 	 */
-	public function hasColumn($columnName, $options = array())
-	{
+	public function hasColumn($columnName, $options = array()) {
 		return $this->getAdapter()->hasColumn($this->getName(), $columnName, $options);
 	}
 
@@ -430,8 +403,7 @@ class Table
 	 * @param array $options Index Options
 	 * @return Table
 	 */
-	public function addIndex($columns, $options = array())
-	{
+	public function addIndex($columns, $options = array()) {
 		// create a new index object if strings or an array of strings were supplied
 		if (!$columns instanceof Index) {
 			$index = new Index();
@@ -455,8 +427,7 @@ class Table
 	 * @param array $options Options
 	 * @return Table
 	 */
-	public function removeIndex($columns, $options = array())
-	{
+	public function removeIndex($columns, $options = array()) {
 		$this->getAdapter()->dropIndex($this->getName(), $columns, $options);
 		return $this;
 	}
@@ -467,8 +438,7 @@ class Table
 	 * @param string $name Index name
 	 * @return Table
 	 */
-	public function removeIndexByName($name)
-	{
+	public function removeIndexByName($name) {
 		$this->getAdapter()->dropIndexByName($this->getName(), $name);
 		return $this;
 	}
@@ -480,8 +450,7 @@ class Table
 	 * @param array $options Options
 	 * @return boolean
 	 */
-	public function hasIndex($columns, $options = array())
-	{
+	public function hasIndex($columns, $options = array()) {
 		return $this->getAdapter()->hasIndex($this->getName(), $columns, $options);
 	}
 
@@ -497,8 +466,7 @@ class Table
 	 * @param array $options Options
 	 * @return Table
 	 */
-	public function addForeignKey($columns, $referencedTable, $referencedColumns = array('id'), $options = array())
-	{
+	public function addForeignKey($columns, $referencedTable, $referencedColumns = array('id'), $options = array()) {
 		if (is_string($referencedColumns)) {
 			$referencedColumns = array($referencedColumns); // str to array
 		}
@@ -523,8 +491,7 @@ class Table
 	 * @param null|string $constraint Constraint names
 	 * @return Table
 	 */
-	public function dropForeignKey($columns, $constraint = null)
-	{
+	public function dropForeignKey($columns, $constraint = null) {
 		if (is_string($columns)) {
 			$columns = array($columns);
 		}
@@ -544,8 +511,7 @@ class Table
 	 * @param  null|string $constraint Constraint names
 	 * @return boolean
 	 */
-	public function hasForeignKey($columns, $constraint = null)
-	{
+	public function hasForeignKey($columns, $constraint = null) {
 		return $this->getAdapter()->hasForeignKey($this->getName(), $columns, $constraint);
 	}
 
@@ -554,8 +520,7 @@ class Table
 	 *
 	 * @return Table
 	 */
-	public function addTimestamps()
-	{
+	public function addTimestamps() {
 		$this->addColumn('created_at', 'timestamp', array(
 			'default' => 'CURRENT_TIMESTAMP',
 			'update' => ''
@@ -580,8 +545,7 @@ class Table
 	 *
 	 * @return Table
 	 */
-	public function insert($data)
-	{
+	public function insert($data) {
 		// handle array of array situations
 		if (isset($data[0]) && is_array($data[0])) {
 			foreach ($data as $row) {
@@ -598,8 +562,7 @@ class Table
 	 *
 	 * @return void
 	 */
-	public function create()
-	{
+	public function create() {
 		$this->getAdapter()->createTable($this);
 		$this->saveData();
 		$this->reset(); // reset pending changes
@@ -611,8 +574,7 @@ class Table
 	 * @throws \RuntimeException
 	 * @return void
 	 */
-	public function update()
-	{
+	public function update() {
 		if (!$this->exists()) {
 			throw new \RuntimeException('Cannot update a table that doesn\'t exist!');
 		}
@@ -639,8 +601,7 @@ class Table
 	 *
 	 * @return void
 	 */
-	public function saveData()
-	{
+	public function saveData() {
 		foreach ($this->getData() as $row) {
 			$this->getAdapter()->insert($this, $row);
 		}
@@ -653,8 +614,7 @@ class Table
 	 *
 	 * @return void
 	 */
-	public function save()
-	{
+	public function save() {
 		if ($this->exists()) {
 			$this->update(); // update the table
 		} else {

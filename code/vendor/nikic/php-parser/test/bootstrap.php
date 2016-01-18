@@ -4,8 +4,7 @@ namespace PhpParser;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-function canonicalize($str)
-{
+function canonicalize($str) {
 	// trim from both sides
 	$str = trim($str);
 

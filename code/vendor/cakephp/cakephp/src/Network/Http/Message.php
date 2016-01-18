@@ -19,8 +19,7 @@ namespace Cake\Network\Http;
  * Defines some common helper methods, constants
  * and properties.
  */
-class Message
-{
+class Message {
 
 	/**
 	 * HTTP 200 code
@@ -154,8 +153,7 @@ class Message
 	 * @param string $name The header name to normalize.
 	 * @return string Normalized header name.
 	 */
-	protected function _normalizeHeader($name)
-	{
+	protected function _normalizeHeader($name) {
 		$parts = explode('-', trim($name));
 		$parts = array_map('strtolower', $parts);
 		$parts = array_map('ucfirst', $parts);
@@ -167,8 +165,7 @@ class Message
 	 *
 	 * @return array
 	 */
-	public function headers()
-	{
+	public function headers() {
 		return $this->_headers;
 	}
 
@@ -177,8 +174,7 @@ class Message
 	 *
 	 * @return array
 	 */
-	public function cookies()
-	{
+	public function cookies() {
 		return $this->_cookies;
 	}
 
@@ -187,8 +183,7 @@ class Message
 	 *
 	 * @return string
 	 */
-	public function version()
-	{
+	public function version() {
 		return $this->_version;
 	}
 
@@ -198,8 +193,7 @@ class Message
 	 * @param string|null $body The body for the request. Leave null for get
 	 * @return mixed Either $this or the body value.
 	 */
-	public function body($body = null)
-	{
+	public function body($body = null) {
 		if ($body === null) {
 			return $this->_body;
 		}

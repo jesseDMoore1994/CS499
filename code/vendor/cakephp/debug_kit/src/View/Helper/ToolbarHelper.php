@@ -25,8 +25,7 @@ use DebugKit\DebugKitDebugger;
  *
  * @since         DebugKit 0.1
  */
-class ToolbarHelper extends Helper
-{
+class ToolbarHelper extends Helper {
 
 	/**
 	 * helpers property
@@ -47,8 +46,7 @@ class ToolbarHelper extends Helper
 	 *
 	 * @param bool $sort Whether or not sort values by key
 	 */
-	public function setSort($sort)
-	{
+	public function setSort($sort) {
 		$this->sort = $sort;
 	}
 
@@ -63,8 +61,7 @@ class ToolbarHelper extends Helper
 	 * the path.
 	 * @return string
 	 */
-	public function makeNeatArray($values, $openDepth = 0, $currentDepth = 0, $doubleEncode = false, \SplObjectStorage $currentAncestors = null)
-	{
+	public function makeNeatArray($values, $openDepth = 0, $currentDepth = 0, $doubleEncode = false, \SplObjectStorage $currentAncestors = null) {
 		if ($currentAncestors === null) {
 			$ancestors = new \SplObjectStorage();
 		} elseif (is_object($values)) {

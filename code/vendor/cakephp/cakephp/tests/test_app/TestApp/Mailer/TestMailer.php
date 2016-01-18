@@ -20,16 +20,13 @@ use Cake\Mailer\Mailer;
  * Test Suite Test App Mailer class.
  *
  */
-class TestMailer extends Mailer
-{
+class TestMailer extends Mailer {
 
-	public function getEmailForAssertion()
-	{
+	public function getEmailForAssertion() {
 		return $this->_email;
 	}
 
-	public function reset()
-	{
+	public function reset() {
 		$this->template = $this->viewBuilder()->template();
 
 		return parent::reset();

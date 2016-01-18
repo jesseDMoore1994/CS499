@@ -28,8 +28,7 @@ use LogicException;
  * the controller
  *
  */
-class Dispatcher
-{
+class Dispatcher {
 
 	use EventDispatcherTrait;
 
@@ -57,8 +56,7 @@ class Dispatcher
 	 * @return string|null if `$request['return']` is set then it returns response body, null otherwise
 	 * @throws \Cake\Routing\Exception\MissingControllerException When the controller is missing.
 	 */
-	public function dispatch(Request $request, Response $response)
-	{
+	public function dispatch(Request $request, Response $response) {
 		$beforeEvent = $this->dispatchEvent('Dispatcher.beforeDispatch', compact('request', 'response'));
 
 		$request = $beforeEvent->data['request'];
@@ -104,8 +102,7 @@ class Dispatcher
 	 * @throws \LogicException If data returned by controller action is not an
 	 *   instance of Response
 	 */
-	protected function _invoke(Controller $controller)
-	{
+	protected function _invoke(Controller $controller) {
 		$result = $controller->startupProcess();
 		if ($result instanceof Response) {
 			return $result;
@@ -140,8 +137,7 @@ class Dispatcher
 	 *   any EventListenerInterface. Typically an instance of \Cake\Routing\DispatcherFilter.
 	 * @return void
 	 */
-	public function addFilter(EventListenerInterface $filter)
-	{
+	public function addFilter(EventListenerInterface $filter) {
 		$this->_filters[] = $filter;
 		$this->eventManager()->on($filter);
 	}
@@ -151,8 +147,7 @@ class Dispatcher
 	 *
 	 * @return array
 	 */
-	public function filters()
-	{
+	public function filters() {
 		return $this->_filters;
 	}
 }

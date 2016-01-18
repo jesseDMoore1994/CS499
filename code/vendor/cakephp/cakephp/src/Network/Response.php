@@ -28,8 +28,7 @@ use InvalidArgumentException;
  * a custom response class it should subclass this object in order to ensure compatibility.
  *
  */
-class Response
-{
+class Response {
 
 	/**
 	 * Holds HTTP response statuses
@@ -390,8 +389,7 @@ class Response
 	 *  - type: a complete mime-type string or an extension mapped in this class
 	 *  - charset: the charset for the response body
 	 */
-	public function __construct(array $options = [])
-	{
+	public function __construct(array $options = []) {
 		if (isset($options['body'])) {
 			$this->body($options['body']);
 		}
@@ -416,8 +414,7 @@ class Response
 	 *
 	 * @return void
 	 */
-	public function send()
-	{
+	public function send() {
 		if (isset($this->_headers['Location']) && $this->_status === 200) {
 			$this->statusCode(302);
 		}
@@ -442,8 +439,7 @@ class Response
 	 *
 	 * @return void
 	 */
-	public function sendHeaders()
-	{
+	public function sendHeaders() {
 		if (headers_sent()) {
 			return;
 		}
@@ -467,8 +463,7 @@ class Response
 	 *
 	 * @return void
 	 */
-	protected function _setCookies()
-	{
+	protected function _setCookies() {
 		foreach ($this->_cookies as $name => $c) {
 			setcookie(
 				$name,
@@ -488,8 +483,7 @@ class Response
 	 *
 	 * @return void
 	 */
-	protected function _setContentType()
-	{
+	protected function _setContentType() {
 		if (in_array($this->_status, [304, 204])) {
 			return;
 		}
@@ -516,8 +510,7 @@ class Response
 	 *
 	 * @return void
 	 */
-	protected function _setContent()
-	{
+	protected function _setContent() {
 		if (in_array($this->_status, [304, 204])) {
 			$this->body('');
 		}
@@ -530,8 +523,7 @@ class Response
 	 * @param string|null $value the header value
 	 * @return void
 	 */
-	protected function _sendHeader($name, $value = null)
-	{
+	protected function _sendHeader($name, $value = null) {
 		if ($value === null) {
 			header($name);
 		} else {
@@ -549,8 +541,7 @@ class Response
 	 *  which returns/outputs content.
 	 * @return void
 	 */
-	protected function _sendContent($content)
-	{
+	protected function _sendContent($content) {
 		if (!is_string($content) && is_callable($content)) {
 			$content = $content();
 		}
@@ -599,8 +590,7 @@ class Response
 	 * @param string|array|null $value The header value(s)
 	 * @return array List of headers to be sent
 	 */
-	public function header($header = null, $value = null)
-	{
+	public function header($header = null, $value = null) {
 		if ($header === null) {
 			return $this->_headers;
 		}
@@ -626,8 +616,7 @@ class Response
 	 * @return string|null When setting the location null will be returned. When reading the location
 	 *    a string of the current location header value (if any) will be returned.
 	 */
-	public function location($url = null)
-	{
+	public function location($url = null) {
 		if ($url === null) {
 			$headers = $this->header();
 			return isset($headers['Location']) ? $headers['Location'] : null;
@@ -643,8 +632,7 @@ class Response
 	 * @param string|callable|null $content the string or callable message to be sent
 	 * @return string Current message buffer if $content param is passed as null
 	 */
-	public function body($content = null)
-	{
+	public function body($content = null) {
 		if ($content === null) {
 			return $this->_body;
 		}
@@ -659,8 +647,7 @@ class Response
 	 * @return int Current status code
 	 * @throws \InvalidArgumentException When an unknown status code is reached.
 	 */
-	public function statusCode($code = null)
-	{
+	public function statusCode($code = null) {
 		if ($code === null) {
 			return $this->_status;
 		}
@@ -701,8 +688,7 @@ class Response
 	 *    strings as values, or null of the given $code does not exist.
 	 * @throws \InvalidArgumentException If an attempt is made to add an invalid status code
 	 */
-	public function httpCodes($code = null)
-	{
+	public function httpCodes($code = null) {
 		if (empty($code)) {
 			return $this->_statusCodes;
 		}
@@ -754,8 +740,7 @@ class Response
 	 * @param string|null $contentType Content type key.
 	 * @return mixed Current content type or false if supplied an invalid content type
 	 */
-	public function type($contentType = null)
-	{
+	public function type($contentType = null) {
 		if ($contentType === null) {
 			return $this->_contentType;
 		}
@@ -783,8 +768,7 @@ class Response
 	 * @param string $alias the content type alias to map
 	 * @return mixed String mapped mime type or false if $alias is not mapped
 	 */
-	public function getMimeType($alias)
-	{
+	public function getMimeType($alias) {
 		if (isset($this->_mimeTypes[$alias])) {
 			return $this->_mimeTypes[$alias];
 		}
@@ -799,8 +783,7 @@ class Response
 	 * @param string|array $ctype Either a string content type to map, or an array of types.
 	 * @return mixed Aliases for the types provided.
 	 */
-	public function mapType($ctype)
-	{
+	public function mapType($ctype) {
 		if (is_array($ctype)) {
 			return array_map([$this, 'mapType'], $ctype);
 		}
@@ -820,8 +803,7 @@ class Response
 	 * @param string|null $charset Character set string.
 	 * @return string Current charset
 	 */
-	public function charset($charset = null)
-	{
+	public function charset($charset = null) {
 		if ($charset === null) {
 			return $this->_charset;
 		}
@@ -833,8 +815,7 @@ class Response
 	 *
 	 * @return void
 	 */
-	public function disableCache()
-	{
+	public function disableCache() {
 		$this->header([
 			'Expires' => 'Mon, 26 Jul 1997 05:00:00 GMT',
 			'Last-Modified' => gmdate("D, d M Y H:i:s") . " GMT",
@@ -849,8 +830,7 @@ class Response
 	 * @param string $time a valid time for cache expiry
 	 * @return void
 	 */
-	public function cache($since, $time = '+1 day')
-	{
+	public function cache($since, $time = '+1 day') {
 		if (!is_int($time)) {
 			$time = strtotime($time);
 		}
@@ -874,8 +854,7 @@ class Response
 	 * @param int|null $time time in seconds after which the response should no longer be considered fresh
 	 * @return bool|null
 	 */
-	public function sharable($public = null, $time = null)
-	{
+	public function sharable($public = null, $time = null) {
 		if ($public === null) {
 			$public = array_key_exists('public', $this->_cacheDirectives);
 			$private = array_key_exists('private', $this->_cacheDirectives);
@@ -910,8 +889,7 @@ class Response
 	 * @param int|null $seconds if null, the method will return the current s-maxage value
 	 * @return int|null
 	 */
-	public function sharedMaxAge($seconds = null)
-	{
+	public function sharedMaxAge($seconds = null) {
 		if ($seconds !== null) {
 			$this->_cacheDirectives['s-maxage'] = $seconds;
 			$this->_setCacheControl();
@@ -931,8 +909,7 @@ class Response
 	 * @param int|null $seconds if null, the method will return the current max-age value
 	 * @return int|null
 	 */
-	public function maxAge($seconds = null)
-	{
+	public function maxAge($seconds = null) {
 		if ($seconds !== null) {
 			$this->_cacheDirectives['max-age'] = $seconds;
 			$this->_setCacheControl();
@@ -954,8 +931,7 @@ class Response
 	 *   must-revalidate value. If boolean sets or unsets the directive.
 	 * @return bool
 	 */
-	public function mustRevalidate($enable = null)
-	{
+	public function mustRevalidate($enable = null) {
 		if ($enable !== null) {
 			if ($enable) {
 				$this->_cacheDirectives['must-revalidate'] = true;
@@ -973,8 +949,7 @@ class Response
 	 *
 	 * @return void
 	 */
-	protected function _setCacheControl()
-	{
+	protected function _setCacheControl() {
 		$control = '';
 		foreach ($this->_cacheDirectives as $key => $val) {
 			$control .= $val === true ? $key : sprintf('%s=%s', $key, $val);
@@ -997,8 +972,7 @@ class Response
 	 * @param string|\DateTime|null $time Valid time string or \DateTime instance.
 	 * @return string|null
 	 */
-	public function expires($time = null)
-	{
+	public function expires($time = null) {
 		if ($time !== null) {
 			$date = $this->_getUTCDate($time);
 			$this->_headers['Expires'] = $date->format('D, j M Y H:i:s') . ' GMT';
@@ -1022,8 +996,7 @@ class Response
 	 * @param string|\DateTime|null $time Valid time string or \DateTime instance.
 	 * @return string|null
 	 */
-	public function modified($time = null)
-	{
+	public function modified($time = null) {
 		if ($time !== null) {
 			$date = $this->_getUTCDate($time);
 			$this->_headers['Last-Modified'] = $date->format('D, j M Y H:i:s') . ' GMT';
@@ -1041,8 +1014,7 @@ class Response
 	 *
 	 * @return void
 	 */
-	public function notModified()
-	{
+	public function notModified() {
 		$this->statusCode(304);
 		$this->body('');
 		$remove = [
@@ -1069,8 +1041,7 @@ class Response
 	 *   containing the list for variances.
 	 * @return array|null
 	 */
-	public function vary($cacheVariances = null)
-	{
+	public function vary($cacheVariances = null) {
 		if ($cacheVariances !== null) {
 			$cacheVariances = (array)$cacheVariances;
 			$this->_headers['Vary'] = implode(', ', $cacheVariances);
@@ -1102,8 +1073,7 @@ class Response
 	 *   other with the same hash or not
 	 * @return string|null
 	 */
-	public function etag($hash = null, $weak = false)
-	{
+	public function etag($hash = null, $weak = false) {
 		if ($hash !== null) {
 			$this->_headers['Etag'] = sprintf('%s"%s"', ($weak) ? 'W/' : null, $hash);
 		}
@@ -1120,8 +1090,7 @@ class Response
 	 * @param string|int|\DateTime|null $time Valid time string or \DateTime instance.
 	 * @return \DateTime
 	 */
-	protected function _getUTCDate($time = null)
-	{
+	protected function _getUTCDate($time = null) {
 		if ($time instanceof DateTime) {
 			$result = clone $time;
 		} elseif (is_int($time)) {
@@ -1139,8 +1108,7 @@ class Response
 	 *
 	 * @return bool false if client does not accept compressed responses or no handler is available, true otherwise
 	 */
-	public function compress()
-	{
+	public function compress() {
 		$compressionEnabled = ini_get("zlib.output_compression") !== '1' &&
 			extension_loaded("zlib") &&
 			(strpos(env('HTTP_ACCEPT_ENCODING'), 'gzip') !== false);
@@ -1152,8 +1120,7 @@ class Response
 	 *
 	 * @return bool
 	 */
-	public function outputCompressed()
-	{
+	public function outputCompressed() {
 		return strpos(env('HTTP_ACCEPT_ENCODING'), 'gzip') !== false
 		&& (ini_get("zlib.output_compression") === '1' || in_array('ob_gzhandler', ob_list_handlers()));
 	}
@@ -1164,8 +1131,7 @@ class Response
 	 * @param string $filename The name of the file as the browser will download the response
 	 * @return void
 	 */
-	public function download($filename)
-	{
+	public function download($filename) {
 		$this->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
 	}
 
@@ -1176,8 +1142,7 @@ class Response
 	 * @param string|null $protocol Protocol to be used for sending response.
 	 * @return string Protocol currently set
 	 */
-	public function protocol($protocol = null)
-	{
+	public function protocol($protocol = null) {
 		if ($protocol !== null) {
 			$this->_protocol = $protocol;
 		}
@@ -1191,8 +1156,7 @@ class Response
 	 * @param int|null $bytes Number of bytes
 	 * @return int|null
 	 */
-	public function length($bytes = null)
-	{
+	public function length($bytes = null) {
 		if ($bytes !== null) {
 			$this->_headers['Content-Length'] = $bytes;
 		}
@@ -1215,8 +1179,7 @@ class Response
 	 * @param \Cake\Network\Request $request Request object
 	 * @return bool Whether the response was marked as not modified or not.
 	 */
-	public function checkNotModified(Request $request)
-	{
+	public function checkNotModified(Request $request) {
 		$etags = preg_split('/\s*,\s*/', $request->header('If-None-Match'), null, PREG_SPLIT_NO_EMPTY);
 		$modifiedSince = $request->header('If-Modified-Since');
 		if ($responseTag = $this->etag()) {
@@ -1243,8 +1206,7 @@ class Response
 	 *
 	 * @return string
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		if (!is_string($this->_body) && is_callable($this->_body)) {
 			return '';
 		}
@@ -1290,8 +1252,7 @@ class Response
 	 *  or array to set cookie.
 	 * @return mixed
 	 */
-	public function cookie($options = null)
-	{
+	public function cookie($options = null) {
 		if ($options === null) {
 			return $this->_cookies;
 		}
@@ -1353,8 +1314,7 @@ class Response
 	 * @param string|array $allowedHeaders List of HTTP headers allowed
 	 * @return void
 	 */
-	public function cors(Request $request, $allowedDomains, $allowedMethods = [], $allowedHeaders = [])
-	{
+	public function cors(Request $request, $allowedDomains, $allowedMethods = [], $allowedHeaders = []) {
 		$origin = $request->header('Origin');
 		if (!$origin) {
 			return;
@@ -1379,8 +1339,7 @@ class Response
 	 * @param bool $requestIsSSL Whether it's a SSL request.
 	 * @return array
 	 */
-	protected function _normalizeCorsDomains($domains, $requestIsSSL = false)
-	{
+	protected function _normalizeCorsDomains($domains, $requestIsSSL = false) {
 		$result = [];
 		foreach ($domains as $domain) {
 			if ($domain === '*') {
@@ -1415,8 +1374,7 @@ class Response
 	 * @return void
 	 * @throws \Cake\Network\Exception\NotFoundException
 	 */
-	public function file($path, array $options = [])
-	{
+	public function file($path, array $options = []) {
 		$options += [
 			'name' => null,
 			'download' => null
@@ -1488,8 +1446,7 @@ class Response
 	 * @param string $httpRange The range to use.
 	 * @return void
 	 */
-	protected function _fileRange($file, $httpRange)
-	{
+	protected function _fileRange($file, $httpRange) {
 		list(, $range) = explode('=', $httpRange);
 		list($start, $end) = explode('-', $range);
 
@@ -1528,8 +1485,7 @@ class Response
 	 * @param array $range The range to read out of the file.
 	 * @return bool True is whole file is echoed successfully or false if client connection is lost in between
 	 */
-	protected function _sendFile($file, $range)
-	{
+	protected function _sendFile($file, $range) {
 		$compress = $this->outputCompressed();
 		$file->open('rb');
 
@@ -1570,8 +1526,7 @@ class Response
 	 *
 	 * @return bool
 	 */
-	protected function _isActive()
-	{
+	protected function _isActive() {
 		return connection_status() === CONNECTION_NORMAL && !connection_aborted();
 	}
 
@@ -1580,8 +1535,7 @@ class Response
 	 *
 	 * @return bool
 	 */
-	protected function _clearBuffer()
-	{
+	protected function _clearBuffer() {
 		//@codingStandardsIgnoreStart
 		return @ob_end_clean();
 		//@codingStandardsIgnoreEnd
@@ -1592,8 +1546,7 @@ class Response
 	 *
 	 * @return void
 	 */
-	protected function _flushBuffer()
-	{
+	protected function _flushBuffer() {
 		//@codingStandardsIgnoreStart
 		@flush();
 		if (ob_get_level()) {
@@ -1609,8 +1562,7 @@ class Response
 	 * @param int|string $status See http://php.net/exit for values
 	 * @return void
 	 */
-	public function stop($status = 0)
-	{
+	public function stop($status = 0) {
 		exit($status);
 	}
 }

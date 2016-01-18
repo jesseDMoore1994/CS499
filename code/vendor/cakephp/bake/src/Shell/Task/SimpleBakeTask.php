@@ -20,8 +20,7 @@ use Cake\Utility\Inflector;
 /**
  * Base class for simple bake tasks code generator.
  */
-abstract class SimpleBakeTask extends BakeTask
-{
+abstract class SimpleBakeTask extends BakeTask {
 	/**
 	 * Tasks to be loaded by this Task
 	 *
@@ -59,8 +58,7 @@ abstract class SimpleBakeTask extends BakeTask
 	 *
 	 * @return array
 	 */
-	public function templateData()
-	{
+	public function templateData() {
 		$namespace = Configure::read('App.namespace');
 		if ($this->plugin) {
 			$namespace = $this->_pluginNamespace($this->plugin);
@@ -74,8 +72,7 @@ abstract class SimpleBakeTask extends BakeTask
 	 * @param string|null $name The name of the object to bake.
 	 * @return void
 	 */
-	public function main($name = null)
-	{
+	public function main($name = null) {
 		parent::main();
 		if (empty($name)) {
 			return $this->error('You must provide a name to bake a ' . $this->name());
@@ -92,8 +89,7 @@ abstract class SimpleBakeTask extends BakeTask
 	 * @param string $name The classname to generate.
 	 * @return string
 	 */
-	public function bake($name)
-	{
+	public function bake($name) {
 		$this->BakeTemplate->set('name', $name);
 		$this->BakeTemplate->set($this->templateData());
 		$contents = $this->BakeTemplate->generate($this->template());
@@ -111,8 +107,7 @@ abstract class SimpleBakeTask extends BakeTask
 	 * @param string $className The class to bake a test for.
 	 * @return string|bool
 	 */
-	public function bakeTest($className)
-	{
+	public function bakeTest($className) {
 		if (!empty($this->params['no-test'])) {
 			return;
 		}
@@ -125,8 +120,7 @@ abstract class SimpleBakeTask extends BakeTask
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$name = $this->name();
 		$parser->description(

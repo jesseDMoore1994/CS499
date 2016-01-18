@@ -25,8 +25,7 @@ use Cake\Database\ValueBinder;
  *
  * @internal
  */
-class FunctionExpression extends QueryExpression
-{
+class FunctionExpression extends QueryExpression {
 
 	/**
 	 * The name of the function to be constructed when generating the SQL string
@@ -59,8 +58,7 @@ class FunctionExpression extends QueryExpression
 	 * @param array $types associative array of types to be associated with the
 	 * passed arguments
 	 */
-	public function __construct($name, $params = [], $types = [])
-	{
+	public function __construct($name, $params = [], $types = []) {
 		$this->_name = $name;
 		parent::__construct($params, $types, ',');
 	}
@@ -72,8 +70,7 @@ class FunctionExpression extends QueryExpression
 	 * @param string $name The name of the function
 	 * @return string|$this
 	 */
-	public function name($name = null)
-	{
+	public function name($name = null) {
 		if ($name === null) {
 			return $this->_name;
 		}
@@ -92,8 +89,7 @@ class FunctionExpression extends QueryExpression
 	 * @see FunctionExpression::__construct() for more details.
 	 * @return $this
 	 */
-	public function add($params, $types = [], $prepend = false)
-	{
+	public function add($params, $types = [], $prepend = false) {
 		$put = $prepend ? 'array_unshift' : 'array_push';
 		$typeMap = $this->typeMap()->types($types);
 		foreach ($params as $k => $p) {
@@ -121,8 +117,7 @@ class FunctionExpression extends QueryExpression
 	 * @param \Cake\Database\ValueBinder $generator Placeholder generator object
 	 * @return string
 	 */
-	public function sql(ValueBinder $generator)
-	{
+	public function sql(ValueBinder $generator) {
 		$parts = [];
 		foreach ($this->_conditions as $condition) {
 			if ($condition instanceof ExpressionInterface) {
@@ -146,8 +141,7 @@ class FunctionExpression extends QueryExpression
 	 *
 	 * @return int
 	 */
-	public function count()
-	{
+	public function count() {
 		return 1 + count($this->_conditions);
 	}
 }

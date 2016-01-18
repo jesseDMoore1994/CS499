@@ -19,8 +19,7 @@ use Cake\Controller\Component;
  * SomethingWithCookieComponent class
  *
  */
-class SomethingWithCookieComponent extends Component
-{
+class SomethingWithCookieComponent extends Component {
 
 	/**
 	 * components property

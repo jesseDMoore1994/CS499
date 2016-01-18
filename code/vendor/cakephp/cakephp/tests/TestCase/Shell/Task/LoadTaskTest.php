@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * LoadTaskTest class.
  *
  */
-class LoadTaskTest extends TestCase
-{
+class LoadTaskTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
@@ -48,8 +46,7 @@ class LoadTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->shell);
 		Plugin::unload();
@@ -63,8 +60,7 @@ class LoadTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoad()
-	{
+	public function testLoad() {
 		$this->Task->params = [
 			'bootstrap' => false,
 			'routes' => false,
@@ -85,8 +81,7 @@ class LoadTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithBootstrap()
-	{
+	public function testLoadWithBootstrap() {
 		$this->Task->params = [
 			'bootstrap' => true,
 			'routes' => false,
@@ -107,8 +102,7 @@ class LoadTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadWithRoutes()
-	{
+	public function testLoadWithRoutes() {
 		$this->Task->params = [
 			'bootstrap' => false,
 			'routes' => true,
@@ -129,8 +123,7 @@ class LoadTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadNoAutoload()
-	{
+	public function testLoadNoAutoload() {
 		$this->Task->params = [
 			'bootstrap' => false,
 			'routes' => true,
@@ -151,8 +144,7 @@ class LoadTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadNothing()
-	{
+	public function testLoadNothing() {
 		$this->Task->params = [
 			'bootstrap' => false,
 			'routes' => false,

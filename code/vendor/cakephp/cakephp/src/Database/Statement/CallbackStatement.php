@@ -20,8 +20,7 @@ namespace Cake\Database\Statement;
  *
  * This is used by CakePHP to eagerly load association data.
  */
-class CallbackStatement extends StatementDecorator
-{
+class CallbackStatement extends StatementDecorator {
 
 	/**
 	 * A callback function to be applied to results.
@@ -37,8 +36,7 @@ class CallbackStatement extends StatementDecorator
 	 * @param \Cake\Database\Driver $driver The driver instance used by the statement.
 	 * @param callable $callback The callback to apply to results before they are returned.
 	 */
-	public function __construct($statement, $driver, $callback)
-	{
+	public function __construct($statement, $driver, $callback) {
 		parent::__construct($statement, $driver);
 		$this->_callback = $callback;
 	}
@@ -51,8 +49,7 @@ class CallbackStatement extends StatementDecorator
 	 * @param string $type Either 'num' or 'assoc' to indicate the result format you would like.
 	 * @return mixed
 	 */
-	public function fetch($type = 'num')
-	{
+	public function fetch($type = 'num') {
 		$callback = $this->_callback;
 		$row = $this->_statement->fetch($type);
 		return $row === false ? $row : $callback($row);
@@ -66,8 +63,7 @@ class CallbackStatement extends StatementDecorator
 	 * @param string $type Either 'num' or 'assoc' to indicate the result format you would like.
 	 * @return mixed
 	 */
-	public function fetchAll($type = 'num')
-	{
+	public function fetchAll($type = 'num') {
 		return array_map($this->_callback, $this->_statement->fetchAll($type));
 	}
 }

@@ -20,8 +20,7 @@ namespace Cake\Network\Http\FormData;
  * Added to Cake\Network\Http\FormData when sending
  * data to a remote server.
  */
-class Part
-{
+class Part {
 
 	/**
 	 * Name of the value.
@@ -79,8 +78,7 @@ class Part
 	 * @param string $value The value of the data.
 	 * @param string $disposition The type of disposition to use, defaults to form-data.
 	 */
-	public function __construct($name, $value, $disposition = 'form-data')
-	{
+	public function __construct($name, $value, $disposition = 'form-data') {
 		$this->_name = $name;
 		$this->_value = $value;
 		$this->_disposition = $disposition;
@@ -95,8 +93,7 @@ class Part
 	 * @param null|string $disposition Use null to get/string to set.
 	 * @return mixed
 	 */
-	public function disposition($disposition = null)
-	{
+	public function disposition($disposition = null) {
 		if ($disposition === null) {
 			return $this->_disposition;
 		}
@@ -109,8 +106,7 @@ class Part
 	 * @param null|string $id The content id.
 	 * @return mixed
 	 */
-	public function contentId($id = null)
-	{
+	public function contentId($id = null) {
 		if ($id === null) {
 			return $this->_contentId;
 		}
@@ -126,8 +122,7 @@ class Part
 	 * @param null|string $filename Use null to get/string to set.
 	 * @return mixed
 	 */
-	public function filename($filename = null)
-	{
+	public function filename($filename = null) {
 		if ($filename === null) {
 			return $this->_filename;
 		}
@@ -140,8 +135,7 @@ class Part
 	 * @param null|string $type Use null to get/string to set.
 	 * @return mixed
 	 */
-	public function type($type)
-	{
+	public function type($type) {
 		if ($type === null) {
 			return $this->_type;
 		}
@@ -156,8 +150,7 @@ class Part
 	 * @param null|string $type The type of encoding the value has.
 	 * @return mixed
 	 */
-	public function transferEncoding($type)
-	{
+	public function transferEncoding($type) {
 		if ($type === null) {
 			return $this->_transferEncoding;
 		}
@@ -169,8 +162,7 @@ class Part
 	 *
 	 * @return string
 	 */
-	public function name()
-	{
+	public function name() {
 		return $this->_name;
 	}
 
@@ -179,8 +171,7 @@ class Part
 	 *
 	 * @return string
 	 */
-	public function value()
-	{
+	public function value() {
 		return $this->_value;
 	}
 
@@ -191,8 +182,7 @@ class Part
 	 *
 	 * @return string
 	 */
-	public function __toString()
-	{
+	public function __toString() {
 		$out = '';
 		if ($this->_disposition) {
 			$out .= 'Content-Disposition: ' . $this->_disposition;

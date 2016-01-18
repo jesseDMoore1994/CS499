@@ -25,8 +25,7 @@ use Cake\Routing\Router;
  * Routes for your application.
  *
  */
-class Route
-{
+class Route {
 
 	/**
 	 * An array of named segments in a Route.
@@ -98,8 +97,7 @@ class Route
 	 * @param array|string $defaults Defaults for the route.
 	 * @param array $options Array of additional options for the Route
 	 */
-	public function __construct($template, $defaults = [], array $options = [])
-	{
+	public function __construct($template, $defaults = [], array $options = []) {
 		$this->template = $template;
 		$this->defaults = (array)$defaults;
 		$this->options = $options;
@@ -118,8 +116,7 @@ class Route
 	 * @param null|string|array $extensions The extensions to set. Use null to get.
 	 * @return array|null The extensions or null.
 	 */
-	public function extensions($extensions = null)
-	{
+	public function extensions($extensions = null) {
 		if ($extensions === null) {
 			return $this->_extensions;
 		}
@@ -131,8 +128,7 @@ class Route
 	 *
 	 * @return bool
 	 */
-	public function compiled()
-	{
+	public function compiled() {
 		return !empty($this->_compiledRoute);
 	}
 
@@ -144,8 +140,7 @@ class Route
 	 *
 	 * @return array Returns a string regular expression of the compiled route.
 	 */
-	public function compile()
-	{
+	public function compile() {
 		if (!empty($this->compiledRoute)) {
 			return $this->_compiledRoute;
 		}
@@ -161,8 +156,7 @@ class Route
 	 *
 	 * @return void
 	 */
-	protected function _writeRoute()
-	{
+	protected function _writeRoute() {
 		if (empty($this->template) || ($this->template === '/')) {
 			$this->_compiledRoute = '#^/*$#';
 			$this->keys = [];
@@ -219,8 +213,7 @@ class Route
 	 *
 	 * @return string
 	 */
-	public function getName()
-	{
+	public function getName() {
 		if (!empty($this->_name)) {
 			return $this->_name;
 		}
@@ -259,8 +252,7 @@ class Route
 	 * @param string $url The URL to attempt to parse.
 	 * @return array|false Boolean false on failure, otherwise an array of parameters.
 	 */
-	public function parse($url)
-	{
+	public function parse($url) {
 		$request = Router::getRequest(true) ?: Request::createFromGlobals();
 
 		if (empty($this->_compiledRoute)) {
@@ -332,8 +324,7 @@ class Route
 	 * @param string $url The url to parse.
 	 * @return array containing url, extension
 	 */
-	protected function _parseExtension($url)
-	{
+	protected function _parseExtension($url) {
 		if (empty($this->_extensions)) {
 			return [$url, null];
 		}
@@ -362,8 +353,7 @@ class Route
 	 * @param string $context The current route context, which should contain controller/action keys.
 	 * @return array Array of passed args.
 	 */
-	protected function _parseArgs($args, $context)
-	{
+	protected function _parseArgs($args, $context) {
 		$pass = [];
 		$args = explode('/', $args);
 
@@ -385,8 +375,7 @@ class Route
 	 * @param array $params An array of persistent values to replace persistent ones.
 	 * @return array An array with persistent parameters applied.
 	 */
-	protected function _persistParams(array $url, array $params)
-	{
+	protected function _persistParams(array $url, array $params) {
 		foreach ($this->options['persist'] as $persistKey) {
 			if (array_key_exists($persistKey, $params) && !isset($url[$persistKey])) {
 				$url[$persistKey] = $params[$persistKey];
@@ -408,8 +397,7 @@ class Route
 	 *   directory and other url params.
 	 * @return mixed Either a string url for the parameters if they match or false.
 	 */
-	public function match(array $url, array $context = [])
-	{
+	public function match(array $url, array $context = []) {
 		if (empty($this->_compiledRoute)) {
 			$this->compile();
 		}
@@ -535,8 +523,7 @@ class Route
 	 * @param array $url The array for the URL being generated.
 	 * @return bool
 	 */
-	protected function _matchMethod($url)
-	{
+	protected function _matchMethod($url) {
 		if (empty($this->defaults['_method'])) {
 			return true;
 		}
@@ -563,8 +550,7 @@ class Route
 	 * @param array $query An array of parameters
 	 * @return string Composed route string.
 	 */
-	protected function _writeUrl($params, $pass = [], $query = [])
-	{
+	protected function _writeUrl($params, $pass = [], $query = []) {
 		$pass = implode('/', array_map('rawurlencode', $pass));
 		$out = $this->template;
 
@@ -625,8 +611,7 @@ class Route
 	 *
 	 * @return string
 	 */
-	public function staticPath()
-	{
+	public function staticPath() {
 		$routeKey = strpos($this->template, ':');
 		if ($routeKey !== false) {
 			return substr($this->template, 0, $routeKey);
@@ -648,8 +633,7 @@ class Route
 	 * @param array $fields Key/Value of object attributes
 	 * @return \Cake\Routing\Route\Route A new instance of the route
 	 */
-	public static function __set_state($fields)
-	{
+	public static function __set_state($fields) {
 		$class = get_called_class();
 		$obj = new $class('');
 		foreach ($fields as $field => $value) {

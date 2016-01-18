@@ -24,8 +24,7 @@ use Cake\Database\Query;
  *
  * @internal
  */
-trait TupleComparisonTranslatorTrait
-{
+trait TupleComparisonTranslatorTrait {
 
 	/**
 	 * Receives a TupleExpression and changes it so that it conforms to this
@@ -46,8 +45,7 @@ trait TupleComparisonTranslatorTrait
 	 * @param \Cake\Database\Query $query The query to update.
 	 * @return void
 	 */
-	protected function _transformTupleComparison(TupleComparison $expression, $query)
-	{
+	protected function _transformTupleComparison(TupleComparison $expression, $query) {
 		$fields = $expression->getField();
 
 		if (!is_array($fields)) {

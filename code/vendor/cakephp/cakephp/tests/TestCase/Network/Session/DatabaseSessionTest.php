@@ -29,8 +29,7 @@ use Cake\TestSuite\TestCase;
  * Database session test.
  *
  */
-class DatabaseSessionTest extends TestCase
-{
+class DatabaseSessionTest extends TestCase {
 
 	/**
 	 * fixtures
@@ -44,8 +43,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 		$this->storage = new DatabaseSession();
@@ -56,8 +54,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($this->storage);
 		TableRegistry::clear();
 		parent::tearDown();
@@ -68,8 +65,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructionSettings()
-	{
+	public function testConstructionSettings() {
 		TableRegistry::clear();
 		new DatabaseSession();
 
@@ -85,8 +81,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOpen()
-	{
+	public function testOpen() {
 		$this->assertTrue($this->storage->open(null, null));
 	}
 
@@ -95,8 +90,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWrite()
-	{
+	public function testWrite() {
 		$result = $this->storage->write('foo', 'Some value');
 		$this->assertTrue($result);
 
@@ -110,8 +104,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testWriteEmptySessionId()
-	{
+	public function testWriteEmptySessionId() {
 		$result = $this->storage->write('', 'This is a Test');
 		$this->assertFalse($result);
 	}
@@ -121,8 +114,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRead()
-	{
+	public function testRead() {
 		$this->storage->write('foo', 'Some value');
 
 		$result = $this->storage->read('foo');
@@ -138,8 +130,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDestroy()
-	{
+	public function testDestroy() {
 		$this->storage->write('foo', 'Some value');
 
 		$this->assertTrue($this->storage->destroy('foo'), 'Destroy failed');
@@ -151,8 +142,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGc()
-	{
+	public function testGc() {
 		TableRegistry::clear();
 
 		ini_set('session.gc_maxlifetime', 0);
@@ -169,8 +159,7 @@ class DatabaseSessionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSerializeEntity()
-	{
+	public function testSerializeEntity() {
 		$entity = new Entity();
 		$entity->value = 'something';
 		$result = $this->storage->write('key', serialize($entity));

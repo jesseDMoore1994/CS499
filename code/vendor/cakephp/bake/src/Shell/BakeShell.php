@@ -31,8 +31,7 @@ use Cake\Utility\Inflector;
  *
  * @link http://book.cakephp.org/3.0/en/console-and-shells/code-generation-with-bake.html
  */
-class BakeShell extends Shell
-{
+class BakeShell extends Shell {
 	use ConventionsTrait;
 
 	/**
@@ -47,8 +46,7 @@ class BakeShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function startup()
-	{
+	public function startup() {
 		parent::startup();
 		Configure::write('debug', true);
 		Cache::disable();
@@ -70,8 +68,7 @@ class BakeShell extends Shell
 	 *
 	 * @return mixed
 	 */
-	public function main()
-	{
+	public function main() {
 		if ($this->args && $this->args[0] === 'view') {
 			$this->out('<error>The view command has been renamed.</error>');
 			$this->out('To create template files, please use the template command:', 2);
@@ -117,8 +114,7 @@ class BakeShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function loadTasks()
-	{
+	public function loadTasks() {
 		$tasks = [];
 
 		$tasks = $this->_findTasks($tasks, APP, Configure::read('App.namespace'));
@@ -144,8 +140,7 @@ class BakeShell extends Shell
 	 * @param string|null $prefix The prefix to append.
 	 * @return array Updated tasks.
 	 */
-	protected function _findTasks($tasks, $path, $namespace, $prefix = null)
-	{
+	protected function _findTasks($tasks, $path, $namespace, $prefix = null) {
 		$path .= 'Shell/Task';
 		if (!is_dir($path)) {
 			return $tasks;
@@ -168,8 +163,7 @@ class BakeShell extends Shell
 	 * @param string $namespace Namespace.
 	 * @return array An array of files that may contain bake tasks.
 	 */
-	protected function _findClassFiles($path, $namespace)
-	{
+	protected function _findClassFiles($path, $namespace) {
 		$iterator = new \DirectoryIterator($path);
 		$candidates = [];
 		foreach ($iterator as $item) {
@@ -188,8 +182,7 @@ class BakeShell extends Shell
 	 * @param array $files The array of files.
 	 * @return array An array of matching classes.
 	 */
-	protected function _findTaskClasses($files)
-	{
+	protected function _findTaskClasses($files) {
 		$classes = [];
 		foreach ($files as $className) {
 			if (!class_exists($className)) {
@@ -213,8 +206,7 @@ class BakeShell extends Shell
 	 * @param string|null $name Name.
 	 * @return bool
 	 */
-	public function all($name = null)
-	{
+	public function all($name = null) {
 		$this->out('Bake All');
 		$this->hr();
 
@@ -261,8 +253,7 @@ class BakeShell extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$bakeThemes = [];

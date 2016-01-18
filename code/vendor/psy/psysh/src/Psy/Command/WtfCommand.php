@@ -22,8 +22,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Show the last uncaught exception.
  */
-class WtfCommand extends TraceCommand implements ContextAware
-{
+class WtfCommand extends TraceCommand implements ContextAware {
 	/**
 	 * Context instance (for ContextAware interface).
 	 *
@@ -36,16 +35,14 @@ class WtfCommand extends TraceCommand implements ContextAware
 	 *
 	 * @param Context $context
 	 */
-	public function setContext(Context $context)
-	{
+	public function setContext(Context $context) {
 		$this->context = $context;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('wtf')
 			->setAliases(array('last-exception', 'wtf?'))
@@ -79,8 +76,7 @@ HELP
 	 *
 	 * @return array
 	 */
-	protected function getHiddenOptions()
-	{
+	protected function getHiddenOptions() {
 		$options = parent::getHiddenOptions();
 		unset($options[array_search('verbose', $options)]);
 
@@ -90,8 +86,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$incredulity = implode('', $input->getArgument('incredulity'));
 		if (strlen(preg_replace('/[\\?!]/', '', $incredulity))) {
 			throw new \InvalidArgumentException('Incredulity must include only "?" and "!".');

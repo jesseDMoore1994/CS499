@@ -23,16 +23,14 @@ use Cake\TestSuite\TestCase;
 /**
  * RouteBuilder test case
  */
-class RouteBuilderTest extends TestCase
-{
+class RouteBuilderTest extends TestCase {
 
 	/**
 	 * Setup method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->collection = new RouteCollection();
 	}
@@ -42,8 +40,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPath()
-	{
+	public function testPath() {
 		$routes = new RouteBuilder($this->collection, '/some/path');
 		$this->assertEquals('/some/path', $routes->path());
 
@@ -62,8 +59,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParams()
-	{
+	public function testParams() {
 		$routes = new RouteBuilder($this->collection, '/api', ['prefix' => 'api']);
 		$this->assertEquals(['prefix' => 'api'], $routes->params());
 	}
@@ -73,8 +69,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRoutes()
-	{
+	public function testRoutes() {
 		$routes = new RouteBuilder($this->collection, '/l');
 		$routes->connect('/:controller', ['action' => 'index']);
 		$routes->connect('/:controller/:action/*');
@@ -90,8 +85,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRouteClass()
-	{
+	public function testRouteClass() {
 		$routes = new RouteBuilder(
 			$this->collection,
 			'/l',
@@ -119,8 +113,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectInstance()
-	{
+	public function testConnectInstance() {
 		$routes = new RouteBuilder($this->collection, '/l', ['prefix' => 'api']);
 
 		$route = new Route('/:controller');
@@ -135,8 +128,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectBasic()
-	{
+	public function testConnectBasic() {
 		$routes = new RouteBuilder($this->collection, '/l', ['prefix' => 'api']);
 
 		$this->assertNull($routes->connect('/:controller'));
@@ -153,8 +145,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectTrimTrailingSlash()
-	{
+	public function testConnectTrimTrailingSlash() {
 		$routes = new RouteBuilder($this->collection, '/articles', ['controller' => 'Articles']);
 		$routes->connect('/', ['action' => 'index']);
 
@@ -168,8 +159,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectExtensions()
-	{
+	public function testConnectExtensions() {
 		$routes = new RouteBuilder(
 			$this->collection,
 			'/l',
@@ -195,8 +185,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConnectExtensionsAdd()
-	{
+	public function testConnectExtensionsAdd() {
 		$routes = new RouteBuilder(
 			$this->collection,
 			'/l',
@@ -217,8 +206,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExtensionsString()
-	{
+	public function testExtensionsString() {
 		$routes = new RouteBuilder($this->collection, '/l');
 		$routes->extensions('json');
 
@@ -232,8 +220,7 @@ class RouteBuilderTest extends TestCase
 	 * @expectedExceptionMessage Route class not found, or route class is not a subclass of
 	 * @return void
 	 */
-	public function testConnectErrorInvalidRouteClass()
-	{
+	public function testConnectErrorInvalidRouteClass() {
 		$routes = new RouteBuilder(
 			$this->collection,
 			'/l',
@@ -250,8 +237,7 @@ class RouteBuilderTest extends TestCase
 	 * @expectedExceptionMessage You cannot define routes that conflict with the scope.
 	 * @return void
 	 */
-	public function testConnectConflictingParameters()
-	{
+	public function testConnectConflictingParameters() {
 		$routes = new RouteBuilder($this->collection, '/admin', ['prefix' => 'admin']);
 		$routes->connect('/', ['prefix' => 'manager', 'controller' => 'Dashboard', 'action' => 'view']);
 	}
@@ -261,8 +247,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRedirect()
-	{
+	public function testRedirect() {
 		$routes = new RouteBuilder($this->collection, '/');
 		$routes->redirect('/p/:id', ['controller' => 'posts', 'action' => 'view'], ['status' => 301]);
 		$route = $this->collection->routes()[0];
@@ -281,8 +266,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrefix()
-	{
+	public function testPrefix() {
 		$routes = new RouteBuilder($this->collection, '/path', ['key' => 'value']);
 		$res = $routes->prefix('admin', function ($r) {
 			$this->assertInstanceOf('Cake\Routing\RouteBuilder', $r);
@@ -298,8 +282,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestedPrefix()
-	{
+	public function testNestedPrefix() {
 		$routes = new RouteBuilder($this->collection, '/admin', ['prefix' => 'admin']);
 		$res = $routes->prefix('api', function ($r) {
 			$this->assertEquals('/admin/api', $r->path());
@@ -313,8 +296,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestedPlugin()
-	{
+	public function testNestedPlugin() {
 		$routes = new RouteBuilder($this->collection, '/b', ['key' => 'value']);
 		$res = $routes->plugin('Contacts', function ($r) {
 			$this->assertEquals('/b/contacts', $r->path());
@@ -335,8 +317,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestedPluginPathOption()
-	{
+	public function testNestedPluginPathOption() {
 		$routes = new RouteBuilder($this->collection, '/b', ['key' => 'value']);
 		$routes->plugin('Contacts', ['path' => '/people'], function ($r) {
 			$this->assertEquals('/b/people', $r->path());
@@ -349,8 +330,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResources()
-	{
+	public function testResources() {
 		$routes = new RouteBuilder($this->collection, '/api', ['prefix' => 'api']);
 		$routes->resources('Articles', ['_ext' => 'json']);
 
@@ -371,8 +351,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResourcesInflection()
-	{
+	public function testResourcesInflection() {
 		$routes = new RouteBuilder($this->collection, '/api', ['prefix' => 'api']);
 		$routes->resources('BlogPosts', ['_ext' => 'json', 'inflect' => 'dasherize']);
 
@@ -392,8 +371,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResourcesNestedInflection()
-	{
+	public function testResourcesNestedInflection() {
 		$routes = new RouteBuilder($this->collection, '/api');
 		$routes->resources(
 			'NetworkObjects',
@@ -416,8 +394,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResourcesMappings()
-	{
+	public function testResourcesMappings() {
 		$routes = new RouteBuilder($this->collection, '/api', ['prefix' => 'api']);
 		$routes->resources('Articles', [
 			'_ext' => 'json',
@@ -452,8 +429,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResourcesInScope()
-	{
+	public function testResourcesInScope() {
 		Router::scope('/api', ['prefix' => 'api'], function ($routes) {
 			$routes->extensions(['json']);
 			$routes->resources('Articles');
@@ -483,8 +459,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResourcesParsing()
-	{
+	public function testResourcesParsing() {
 		$routes = new RouteBuilder($this->collection, '/');
 		$routes->resources('Articles');
 
@@ -523,8 +498,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResourcesOnlyString()
-	{
+	public function testResourcesOnlyString() {
 		$routes = new RouteBuilder($this->collection, '/');
 		$routes->resources('Articles', ['only' => 'index']);
 
@@ -538,8 +512,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResourcesOnlyArray()
-	{
+	public function testResourcesOnlyArray() {
 		$routes = new RouteBuilder($this->collection, '/');
 		$routes->resources('Articles', ['only' => ['index', 'delete']]);
 
@@ -559,8 +532,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResourcesActions()
-	{
+	public function testResourcesActions() {
 		$routes = new RouteBuilder($this->collection, '/');
 		$routes->resources('Articles', [
 			'only' => ['index', 'delete'],
@@ -581,8 +553,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResourcesNested()
-	{
+	public function testResourcesNested() {
 		$routes = new RouteBuilder($this->collection, '/api', ['prefix' => 'api']);
 		$routes->resources('Articles', function ($routes) {
 			$this->assertEquals('/api/articles/', $routes->path());
@@ -599,8 +570,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFallbacks()
-	{
+	public function testFallbacks() {
 		$routes = new RouteBuilder($this->collection, '/api', ['prefix' => 'api']);
 		$routes->fallbacks();
 
@@ -615,8 +585,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFallbacksWithClass()
-	{
+	public function testFallbacksWithClass() {
 		$routes = new RouteBuilder($this->collection, '/api', ['prefix' => 'api']);
 		$routes->fallbacks('InflectedRoute');
 
@@ -631,8 +600,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDefaultRouteClassFallbacks()
-	{
+	public function testDefaultRouteClassFallbacks() {
 		$routes = new RouteBuilder($this->collection, '/api', ['prefix' => 'api']);
 		$routes->routeClass('TestApp\Routing\Route\DashedRoute');
 		$routes->fallbacks();
@@ -646,8 +614,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScope()
-	{
+	public function testScope() {
 		$routes = new RouteBuilder($this->collection, '/api', ['prefix' => 'api']);
 		$routes->scope('/v1', ['version' => 1], function ($routes) {
 			$this->assertEquals('/api/v1', $routes->path());
@@ -666,8 +633,7 @@ class RouteBuilderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNamePrefixes()
-	{
+	public function testNamePrefixes() {
 		$routes = new RouteBuilder($this->collection, '/api', [], ['namePrefix' => 'api:']);
 		$routes->scope('/v1', ['version' => 1, '_namePrefix' => 'v1:'], function ($routes) {
 			$this->assertEquals('api:v1:', $routes->namePrefix());

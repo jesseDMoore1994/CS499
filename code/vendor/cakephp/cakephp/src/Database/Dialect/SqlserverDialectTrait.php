@@ -29,8 +29,7 @@ use PDO;
  *
  * @internal
  */
-trait SqlserverDialectTrait
-{
+trait SqlserverDialectTrait {
 
 	use SqlDialectTrait;
 	use TupleComparisonTranslatorTrait;
@@ -55,8 +54,7 @@ trait SqlserverDialectTrait
 	 * @param \Cake\Database\Query $query The query to translate
 	 * @return \Cake\Database\Query The modified query
 	 */
-	protected function _selectQueryTranslator($query)
-	{
+	protected function _selectQueryTranslator($query) {
 		$limit = $query->clause('limit');
 		$offset = $query->clause('offset');
 
@@ -80,8 +78,7 @@ trait SqlserverDialectTrait
 	 *
 	 * @return int
 	 */
-	public function _version()
-	{
+	public function _version() {
 		return $this->_connection->getAttribute(PDO::ATTR_SERVER_VERSION);
 	}
 
@@ -96,8 +93,7 @@ trait SqlserverDialectTrait
 	 * @param int $offset The number of rows to offset.
 	 * @return \Cake\Database\Query Modified query object.
 	 */
-	protected function _pagingSubquery($original, $limit, $offset)
-	{
+	protected function _pagingSubquery($original, $limit, $offset) {
 		$field = '_cake_paging_._cake_page_rownum_';
 		$order = $original->clause('order') ?: new OrderByExpression('(SELECT NULL)');
 
@@ -139,8 +135,7 @@ trait SqlserverDialectTrait
 	 * @param Query $original The query to be transformed
 	 * @return Query
 	 */
-	protected function _transformDistinct($original)
-	{
+	protected function _transformDistinct($original) {
 		if (!is_array($original->clause('distinct'))) {
 			return $original;
 		}
@@ -189,8 +184,7 @@ trait SqlserverDialectTrait
 	 *
 	 * @return array
 	 */
-	protected function _expressionTranslators()
-	{
+	protected function _expressionTranslators() {
 		$namespace = 'Cake\Database\Expression';
 		return [
 			$namespace . '\FunctionExpression' => '_transformFunctionExpression',
@@ -205,8 +199,7 @@ trait SqlserverDialectTrait
 	 * @param \Cake\Database\Expression\FunctionExpression $expression The function expression to convert to TSQL.
 	 * @return void
 	 */
-	protected function _transformFunctionExpression(FunctionExpression $expression)
-	{
+	protected function _transformFunctionExpression(FunctionExpression $expression) {
 		switch ($expression->name()) {
 			case 'CONCAT':
 				// CONCAT function is expressed as exp1 + exp2
@@ -280,8 +273,7 @@ trait SqlserverDialectTrait
 	 *
 	 * @return \Cake\Database\Schema\MysqlSchema
 	 */
-	public function schemaDialect()
-	{
+	public function schemaDialect() {
 		return new SqlserverSchema($this);
 	}
 
@@ -291,8 +283,7 @@ trait SqlserverDialectTrait
 	 * @param string $name save point name
 	 * @return string
 	 */
-	public function savePointSQL($name)
-	{
+	public function savePointSQL($name) {
 		return 'SAVE TRANSACTION t' . $name;
 	}
 
@@ -302,8 +293,7 @@ trait SqlserverDialectTrait
 	 * @param string $name save point name
 	 * @return string
 	 */
-	public function releaseSavePointSQL($name)
-	{
+	public function releaseSavePointSQL($name) {
 		return 'COMMIT TRANSACTION t' . $name;
 	}
 
@@ -313,8 +303,7 @@ trait SqlserverDialectTrait
 	 * @param string $name save point name
 	 * @return string
 	 */
-	public function rollbackSavePointSQL($name)
-	{
+	public function rollbackSavePointSQL($name) {
 		return 'ROLLBACK TRANSACTION t' . $name;
 	}
 
@@ -323,24 +312,21 @@ trait SqlserverDialectTrait
 	 *
 	 * @return \Cake\Database\SqlserverCompiler
 	 */
-	public function newCompiler()
-	{
+	public function newCompiler() {
 		return new SqlserverCompiler();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function disableForeignKeySQL()
-	{
+	public function disableForeignKeySQL() {
 		return 'EXEC sp_msforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT all"';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function enableForeignKeySQL()
-	{
+	public function enableForeignKeySQL() {
 		return 'EXEC sp_msforeachtable "ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all"';
 	}
 }

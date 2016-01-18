@@ -23,8 +23,7 @@ use Cake\Network\Request;
  *
  * @see AuthComponent::$authenticate
  */
-abstract class BaseAuthorize
-{
+abstract class BaseAuthorize {
 
 	use InstanceConfigTrait;
 
@@ -48,8 +47,7 @@ abstract class BaseAuthorize
 	 * @param ComponentRegistry $registry The controller for this request.
 	 * @param array $config An array of config. This class does not use any config.
 	 */
-	public function __construct(ComponentRegistry $registry, array $config = [])
-	{
+	public function __construct(ComponentRegistry $registry, array $config = []) {
 		$this->_registry = $registry;
 		$this->config($config);
 	}

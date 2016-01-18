@@ -24,8 +24,7 @@ use Traversable;
  * This class is intended as an internal implementation detail
  * of Cake\View\Helper\FormHelper and is not intended for direct use.
  */
-class RadioWidget implements WidgetInterface
-{
+class RadioWidget implements WidgetInterface {
 
 	use IdGeneratorTrait;
 
@@ -57,8 +56,7 @@ class RadioWidget implements WidgetInterface
 	 * @param \Cake\View\StringTemplate $templates Templates list.
 	 * @param \Cake\View\Widget\LabelWidget $label Label widget instance.
 	 */
-	public function __construct($templates, $label)
-	{
+	public function __construct($templates, $label) {
 		$this->_templates = $templates;
 		$this->_label = $label;
 	}
@@ -83,8 +81,7 @@ class RadioWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	public function render(array $data, ContextInterface $context)
-	{
+	public function render(array $data, ContextInterface $context) {
 		$data += [
 			'name' => '',
 			'options' => [],
@@ -124,8 +121,7 @@ class RadioWidget implements WidgetInterface
 	 * @param array|null|true $disabled The disabled values.
 	 * @return bool
 	 */
-	protected function _isDisabled($radio, $disabled)
-	{
+	protected function _isDisabled($radio, $disabled) {
 		if (!$disabled) {
 			return false;
 		}
@@ -145,8 +141,7 @@ class RadioWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The form context
 	 * @return string
 	 */
-	protected function _renderInput($val, $text, $data, $context)
-	{
+	protected function _renderInput($val, $text, $data, $context) {
 		$escape = $data['escape'];
 		if (is_int($val) && isset($text['text'], $text['value'])) {
 			$radio = $text;
@@ -222,8 +217,7 @@ class RadioWidget implements WidgetInterface
 	 * @param bool $escape Whether or not to HTML escape the label.
 	 * @return string Generated label.
 	 */
-	protected function _renderLabel($radio, $label, $input, $context, $escape)
-	{
+	protected function _renderLabel($radio, $label, $input, $context, $escape) {
 		if ($label === false) {
 			return false;
 		}
@@ -241,8 +235,7 @@ class RadioWidget implements WidgetInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function secureFields(array $data)
-	{
+	public function secureFields(array $data) {
 		return [$data['name']];
 	}
 }

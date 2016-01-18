@@ -25,16 +25,14 @@ use Cake\TestSuite\TestCase;
 /**
  * ConsoleErrorHandler Test case.
  */
-class ConsoleErrorHandlerTest extends TestCase
-{
+class ConsoleErrorHandlerTest extends TestCase {
 
 	/**
 	 * setup, create mocks
 	 *
 	 * @return Mock object
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->stderr = $this->getMock('Cake\Console\ConsoleOutput', [], [], '', false);
 		$this->Error = $this->getMock('Cake\Console\ConsoleErrorHandler', ['_stop'], [['stderr' => $this->stderr]]);
@@ -46,8 +44,7 @@ class ConsoleErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($this->Error);
 		parent::tearDown();
 	}
@@ -57,8 +54,7 @@ class ConsoleErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleError()
-	{
+	public function testHandleError() {
 		$content = "<error>Notice Error:</error> This is a notice error in [/some/file, line 275]\n";
 		$this->stderr->expects($this->once())->method('write')
 			->with($content);
@@ -73,8 +69,7 @@ class ConsoleErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleFatalError()
-	{
+	public function testHandleFatalError() {
 		ob_start();
 		$content = "<error>Fatal Error:</error> This is a fatal error in [/some/file, line 275]";
 		$this->stderr->expects($this->once())->method('write')
@@ -89,8 +84,7 @@ class ConsoleErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCakeErrors()
-	{
+	public function testCakeErrors() {
 		$exception = new MissingActionException('Missing action');
 		$message = sprintf('Missing action in [%s, line %s]', $exception->getFile(), $exception->getLine());
 		$this->stderr->expects($this->once())->method('write')
@@ -107,8 +101,7 @@ class ConsoleErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNonCakeExceptions()
-	{
+	public function testNonCakeExceptions() {
 		$exception = new \InvalidArgumentException('Too many parameters.');
 
 		$this->stderr->expects($this->once())->method('write')
@@ -122,8 +115,7 @@ class ConsoleErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testError404Exception()
-	{
+	public function testError404Exception() {
 		$exception = new NotFoundException('dont use me in cli.');
 
 		$this->stderr->expects($this->once())->method('write')
@@ -137,8 +129,7 @@ class ConsoleErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testError500Exception()
-	{
+	public function testError500Exception() {
 		$exception = new InternalErrorException('dont use me in cli.');
 
 		$this->stderr->expects($this->once())->method('write')
@@ -152,8 +143,7 @@ class ConsoleErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNonIntegerExceptionCode()
-	{
+	public function testNonIntegerExceptionCode() {
 		$exception = new Exception('Non-integer exception code');
 
 		$class = new \ReflectionClass('Exception');

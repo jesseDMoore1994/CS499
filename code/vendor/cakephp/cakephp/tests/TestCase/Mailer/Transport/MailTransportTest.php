@@ -24,16 +24,14 @@ use Cake\TestSuite\TestCase;
  * Test case
  *
  */
-class MailTransportTest extends TestCase
-{
+class MailTransportTest extends TestCase {
 
 	/**
 	 * Setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->MailTransport = $this->getMock('Cake\Mailer\Transport\MailTransport', ['_mail']);
 		$this->MailTransport->config(['additionalParameters' => '-f']);
@@ -44,8 +42,7 @@ class MailTransportTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSendData()
-	{
+	public function testSendData() {
 		$email = $this->getMock('Cake\Mailer\Email', ['message'], []);
 		$email->from('noreply@cakephp.org', 'CakePHP Test');
 		$email->returnPath('pleasereply@cakephp.org', 'CakePHP Return');

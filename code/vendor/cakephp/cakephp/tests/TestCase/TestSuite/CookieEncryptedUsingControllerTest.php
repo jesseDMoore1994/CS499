@@ -24,15 +24,13 @@ use Cake\Utility\Security;
 /**
  * CookieEncryptedUsingControllerTest class
  */
-class CookieEncryptedUsingControllerTest extends IntegrationTestCase
-{
+class CookieEncryptedUsingControllerTest extends IntegrationTestCase {
 	/**
 	 * reset environment.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 
@@ -46,8 +44,7 @@ class CookieEncryptedUsingControllerTest extends IntegrationTestCase
 	/**
 	 * Can encrypt/decrypt the cookie value.
 	 */
-	public function testCanEncryptAndDecryptWithAes()
-	{
+	public function testCanEncryptAndDecryptWithAes() {
 		$this->cookieEncrypted('NameOfCookie', 'Value of Cookie', 'aes');
 
 		$this->get('/cookie_component_test/view/');
@@ -58,8 +55,7 @@ class CookieEncryptedUsingControllerTest extends IntegrationTestCase
 	/**
 	 * Can encrypt/decrypt the cookie value by default.
 	 */
-	public function testCanEncryptAndDecryptCookieValue()
-	{
+	public function testCanEncryptAndDecryptCookieValue() {
 		$this->cookieEncrypted('NameOfCookie', 'Value of Cookie');
 
 		$this->get('/cookie_component_test/view/');
@@ -70,8 +66,7 @@ class CookieEncryptedUsingControllerTest extends IntegrationTestCase
 	/**
 	 * Can encrypt/decrypt even if the cookie value are array.
 	 */
-	public function testCanEncryptAndDecryptEvenIfCookieValueIsArray()
-	{
+	public function testCanEncryptAndDecryptEvenIfCookieValueIsArray() {
 		$this->cookieEncrypted('NameOfCookie', ['Value1 of Cookie', 'Value2 of Cookie']);
 
 		$this->get('/cookie_component_test/view/');
@@ -86,8 +81,7 @@ class CookieEncryptedUsingControllerTest extends IntegrationTestCase
 	/**
 	 * Can specify the encryption key.
 	 */
-	public function testCanSpecifyEncryptionKey()
-	{
+	public function testCanSpecifyEncryptionKey() {
 		$key = 'another salt xxxxxxxxxxxxxxxxxxx';
 		$this->cookieEncrypted('NameOfCookie', 'Value of Cookie', 'aes', $key);
 
@@ -99,8 +93,7 @@ class CookieEncryptedUsingControllerTest extends IntegrationTestCase
 	/**
 	 * Can be used Security::salt() as the encryption key.
 	 */
-	public function testCanBeUsedSecuritySaltAsEncryptionKey()
-	{
+	public function testCanBeUsedSecuritySaltAsEncryptionKey() {
 		$key = 'another salt xxxxxxxxxxxxxxxxxxx';
 		Security::salt($key);
 		$this->cookieEncrypted('NameOfCookie', 'Value of Cookie', 'aes');
@@ -114,8 +107,7 @@ class CookieEncryptedUsingControllerTest extends IntegrationTestCase
 	 * Can AssertCookie even if the value is encrypted by
 	 * the CookieComponent.
 	 */
-	public function testCanAssertCookieEncrypted()
-	{
+	public function testCanAssertCookieEncrypted() {
 		$this->get('/cookie_component_test/set_cookie');
 		$this->assertCookieEncrypted('abc', 'NameOfCookie');
 	}
@@ -123,8 +115,7 @@ class CookieEncryptedUsingControllerTest extends IntegrationTestCase
 	/**
 	 * Can AssertCookie even if encrypted with the aes.
 	 */
-	public function testCanAssertCookieEncryptedWithAes()
-	{
+	public function testCanAssertCookieEncryptedWithAes() {
 		$this->get('/cookie_component_test/set_cookie');
 		$this->assertCookieEncrypted('abc', 'NameOfCookie', 'aes');
 	}
@@ -133,8 +124,7 @@ class CookieEncryptedUsingControllerTest extends IntegrationTestCase
 	 * Can AssertCookie even if encrypted with the another
 	 * encrypted key.
 	 */
-	public function testCanAssertCookieEncryptedWithAnotherEncryptionKey()
-	{
+	public function testCanAssertCookieEncryptedWithAnotherEncryptionKey() {
 		$key = 'another salt xxxxxxxxxxxxxxxxxxx';
 		Security::salt($key);
 		$this->get('/cookie_component_test/set_cookie');

@@ -22,8 +22,7 @@ use Symfony\Component\Process\ProcessBuilder;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class ProcessHelper extends Helper
-{
+class ProcessHelper extends Helper {
 	/**
 	 * Runs an external process.
 	 *
@@ -36,8 +35,7 @@ class ProcessHelper extends Helper
 	 *
 	 * @return Process The process that ran
 	 */
-	public function run(OutputInterface $output, $cmd, $error = null, callable $callback = null, $verbosity = OutputInterface::VERBOSITY_VERY_VERBOSE)
-	{
+	public function run(OutputInterface $output, $cmd, $error = null, callable $callback = null, $verbosity = OutputInterface::VERBOSITY_VERY_VERBOSE) {
 		if ($output instanceof ConsoleOutputInterface) {
 			$output = $output->getErrorOutput();
 		}
@@ -92,8 +90,7 @@ class ProcessHelper extends Helper
 	 *
 	 * @see run()
 	 */
-	public function mustRun(OutputInterface $output, $cmd, $error = null, callable $callback = null)
-	{
+	public function mustRun(OutputInterface $output, $cmd, $error = null, callable $callback = null) {
 		$process = $this->run($output, $cmd, $error, $callback);
 
 		if (!$process->isSuccessful()) {
@@ -112,8 +109,7 @@ class ProcessHelper extends Helper
 	 *
 	 * @return callable
 	 */
-	public function wrapCallback(OutputInterface $output, Process $process, callable $callback = null)
-	{
+	public function wrapCallback(OutputInterface $output, Process $process, callable $callback = null) {
 		if ($output instanceof ConsoleOutputInterface) {
 			$output = $output->getErrorOutput();
 		}
@@ -129,16 +125,14 @@ class ProcessHelper extends Helper
 		};
 	}
 
-	private function escapeString($str)
-	{
+	private function escapeString($str) {
 		return str_replace('<', '\\<', $str);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return 'process';
 	}
 }

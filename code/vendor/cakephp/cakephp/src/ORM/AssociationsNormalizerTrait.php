@@ -18,8 +18,7 @@ namespace Cake\ORM;
  * Contains methods for parsing the associated tables array that is typically
  * passed to  a save operation
  */
-trait AssociationsNormalizerTrait
-{
+trait AssociationsNormalizerTrait {
 
 	/**
 	 * Returns an array out of the original passed associations list where dot notation
@@ -28,8 +27,7 @@ trait AssociationsNormalizerTrait
 	 * @param array $associations The array of included associations.
 	 * @return array An array having dot notation transformed into nested arrays
 	 */
-	protected function _normalizeAssociations($associations)
-	{
+	protected function _normalizeAssociations($associations) {
 		$result = [];
 		foreach ((array)$associations as $table => $options) {
 			$pointer =& $result;

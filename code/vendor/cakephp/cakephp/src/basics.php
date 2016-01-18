@@ -39,8 +39,7 @@ if (!function_exists('debug')) {
 	 * @link http://book.cakephp.org/3.0/en/development/debugging.html#basic-debugging
 	 * @link http://book.cakephp.org/3.0/en/core-libraries/global-constants-and-functions.html#debug
 	 */
-	function debug($var, $showHtml = null, $showFrom = true)
-	{
+	function debug($var, $showHtml = null, $showFrom = true) {
 		if (!Configure::read('debug')) {
 			return;
 		}
@@ -109,8 +108,7 @@ if (!function_exists('stackTrace')) {
 	 * @param array $options Format for outputting stack trace
 	 * @return mixed Formatted stack trace
 	 */
-	function stackTrace(array $options = [])
-	{
+	function stackTrace(array $options = []) {
 		if (!Configure::read('debug')) {
 			return;
 		}
@@ -128,8 +126,7 @@ if (!function_exists('json_last_error_msg')) {
 	 *
 	 * @return string Error message.
 	 */
-	function json_last_error_msg()
-	{
+	function json_last_error_msg() {
 		static $errors = [
 			JSON_ERROR_NONE => '',
 			JSON_ERROR_DEPTH => 'Maximum stack depth exceeded',
@@ -155,8 +152,7 @@ if (!function_exists('breakpoint')) {
 	 * ```
 	 * @return string
 	 */
-	function breakpoint()
-	{
+	function breakpoint() {
 		if ((PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg') && class_exists('\Psy\Shell')) {
 			return 'extract(\Psy\Shell::debug(get_defined_vars(), isset($this) ? $this : null));';
 		}

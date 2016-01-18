@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * UnloadTaskTest class
  *
  */
-class UnloadTaskTest extends TestCase
-{
+class UnloadTaskTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->io = $this->getMock('Cake\Console\ConsoleIo', [], [], '', false);
@@ -49,8 +47,7 @@ class UnloadTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->shell);
 		Plugin::unload();
@@ -65,8 +62,7 @@ class UnloadTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUnload()
-	{
+	public function testUnload() {
 		$bootstrap = new File($this->bootstrap, false);
 
 		$this->_addPluginToBootstrap("TestPlugin");
@@ -90,8 +86,7 @@ class UnloadTaskTest extends TestCase
 	 *
 	 * This method will tests multiple notations of plugin loading.
 	 */
-	public function testRegularExpressions()
-	{
+	public function testRegularExpressions() {
 		$bootstrap = new File($this->bootstrap, false);
 
 		//  Plugin::load('TestPlugin', [
@@ -173,8 +168,7 @@ class UnloadTaskTest extends TestCase
 	 *
 	 * @param string $name
 	 */
-	protected function _addPluginToBootstrap($name)
-	{
+	protected function _addPluginToBootstrap($name) {
 		$bootstrap = new File($this->bootstrap, false);
 		$bootstrap->append("\n\nPlugin::load('$name', ['autoload' => true, 'bootstrap' => false, 'routes' => false]);\n");
 	}
@@ -186,8 +180,7 @@ class UnloadTaskTest extends TestCase
 	 *
 	 * @return void
 	 */
-	protected function _clearBootstrap()
-	{
+	protected function _clearBootstrap() {
 		$bootstrap = new File($this->bootstrap, false);
 
 		$bootstrap->write($this->originalBootstrapContent);

@@ -24,8 +24,7 @@ use Cake\Routing\Router;
  * This filter will call Router::parse() when the request has no controller
  * parameter defined.
  */
-class RoutingFilter extends DispatcherFilter
-{
+class RoutingFilter extends DispatcherFilter {
 
 	/**
 	 * Priority setting.
@@ -44,8 +43,7 @@ class RoutingFilter extends DispatcherFilter
 	 * @param \Cake\Event\Event $event containing the request, response and additional params
 	 * @return void
 	 */
-	public function beforeDispatch(Event $event)
-	{
+	public function beforeDispatch(Event $event) {
 		$request = $event->data['request'];
 		Router::setRequestInfo($request);
 

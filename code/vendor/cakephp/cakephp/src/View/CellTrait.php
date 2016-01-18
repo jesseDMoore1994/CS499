@@ -24,8 +24,7 @@ use ReflectionMethod;
  * Provides cell() method for usage in Controller and View classes.
  *
  */
-trait CellTrait
-{
+trait CellTrait {
 
 	/**
 	 * Renders the given cell.
@@ -58,8 +57,7 @@ trait CellTrait
 	 * @throws \Cake\View\Exception\MissingCellException If Cell class was not found.
 	 * @throws \BadMethodCallException If Cell class does not specified cell action.
 	 */
-	public function cell($cell, array $data = [], array $options = [])
-	{
+	public function cell($cell, array $data = [], array $options = []) {
 		$parts = explode('::', $cell);
 
 		if (count($parts) === 2) {
@@ -102,8 +100,7 @@ trait CellTrait
 	 * @param array $options The constructor options for the cell.
 	 * @return \Cake\View\Cell;
 	 */
-	protected function _createCell($className, $action, $plugin, $options)
-	{
+	protected function _createCell($className, $action, $plugin, $options) {
 		$instance = new $className($this->request, $this->response, $this->eventManager(), $options);
 		$instance->template = Inflector::underscore($action);
 

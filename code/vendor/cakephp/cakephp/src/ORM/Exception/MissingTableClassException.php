@@ -20,8 +20,7 @@ use Cake\Core\Exception\Exception;
  * Exception raised when a Table could not be found.
  *
  */
-class MissingTableClassException extends Exception
-{
+class MissingTableClassException extends Exception {
 
 	protected $_messageTemplate = 'Table class %s could not be found.';
 }

@@ -18,8 +18,7 @@ namespace Cake\I18n;
  * Utility class used to determine the plural number to be used for a variable
  * base on the locale
  */
-class PluralRules
-{
+class PluralRules {
 
 	/**
 	 * A map of locale => plurals group used to determine
@@ -135,8 +134,7 @@ class PluralRules
 	 * @link http://localization-guide.readthedocs.org/en/latest/l10n/pluralforms.html
 	 * @link https://developer.mozilla.org/en-US/docs/Mozilla/Localization/Localization_and_Plurals#List_of_Plural_Rules
 	 */
-	public static function calculate($locale, $n)
-	{
+	public static function calculate($locale, $n) {
 		$locale = strtolower($locale);
 
 		if (!isset(static::$_rulesMap[$locale])) {

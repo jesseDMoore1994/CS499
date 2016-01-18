@@ -16,8 +16,7 @@ namespace Psy\Util;
  *
  * @author ju1ius
  */
-class Str
-{
+class Str {
 	const UNVIS_RX = <<<'EOS'
 /
     \\(?:
@@ -59,8 +58,7 @@ EOS;
 	 *
 	 * @return string
 	 */
-	public static function unvis($input)
-	{
+	public static function unvis($input) {
 		$output = preg_replace_callback(self::UNVIS_RX, 'self::unvisReplace', $input);
 		// other escapes & octal are handled by stripcslashes
 		return stripcslashes($output);
@@ -73,8 +71,7 @@ EOS;
 	 *
 	 * @return string
 	 */
-	protected static function unvisReplace($match)
-	{
+	protected static function unvisReplace($match) {
 		// \040, \s
 		if (!empty($match[1])) {
 			return "\x20";

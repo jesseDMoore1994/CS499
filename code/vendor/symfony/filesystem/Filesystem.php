@@ -19,8 +19,7 @@ use Symfony\Component\Filesystem\Exception\FileNotFoundException;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Filesystem
-{
+class Filesystem {
 	/**
 	 * Copies a file.
 	 *
@@ -35,8 +34,7 @@ class Filesystem
 	 * @throws FileNotFoundException When originFile doesn't exist
 	 * @throws IOException           When copy fails
 	 */
-	public function copy($originFile, $targetFile, $override = false)
-	{
+	public function copy($originFile, $targetFile, $override = false) {
 		if (stream_is_local($originFile) && !is_file($originFile)) {
 			throw new FileNotFoundException(sprintf('Failed to copy "%s" because file does not exist.', $originFile), 0, null, $originFile);
 		}
@@ -85,8 +83,7 @@ class Filesystem
 	 *
 	 * @throws IOException On any directory creation failure
 	 */
-	public function mkdir($dirs, $mode = 0777)
-	{
+	public function mkdir($dirs, $mode = 0777) {
 		foreach ($this->toIterator($dirs) as $dir) {
 			if (is_dir($dir)) {
 				continue;
@@ -112,8 +109,7 @@ class Filesystem
 	 *
 	 * @return bool true if the file exists, false otherwise
 	 */
-	public function exists($files)
-	{
+	public function exists($files) {
 		foreach ($this->toIterator($files) as $file) {
 			if (!file_exists($file)) {
 				return false;
@@ -132,8 +128,7 @@ class Filesystem
 	 *
 	 * @throws IOException When touch fails
 	 */
-	public function touch($files, $time = null, $atime = null)
-	{
+	public function touch($files, $time = null, $atime = null) {
 		foreach ($this->toIterator($files) as $file) {
 			$touch = $time ? @touch($file, $time, $atime) : @touch($file);
 			if (true !== $touch) {
@@ -149,8 +144,7 @@ class Filesystem
 	 *
 	 * @throws IOException When removal fails
 	 */
-	public function remove($files)
-	{
+	public function remove($files) {
 		$files = iterator_to_array($this->toIterator($files));
 		$files = array_reverse($files);
 		foreach ($files as $file) {
@@ -189,8 +183,7 @@ class Filesystem
 	 *
 	 * @throws IOException When the change fail
 	 */
-	public function chmod($files, $mode, $umask = 0000, $recursive = false)
-	{
+	public function chmod($files, $mode, $umask = 0000, $recursive = false) {
 		foreach ($this->toIterator($files) as $file) {
 			if (true !== @chmod($file, $mode & ~$umask)) {
 				throw new IOException(sprintf('Failed to chmod file "%s".', $file), 0, null, $file);
@@ -210,8 +203,7 @@ class Filesystem
 	 *
 	 * @throws IOException When the change fail
 	 */
-	public function chown($files, $user, $recursive = false)
-	{
+	public function chown($files, $user, $recursive = false) {
 		foreach ($this->toIterator($files) as $file) {
 			if ($recursive && is_dir($file) && !is_link($file)) {
 				$this->chown(new \FilesystemIterator($file), $user, true);
@@ -237,8 +229,7 @@ class Filesystem
 	 *
 	 * @throws IOException When the change fail
 	 */
-	public function chgrp($files, $group, $recursive = false)
-	{
+	public function chgrp($files, $group, $recursive = false) {
 		foreach ($this->toIterator($files) as $file) {
 			if ($recursive && is_dir($file) && !is_link($file)) {
 				$this->chgrp(new \FilesystemIterator($file), $group, true);
@@ -265,8 +256,7 @@ class Filesystem
 	 * @throws IOException When target file or directory already exists
 	 * @throws IOException When origin cannot be renamed
 	 */
-	public function rename($origin, $target, $overwrite = false)
-	{
+	public function rename($origin, $target, $overwrite = false) {
 		// we check that target does not exist
 		if (!$overwrite && is_readable($target)) {
 			throw new IOException(sprintf('Cannot rename because the target "%s" already exists.', $target), 0, null, $target);
@@ -286,8 +276,7 @@ class Filesystem
 	 *
 	 * @throws IOException When symlink fails
 	 */
-	public function symlink($originDir, $targetDir, $copyOnWindows = false)
-	{
+	public function symlink($originDir, $targetDir, $copyOnWindows = false) {
 		if ('\\' === DIRECTORY_SEPARATOR && $copyOnWindows) {
 			$this->mirror($originDir, $targetDir);
 
@@ -324,8 +313,7 @@ class Filesystem
 	 *
 	 * @return string Path of target relative to starting path
 	 */
-	public function makePathRelative($endPath, $startPath)
-	{
+	public function makePathRelative($endPath, $startPath) {
 		// Normalize separators on Windows
 		if ('\\' === DIRECTORY_SEPARATOR) {
 			$endPath = str_replace('\\', '/', $endPath);
@@ -375,8 +363,7 @@ class Filesystem
 	 *
 	 * @throws IOException When file type is unknown
 	 */
-	public function mirror($originDir, $targetDir, \Traversable $iterator = null, $options = array())
-	{
+	public function mirror($originDir, $targetDir, \Traversable $iterator = null, $options = array()) {
 		$targetDir = rtrim($targetDir, '/\\');
 		$originDir = rtrim($originDir, '/\\');
 
@@ -441,8 +428,7 @@ class Filesystem
 	 *
 	 * @return bool
 	 */
-	public function isAbsolutePath($file)
-	{
+	public function isAbsolutePath($file) {
 		return strspn($file, '/\\', 0, 1)
 		|| (strlen($file) > 3 && ctype_alpha($file[0])
 			&& substr($file, 1, 1) === ':'
@@ -460,8 +446,7 @@ class Filesystem
 	 *
 	 * @return string The new temporary filename (with path), or throw an exception on failure.
 	 */
-	public function tempnam($dir, $prefix)
-	{
+	public function tempnam($dir, $prefix) {
 		list($scheme, $hierarchy) = $this->getSchemeAndHierarchy($dir);
 
 		// If no scheme or scheme is "file" create temp file in local filesystem
@@ -511,8 +496,7 @@ class Filesystem
 	 *
 	 * @throws IOException If the file cannot be written to.
 	 */
-	public function dumpFile($filename, $content)
-	{
+	public function dumpFile($filename, $content) {
 		$dir = dirname($filename);
 
 		if (!is_dir($dir)) {
@@ -535,8 +519,7 @@ class Filesystem
 	 *
 	 * @return \Traversable
 	 */
-	private function toIterator($files)
-	{
+	private function toIterator($files) {
 		if (!$files instanceof \Traversable) {
 			$files = new \ArrayObject(is_array($files) ? $files : array($files));
 		}
@@ -551,8 +534,7 @@ class Filesystem
 	 *
 	 * @return array The filename scheme and hierarchical part
 	 */
-	private function getSchemeAndHierarchy($filename)
-	{
+	private function getSchemeAndHierarchy($filename) {
 		$components = explode('://', $filename, 2);
 
 		return 2 === count($components) ? array($components[0], $components[1]) : array(null, $components[0]);

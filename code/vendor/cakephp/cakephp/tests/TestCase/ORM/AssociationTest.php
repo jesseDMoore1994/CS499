@@ -24,16 +24,13 @@ use Cake\TestSuite\TestCase;
  * A Test double used to assert that default tables are created
  *
  */
-class TestTable extends Table
-{
+class TestTable extends Table {
 
-	public function initialize(array $config = [])
-	{
+	public function initialize(array $config = []) {
 		$this->schema(['id' => ['type' => 'integer']]);
 	}
 
-	public function findPublished($query)
-	{
+	public function findPublished($query) {
 		return $query->applyOptions(['this' => 'worked']);
 	}
 }
@@ -42,16 +39,14 @@ class TestTable extends Table
  * Tests Association class
  *
  */
-class AssociationTest extends TestCase
-{
+class AssociationTest extends TestCase {
 
 	/**
 	 * Set up
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->source = new TestTable;
 		$config = [
@@ -77,8 +72,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -89,8 +83,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOptionsIsCalled()
-	{
+	public function testOptionsIsCalled() {
 		$options = ['foo' => 'bar'];
 		$this->association->expects($this->once())->method('_options')->with($options);
 		$this->association->__construct('Name', $options);
@@ -101,8 +94,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testName()
-	{
+	public function testName() {
 		$this->assertEquals('Foo', $this->association->name());
 		$this->association->name('Bar');
 		$this->assertEquals('Bar', $this->association->name());
@@ -113,8 +105,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCascadeCallbacks()
-	{
+	public function testCascadeCallbacks() {
 		$this->assertSame(false, $this->association->cascadeCallbacks());
 		$this->association->cascadeCallbacks(true);
 		$this->assertSame(true, $this->association->cascadeCallbacks());
@@ -125,8 +116,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBindingKey()
-	{
+	public function testBindingKey() {
 		$this->association->bindingKey('foo_id');
 		$this->assertEquals('foo_id', $this->association->bindingKey());
 	}
@@ -136,8 +126,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBindingKeyDefault()
-	{
+	public function testBindingKeyDefault() {
 		$this->source->primaryKey(['id', 'site_id']);
 		$this->association
 			->expects($this->once())
@@ -153,8 +142,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBindingDefaultNoOwningSide()
-	{
+	public function testBindingDefaultNoOwningSide() {
 		$target = new Table;
 		$target->primaryKey(['foo', 'site_id']);
 		$this->association->target($target);
@@ -172,8 +160,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testForeignKey()
-	{
+	public function testForeignKey() {
 		$this->assertEquals('a_key', $this->association->foreignKey());
 		$this->association->foreignKey('another_key');
 		$this->assertEquals('another_key', $this->association->foreignKey());
@@ -184,8 +171,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConditions()
-	{
+	public function testConditions() {
 		$this->assertEquals(['field' => 'value'], $this->association->conditions());
 		$conds = ['another_key' => 'another value'];
 		$this->association->conditions($conds);
@@ -197,8 +183,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCanBeJoined()
-	{
+	public function testCanBeJoined() {
 		$this->assertTrue($this->association->canBeJoined());
 	}
 
@@ -207,8 +192,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTarget()
-	{
+	public function testTarget() {
 		$table = $this->association->target();
 		$this->assertInstanceOf(__NAMESPACE__ . '\TestTable', $table);
 
@@ -222,8 +206,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTargetPlugin()
-	{
+	public function testTargetPlugin() {
 		Plugin::load('TestPlugin');
 		$config = [
 			'className' => 'TestPlugin.Comments',
@@ -263,8 +246,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSource()
-	{
+	public function testSource() {
 		$table = $this->association->source();
 		$this->assertSame($this->source, $table);
 
@@ -278,8 +260,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJoinType()
-	{
+	public function testJoinType() {
 		$this->assertEquals('INNER', $this->association->joinType());
 		$this->association->joinType('LEFT');
 		$this->assertEquals('LEFT', $this->association->joinType());
@@ -290,8 +271,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testProperty()
-	{
+	public function testProperty() {
 		$this->assertEquals('foo', $this->association->property());
 		$this->association->property('thing');
 		$this->assertEquals('thing', $this->association->property());
@@ -302,8 +282,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStrategy()
-	{
+	public function testStrategy() {
 		$this->assertEquals('join', $this->association->strategy());
 		$this->association->strategy('select');
 		$this->assertEquals('select', $this->association->strategy());
@@ -317,8 +296,7 @@ class AssociationTest extends TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @return void
 	 */
-	public function testInvalidStrategy()
-	{
+	public function testInvalidStrategy() {
 		$this->association->strategy('anotherThing');
 		$this->assertEquals('subquery', $this->association->strategy());
 	}
@@ -328,8 +306,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFinderMethod()
-	{
+	public function testFinderMethod() {
 		$this->assertEquals('all', $this->association->finder());
 		$this->assertEquals('published', $this->association->finder('published'));
 		$this->assertEquals('published', $this->association->finder());
@@ -340,8 +317,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFinderInConstructor()
-	{
+	public function testFinderInConstructor() {
 		$config = [
 			'className' => '\Cake\Test\TestCase\ORM\TestTable',
 			'foreignKey' => 'a_key',
@@ -365,8 +341,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomFinderIsUsed()
-	{
+	public function testCustomFinderIsUsed() {
 		$this->association->finder('published');
 		$this->assertEquals(
 			['this' => 'worked'],
@@ -379,8 +354,7 @@ class AssociationTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLocatorInConstructor()
-	{
+	public function testLocatorInConstructor() {
 		$locator = $this->getMock('Cake\ORM\Locator\LocatorInterface');
 		$config = [
 			'className' => '\Cake\Test\TestCase\ORM\TestTable',

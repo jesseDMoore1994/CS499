@@ -36,8 +36,7 @@ use Traversable;
 /**
  * Offers a handful of method to manipulate iterators
  */
-trait CollectionTrait
-{
+trait CollectionTrait {
 
 	use ExtractTrait;
 
@@ -45,8 +44,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function each(callable $c)
-	{
+	public function each(callable $c) {
 		foreach ($this->unwrap() as $k => $v) {
 			$c($v, $k);
 		}
@@ -58,8 +56,7 @@ trait CollectionTrait
 	 *
 	 * @return \Cake\Collection\Iterator\FilterIterator
 	 */
-	public function filter(callable $c = null)
-	{
+	public function filter(callable $c = null) {
 		if ($c === null) {
 			$c = function ($v) {
 				return (bool)$v;
@@ -73,8 +70,7 @@ trait CollectionTrait
 	 *
 	 * @return \Cake\Collection\Iterator\FilterIterator
 	 */
-	public function reject(callable $c)
-	{
+	public function reject(callable $c) {
 		return new FilterIterator($this->unwrap(), function ($key, $value, $items) use ($c) {
 			return !$c($key, $value, $items);
 		});
@@ -84,8 +80,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function every(callable $c)
-	{
+	public function every(callable $c) {
 		foreach ($this->unwrap() as $key => $value) {
 			if (!$c($value, $key)) {
 				return false;
@@ -98,8 +93,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function some(callable $c)
-	{
+	public function some(callable $c) {
 		foreach ($this->unwrap() as $key => $value) {
 			if ($c($value, $key) === true) {
 				return true;
@@ -112,8 +106,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function contains($value)
-	{
+	public function contains($value) {
 		foreach ($this->unwrap() as $v) {
 			if ($value === $v) {
 				return true;
@@ -127,8 +120,7 @@ trait CollectionTrait
 	 *
 	 * @return \Cake\Collection\Iterator\ReplaceIterator
 	 */
-	public function map(callable $c)
-	{
+	public function map(callable $c) {
 		return new ReplaceIterator($this->unwrap(), $c);
 	}
 
@@ -136,8 +128,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function reduce(callable $c, $zero = null)
-	{
+	public function reduce(callable $c, $zero = null) {
 		$isFirst = false;
 		if (func_num_args() < 2) {
 			$isFirst = true;
@@ -159,8 +150,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function extract($matcher)
-	{
+	public function extract($matcher) {
 		$extractor = new ExtractIterator($this->unwrap(), $matcher);
 		if (is_string($matcher) && strpos($matcher, '{*}') !== false) {
 			$extractor = $extractor
@@ -177,8 +167,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function max($callback, $type = SORT_NUMERIC)
-	{
+	public function max($callback, $type = SORT_NUMERIC) {
 		return (new SortIterator($this->unwrap(), $callback, SORT_DESC, $type))->first();
 	}
 
@@ -186,8 +175,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function min($callback, $type = SORT_NUMERIC)
-	{
+	public function min($callback, $type = SORT_NUMERIC) {
 		return (new SortIterator($this->unwrap(), $callback, SORT_ASC, $type))->first();
 	}
 
@@ -195,8 +183,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function sortBy($callback, $dir = SORT_DESC, $type = SORT_NUMERIC)
-	{
+	public function sortBy($callback, $dir = SORT_DESC, $type = SORT_NUMERIC) {
 		return new SortIterator($this->unwrap(), $callback, $dir, $type);
 	}
 
@@ -204,8 +191,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function groupBy($callback)
-	{
+	public function groupBy($callback) {
 		$callback = $this->_propertyExtractor($callback);
 		$group = [];
 		foreach ($this as $value) {
@@ -218,8 +204,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function indexBy($callback)
-	{
+	public function indexBy($callback) {
 		$callback = $this->_propertyExtractor($callback);
 		$group = [];
 		foreach ($this as $value) {
@@ -232,8 +217,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function countBy($callback)
-	{
+	public function countBy($callback) {
 		$callback = $this->_propertyExtractor($callback);
 
 		$mapper = function ($value, $key, $mr) use ($callback) {
@@ -250,8 +234,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function sumOf($matcher = null)
-	{
+	public function sumOf($matcher = null) {
 		if ($matcher === null) {
 			return array_sum($this->toList());
 		}
@@ -269,8 +252,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function shuffle()
-	{
+	public function shuffle() {
 		$elements = $this->toArray();
 		shuffle($elements);
 		return new Collection($elements);
@@ -280,8 +262,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function sample($size = 10)
-	{
+	public function sample($size = 10) {
 		return new Collection(new LimitIterator($this->shuffle(), 0, $size));
 	}
 
@@ -289,8 +270,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function take($size = 1, $from = 0)
-	{
+	public function take($size = 1, $from = 0) {
 		return new Collection(new LimitIterator($this->unwrap(), $from, $size));
 	}
 
@@ -298,8 +278,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function skip($howMany)
-	{
+	public function skip($howMany) {
 		return new Collection(new LimitIterator($this->unwrap(), $howMany));
 	}
 
@@ -307,8 +286,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function match(array $conditions)
-	{
+	public function match(array $conditions) {
 		return $this->filter($this->_createMatcherFilter($conditions));
 	}
 
@@ -316,8 +294,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function firstMatch(array $conditions)
-	{
+	public function firstMatch(array $conditions) {
 		return $this->match($conditions)->first();
 	}
 
@@ -325,8 +302,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function first()
-	{
+	public function first() {
 		foreach ($this->take(1) as $result) {
 			return $result;
 		}
@@ -336,8 +312,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function last()
-	{
+	public function last() {
 		$iterator = $this->unwrap();
 		$count = $iterator instanceof Countable ?
 			count($iterator) :
@@ -356,8 +331,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function append($items)
-	{
+	public function append($items) {
 		$list = new AppendIterator;
 		$list->append($this->unwrap());
 		$list->append((new Collection($items))->unwrap());
@@ -368,8 +342,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function combine($keyPath, $valuePath, $groupPath = null)
-	{
+	public function combine($keyPath, $valuePath, $groupPath = null) {
 		$options = [
 			'keyPath' => $this->_propertyExtractor($keyPath),
 			'valuePath' => $this->_propertyExtractor($valuePath),
@@ -407,8 +380,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function nest($idPath, $parentPath)
-	{
+	public function nest($idPath, $parentPath) {
 		$parents = [];
 		$idPath = $this->_propertyExtractor($idPath);
 		$parentPath = $this->_propertyExtractor($parentPath);
@@ -454,8 +426,7 @@ trait CollectionTrait
 	 *
 	 * @return \Cake\Collection\Iterator\InsertIterator
 	 */
-	public function insert($path, $values)
-	{
+	public function insert($path, $values) {
 		return new InsertIterator($this->unwrap(), $path, $values);
 	}
 
@@ -463,8 +434,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function toArray($preserveKeys = true)
-	{
+	public function toArray($preserveKeys = true) {
 		$iterator = $this->unwrap();
 		if ($iterator instanceof ArrayIterator) {
 			$items = $iterator->getArrayCopy();
@@ -482,8 +452,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function toList()
-	{
+	public function toList() {
 		return $this->toArray(false);
 	}
 
@@ -491,8 +460,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function jsonSerialize()
-	{
+	public function jsonSerialize() {
 		return $this->toArray();
 	}
 
@@ -500,8 +468,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function compile($preserveKeys = true)
-	{
+	public function compile($preserveKeys = true) {
 		return new Collection($this->toArray($preserveKeys));
 	}
 
@@ -510,8 +477,7 @@ trait CollectionTrait
 	 *
 	 * @return \Cake\Collection\Iterator\BufferedIterator
 	 */
-	public function buffered()
-	{
+	public function buffered() {
 		return new BufferedIterator($this);
 	}
 
@@ -520,8 +486,7 @@ trait CollectionTrait
 	 *
 	 * @return \Cake\Collection\Iterator\TreeIterator
 	 */
-	public function listNested($dir = 'desc', $nestingKey = 'children')
-	{
+	public function listNested($dir = 'desc', $nestingKey = 'children') {
 		$dir = strtolower($dir);
 		$modes = [
 			'desc' => TreeIterator::SELF_FIRST,
@@ -539,8 +504,7 @@ trait CollectionTrait
 	 *
 	 * @return \Cake\Collection\Iterator\StoppableIterator
 	 */
-	public function stopWhen($condition)
-	{
+	public function stopWhen($condition) {
 		if (!is_callable($condition)) {
 			$condition = $this->_createMatcherFilter($condition);
 		}
@@ -551,8 +515,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function unfold(callable $transformer = null)
-	{
+	public function unfold(callable $transformer = null) {
 		if ($transformer === null) {
 			$transformer = function ($item) {
 				return $item;
@@ -571,8 +534,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function through(callable $handler)
-	{
+	public function through(callable $handler) {
 		$result = $handler($this);
 		return $result instanceof CollectionInterface ? $result : new Collection($result);
 	}
@@ -581,8 +543,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function zip($items)
-	{
+	public function zip($items) {
 		return new ZipIterator(array_merge([$this], func_get_args()));
 	}
 
@@ -590,8 +551,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function zipWith($items, $callable)
-	{
+	public function zipWith($items, $callable) {
 		if (func_num_args() > 2) {
 			$items = func_get_args();
 			$callable = array_pop($items);
@@ -605,8 +565,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function chunk($chunkSize)
-	{
+	public function chunk($chunkSize) {
 		return $this->map(function ($v, $k, $iterator) use ($chunkSize) {
 			$values = [$v];
 			for ($i = 1; $i < $chunkSize; $i++) {
@@ -625,8 +584,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function isEmpty()
-	{
+	public function isEmpty() {
 		foreach ($this->unwrap() as $el) {
 			return false;
 		}
@@ -637,8 +595,7 @@ trait CollectionTrait
 	 * {@inheritDoc}
 	 *
 	 */
-	public function unwrap()
-	{
+	public function unwrap() {
 		$iterator = $this;
 		while (get_class($iterator) === 'Cake\Collection\Collection') {
 			$iterator = $iterator->getInnerIterator();
@@ -652,8 +609,7 @@ trait CollectionTrait
 	 * @return \Iterator
 	 * @deprecated
 	 */
-	public function _unwrap()
-	{
+	public function _unwrap() {
 		return $this->unwrap();
 	}
 }

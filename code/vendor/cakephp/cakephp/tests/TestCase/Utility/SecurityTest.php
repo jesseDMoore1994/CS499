@@ -23,16 +23,14 @@ use Cake\Utility\Security;
  * SecurityTest class
  *
  */
-class SecurityTest extends TestCase
-{
+class SecurityTest extends TestCase {
 
 	/**
 	 * testHash method
 	 *
 	 * @return void
 	 */
-	public function testHash()
-	{
+	public function testHash() {
 		$_hashType = Security::$hashType;
 
 		$key = 'someKey';
@@ -75,8 +73,7 @@ class SecurityTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRijndael()
-	{
+	public function testRijndael() {
 		$this->skipIf(!function_exists('mcrypt_encrypt'));
 		$engine = Security::engine();
 
@@ -103,8 +100,7 @@ class SecurityTest extends TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @return void
 	 */
-	public function testRijndaelInvalidOperation()
-	{
+	public function testRijndaelInvalidOperation() {
 		$txt = 'The quick brown fox jumped over the lazy dog.';
 		$key = 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi';
 		Security::rijndael($txt, $key, 'foo');
@@ -116,8 +112,7 @@ class SecurityTest extends TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @return void
 	 */
-	public function testRijndaelInvalidKey()
-	{
+	public function testRijndaelInvalidKey() {
 		$txt = 'The quick brown fox jumped over the lazy dog.';
 		$key = 'too small';
 		Security::rijndael($txt, $key, 'encrypt');
@@ -128,8 +123,7 @@ class SecurityTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEncryptDecrypt()
-	{
+	public function testEncryptDecrypt() {
 		$txt = 'The quick brown fox';
 		$key = 'This key is longer than 32 bytes long.';
 		$result = Security::encrypt($txt, $key);
@@ -143,8 +137,7 @@ class SecurityTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDecryptKeyFailure()
-	{
+	public function testDecryptKeyFailure() {
 		$txt = 'The quick brown fox';
 		$key = 'This key is longer than 32 bytes long.';
 		$result = Security::encrypt($txt, $key);
@@ -158,8 +151,7 @@ class SecurityTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDecryptHmacFailure()
-	{
+	public function testDecryptHmacFailure() {
 		$txt = 'The quick brown fox';
 		$key = 'This key is quite long and works well.';
 		$salt = 'this is a delicious salt!';
@@ -175,8 +167,7 @@ class SecurityTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDecryptHmacSaltFailure()
-	{
+	public function testDecryptHmacSaltFailure() {
 		$txt = 'The quick brown fox';
 		$key = 'This key is quite long and works well.';
 		$salt = 'this is a delicious salt!';
@@ -193,8 +184,7 @@ class SecurityTest extends TestCase
 	 * @expectedExceptionMessage Invalid key for encrypt(), key must be at least 256 bits (32 bytes) long.
 	 * @return void
 	 */
-	public function testEncryptInvalidKey()
-	{
+	public function testEncryptInvalidKey() {
 		$txt = 'The quick brown fox jumped over the lazy dog.';
 		$key = 'this is too short';
 		Security::encrypt($txt, $key);
@@ -205,8 +195,7 @@ class SecurityTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEncryptDecryptFalseyData()
-	{
+	public function testEncryptDecryptFalseyData() {
 		$key = 'This is a key that is long enough to be ok.';
 
 		$result = Security::encrypt('', $key);
@@ -232,8 +221,7 @@ class SecurityTest extends TestCase
 	 * @expectedExceptionMessage Invalid key for decrypt(), key must be at least 256 bits (32 bytes) long.
 	 * @return void
 	 */
-	public function testDecryptInvalidKey()
-	{
+	public function testDecryptInvalidKey() {
 		$txt = 'The quick brown fox jumped over the lazy dog.';
 		$key = 'this is too short';
 		Security::decrypt($txt, $key);
@@ -246,8 +234,7 @@ class SecurityTest extends TestCase
 	 * @expectedExceptionMessage The data to decrypt cannot be empty.
 	 * @return void
 	 */
-	public function testDecryptInvalidData()
-	{
+	public function testDecryptInvalidData() {
 		$txt = '';
 		$key = 'This is a key that is long enough to be ok.';
 		Security::decrypt($txt, $key);
@@ -258,8 +245,7 @@ class SecurityTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEngineEquivalence()
-	{
+	public function testEngineEquivalence() {
 		$this->skipIf(!defined('MCRYPT_RIJNDAEL_128'), 'This needs mcrypt extension to be loaded.');
 
 		$restore = Security::engine();
@@ -287,8 +273,7 @@ class SecurityTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSalt()
-	{
+	public function testSalt() {
 		Security::salt('foobarbaz');
 		$this->assertEquals('foobarbaz', Security::salt());
 	}

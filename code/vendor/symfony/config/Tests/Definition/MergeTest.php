@@ -13,13 +13,11 @@ namespace Symfony\Component\Config\Tests\Definition;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
-class MergeTest extends \PHPUnit_Framework_TestCase
-{
+class MergeTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @expectedException \Symfony\Component\Config\Definition\Exception\ForbiddenOverwriteException
 	 */
-	public function testForbiddenOverwrite()
-	{
+	public function testForbiddenOverwrite() {
 		$tb = new TreeBuilder();
 		$tree = $tb
 			->root('root', 'array')
@@ -42,8 +40,7 @@ class MergeTest extends \PHPUnit_Framework_TestCase
 		$tree->merge($a, $b);
 	}
 
-	public function testUnsetKey()
-	{
+	public function testUnsetKey() {
 		$tb = new TreeBuilder();
 		$tree = $tb
 			->root('root', 'array')
@@ -92,8 +89,7 @@ class MergeTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
 	 */
-	public function testDoesNotAllowNewKeysInSubsequentConfigs()
-	{
+	public function testDoesNotAllowNewKeysInSubsequentConfigs() {
 		$tb = new TreeBuilder();
 		$tree = $tb
 			->root('config', 'array')
@@ -126,8 +122,7 @@ class MergeTest extends \PHPUnit_Framework_TestCase
 		$tree->merge($a, $b);
 	}
 
-	public function testPerformsNoDeepMerging()
-	{
+	public function testPerformsNoDeepMerging() {
 		$tb = new TreeBuilder();
 
 		$tree = $tb
@@ -164,8 +159,7 @@ class MergeTest extends \PHPUnit_Framework_TestCase
 		), $tree->merge($a, $b));
 	}
 
-	public function testPrototypeWithoutAKeyAttribute()
-	{
+	public function testPrototypeWithoutAKeyAttribute() {
 		$tb = new TreeBuilder();
 
 		$tree = $tb

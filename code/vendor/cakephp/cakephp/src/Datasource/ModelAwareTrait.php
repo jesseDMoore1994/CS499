@@ -25,8 +25,7 @@ use UnexpectedValueException;
  * Example users of this trait are Cake\Controller\Controller and
  * Cake\Console\Shell.
  */
-trait ModelAwareTrait
-{
+trait ModelAwareTrait {
 
 	/**
 	 * This object's primary model class name. Should be a plural form.
@@ -62,8 +61,7 @@ trait ModelAwareTrait
 	 * @param string $name Class name.
 	 * @return void
 	 */
-	protected function _setModelClass($name)
-	{
+	protected function _setModelClass($name) {
 		if (empty($this->modelClass)) {
 			$this->modelClass = $name;
 		}
@@ -85,8 +83,7 @@ trait ModelAwareTrait
 	 * @throws \InvalidArgumentException When using a type that has not been registered.
 	 * @throws \UnexpectedValueException If no model type has been defined
 	 */
-	public function loadModel($modelClass = null, $modelType = null)
-	{
+	public function loadModel($modelClass = null, $modelType = null) {
 		if ($modelClass === null) {
 			$modelClass = $this->modelClass;
 		}
@@ -125,8 +122,7 @@ trait ModelAwareTrait
 	 * @param callable $factory The factory function used to create instances.
 	 * @return void
 	 */
-	public function modelFactory($type, callable $factory)
-	{
+	public function modelFactory($type, callable $factory) {
 		$this->_modelFactories[$type] = $factory;
 	}
 
@@ -137,8 +133,7 @@ trait ModelAwareTrait
 	 *
 	 * @return string|$this
 	 */
-	public function modelType($modelType = null)
-	{
+	public function modelType($modelType = null) {
 		if ($modelType === null) {
 			return $this->_modelType;
 		}

@@ -19,8 +19,7 @@ use Psy\Shell;
 /**
  * The Psy Shell execution loop.
  */
-class Loop
-{
+class Loop {
 	/**
 	 * Loop constructor.
 	 *
@@ -29,8 +28,7 @@ class Loop
 	 *
 	 * @param Configuration $config
 	 */
-	public function __construct(Configuration $config)
-	{
+	public function __construct(Configuration $config) {
 		// don't need this
 	}
 
@@ -41,8 +39,7 @@ class Loop
 	 *
 	 * @param Shell $shell
 	 */
-	public function run(Shell $shell)
-	{
+	public function run(Shell $shell) {
 		$loop = function ($__psysh__) {
 			// Load user-defined includes
 			set_error_handler(array($__psysh__, 'handleError'));
@@ -134,8 +131,7 @@ class Loop
 	 * This is executed at the start of each loop iteration. In the default
 	 * (non-forking) loop implementation, this is a no-op.
 	 */
-	public function beforeLoop()
-	{
+	public function beforeLoop() {
 		// no-op
 	}
 
@@ -145,8 +141,7 @@ class Loop
 	 * This is executed at the end of each loop iteration. In the default
 	 * (non-forking) loop implementation, this is a no-op.
 	 */
-	public function afterLoop()
-	{
+	public function afterLoop() {
 		// no-op
 	}
 
@@ -155,8 +150,7 @@ class Loop
 	 *
 	 * @return bool
 	 */
-	protected static function bindLoop()
-	{
+	protected static function bindLoop() {
 		// skip binding on HHVM <= 3.5.0
 		// see https://github.com/facebook/hhvm/issues/1203
 		if (defined('HHVM_VERSION')) {

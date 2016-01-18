@@ -16,16 +16,14 @@ use Phinx\Console\Command\Create as CreateCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class Create extends CreateCommand
-{
+class Create extends CreateCommand {
 
 	use ConfigurationTrait;
 
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this->setName('create')
 			->setDescription('Create a new migration')
 			->addArgument('name', InputArgument::REQUIRED, 'What is the name of the migration?')

@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Query cacher test
  */
-class QueryCacherTest extends TestCase
-{
+class QueryCacherTest extends TestCase {
 
 	/**
 	 * Setup method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->engine = $this->getMock('Cake\Cache\CacheEngine');
 		$this->engine->expects($this->any())
@@ -46,8 +44,7 @@ class QueryCacherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Cache::drop('queryCache');
 	}
@@ -57,8 +54,7 @@ class QueryCacherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFetchFunctionKey()
-	{
+	public function testFetchFunctionKey() {
 		$this->_mockRead('my_key', 'A winner');
 		$query = $this->getMock('stdClass');
 
@@ -78,8 +74,7 @@ class QueryCacherTest extends TestCase
 	 * @expectedExceptionMessage Cache key functions must return a string. Got false.
 	 * @return void
 	 */
-	public function testFetchFunctionKeyNoString()
-	{
+	public function testFetchFunctionKeyNoString() {
 		$this->_mockRead('my_key', 'A winner');
 		$query = $this->getMock('stdClass');
 
@@ -95,8 +90,7 @@ class QueryCacherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFetchCacheHitStringEngine()
-	{
+	public function testFetchCacheHitStringEngine() {
 		$this->_mockRead('my_key', 'A winner');
 		$cacher = new QueryCacher('my_key', 'queryCache');
 		$query = $this->getMock('stdClass');
@@ -109,8 +103,7 @@ class QueryCacherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFetchCacheHit()
-	{
+	public function testFetchCacheHit() {
 		$this->_mockRead('my_key', 'A winner');
 		$cacher = new QueryCacher('my_key', $this->engine);
 		$query = $this->getMock('stdClass');
@@ -123,8 +116,7 @@ class QueryCacherTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFetchCacheMiss()
-	{
+	public function testFetchCacheMiss() {
 		$this->_mockRead('my_key', false);
 		$cacher = new QueryCacher('my_key', $this->engine);
 		$query = $this->getMock('stdClass');
@@ -135,8 +127,7 @@ class QueryCacherTest extends TestCase
 	/**
 	 * Helper for building mocks.
 	 */
-	protected function _mockRead($key, $value = false)
-	{
+	protected function _mockRead($key, $value = false) {
 		$this->engine->expects($this->any())
 			->method('read')
 			->with($key)

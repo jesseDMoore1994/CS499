@@ -42,8 +42,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Rob Morgan <robbym@gmail.com>
  */
-abstract class AbstractMigration implements MigrationInterface
-{
+abstract class AbstractMigration implements MigrationInterface {
 	/**
 	 * @var float
 	 */
@@ -64,8 +63,7 @@ abstract class AbstractMigration implements MigrationInterface
 	 *
 	 * @param int $version Migration Version
 	 */
-	final public function __construct($version)
-	{
+	final public function __construct($version) {
 		$this->version = $version;
 		$this->init();
 	}
@@ -75,29 +73,25 @@ abstract class AbstractMigration implements MigrationInterface
 	 *
 	 * @return void
 	 */
-	protected function init()
-	{
+	protected function init() {
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function up()
-	{
+	public function up() {
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function down()
-	{
+	public function down() {
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setAdapter(AdapterInterface $adapter)
-	{
+	public function setAdapter(AdapterInterface $adapter) {
 		$this->adapter = $adapter;
 		return $this;
 	}
@@ -105,16 +99,14 @@ abstract class AbstractMigration implements MigrationInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getAdapter()
-	{
+	public function getAdapter() {
 		return $this->adapter;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setOutput(OutputInterface $output)
-	{
+	public function setOutput(OutputInterface $output) {
 		$this->output = $output;
 		return $this;
 	}
@@ -122,24 +114,21 @@ abstract class AbstractMigration implements MigrationInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getOutput()
-	{
+	public function getOutput() {
 		return $this->output;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return get_class($this);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setVersion($version)
-	{
+	public function setVersion($version) {
 		$this->version = $version;
 		return $this;
 	}
@@ -147,72 +136,63 @@ abstract class AbstractMigration implements MigrationInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getVersion()
-	{
+	public function getVersion() {
 		return $this->version;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function execute($sql)
-	{
+	public function execute($sql) {
 		return $this->getAdapter()->execute($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function query($sql)
-	{
+	public function query($sql) {
 		return $this->getAdapter()->query($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function fetchRow($sql)
-	{
+	public function fetchRow($sql) {
 		return $this->getAdapter()->fetchRow($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function fetchAll($sql)
-	{
+	public function fetchAll($sql) {
 		return $this->getAdapter()->fetchAll($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function createDatabase($name, $options)
-	{
+	public function createDatabase($name, $options) {
 		$this->getAdapter()->createDatabase($name, $options);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function dropDatabase($name)
-	{
+	public function dropDatabase($name) {
 		$this->getAdapter()->dropDatabase($name);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasTable($tableName)
-	{
+	public function hasTable($tableName) {
 		return $this->getAdapter()->hasTable($tableName);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function table($tableName, $options = array())
-	{
+	public function table($tableName, $options = array()) {
 		return new Table($tableName, $options, $this->getAdapter());
 	}
 
@@ -222,8 +202,7 @@ abstract class AbstractMigration implements MigrationInterface
 	 * @param string $tableName Table Name
 	 * @return void
 	 */
-	public function dropTable($tableName)
-	{
+	public function dropTable($tableName) {
 		$this->table($tableName)->drop();
 	}
 }

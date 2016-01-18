@@ -22,8 +22,7 @@ use Cake\ORM\Entity;
 use DateTime;
 use UnexpectedValueException;
 
-class TimestampBehavior extends Behavior
-{
+class TimestampBehavior extends Behavior {
 
 	/**
 	 * Default config
@@ -71,8 +70,7 @@ class TimestampBehavior extends Behavior
 	 * @param array $config The config for this behavior.
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		if (isset($config['events'])) {
 			$this->config('events', $config['events'], false);
 		}
@@ -87,8 +85,7 @@ class TimestampBehavior extends Behavior
 	 * @return true (irrespective of the behavior logic, the save will not be prevented)
 	 * @throws \UnexpectedValueException When the value for an event is not 'always', 'new' or 'existing'
 	 */
-	public function handleEvent(Event $event, EntityInterface $entity)
-	{
+	public function handleEvent(Event $event, EntityInterface $entity) {
 		$eventName = $event->name();
 		$events = $this->_config['events'];
 
@@ -119,8 +116,7 @@ class TimestampBehavior extends Behavior
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return array_fill_keys(array_keys($this->_config['events']), 'handleEvent');
 	}
 
@@ -135,8 +131,7 @@ class TimestampBehavior extends Behavior
 	 * @param bool $refreshTimestamp If true timestamp is refreshed.
 	 * @return \Cake\I18n\Time
 	 */
-	public function timestamp(DateTime $ts = null, $refreshTimestamp = false)
-	{
+	public function timestamp(DateTime $ts = null, $refreshTimestamp = false) {
 		if ($ts) {
 			if ($this->_config['refreshTimestamp']) {
 				$this->_config['refreshTimestamp'] = false;
@@ -160,8 +155,7 @@ class TimestampBehavior extends Behavior
 	 * @param string $eventName Event name.
 	 * @return bool true if a field is updated, false if no action performed
 	 */
-	public function touch(EntityInterface $entity, $eventName = 'Model.beforeSave')
-	{
+	public function touch(EntityInterface $entity, $eventName = 'Model.beforeSave') {
 		$events = $this->_config['events'];
 		if (empty($events[$eventName])) {
 			return false;
@@ -189,8 +183,7 @@ class TimestampBehavior extends Behavior
 	 * @param bool $refreshTimestamp Whether to refresh timestamp.
 	 * @return void
 	 */
-	protected function _updateField($entity, $field, $refreshTimestamp)
-	{
+	protected function _updateField($entity, $field, $refreshTimestamp) {
 		if ($entity->dirty($field)) {
 			return;
 		}

@@ -14,13 +14,11 @@ namespace Psy\Exception;
 /**
  * A throw-up exception, used for throwing an exception out of the Psy Shell.
  */
-class ThrowUpException extends \Exception implements Exception
-{
+class ThrowUpException extends \Exception implements Exception {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct(\Exception $exception)
-	{
+	public function __construct(\Exception $exception) {
 		$message = sprintf("Throwing %s with message '%s'", get_class($exception), $exception->getMessage());
 		parent::__construct($message, $exception->getCode(), $exception);
 	}
@@ -30,8 +28,7 @@ class ThrowUpException extends \Exception implements Exception
 	 *
 	 * @return string
 	 */
-	public function getRawMessage()
-	{
+	public function getRawMessage() {
 		return $this->getPrevious()->getMessage();
 	}
 }

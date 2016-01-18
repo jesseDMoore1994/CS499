@@ -30,8 +30,7 @@ use SimpleXmlElement;
  * Provides debug information on the View variables.
  *
  */
-class VariablesPanel extends DebugPanel
-{
+class VariablesPanel extends DebugPanel {
 
 	/**
 	 * Extracts nested validation errors
@@ -40,8 +39,7 @@ class VariablesPanel extends DebugPanel
 	 *
 	 * @return array
 	 */
-	protected function _getErrors(EntityInterface $entity)
-	{
+	protected function _getErrors(EntityInterface $entity) {
 		$errors = $entity->errors();
 
 		foreach ($entity->visibleProperties() as $property) {
@@ -66,8 +64,7 @@ class VariablesPanel extends DebugPanel
 	 * @param \Cake\Event\Event $event The event
 	 * @return void
 	 */
-	public function shutdown(Event $event)
-	{
+	public function shutdown(Event $event) {
 		$controller = $event->subject();
 		$errors = [];
 
@@ -128,8 +125,7 @@ class VariablesPanel extends DebugPanel
 	 *
 	 * @return int
 	 */
-	public function summary()
-	{
+	public function summary() {
 		if (!isset($this->_data['content'])) {
 			return 0;
 		}

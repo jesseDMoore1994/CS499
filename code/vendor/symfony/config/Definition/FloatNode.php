@@ -18,13 +18,11 @@ use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
  *
  * @author Jeanmonod David <david.jeanmonod@gmail.com>
  */
-class FloatNode extends NumericNode
-{
+class FloatNode extends NumericNode {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function validateType($value)
-	{
+	protected function validateType($value) {
 		// Integers are also accepted, we just cast them
 		if (is_int($value)) {
 			$value = (float)$value;

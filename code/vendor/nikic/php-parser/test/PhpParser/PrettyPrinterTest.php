@@ -9,10 +9,8 @@ use PhpParser\PrettyPrinter\Standard;
 
 require_once __DIR__ . '/CodeTestAbstract.php';
 
-class PrettyPrinterTest extends CodeTestAbstract
-{
-	protected function doTestPrettyPrintMethod($method, $name, $code, $expected, $modeLine)
-	{
+class PrettyPrinterTest extends CodeTestAbstract {
+	protected function doTestPrettyPrintMethod($method, $name, $code, $expected, $modeLine) {
 		$lexer = new Lexer\Emulative;
 		$parser5 = new Parser\Php5($lexer);
 		$parser7 = new Parser\Php7($lexer);
@@ -54,8 +52,7 @@ class PrettyPrinterTest extends CodeTestAbstract
 	 * @dataProvider provideTestPrettyPrint
 	 * @covers       PhpParser\PrettyPrinter\Standard<extended>
 	 */
-	public function testPrettyPrint($name, $code, $expected, $mode)
-	{
+	public function testPrettyPrint($name, $code, $expected, $mode) {
 		$this->doTestPrettyPrintMethod('prettyPrint', $name, $code, $expected, $mode);
 	}
 
@@ -63,23 +60,19 @@ class PrettyPrinterTest extends CodeTestAbstract
 	 * @dataProvider provideTestPrettyPrintFile
 	 * @covers       PhpParser\PrettyPrinter\Standard<extended>
 	 */
-	public function testPrettyPrintFile($name, $code, $expected, $mode)
-	{
+	public function testPrettyPrintFile($name, $code, $expected, $mode) {
 		$this->doTestPrettyPrintMethod('prettyPrintFile', $name, $code, $expected, $mode);
 	}
 
-	public function provideTestPrettyPrint()
-	{
+	public function provideTestPrettyPrint() {
 		return $this->getTests(__DIR__ . '/../code/prettyPrinter', 'test');
 	}
 
-	public function provideTestPrettyPrintFile()
-	{
+	public function provideTestPrettyPrintFile() {
 		return $this->getTests(__DIR__ . '/../code/prettyPrinter', 'file-test');
 	}
 
-	public function testPrettyPrintExpr()
-	{
+	public function testPrettyPrintExpr() {
 		$prettyPrinter = new Standard;
 		$expr = new Expr\BinaryOp\Mul(
 			new Expr\BinaryOp\Plus(new Expr\Variable('a'), new Expr\Variable('b')),
@@ -93,8 +86,7 @@ class PrettyPrinterTest extends CodeTestAbstract
 		$this->assertEquals("function () {\n    return 'a\nb';\n}", $prettyPrinter->prettyPrintExpr($expr));
 	}
 
-	private function parseModeLine($modeLine)
-	{
+	private function parseModeLine($modeLine) {
 		$parts = explode(' ', $modeLine, 2);
 		$version = isset($parts[0]) ? $parts[0] : 'both';
 		$options = isset($parts[1]) ? json_decode($parts[1], true) : [];

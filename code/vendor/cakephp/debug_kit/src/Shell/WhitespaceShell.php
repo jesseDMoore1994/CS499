@@ -23,8 +23,7 @@ use Cake\Filesystem\Folder;
  *
  * @since         DebugKit 1.3
  */
-class WhitespaceShell extends Shell
-{
+class WhitespaceShell extends Shell {
 
 	/**
 	 * Will check files for whitespace and notify you
@@ -32,8 +31,7 @@ class WhitespaceShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function main()
-	{
+	public function main() {
 		$path = APP;
 		if (!empty($this->params['path']) && strpos($this->params['path'], '/') === 0) {
 			$path = $this->params['path'];
@@ -61,8 +59,7 @@ class WhitespaceShell extends Shell
 	 *
 	 * @return void
 	 */
-	public function trim()
-	{
+	public function trim() {
 		$path = APP;
 		if (!empty($this->params['path']) && strpos($this->params['path'], '/') === 0) {
 			$path = $this->params['path'];
@@ -89,8 +86,7 @@ class WhitespaceShell extends Shell
 	 *
 	 * @return ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		return $parser->addOption('path', [
 			'short' => 'p',

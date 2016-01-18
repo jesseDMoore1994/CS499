@@ -17,8 +17,7 @@ namespace Cake\Database;
 /**
  * Implements default and single-use mappings for columns to their associated types
  */
-class TypeMap
-{
+class TypeMap {
 
 	/**
 	 * Associative array with the default fields and the related types this query might contain.
@@ -45,8 +44,7 @@ class TypeMap
 	 *
 	 * @param array $defaults The defaults to use.
 	 */
-	public function __construct(array $defaults = [])
-	{
+	public function __construct(array $defaults = []) {
 		$this->defaults($defaults);
 	}
 
@@ -70,8 +68,7 @@ class TypeMap
 	 * are the correspondent type.
 	 * @return $this|array
 	 */
-	public function defaults(array $defaults = null)
-	{
+	public function defaults(array $defaults = null) {
 		if ($defaults === null) {
 			return $this->_defaults;
 		}
@@ -87,8 +84,7 @@ class TypeMap
 	 * @param array $types The additional types to add.
 	 * @return void
 	 */
-	public function addDefaults(array $types)
-	{
+	public function addDefaults(array $types) {
 		$this->_defaults = $this->_defaults + $types;
 	}
 
@@ -109,8 +105,7 @@ class TypeMap
 	 * are the correspondent type.
 	 * @return $this|array
 	 */
-	public function types(array $types = null)
-	{
+	public function types(array $types = null) {
 		if ($types === null) {
 			return $this->_types;
 		}
@@ -126,8 +121,7 @@ class TypeMap
 	 * @param string $column The type for a given column
 	 * @return null|string
 	 */
-	public function type($column)
-	{
+	public function type($column) {
 		if (isset($this->_types[$column])) {
 			return $this->_types[$column];
 		}

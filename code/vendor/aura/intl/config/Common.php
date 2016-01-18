@@ -4,10 +4,8 @@ namespace Aura\Intl\_Config;
 use Aura\Di\Config;
 use Aura\Di\Container;
 
-class Common extends Config
-{
-	public function define(Container $di)
-	{
+class Common extends Config {
+	public function define(Container $di) {
 		/**
 		 * Services
 		 */
@@ -33,7 +31,6 @@ class Common extends Config
 		];
 	}
 
-	public function modify(Container $di)
-	{
+	public function modify(Container $di) {
 	}
 }

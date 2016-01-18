@@ -14,10 +14,8 @@ namespace Psy\Test\Exception;
 use Psy\Exception\Exception;
 use Psy\Exception\RuntimeException;
 
-class RuntimeExceptionTest extends \PHPUnit_Framework_TestCase
-{
-	public function testException()
-	{
+class RuntimeExceptionTest extends \PHPUnit_Framework_TestCase {
+	public function testException() {
 		$msg = 'bananas';
 		$e = new RuntimeException($msg);
 

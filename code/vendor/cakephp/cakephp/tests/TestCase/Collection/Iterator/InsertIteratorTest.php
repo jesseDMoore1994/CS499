@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * InsertIterator Test
  *
  */
-class InsertIteratorTest extends TestCase
-{
+class InsertIteratorTest extends TestCase {
 
 	/**
 	 * Test insert simple path
 	 *
 	 * @return void
 	 */
-	public function testInsertSimplePath()
-	{
+	public function testInsertSimplePath() {
 		$items = [
 			'a' => ['name' => 'Derp'],
 			'b' => ['name' => 'Derpina']
@@ -50,8 +48,7 @@ class InsertIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsertDeepPath()
-	{
+	public function testInsertDeepPath() {
 		$items = [
 			'a' => ['name' => 'Derp', 'a' => ['deep' => ['thing' => 1]]],
 			'b' => ['name' => 'Derpina', 'a' => ['deep' => ['thing' => 2]]],
@@ -71,8 +68,7 @@ class InsertIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsertDeepPathMissingStep()
-	{
+	public function testInsertDeepPathMissingStep() {
 		$items = [
 			'a' => ['name' => 'Derp', 'a' => ['deep' => ['thing' => 1]]],
 			'b' => ['name' => 'Derpina', 'a' => ['nested' => 2]],
@@ -93,8 +89,7 @@ class InsertIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsertTargetCountBigger()
-	{
+	public function testInsertTargetCountBigger() {
 		$items = [
 			'a' => ['name' => 'Derp'],
 			'b' => ['name' => 'Derpina']
@@ -115,8 +110,7 @@ class InsertIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsertSourceBigger()
-	{
+	public function testInsertSourceBigger() {
 		$items = [
 			'a' => ['name' => 'Derp'],
 			'b' => ['name' => 'Derpina']
@@ -136,8 +130,7 @@ class InsertIteratorTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRewind()
-	{
+	public function testRewind() {
 		$items = [
 			'a' => ['name' => 'Derp'],
 			'b' => ['name' => 'Derpina'],

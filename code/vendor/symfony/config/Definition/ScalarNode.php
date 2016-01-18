@@ -25,13 +25,11 @@ use Symfony\Component\Config\Definition\Exception\InvalidTypeException;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class ScalarNode extends VariableNode
-{
+class ScalarNode extends VariableNode {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function validateType($value)
-	{
+	protected function validateType($value) {
 		if (!is_scalar($value) && null !== $value) {
 			$ex = new InvalidTypeException(sprintf(
 				'Invalid type for path "%s". Expected scalar, but got %s.',
@@ -50,8 +48,7 @@ class ScalarNode extends VariableNode
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function isValueEmpty($value)
-	{
+	protected function isValueEmpty($value) {
 		return null === $value || '' === $value;
 	}
 }

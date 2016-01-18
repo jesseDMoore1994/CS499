@@ -21,8 +21,7 @@ use TestApp\Controller\AppController;
  * PostsController class
  *
  */
-class PostsController extends AppController
-{
+class PostsController extends AppController {
 	/**
 	 * Components array
 	 *
@@ -39,8 +38,7 @@ class PostsController extends AppController
 	 *
 	 * @return void
 	 */
-	public function beforeFilter(Event $event)
-	{
+	public function beforeFilter(Event $event) {
 		if ($this->request->param('action') !== 'securePost') {
 			$this->eventManager()->off($this->Security);
 		}
@@ -51,8 +49,7 @@ class PostsController extends AppController
 	 *
 	 * @return void
 	 */
-	public function index()
-	{
+	public function index() {
 		$this->Flash->error('An error message');
 		$this->response->cookie([
 			'name' => 'remember_me',
@@ -66,8 +63,7 @@ class PostsController extends AppController
 	 *
 	 * @return void
 	 */
-	public function get()
-	{
+	public function get() {
 		// Do nothing.
 	}
 
@@ -76,8 +72,7 @@ class PostsController extends AppController
 	 *
 	 * @return void
 	 */
-	public function securePost()
-	{
+	public function securePost() {
 		$this->response->body('Request was accepted');
 		return $this->response;
 	}

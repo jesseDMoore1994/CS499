@@ -24,8 +24,7 @@ use Cake\Core\InstanceConfigTrait;
  * Used by several helpers to provide simple flexible templates
  * for generating HTML and other content.
  */
-class StringTemplate
-{
+class StringTemplate {
 
 	use InstanceConfigTrait {
 		config as get;
@@ -107,8 +106,7 @@ class StringTemplate
 	 *
 	 * @param array $config A set of templates to add.
 	 */
-	public function __construct(array $config = [])
-	{
+	public function __construct(array $config = []) {
 		$this->add($config);
 	}
 
@@ -117,8 +115,7 @@ class StringTemplate
 	 *
 	 * @return void
 	 */
-	public function push()
-	{
+	public function push() {
 		$this->_configStack[] = [
 			$this->_config,
 			$this->_compiled
@@ -130,8 +127,7 @@ class StringTemplate
 	 *
 	 * @return void
 	 */
-	public function pop()
-	{
+	public function pop() {
 		if (empty($this->_configStack)) {
 			return;
 		}
@@ -153,8 +149,7 @@ class StringTemplate
 	 * @param array $templates An associative list of named templates.
 	 * @return $this
 	 */
-	public function add(array $templates)
-	{
+	public function add(array $templates) {
 		$this->config($templates);
 		$this->_compileTemplates(array_keys($templates));
 		return $this;
@@ -166,8 +161,7 @@ class StringTemplate
 	 * @param array $templates The template names to compile. If empty all templates will be compiled.
 	 * @return void
 	 */
-	protected function _compileTemplates(array $templates = [])
-	{
+	protected function _compileTemplates(array $templates = []) {
 		if (empty($templates)) {
 			$templates = array_keys($this->_config);
 		}
@@ -195,8 +189,7 @@ class StringTemplate
 	 * @param string $file The file to load
 	 * @return void
 	 */
-	public function load($file)
-	{
+	public function load($file) {
 		$loader = new PhpConfig();
 		$templates = $loader->read($file);
 		$this->add($templates);
@@ -208,8 +201,7 @@ class StringTemplate
 	 * @param string $name The template to remove.
 	 * @return void
 	 */
-	public function remove($name)
-	{
+	public function remove($name) {
 		$this->config($name, null);
 		unset($this->_compiled[$name]);
 	}
@@ -221,8 +213,7 @@ class StringTemplate
 	 * @param array $data The data to insert.
 	 * @return string|null Formatted string or null if template not found.
 	 */
-	public function format($name, array $data)
-	{
+	public function format($name, array $data) {
 		if (!isset($this->_compiled[$name])) {
 			return null;
 		}
@@ -272,8 +263,7 @@ class StringTemplate
 	 * @param array|null $exclude Array of options to be excluded, the options here will not be part of the return.
 	 * @return string Composed attributes.
 	 */
-	public function formatAttributes($options, $exclude = null)
-	{
+	public function formatAttributes($options, $exclude = null) {
 		$insertBefore = ' ';
 		$options = (array)$options + ['escape' => true];
 
@@ -303,8 +293,7 @@ class StringTemplate
 	 * @param bool $escape Define if the value must be escaped
 	 * @return string The composed attribute.
 	 */
-	protected function _formatAttribute($key, $value, $escape = true)
-	{
+	protected function _formatAttribute($key, $value, $escape = true) {
 		if (is_array($value)) {
 			$value = implode(' ', $value);
 		}

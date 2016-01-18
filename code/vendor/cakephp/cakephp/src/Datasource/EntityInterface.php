@@ -21,8 +21,7 @@ use JsonSerializable;
  * Describes the methods that any class representing a data storage should
  * comply with.
  */
-interface EntityInterface extends ArrayAccess, JsonSerializable
-{
+interface EntityInterface extends ArrayAccess, JsonSerializable {
 
 	/**
 	 * Sets one or multiple properties to the specified value

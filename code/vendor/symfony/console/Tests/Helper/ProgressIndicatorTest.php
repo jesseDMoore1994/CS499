@@ -5,10 +5,8 @@ namespace Symfony\Component\Console\Tests\Helper;
 use Symfony\Component\Console\Helper\ProgressIndicator;
 use Symfony\Component\Console\Output\StreamOutput;
 
-class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
-{
-	public function testDefaultIndicator()
-	{
+class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase {
+	public function testDefaultIndicator() {
 		$bar = new ProgressIndicator($output = $this->getOutputStream());
 		$bar->start('Starting...');
 		usleep(101000);
@@ -51,8 +49,7 @@ class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testNonDecoratedOutput()
-	{
+	public function testNonDecoratedOutput() {
 		$bar = new ProgressIndicator($output = $this->getOutputStream(false));
 
 		$bar->start('Starting...');
@@ -73,8 +70,7 @@ class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testCustomIndicatorValues()
-	{
+	public function testCustomIndicatorValues() {
 		$bar = new ProgressIndicator($output = $this->getOutputStream(), null, 100, array('a', 'b', 'c'));
 
 		$bar->start('Starting...');
@@ -100,8 +96,7 @@ class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @expectedExceptionMessage Must have at least 2 indicator value characters.
 	 */
-	public function testCannotSetInvalidIndicatorCharacters()
-	{
+	public function testCannotSetInvalidIndicatorCharacters() {
 		$bar = new ProgressIndicator($this->getOutputStream(), null, 100, array('1'));
 	}
 
@@ -109,8 +104,7 @@ class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \LogicException
 	 * @expectedExceptionMessage Progress indicator already started.
 	 */
-	public function testCannotStartAlreadyStartedIndicator()
-	{
+	public function testCannotStartAlreadyStartedIndicator() {
 		$bar = new ProgressIndicator($this->getOutputStream());
 		$bar->start('Starting...');
 		$bar->start('Starting Again.');
@@ -120,8 +114,7 @@ class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \LogicException
 	 * @expectedExceptionMessage Progress indicator has not yet been started.
 	 */
-	public function testCannotAdvanceUnstartedIndicator()
-	{
+	public function testCannotAdvanceUnstartedIndicator() {
 		$bar = new ProgressIndicator($this->getOutputStream());
 		$bar->advance();
 	}
@@ -130,8 +123,7 @@ class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException \LogicException
 	 * @expectedExceptionMessage Progress indicator has not yet been started.
 	 */
-	public function testCannotFinishUnstartedIndicator()
-	{
+	public function testCannotFinishUnstartedIndicator() {
 		$bar = new ProgressIndicator($this->getOutputStream());
 		$bar->finish('Finished');
 	}
@@ -139,8 +131,7 @@ class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider provideFormat
 	 */
-	public function testFormats($format)
-	{
+	public function testFormats($format) {
 		$bar = new ProgressIndicator($output = $this->getOutputStream(), $format);
 		$bar->start('Starting...');
 		$bar->advance();
@@ -155,8 +146,7 @@ class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return array
 	 */
-	public function provideFormat()
-	{
+	public function provideFormat() {
 		return array(
 			array('normal'),
 			array('verbose'),
@@ -165,13 +155,11 @@ class ProgressIndicatorTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	protected function getOutputStream($decorated = true, $verbosity = StreamOutput::VERBOSITY_NORMAL)
-	{
+	protected function getOutputStream($decorated = true, $verbosity = StreamOutput::VERBOSITY_NORMAL) {
 		return new StreamOutput(fopen('php://memory', 'r+', false), $verbosity, $decorated);
 	}
 
-	protected function generateOutput($expected)
-	{
+	protected function generateOutput($expected) {
 		$count = substr_count($expected, "\n");
 
 		return "\x0D" . ($count ? sprintf("\033[%dA", $count) : '') . $expected;

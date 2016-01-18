@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * IcuFormatter tests
  *
  */
-class IcuFormatterTest extends TestCase
-{
+class IcuFormatterTest extends TestCase {
 
 	/**
 	 * Tests that variables are interpolated correctly
 	 *
 	 * @return void
 	 */
-	public function testFormatSimple()
-	{
+	public function testFormatSimple() {
 		$formatter = new IcuFormatter();
 		$this->assertEquals('Hello José', $formatter->format('en_US', 'Hello {0}', ['José']));
 		$result = $formatter->format(
@@ -46,8 +44,7 @@ class IcuFormatterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatPlural()
-	{
+	public function testFormatPlural() {
 		$formatter = new IcuFormatter();
 		$messages = [
 			'{0} is 0',
@@ -66,8 +63,7 @@ class IcuFormatterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNativePluralSelection()
-	{
+	public function testNativePluralSelection() {
 		$formatter = new IcuFormatter();
 		$locale = 'en_US';
 		$string = '{0,plural,' .
@@ -97,8 +93,7 @@ class IcuFormatterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBadMessageFormat()
-	{
+	public function testBadMessageFormat() {
 		if (version_compare(PHP_VERSION, '7', '<')) {
 			$this->setExpectedException(
 				'Exception',
@@ -120,8 +115,7 @@ class IcuFormatterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatWithContext()
-	{
+	public function testFormatWithContext() {
 		$messages = [
 			'simple' => [
 				'_context' => [
@@ -171,8 +165,7 @@ class IcuFormatterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSingularFallback()
-	{
+	public function testSingularFallback() {
 		$formatter = new IcuFormatter();
 		$singular = 'one thing';
 		$plural = 'many things';

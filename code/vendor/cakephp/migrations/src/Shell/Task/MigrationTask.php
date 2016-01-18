@@ -22,14 +22,12 @@ use Migrations\Util\ColumnParser;
 /**
  * Task class for generating migration snapshot files.
  */
-class MigrationTask extends SimpleMigrationTask
-{
+class MigrationTask extends SimpleMigrationTask {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function bake($name)
-	{
+	public function bake($name) {
 		EventManager::instance()->on('Bake.initialize', function (Event $event) {
 			$event->subject->loadHelper('Migrations.Migration');
 		});
@@ -40,16 +38,14 @@ class MigrationTask extends SimpleMigrationTask
 	/**
 	 * {@inheritDoc}
 	 */
-	public function template()
-	{
+	public function template() {
 		return 'Migrations.config/skeleton';
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function templateData()
-	{
+	public function templateData() {
 		$className = $this->BakeTemplate->viewVars['name'];
 		$namespace = Configure::read('App.namespace');
 		$pluginPath = '';
@@ -104,8 +100,7 @@ class MigrationTask extends SimpleMigrationTask
 	 * @param string $name Name of migration
 	 * @return array
 	 **/
-	public function detectAction($name)
-	{
+	public function detectAction($name) {
 		if (preg_match('/^(Create|Drop)(.*)/', $name, $matches)) {
 			$action = strtolower($matches[1]) . '_table';
 			$table = Inflector::tableize(Inflector::pluralize($matches[2]));

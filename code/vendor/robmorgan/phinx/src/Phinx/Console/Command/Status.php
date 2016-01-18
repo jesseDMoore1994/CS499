@@ -32,13 +32,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Status extends AbstractCommand
-{
+class Status extends AbstractCommand {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		parent::configure();
 
 		$this->addOption('--environment', '-e', InputOption::VALUE_REQUIRED, 'The target environment.');
@@ -63,8 +61,7 @@ EOT
 	 * @param OutputInterface $output
 	 * @return integer 0 if all migrations are up, or an error code
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->bootstrap($input, $output);
 
 		$environment = $input->getOption('environment');

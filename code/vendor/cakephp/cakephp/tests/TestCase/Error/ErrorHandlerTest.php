@@ -35,8 +35,7 @@ use ParseError;
 /**
  * Testing stub.
  */
-class TestErrorHandler extends ErrorHandler
-{
+class TestErrorHandler extends ErrorHandler {
 
 	/**
 	 * Access the response used.
@@ -50,8 +49,7 @@ class TestErrorHandler extends ErrorHandler
 	 *
 	 * @return void
 	 */
-	protected function _clearOutput()
-	{
+	protected function _clearOutput() {
 		// noop
 	}
 
@@ -60,8 +58,7 @@ class TestErrorHandler extends ErrorHandler
 	 *
 	 * @return void
 	 */
-	protected function _sendResponse($response)
-	{
+	protected function _sendResponse($response) {
 		$this->response = $response;
 	}
 }
@@ -69,8 +66,7 @@ class TestErrorHandler extends ErrorHandler
 /**
  * ErrorHandlerTest class
  */
-class ErrorHandlerTest extends TestCase
-{
+class ErrorHandlerTest extends TestCase {
 
 	protected $_restoreError = false;
 
@@ -79,8 +75,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Router::reload();
 
@@ -102,8 +97,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Log::reset();
 		if ($this->_restoreError) {
@@ -117,8 +111,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleErrorDebugOn()
-	{
+	public function testHandleErrorDebugOn() {
 		$errorHandler = new ErrorHandler();
 		$errorHandler->register();
 		$this->_restoreError = true;
@@ -137,8 +130,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public static function errorProvider()
-	{
+	public static function errorProvider() {
 		return [
 			[E_USER_NOTICE, 'Notice'],
 			[E_USER_WARNING, 'Warning'],
@@ -151,8 +143,7 @@ class ErrorHandlerTest extends TestCase
 	 * @dataProvider errorProvider
 	 * @return void
 	 */
-	public function testErrorMapping($error, $expected)
-	{
+	public function testErrorMapping($error, $expected) {
 		$errorHandler = new ErrorHandler();
 		$errorHandler->register();
 		$this->_restoreError = true;
@@ -169,8 +160,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testErrorSuppressed()
-	{
+	public function testErrorSuppressed() {
 		$errorHandler = new ErrorHandler();
 		$errorHandler->register();
 		$this->_restoreError = true;
@@ -188,8 +178,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleErrorDebugOff()
-	{
+	public function testHandleErrorDebugOff() {
 		Configure::write('debug', false);
 		$errorHandler = new ErrorHandler();
 		$errorHandler->register();
@@ -210,8 +199,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleErrorLoggingTrace()
-	{
+	public function testHandleErrorLoggingTrace() {
 		Configure::write('debug', false);
 		$errorHandler = new ErrorHandler(['trace' => true]);
 		$errorHandler->register();
@@ -236,8 +224,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleException()
-	{
+	public function testHandleException() {
 		$error = new NotFoundException('Kaboom!');
 		$errorHandler = new TestErrorHandler();
 
@@ -250,8 +237,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleExceptionLog()
-	{
+	public function testHandleExceptionLog() {
 		$errorHandler = new TestErrorHandler([
 			'log' => true,
 			'trace' => true,
@@ -288,8 +274,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleExceptionLogAttributes()
-	{
+	public function testHandleExceptionLogAttributes() {
 		$errorHandler = new TestErrorHandler([
 			'log' => true,
 			'trace' => true,
@@ -327,8 +312,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleExceptionLogSkipping()
-	{
+	public function testHandleExceptionLogSkipping() {
 		$notFound = new NotFoundException('Kaboom!');
 		$forbidden = new ForbiddenException('Fooled you!');
 
@@ -356,8 +340,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadPluginHandler()
-	{
+	public function testLoadPluginHandler() {
 		Plugin::load('TestPlugin');
 		$errorHandler = new TestErrorHandler([
 			'exceptionRenderer' => 'TestPlugin.TestPluginExceptionRenderer',
@@ -377,8 +360,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleFatalErrorPage()
-	{
+	public function testHandleFatalErrorPage() {
 		$line = __LINE__;
 		$errorHandler = new TestErrorHandler();
 		Configure::write('debug', true);
@@ -402,8 +384,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandleFatalErrorLog()
-	{
+	public function testHandleFatalErrorLog() {
 		$this->_logger->expects($this->at(0))
 			->method('log')
 			->with('error', $this->logicalAnd(
@@ -424,8 +405,7 @@ class ErrorHandlerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHandlePHP7Error()
-	{
+	public function testHandlePHP7Error() {
 		$this->skipIf(!class_exists('Error'), 'Requires PHP7');
 		$error = new PHP7ErrorException(new ParseError('Unexpected variable foo'));
 		$errorHandler = new TestErrorHandler();

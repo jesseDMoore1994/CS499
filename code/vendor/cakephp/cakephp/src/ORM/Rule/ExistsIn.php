@@ -22,8 +22,7 @@ use RuntimeException;
  * Checks that the value provided in a field exists as the primary key of another
  * table.
  */
-class ExistsIn
-{
+class ExistsIn {
 
 	/**
 	 * The list of fields to check
@@ -46,8 +45,7 @@ class ExistsIn
 	 * @param object|string $repository The repository where the field will be looked for,
 	 * or the association name for the repository.
 	 */
-	public function __construct($fields, $repository)
-	{
+	public function __construct($fields, $repository) {
 		$this->_fields = (array)$fields;
 		$this->_repository = $repository;
 	}
@@ -61,8 +59,7 @@ class ExistsIn
 	 * @throws \RuntimeException When the rule refers to an undefined association.
 	 * @return bool
 	 */
-	public function __invoke(EntityInterface $entity, array $options)
-	{
+	public function __invoke(EntityInterface $entity, array $options) {
 		if (is_string($this->_repository)) {
 			$alias = $this->_repository;
 			$this->_repository = $options['repository']->association($alias);
@@ -120,8 +117,7 @@ class ExistsIn
 	 * @param \Cake\ORM\Table $source The table to use schema from.
 	 * @return bool
 	 */
-	protected function _fieldsAreNull($entity, $source)
-	{
+	protected function _fieldsAreNull($entity, $source) {
 		$nulls = 0;
 		$schema = $source->schema();
 		foreach ($this->_fields as $field) {

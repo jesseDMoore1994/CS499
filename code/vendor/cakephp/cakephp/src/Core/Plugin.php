@@ -24,8 +24,7 @@ use DirectoryIterator;
  *
  * @link http://book.cakephp.org/3.0/en/plugins.html
  */
-class Plugin
-{
+class Plugin {
 
 	/**
 	 * Holds a list of all loaded plugins and their configuration
@@ -109,8 +108,7 @@ class Plugin
 	 * @throws \Cake\Core\Exception\MissingPluginException if the folder for the plugin to be loaded is not found
 	 * @return void
 	 */
-	public static function load($plugin, array $config = [])
-	{
+	public static function load($plugin, array $config = []) {
 		if (is_array($plugin)) {
 			foreach ($plugin as $name => $conf) {
 				list($name, $conf) = (is_numeric($name)) ? [$conf, $config] : [$name, $conf];
@@ -180,8 +178,7 @@ class Plugin
 	 *
 	 * @return void
 	 */
-	protected static function _loadConfig()
-	{
+	protected static function _loadConfig() {
 		if (Configure::check('plugins')) {
 			return;
 		}
@@ -217,8 +214,7 @@ class Plugin
 	 * @param array $options Options.
 	 * @return void
 	 */
-	public static function loadAll(array $options = [])
-	{
+	public static function loadAll(array $options = []) {
 		static::_loadConfig();
 		$plugins = [];
 		foreach (App::path('Plugin') as $path) {
@@ -256,8 +252,7 @@ class Plugin
 	 * @return string path to the plugin folder
 	 * @throws \Cake\Core\Exception\MissingPluginException if the folder for plugin was not found or plugin has not been loaded
 	 */
-	public static function path($plugin)
-	{
+	public static function path($plugin) {
 		if (empty(static::$_plugins[$plugin])) {
 			throw new MissingPluginException(['plugin' => $plugin]);
 		}
@@ -271,8 +266,7 @@ class Plugin
 	 * @return string Path to the plugin folder container class folders.
 	 * @throws \Cake\Core\Exception\MissingPluginException If plugin has not been loaded.
 	 */
-	public static function classPath($plugin)
-	{
+	public static function classPath($plugin) {
 		if (empty(static::$_plugins[$plugin])) {
 			throw new MissingPluginException(['plugin' => $plugin]);
 		}
@@ -286,8 +280,7 @@ class Plugin
 	 * @return string Path to the plugin folder container config files.
 	 * @throws \Cake\Core\Exception\MissingPluginException If plugin has not been loaded.
 	 */
-	public static function configPath($plugin)
-	{
+	public static function configPath($plugin) {
 		if (empty(static::$_plugins[$plugin])) {
 			throw new MissingPluginException(['plugin' => $plugin]);
 		}
@@ -301,8 +294,7 @@ class Plugin
 	 * @return mixed
 	 * @see Plugin::load() for examples of bootstrap configuration
 	 */
-	public static function bootstrap($plugin)
-	{
+	public static function bootstrap($plugin) {
 		$config = static::$_plugins[$plugin];
 		if ($config['bootstrap'] === false) {
 			return false;
@@ -322,8 +314,7 @@ class Plugin
 	 * loading of routes files
 	 * @return bool
 	 */
-	public static function routes($plugin = null)
-	{
+	public static function routes($plugin = null) {
 		if ($plugin === null) {
 			foreach (static::loaded() as $p) {
 				static::routes($p);
@@ -348,8 +339,7 @@ class Plugin
 	 * @return mixed boolean true if $plugin is already loaded.
 	 *   If $plugin is null, returns a list of plugins that have been loaded
 	 */
-	public static function loaded($plugin = null)
-	{
+	public static function loaded($plugin = null) {
 		if ($plugin !== null) {
 			return isset(static::$_plugins[$plugin]);
 		}
@@ -364,8 +354,7 @@ class Plugin
 	 * @param string $plugin name of the plugin to forget
 	 * @return void
 	 */
-	public static function unload($plugin = null)
-	{
+	public static function unload($plugin = null) {
 		if ($plugin === null) {
 			static::$_plugins = [];
 		} else {
@@ -380,8 +369,7 @@ class Plugin
 	 * @param bool $ignoreMissing Whether to ignore include error for missing files
 	 * @return mixed
 	 */
-	protected static function _includeFile($file, $ignoreMissing = false)
-	{
+	protected static function _includeFile($file, $ignoreMissing = false) {
 		if ($ignoreMissing && !is_file($file)) {
 			return false;
 		}

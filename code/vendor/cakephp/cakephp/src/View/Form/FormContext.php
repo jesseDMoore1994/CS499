@@ -23,8 +23,7 @@ use Cake\Utility\Hash;
  * This context provider simply fulfils the interface requirements
  * that FormHelper has and allows access to the request data.
  */
-class FormContext implements ContextInterface
-{
+class FormContext implements ContextInterface {
 
 	/**
 	 * The request object.
@@ -39,8 +38,7 @@ class FormContext implements ContextInterface
 	 * @param \Cake\Network\Request $request The request object.
 	 * @param array $context Context info.
 	 */
-	public function __construct(Request $request, array $context)
-	{
+	public function __construct(Request $request, array $context) {
 		$this->_request = $request;
 		$context += [
 			'entity' => null,
@@ -51,40 +49,35 @@ class FormContext implements ContextInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function primaryKey()
-	{
+	public function primaryKey() {
 		return [];
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function isPrimaryKey($field)
-	{
+	public function isPrimaryKey($field) {
 		return false;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function isCreate()
-	{
+	public function isCreate() {
 		return true;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function val($field)
-	{
+	public function val($field) {
 		return $this->_request->data($field);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function isRequired($field)
-	{
+	public function isRequired($field) {
 		$validator = $this->_form->validator();
 		if (!$validator->hasField($field)) {
 			return false;
@@ -98,24 +91,21 @@ class FormContext implements ContextInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function fieldNames()
-	{
+	public function fieldNames() {
 		return $this->_form->schema()->fields();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function type($field)
-	{
+	public function type($field) {
 		return $this->_form->schema()->fieldType($field);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function attributes($field)
-	{
+	public function attributes($field) {
 		$column = (array)$this->_form->schema()->field($field);
 		$whitelist = ['length' => null, 'precision' => null];
 		return array_intersect_key($column, $whitelist);
@@ -124,8 +114,7 @@ class FormContext implements ContextInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function hasError($field)
-	{
+	public function hasError($field) {
 		$errors = $this->error($field);
 		return count($errors) > 0;
 	}
@@ -133,8 +122,7 @@ class FormContext implements ContextInterface
 	/**
 	 * {@inheritDoc}
 	 */
-	public function error($field)
-	{
+	public function error($field) {
 		return array_values(Hash::get($this->_form->errors(), $field, []));
 	}
 }

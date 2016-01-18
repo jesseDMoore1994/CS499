@@ -19,8 +19,7 @@ use Cake\View\Form\ContextInterface;
 /**
  * Interface for input widgets.
  */
-interface WidgetInterface
-{
+interface WidgetInterface {
 
 	/**
 	 * Converts the $data into one or many HTML elements.

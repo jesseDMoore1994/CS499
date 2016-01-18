@@ -20,8 +20,7 @@ use DebugKit\Model\Table\LazyTableTrait;
  * The panels table collects the information for each panel on
  * each request.
  */
-class PanelsTable extends Table
-{
+class PanelsTable extends Table {
 
 	use LazyTableTrait;
 
@@ -31,8 +30,7 @@ class PanelsTable extends Table
 	 * @param array $config Config data.
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 		$this->belongsTo('DebugKit.Requests');
 		$this->ensureTables(['DebugKit.Requests', 'DebugKit.Panels']);
 	}
@@ -45,8 +43,7 @@ class PanelsTable extends Table
 	 * @return Cake\ORM\Query The query.
 	 * @throws \RuntimeException
 	 */
-	public function findByRequest(Query $query, array $options)
-	{
+	public function findByRequest(Query $query, array $options) {
 		if (empty($options['requestId'])) {
 			throw new \RuntimeException('Missing request id in findByRequest.');
 		}
@@ -59,8 +56,7 @@ class PanelsTable extends Table
 	 *
 	 * @return string
 	 */
-	public static function defaultConnectionName()
-	{
+	public static function defaultConnectionName() {
 		return 'debug_kit';
 	}
 }

@@ -21,16 +21,14 @@ use Cake\Validation\ValidationRule;
  * ValidationRuleTest
  *
  */
-class ValidationRuleTest extends TestCase
-{
+class ValidationRuleTest extends TestCase {
 
 	/**
 	 * Auxiliary method to test custom validators
 	 *
 	 * @return bool
 	 */
-	public function willFail()
-	{
+	public function willFail() {
 		return false;
 	}
 
@@ -39,8 +37,7 @@ class ValidationRuleTest extends TestCase
 	 *
 	 * @return bool
 	 */
-	public function willPass()
-	{
+	public function willPass() {
 		return true;
 	}
 
@@ -49,8 +46,7 @@ class ValidationRuleTest extends TestCase
 	 *
 	 * @return string
 	 */
-	public function willFail3()
-	{
+	public function willFail3() {
 		return 'string';
 	}
 
@@ -59,8 +55,7 @@ class ValidationRuleTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomMethods()
-	{
+	public function testCustomMethods() {
 		$data = 'some data';
 		$providers = ['default' => $this];
 
@@ -83,8 +78,7 @@ class ValidationRuleTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomMethodNoProvider()
-	{
+	public function testCustomMethodNoProvider() {
 		$data = 'some data';
 		$context = ['field' => 'custom', 'newRecord' => true];
 		$providers = ['default' => ''];
@@ -102,8 +96,7 @@ class ValidationRuleTest extends TestCase
 	 * @expectedExceptionMessage Unable to call method "totallyMissing" in "default" provider for field "test"
 	 * @return void
 	 */
-	public function testCustomMethodMissingError()
-	{
+	public function testCustomMethodMissingError() {
 		$def = ['rule' => ['totallyMissing']];
 		$data = 'some data';
 		$providers = ['default' => $this];
@@ -117,8 +110,7 @@ class ValidationRuleTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSkip()
-	{
+	public function testSkip() {
 		$data = 'some data';
 		$providers = ['default' => $this];
 
@@ -146,8 +138,7 @@ class ValidationRuleTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCallableOn()
-	{
+	public function testCallableOn() {
 		$data = 'some data';
 		$providers = ['default' => $this];
 
@@ -177,8 +168,7 @@ class ValidationRuleTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGet()
-	{
+	public function testGet() {
 		$Rule = new ValidationRule(['rule' => 'willFail', 'message' => 'foo']);
 
 		$this->assertEquals('willFail', $Rule->get('rule'));

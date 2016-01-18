@@ -32,8 +32,7 @@ use Cake\View\View;
  * HtmlHelperTest class
  *
  */
-class HtmlHelperTest extends TestCase
-{
+class HtmlHelperTest extends TestCase {
 
 	/**
 	 * Regexp for CDATA start block
@@ -61,8 +60,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$controller = $this->getMock('Cake\Controller\Controller', ['redirect']);
 		$this->View = $this->getMock('Cake\View\View', ['append']);
@@ -81,8 +79,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Plugin::unload('TestTheme');
 		unset($this->Html, $this->View);
@@ -93,8 +90,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDocType()
-	{
+	public function testDocType() {
 		$result = $this->Html->docType();
 		$expected = '<!DOCTYPE html>';
 		$this->assertEquals($expected, $result);
@@ -111,8 +107,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLink()
-	{
+	public function testLink() {
 		Router::connect('/:controller/:action/*');
 
 		$this->Html->request->webroot = '';
@@ -315,8 +310,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImageTag()
-	{
+	public function testImageTag() {
 		Router::connect('/:controller', ['action' => 'index']);
 		Router::connect('/:controller/:action/*');
 
@@ -348,8 +342,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImageQueryString()
-	{
+	public function testImageQueryString() {
 		$result = $this->Html->image('test.gif?one=two&three=four');
 		$expected = ['img' => ['src' => 'img/test.gif?one=two&amp;three=four', 'alt' => '']];
 		$this->assertHtml($expected, $result);
@@ -369,8 +362,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImagePathPrefix()
-	{
+	public function testImagePathPrefix() {
 		$result = $this->Html->image('test.gif', ['pathPrefix' => '/my/custom/path/']);
 		$expected = ['img' => ['src' => '/my/custom/path/test.gif', 'alt' => '']];
 		$this->assertHtml($expected, $result);
@@ -396,8 +388,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImageWithFullBase()
-	{
+	public function testImageWithFullBase() {
 		$result = $this->Html->image('test.gif', ['fullBase' => true]);
 		$here = $this->Html->Url->build('/', true);
 		$expected = ['img' => ['src' => $here . 'img/test.gif', 'alt' => '']];
@@ -424,8 +415,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImageWithTimestampping()
-	{
+	public function testImageWithTimestampping() {
 		Configure::write('Asset.timestamp', 'force');
 
 		$this->Html->request->webroot = '/';
@@ -453,8 +443,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testImageTagWithTheme()
-	{
+	public function testImageTagWithTheme() {
 		$this->skipIf(!is_writable(WWW_ROOT), 'Cannot write to webroot.');
 
 		$testfile = WWW_ROOT . 'test_theme/img/__cake_test_image.gif';
@@ -489,8 +478,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testThemeAssetsInMainWebrootPath()
-	{
+	public function testThemeAssetsInMainWebrootPath() {
 		$webRoot = Configure::read('App.wwwRoot');
 		Configure::write('App.wwwRoot', TEST_APP . 'webroot/');
 
@@ -514,8 +502,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testStyle()
-	{
+	public function testStyle() {
 		$result = $this->Html->style(['display' => 'none', 'margin' => '10px']);
 		$expected = 'display:none; margin:10px;';
 		$this->assertRegExp('/^display\s*:\s*none\s*;\s*margin\s*:\s*10px\s*;?$/', $expected);
@@ -531,8 +518,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCssLink()
-	{
+	public function testCssLink() {
 		$result = $this->Html->css('screen');
 		$expected = [
 			'link' => ['rel' => 'stylesheet', 'href' => 'preg:/.*css\/screen\.css/']
@@ -608,8 +594,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCssLinkOnce()
-	{
+	public function testCssLinkOnce() {
 		$result = $this->Html->css('screen', ['once' => true]);
 		$expected = [
 			'link' => ['rel' => 'stylesheet', 'href' => 'preg:/.*css\/screen\.css/']
@@ -632,8 +617,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCssWithFullBase()
-	{
+	public function testCssWithFullBase() {
 		Configure::write('Asset.filter.css', false);
 		$here = $this->Html->Url->build('/', true);
 
@@ -649,8 +633,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginCssLink()
-	{
+	public function testPluginCssLink() {
 		Plugin::load('TestPlugin');
 
 		$result = $this->Html->css('TestPlugin.test_plugin_asset');
@@ -688,8 +671,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCssTimestamping()
-	{
+	public function testCssTimestamping() {
 		Configure::write('debug', true);
 		Configure::write('Asset.timestamp', true);
 
@@ -729,8 +711,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginCssTimestamping()
-	{
+	public function testPluginCssTimestamping() {
 		Plugin::load('TestPlugin');
 
 		Configure::write('debug', true);
@@ -774,8 +755,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBufferedCssAndScriptWithIdenticalResourceName()
-	{
+	public function testBufferedCssAndScriptWithIdenticalResourceName() {
 		$this->View->expects($this->at(0))
 			->method('append')
 			->with('css', $this->stringContains('test.min.css'));
@@ -791,8 +771,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScriptTimestamping()
-	{
+	public function testScriptTimestamping() {
 		$this->skipIf(!is_writable(WWW_ROOT . 'js'), 'webroot/js is not Writable, timestamp testing has been skipped.');
 		Configure::write('debug', true);
 		Configure::write('Asset.timestamp', true);
@@ -816,8 +795,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginScriptTimestamping()
-	{
+	public function testPluginScriptTimestamping() {
 		Plugin::load('TestPlugin');
 
 		$pluginPath = Plugin::path('TestPlugin');
@@ -849,8 +827,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScript()
-	{
+	public function testScript() {
 		$result = $this->Html->script('foo');
 		$expected = [
 			'script' => ['src' => 'js/foo.js']
@@ -945,8 +922,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPluginScript()
-	{
+	public function testPluginScript() {
 		Plugin::load('TestPlugin');
 
 		$result = $this->Html->script('TestPlugin.foo');
@@ -1011,8 +987,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScriptWithBlocks()
-	{
+	public function testScriptWithBlocks() {
 		$this->View->expects($this->at(0))
 			->method('append')
 			->with('script', $this->matchesRegularExpression('/script_in_head.js/'));
@@ -1033,8 +1008,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScriptWithFullBase()
-	{
+	public function testScriptWithFullBase() {
 		$here = $this->Html->Url->build('/', true);
 
 		$result = $this->Html->script('foo', ['fullBase' => true]);
@@ -1058,8 +1032,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScriptInTheme()
-	{
+	public function testScriptInTheme() {
 		$this->skipIf(!is_writable(WWW_ROOT), 'Cannot write to webroot.');
 
 		$testfile = WWW_ROOT . '/test_theme/js/__test_js.js';
@@ -1080,8 +1053,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScriptBlock()
-	{
+	public function testScriptBlock() {
 		$result = $this->Html->scriptBlock('window.foo = 2;');
 		$expected = [
 			'<script',
@@ -1148,8 +1120,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testScriptStartAndScriptEnd()
-	{
+	public function testScriptStartAndScriptEnd() {
 		$result = $this->Html->scriptStart(['safe' => true]);
 		$this->assertNull($result);
 		echo 'this is some javascript';
@@ -1205,8 +1176,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCharsetTag()
-	{
+	public function testCharsetTag() {
 		Configure::write('App.encoding', null);
 		$result = $this->Html->charset();
 		$expected = ['meta' => ['http-equiv' => 'Content-Type', 'content' => 'text/html; charset=utf-8']];
@@ -1227,8 +1197,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBreadcrumb()
-	{
+	public function testBreadcrumb() {
 		$this->assertNull($this->Html->getCrumbs());
 
 		$this->Html->addCrumb('First', '#first');
@@ -1315,8 +1284,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetCrumbFirstLink()
-	{
+	public function testGetCrumbFirstLink() {
 		$result = $this->Html->getCrumbList([], 'Home');
 		$expected = [
 			'<ul',
@@ -1352,8 +1320,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestedList()
-	{
+	public function testNestedList() {
 		$list = [
 			'Item 1',
 			'Item 2' => [
@@ -1566,8 +1533,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMeta()
-	{
+	public function testMeta() {
 		Router::connect('/:controller', ['action' => 'index']);
 
 		$result = $this->Html->meta('this is an rss feed', ['controller' => 'posts', '_ext' => 'rss']);
@@ -1634,8 +1600,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMetaIcon()
-	{
+	public function testMetaIcon() {
 		$result = $this->Html->meta('icon', 'favicon.ico');
 		$expected = [
 			'link' => ['href' => 'preg:/.*favicon\.ico/', 'type' => 'image/x-icon', 'rel' => 'icon'],
@@ -1682,8 +1647,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMetaIconWithTheme()
-	{
+	public function testMetaIconWithTheme() {
 		$this->Html->Url->theme = 'TestTheme';
 
 		$result = $this->Html->meta('icon', 'favicon.ico');
@@ -1714,8 +1678,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMetaWithBlocks()
-	{
+	public function testMetaWithBlocks() {
 		$this->View->expects($this->at(0))
 			->method('append')
 			->with('meta', $this->stringContains('robots'));
@@ -1736,8 +1699,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTableHeaders()
-	{
+	public function testTableHeaders() {
 		$result = $this->Html->tableHeaders(['ID', 'Name', 'Date']);
 		$expected = ['<tr', '<th', 'ID', '/th', '<th', 'Name', '/th', '<th', 'Date', '/th', '/tr'];
 		$this->assertHtml($expected, $result);
@@ -1760,8 +1722,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTableCells()
-	{
+	public function testTableCells() {
 		$tr = [
 			'td content 1',
 			['td content 2', ["width" => "100px"]],
@@ -1849,8 +1810,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTag()
-	{
+	public function testTag() {
 		$result = $this->Html->tag('div');
 		$this->assertHtml('<div', $result);
 
@@ -1876,8 +1836,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDiv()
-	{
+	public function testDiv() {
 		$result = $this->Html->div('class-name');
 		$expected = ['div' => ['class' => 'class-name']];
 		$this->assertHtml($expected, $result);
@@ -1896,8 +1855,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPara()
-	{
+	public function testPara() {
 		$result = $this->Html->para('class-name', '');
 		$expected = ['p' => ['class' => 'class-name']];
 		$this->assertHtml($expected, $result);
@@ -1916,8 +1874,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMedia()
-	{
+	public function testMedia() {
 		$result = $this->Html->media('video.webm');
 		$expected = ['video' => ['src' => 'files/video.webm'], '/video'];
 		$this->assertHtml($expected, $result);
@@ -1984,8 +1941,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCrumbList()
-	{
+	public function testCrumbList() {
 		$this->assertNull($this->Html->getCrumbList());
 
 		$this->Html->addCrumb('Home', '/', ['class' => 'home']);
@@ -2015,8 +1971,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCrumbListFirstLink()
-	{
+	public function testCrumbListFirstLink() {
 		$this->Html->addCrumb('First', '#first');
 		$this->Html->addCrumb('Second', '#second');
 
@@ -2058,8 +2013,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCrumbListBootstrapStyle()
-	{
+	public function testCrumbListBootstrapStyle() {
 		$this->Html->addCrumb('Home', '/', ['class' => 'home']);
 		$this->Html->addCrumb('Library', '/lib');
 		$this->Html->addCrumb('Data');
@@ -2090,8 +2044,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCrumbListZurbStyle()
-	{
+	public function testCrumbListZurbStyle() {
 		$this->Html->addCrumb('Home', '#');
 		$this->Html->addCrumb('Features', '#');
 		$this->Html->addCrumb('Gene Splicing', '#');
@@ -2123,8 +2076,7 @@ class HtmlHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCssAndScriptWithSameName()
-	{
+	public function testCssAndScriptWithSameName() {
 		$result = $this->Html->css('foo');
 		$expected = [
 			'link' => ['rel' => 'stylesheet', 'href' => 'preg:/.*css\/foo\.css/']

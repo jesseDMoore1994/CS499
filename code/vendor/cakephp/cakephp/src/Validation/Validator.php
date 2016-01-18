@@ -27,8 +27,7 @@ use IteratorAggregate;
  *
  * @link http://book.cakephp.org/3.0/en/core-libraries/validation.html
  */
-class Validator implements ArrayAccess, IteratorAggregate, Countable
-{
+class Validator implements ArrayAccess, IteratorAggregate, Countable {
 	/**
 	 * Used to flag nested rules created with addNested() and addNestedMany()
 	 *
@@ -78,8 +77,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * Constructor
 	 *
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		$this->_useI18n = function_exists('__d');
 	}
 
@@ -91,8 +89,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param bool $newRecord whether the data to be validated is new or to be updated.
 	 * @return array Array of invalid fields
 	 */
-	public function errors(array $data, $newRecord = true)
-	{
+	public function errors(array $data, $newRecord = true) {
 		$errors = [];
 
 		$requiredMessage = 'This field is required';
@@ -151,8 +148,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param \Cake\Validation\ValidationSet|null $set The set of rules for field
 	 * @return \Cake\Validation\ValidationSet
 	 */
-	public function field($name, ValidationSet $set = null)
-	{
+	public function field($name, ValidationSet $set = null) {
 		if (empty($this->_fields[$name])) {
 			$set = $set ?: new ValidationSet;
 			$this->_fields[$name] = $set;
@@ -166,8 +162,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string $name The field name to check.
 	 * @return bool
 	 */
-	public function hasField($name)
-	{
+	public function hasField($name) {
 		return isset($this->_fields[$name]);
 	}
 
@@ -184,8 +179,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param null|object|string $object Provider object or class name.
 	 * @return $this|object|string|null
 	 */
-	public function provider($name, $object = null)
-	{
+	public function provider($name, $object = null) {
 		if ($object === null) {
 			if (isset($this->_providers[$name])) {
 				return $this->_providers[$name];
@@ -204,8 +198,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 *
 	 * @return array
 	 */
-	public function providers()
-	{
+	public function providers() {
 		return array_keys($this->_providers);
 	}
 
@@ -215,8 +208,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string $field name of the field to check
 	 * @return bool
 	 */
-	public function offsetExists($field)
-	{
+	public function offsetExists($field) {
 		return isset($this->_fields[$field]);
 	}
 
@@ -226,8 +218,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string $field name of the field to check
 	 * @return \Cake\Validation\ValidationSet
 	 */
-	public function offsetGet($field)
-	{
+	public function offsetGet($field) {
 		return $this->field($field);
 	}
 
@@ -238,8 +229,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param array|\Cake\Validation\ValidationSet $rules set of rules to apply to field
 	 * @return void
 	 */
-	public function offsetSet($field, $rules)
-	{
+	public function offsetSet($field, $rules) {
 		if (!$rules instanceof ValidationSet) {
 			$set = new ValidationSet;
 			foreach ((array)$rules as $name => $rule) {
@@ -255,8 +245,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string $field name of the field to unset
 	 * @return void
 	 */
-	public function offsetUnset($field)
-	{
+	public function offsetUnset($field) {
 		unset($this->_fields[$field]);
 	}
 
@@ -265,8 +254,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 *
 	 * @return \ArrayIterator
 	 */
-	public function getIterator()
-	{
+	public function getIterator() {
 		return new ArrayIterator($this->_fields);
 	}
 
@@ -275,8 +263,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 *
 	 * @return int
 	 */
-	public function count()
-	{
+	public function count() {
 		return count($this->_fields);
 	}
 
@@ -303,8 +290,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param array|\Cake\Validation\ValidationRule $rule the rule to add
 	 * @return $this
 	 */
-	public function add($field, $name, $rule = [])
-	{
+	public function add($field, $name, $rule = []) {
 		$field = $this->field($field);
 
 		if (!is_array($name)) {
@@ -337,8 +323,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param \Cake\Validation\Validator $validator The nested validator.
 	 * @return $this
 	 */
-	public function addNested($field, Validator $validator)
-	{
+	public function addNested($field, Validator $validator) {
 		$field = $this->field($field);
 		$field->add(static::NESTED, ['rule' => function ($value, $context) use ($validator) {
 			if (!is_array($value)) {
@@ -370,8 +355,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param \Cake\Validation\Validator $validator The nested validator.
 	 * @return $this
 	 */
-	public function addNestedMany($field, Validator $validator)
-	{
+	public function addNestedMany($field, Validator $validator) {
 		$field = $this->field($field);
 		$field->add(static::NESTED, ['rule' => function ($value, $context) use ($validator) {
 			if (!is_array($value)) {
@@ -410,8 +394,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string|null $rule the name of the rule to be removed
 	 * @return $this
 	 */
-	public function remove($field, $rule = null)
-	{
+	public function remove($field, $rule = null) {
 		if ($rule === null) {
 			unset($this->_fields[$field]);
 		} else {
@@ -430,8 +413,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string|null $message The message to show if the field presence validation fails.
 	 * @return $this
 	 */
-	public function requirePresence($field, $mode = true, $message = null)
-	{
+	public function requirePresence($field, $mode = true, $message = null) {
 		$this->field($field)->isPresenceRequired($mode);
 		if ($message) {
 			$this->_presenceMessages[$field] = $message;
@@ -475,8 +457,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * the field will allowed to be empty only when the callback returns true.
 	 * @return $this
 	 */
-	public function allowEmpty($field, $when = true)
-	{
+	public function allowEmpty($field, $when = true) {
 		$this->field($field)->isEmptyAllowed($when);
 		return $this;
 	}
@@ -518,8 +499,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * the callback returns false.
 	 * @return $this
 	 */
-	public function notEmpty($field, $message = null, $when = false)
-	{
+	public function notEmpty($field, $message = null, $when = false) {
 		if ($when === 'create' || $when === 'update') {
 			$when = $when === 'create' ? 'update' : 'create';
 		} elseif (is_callable($when)) {
@@ -543,8 +523,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param bool $newRecord whether the data to be validated is new or to be updated.
 	 * @return bool
 	 */
-	public function isEmptyAllowed($field, $newRecord)
-	{
+	public function isEmptyAllowed($field, $newRecord) {
 		$providers = $this->_providers;
 		$data = [];
 		$context = compact('data', 'newRecord', 'field', 'providers');
@@ -559,8 +538,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param bool $newRecord Whether the data to be validated is new or to be updated.
 	 * @return bool
 	 */
-	public function isPresenceRequired($field, $newRecord)
-	{
+	public function isPresenceRequired($field, $newRecord) {
 		$providers = $this->_providers;
 		$data = [];
 		$context = compact('data', 'newRecord', 'field', 'providers');
@@ -575,8 +553,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param array $context A key value list of data containing the validation context.
 	 * @return bool
 	 */
-	protected function _checkPresence($field, $context)
-	{
+	protected function _checkPresence($field, $context) {
 		$required = $field->isPresenceRequired();
 
 		if (!is_string($required) && is_callable($required)) {
@@ -601,8 +578,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param array $context a key value list of data containing the validation context.
 	 * @return bool
 	 */
-	protected function _canBeEmpty($field, $context)
-	{
+	protected function _canBeEmpty($field, $context) {
 		$allowed = $field->isEmptyAllowed();
 
 		if (!is_string($allowed) && is_callable($allowed)) {
@@ -626,8 +602,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param mixed $data value to check against
 	 * @return bool
 	 */
-	protected function _fieldIsEmpty($data)
-	{
+	protected function _fieldIsEmpty($data) {
 		if (empty($data) && $data !== '0' && $data !== false && $data !== 0 && $data !== 0.0) {
 			return true;
 		}
@@ -652,8 +627,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 * @param bool $newRecord whether is it a new record or an existing one
 	 * @return array
 	 */
-	protected function _processRules($field, ValidationSet $rules, $data, $newRecord)
-	{
+	protected function _processRules($field, ValidationSet $rules, $data, $newRecord) {
 		$errors = [];
 		// Loading default provider in case there is none
 		$this->provider('default');
@@ -689,8 +663,7 @@ class Validator implements ArrayAccess, IteratorAggregate, Countable
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		$fields = [];
 		foreach ($this->_fields as $name => $fieldSet) {
 			$fields[$name] = [

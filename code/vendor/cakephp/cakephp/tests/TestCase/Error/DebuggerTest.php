@@ -25,15 +25,12 @@ use Cake\View\View;
  * DebuggerTestCaseDebugger class
  *
  */
-class DebuggerTestCaseDebugger extends Debugger
-{
+class DebuggerTestCaseDebugger extends Debugger {
 }
 
-class DebuggableThing
-{
+class DebuggableThing {
 
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		return ['foo' => 'bar', 'inner' => new self()];
 	}
 }
@@ -45,8 +42,7 @@ class DebuggableThing
  * !!! change line numbers which are used in the tests
  *
  */
-class DebuggerTest extends TestCase
-{
+class DebuggerTest extends TestCase {
 
 	protected $_restoreError = false;
 
@@ -55,8 +51,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('debug', true);
 		Log::drop('stderr');
@@ -68,8 +63,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		if ($this->_restoreError) {
 			restore_error_handler();
@@ -81,8 +75,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDocRef()
-	{
+	public function testDocRef() {
 		$this->skipIf(
 			defined('HHVM_VERSION'),
 			'HHVM does not output doc references'
@@ -98,8 +91,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExcerpt()
-	{
+	public function testExcerpt() {
 		$result = Debugger::excerpt(__FILE__, __LINE__ - 1, 2);
 		$this->assertTrue(is_array($result));
 		$this->assertCount(5, $result);
@@ -134,8 +126,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOutputAs()
-	{
+	public function testOutputAs() {
 		Debugger::outputAs('html');
 		$this->assertEquals('html', Debugger::outputAs());
 	}
@@ -146,8 +137,7 @@ class DebuggerTest extends TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @return void
 	 */
-	public function testOutputAsException()
-	{
+	public function testOutputAsException() {
 		Debugger::outputAs('Invalid junk');
 	}
 
@@ -156,8 +146,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddFormat()
-	{
+	public function testAddFormat() {
 		Debugger::addFormat('js', [
 			'traceLine' => '{:reference} - <a href="txmt://open?url=file://{:file}' .
 				'&line={:line}">{:path}</a>, line {:line}'
@@ -200,8 +189,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAddFormatCallback()
-	{
+	public function testAddFormatCallback() {
 		Debugger::addFormat('callback', ['callback' => [$this, 'customFormat']]);
 		Debugger::outputAs('callback');
 
@@ -225,8 +213,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function customFormat($error, $strings)
-	{
+	public function customFormat($error, $strings) {
 		echo $error['error'] . ': I eated an error ' . $error['file'];
 	}
 
@@ -235,8 +222,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTrimPath()
-	{
+	public function testTrimPath() {
 		$this->assertEquals('APP/', Debugger::trimPath(APP));
 		$this->assertEquals('CORE' . DS . 'src' . DS, Debugger::trimPath(CAKE));
 		$this->assertEquals('Some/Other/Path', Debugger::trimPath('Some/Other/Path'));
@@ -247,8 +233,7 @@ class DebuggerTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testExportVar()
-	{
+	public function testExportVar() {
 		$Controller = new Controller();
 		$Controller->helpers = ['Html', 'Form'];
 		$View = $Controller->createView();
@@ -359,8 +344,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testExportVarZero()
-	{
+	public function testExportVarZero() {
 		$data = [
 			'nothing' => '',
 			'null' => null,
@@ -386,8 +370,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testLog()
-	{
+	public function testLog() {
 		$mock = $this->getMock('Cake\Log\Engine\BaseLog', ['log']);
 		Log::config('test', ['engine' => $mock]);
 
@@ -418,8 +401,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testLogDepth()
-	{
+	public function testLogDepth() {
 		$mock = $this->getMock('Cake\Log\Engine\BaseLog', ['log']);
 		Log::config('test', ['engine' => $mock]);
 
@@ -442,8 +424,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testDump()
-	{
+	public function testDump() {
 		$var = ['People' => [
 			[
 				'name' => 'joeseph',
@@ -499,8 +480,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testGetInstance()
-	{
+	public function testGetInstance() {
 		$result = Debugger::getInstance();
 		$this->assertInstanceOf('Cake\Error\Debugger', $result);
 
@@ -519,8 +499,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testExportVarRecursion()
-	{
+	public function testExportVarRecursion() {
 		$output = Debugger::exportVar($GLOBALS);
 		$this->assertContains("'GLOBALS' => [recursion]", $output);
 	}
@@ -530,8 +509,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testTraceExclude()
-	{
+	public function testTraceExclude() {
 		$result = Debugger::trace();
 		$this->assertRegExp('/^Cake\\\Test\\\TestCase\\\Error\\\DebuggerTest::testTraceExclude/', $result);
 
@@ -546,8 +524,7 @@ TEXT;
 	 *
 	 * @return void
 	 */
-	public function testDebugInfo()
-	{
+	public function testDebugInfo() {
 		$object = new DebuggableThing();
 		$result = Debugger::exportVar($object, 2);
 		$expected = <<<eos

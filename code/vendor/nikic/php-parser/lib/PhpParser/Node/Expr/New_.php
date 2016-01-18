@@ -5,8 +5,7 @@ namespace PhpParser\Node\Expr;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
 
-class New_ extends Expr
-{
+class New_ extends Expr {
 	/** @var Node\Name|Expr|Node\Stmt\Class_ Class name */
 	public $class;
 	/** @var Node\Arg[] Arguments */
@@ -19,15 +18,13 @@ class New_ extends Expr
 	 * @param Node\Arg[] $args Arguments
 	 * @param array $attributes Additional attributes
 	 */
-	public function __construct($class, array $args = array(), array $attributes = array())
-	{
+	public function __construct($class, array $args = array(), array $attributes = array()) {
 		parent::__construct($attributes);
 		$this->class = $class;
 		$this->args = $args;
 	}
 
-	public function getSubNodeNames()
-	{
+	public function getSubNodeNames() {
 		return array('class', 'args');
 	}
 }

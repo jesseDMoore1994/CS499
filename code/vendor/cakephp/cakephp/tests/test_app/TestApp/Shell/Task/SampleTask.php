@@ -17,11 +17,9 @@ namespace TestApp\Shell\Task;
 
 use Cake\Console\Shell;
 
-class SampleTask extends Shell
-{
+class SampleTask extends Shell {
 
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser->addOption('sample', [
 			'short' => 's',

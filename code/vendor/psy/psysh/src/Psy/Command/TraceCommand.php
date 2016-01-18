@@ -20,13 +20,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Show the current stack trace.
  */
-class TraceCommand extends Command
-{
+class TraceCommand extends Command {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this
 			->setName('trace')
 			->setDefinition(array(
@@ -50,8 +48,7 @@ HELP
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$trace = $this->getBacktrace(new \Exception(), $input->getOption('num'), $input->getOption('include-psy'));
 		$output->page($trace, ShellOutput::NUMBER_LINES);
 	}
@@ -68,8 +65,7 @@ HELP
 	 *
 	 * @return array Formatted stacktrace lines.
 	 */
-	protected function getBacktrace(\Exception $e, $count = null, $includePsy = true)
-	{
+	protected function getBacktrace(\Exception $e, $count = null, $includePsy = true) {
 		if ($cwd = getcwd()) {
 			$cwd = rtrim($cwd, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 		}
@@ -126,8 +122,7 @@ HELP
 	 *
 	 * @return string
 	 */
-	private function replaceCwd($cwd, $file)
-	{
+	private function replaceCwd($cwd, $file) {
 		if ($cwd === false) {
 			return $file;
 		} else {

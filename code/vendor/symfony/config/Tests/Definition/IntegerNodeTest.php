@@ -13,13 +13,11 @@ namespace Symfony\Component\Config\Tests\Definition;
 
 use Symfony\Component\Config\Definition\IntegerNode;
 
-class IntegerNodeTest extends \PHPUnit_Framework_TestCase
-{
+class IntegerNodeTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider getValidValues
 	 */
-	public function testNormalize($value)
-	{
+	public function testNormalize($value) {
 		$node = new IntegerNode('test');
 		$this->assertSame($value, $node->normalize($value));
 	}
@@ -29,16 +27,14 @@ class IntegerNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @param int $value
 	 */
-	public function testValidNonEmptyValues($value)
-	{
+	public function testValidNonEmptyValues($value) {
 		$node = new IntegerNode('test');
 		$node->setAllowEmptyValue(false);
 
 		$this->assertSame($value, $node->finalize($value));
 	}
 
-	public function getValidValues()
-	{
+	public function getValidValues() {
 		return array(
 			array(1798),
 			array(-678),
@@ -50,14 +46,12 @@ class IntegerNodeTest extends \PHPUnit_Framework_TestCase
 	 * @dataProvider getInvalidValues
 	 * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
 	 */
-	public function testNormalizeThrowsExceptionOnInvalidValues($value)
-	{
+	public function testNormalizeThrowsExceptionOnInvalidValues($value) {
 		$node = new IntegerNode('test');
 		$node->normalize($value);
 	}
 
-	public function getInvalidValues()
-	{
+	public function getInvalidValues() {
 		return array(
 			array(null),
 			array(''),

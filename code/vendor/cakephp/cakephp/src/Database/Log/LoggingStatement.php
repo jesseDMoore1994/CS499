@@ -22,8 +22,7 @@ use Exception;
  *
  * @internal
  */
-class LoggingStatement extends StatementDecorator
-{
+class LoggingStatement extends StatementDecorator {
 
 	/**
 	 * Logger instance responsible for actually doing the logging task
@@ -47,8 +46,7 @@ class LoggingStatement extends StatementDecorator
 	 * @return bool True on success, false otherwise
 	 * @throws \Exception Re-throws any exception raised during query execution.
 	 */
-	public function execute($params = null)
-	{
+	public function execute($params = null) {
 		$t = microtime(true);
 		$query = new LoggedQuery();
 
@@ -75,8 +73,7 @@ class LoggingStatement extends StatementDecorator
 	 * @param float $startTime The microtime when the query was executed.
 	 * @return void
 	 */
-	protected function _log($query, $params, $startTime)
-	{
+	protected function _log($query, $params, $startTime) {
 		$query->took = round((microtime(true) - $startTime) * 1000, 0);
 		$query->params = $params ?: $this->_compiledParams;
 		$query->query = $this->queryString;
@@ -92,8 +89,7 @@ class LoggingStatement extends StatementDecorator
 	 * @param string|int|null $type PDO type or name of configured Type class
 	 * @return void
 	 */
-	public function bindValue($column, $value, $type = 'string')
-	{
+	public function bindValue($column, $value, $type = 'string') {
 		parent::bindValue($column, $value, $type);
 		if ($type === null) {
 			$type = 'string';
@@ -111,8 +107,7 @@ class LoggingStatement extends StatementDecorator
 	 * @param object|null $instance Logger object instance.
 	 * @return object Logger instance
 	 */
-	public function logger($instance = null)
-	{
+	public function logger($instance = null) {
 		if ($instance === null) {
 			return $this->_logger;
 		}

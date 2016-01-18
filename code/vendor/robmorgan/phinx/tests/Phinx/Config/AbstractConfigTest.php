@@ -8,8 +8,7 @@ namespace Test\Phinx\Config;
  * @group config
  * @coversNothing
  */
-abstract class AbstractConfigTest extends \PHPUnit_Framework_TestCase
-{
+abstract class AbstractConfigTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @var string
 	 */
@@ -20,8 +19,7 @@ abstract class AbstractConfigTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return array
 	 */
-	public function getConfigArray()
-	{
+	public function getConfigArray() {
 		return array(
 			'default' => array(
 				'paths' => array(
@@ -55,8 +53,7 @@ abstract class AbstractConfigTest extends \PHPUnit_Framework_TestCase
 	 * Generate dummy migration path
 	 * @return string
 	 */
-	protected function getMigrationPath()
-	{
+	protected function getMigrationPath() {
 		if (null === $this->migrationPath) {
 			$this->migrationPath = uniqid('phinx', true);
 		}

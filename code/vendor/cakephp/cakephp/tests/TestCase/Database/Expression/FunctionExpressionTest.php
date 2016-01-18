@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * Tests FunctionExpression class
  *
  */
-class FunctionExpressionTest extends TestCase
-{
+class FunctionExpressionTest extends TestCase {
 
 	/**
 	 * Tests generating a function with no arguments
 	 *
 	 * @return void
 	 */
-	public function testArityZero()
-	{
+	public function testArityZero() {
 		$f = new FunctionExpression('MyFunction');
 		$this->assertEquals('MyFunction()', $f->sql(new ValueBinder));
 	}
@@ -41,8 +39,7 @@ class FunctionExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testArityMultiplePlainValues()
-	{
+	public function testArityMultiplePlainValues() {
 		$f = new FunctionExpression('MyFunction', ['foo', 'bar']);
 		$binder = new ValueBinder;
 		$this->assertEquals("MyFunction(:c0, :c1)", $f->sql($binder));
@@ -61,8 +58,7 @@ class FunctionExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLiteralParams()
-	{
+	public function testLiteralParams() {
 		$binder = new ValueBinder;
 		$f = new FunctionExpression('MyFunction', ['foo' => 'literal', 'bar']);
 		$this->assertEquals("MyFunction(foo, :c0)", $f->sql($binder));
@@ -74,8 +70,7 @@ class FunctionExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFunctionNesting()
-	{
+	public function testFunctionNesting() {
 		$binder = new ValueBinder;
 		$f = new FunctionExpression('MyFunction', ['foo', 'bar']);
 		$g = new FunctionExpression('Wrapper', ['bar' => 'literal', $f]);
@@ -87,8 +82,7 @@ class FunctionExpressionTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNumericLiteral()
-	{
+	public function testNumericLiteral() {
 		$binder = new ValueBinder;
 		$f = new FunctionExpression('MyFunction', ['a_field' => 'literal', '32' => 'literal']);
 		$this->assertEquals('MyFunction(a_field, 32)', $f->sql($binder));

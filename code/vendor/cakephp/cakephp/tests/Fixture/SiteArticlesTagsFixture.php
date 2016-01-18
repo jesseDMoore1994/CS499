@@ -16,8 +16,7 @@ namespace Cake\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
 
-class SiteArticlesTagsFixture extends TestFixture
-{
+class SiteArticlesTagsFixture extends TestFixture {
 
 	/**
 	 * fields property

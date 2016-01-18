@@ -22,8 +22,7 @@ use Cake\TestSuite\Fixture\TestFixture;
  * Generates a tree of data for use testing the tree behavior
  *
  */
-class MenuLinkTreesFixture extends TestFixture
-{
+class MenuLinkTreesFixture extends TestFixture {
 
 	/**
 	 * fields property

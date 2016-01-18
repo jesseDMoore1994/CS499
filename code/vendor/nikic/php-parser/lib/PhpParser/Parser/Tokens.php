@@ -3,8 +3,7 @@
 namespace PhpParser\Parser;
 
 /* GENERATED file based on grammar/tokens.y */
-final class Tokens
-{
+final class Tokens {
 	const YYERRTOK = 256;
 	const T_INCLUDE = 257;
 	const T_INCLUDE_ONCE = 258;

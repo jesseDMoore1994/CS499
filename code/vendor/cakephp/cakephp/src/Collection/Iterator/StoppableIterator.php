@@ -24,8 +24,7 @@ use Cake\Collection\Collection;
  * @internal
  * @see Collection::stopWhen()
  */
-class StoppableIterator extends Collection
-{
+class StoppableIterator extends Collection {
 
 	/**
 	 * The condition to evaluate for each item of the collection
@@ -53,8 +52,7 @@ class StoppableIterator extends Collection
 	 * the collection, if the result evaluates to false, no more items will be
 	 * yielded from this iterator.
 	 */
-	public function __construct($items, callable $condition)
-	{
+	public function __construct($items, callable $condition) {
 		$this->_condition = $condition;
 		parent::__construct($items);
 		$this->_innerIterator = $this->getInnerIterator();
@@ -66,8 +64,7 @@ class StoppableIterator extends Collection
 	 *
 	 * @return bool
 	 */
-	public function valid()
-	{
+	public function valid() {
 		if (!parent::valid()) {
 			return false;
 		}

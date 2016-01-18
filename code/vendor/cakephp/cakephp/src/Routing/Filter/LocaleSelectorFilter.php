@@ -24,8 +24,7 @@ use Locale;
  * Accept-Language header. The default will only be set if it
  * matches the list of passed valid locales.
  */
-class LocaleSelectorFilter extends DispatcherFilter
-{
+class LocaleSelectorFilter extends DispatcherFilter {
 
 	/**
 	 * List of valid locales for the request
@@ -40,8 +39,7 @@ class LocaleSelectorFilter extends DispatcherFilter
 	 * @param array $config Settings for the filter.
 	 * @throws \Cake\Core\Exception\Exception When 'when' conditions are not callable.
 	 */
-	public function __construct($config = [])
-	{
+	public function __construct($config = []) {
 		parent::__construct($config);
 		if (!empty($config['locales'])) {
 			$this->_locales = $config['locales'];
@@ -56,8 +54,7 @@ class LocaleSelectorFilter extends DispatcherFilter
 	 * @param \Cake\Event\Event $event The event instance.
 	 * @return void
 	 */
-	public function beforeDispatch(Event $event)
-	{
+	public function beforeDispatch(Event $event) {
 		$request = $event->data['request'];
 		$locale = Locale::acceptFromHttp($request->header('Accept-Language'));
 

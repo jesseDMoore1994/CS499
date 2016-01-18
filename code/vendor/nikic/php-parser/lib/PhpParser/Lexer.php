@@ -4,8 +4,7 @@ namespace PhpParser;
 
 use PhpParser\Parser\Tokens;
 
-class Lexer
-{
+class Lexer {
 	protected $code;
 	protected $tokens;
 	protected $pos;
@@ -26,8 +25,7 @@ class Lexer
 	 *                       'startFilePos', 'endFilePos'. The option defaults to the first three.
 	 *                       For more info see getNextToken() docs.
 	 */
-	public function __construct(array $options = array())
-	{
+	public function __construct(array $options = array()) {
 		// map from internal tokens to PhpParser tokens
 		$this->tokenMap = $this->createTokenMap();
 
@@ -50,8 +48,7 @@ class Lexer
 	 *
 	 * @throws Error on lexing errors (unterminated comment or unexpected character)
 	 */
-	public function startLexing($code)
-	{
+	public function startLexing($code) {
 		$scream = ini_set('xdebug.scream', '0');
 
 		$this->resetErrors();
@@ -68,8 +65,7 @@ class Lexer
 		$this->filePos = 0;
 	}
 
-	protected function resetErrors()
-	{
+	protected function resetErrors() {
 		if (function_exists('error_clear_last')) {
 			error_clear_last();
 		} else {
@@ -82,8 +78,7 @@ class Lexer
 		}
 	}
 
-	protected function handleErrors()
-	{
+	protected function handleErrors() {
 		$error = error_get_last();
 		if (null === $error) {
 			return;
@@ -134,8 +129,7 @@ class Lexer
 	 *
 	 * @return int Token id
 	 */
-	public function getNextToken(&$value = null, &$startAttributes = null, &$endAttributes = null)
-	{
+	public function getNextToken(&$value = null, &$startAttributes = null, &$endAttributes = null) {
 		$startAttributes = array();
 		$endAttributes = array();
 
@@ -226,8 +220,7 @@ class Lexer
 	 *
 	 * @return array Array of tokens in token_get_all() format
 	 */
-	public function getTokens()
-	{
+	public function getTokens() {
 		return $this->tokens;
 	}
 
@@ -236,8 +229,7 @@ class Lexer
 	 *
 	 * @return string Remaining text
 	 */
-	public function handleHaltCompiler()
-	{
+	public function handleHaltCompiler() {
 		// text after T_HALT_COMPILER, still including ();
 		$textAfter = substr($this->code, $this->filePos);
 
@@ -264,8 +256,7 @@ class Lexer
 	 *
 	 * @return array The token map
 	 */
-	protected function createTokenMap()
-	{
+	protected function createTokenMap() {
 		$tokenMap = array();
 
 		// 256 is the minimum possible token number, as everything below

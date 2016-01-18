@@ -4,8 +4,7 @@ namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
 
-class Catch_ extends Node\Stmt
-{
+class Catch_ extends Node\Stmt {
 	/** @var Node\Name Class of exception */
 	public $type;
 	/** @var string Variable for exception */
@@ -21,16 +20,14 @@ class Catch_ extends Node\Stmt
 	 * @param Node[] $stmts Statements
 	 * @param array $attributes Additional attributes
 	 */
-	public function __construct(Node\Name $type, $var, array $stmts = array(), array $attributes = array())
-	{
+	public function __construct(Node\Name $type, $var, array $stmts = array(), array $attributes = array()) {
 		parent::__construct($attributes);
 		$this->type = $type;
 		$this->var = $var;
 		$this->stmts = $stmts;
 	}
 
-	public function getSubNodeNames()
-	{
+	public function getSubNodeNames() {
 		return array('type', 'var', 'stmts');
 	}
 }

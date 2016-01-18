@@ -4,10 +4,8 @@ namespace PhpParser\Node\Stmt;
 
 use PhpParser\Node;
 
-class InterfaceTest extends \PHPUnit_Framework_TestCase
-{
-	public function testGetMethods()
-	{
+class InterfaceTest extends \PHPUnit_Framework_TestCase {
+	public function testGetMethods() {
 		$methods = array(
 			new ClassMethod('foo'),
 			new ClassMethod('bar'),

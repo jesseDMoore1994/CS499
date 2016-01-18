@@ -56,8 +56,7 @@ use Cake\Log\LogTrait;
  * @link http://book.cakephp.org/3.0/en/controllers/components.html
  * @see Controller::$components
  */
-class Component implements EventListenerInterface
-{
+class Component implements EventListenerInterface {
 
 	use InstanceConfigTrait;
 	use LogTrait;
@@ -112,8 +111,7 @@ class Component implements EventListenerInterface
 	 * @param ComponentRegistry $registry A ComponentRegistry this component can use to lazy load its components
 	 * @param array $config Array of configuration settings.
 	 */
-	public function __construct(ComponentRegistry $registry, array $config = [])
-	{
+	public function __construct(ComponentRegistry $registry, array $config = []) {
 		$this->_registry = $registry;
 		$controller = $registry->getController();
 		if ($controller) {
@@ -138,8 +136,7 @@ class Component implements EventListenerInterface
 	 * @param array $config The configuration settings provided to this component.
 	 * @return void
 	 */
-	public function initialize(array $config)
-	{
+	public function initialize(array $config) {
 	}
 
 	/**
@@ -148,8 +145,7 @@ class Component implements EventListenerInterface
 	 * @param string $name Name of component to get.
 	 * @return mixed A Component object or null.
 	 */
-	public function __get($name)
-	{
+	public function __get($name) {
 		if (isset($this->_componentMap[$name]) && !isset($this->{$name})) {
 			$config = ['enabled' => false] + (array)$this->_componentMap[$name]['config'];
 			$this->{$name} = $this->_registry->load($this->_componentMap[$name]['class'], $config);
@@ -171,8 +167,7 @@ class Component implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		$eventMap = [
 			'Controller.initialize' => 'beforeFilter',
 			'Controller.startup' => 'startup',
@@ -195,8 +190,7 @@ class Component implements EventListenerInterface
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		return [
 			'components' => $this->components,
 			'implementedEvents' => $this->implementedEvents(),

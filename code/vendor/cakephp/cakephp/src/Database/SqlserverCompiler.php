@@ -20,8 +20,7 @@ namespace Cake\Database;
  *
  * @internal
  */
-class SqlserverCompiler extends QueryCompiler
-{
+class SqlserverCompiler extends QueryCompiler {
 	/**
 	 * SQLserver does not support ORDER BY in UNION queries.
 	 *
@@ -63,8 +62,7 @@ class SqlserverCompiler extends QueryCompiler
 	 * @param \Cake\Database\ValueBinder $generator the placeholder generator to be used in expressions
 	 * @return string
 	 */
-	protected function _buildInsertPart($parts, $query, $generator)
-	{
+	protected function _buildInsertPart($parts, $query, $generator) {
 		$table = $parts[0];
 		$columns = $this->_stringifyExpressions($parts[1], $generator);
 		return sprintf('INSERT INTO %s (%s) OUTPUT INSERTED.*', $table, implode(', ', $columns));
@@ -77,8 +75,7 @@ class SqlserverCompiler extends QueryCompiler
 	 * @param \Cake\Database\Query $query The query that is being compiled
 	 * @return string
 	 */
-	protected function _buildLimitPart($limit, $query)
-	{
+	protected function _buildLimitPart($limit, $query) {
 		if ($limit === null || $query->clause('offset') === null) {
 			return '';
 		}

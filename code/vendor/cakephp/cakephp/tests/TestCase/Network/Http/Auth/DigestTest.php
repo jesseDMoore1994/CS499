@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
 /**
  * Digest authentication test
  */
-class DigestTest extends TestCase
-{
+class DigestTest extends TestCase {
 
 	/**
 	 * Setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->client = $this->getMock(
@@ -45,8 +43,7 @@ class DigestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRealmAndNonceFromExtraRequest()
-	{
+	public function testRealmAndNonceFromExtraRequest() {
 		$headers = [
 			'WWW-Authenticate: Digest realm="The batcave",nonce="4cded326c6c51"'
 		];
@@ -77,8 +74,7 @@ class DigestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testQop()
-	{
+	public function testQop() {
 		$headers = [
 			'WWW-Authenticate: Digest realm="The batcave",nonce="4cded326c6c51",qop="auth"'
 		];
@@ -105,8 +101,7 @@ class DigestTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOpaque()
-	{
+	public function testOpaque() {
 		$headers = [
 			'WWW-Authenticate: Digest realm="The batcave",nonce="4cded326c6c51",opaque="d8ea7aa61a1693024c4cc3a516f49b3c"'
 		];

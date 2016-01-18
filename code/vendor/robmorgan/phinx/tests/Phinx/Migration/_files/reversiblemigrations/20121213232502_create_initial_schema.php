@@ -2,13 +2,11 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateInitialSchema extends AbstractMigration
-{
+class CreateInitialSchema extends AbstractMigration {
 	/**
 	 * Change.
 	 */
-	public function change()
-	{
+	public function change() {
 		// users table
 		$users = $this->table('users');
 		$users->addColumn('username', 'string', array('limit' => 20))
@@ -37,16 +35,14 @@ class CreateInitialSchema extends AbstractMigration
 	/**
 	 * Migrate Up.
 	 */
-	public function up()
-	{
+	public function up() {
 
 	}
 
 	/**
 	 * Migrate Down.
 	 */
-	public function down()
-	{
+	public function down() {
 
 	}
 }

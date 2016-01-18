@@ -27,16 +27,14 @@ use Cake\View\View;
  * FlashHelperTest class
  *
  */
-class FlashHelperTest extends TestCase
-{
+class FlashHelperTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->View = new View();
 		$session = new Session();
@@ -104,8 +102,7 @@ class FlashHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->View, $this->Flash);
 	}
@@ -115,8 +112,7 @@ class FlashHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFlash()
-	{
+	public function testFlash() {
 		$result = $this->Flash->render();
 		$expected = '<div class="message">This is a calling</div>';
 		$this->assertContains($expected, $result);
@@ -142,8 +138,7 @@ class FlashHelperTest extends TestCase
 	 *
 	 * @expectedException \UnexpectedValueException
 	 */
-	public function testFlashThrowsException()
-	{
+	public function testFlashThrowsException() {
 		$this->View->request->session()->write('Flash.foo', 'bar');
 		$this->Flash->render('foo');
 	}
@@ -153,8 +148,7 @@ class FlashHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFlashElementInAttrs()
-	{
+	public function testFlashElementInAttrs() {
 		$result = $this->Flash->render('notification', [
 			'element' => 'flash_helper',
 			'params' => ['title' => 'Notice!', 'name' => 'Alert!']
@@ -175,8 +169,7 @@ class FlashHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFlashWithPluginElement()
-	{
+	public function testFlashWithPluginElement() {
 		Plugin::load('TestPlugin');
 
 		$result = $this->Flash->render('flash', ['element' => 'TestPlugin.Flash/plugin_element']);
@@ -189,8 +182,7 @@ class FlashHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFlashWithTheme()
-	{
+	public function testFlashWithTheme() {
 		Plugin::load('TestTheme');
 
 		$this->View->theme = 'TestTheme';
@@ -205,8 +197,7 @@ class FlashHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFlashWithStack()
-	{
+	public function testFlashWithStack() {
 		$result = $this->Flash->render('stack');
 		$expected = [
 			['div' => ['class' => 'message']], 'This is a calling', '/div',
@@ -227,8 +218,7 @@ class FlashHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFlashWithPrefix()
-	{
+	public function testFlashWithPrefix() {
 		$this->View->request->params['prefix'] = 'Admin';
 		$result = $this->Flash->render('flash');
 		$expected = 'flash element from Admin prefix folder';

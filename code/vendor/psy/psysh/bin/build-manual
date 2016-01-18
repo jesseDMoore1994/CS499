@@ -19,8 +19,7 @@ if (count($argv) !== 3 || !is_dir($argv[1])) {
 	exit(1);
 }
 
-function htmlwrap($text, $width = null)
-{
+function htmlwrap($text, $width = null) {
 	if ($width === null) {
 		$width = WRAP_WIDTH;
 	}
@@ -79,8 +78,7 @@ function htmlwrap($text, $width = null)
 	return implode("\n", $return);
 }
 
-function extract_paragraphs($element)
-{
+function extract_paragraphs($element) {
 	$paragraphs = array();
 	foreach ($element->getElementsByTagName('para') as $p) {
 		$text = '';
@@ -106,8 +104,7 @@ function extract_paragraphs($element)
 	return implode("\n\n", $paragraphs);
 }
 
-function format_doc($doc)
-{
+function format_doc($doc) {
 	$chunks = array();
 
 	if (!empty($doc['description'])) {
@@ -160,8 +157,7 @@ function format_doc($doc)
 	return implode("\n", $chunks);
 }
 
-function thunk_tags($text)
-{
+function thunk_tags($text) {
 	$tagMap = array(
 		'parameter>' => 'strong>',
 		'function>' => 'strong>',
@@ -180,13 +176,11 @@ function thunk_tags($text)
 	return strtr(strip_tags(strtr($text, $tagMap), '<strong><return><info>'), $andBack);
 }
 
-function indent_text($text, $indent = '  ', $leading = true)
-{
+function indent_text($text, $indent = '  ', $leading = true) {
 	return ($leading ? $indent : '') . str_replace("\n", "\n" . $indent, $text);
 }
 
-function find_type($xml, $paramName)
-{
+function find_type($xml, $paramName) {
 	foreach ($xml->getElementsByTagName('methodparam') as $param) {
 		if ($type = $param->getElementsByTagName('type')->item(0)) {
 			if ($parameter = $param->getElementsByTagName('parameter')->item(0)) {

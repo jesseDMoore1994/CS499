@@ -39,8 +39,7 @@ use Phinx\Migration\MigrationInterface;
  *
  * @author Rob Morgan <robbym@gmail.com>
  */
-abstract class PdoAdapter implements AdapterInterface
-{
+abstract class PdoAdapter implements AdapterInterface {
 	/**
 	 * @var array
 	 */
@@ -72,8 +71,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 * @param array $options Options
 	 * @param OutputInterface $output Output Interface
 	 */
-	public function __construct(array $options, OutputInterface $output = null)
-	{
+	public function __construct(array $options, OutputInterface $output = null) {
 		$this->setOptions($options);
 		if (null !== $output) {
 			$this->setOutput($output);
@@ -83,8 +81,7 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setOptions(array $options)
-	{
+	public function setOptions(array $options) {
 		$this->options = $options;
 
 		if (isset($options['default_migration_table'])) {
@@ -101,24 +98,21 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getOptions()
-	{
+	public function getOptions() {
 		return $this->options;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasOption($name)
-	{
+	public function hasOption($name) {
 		return isset($this->options[$name]);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getOption($name)
-	{
+	public function getOption($name) {
 		if (!$this->hasOption($name)) {
 			return null;
 		}
@@ -128,8 +122,7 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setOutput(OutputInterface $output)
-	{
+	public function setOutput(OutputInterface $output) {
 		$this->output = $output;
 		return $this;
 	}
@@ -137,8 +130,7 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getOutput()
-	{
+	public function getOutput() {
 		if (null === $this->output) {
 			$output = new NullOutput();
 			$this->setOutput($output);
@@ -152,8 +144,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 * @param string $schemaTableName Schema Table Name
 	 * @return PdoAdapter
 	 */
-	public function setSchemaTableName($schemaTableName)
-	{
+	public function setSchemaTableName($schemaTableName) {
 		$this->schemaTableName = $schemaTableName;
 		return $this;
 	}
@@ -163,8 +154,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 *
 	 * @return string
 	 */
-	public function getSchemaTableName()
-	{
+	public function getSchemaTableName() {
 		return $this->schemaTableName;
 	}
 
@@ -174,8 +164,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 * @param \PDO $connection Connection
 	 * @return AdapterInterface
 	 */
-	public function setConnection(\PDO $connection)
-	{
+	public function setConnection(\PDO $connection) {
 		$this->connection = $connection;
 
 		// Create the schema table if it doesn't already exist
@@ -191,8 +180,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 *
 	 * @return \PDO
 	 */
-	public function getConnection()
-	{
+	public function getConnection() {
 		if (null === $this->connection) {
 			$this->connect();
 		}
@@ -205,8 +193,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 * @param int $time
 	 * @return AdapterInterface
 	 */
-	public function setCommandStartTime($time)
-	{
+	public function setCommandStartTime($time) {
 		$this->commandStartTime = $time;
 		return $this;
 	}
@@ -216,8 +203,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 *
 	 * @return int
 	 */
-	public function getCommandStartTime()
-	{
+	public function getCommandStartTime() {
 		return $this->commandStartTime;
 	}
 
@@ -226,8 +212,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 *
 	 * @return void
 	 */
-	public function startCommandTimer()
-	{
+	public function startCommandTimer() {
 		$this->setCommandStartTime(microtime(true));
 	}
 
@@ -237,8 +222,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 *
 	 * @return void
 	 */
-	public function endCommandTimer()
-	{
+	public function endCommandTimer() {
 		$end = microtime(true);
 		if (OutputInterface::VERBOSITY_VERBOSE === $this->getOutput()->getVerbosity()) {
 			$this->getOutput()->writeln('    -> ' . sprintf('%.4fs', $end - $this->getCommandStartTime()));
@@ -252,8 +236,7 @@ abstract class PdoAdapter implements AdapterInterface
 	 * @param array $args Command Args
 	 * @return void
 	 */
-	public function writeCommand($command, $args = array())
-	{
+	public function writeCommand($command, $args = array()) {
 		if (OutputInterface::VERBOSITY_VERBOSE === $this->getOutput()->getVerbosity()) {
 			if (count($args)) {
 				$outArr = array();
@@ -278,38 +261,33 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function connect()
-	{
+	public function connect() {
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function disconnect()
-	{
+	public function disconnect() {
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function execute($sql)
-	{
+	public function execute($sql) {
 		return $this->getConnection()->exec($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function query($sql)
-	{
+	public function query($sql) {
 		return $this->getConnection()->query($sql);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function fetchRow($sql)
-	{
+	public function fetchRow($sql) {
 		$result = $this->query($sql);
 		return $result->fetch();
 	}
@@ -317,8 +295,7 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function fetchAll($sql)
-	{
+	public function fetchAll($sql) {
 		$rows = array();
 		$result = $this->query($sql);
 		while ($row = $result->fetch()) {
@@ -330,8 +307,7 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function insert(Table $table, $row)
-	{
+	public function insert(Table $table, $row) {
 		$this->startCommandTimer();
 		$this->writeCommand('insert', array($table->getName()));
 
@@ -352,8 +328,7 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getVersions()
-	{
+	public function getVersions() {
 		$rows = $this->fetchAll(sprintf('SELECT * FROM %s ORDER BY version ASC', $this->getSchemaTableName()));
 		return array_map(
 			function ($v) {
@@ -366,8 +341,7 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function migrated(MigrationInterface $migration, $direction, $startTime, $endTime)
-	{
+	public function migrated(MigrationInterface $migration, $direction, $startTime, $endTime) {
 		if (strcasecmp($direction, MigrationInterface::UP) === 0) {
 			// up
 			$sql = sprintf(
@@ -402,16 +376,14 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasSchemaTable()
-	{
+	public function hasSchemaTable() {
 		return $this->hasTable($this->getSchemaTableName());
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function createSchemaTable()
-	{
+	public function createSchemaTable() {
 		try {
 			$options = array(
 				'id' => false,
@@ -441,16 +413,14 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getAdapterType()
-	{
+	public function getAdapterType() {
 		return $this->getOption('adapter');
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getColumnTypes()
-	{
+	public function getColumnTypes() {
 		return array(
 			'string',
 			'char',
@@ -478,8 +448,7 @@ abstract class PdoAdapter implements AdapterInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function isValidColumnType(Column $column)
-	{
+	public function isValidColumnType(Column $column) {
 		return in_array($column->getType(), $this->getColumnTypes());
 	}
 }

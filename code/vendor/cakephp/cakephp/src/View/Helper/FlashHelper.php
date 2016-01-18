@@ -23,8 +23,7 @@ use UnexpectedValueException;
  * After setting messages in your controllers with FlashComponent, you can use
  * this class to output your flash messages in your views.
  */
-class FlashHelper extends Helper
-{
+class FlashHelper extends Helper {
 
 	/**
 	 * Used to render the message set in FlashComponent::set()
@@ -68,8 +67,7 @@ class FlashHelper extends Helper
 	 *   in session.
 	 * @throws \UnexpectedValueException If value for flash settings key is not an array.
 	 */
-	public function render($key = 'flash', array $options = [])
-	{
+	public function render($key = 'flash', array $options = []) {
 		if (!$this->request->session()->check("Flash.$key")) {
 			return null;
 		}
@@ -97,8 +95,7 @@ class FlashHelper extends Helper
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 }

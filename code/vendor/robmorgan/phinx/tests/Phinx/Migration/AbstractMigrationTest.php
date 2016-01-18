@@ -5,24 +5,20 @@ namespace Test\Phinx\Migration;
 use Phinx\Db\Table;
 use Phinx\Db\Adapter\AdapterInterface;
 
-class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
-{
-	public function testUp()
-	{
+class AbstractMigrationTest extends \PHPUnit_Framework_TestCase {
+	public function testUp() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 		$this->assertNull($migrationStub->up());
 	}
 
-	public function testDown()
-	{
+	public function testDown() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 		$this->assertNull($migrationStub->down());
 	}
 
-	public function testAdapterMethods()
-	{
+	public function testAdapterMethods() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -35,8 +31,7 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($migrationStub->getAdapter() instanceof AdapterInterface);
 	}
 
-	public function testSetOutputMethods()
-	{
+	public function testSetOutputMethods() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -49,22 +44,19 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$this->assertInstanceOf('\Symfony\Component\Console\Output\OutputInterface', $migrationStub->getOutput());
 	}
 
-	public function testGetName()
-	{
+	public function testGetName() {
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 		$this->assertFalse(!(strpos($migrationStub->getName(), 'AbstractMigration')));
 	}
 
-	public function testVersionMethods()
-	{
+	public function testVersionMethods() {
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(20120103080000));
 		$this->assertEquals(20120103080000, $migrationStub->getVersion());
 		$migrationStub->setVersion(20120915093312);
 		$this->assertEquals(20120915093312, $migrationStub->getVersion());
 	}
 
-	public function testExecute()
-	{
+	public function testExecute() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -78,8 +70,7 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(2, $migrationStub->execute('SELECT FOO FROM BAR'));
 	}
 
-	public function testQuery()
-	{
+	public function testQuery() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -93,8 +84,7 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array(array('0' => 'bar', 'foo' => 'bar')), $migrationStub->query('SELECT FOO FROM BAR'));
 	}
 
-	public function testFetchRow()
-	{
+	public function testFetchRow() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -108,8 +98,7 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('0' => 'bar', 'foo' => 'bar'), $migrationStub->fetchRow('SELECT FOO FROM BAR'));
 	}
 
-	public function testFetchAll()
-	{
+	public function testFetchAll() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -123,8 +112,7 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array(array('0' => 'bar', 'foo' => 'bar')), $migrationStub->fetchAll('SELECT FOO FROM BAR'));
 	}
 
-	public function testCreateDatabase()
-	{
+	public function testCreateDatabase() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -138,8 +126,7 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$migrationStub->createDatabase('testdb', array());
 	}
 
-	public function testDropDatabase()
-	{
+	public function testDropDatabase() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -153,8 +140,7 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$migrationStub->dropDatabase('testdb');
 	}
 
-	public function testHasTable()
-	{
+	public function testHasTable() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -168,8 +154,7 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($migrationStub->hasTable('test_table'));
 	}
 
-	public function testTableMethod()
-	{
+	public function testTableMethod() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 
@@ -180,8 +165,7 @@ class AbstractMigrationTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue($migrationStub->table('test_table') instanceof Table);
 	}
 
-	public function testDropTableMethod()
-	{
+	public function testDropTableMethod() {
 		// stub migration
 		$migrationStub = $this->getMockForAbstractClass('\Phinx\Migration\AbstractMigration', array(0));
 

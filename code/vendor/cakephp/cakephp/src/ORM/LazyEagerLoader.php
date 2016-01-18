@@ -24,8 +24,7 @@ use Cake\Datasource\EntityInterface;
  *
  * @internal
  */
-class LazyEagerLoader
-{
+class LazyEagerLoader {
 
 	/**
 	 * Loads the specified associations in the passed entity or list of entities
@@ -40,8 +39,7 @@ class LazyEagerLoader
 	 * @param \Cake\ORM\Table $source The table to use for fetching the top level entities
 	 * @return \Cake\Datasource\EntityInterface|array
 	 */
-	public function loadInto($entities, array $contain, Table $source)
-	{
+	public function loadInto($entities, array $contain, Table $source) {
 		$returnSingle = false;
 
 		if ($entities instanceof EntityInterface) {
@@ -66,8 +64,7 @@ class LazyEagerLoader
 	 * @param \Cake\ORM\Table $source The table to use for fetching the top level entities
 	 * @return \Cake\ORM\Query
 	 */
-	protected function _getQuery($objects, $contain, $source)
-	{
+	protected function _getQuery($objects, $contain, $source) {
 		$primaryKey = $source->primaryKey();
 		$method = is_string($primaryKey) ? 'get' : 'extract';
 
@@ -111,8 +108,7 @@ class LazyEagerLoader
 	 * @param array $associations The name of the top level associations
 	 * @return array
 	 */
-	protected function _getPropertyMap($source, $associations)
-	{
+	protected function _getPropertyMap($source, $associations) {
 		$map = [];
 		$container = $source->associations();
 		foreach ($associations as $assoc) {
@@ -131,8 +127,7 @@ class LazyEagerLoader
 	 * @param \Cake\ORM\Table $source The table where the entities came from
 	 * @return array
 	 */
-	protected function _injectResults($objects, $results, $associations, $source)
-	{
+	protected function _injectResults($objects, $results, $associations, $source) {
 		$injected = [];
 		$properties = $this->_getPropertyMap($source, $associations);
 		$primaryKey = (array)$source->primaryKey();

@@ -29,8 +29,7 @@ use Cake\TestSuite\TestCase;
 /**
  * Tests Query class
  */
-class QueryTest extends TestCase
-{
+class QueryTest extends TestCase {
 
 	/**
 	 * Fixture to be used
@@ -51,8 +50,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->connection = ConnectionManager::get('test');
 		$schema = [
@@ -103,8 +101,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -114,8 +111,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function strategiesProviderHasMany()
-	{
+	public function strategiesProviderHasMany() {
 		return [['subquery'], ['select']];
 	}
 
@@ -124,8 +120,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function strategiesProviderBelongsTo()
-	{
+	public function strategiesProviderBelongsTo() {
 		return [['join'], ['select']];
 	}
 
@@ -134,8 +129,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function strategiesProviderBelongsToMany()
-	{
+	public function strategiesProviderBelongsToMany() {
 		return [['subquery'], ['select']];
 	}
 
@@ -146,8 +140,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderBelongsTo
 	 * @return void
 	 */
-	public function testContainResultFetchingOneLevel($strategy)
-	{
+	public function testContainResultFetchingOneLevel($strategy) {
 		$table = TableRegistry::get('articles', ['table' => 'articles']);
 		$table->belongsTo('authors', ['strategy' => $strategy]);
 
@@ -204,8 +197,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderHasMany
 	 * @return void
 	 */
-	public function testHasManyEagerLoadingNoHydration($strategy)
-	{
+	public function testHasManyEagerLoadingNoHydration($strategy) {
 		$table = TableRegistry::get('authors');
 		TableRegistry::get('articles');
 		$table->hasMany('articles', [
@@ -283,8 +275,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderHasMany
 	 * @return void
 	 */
-	public function testHasManyEagerLoadingCount($strategy)
-	{
+	public function testHasManyEagerLoadingCount($strategy) {
 		$table = TableRegistry::get('authors');
 		TableRegistry::get('articles');
 		$table->hasMany('articles', [
@@ -314,8 +305,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderHasMany
 	 * @return void
 	 */
-	public function testHasManyEagerLoadingFieldsAndOrderNoHydration($strategy)
-	{
+	public function testHasManyEagerLoadingFieldsAndOrderNoHydration($strategy) {
 		$table = TableRegistry::get('authors');
 		TableRegistry::get('articles');
 		$table->hasMany('articles', ['propertyName' => 'articles'] + compact('strategy'));
@@ -366,8 +356,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderHasMany
 	 * @return void
 	 */
-	public function testHasManyEagerLoadingDeep($strategy)
-	{
+	public function testHasManyEagerLoadingDeep($strategy) {
 		$table = TableRegistry::get('authors');
 		$article = TableRegistry::get('articles');
 		$table->hasMany('articles', [
@@ -440,8 +429,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderHasMany
 	 * @return void
 	 */
-	public function testHasManyEagerLoadingFromSecondaryTable($strategy)
-	{
+	public function testHasManyEagerLoadingFromSecondaryTable($strategy) {
 		$author = TableRegistry::get('authors');
 		$article = TableRegistry::get('articles');
 		$post = TableRegistry::get('posts');
@@ -546,8 +534,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderBelongsToMany
 	 * @return void
 	 */
-	public function testBelongsToManyEagerLoadingNoHydration($strategy)
-	{
+	public function testBelongsToManyEagerLoadingNoHydration($strategy) {
 		$table = TableRegistry::get('Articles');
 		TableRegistry::get('Tags');
 		TableRegistry::get('ArticlesTags', [
@@ -652,8 +639,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFilteringByHasManyNoHydration()
-	{
+	public function testFilteringByHasManyNoHydration() {
 		$query = new Query($this->connection, $this->table);
 		$table = TableRegistry::get('authors');
 		TableRegistry::get('articles');
@@ -691,8 +677,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFilteringByBelongsToManyNoHydration()
-	{
+	public function testFilteringByBelongsToManyNoHydration() {
 		$query = new Query($this->connection, $this->table);
 		$table = TableRegistry::get('Articles');
 		TableRegistry::get('Tags');
@@ -756,8 +741,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMatchingDotNotation()
-	{
+	public function testMatchingDotNotation() {
 		$query = new Query($this->connection, $this->table);
 		$table = TableRegistry::get('authors');
 		TableRegistry::get('articles');
@@ -802,8 +786,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSetResult()
-	{
+	public function testSetResult() {
 		$query = new Query($this->connection, $this->table);
 
 		$stmt = $this->getMock('Cake\Database\StatementInterface');
@@ -818,8 +801,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testApplyOptions()
-	{
+	public function testApplyOptions() {
 		$this->table->belongsTo('articles');
 		$typeMap = new TypeMap([
 			'foo.id' => 'integer',
@@ -881,8 +863,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testApplyOptionsPageIsLast()
-	{
+	public function testApplyOptionsPageIsLast() {
 		$query = new Query($this->connection, $this->table);
 		$opts = [
 			'page' => 3,
@@ -898,8 +879,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testApplyOptionsIgnoreNull()
-	{
+	public function testApplyOptionsIgnoreNull() {
 		$options = [
 			'fields' => null,
 		];
@@ -913,8 +893,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testGetOptions()
-	{
+	public function testGetOptions() {
 		$options = ['doABarrelRoll' => true, 'fields' => ['id', 'name']];
 		$query = new Query($this->connection, $this->table);
 		$query->applyOptions($options);
@@ -931,8 +910,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMapReduceOnlyMapper()
-	{
+	public function testMapReduceOnlyMapper() {
 		$mapper1 = function () {
 		};
 		$mapper2 = function () {
@@ -960,8 +938,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMapReduceBothMethods()
-	{
+	public function testMapReduceBothMethods() {
 		$mapper1 = function () {
 		};
 		$mapper2 = function () {
@@ -992,8 +969,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testOverwriteMapReduce()
-	{
+	public function testOverwriteMapReduce() {
 		$mapper1 = function () {
 		};
 		$mapper2 = function () {
@@ -1021,8 +997,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testResultsAreWrappedInMapReduce()
-	{
+	public function testResultsAreWrappedInMapReduce() {
 		$table = TableRegistry::get('articles', ['table' => 'articles']);
 		$query = new Query($this->connection, $table);
 		$query->select(['a' => 'id'])->limit(2)->order(['id' => 'ASC']);
@@ -1046,8 +1021,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFirstDirtyQuery()
-	{
+	public function testFirstDirtyQuery() {
 		$table = TableRegistry::get('articles', ['table' => 'articles']);
 		$query = new Query($this->connection, $table);
 		$result = $query->select(['id'])->hydrate(false)->first();
@@ -1062,8 +1036,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFirstCleanQuery()
-	{
+	public function testFirstCleanQuery() {
 		$table = TableRegistry::get('articles', ['table' => 'articles']);
 		$query = new Query($this->connection, $table);
 		$query->select(['id'])->toArray();
@@ -1078,8 +1051,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFirstSameResult()
-	{
+	public function testFirstSameResult() {
 		$table = TableRegistry::get('articles', ['table' => 'articles']);
 		$query = new Query($this->connection, $table);
 		$query->select(['id'])->toArray();
@@ -1095,8 +1067,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFirstMapReduce()
-	{
+	public function testFirstMapReduce() {
 		$map = function ($row, $key, $mapReduce) {
 			$mapReduce->emitIntermediate($row['id'], 'id');
 		};
@@ -1119,8 +1090,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFirstUnbuffered()
-	{
+	public function testFirstUnbuffered() {
 		$table = TableRegistry::get('Articles');
 		$query = new Query($this->connection, $table);
 		$query->select(['id']);
@@ -1136,8 +1106,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHydrateSimple()
-	{
+	public function testHydrateSimple() {
 		$table = TableRegistry::get('articles', ['table' => 'articles']);
 		$query = new Query($this->connection, $table);
 		$results = $query->select()->toArray();
@@ -1160,8 +1129,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHydrateHasMany()
-	{
+	public function testHydrateHasMany() {
 		$table = TableRegistry::get('authors');
 		TableRegistry::get('articles');
 		$table->hasMany('articles', [
@@ -1202,8 +1170,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHydrateBelongsToMany()
-	{
+	public function testHydrateBelongsToMany() {
 		$table = TableRegistry::get('Articles');
 		TableRegistry::get('Tags');
 		TableRegistry::get('ArticlesTags', [
@@ -1243,8 +1210,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatResultsBelongsToMany()
-	{
+	public function testFormatResultsBelongsToMany() {
 		$table = TableRegistry::get('Articles');
 		TableRegistry::get('Tags');
 		$articlesTags = TableRegistry::get('ArticlesTags', [
@@ -1295,8 +1261,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderBelongsTo
 	 * @return void
 	 */
-	public function testHydrateBelongsTo($strategy)
-	{
+	public function testHydrateBelongsTo($strategy) {
 		$table = TableRegistry::get('articles');
 		TableRegistry::get('authors');
 		$table->belongsTo('authors', ['strategy' => $strategy]);
@@ -1320,8 +1285,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderBelongsTo
 	 * @return void
 	 */
-	public function testHydrateDeep($strategy)
-	{
+	public function testHydrateDeep($strategy) {
 		$table = TableRegistry::get('authors');
 		$article = TableRegistry::get('articles');
 		$table->hasMany('articles', [
@@ -1348,8 +1312,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHydrateCustomObject()
-	{
+	public function testHydrateCustomObject() {
 		$class = $this->getMockClass('\Cake\ORM\Entity', ['fakeMethod']);
 		$table = TableRegistry::get('articles', [
 			'table' => 'articles',
@@ -1377,8 +1340,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHydrateHasManyCustomEntity()
-	{
+	public function testHydrateHasManyCustomEntity() {
 		$authorEntity = $this->getMockClass('\Cake\ORM\Entity', ['foo']);
 		$articleEntity = $this->getMockClass('\Cake\ORM\Entity', ['foo']);
 		$table = TableRegistry::get('authors', [
@@ -1418,8 +1380,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHydrateBelongsToCustomEntity()
-	{
+	public function testHydrateBelongsToCustomEntity() {
 		$authorEntity = $this->getMockClass('\Cake\ORM\Entity', ['foo']);
 		$table = TableRegistry::get('articles');
 		TableRegistry::get('authors', [
@@ -1442,8 +1403,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCount()
-	{
+	public function testCount() {
 		$table = TableRegistry::get('articles');
 		$result = $table->find('all')->count();
 		$this->assertSame(3, $result);
@@ -1464,8 +1424,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountWithContain()
-	{
+	public function testCountWithContain() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors');
 
@@ -1484,8 +1443,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountWithSubselect()
-	{
+	public function testCountWithSubselect() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors');
 		$table->hasMany('ArticlesTags');
@@ -1516,8 +1474,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountWithExpressions()
-	{
+	public function testCountWithExpressions() {
 		$table = TableRegistry::get('Articles');
 		$query = $table->find();
 		$query->select([
@@ -1536,8 +1493,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountBeforeFind()
-	{
+	public function testCountBeforeFind() {
 		$table = TableRegistry::get('Articles');
 		$table->hasMany('Comments');
 		$table->eventManager()
@@ -1557,8 +1513,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testBeforeFindCalledOnce()
-	{
+	public function testBeforeFindCalledOnce() {
 		$callCount = 0;
 		$table = TableRegistry::get('Articles');
 		$table->eventManager()
@@ -1579,8 +1534,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountWithGroup()
-	{
+	public function testCountWithGroup() {
 		$table = TableRegistry::get('articles');
 		$query = $table->find('all');
 		$query->select(['author_id', 's' => $query->func()->sum('id')])
@@ -1595,8 +1549,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountWithCustomCounter()
-	{
+	public function testCountWithCustomCounter() {
 		$table = TableRegistry::get('articles');
 		$query = $table->find('all');
 		$query
@@ -1617,8 +1570,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUpdate()
-	{
+	public function testUpdate() {
 		$table = TableRegistry::get('articles');
 
 		$result = $table->query()
@@ -1635,8 +1587,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testUpdateWithTableExpression()
-	{
+	public function testUpdateWithTableExpression() {
 		$this->skipIf(!$this->connection->driver() instanceof \Cake\Database\Driver\Mysql);
 		$table = TableRegistry::get('articles');
 
@@ -1656,8 +1607,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInsert()
-	{
+	public function testInsert() {
 		$table = TableRegistry::get('articles');
 
 		$result = $table->query()
@@ -1682,8 +1632,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDelete()
-	{
+	public function testDelete() {
 		$table = TableRegistry::get('articles');
 
 		$result = $table->query()
@@ -1701,8 +1650,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return array
 	 */
-	public function collectionMethodsProvider()
-	{
+	public function collectionMethodsProvider() {
 		$identity = function ($a) {
 			return $a;
 		};
@@ -1734,8 +1682,7 @@ class QueryTest extends TestCase
 	 * @dataProvider collectionMethodsProvider
 	 * @return void
 	 */
-	public function testCollectionProxy($method, $arg)
-	{
+	public function testCollectionProxy($method, $arg) {
 		$query = $this->getMock(
 			'\Cake\ORM\Query',
 			['all'],
@@ -1764,8 +1711,7 @@ class QueryTest extends TestCase
 	 * @expectedExceptionMessage Unknown method "derpFilter"
 	 * @return void
 	 */
-	public function testCollectionProxyBadMethod()
-	{
+	public function testCollectionProxyBadMethod() {
 		TableRegistry::get('articles')->find('all')->derpFilter();
 	}
 
@@ -1775,8 +1721,7 @@ class QueryTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testCacheErrorOnNonSelect()
-	{
+	public function testCacheErrorOnNonSelect() {
 		$table = TableRegistry::get('articles', ['table' => 'articles']);
 		$query = new Query($this->connection, $table);
 		$query->insert(['test']);
@@ -1788,8 +1733,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCacheReadIntegration()
-	{
+	public function testCacheReadIntegration() {
 		$query = $this->getMock(
 			'\Cake\ORM\Query',
 			['execute'],
@@ -1818,8 +1762,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCacheWriteIntegration()
-	{
+	public function testCacheWriteIntegration() {
 		$table = TableRegistry::get('Articles');
 		$query = new Query($this->connection, $table);
 
@@ -1845,8 +1788,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCacheIntegrationWithFormatResults()
-	{
+	public function testCacheIntegrationWithFormatResults() {
 		$table = TableRegistry::get('Articles');
 		$query = new Query($this->connection, $table);
 		$cacher = new \Cake\Cache\Engine\FileEngine();
@@ -1870,8 +1812,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainOverwrite()
-	{
+	public function testContainOverwrite() {
 		$table = TableRegistry::get('Articles');
 		$table->hasMany('Comments');
 		$table->belongsTo('Authors');
@@ -1892,8 +1833,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainWithClosure()
-	{
+	public function testContainWithClosure() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
 		$query = new Query($this->connection, $table);
@@ -1919,8 +1859,7 @@ class QueryTest extends TestCase
 	 * @expectedException \RuntimeException
 	 * @return void
 	 */
-	public function testContainWithQueryBuilderHasManyError()
-	{
+	public function testContainWithQueryBuilderHasManyError() {
 		$table = TableRegistry::get('Authors');
 		$table->hasMany('Articles');
 		$query = new Query($this->connection, $table);
@@ -1942,8 +1881,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainWithQueryBuilderJoinableAssociation()
-	{
+	public function testContainWithQueryBuilderJoinableAssociation() {
 		$table = TableRegistry::get('Authors');
 		$table->hasOne('Articles');
 		$query = new Query($this->connection, $table);
@@ -1981,8 +1919,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainAssociationWithEmptyConditions()
-	{
+	public function testContainAssociationWithEmptyConditions() {
 		$articles = TableRegistry::get('Articles');
 		$articles->belongsTo('Authors', [
 			'conditions' => function ($exp, $query) {
@@ -1999,8 +1936,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatResults()
-	{
+	public function testFormatResults() {
 		$callback1 = function () {
 		};
 		$callback2 = function () {
@@ -2026,8 +1962,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testQueryWithFormatter()
-	{
+	public function testQueryWithFormatter() {
 		$table = TableRegistry::get('authors');
 		$query = new Query($this->connection, $table);
 		$query->select()->formatResults(function ($results) {
@@ -2042,8 +1977,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testQueryWithStackedFormatters()
-	{
+	public function testQueryWithStackedFormatters() {
 		$table = TableRegistry::get('authors');
 		$query = new Query($this->connection, $table);
 		$query->select()->formatResults(function ($results) {
@@ -2070,8 +2004,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountWithContainCallingAll()
-	{
+	public function testCountWithContainCallingAll() {
 		$table = TableRegistry::get('articles');
 		$table->belongsTo('authors');
 		$query = $table->find()
@@ -2091,8 +2024,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountCache()
-	{
+	public function testCountCache() {
 		$query = $this->getMockBuilder('Cake\ORM\Query')
 			->disableOriginalConstructor()
 			->setMethods(['_performCount'])
@@ -2115,8 +2047,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCountCacheDirty()
-	{
+	public function testCountCacheDirty() {
 		$query = $this->getMockBuilder('Cake\ORM\Query')
 			->disableOriginalConstructor()
 			->setMethods(['_performCount'])
@@ -2148,8 +2079,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatBelongsToRecords()
-	{
+	public function testFormatBelongsToRecords() {
 		$table = TableRegistry::get('articles');
 		$table->belongsTo('authors');
 
@@ -2183,8 +2113,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatDeepAssocationRecords()
-	{
+	public function testFormatDeepAssocationRecords() {
 		$table = TableRegistry::get('ArticlesTags');
 		$table->belongsTo('Articles');
 		$table->association('Articles')->target()->belongsTo('Authors');
@@ -2229,8 +2158,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatDeepDistantAssociationRecords()
-	{
+	public function testFormatDeepDistantAssociationRecords() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
 		$articles = $table->association('articles')->target();
@@ -2263,8 +2191,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomFinderInBelongsTo()
-	{
+	public function testCustomFinderInBelongsTo() {
 		$table = TableRegistry::get('ArticlesTags');
 		$table->belongsTo('Articles', [
 			'className' => 'TestApp\Model\Table\ArticlesTable',
@@ -2284,8 +2211,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainSelectedFields()
-	{
+	public function testContainSelectedFields() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors');
 
@@ -2304,8 +2230,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainInAssociationQuery()
-	{
+	public function testContainInAssociationQuery() {
 		$table = TableRegistry::get('ArticlesTags');
 		$table->belongsTo('Articles');
 		$table->association('Articles')->target()->belongsTo('Authors');
@@ -2326,8 +2251,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainInAssociationMatching()
-	{
+	public function testContainInAssociationMatching() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
 		$articles = $table->association('articles')->target();
@@ -2350,8 +2274,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDebugInfo()
-	{
+	public function testDebugInfo() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
 		$query = $table->find()
@@ -2403,8 +2326,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEagerLoaded()
-	{
+	public function testEagerLoaded() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
 		$query = $table->find()->contain(['articles' => function ($q) {
@@ -2429,8 +2351,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testColumnsFromJoin()
-	{
+	public function testColumnsFromJoin() {
 		$table = TableRegistry::get('articles');
 		$results = $table->find()
 			->select(['title', 'person.name'])
@@ -2458,8 +2379,7 @@ class QueryTest extends TestCase
 	 * @dataProvider strategiesProviderBelongsTo
 	 * @return void
 	 */
-	public function testRepeatedAssociationAliases($strategy)
-	{
+	public function testRepeatedAssociationAliases($strategy) {
 		$table = TableRegistry::get('ArticlesTags');
 		$table->belongsTo('Articles', ['strategy' => $strategy]);
 		$table->belongsTo('Tags', ['strategy' => $strategy]);
@@ -2483,8 +2403,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAssociationKeyPresent()
-	{
+	public function testAssociationKeyPresent() {
 		$table = TableRegistry::get('Articles');
 		$table->hasOne('ArticlesTags', ['strategy' => 'select']);
 		$article = $table->find()->where(['id' => 3])
@@ -2500,8 +2419,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJsonSerialize()
-	{
+	public function testJsonSerialize() {
 		$table = TableRegistry::get('Articles');
 		$this->assertEquals(
 			json_encode($table->find()),
@@ -2514,8 +2432,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAutoFields()
-	{
+	public function testAutoFields() {
 		$table = TableRegistry::get('Articles');
 		$result = $table->find('all')
 			->select(['myField' => '(SELECT 20)'])
@@ -2533,8 +2450,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAutoFieldsWithAssociations()
-	{
+	public function testAutoFieldsWithAssociations() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors');
 
@@ -2557,8 +2473,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAutoFieldsWithContainQueryBuilder()
-	{
+	public function testAutoFieldsWithContainQueryBuilder() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors');
 
@@ -2585,8 +2500,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAutoFieldsCount()
-	{
+	public function testAutoFieldsCount() {
 		$table = TableRegistry::get('Articles');
 
 		$result = $table->find()
@@ -2602,8 +2516,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCleanCopy()
-	{
+	public function testCleanCopy() {
 		$table = TableRegistry::get('Articles');
 		$table->hasMany('Comments');
 
@@ -2627,8 +2540,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCleanCopyRetainsBindings()
-	{
+	public function testCleanCopyRetainsBindings() {
 		$table = TableRegistry::get('Articles');
 		$query = $table->find();
 		$query->offset(10)
@@ -2647,8 +2559,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCleanCopyBeforeFind()
-	{
+	public function testCleanCopyBeforeFind() {
 		$table = TableRegistry::get('Articles');
 		$table->hasMany('Comments');
 		$table->eventManager()
@@ -2676,8 +2587,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainFinderCanSpecifyOptions()
-	{
+	public function testContainFinderCanSpecifyOptions() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo(
 			'Authors',
@@ -2711,8 +2621,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomBindings()
-	{
+	public function testCustomBindings() {
 		$table = TableRegistry::get('Articles');
 		$query = $table->find()->where(['id >' => 1]);
 		$query->where(function ($exp) {
@@ -2729,8 +2638,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainWithCustomJoinType()
-	{
+	public function testContainWithCustomJoinType() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors');
 
@@ -2754,8 +2662,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainWithStrategyOverride()
-	{
+	public function testContainWithStrategyOverride() {
 		$table = TableRegistry::get('Articles');
 		$table->belongsTo('Authors', [
 			'joinType' => 'INNER'
@@ -2781,8 +2688,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMatchingWithContain()
-	{
+	public function testMatchingWithContain() {
 		$query = new Query($this->connection, $this->table);
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
@@ -2807,8 +2713,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNotSoFarMatchingWithContainOnTheSameAssociation()
-	{
+	public function testNotSoFarMatchingWithContainOnTheSameAssociation() {
 		$table = TableRegistry::get('articles');
 		$table->belongsToMany('tags');
 
@@ -2830,8 +2735,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSelectWithTableAndAssociationInstance()
-	{
+	public function testSelectWithTableAndAssociationInstance() {
 		$table = TableRegistry::get('articles');
 		$table->belongsTo('authors');
 		$result = $table
@@ -2862,8 +2766,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsEmpty()
-	{
+	public function testIsEmpty() {
 		$table = TableRegistry::get('articles');
 		$this->assertFalse($table->find()->isEmpty());
 		$this->assertTrue($table->find()->where(['id' => -1])->isEmpty());
@@ -2875,8 +2778,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLeftJoinWith()
-	{
+	public function testLeftJoinWith() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
 		$table->articles->deleteAll(['author_id' => 4]);
@@ -2921,8 +2823,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLeftJoinWithNested()
-	{
+	public function testLeftJoinWithNested() {
 		$table = TableRegistry::get('authors');
 		$articles = $table->hasMany('articles');
 		$articles->belongsToMany('tags');
@@ -2952,8 +2853,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLeftJoinWithSelect()
-	{
+	public function testLeftJoinWithSelect() {
 		$table = TableRegistry::get('authors');
 		$articles = $table->hasMany('articles');
 		$articles->belongsToMany('tags');
@@ -2985,8 +2885,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInnerJoinWith()
-	{
+	public function testInnerJoinWith() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
 		$results = $table
@@ -3008,8 +2907,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInnerJoinWithNested()
-	{
+	public function testInnerJoinWithNested() {
 		$table = TableRegistry::get('authors');
 		$articles = $table->hasMany('articles');
 		$articles->belongsToMany('tags');
@@ -3032,8 +2930,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInnerJoinWithSelect()
-	{
+	public function testInnerJoinWithSelect() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
 		$results = $table
@@ -3056,8 +2953,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNotMatching()
-	{
+	public function testNotMatching() {
 		$table = TableRegistry::get('authors');
 		$table->hasMany('articles');
 
@@ -3091,8 +2987,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNotMatchingBelongsToMany()
-	{
+	public function testNotMatchingBelongsToMany() {
 		$table = TableRegistry::get('articles');
 		$table->belongsToMany('tags');
 
@@ -3127,8 +3022,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNotMatchingDeep()
-	{
+	public function testNotMatchingDeep() {
 		$table = TableRegistry::get('authors');
 		$articles = $table->hasMany('articles');
 		$articles->belongsToMany('tags');
@@ -3159,8 +3053,7 @@ class QueryTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNotMatchingNested()
-	{
+	public function testNotMatchingNested() {
 		$table = TableRegistry::get('authors');
 		$articles = $table->hasMany('articles');
 		$articles->belongsToMany('tags');

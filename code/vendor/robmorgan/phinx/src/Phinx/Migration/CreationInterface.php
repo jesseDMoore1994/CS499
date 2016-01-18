@@ -33,8 +33,7 @@ namespace Phinx\Migration;
  *
  * @author Richard Quadling <RQuadling@GMail.com>
  */
-interface CreationInterface
-{
+interface CreationInterface {
 	/**
 	 * Get the migration template.
 	 *

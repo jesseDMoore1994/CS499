@@ -21,8 +21,7 @@ use Cake\Core\Exception\Exception;
  * Used by Cake\Network\Http\Client to contain request information
  * for making requests.
  */
-class Request extends Message
-{
+class Request extends Message {
 
 	/**
 	 * The HTTP method to use.
@@ -62,8 +61,7 @@ class Request extends Message
 	 * @return $this|string Either this or the current method.
 	 * @throws \Cake\Core\Exception\Exception On invalid methods.
 	 */
-	public function method($method = null)
-	{
+	public function method($method = null) {
 		if ($method === null) {
 			return $this->_method;
 		}
@@ -81,8 +79,7 @@ class Request extends Message
 	 * @param string|null $url The url for the request. Leave null for get
 	 * @return $this|string Either $this or the url value.
 	 */
-	public function url($url = null)
-	{
+	public function url($url = null) {
 		if ($url === null) {
 			return $this->_url;
 		}
@@ -118,8 +115,7 @@ class Request extends Message
 	 * @param string|null $value The value to set for the header.
 	 * @return mixed Either $this when setting or header value when getting.
 	 */
-	public function header($name = null, $value = null)
-	{
+	public function header($name = null, $value = null) {
 		if ($value === null && is_string($name)) {
 			$name = $this->_normalizeHeader($name);
 			return isset($this->_headers[$name]) ? $this->_headers[$name] : null;
@@ -159,8 +155,7 @@ class Request extends Message
 	 * @param string|null $value Either the value or null when getting values.
 	 * @return mixed Either $this or the cookie value.
 	 */
-	public function cookie($name, $value = null)
-	{
+	public function cookie($name, $value = null) {
 		if ($value === null && is_string($name)) {
 			return isset($this->_cookies[$name]) ? $this->_cookies[$name] : null;
 		}
@@ -180,8 +175,7 @@ class Request extends Message
 	 *
 	 * @return $this|string Either $this or the HTTP version.
 	 */
-	public function version($version = null)
-	{
+	public function version($version = null) {
 		if ($version === null) {
 			return parent::version();
 		}

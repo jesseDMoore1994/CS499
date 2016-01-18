@@ -21,16 +21,14 @@ namespace TestPluginTwo\Shell;
 
 use Cake\Console\Shell;
 
-class WelcomeShell extends Shell
-{
+class WelcomeShell extends Shell {
 
 	/**
 	 * say_hello method
 	 *
 	 * @return void
 	 */
-	public function say_hello()
-	{
+	public function say_hello() {
 		$this->out('This is the say_hello method called from TestPluginTwo.WelcomeShell');
 	}
 }

@@ -21,16 +21,14 @@ use Cake\View\Form\ArrayContext;
 /**
  * Array context test case.
  */
-class ArrayContextTest extends TestCase
-{
+class ArrayContextTest extends TestCase {
 
 	/**
 	 * setup method.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->request = new Request();
 	}
@@ -40,8 +38,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrimaryKey()
-	{
+	public function testPrimaryKey() {
 		$context = new ArrayContext($this->request, []);
 		$this->assertEquals([], $context->primaryKey());
 
@@ -70,8 +67,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsPrimaryKey()
-	{
+	public function testIsPrimaryKey() {
 		$context = new ArrayContext($this->request, []);
 		$this->assertFalse($context->isPrimaryKey('id'));
 
@@ -110,8 +106,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsCreate()
-	{
+	public function testIsCreate() {
 		$context = new ArrayContext($this->request, []);
 		$this->assertTrue($context->isCreate());
 
@@ -133,8 +128,7 @@ class ArrayContextTest extends TestCase
 	/**
 	 * Test reading values from the request & defaults.
 	 */
-	public function testValPresent()
-	{
+	public function testValPresent() {
 		$this->request->data = [
 			'Articles' => [
 				'title' => 'New title',
@@ -160,8 +154,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValMissing()
-	{
+	public function testValMissing() {
 		$context = new ArrayContext($this->request, []);
 		$this->assertNull($context->val('Comments.field'));
 	}
@@ -171,8 +164,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequired()
-	{
+	public function testIsRequired() {
 		$context = new ArrayContext($this->request, [
 			'required' => [
 				'Comments' => [
@@ -191,8 +183,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequiredUndefined()
-	{
+	public function testIsRequiredUndefined() {
 		$context = new ArrayContext($this->request, []);
 		$this->assertFalse($context->isRequired('Comments.field'));
 	}
@@ -202,8 +193,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testType()
-	{
+	public function testType() {
 		$context = new ArrayContext($this->request, [
 			'schema' => [
 				'Comments' => [
@@ -222,8 +212,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsTypeUndefined()
-	{
+	public function testIsTypeUndefined() {
 		$context = new ArrayContext($this->request, []);
 		$this->assertNull($context->type('Comments.undefined'));
 	}
@@ -233,8 +222,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttributes()
-	{
+	public function testAttributes() {
 		$context = new ArrayContext($this->request, [
 			'schema' => [
 				'Comments' => [
@@ -256,8 +244,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testError()
-	{
+	public function testError() {
 		$context = new ArrayContext($this->request, []);
 		$this->assertEquals([], $context->error('Comments.empty'));
 
@@ -281,8 +268,7 @@ class ArrayContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHasError()
-	{
+	public function testHasError() {
 		$context = new ArrayContext($this->request, [
 			'errors' => [
 				'Comments' => [

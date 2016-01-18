@@ -23,8 +23,7 @@ use PHPUnit_Framework_TestSuite;
  * A class to contain test cases and run them with shared fixtures
  *
  */
-class TestSuite extends PHPUnit_Framework_TestSuite
-{
+class TestSuite extends PHPUnit_Framework_TestSuite {
 
 	/**
 	 * Adds all the files in a directory to the test suite. Does not recursive through directories.
@@ -32,8 +31,7 @@ class TestSuite extends PHPUnit_Framework_TestSuite
 	 * @param string $directory The directory to add tests from.
 	 * @return void
 	 */
-	public function addTestDirectory($directory = '.')
-	{
+	public function addTestDirectory($directory = '.') {
 		$Folder = new Folder($directory);
 		list(, $files) = $Folder->read(true, true, true);
 
@@ -50,8 +48,7 @@ class TestSuite extends PHPUnit_Framework_TestSuite
 	 * @param string $directory The directory subtree to add tests from.
 	 * @return void
 	 */
-	public function addTestDirectoryRecursive($directory = '.')
-	{
+	public function addTestDirectoryRecursive($directory = '.') {
 		$Folder = new Folder($directory);
 		$files = $Folder->tree(null, true, 'files');
 

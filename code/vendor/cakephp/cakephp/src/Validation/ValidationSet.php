@@ -23,8 +23,7 @@ use IteratorAggregate;
  * ValidationSet object. Holds all validation rules for a field and exposes
  * methods to dynamically add or remove validation rules
  */
-class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
-{
+class ValidationSet implements ArrayAccess, IteratorAggregate, Countable {
 
 	/**
 	 * Holds the ValidationRule objects
@@ -55,8 +54,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 * @param bool|string|null $validatePresent Valid values are true, false, 'create', 'update'
 	 * @return bool|string
 	 */
-	public function isPresenceRequired($validatePresent = null)
-	{
+	public function isPresenceRequired($validatePresent = null) {
 		if ($validatePresent === null) {
 			return $this->_validatePresent;
 		}
@@ -72,8 +70,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 * 'create', 'update'
 	 * @return bool|string|callable
 	 */
-	public function isEmptyAllowed($allowEmpty = null)
-	{
+	public function isEmptyAllowed($allowEmpty = null) {
 		if ($allowEmpty === null) {
 			return $this->_allowEmpty;
 		}
@@ -86,8 +83,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string $name The name under which the rule is set.
 	 * @return \Cake\Validation\ValidationRule
 	 */
-	public function rule($name)
-	{
+	public function rule($name) {
 		if (!empty($this->_rules[$name])) {
 			return $this->_rules[$name];
 		}
@@ -98,8 +94,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 *
 	 * @return array
 	 */
-	public function rules()
-	{
+	public function rules() {
 		return $this->_rules;
 	}
 
@@ -118,8 +113,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 * @param \Cake\Validation\ValidationRule|array $rule The validation rule to be set
 	 * @return $this
 	 */
-	public function add($name, $rule)
-	{
+	public function add($name, $rule) {
 		if (!($rule instanceof ValidationRule)) {
 			$rule = new ValidationRule($rule);
 		}
@@ -141,8 +135,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string $name The name under which the rule should be unset
 	 * @return $this
 	 */
-	public function remove($name)
-	{
+	public function remove($name) {
 		unset($this->_rules[$name]);
 		return $this;
 	}
@@ -153,8 +146,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string $index name of the rule
 	 * @return bool
 	 */
-	public function offsetExists($index)
-	{
+	public function offsetExists($index) {
 		return isset($this->_rules[$index]);
 	}
 
@@ -164,8 +156,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string $index name of the rule
 	 * @return \Cake\Validation\ValidationRule
 	 */
-	public function offsetGet($index)
-	{
+	public function offsetGet($index) {
 		return $this->_rules[$index];
 	}
 
@@ -176,8 +167,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 * @param \Cake\Validation\ValidationRule|array $rule Rule to add to $index
 	 * @return void
 	 */
-	public function offsetSet($index, $rule)
-	{
+	public function offsetSet($index, $rule) {
 		$this->add($index, $rule);
 	}
 
@@ -187,8 +177,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 * @param string $index name of the rule
 	 * @return void
 	 */
-	public function offsetUnset($index)
-	{
+	public function offsetUnset($index) {
 		unset($this->_rules[$index]);
 	}
 
@@ -197,8 +186,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 *
 	 * @return \ArrayIterator
 	 */
-	public function getIterator()
-	{
+	public function getIterator() {
 		return new ArrayIterator($this->_rules);
 	}
 
@@ -207,8 +195,7 @@ class ValidationSet implements ArrayAccess, IteratorAggregate, Countable
 	 *
 	 * @return int
 	 */
-	public function count()
-	{
+	public function count() {
 		return count($this->_rules);
 	}
 }

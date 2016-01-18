@@ -21,8 +21,7 @@ use Cake\Datasource\EntityTrait;
  * An entity represents a single result row from a repository. It exposes the
  * methods for retrieving and storing properties associated in this row.
  */
-class Entity implements EntityInterface
-{
+class Entity implements EntityInterface {
 
 	use EntityTrait;
 
@@ -45,8 +44,7 @@ class Entity implements EntityInterface
 	 * @param array $properties hash of properties to set in this entity
 	 * @param array $options list of options to use when creating this entity
 	 */
-	public function __construct(array $properties = [], array $options = [])
-	{
+	public function __construct(array $properties = [], array $options = []) {
 		$options += [
 			'useSetters' => true,
 			'markClean' => false,

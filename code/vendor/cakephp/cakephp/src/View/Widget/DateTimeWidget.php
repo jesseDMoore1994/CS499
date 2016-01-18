@@ -26,8 +26,7 @@ use RuntimeException;
  * This class is intended as an internal implementation detail
  * of Cake\View\Helper\FormHelper and is not intended for direct use.
  */
-class DateTimeWidget implements WidgetInterface
-{
+class DateTimeWidget implements WidgetInterface {
 
 	/**
 	 * Select box widget.
@@ -64,8 +63,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param \Cake\View\StringTemplate $templates Templates list.
 	 * @param \Cake\View\Widget\SelectBoxWidget $selectBox Selectbox widget instance.
 	 */
-	public function __construct(StringTemplate $templates, SelectBoxWidget $selectBox)
-	{
+	public function __construct(StringTemplate $templates, SelectBoxWidget $selectBox) {
 		$this->_select = $selectBox;
 		$this->_templates = $templates;
 	}
@@ -121,8 +119,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @return string A generated select box.
 	 * @throws \RuntimeException When option data is invalid.
 	 */
-	public function render(array $data, ContextInterface $context)
-	{
+	public function render(array $data, ContextInterface $context) {
 		$data = $this->_normalizeData($data);
 
 		$selected = $this->_deconstructDate($data['val'], $data);
@@ -173,8 +170,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param array $data Data to normalize.
 	 * @return array Normalized data.
 	 */
-	protected function _normalizeData($data)
-	{
+	protected function _normalizeData($data) {
 		$data += [
 			'name' => '',
 			'empty' => false,
@@ -208,8 +204,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param array $options Options for conversion.
 	 * @return array
 	 */
-	protected function _deconstructDate($value, $options)
-	{
+	protected function _deconstructDate($value, $options) {
 		if ($value === '' || $value === null) {
 			return [
 				'year' => '', 'month' => '', 'day' => '',
@@ -287,8 +282,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param array $options The options containing interval and possibly round.
 	 * @return int The amount to adjust $value by.
 	 */
-	protected function _adjustValue($value, $options)
-	{
+	protected function _adjustValue($value, $options) {
 		$options += ['interval' => 1, 'round' => null];
 		$changeValue = $value * (1 / $options['interval']);
 		switch ($options['round']) {
@@ -311,8 +305,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	protected function _yearSelect($options, $context)
-	{
+	protected function _yearSelect($options, $context) {
 		$options += [
 			'name' => '',
 			'val' => null,
@@ -344,8 +337,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	protected function _monthSelect($options, $context)
-	{
+	protected function _monthSelect($options, $context) {
 		$options += [
 			'name' => '',
 			'names' => false,
@@ -376,8 +368,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	protected function _daySelect($options, $context)
-	{
+	protected function _daySelect($options, $context) {
 		$options += [
 			'name' => '',
 			'val' => null,
@@ -398,8 +389,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	protected function _hourSelect($options, $context)
-	{
+	protected function _hourSelect($options, $context) {
 		$options += [
 			'name' => '',
 			'val' => null,
@@ -453,8 +443,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	protected function _minuteSelect($options, $context)
-	{
+	protected function _minuteSelect($options, $context) {
 		$options += [
 			'name' => '',
 			'val' => null,
@@ -485,8 +474,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	protected function _secondSelect($options, $context)
-	{
+	protected function _secondSelect($options, $context) {
 		$options += [
 			'name' => '',
 			'val' => null,
@@ -507,8 +495,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	protected function _meridianSelect($options, $context)
-	{
+	protected function _meridianSelect($options, $context) {
 		$options += [
 			'name' => '',
 			'val' => null,
@@ -524,8 +511,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param bool $leadingZero Whether to generate month keys with leading zero.
 	 * @return array
 	 */
-	protected function _getMonthNames($leadingZero = false)
-	{
+	protected function _getMonthNames($leadingZero = false) {
 		$months = [
 			'01' => __d('cake', 'January'),
 			'02' => __d('cake', 'February'),
@@ -566,8 +552,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param array $options Options list.
 	 * @return array
 	 */
-	protected function _generateNumbers($start, $end, $options = [])
-	{
+	protected function _generateNumbers($start, $end, $options = []) {
 		$options += [
 			'leadingZeroKey' => true,
 			'leadingZeroValue' => true,
@@ -600,8 +585,7 @@ class DateTimeWidget implements WidgetInterface
 	 * @param array $data The data to render.
 	 * @return array Array of fields to secure.
 	 */
-	public function secureFields(array $data)
-	{
+	public function secureFields(array $data) {
 		$data = $this->_normalizeData($data);
 
 		$fields = [];

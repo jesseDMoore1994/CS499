@@ -20,8 +20,7 @@ use Symfony\Component\Config\Exception\FileLoaderImportCircularReferenceExceptio
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-abstract class FileLoader extends Loader
-{
+abstract class FileLoader extends Loader {
 	/**
 	 * @var array
 	 */
@@ -39,8 +38,7 @@ abstract class FileLoader extends Loader
 	 *
 	 * @param FileLocatorInterface $locator A FileLocatorInterface instance
 	 */
-	public function __construct(FileLocatorInterface $locator)
-	{
+	public function __construct(FileLocatorInterface $locator) {
 		$this->locator = $locator;
 	}
 
@@ -49,8 +47,7 @@ abstract class FileLoader extends Loader
 	 *
 	 * @param string $dir
 	 */
-	public function setCurrentDir($dir)
-	{
+	public function setCurrentDir($dir) {
 		$this->currentDir = $dir;
 	}
 
@@ -59,8 +56,7 @@ abstract class FileLoader extends Loader
 	 *
 	 * @return FileLocatorInterface
 	 */
-	public function getLocator()
-	{
+	public function getLocator() {
 		return $this->locator;
 	}
 
@@ -77,8 +73,7 @@ abstract class FileLoader extends Loader
 	 * @throws FileLoaderLoadException
 	 * @throws FileLoaderImportCircularReferenceException
 	 */
-	public function import($resource, $type = null, $ignoreErrors = false, $sourceResource = null)
-	{
+	public function import($resource, $type = null, $ignoreErrors = false, $sourceResource = null) {
 		try {
 			$loader = $this->resolve($resource, $type);
 

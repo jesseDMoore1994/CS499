@@ -13,19 +13,16 @@ namespace Symfony\Component\Config\Tests\Definition;
 
 use Symfony\Component\Config\Definition\ScalarNode;
 
-class ScalarNodeTest extends \PHPUnit_Framework_TestCase
-{
+class ScalarNodeTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider getValidValues
 	 */
-	public function testNormalize($value)
-	{
+	public function testNormalize($value) {
 		$node = new ScalarNode('test');
 		$this->assertSame($value, $node->normalize($value));
 	}
 
-	public function getValidValues()
-	{
+	public function getValidValues() {
 		return array(
 			array(false),
 			array(true),
@@ -43,14 +40,12 @@ class ScalarNodeTest extends \PHPUnit_Framework_TestCase
 	 * @dataProvider getInvalidValues
 	 * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
 	 */
-	public function testNormalizeThrowsExceptionOnInvalidValues($value)
-	{
+	public function testNormalizeThrowsExceptionOnInvalidValues($value) {
 		$node = new ScalarNode('test');
 		$node->normalize($value);
 	}
 
-	public function getInvalidValues()
-	{
+	public function getInvalidValues() {
 		return array(
 			array(array()),
 			array(array('foo' => 'bar')),
@@ -58,8 +53,7 @@ class ScalarNodeTest extends \PHPUnit_Framework_TestCase
 		);
 	}
 
-	public function testNormalizeThrowsExceptionWithoutHint()
-	{
+	public function testNormalizeThrowsExceptionWithoutHint() {
 		$node = new ScalarNode('test');
 
 		$this->setExpectedException('Symfony\Component\Config\Definition\Exception\InvalidTypeException', 'Invalid type for path "test". Expected scalar, but got array.');
@@ -67,8 +61,7 @@ class ScalarNodeTest extends \PHPUnit_Framework_TestCase
 		$node->normalize(array());
 	}
 
-	public function testNormalizeThrowsExceptionWithErrorMessage()
-	{
+	public function testNormalizeThrowsExceptionWithErrorMessage() {
 		$node = new ScalarNode('test');
 		$node->setInfo('"the test value"');
 
@@ -82,16 +75,14 @@ class ScalarNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @param mixed $value
 	 */
-	public function testValidNonEmptyValues($value)
-	{
+	public function testValidNonEmptyValues($value) {
 		$node = new ScalarNode('test');
 		$node->setAllowEmptyValue(false);
 
 		$this->assertSame($value, $node->finalize($value));
 	}
 
-	public function getValidNonEmptyValues()
-	{
+	public function getValidNonEmptyValues() {
 		return array(
 			array(false),
 			array(true),
@@ -109,15 +100,13 @@ class ScalarNodeTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @param mixed $value
 	 */
-	public function testNotAllowedEmptyValuesThrowException($value)
-	{
+	public function testNotAllowedEmptyValuesThrowException($value) {
 		$node = new ScalarNode('test');
 		$node->setAllowEmptyValue(false);
 		$node->finalize($value);
 	}
 
-	public function getEmptyValues()
-	{
+	public function getEmptyValues() {
 		return array(
 			array(null),
 			array(''),

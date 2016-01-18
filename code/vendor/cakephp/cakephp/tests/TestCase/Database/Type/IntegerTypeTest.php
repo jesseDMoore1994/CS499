@@ -22,16 +22,14 @@ use \PDO;
 /**
  * Test for the Integer type.
  */
-class IntegerTypeTest extends TestCase
-{
+class IntegerTypeTest extends TestCase {
 
 	/**
 	 * Setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->type = Type::build('integer');
 		$this->driver = $this->getMock('Cake\Database\Driver');
@@ -42,8 +40,7 @@ class IntegerTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPHP()
-	{
+	public function testToPHP() {
 		$this->assertNull($this->type->toPHP(null, $this->driver));
 
 		$result = $this->type->toPHP('some data', $this->driver);
@@ -67,8 +64,7 @@ class IntegerTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToDatabase()
-	{
+	public function testToDatabase() {
 		$result = $this->type->toDatabase('some data', $this->driver);
 		$this->assertSame(0, $result);
 
@@ -85,8 +81,7 @@ class IntegerTypeTest extends TestCase
 	 * @expectedException InvalidArgumentException
 	 * @return void
 	 */
-	public function testToDatabseInvalid()
-	{
+	public function testToDatabseInvalid() {
 		$this->type->toDatabase(['3', '4'], $this->driver);
 	}
 
@@ -95,8 +90,7 @@ class IntegerTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMarshal()
-	{
+	public function testMarshal() {
 		$result = $this->type->marshal('some data', $this->driver);
 		$this->assertNull($result);
 
@@ -133,8 +127,7 @@ class IntegerTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToStatement()
-	{
+	public function testToStatement() {
 		$this->assertEquals(PDO::PARAM_INT, $this->type->toStatement('', $this->driver));
 	}
 }

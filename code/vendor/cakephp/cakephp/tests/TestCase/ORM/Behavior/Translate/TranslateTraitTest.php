@@ -18,24 +18,21 @@ use Cake\ORM\Behavior\Translate\TranslateTrait;
 use Cake\ORM\Entity;
 use Cake\TestSuite\TestCase;
 
-class TestEntity extends Entity
-{
+class TestEntity extends Entity {
 	use TranslateTrait;
 }
 
 /**
  * Translate behavior test case
  */
-class TranslateTraitTest extends TestCase
-{
+class TranslateTraitTest extends TestCase {
 
 	/**
 	 * Tests that missing translation entries are created automatically
 	 *
 	 * @return void
 	 */
-	public function testTranslationCreate()
-	{
+	public function testTranslationCreate() {
 		$entity = new TestEntity;
 		$entity->translation('eng')->set('title', 'My Title');
 		$this->assertEquals('My Title', $entity->translation('eng')->get('title'));
@@ -52,8 +49,7 @@ class TranslateTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTranslationModify()
-	{
+	public function testTranslationModify() {
 		$entity = new TestEntity;
 		$entity->set('_translations', [
 			'eng' => new Entity(['title' => 'My Title']),
@@ -68,8 +64,7 @@ class TranslateTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTranslationEmpty()
-	{
+	public function testTranslationEmpty() {
 		$entity = new TestEntity;
 		$entity->set('_translations', [
 			'eng' => new Entity(['title' => 'My Title']),
@@ -86,8 +81,7 @@ class TranslateTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTranslationDirty()
-	{
+	public function testTranslationDirty() {
 		$entity = new TestEntity;
 		$entity->set('_translations', [
 			'eng' => new Entity(['title' => 'My Title']),

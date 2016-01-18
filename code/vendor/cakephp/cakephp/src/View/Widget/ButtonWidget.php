@@ -23,8 +23,7 @@ use Cake\View\Form\ContextInterface;
  * If you need to make basic submit inputs with type=submit,
  * use the Basic input widget.
  */
-class ButtonWidget extends BasicWidget
-{
+class ButtonWidget extends BasicWidget {
 
 	/**
 	 * Render a button.
@@ -42,8 +41,7 @@ class ButtonWidget extends BasicWidget
 	 * @param \Cake\View\Form\ContextInterface $context The current form context.
 	 * @return string
 	 */
-	public function render(array $data, ContextInterface $context)
-	{
+	public function render(array $data, ContextInterface $context) {
 		$data += [
 			'text' => '',
 			'type' => 'submit',

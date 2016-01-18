@@ -28,8 +28,7 @@ use XdgBaseDir\Xdg;
 /**
  * The Psy Shell configuration.
  */
-class Configuration
-{
+class Configuration {
 	private static $AVAILABLE_OPTIONS = array(
 		'defaultIncludes', 'useReadline', 'usePcntl', 'codeCleaner', 'pager',
 		'loop', 'configDir', 'dataDir', 'runtimeDir', 'manualDbFile',
@@ -75,8 +74,7 @@ class Configuration
 	 *
 	 * @param array $config Optional array of configuration values.
 	 */
-	public function __construct(array $config = array())
-	{
+	public function __construct(array $config = array()) {
 		// explicit configFile option
 		if (isset($config['configFile'])) {
 			$this->configFile = $config['configFile'];
@@ -108,8 +106,7 @@ class Configuration
 	 * If no custom config file was specified and a local project config file
 	 * is available, it will be loaded and merged with the current config.
 	 */
-	public function init()
-	{
+	public function init() {
 		// feature detection
 		$this->hasReadline = function_exists('readline');
 		$this->hasPcntl = function_exists('pcntl_signal') && function_exists('posix_getpid');
@@ -137,8 +134,7 @@ class Configuration
 	 *
 	 * @return string
 	 */
-	public function getConfigFile()
-	{
+	public function getConfigFile() {
 		if (isset($this->configFile)) {
 			return $this->configFile;
 		}
@@ -163,8 +159,7 @@ class Configuration
 	 *
 	 * @return string
 	 */
-	public function getLocalConfigFile()
-	{
+	public function getLocalConfigFile() {
 		$localConfig = getenv('PWD') . '/.psysh.php';
 
 		if (@is_file($localConfig)) {
@@ -177,8 +172,7 @@ class Configuration
 	 *
 	 * @param array $options
 	 */
-	public function loadConfig(array $options)
-	{
+	public function loadConfig(array $options) {
 		foreach (self::$AVAILABLE_OPTIONS as $option) {
 			if (isset($options[$option])) {
 				$method = 'set' . ucfirst($option);
@@ -205,8 +199,7 @@ class Configuration
 	 *
 	 * @param string $file
 	 */
-	public function loadConfigFile($file)
-	{
+	public function loadConfigFile($file) {
 		$__psysh_config_file__ = $file;
 		$load = function ($config) use ($__psysh_config_file__) {
 			$result = require $__psysh_config_file__;
@@ -230,8 +223,7 @@ class Configuration
 	 *
 	 * @param array $includes
 	 */
-	public function setDefaultIncludes(array $includes = array())
-	{
+	public function setDefaultIncludes(array $includes = array()) {
 		$this->defaultIncludes = $includes;
 	}
 
@@ -240,8 +232,7 @@ class Configuration
 	 *
 	 * @return array
 	 */
-	public function getDefaultIncludes()
-	{
+	public function getDefaultIncludes() {
 		return $this->defaultIncludes ?: array();
 	}
 
@@ -250,8 +241,7 @@ class Configuration
 	 *
 	 * @param string $dir
 	 */
-	public function setConfigDir($dir)
-	{
+	public function setConfigDir($dir) {
 		$this->configDir = (string)$dir;
 	}
 
@@ -260,8 +250,7 @@ class Configuration
 	 *
 	 * @return string
 	 */
-	public function getConfigDir()
-	{
+	public function getConfigDir() {
 		return $this->configDir;
 	}
 
@@ -270,8 +259,7 @@ class Configuration
 	 *
 	 * @param string $dir
 	 */
-	public function setDataDir($dir)
-	{
+	public function setDataDir($dir) {
 		$this->dataDir = (string)$dir;
 	}
 
@@ -280,8 +268,7 @@ class Configuration
 	 *
 	 * @return string
 	 */
-	public function getDataDir()
-	{
+	public function getDataDir() {
 		return $this->dataDir;
 	}
 
@@ -290,8 +277,7 @@ class Configuration
 	 *
 	 * @param string $dir
 	 */
-	public function setRuntimeDir($dir)
-	{
+	public function setRuntimeDir($dir) {
 		$this->runtimeDir = (string)$dir;
 	}
 
@@ -303,8 +289,7 @@ class Configuration
 	 *
 	 * @return string
 	 */
-	public function getRuntimeDir()
-	{
+	public function getRuntimeDir() {
 		if (!isset($this->runtimeDir)) {
 			$this->runtimeDir = ConfigPaths::getRuntimeDir();
 		}
@@ -321,8 +306,7 @@ class Configuration
 	 *
 	 * @param string $file
 	 */
-	public function setHistoryFile($file)
-	{
+	public function setHistoryFile($file) {
 		$this->historyFile = (string)$file;
 	}
 
@@ -334,8 +318,7 @@ class Configuration
 	 *
 	 * @return string
 	 */
-	public function getHistoryFile()
-	{
+	public function getHistoryFile() {
 		if (isset($this->historyFile)) {
 			return $this->historyFile;
 		}
@@ -383,8 +366,7 @@ class Configuration
 	 *
 	 * @param int $value
 	 */
-	public function setHistorySize($value)
-	{
+	public function setHistorySize($value) {
 		$this->historySize = (int)$value;
 	}
 
@@ -393,8 +375,7 @@ class Configuration
 	 *
 	 * @return int
 	 */
-	public function getHistorySize()
-	{
+	public function getHistorySize() {
 		return $this->historySize;
 	}
 
@@ -403,8 +384,7 @@ class Configuration
 	 *
 	 * @param bool $value
 	 */
-	public function setEraseDuplicates($value)
-	{
+	public function setEraseDuplicates($value) {
 		$this->eraseDuplicates = (bool)$value;
 	}
 
@@ -413,8 +393,7 @@ class Configuration
 	 *
 	 * @return bool
 	 */
-	public function getEraseDuplicates()
-	{
+	public function getEraseDuplicates() {
 		return $this->eraseDuplicates;
 	}
 
@@ -430,8 +409,7 @@ class Configuration
 	 *
 	 * @return string Temporary file name
 	 */
-	public function getTempFile($type, $pid)
-	{
+	public function getTempFile($type, $pid) {
 		return tempnam($this->getRuntimeDir(), $type . '_' . $pid . '_');
 	}
 
@@ -445,8 +423,7 @@ class Configuration
 	 *
 	 * @return string Pipe name
 	 */
-	public function getPipe($type, $pid)
-	{
+	public function getPipe($type, $pid) {
 		return sprintf('%s/%s_%s', $this->getRuntimeDir(), $type, $pid);
 	}
 
@@ -455,8 +432,7 @@ class Configuration
 	 *
 	 * @return bool True if Readline is available.
 	 */
-	public function hasReadline()
-	{
+	public function hasReadline() {
 		return $this->hasReadline;
 	}
 
@@ -465,8 +441,7 @@ class Configuration
 	 *
 	 * @param bool $useReadline
 	 */
-	public function setUseReadline($useReadline)
-	{
+	public function setUseReadline($useReadline) {
 		$this->useReadline = (bool)$useReadline;
 	}
 
@@ -478,8 +453,7 @@ class Configuration
 	 *
 	 * @return bool True if the current Shell should use Readline.
 	 */
-	public function useReadline()
-	{
+	public function useReadline() {
 		return isset($this->useReadline) ? ($this->hasReadline && $this->useReadline) : $this->hasReadline;
 	}
 
@@ -488,8 +462,7 @@ class Configuration
 	 *
 	 * @param Readline $readline
 	 */
-	public function setReadline(Readline $readline)
-	{
+	public function setReadline(Readline $readline) {
 		$this->readline = $readline;
 	}
 
@@ -504,8 +477,7 @@ class Configuration
 	 *
 	 * @return Readline
 	 */
-	public function getReadline()
-	{
+	public function getReadline() {
 		if (!isset($this->readline)) {
 			$className = $this->getReadlineClass();
 			$this->readline = new $className(
@@ -525,8 +497,7 @@ class Configuration
 	 *
 	 * @return string
 	 */
-	private function getReadlineClass()
-	{
+	private function getReadlineClass() {
 		if ($this->useReadline()) {
 			if (GNUReadline::isSupported()) {
 				return 'Psy\Readline\GNUReadline';
@@ -543,8 +514,7 @@ class Configuration
 	 *
 	 * @return bool True if Pcntl is available.
 	 */
-	public function hasPcntl()
-	{
+	public function hasPcntl() {
 		return $this->hasPcntl;
 	}
 
@@ -553,8 +523,7 @@ class Configuration
 	 *
 	 * @param bool $usePcntl
 	 */
-	public function setUsePcntl($usePcntl)
-	{
+	public function setUsePcntl($usePcntl) {
 		$this->usePcntl = (bool)$usePcntl;
 	}
 
@@ -566,8 +535,7 @@ class Configuration
 	 *
 	 * @return bool True if the current Shell should use Pcntl.
 	 */
-	public function usePcntl()
-	{
+	public function usePcntl() {
 		return isset($this->usePcntl) ? ($this->hasPcntl && $this->usePcntl) : $this->hasPcntl;
 	}
 
@@ -578,8 +546,7 @@ class Configuration
 	 *
 	 * @param bool $requireSemicolons
 	 */
-	public function setRequireSemicolons($requireSemicolons)
-	{
+	public function setRequireSemicolons($requireSemicolons) {
 		$this->requireSemicolons = (bool)$requireSemicolons;
 	}
 
@@ -592,8 +559,7 @@ class Configuration
 	 *
 	 * @return bool
 	 */
-	public function requireSemicolons()
-	{
+	public function requireSemicolons() {
 		return $this->requireSemicolons;
 	}
 
@@ -604,8 +570,7 @@ class Configuration
 	 *
 	 * @param bool $errorLoggingLevel
 	 */
-	public function setErrorLoggingLevel($errorLoggingLevel)
-	{
+	public function setErrorLoggingLevel($errorLoggingLevel) {
 		$this->errorLoggingLevel = (E_ALL | E_STRICT) & $errorLoggingLevel;
 	}
 
@@ -624,8 +589,7 @@ class Configuration
 	 *
 	 * @return int
 	 */
-	public function errorLoggingLevel()
-	{
+	public function errorLoggingLevel() {
 		return $this->errorLoggingLevel;
 	}
 
@@ -634,8 +598,7 @@ class Configuration
 	 *
 	 * @param CodeCleaner $cleaner
 	 */
-	public function setCodeCleaner(CodeCleaner $cleaner)
-	{
+	public function setCodeCleaner(CodeCleaner $cleaner) {
 		$this->cleaner = $cleaner;
 	}
 
@@ -646,8 +609,7 @@ class Configuration
 	 *
 	 * @return CodeCleaner
 	 */
-	public function getCodeCleaner()
-	{
+	public function getCodeCleaner() {
 		if (!isset($this->cleaner)) {
 			$this->cleaner = new CodeCleaner();
 		}
@@ -660,8 +622,7 @@ class Configuration
 	 *
 	 * @param bool $tabCompletion
 	 */
-	public function setTabCompletion($tabCompletion)
-	{
+	public function setTabCompletion($tabCompletion) {
 		$this->tabCompletion = (bool)$tabCompletion;
 	}
 
@@ -673,8 +634,7 @@ class Configuration
 	 *
 	 * @return bool True if the current Shell should use tab completion.
 	 */
-	public function getTabCompletion()
-	{
+	public function getTabCompletion() {
 		return isset($this->tabCompletion) ? ($this->hasReadline && $this->tabCompletion) : $this->hasReadline;
 	}
 
@@ -683,8 +643,7 @@ class Configuration
 	 *
 	 * @param ShellOutput $output
 	 */
-	public function setOutput(ShellOutput $output)
-	{
+	public function setOutput(ShellOutput $output) {
 		$this->output = $output;
 	}
 
@@ -698,8 +657,7 @@ class Configuration
 	 *
 	 * @return ShellOutput
 	 */
-	public function getOutput()
-	{
+	public function getOutput() {
 		if (!isset($this->output)) {
 			$this->output = new ShellOutput(ShellOutput::VERBOSITY_NORMAL, null, null, $this->getPager());
 		}
@@ -717,8 +675,7 @@ class Configuration
 	 *
 	 * @param string|OutputPager $pager
 	 */
-	public function setPager($pager)
-	{
+	public function setPager($pager) {
 		if ($pager && !is_string($pager) && !$pager instanceof OutputPager) {
 			throw new \InvalidArgumentException('Unexpected pager instance.');
 		}
@@ -734,8 +691,7 @@ class Configuration
 	 *
 	 * @return string|OutputPager
 	 */
-	public function getPager()
-	{
+	public function getPager() {
 		if (!isset($this->pager) && $this->usePcntl()) {
 			if ($pager = ini_get('cli.pager')) {
 				// use the default pager (5.4+)
@@ -754,8 +710,7 @@ class Configuration
 	 *
 	 * @param Loop $loop
 	 */
-	public function setLoop(Loop $loop)
-	{
+	public function setLoop(Loop $loop) {
 		$this->loop = $loop;
 	}
 
@@ -767,8 +722,7 @@ class Configuration
 	 *
 	 * @return Loop
 	 */
-	public function getLoop()
-	{
+	public function getLoop() {
 		if (!isset($this->loop)) {
 			if ($this->usePcntl()) {
 				$this->loop = new ForkingLoop($this);
@@ -785,8 +739,7 @@ class Configuration
 	 *
 	 * @param AutoCompleter $completer
 	 */
-	public function setAutoCompleter(AutoCompleter $completer)
-	{
+	public function setAutoCompleter(AutoCompleter $completer) {
 		$this->completer = $completer;
 	}
 
@@ -795,8 +748,7 @@ class Configuration
 	 *
 	 * @return AutoCompleter
 	 */
-	public function getAutoCompleter()
-	{
+	public function getAutoCompleter() {
 		if (!isset($this->completer)) {
 			$this->completer = new AutoCompleter();
 		}
@@ -809,8 +761,7 @@ class Configuration
 	 *
 	 * @return array
 	 */
-	public function getTabCompletionMatchers()
-	{
+	public function getTabCompletionMatchers() {
 		return $this->tabCompletionMatchers;
 	}
 
@@ -819,8 +770,7 @@ class Configuration
 	 *
 	 * @param array $matchers
 	 */
-	public function addTabCompletionMatchers(array $matchers)
-	{
+	public function addTabCompletionMatchers(array $matchers) {
 		$this->tabCompletionMatchers = array_merge($this->tabCompletionMatchers, $matchers);
 		if (isset($this->shell)) {
 			$this->shell->addTabCompletionMatchers($this->tabCompletionMatchers);
@@ -837,8 +787,7 @@ class Configuration
 	 *
 	 * @param array $commands
 	 */
-	public function addCommands(array $commands)
-	{
+	public function addCommands(array $commands) {
 		$this->newCommands = array_merge($this->newCommands, $commands);
 		if (isset($this->shell)) {
 			$this->doAddCommands();
@@ -849,8 +798,7 @@ class Configuration
 	 * Internal method for adding commands. This will set any new commands once
 	 * a Shell is available.
 	 */
-	private function doAddCommands()
-	{
+	private function doAddCommands() {
 		if (!empty($this->newCommands)) {
 			$this->shell->addCommands($this->newCommands);
 			$this->newCommands = array();
@@ -862,8 +810,7 @@ class Configuration
 	 *
 	 * @param Shell $shell
 	 */
-	public function setShell(Shell $shell)
-	{
+	public function setShell(Shell $shell) {
 		$this->shell = $shell;
 		$this->doAddCommands();
 	}
@@ -876,8 +823,7 @@ class Configuration
 	 *
 	 * @param string $filename
 	 */
-	public function setManualDbFile($filename)
-	{
+	public function setManualDbFile($filename) {
 		$this->manualDbFile = (string)$filename;
 	}
 
@@ -886,8 +832,7 @@ class Configuration
 	 *
 	 * @return string Default: '~/.local/share/psysh/php_manual.sqlite'
 	 */
-	public function getManualDbFile()
-	{
+	public function getManualDbFile() {
 		if (isset($this->manualDbFile)) {
 			return $this->manualDbFile;
 		}
@@ -908,8 +853,7 @@ class Configuration
 	 *
 	 * @return PDO
 	 */
-	public function getManualDb()
-	{
+	public function getManualDb() {
 		if (!isset($this->manualDb)) {
 			$dbFile = $this->getManualDbFile();
 			if (is_file($dbFile)) {
@@ -933,8 +877,7 @@ class Configuration
 	 *
 	 * @param array $casters
 	 */
-	public function addCasters(array $casters)
-	{
+	public function addCasters(array $casters) {
 		$this->getPresenter()->addCasters($casters);
 	}
 
@@ -943,8 +886,7 @@ class Configuration
 	 *
 	 * @return Presenter
 	 */
-	public function getPresenter()
-	{
+	public function getPresenter() {
 		if (!isset($this->presenter)) {
 			$this->presenter = new Presenter($this->getOutput()->getFormatter());
 		}
@@ -959,8 +901,7 @@ class Configuration
 	 *
 	 * @param bool $warnOnMultipleConfigs
 	 */
-	public function setWarnOnMultipleConfigs($warnOnMultipleConfigs)
-	{
+	public function setWarnOnMultipleConfigs($warnOnMultipleConfigs) {
 		$this->warnOnMultipleConfigs = (bool)$warnOnMultipleConfigs;
 	}
 
@@ -976,8 +917,7 @@ class Configuration
 	 *
 	 * @return bool
 	 */
-	public function warnOnMultipleConfigs()
-	{
+	public function warnOnMultipleConfigs() {
 		return $this->warnOnMultipleConfigs;
 	}
 }

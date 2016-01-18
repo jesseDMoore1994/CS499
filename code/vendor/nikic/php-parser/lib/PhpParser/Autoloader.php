@@ -5,8 +5,7 @@ namespace PhpParser;
 /**
  * @codeCoverageIgnore
  */
-class Autoloader
-{
+class Autoloader {
 	/** @var bool Whether the autoloader has been registered. */
 	private static $registered = false;
 
@@ -15,8 +14,7 @@ class Autoloader
 	 *
 	 * @param bool $prepend Whether to prepend the autoloader instead of appending
 	 */
-	static public function register($prepend = false)
-	{
+	static public function register($prepend = false) {
 		if (self::$registered === true) {
 			return;
 		}
@@ -30,8 +28,7 @@ class Autoloader
 	 *
 	 * @param string $class A class name.
 	 */
-	static public function autoload($class)
-	{
+	static public function autoload($class) {
 		if (0 === strpos($class, 'PhpParser\\')) {
 			$fileName = dirname(__DIR__) . '/' . strtr($class, '\\', '/') . '.php';
 			if (file_exists($fileName)) {

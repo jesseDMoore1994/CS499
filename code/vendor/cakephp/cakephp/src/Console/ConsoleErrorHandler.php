@@ -22,8 +22,7 @@ use Exception;
  * Error Handler for Cake console. Does simple printing of the
  * exception that occurred and the stack trace of the error.
  */
-class ConsoleErrorHandler extends BaseErrorHandler
-{
+class ConsoleErrorHandler extends BaseErrorHandler {
 
 	/**
 	 * Standard error stream.
@@ -44,8 +43,7 @@ class ConsoleErrorHandler extends BaseErrorHandler
 	 *
 	 * @param array $options Options for the error handler.
 	 */
-	public function __construct($options = [])
-	{
+	public function __construct($options = []) {
 		if (empty($options['stderr'])) {
 			$options['stderr'] = new ConsoleOutput('php://stderr');
 		}
@@ -62,8 +60,7 @@ class ConsoleErrorHandler extends BaseErrorHandler
 	 * @throws \Exception When renderer class not found
 	 * @see http://php.net/manual/en/function.set-exception-handler.php
 	 */
-	public function handleException(Exception $exception)
-	{
+	public function handleException(Exception $exception) {
 		$this->_displayException($exception);
 		$this->_logException($exception);
 		$code = $exception->getCode();
@@ -77,8 +74,7 @@ class ConsoleErrorHandler extends BaseErrorHandler
 	 * @param \Exception $exception The exception to handle
 	 * @return void
 	 */
-	protected function _displayException($exception)
-	{
+	protected function _displayException($exception) {
 		$errorName = 'Exception:';
 		if ($exception instanceof FatalErrorException) {
 			$errorName = 'Fatal Error:';
@@ -102,8 +98,7 @@ class ConsoleErrorHandler extends BaseErrorHandler
 	 * @param bool $debug Whether or not the app is in debug mode.
 	 * @return void
 	 */
-	protected function _displayError($error, $debug)
-	{
+	protected function _displayError($error, $debug) {
 		$message = sprintf(
 			'%s in [%s, line %s]',
 			$error['description'],
@@ -124,8 +119,7 @@ class ConsoleErrorHandler extends BaseErrorHandler
 	 * @param int $code The exit code.
 	 * @return void
 	 */
-	protected function _stop($code)
-	{
+	protected function _stop($code) {
 		exit($code);
 	}
 }

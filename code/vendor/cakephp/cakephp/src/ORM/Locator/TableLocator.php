@@ -23,8 +23,7 @@ use RuntimeException;
 /**
  * Provides a default registry/factory for Table objects.
  */
-class TableLocator implements LocatorInterface
-{
+class TableLocator implements LocatorInterface {
 
 	/**
 	 * Configuration for aliases.
@@ -71,8 +70,7 @@ class TableLocator implements LocatorInterface
 	 * @return array The config data.
 	 * @throws RuntimeException When you attempt to configure an existing table instance.
 	 */
-	public function config($alias = null, $options = null)
-	{
+	public function config($alias = null, $options = null) {
 		if ($alias === null) {
 			return $this->_config;
 		}
@@ -125,8 +123,7 @@ class TableLocator implements LocatorInterface
 	 * @return \Cake\ORM\Table
 	 * @throws \RuntimeException When you try to configure an alias that already exists.
 	 */
-	public function get($alias, array $options = [])
-	{
+	public function get($alias, array $options = []) {
 		if (isset($this->_instances[$alias])) {
 			if (!empty($options) && $this->_options[$alias] !== $options) {
 				throw new RuntimeException(sprintf(
@@ -182,8 +179,7 @@ class TableLocator implements LocatorInterface
 	 * @param array $options Table options array.
 	 * @return string
 	 */
-	protected function _getClassName($alias, array $options = [])
-	{
+	protected function _getClassName($alias, array $options = []) {
 		if (empty($options['className'])) {
 			$options['className'] = Inflector::camelize($alias);
 		}
@@ -196,32 +192,28 @@ class TableLocator implements LocatorInterface
 	 * @param array $options The alias to check for.
 	 * @return \Cake\ORM\Table
 	 */
-	protected function _create(array $options)
-	{
+	protected function _create(array $options) {
 		return new $options['className']($options);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function exists($alias)
-	{
+	public function exists($alias) {
 		return isset($this->_instances[$alias]);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function set($alias, Table $object)
-	{
+	public function set($alias, Table $object) {
 		return $this->_instances[$alias] = $object;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function clear()
-	{
+	public function clear() {
 		$this->_instances = [];
 		$this->_config = [];
 		$this->_fallbacked = [];
@@ -235,16 +227,14 @@ class TableLocator implements LocatorInterface
 	 *
 	 * @return array
 	 */
-	public function genericInstances()
-	{
+	public function genericInstances() {
 		return $this->_fallbacked;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function remove($alias)
-	{
+	public function remove($alias) {
 		unset(
 			$this->_instances[$alias],
 			$this->_config[$alias],

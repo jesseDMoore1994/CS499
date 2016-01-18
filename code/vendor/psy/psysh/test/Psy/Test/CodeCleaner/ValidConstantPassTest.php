@@ -13,10 +13,8 @@ namespace Psy\Test\CodeCleaner;
 
 use Psy\CodeCleaner\ValidConstantPass;
 
-class ValidConstantPassTest extends CodeCleanerTestCase
-{
-	public function setUp()
-	{
+class ValidConstantPassTest extends CodeCleanerTestCase {
+	public function setUp() {
 		$this->setPass(new ValidConstantPass());
 	}
 
@@ -24,14 +22,12 @@ class ValidConstantPassTest extends CodeCleanerTestCase
 	 * @dataProvider getInvalidReferences
 	 * @expectedException \Psy\Exception\FatalErrorException
 	 */
-	public function testProcessInvalidConstantReferences($code)
-	{
+	public function testProcessInvalidConstantReferences($code) {
 		$stmts = $this->parse($code);
 		$this->traverse($stmts);
 	}
 
-	public function getInvalidReferences()
-	{
+	public function getInvalidReferences() {
 		return array(
 			array('Foo\BAR'),
 
@@ -44,14 +40,12 @@ class ValidConstantPassTest extends CodeCleanerTestCase
 	/**
 	 * @dataProvider getValidReferences
 	 */
-	public function testProcessValidConstantReferences($code)
-	{
+	public function testProcessValidConstantReferences($code) {
 		$stmts = $this->parse($code);
 		$this->traverse($stmts);
 	}
 
-	public function getValidReferences()
-	{
+	public function getValidReferences() {
 		return array(
 			array('PHP_EOL'),
 

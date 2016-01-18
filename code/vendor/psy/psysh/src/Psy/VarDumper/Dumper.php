@@ -18,12 +18,10 @@ use Symfony\Component\VarDumper\Dumper\CliDumper;
 /**
  * A PsySH-specialized CliDumper.
  */
-class Dumper extends CliDumper
-{
+class Dumper extends CliDumper {
 	private $formatter;
 
-	public function __construct(OutputFormatter $formatter)
-	{
+	public function __construct(OutputFormatter $formatter) {
 		$this->formatter = $formatter;
 		parent::__construct();
 		$this->setColors(false);
@@ -32,8 +30,7 @@ class Dumper extends CliDumper
 	/**
 	 * {@inheritdoc}
 	 */
-	public function enterHash(Cursor $cursor, $type, $class, $hasChild)
-	{
+	public function enterHash(Cursor $cursor, $type, $class, $hasChild) {
 		if (Cursor::HASH_INDEXED === $type || Cursor::HASH_ASSOC === $type) {
 			$class = 0;
 		}
@@ -43,15 +40,13 @@ class Dumper extends CliDumper
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function dumpKey(Cursor $cursor)
-	{
+	protected function dumpKey(Cursor $cursor) {
 		if (Cursor::HASH_INDEXED !== $cursor->hashType) {
 			parent::dumpKey($cursor);
 		}
 	}
 
-	protected function style($style, $value, $attr = array())
-	{
+	protected function style($style, $value, $attr = array()) {
 		if ('ref' === $style) {
 			$value = strtr($value, '@', '#');
 		}
@@ -92,8 +87,7 @@ class Dumper extends CliDumper
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function dumpLine($depth, $endOfValue = false)
-	{
+	protected function dumpLine($depth, $endOfValue = false) {
 		if ($endOfValue && 0 < $depth) {
 			$this->line .= ',';
 		}

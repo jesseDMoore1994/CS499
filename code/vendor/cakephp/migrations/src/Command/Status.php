@@ -18,16 +18,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Status extends StatusCommand
-{
+class Status extends StatusCommand {
 
 	use ConfigurationTrait;
 
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		$this->setName('status')
 			->setDescription('Show migration status')
 			->addOption(
@@ -49,8 +47,7 @@ class Status extends StatusCommand
 	 * @param \Symfony\Component\Console\Output\OutputInterface $output the output object
 	 * @return void
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->beforeExecute($input, $output);
 		$this->bootstrap($input, $output);
 
@@ -86,8 +83,7 @@ class Status extends StatusCommand
 	 * @param array $migrations
 	 * @return void
 	 */
-	protected function display(array $migrations)
-	{
+	protected function display(array $migrations) {
 		$output = $this->getManager()->getOutput();
 
 		if (!empty($migrations)) {

@@ -19,6 +19,5 @@ use Aura\Intl\Exception;
  * @package Aura.Intl
  *
  */
-class CannotInstantiateFormatter extends \Exception
-{
+class CannotInstantiateFormatter extends \Exception {
 }

@@ -28,8 +28,7 @@ use Cake\TestSuite\TestCase;
  * Tests BelongsTo class
  *
  */
-class BelongsToTest extends TestCase
-{
+class BelongsToTest extends TestCase {
 
 	/**
 	 * Fixtures to use.
@@ -43,8 +42,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->company = TableRegistry::get('Companies', [
 			'schema' => [
@@ -78,8 +76,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -89,8 +86,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testForeignKey()
-	{
+	public function testForeignKey() {
 		$this->company->table('schema.companies');
 		$this->client->table('schema.clients');
 		$assoc = new BelongsTo('Companies', [
@@ -105,8 +101,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCanBeJoined()
-	{
+	public function testCanBeJoined() {
 		$assoc = new BelongsTo('Test');
 		$this->assertTrue($assoc->canBeJoined());
 	}
@@ -116,8 +111,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomAlias()
-	{
+	public function testCustomAlias() {
 		$table = TableRegistry::get('Articles', [
 			'className' => 'TestPlugin.Articles'
 		]);
@@ -139,8 +133,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachTo()
-	{
+	public function testAttachTo() {
 		$config = [
 			'foreignKey' => 'company_id',
 			'sourceTable' => $this->client,
@@ -175,8 +168,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachToNoFields()
-	{
+	public function testAttachToNoFields() {
 		$config = [
 			'sourceTable' => $this->client,
 			'targetTable' => $this->company,
@@ -195,8 +187,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachToMultiPrimaryKey()
-	{
+	public function testAttachToMultiPrimaryKey() {
 		$this->company->primaryKey(['id', 'tenant_id']);
 		$config = [
 			'foreignKey' => ['company_id', 'company_tenant_id'],
@@ -238,8 +229,7 @@ class BelongsToTest extends TestCase
 	 * @expectedExceptionMessage Cannot match provided foreignKey for "Companies", got "(company_id)" but expected foreign key for "(id, tenant_id)"
 	 * @return void
 	 */
-	public function testAttachToMultiPrimaryKeyMistmatch()
-	{
+	public function testAttachToMultiPrimaryKeyMistmatch() {
 		$this->company->primaryKey(['id', 'tenant_id']);
 		$query = $this->client->query();
 		$config = [
@@ -257,8 +247,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCascadeDelete()
-	{
+	public function testCascadeDelete() {
 		$mock = $this->getMock('Cake\ORM\Table', [], [], '', false);
 		$config = [
 			'sourceTable' => $this->client,
@@ -279,8 +268,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSaveAssociatedOnlyEntities()
-	{
+	public function testSaveAssociatedOnlyEntities() {
 		$mock = $this->getMock('Cake\ORM\Table', [], [], '', false);
 		$config = [
 			'sourceTable' => $this->client,
@@ -306,8 +294,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPropertyOption()
-	{
+	public function testPropertyOption() {
 		$config = ['propertyName' => 'thing_placeholder'];
 		$association = new BelongsTo('Thing', $config);
 		$this->assertEquals('thing_placeholder', $association->property());
@@ -318,8 +305,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPropertyNoPlugin()
-	{
+	public function testPropertyNoPlugin() {
 		$mock = $this->getMock('Cake\ORM\Table', [], [], '', false);
 		$config = [
 			'sourceTable' => $this->client,
@@ -335,8 +321,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachToBeforeFind()
-	{
+	public function testAttachToBeforeFind() {
 		$config = [
 			'foreignKey' => 'company_id',
 			'sourceTable' => $this->client,
@@ -361,8 +346,7 @@ class BelongsToTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttachToBeforeFindExtraOptions()
-	{
+	public function testAttachToBeforeFindExtraOptions() {
 		$config = [
 			'foreignKey' => 'company_id',
 			'sourceTable' => $this->client,

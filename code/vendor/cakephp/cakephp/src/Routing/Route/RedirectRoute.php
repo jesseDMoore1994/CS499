@@ -23,8 +23,7 @@ use Cake\Routing\Router;
  * application, for when URLs move.
  *
  */
-class RedirectRoute extends Route
-{
+class RedirectRoute extends Route {
 
 	/**
 	 * A Response object
@@ -47,8 +46,7 @@ class RedirectRoute extends Route
 	 * @param array|string $defaults Defaults for the route.
 	 * @param array $options Array of additional options for the Route
 	 */
-	public function __construct($template, $defaults = [], array $options = [])
-	{
+	public function __construct($template, $defaults = [], array $options = []) {
 		parent::__construct($template, $defaults, $options);
 		if (is_array($defaults) && isset($defaults['redirect'])) {
 			$defaults = $defaults['redirect'];
@@ -63,8 +61,7 @@ class RedirectRoute extends Route
 	 * @param string $url The URL to parse
 	 * @return bool False on failure
 	 */
-	public function parse($url)
-	{
+	public function parse($url) {
 		$params = parent::parse($url);
 		if (!$params) {
 			return false;
@@ -106,8 +103,7 @@ class RedirectRoute extends Route
 	 * @param array $context Array of request context parameters.
 	 * @return mixed either false or a string url.
 	 */
-	public function match(array $url, array $context = [])
-	{
+	public function match(array $url, array $context = []) {
 		return false;
 	}
 }

@@ -18,14 +18,12 @@ namespace Migrations\Shell\Task;
  * when using the CakePHP migrations shell plugin. It has no effect on the
  * migrations process.
  */
-class MigrateTask extends CommandTask
-{
+class MigrateTask extends CommandTask {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 		$parser
 			->addOption('target', [

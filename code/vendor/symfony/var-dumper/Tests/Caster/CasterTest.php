@@ -17,8 +17,7 @@ use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class CasterTest extends \PHPUnit_Framework_TestCase
-{
+class CasterTest extends \PHPUnit_Framework_TestCase {
 	use VarDumperTestTrait;
 
 	private $referenceArray = array(
@@ -34,8 +33,7 @@ class CasterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider provideFilter
 	 */
-	public function testFilter($filter, $expectedDiff, $listedProperties = null)
-	{
+	public function testFilter($filter, $expectedDiff, $listedProperties = null) {
 		if (null === $listedProperties) {
 			$filteredArray = Caster::filter($this->referenceArray, $filter);
 		} else {
@@ -45,8 +43,7 @@ class CasterTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($expectedDiff, array_diff_assoc($this->referenceArray, $filteredArray));
 	}
 
-	public function provideFilter()
-	{
+	public function provideFilter() {
 		return array(
 			array(
 				0,
@@ -153,8 +150,7 @@ class CasterTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @requires PHP 7.0
 	 */
-	public function testAnonymousClass()
-	{
+	public function testAnonymousClass() {
 		$c = eval('return new class extends stdClass { private $foo = "foo"; };');
 
 		$this->assertDumpMatchesFormat(

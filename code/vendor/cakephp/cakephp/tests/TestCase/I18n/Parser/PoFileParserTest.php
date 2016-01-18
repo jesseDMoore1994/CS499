@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * Tests the PoFileLoader
  *
  */
-class PoFileParserTest extends TestCase
-{
+class PoFileParserTest extends TestCase {
 
 	/**
 	 * Tests parsing a file with plurals and message context
 	 *
 	 * @return void
 	 */
-	public function testParse()
-	{
+	public function testParse() {
 		$parser = new PoFileParser;
 		$file = APP . 'Locale' . DS . 'rule_1_po' . DS . 'default.po';
 		$messages = $parser->parse($file);
@@ -68,8 +66,7 @@ class PoFileParserTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseMultiLine()
-	{
+	public function testParseMultiLine() {
 		$parser = new PoFileParser;
 		$file = APP . 'Locale' . DS . 'en' . DS . 'default.po';
 		$messages = $parser->parse($file);
@@ -82,8 +79,7 @@ class PoFileParserTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testQuotedString()
-	{
+	public function testQuotedString() {
 		$parser = new PoFileParser;
 		$file = APP . 'Locale' . DS . 'en' . DS . 'default.po';
 		$messages = $parser->parse($file);

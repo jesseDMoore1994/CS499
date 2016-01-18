@@ -21,16 +21,14 @@ use DebugKit\DebugPanel;
  * Provides debug information on previous requests.
  *
  */
-class HistoryPanel extends DebugPanel
-{
+class HistoryPanel extends DebugPanel {
 
 	/**
 	 * Get the data for the panel.
 	 *
 	 * @return array
 	 */
-	public function data()
-	{
+	public function data() {
 		$table = TableRegistry::get('DebugKit.Requests');
 		$recent = $table->find('recent');
 		return [
@@ -43,8 +41,7 @@ class HistoryPanel extends DebugPanel
 	 *
 	 * @return string
 	 */
-	public function summary()
-	{
+	public function summary() {
 		return '0 xhr';
 	}
 }

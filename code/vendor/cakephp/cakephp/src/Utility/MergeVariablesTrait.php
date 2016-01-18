@@ -18,8 +18,7 @@ namespace Cake\Utility;
  * parent classes.
  *
  */
-trait MergeVariablesTrait
-{
+trait MergeVariablesTrait {
 
 	/**
 	 * Merge the list of $properties with all parent classes of the current class.
@@ -33,8 +32,7 @@ trait MergeVariablesTrait
 	 * @param array $options The options to use when merging properties.
 	 * @return void
 	 */
-	protected function _mergeVars($properties, $options = [])
-	{
+	protected function _mergeVars($properties, $options = []) {
 		$class = get_class($this);
 		$parents = [];
 		while (true) {
@@ -65,8 +63,7 @@ trait MergeVariablesTrait
 	 * @param array $options Options for merging the property, see _mergeVars()
 	 * @return void
 	 */
-	protected function _mergeProperty($property, $parentClasses, $options)
-	{
+	protected function _mergeProperty($property, $parentClasses, $options) {
 		$thisValue = $this->{$property};
 		$isAssoc = false;
 		if (isset($options['associative']) &&
@@ -100,8 +97,7 @@ trait MergeVariablesTrait
 	 * @param bool $isAssoc Whether or not the merging should be done in associative mode.
 	 * @return mixed The updated value.
 	 */
-	protected function _mergePropertyData($current, $parent, $isAssoc)
-	{
+	protected function _mergePropertyData($current, $parent, $isAssoc) {
 		if (!$isAssoc) {
 			return array_merge($parent, $current);
 		}

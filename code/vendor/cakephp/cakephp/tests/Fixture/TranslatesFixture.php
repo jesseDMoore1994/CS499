@@ -20,8 +20,7 @@ use Cake\TestSuite\Fixture\TestFixture;
  * Class TranslateFixture
  *
  */
-class TranslatesFixture extends TestFixture
-{
+class TranslatesFixture extends TestFixture {
 
 	/**
 	 * table property

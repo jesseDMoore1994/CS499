@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-class TranslatorFactory
-{
+class TranslatorFactory {
 	/**
 	 *
 	 * The class to use for new instances.
@@ -50,8 +49,7 @@ class TranslatorFactory
 		array $messages,
 		FormatterInterface $formatter,
 		TranslatorInterface $fallback = null
-	)
-	{
+	) {
 		$class = $this->class;
 		return new $class($locale, $messages, $formatter, $fallback);
 	}

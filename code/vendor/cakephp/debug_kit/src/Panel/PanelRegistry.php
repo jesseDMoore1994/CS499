@@ -20,8 +20,7 @@ use Cake\Event\EventManagerTrait;
 /**
  * Registry object for panels.
  */
-class PanelRegistry extends ObjectRegistry
-{
+class PanelRegistry extends ObjectRegistry {
 
 	use EventManagerTrait;
 
@@ -31,8 +30,7 @@ class PanelRegistry extends ObjectRegistry
 	 * @param \Cake\Event\EventManager $events Event Manager that panels should bind to.
 	 *   Typically this is the global manager.
 	 */
-	public function __construct(EventManager $events)
-	{
+	public function __construct(EventManager $events) {
 		$this->eventManager($events);
 	}
 
@@ -44,8 +42,7 @@ class PanelRegistry extends ObjectRegistry
 	 * @param string $class Partial classname to resolve.
 	 * @return string|false Either the correct classname or false.
 	 */
-	protected function _resolveClassName($class)
-	{
+	protected function _resolveClassName($class) {
 		return App::className($class, 'Panel', 'Panel');
 	}
 
@@ -59,8 +56,7 @@ class PanelRegistry extends ObjectRegistry
 	 * @return void
 	 * @throws \RuntimeException
 	 */
-	protected function _throwMissingClassError($class, $plugin)
-	{
+	protected function _throwMissingClassError($class, $plugin) {
 		throw new \RuntimeException("Unable to find '$class' panel.");
 	}
 
@@ -74,8 +70,7 @@ class PanelRegistry extends ObjectRegistry
 	 * @param array $config An array of config to use for the panel.
 	 * @return DebugKit\DebugPanel The constructed panel class.
 	 */
-	protected function _create($class, $alias, $config)
-	{
+	protected function _create($class, $alias, $config) {
 		$instance = new $class($this, $config);
 		$this->eventManager()->on($instance);
 		return $instance;

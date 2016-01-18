@@ -13,10 +13,8 @@ namespace Psy\Test\CodeCleaner;
 
 use Psy\CodeCleaner\StaticConstructorPass;
 
-class StaticConstructorPassTest extends CodeCleanerTestCase
-{
-	protected function setUp()
-	{
+class StaticConstructorPassTest extends CodeCleanerTestCase {
+	protected function setUp() {
 		$this->setPass(new StaticConstructorPass());
 	}
 
@@ -24,8 +22,7 @@ class StaticConstructorPassTest extends CodeCleanerTestCase
 	 * @dataProvider invalidStatements
 	 * @expectedException \Psy\Exception\FatalErrorException
 	 */
-	public function testProcessInvalidStatement($code)
-	{
+	public function testProcessInvalidStatement($code) {
 		$stmts = $this->parse($code);
 		$this->traverser->traverse($stmts);
 	}
@@ -34,14 +31,12 @@ class StaticConstructorPassTest extends CodeCleanerTestCase
 	 * @dataProvider invalidParserStatements
 	 * @expectedException \Psy\Exception\ParseErrorException
 	 */
-	public function testProcessInvalidStatementCatchedByParser($code)
-	{
+	public function testProcessInvalidStatementCatchedByParser($code) {
 		$stmts = $this->parse($code);
 		$this->traverser->traverse($stmts);
 	}
 
-	public function invalidStatements()
-	{
+	public function invalidStatements() {
 		$statements = array(
 			array('class A { public static function A() {}}'),
 			array('class A { private static function A() {}}'),
@@ -54,8 +49,7 @@ class StaticConstructorPassTest extends CodeCleanerTestCase
 		return $statements;
 	}
 
-	public function invalidParserStatements()
-	{
+	public function invalidParserStatements() {
 		$statements = array(
 			array('class A { public static function __construct() {}}'),
 			array('class A { private static function __construct() {}}'),
@@ -69,14 +63,12 @@ class StaticConstructorPassTest extends CodeCleanerTestCase
 	/**
 	 * @dataProvider validStatements
 	 */
-	public function testProcessValidStatement($code)
-	{
+	public function testProcessValidStatement($code) {
 		$stmts = $this->parse($code);
 		$this->traverser->traverse($stmts);
 	}
 
-	public function validStatements()
-	{
+	public function validStatements() {
 		$statements = array(
 			array('class A { public static function A() {} public function __construct() {}}'),
 			array('class A { private function __construct() {} public static function A() {}}'),

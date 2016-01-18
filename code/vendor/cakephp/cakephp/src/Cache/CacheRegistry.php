@@ -24,8 +24,7 @@ use RuntimeException;
  *
  * Used by Cake\Cache\Cache to load and manage cache engines.
  */
-class CacheRegistry extends ObjectRegistry
-{
+class CacheRegistry extends ObjectRegistry {
 
 	/**
 	 * Resolve a cache engine classname.
@@ -35,8 +34,7 @@ class CacheRegistry extends ObjectRegistry
 	 * @param string $class Partial classname to resolve.
 	 * @return string|false Either the correct classname or false.
 	 */
-	protected function _resolveClassName($class)
-	{
+	protected function _resolveClassName($class) {
 		if (is_object($class)) {
 			return $class;
 		}
@@ -53,8 +51,7 @@ class CacheRegistry extends ObjectRegistry
 	 * @return void
 	 * @throws \BadMethodCallException
 	 */
-	protected function _throwMissingClassError($class, $plugin)
-	{
+	protected function _throwMissingClassError($class, $plugin) {
 		throw new BadMethodCallException(sprintf('Cache engine %s is not available.', $class));
 	}
 
@@ -69,8 +66,7 @@ class CacheRegistry extends ObjectRegistry
 	 * @return CacheEngine The constructed CacheEngine class.
 	 * @throws \RuntimeException when an object doesn't implement the correct interface.
 	 */
-	protected function _create($class, $alias, $config)
-	{
+	protected function _create($class, $alias, $config) {
 		if (is_object($class)) {
 			$instance = $class;
 		}
@@ -105,8 +101,7 @@ class CacheRegistry extends ObjectRegistry
 	 * @param string $name The adapter name.
 	 * @return void
 	 */
-	public function unload($name)
-	{
+	public function unload($name) {
 		unset($this->_loaded[$name]);
 	}
 }

@@ -21,8 +21,7 @@ use Cake\Utility\Inflector;
  * routing parameters, so that requesting `/my-plugin/my-controller/my-action`
  * is parsed as `['plugin' => 'MyPlugin', 'controller' => 'MyController', 'action' => 'myAction']`
  */
-class DashedRoute extends Route
-{
+class DashedRoute extends Route {
 
 	/**
 	 * Flag for tracking whether or not the defaults have been inflected.
@@ -40,8 +39,7 @@ class DashedRoute extends Route
 	 * @param string $plugin Plugin name
 	 * @return string
 	 */
-	protected function _camelizePlugin($plugin)
-	{
+	protected function _camelizePlugin($plugin) {
 		$plugin = str_replace('-', '_', $plugin);
 		if (strpos($plugin, '/') === false) {
 			return Inflector::camelize($plugin);
@@ -58,8 +56,7 @@ class DashedRoute extends Route
 	 * @param string $url The URL to parse
 	 * @return bool|array False on failure, or an array of request parameters
 	 */
-	public function parse($url)
-	{
+	public function parse($url) {
 		$params = parent::parse($url);
 		if (!$params) {
 			return false;
@@ -94,8 +91,7 @@ class DashedRoute extends Route
 	 *   directory.
 	 * @return bool|string Either false or a string URL.
 	 */
-	public function match(array $url, array $context = [])
-	{
+	public function match(array $url, array $context = []) {
 		$url = $this->_dasherize($url);
 		if (!$this->_inflectedDefaults) {
 			$this->_inflectedDefaults = true;
@@ -110,8 +106,7 @@ class DashedRoute extends Route
 	 * @param array $url An array of URL keys.
 	 * @return array
 	 */
-	protected function _dasherize($url)
-	{
+	protected function _dasherize($url) {
 		foreach (['controller', 'plugin', 'action'] as $element) {
 			if (!empty($url[$element])) {
 				$url[$element] = Inflector::dasherize($url[$element]);

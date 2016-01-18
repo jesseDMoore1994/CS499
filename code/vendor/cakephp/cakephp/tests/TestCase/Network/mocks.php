@@ -21,8 +21,7 @@ namespace Cake\Network {
 	 *
 	 * @return bool
 	 */
-	function headers_sent()
-	{
+	function headers_sent() {
 		return false;
 	}
 

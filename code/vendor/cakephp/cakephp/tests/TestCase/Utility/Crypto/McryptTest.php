@@ -20,16 +20,14 @@ use Cake\Utility\Crypto\Mcrypt;
 /**
  * Mcrypt engine tests.
  */
-class McryptTest extends TestCase
-{
+class McryptTest extends TestCase {
 
 	/**
 	 * Setup function.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->skipIf(!function_exists('mcrypt_encrypt'), 'No mcrypt skipping tests');
 		$this->crypt = new Mcrypt();
@@ -40,8 +38,7 @@ class McryptTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRijndael()
-	{
+	public function testRijndael() {
 		$txt = 'The quick brown fox jumped over the lazy dog.';
 		$key = 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi';
 
@@ -64,8 +61,7 @@ class McryptTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testEncryptDecrypt()
-	{
+	public function testEncryptDecrypt() {
 		$txt = 'The quick brown fox';
 		$key = 'This key is enough bytes';
 		$result = $this->crypt->encrypt($txt, $key);
@@ -79,8 +75,7 @@ class McryptTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDecryptKeyFailure()
-	{
+	public function testDecryptKeyFailure() {
 		$txt = 'The quick brown fox';
 
 		$key = substr(hash('sha256', 'This key is enough bytes'), 0, 32);
@@ -97,8 +92,7 @@ class McryptTest extends TestCase
 	 *
 	 * @return
 	 */
-	public function testDecryptOldData()
-	{
+	public function testDecryptOldData() {
 		$key = 'My password is nice and long really it is';
 		$key = substr(hash('sha256', $key), 0, 32);
 

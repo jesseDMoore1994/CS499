@@ -38,8 +38,7 @@ use Phinx\Console\Command;
  *
  * @author Rob Morgan <robbym@gmail.com>
  */
-class PhinxApplication extends Application
-{
+class PhinxApplication extends Application {
 	/**
 	 * Class Constructor.
 	 *
@@ -47,8 +46,7 @@ class PhinxApplication extends Application
 	 *
 	 * @param string $version The Application Version
 	 */
-	public function __construct($version = '0.5.1')
-	{
+	public function __construct($version = '0.5.1') {
 		parent::__construct('Phinx by Rob Morgan - https://phinx.org.', $version);
 
 		$this->addCommands(array(
@@ -70,8 +68,7 @@ class PhinxApplication extends Application
 	 * @param OutputInterface $output An Output instance
 	 * @return integer 0 if everything went fine, or an error code
 	 */
-	public function doRun(InputInterface $input, OutputInterface $output)
-	{
+	public function doRun(InputInterface $input, OutputInterface $output) {
 		// always show the version information except when the user invokes the help
 		// command as that already does it
 		if (false === $input->hasParameterOption(array('--help', '-h')) && null !== $input->getFirstArgument()) {

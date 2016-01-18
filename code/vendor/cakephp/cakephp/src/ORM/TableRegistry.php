@@ -48,8 +48,7 @@ use Cake\ORM\Locator\LocatorInterface;
  * ```
  *
  */
-class TableRegistry
-{
+class TableRegistry {
 
 	/**
 	 * LocatorInterface implementation instance.
@@ -71,8 +70,7 @@ class TableRegistry
 	 * @param \Cake\ORM\Locator\LocatorInterface $locator Instance of a locator to use.
 	 * @return \Cake\ORM\Locator\LocatorInterface
 	 */
-	public static function locator(LocatorInterface $locator = null)
-	{
+	public static function locator(LocatorInterface $locator = null) {
 		if ($locator) {
 			static::$_locator = $locator;
 		}
@@ -92,8 +90,7 @@ class TableRegistry
 	 * @param array|null $options list of options for the alias
 	 * @return array The config data.
 	 */
-	public static function config($alias = null, $options = null)
-	{
+	public static function config($alias = null, $options = null) {
 		return static::locator()->config($alias, $options);
 	}
 
@@ -104,8 +101,7 @@ class TableRegistry
 	 * @param array $options The options you want to build the table with.
 	 * @return \Cake\ORM\Table
 	 */
-	public static function get($alias, array $options = [])
-	{
+	public static function get($alias, array $options = []) {
 		return static::locator()->get($alias, $options);
 	}
 
@@ -115,8 +111,7 @@ class TableRegistry
 	 * @param string $alias The alias to check for.
 	 * @return bool
 	 */
-	public static function exists($alias)
-	{
+	public static function exists($alias) {
 		return static::locator()->exists($alias);
 	}
 
@@ -127,8 +122,7 @@ class TableRegistry
 	 * @param \Cake\ORM\Table $object The table to set.
 	 * @return \Cake\ORM\Table
 	 */
-	public static function set($alias, Table $object)
-	{
+	public static function set($alias, Table $object) {
 		return static::locator()->set($alias, $object);
 	}
 
@@ -138,8 +132,7 @@ class TableRegistry
 	 * @param string $alias The alias to remove.
 	 * @return void
 	 */
-	public static function remove($alias)
-	{
+	public static function remove($alias) {
 		static::locator()->remove($alias);
 	}
 
@@ -148,8 +141,7 @@ class TableRegistry
 	 *
 	 * @return void
 	 */
-	public static function clear()
-	{
+	public static function clear() {
 		static::locator()->clear();
 	}
 
@@ -160,8 +152,7 @@ class TableRegistry
 	 * @param array $arguments Method arguments.
 	 * @return mixed
 	 */
-	public static function __callStatic($name, $arguments)
-	{
+	public static function __callStatic($name, $arguments) {
 		return call_user_func_array([static::locator(), $name], $arguments);
 	}
 }

@@ -32,8 +32,7 @@ class <%= $name %>Form extends Form
 	 * @return $this
 	 */
 	protected
-	function _buildSchema(Schema $schema)
-	{
+	function _buildSchema(Schema $schema) {
 		return $schema;
 	}
 
@@ -44,8 +43,7 @@ class <%= $name %>Form extends Form
 	 * @return Validator
 	 */
 	protected
-	function _buildValidator(Validator $validator)
-	{
+	function _buildValidator(Validator $validator) {
 		return $validator;
 	}
 
@@ -55,8 +53,7 @@ class <%= $name %>Form extends Form
 	 * @return bool
 	 */
 	protected
-	function _execute(array $data)
-	{
+	function _execute(array $data) {
 		return true;
 	}
 }

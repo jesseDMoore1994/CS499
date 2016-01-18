@@ -23,8 +23,7 @@ use Cake\Datasource\Exception\MissingDatasourceException;
  *
  * @see \Cake\Datasource\ConnectionManager
  */
-class ConnectionRegistry extends ObjectRegistry
-{
+class ConnectionRegistry extends ObjectRegistry {
 
 	/**
 	 * Resolve a driver classname.
@@ -34,8 +33,7 @@ class ConnectionRegistry extends ObjectRegistry
 	 * @param string $class Partial classname to resolve.
 	 * @return string|false Either the correct classname or false.
 	 */
-	protected function _resolveClassName($class)
-	{
+	protected function _resolveClassName($class) {
 		if (is_object($class)) {
 			return $class;
 		}
@@ -52,8 +50,7 @@ class ConnectionRegistry extends ObjectRegistry
 	 * @return void
 	 * @throws \Cake\Datasource\Exception\MissingDatasourceException
 	 */
-	protected function _throwMissingClassError($class, $plugin)
-	{
+	protected function _throwMissingClassError($class, $plugin) {
 		throw new MissingDatasourceException([
 			'class' => $class,
 			'plugin' => $plugin,
@@ -70,8 +67,7 @@ class ConnectionRegistry extends ObjectRegistry
 	 * @param array $settings An array of settings to use for the driver.
 	 * @return object A connection with the correct settings.
 	 */
-	protected function _create($class, $alias, $settings)
-	{
+	protected function _create($class, $alias, $settings) {
 		unset($settings['className']);
 		return new $class($settings);
 	}
@@ -82,8 +78,7 @@ class ConnectionRegistry extends ObjectRegistry
 	 * @param string $name The adapter name.
 	 * @return void
 	 */
-	public function unload($name)
-	{
+	public function unload($name) {
 		unset($this->_loaded[$name]);
 	}
 }

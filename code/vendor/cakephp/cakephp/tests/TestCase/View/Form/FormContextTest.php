@@ -23,16 +23,14 @@ use Cake\View\Form\FormContext;
 /**
  * Form context test case.
  */
-class FormContextTest extends TestCase
-{
+class FormContextTest extends TestCase {
 
 	/**
 	 * setup method.
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->request = new Request();
 	}
@@ -42,8 +40,7 @@ class FormContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPrimaryKey()
-	{
+	public function testPrimaryKey() {
 		$context = new FormContext($this->request, ['entity' => new Form()]);
 		$this->assertEquals([], $context->primaryKey());
 	}
@@ -53,8 +50,7 @@ class FormContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsPrimaryKey()
-	{
+	public function testIsPrimaryKey() {
 		$context = new FormContext($this->request, ['entity' => new Form()]);
 		$this->assertFalse($context->isPrimaryKey('id'));
 	}
@@ -64,8 +60,7 @@ class FormContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsCreate()
-	{
+	public function testIsCreate() {
 		$context = new FormContext($this->request, ['entity' => new Form()]);
 		$this->assertTrue($context->isCreate());
 	}
@@ -73,8 +68,7 @@ class FormContextTest extends TestCase
 	/**
 	 * Test reading values from the request & defaults.
 	 */
-	public function testValPresent()
-	{
+	public function testValPresent() {
 		$this->request->data = [
 			'Articles' => [
 				'title' => 'New title',
@@ -92,8 +86,7 @@ class FormContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testValMissing()
-	{
+	public function testValMissing() {
 		$context = new FormContext($this->request, ['entity' => new Form()]);
 		$this->assertNull($context->val('Comments.field'));
 	}
@@ -103,8 +96,7 @@ class FormContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testIsRequired()
-	{
+	public function testIsRequired() {
 		$form = new Form();
 		$form->validator()
 			->requirePresence('name')
@@ -124,8 +116,7 @@ class FormContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testType()
-	{
+	public function testType() {
 		$form = new Form();
 		$form->schema()
 			->addField('email', 'string')
@@ -145,8 +136,7 @@ class FormContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAttributes()
-	{
+	public function testAttributes() {
 		$form = new Form();
 		$form->schema()
 			->addField('email', [
@@ -171,8 +161,7 @@ class FormContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testError()
-	{
+	public function testError() {
 		$nestedValidator = new Validator();
 		$nestedValidator
 			->add('password', 'length', ['rule' => ['minLength', 8]])
@@ -206,8 +195,7 @@ class FormContextTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testHasError()
-	{
+	public function testHasError() {
 		$nestedValidator = new Validator();
 		$nestedValidator
 			->add('password', 'length', ['rule' => ['minLength', 8]])

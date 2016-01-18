@@ -16,8 +16,7 @@ namespace Cake\Network\Exception;
  * Represents an HTTP 409 error.
  *
  */
-class ConflictException extends HttpException
-{
+class ConflictException extends HttpException {
 
 	/**
 	 * Constructor
@@ -25,8 +24,7 @@ class ConflictException extends HttpException
 	 * @param string|null $message If no message is given 'Conflict' will be the message
 	 * @param int $code Status code, defaults to 409
 	 */
-	public function __construct($message = null, $code = 409)
-	{
+	public function __construct($message = null, $code = 409) {
 		if (empty($message)) {
 			$message = 'Conflict';
 		}

@@ -23,8 +23,7 @@ use PDO;
 /**
  * SQLServer driver.
  */
-class Sqlserver extends Driver
-{
+class Sqlserver extends Driver {
 
 	use PDODriverTrait;
 	use SqlserverDialectTrait;
@@ -52,8 +51,7 @@ class Sqlserver extends Driver
 	 *
 	 * @return bool true on success
 	 */
-	public function connect()
-	{
+	public function connect() {
 		if ($this->_connection) {
 			return true;
 		}
@@ -89,8 +87,7 @@ class Sqlserver extends Driver
 	 *
 	 * @return bool true if it is valid to use this driver
 	 */
-	public function enabled()
-	{
+	public function enabled() {
 		return in_array('sqlsrv', PDO::getAvailableDrivers());
 	}
 
@@ -100,8 +97,7 @@ class Sqlserver extends Driver
 	 * @param string|\Cake\Database\Query $query The query to prepare.
 	 * @return \Cake\Database\StatementInterface
 	 */
-	public function prepare($query)
-	{
+	public function prepare($query) {
 		$this->connect();
 		$options = [PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL];
 		$isObject = $query instanceof Query;
@@ -115,8 +111,7 @@ class Sqlserver extends Driver
 	/**
 	 * {@inheritDoc}
 	 */
-	public function supportsDynamicConstraints()
-	{
+	public function supportsDynamicConstraints() {
 		return true;
 	}
 }

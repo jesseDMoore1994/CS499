@@ -18,19 +18,16 @@ use Psy\Shell;
 use Psy\TabCompletion\Matcher\ClassMethodsMatcher;
 use Symfony\Component\Console\Output\StreamOutput;
 
-class ShellTest extends \PHPUnit_Framework_TestCase
-{
+class ShellTest extends \PHPUnit_Framework_TestCase {
 	private $streams = array();
 
-	public function tearDown()
-	{
+	public function tearDown() {
 		foreach ($this->streams as $stream) {
 			fclose($stream);
 		}
 	}
 
-	public function testScopeVariables()
-	{
+	public function testScopeVariables() {
 		$one = 'banana';
 		$two = 123;
 		$three = new \StdClass();
@@ -55,15 +52,13 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \InvalidArgumentException
 	 */
-	public function testUnknownScopeVariablesThrowExceptions()
-	{
+	public function testUnknownScopeVariablesThrowExceptions() {
 		$shell = new Shell($this->getConfig());
 		$shell->setScopeVariables(array('foo' => 'FOO', 'bar' => 1));
 		$shell->getScopeVariable('baz');
 	}
 
-	public function testIncludes()
-	{
+	public function testIncludes() {
 		$config = $this->getConfig(array('configFile' => __DIR__ . '/../../fixtures/empty.php'));
 
 		$shell = new Shell($config);
@@ -72,8 +67,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals(array('foo', 'bar', 'baz'), $shell->getIncludes());
 	}
 
-	public function testIncludesConfig()
-	{
+	public function testIncludesConfig() {
 		$config = $this->getConfig(array(
 			'defaultIncludes' => array('/file.php'),
 			'configFile' => __DIR__ . '/../../fixtures/empty.php',
@@ -85,8 +79,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('/file.php', $includes[0]);
 	}
 
-	public function testAddMatchersViaConfig()
-	{
+	public function testAddMatchersViaConfig() {
 		$config = $this->getConfig(array(
 			'tabCompletionMatchers' => array(
 				new ClassMethodsMatcher(),
@@ -98,8 +91,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$this->assertTrue(array_pop($matchers) instanceof ClassMethodsMatcher);
 	}
 
-	public function testRenderingExceptions()
-	{
+	public function testRenderingExceptions() {
 		$shell = new Shell($this->getConfig());
 		$output = $this->getOutput();
 		$stream = $output->getStream();
@@ -124,8 +116,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$this->assertContains('line 13', $streamContents);
 	}
 
-	public function testHandlingErrors()
-	{
+	public function testHandlingErrors() {
 		$shell = new Shell($this->getConfig());
 		$output = $this->getOutput();
 		$stream = $output->getStream();
@@ -153,8 +144,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException Psy\Exception\ErrorException
 	 */
-	public function testNotHandlingErrors()
-	{
+	public function testNotHandlingErrors() {
 		$shell = new Shell($this->getConfig());
 		$oldLevel = error_reporting();
 		error_reporting($oldLevel | E_USER_NOTICE);
@@ -167,8 +157,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		}
 	}
 
-	public function testVersion()
-	{
+	public function testVersion() {
 		$shell = new Shell($this->getConfig());
 
 		$this->assertInstanceOf('Symfony\Component\Console\Application', $shell);
@@ -177,8 +166,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$this->assertContains(php_sapi_name(), $shell->getVersion());
 	}
 
-	public function testCodeBuffer()
-	{
+	public function testCodeBuffer() {
 		$shell = new Shell($this->getConfig());
 
 		$shell->addCode('class');
@@ -197,8 +185,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('class a { }', $code);
 	}
 
-	public function testKeepCodeBufferOpen()
-	{
+	public function testKeepCodeBufferOpen() {
 		$shell = new Shell($this->getConfig());
 
 		$shell->addCode('1 \\');
@@ -220,15 +207,13 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \Psy\Exception\ParseErrorException
 	 */
-	public function testCodeBufferThrowsParseExceptions()
-	{
+	public function testCodeBufferThrowsParseExceptions() {
 		$shell = new Shell($this->getConfig());
 		$shell->addCode('this is not valid');
 		$shell->flushCode();
 	}
 
-	public function testClosuresSupport()
-	{
+	public function testClosuresSupport() {
 		$shell = new Shell($this->getConfig());
 		$code = '$test = function () {}';
 		$shell->addCode($code);
@@ -238,8 +223,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$shell->flushCode();
 	}
 
-	public function testWriteStdout()
-	{
+	public function testWriteStdout() {
 		$output = $this->getOutput();
 		$stream = $output->getStream();
 		$shell = new Shell($this->getConfig());
@@ -253,8 +237,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals('{{stdout}}' . PHP_EOL, $streamContents);
 	}
 
-	public function testWriteStdoutWithoutNewline()
-	{
+	public function testWriteStdoutWithoutNewline() {
 		$output = $this->getOutput();
 		$stream = $output->getStream();
 		$shell = new Shell($this->getConfig());
@@ -271,8 +254,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getReturnValues
 	 */
-	public function testWriteReturnValue($input, $expected)
-	{
+	public function testWriteReturnValue($input, $expected) {
 		$output = $this->getOutput();
 		$stream = $output->getStream();
 		$shell = new Shell($this->getConfig());
@@ -283,8 +265,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, stream_get_contents($stream));
 	}
 
-	public function getReturnValues()
-	{
+	public function getReturnValues() {
 		return array(
 			array('{{return value}}', "=> \"\033[32m{{return value}}\033[39m\"" . PHP_EOL),
 			array(1, "=> \033[35m1\033[39m" . PHP_EOL),
@@ -294,8 +275,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getRenderedExceptions
 	 */
-	public function testWriteException($exception, $expected)
-	{
+	public function testWriteException($exception, $expected) {
 		$output = $this->getOutput();
 		$stream = $output->getStream();
 		$shell = new Shell($this->getConfig());
@@ -306,15 +286,13 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, stream_get_contents($stream));
 	}
 
-	public function getRenderedExceptions()
-	{
+	public function getRenderedExceptions() {
 		return array(
 			array(new \Exception('{{message}}'), "Exception with message '{{message}}'" . PHP_EOL),
 		);
 	}
 
-	private function getOutput()
-	{
+	private function getOutput() {
 		$stream = fopen('php://memory', 'w+');
 		$this->streams[] = $stream;
 
@@ -323,8 +301,7 @@ class ShellTest extends \PHPUnit_Framework_TestCase
 		return $output;
 	}
 
-	private function getConfig(array $config = array())
-	{
+	private function getConfig(array $config = array()) {
 		// Mebbe there's a better way than this?
 		$dir = tempnam(sys_get_temp_dir(), 'psysh_shell_test_');
 		unlink($dir);

@@ -23,8 +23,7 @@ use DebugKit\DebugPanel;
  * Provides debug information on the SQL logs and provides links to an ajax explain interface.
  *
  */
-class SqlLogPanel extends DebugPanel
-{
+class SqlLogPanel extends DebugPanel {
 
 	/**
 	 * Loggers connected
@@ -41,8 +40,7 @@ class SqlLogPanel extends DebugPanel
 	 *
 	 * @return array
 	 */
-	public function initialize()
-	{
+	public function initialize() {
 		$configs = ConnectionManager::configured();
 		foreach ($configs as $name) {
 			$connection = ConnectionManager::get($name);
@@ -70,8 +68,7 @@ class SqlLogPanel extends DebugPanel
 	 *
 	 * @return array
 	 */
-	public function data()
-	{
+	public function data() {
 		return [
 			'tables' => array_map(function ($table) {
 				return $table->alias();
@@ -85,8 +82,7 @@ class SqlLogPanel extends DebugPanel
 	 *
 	 * @return string
 	 */
-	public function summary()
-	{
+	public function summary() {
 		$count = $time = 0;
 		foreach ($this->_loggers as $logger) {
 			$count += count($logger->queries());

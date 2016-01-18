@@ -16,8 +16,7 @@ use Cake\ORM\TableRegistry;
 use Phinx\Db\Adapter\SQLiteAdapter;
 use Phinx\Db\Table as BaseTable;
 
-class Table extends BaseTable
-{
+class Table extends BaseTable {
 
 	/**
 	 * Primary key for this table.
@@ -34,8 +33,7 @@ class Table extends BaseTable
 	 * @param string|array $columns Table Column(s)
 	 * @return Table
 	 */
-	public function addPrimaryKey($columns)
-	{
+	public function addPrimaryKey($columns) {
 		$this->primaryKey = $columns;
 		return $this;
 	}
@@ -47,8 +45,7 @@ class Table extends BaseTable
 	 *
 	 * {@inheritdoc}
 	 */
-	public function addColumn($columnName, $type = null, $options = [])
-	{
+	public function addColumn($columnName, $type = null, $options = []) {
 		if (isset($options['autoIncrement']) && $options['autoIncrement'] === true) {
 			$options['identity'] = true;
 			unset($options['autoIncrement']);
@@ -60,8 +57,7 @@ class Table extends BaseTable
 	/**
 	 * {@inheritdoc}
 	 */
-	public function create()
-	{
+	public function create() {
 		if ((!isset($this->options['id']) || $this->options['id'] === false) && !empty($this->primaryKey)) {
 			$this->options['primary_key'] = $this->primaryKey;
 			$this->filterPrimaryKey();
@@ -77,8 +73,7 @@ class Table extends BaseTable
 	 * table schema stored in Table objects having columns that might have been renamed or removed during
 	 * the update process.
 	 */
-	public function update()
-	{
+	public function update() {
 		parent::update();
 		TableRegistry::clear();
 	}
@@ -92,8 +87,7 @@ class Table extends BaseTable
 	 *
 	 * @return void
 	 */
-	protected function filterPrimaryKey()
-	{
+	protected function filterPrimaryKey() {
 		if ($this->getAdapter()->getAdapterType() !== 'sqlite' || empty($this->options['primary_key'])) {
 			return;
 		}

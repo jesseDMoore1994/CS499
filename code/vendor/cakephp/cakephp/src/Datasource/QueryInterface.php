@@ -20,8 +20,7 @@ namespace Cake\Datasource;
  *
  * @package Cake\Datasource
  */
-interface QueryInterface
-{
+interface QueryInterface {
 
 	/**
 	 * Returns a key => value array representing a single aliased field

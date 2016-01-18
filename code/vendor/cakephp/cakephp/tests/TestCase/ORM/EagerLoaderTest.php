@@ -28,16 +28,14 @@ use Cake\TestSuite\TestCase;
  * Tests EagerLoader
  *
  */
-class EagerLoaderTest extends TestCase
-{
+class EagerLoaderTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->connection = ConnectionManager::get('test');
 		$schema = [
@@ -123,8 +121,7 @@ class EagerLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		TableRegistry::clear();
 	}
@@ -134,8 +131,7 @@ class EagerLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainToJoinsOneLevel()
-	{
+	public function testContainToJoinsOneLevel() {
 		$contains = [
 			'clients' => [
 				'orders' => [
@@ -234,8 +230,7 @@ class EagerLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainDotNotation()
-	{
+	public function testContainDotNotation() {
 		$loader = new EagerLoader;
 		$loader->contain([
 			'clients.orders.stuff',
@@ -269,8 +264,7 @@ class EagerLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainClosure()
-	{
+	public function testContainClosure() {
 		$builder = function ($query) {
 		};
 		$loader = new EagerLoader;
@@ -302,8 +296,7 @@ class EagerLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainToFieldsPredefined()
-	{
+	public function testContainToFieldsPredefined() {
 		$contains = [
 			'clients' => [
 				'fields' => ['name', 'company_id', 'clients.telephone'],
@@ -336,8 +329,7 @@ class EagerLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testContainToFieldsDefault()
-	{
+	public function testContainToFieldsDefault() {
 		$contains = ['clients' => ['orders']];
 
 		$query = new Query($this->connection, $this->table);
@@ -382,8 +374,7 @@ class EagerLoaderTest extends TestCase
 	 * @expectedExceptionMessage You have contained 'Clients' but that association was bound as 'clients'
 	 * @return void
 	 */
-	public function testNormalizedChecksAliasNames()
-	{
+	public function testNormalizedChecksAliasNames() {
 		$contains = ['Clients'];
 		$loader = new EagerLoader;
 		$loader->contain($contains);
@@ -396,8 +387,7 @@ class EagerLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNormalizedPath()
-	{
+	public function testNormalizedPath() {
 		$contains = [
 			'clients' => [
 				'orders' => [
@@ -448,8 +438,7 @@ class EagerLoaderTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testClearContain()
-	{
+	public function testClearContain() {
 		$contains = [
 			'clients' => [
 				'orders' => [
@@ -479,8 +468,7 @@ class EagerLoaderTest extends TestCase
 	 * @param array $elements
 	 * @return array
 	 */
-	protected function _quoteArray($elements)
-	{
+	protected function _quoteArray($elements) {
 		if ($this->connection->driver()->autoQuoting()) {
 			$quoter = function ($e) {
 				return $this->connection->driver()->quoteIdentifier($e);

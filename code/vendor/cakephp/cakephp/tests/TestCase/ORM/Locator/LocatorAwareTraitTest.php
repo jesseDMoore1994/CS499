@@ -21,16 +21,14 @@ use Cake\TestSuite\TestCase;
  * LocatorAwareTrait test case
  *
  */
-class LocatorAwareTraitTest extends TestCase
-{
+class LocatorAwareTraitTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		$this->subject = $this->getObjectForTrait('Cake\ORM\Locator\LocatorAwareTrait');
@@ -41,8 +39,7 @@ class LocatorAwareTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testTableLocator()
-	{
+	public function testTableLocator() {
 		$tableLocator = $this->subject->tableLocator();
 		$this->assertSame(TableRegistry::locator(), $tableLocator);
 

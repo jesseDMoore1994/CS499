@@ -21,8 +21,7 @@ use Psy\Command\Command;
  *
  * @author Marc Garcia <markcial@gmail.com>
  */
-class CommandsMatcher extends AbstractMatcher
-{
+class CommandsMatcher extends AbstractMatcher {
 	/** @var string[] */
 	protected $commands = array();
 
@@ -31,8 +30,7 @@ class CommandsMatcher extends AbstractMatcher
 	 *
 	 * @param Command[] $commands
 	 */
-	public function __construct(array $commands)
-	{
+	public function __construct(array $commands) {
 		$this->setCommands($commands);
 	}
 
@@ -41,8 +39,7 @@ class CommandsMatcher extends AbstractMatcher
 	 *
 	 * @param Command[] $commands
 	 */
-	public function setCommands(array $commands)
-	{
+	public function setCommands(array $commands) {
 		$names = array();
 		foreach ($commands as $command) {
 			$names = array_merge(array($command->getName()), $names);
@@ -58,8 +55,7 @@ class CommandsMatcher extends AbstractMatcher
 	 *
 	 * @return bool
 	 */
-	protected function isCommand($name)
-	{
+	protected function isCommand($name) {
 		return in_array($name, $this->commands);
 	}
 
@@ -70,8 +66,7 @@ class CommandsMatcher extends AbstractMatcher
 	 *
 	 * @return bool
 	 */
-	protected function matchCommand($name)
-	{
+	protected function matchCommand($name) {
 		foreach ($this->commands as $cmd) {
 			if ($this->startsWith($name, $cmd)) {
 				return true;
@@ -84,8 +79,7 @@ class CommandsMatcher extends AbstractMatcher
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getMatches(array $tokens, array $info = array())
-	{
+	public function getMatches(array $tokens, array $info = array()) {
 		$input = $this->getInput($tokens);
 
 		return array_filter($this->commands, function ($command) use ($input) {
@@ -96,8 +90,7 @@ class CommandsMatcher extends AbstractMatcher
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasMatched(array $tokens)
-	{
+	public function hasMatched(array $tokens) {
 		/* $openTag */
 		array_shift($tokens);
 		$command = array_shift($tokens);

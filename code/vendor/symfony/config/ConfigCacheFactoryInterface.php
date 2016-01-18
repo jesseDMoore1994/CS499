@@ -18,8 +18,7 @@ namespace Symfony\Component\Config;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-interface ConfigCacheFactoryInterface
-{
+interface ConfigCacheFactoryInterface {
 	/**
 	 * Creates a cache instance and (re-)initializes it if necessary.
 	 *

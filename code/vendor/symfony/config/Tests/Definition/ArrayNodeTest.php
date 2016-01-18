@@ -15,13 +15,11 @@ use Symfony\Component\Config\Definition\ArrayNode;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Definition\ScalarNode;
 
-class ArrayNodeTest extends \PHPUnit_Framework_TestCase
-{
+class ArrayNodeTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidTypeException
 	 */
-	public function testNormalizeThrowsExceptionWhenFalseIsNotAllowed()
-	{
+	public function testNormalizeThrowsExceptionWhenFalseIsNotAllowed() {
 		$node = new ArrayNode('root');
 		$node->normalize(false);
 	}
@@ -30,14 +28,12 @@ class ArrayNodeTest extends \PHPUnit_Framework_TestCase
 	 * @expectedException        \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
 	 * @expectedExceptionMessage Unrecognized option "foo" under "root"
 	 */
-	public function testExceptionThrownOnUnrecognizedChild()
-	{
+	public function testExceptionThrownOnUnrecognizedChild() {
 		$node = new ArrayNode('root');
 		$node->normalize(array('foo' => 'bar'));
 	}
 
-	public function ignoreAndRemoveMatrixProvider()
-	{
+	public function ignoreAndRemoveMatrixProvider() {
 		$unrecognizedOptionException = new InvalidConfigurationException('Unrecognized option "foo" under "root"');
 
 		return array(
@@ -51,8 +47,7 @@ class ArrayNodeTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider ignoreAndRemoveMatrixProvider
 	 */
-	public function testIgnoreAndRemoveBehaviors($ignore, $remove, $expected, $message = '')
-	{
+	public function testIgnoreAndRemoveBehaviors($ignore, $remove, $expected, $message = '') {
 		if ($expected instanceof \Exception) {
 			$this->setExpectedException(get_class($expected), $expected->getMessage());
 		}
@@ -65,8 +60,7 @@ class ArrayNodeTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getPreNormalizationTests
 	 */
-	public function testPreNormalize($denormalized, $normalized)
-	{
+	public function testPreNormalize($denormalized, $normalized) {
 		$node = new ArrayNode('foo');
 
 		$r = new \ReflectionMethod($node, 'preNormalize');
@@ -75,8 +69,7 @@ class ArrayNodeTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($normalized, $r->invoke($node, $denormalized));
 	}
 
-	public function getPreNormalizationTests()
-	{
+	public function getPreNormalizationTests() {
 		return array(
 			array(
 				array('foo-bar' => 'foo'),
@@ -100,8 +93,7 @@ class ArrayNodeTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getZeroNamedNodeExamplesData
 	 */
-	public function testNodeNameCanBeZero($denormalized, $normalized)
-	{
+	public function testNodeNameCanBeZero($denormalized, $normalized) {
 		$zeroNode = new ArrayNode(0);
 		$zeroNode->addChild(new ScalarNode('name'));
 		$fiveNode = new ArrayNode(5);
@@ -117,8 +109,7 @@ class ArrayNodeTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($normalized, $r->invoke($rootNode, $denormalized));
 	}
 
-	public function getZeroNamedNodeExamplesData()
-	{
+	public function getZeroNamedNodeExamplesData() {
 		return array(
 			array(
 				array(
@@ -148,8 +139,7 @@ class ArrayNodeTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider getPreNormalizedNormalizedOrderedData
 	 */
-	public function testChildrenOrderIsMaintainedOnNormalizeValue($prenormalized, $normalized)
-	{
+	public function testChildrenOrderIsMaintainedOnNormalizeValue($prenormalized, $normalized) {
 		$scalar1 = new ScalarNode('1');
 		$scalar2 = new ScalarNode('2');
 		$scalar3 = new ScalarNode('3');
@@ -164,8 +154,7 @@ class ArrayNodeTest extends \PHPUnit_Framework_TestCase
 		$this->assertSame($normalized, $r->invoke($node, $prenormalized));
 	}
 
-	public function getPreNormalizedNormalizedOrderedData()
-	{
+	public function getPreNormalizedNormalizedOrderedData() {
 		return array(
 			array(
 				array('2' => 'two', '1' => 'one', '3' => 'three'),

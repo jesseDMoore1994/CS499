@@ -13,10 +13,8 @@ namespace Psy\Test\CodeCleaner;
 
 use Psy\CodeCleaner\LegacyEmptyPass;
 
-class LegacyEmptyPassTest extends CodeCleanerTestCase
-{
-	public function setUp()
-	{
+class LegacyEmptyPassTest extends CodeCleanerTestCase {
+	public function setUp() {
 		$this->setPass(new LegacyEmptyPass());
 	}
 
@@ -24,14 +22,12 @@ class LegacyEmptyPassTest extends CodeCleanerTestCase
 	 * @dataProvider invalidStatements
 	 * @expectedException \Psy\Exception\ParseErrorException
 	 */
-	public function testProcessInvalidStatement($code)
-	{
+	public function testProcessInvalidStatement($code) {
 		$stmts = $this->parse($code);
 		$this->traverser->traverse($stmts);
 	}
 
-	public function invalidStatements()
-	{
+	public function invalidStatements() {
 		if (version_compare(PHP_VERSION, '5.5', '>=')) {
 			return array(
 				array('empty()'),
@@ -51,14 +47,12 @@ class LegacyEmptyPassTest extends CodeCleanerTestCase
 	/**
 	 * @dataProvider validStatements
 	 */
-	public function testProcessValidStatement($code)
-	{
+	public function testProcessValidStatement($code) {
 		$stmts = $this->parse($code);
 		$this->traverser->traverse($stmts);
 	}
 
-	public function validStatements()
-	{
+	public function validStatements() {
 		if (version_compare(PHP_VERSION, '5.5', '<')) {
 			return array(
 				array('empty($foo)'),

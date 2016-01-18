@@ -18,8 +18,7 @@ use Symfony\Component\Console\Formatter\OutputFormatter;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class FormatterHelper extends Helper
-{
+class FormatterHelper extends Helper {
 	/**
 	 * Formats a message within a section.
 	 *
@@ -29,8 +28,7 @@ class FormatterHelper extends Helper
 	 *
 	 * @return string The format section
 	 */
-	public function formatSection($section, $message, $style = 'info')
-	{
+	public function formatSection($section, $message, $style = 'info') {
 		return sprintf('<%s>[%s]</%s> %s', $style, $section, $style, $message);
 	}
 
@@ -43,8 +41,7 @@ class FormatterHelper extends Helper
 	 *
 	 * @return string The formatter message
 	 */
-	public function formatBlock($messages, $style, $large = false)
-	{
+	public function formatBlock($messages, $style, $large = false) {
 		if (!is_array($messages)) {
 			$messages = array($messages);
 		}
@@ -75,8 +72,7 @@ class FormatterHelper extends Helper
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return 'formatter';
 	}
 }

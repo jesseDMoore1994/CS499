@@ -29,8 +29,7 @@ use Cake\Network\Exception\NotFoundException;
  *
  * @link http://book.cakephp.org/3.0/en/controllers/components/pagination.html
  */
-class PaginatorComponent extends Component
-{
+class PaginatorComponent extends Component {
 
 	/**
 	 * Default pagination settings.
@@ -59,8 +58,7 @@ class PaginatorComponent extends Component
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [];
 	}
 
@@ -146,8 +144,7 @@ class PaginatorComponent extends Component
 	 * @return array Query results
 	 * @throws \Cake\Network\Exception\NotFoundException
 	 */
-	public function paginate($object, array $settings = [])
-	{
+	public function paginate($object, array $settings = []) {
 		if ($object instanceof QueryInterface) {
 			$query = $object;
 			$object = $query->repository();
@@ -224,8 +221,7 @@ class PaginatorComponent extends Component
 	 * @return array An array containing in the first position the finder name and
 	 * in the second the options to be passed to it
 	 */
-	protected function _extractFinder($options)
-	{
+	protected function _extractFinder($options) {
 		$type = !empty($options['finder']) ? $options['finder'] : 'all';
 		unset($options['finder'], $options['maxLimit']);
 
@@ -253,8 +249,7 @@ class PaginatorComponent extends Component
 	 * @param array $settings The settings to merge with the request data.
 	 * @return array Array of merged options.
 	 */
-	public function mergeOptions($alias, $settings)
-	{
+	public function mergeOptions($alias, $settings) {
 		$defaults = $this->getDefaults($alias, $settings);
 		$request = $this->_registry->getController()->request;
 		$request = array_intersect_key($request->query, array_flip($this->_config['whitelist']));
@@ -269,8 +264,7 @@ class PaginatorComponent extends Component
 	 * @param array $defaults The defaults to use for combining settings.
 	 * @return array An array of pagination defaults for a model, or the general settings.
 	 */
-	public function getDefaults($alias, $defaults)
-	{
+	public function getDefaults($alias, $defaults) {
 		if (isset($defaults[$alias])) {
 			$defaults = $defaults[$alias];
 		}
@@ -299,8 +293,7 @@ class PaginatorComponent extends Component
 	 * @param array $options The pagination options being used for this request.
 	 * @return array An array of options with sort + direction removed and replaced with order if possible.
 	 */
-	public function validateSort(RepositoryInterface $object, array $options)
-	{
+	public function validateSort(RepositoryInterface $object, array $options) {
 		if (isset($options['sort'])) {
 			$direction = null;
 			if (isset($options['direction'])) {
@@ -342,8 +335,7 @@ class PaginatorComponent extends Component
 	 * @param bool $whitelisted Whether or not the field was whitelisted
 	 * @return array Final order array.
 	 */
-	protected function _prefix(RepositoryInterface $object, $order, $whitelisted = false)
-	{
+	protected function _prefix(RepositoryInterface $object, $order, $whitelisted = false) {
 		$tableAlias = $object->alias();
 		$tableOrder = [];
 		foreach ($order as $key => $value) {
@@ -380,8 +372,7 @@ class PaginatorComponent extends Component
 	 * @param array $options An array of options with a limit key to be checked.
 	 * @return array An array of options for pagination
 	 */
-	public function checkLimit(array $options)
-	{
+	public function checkLimit(array $options) {
 		$options['limit'] = (int)$options['limit'];
 		if (empty($options['limit']) || $options['limit'] < 1) {
 			$options['limit'] = 1;

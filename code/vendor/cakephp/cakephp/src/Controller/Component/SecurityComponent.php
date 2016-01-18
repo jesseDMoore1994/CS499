@@ -33,8 +33,7 @@ use Cake\Utility\Security;
  *
  * @link http://book.cakephp.org/3.0/en/controllers/components/security.html
  */
-class SecurityComponent extends Component
-{
+class SecurityComponent extends Component {
 
 	/**
 	 * Default config
@@ -96,8 +95,7 @@ class SecurityComponent extends Component
 	 * @param Event $event An Event instance
 	 * @return mixed
 	 */
-	public function startup(Event $event)
-	{
+	public function startup(Event $event) {
 		$controller = $event->subject();
 		$this->session = $this->request->session();
 		$this->_action = $this->request->params['action'];
@@ -134,8 +132,7 @@ class SecurityComponent extends Component
 	 *
 	 * @return array
 	 */
-	public function implementedEvents()
-	{
+	public function implementedEvents() {
 		return [
 			'Controller.startup' => 'startup',
 		];
@@ -147,8 +144,7 @@ class SecurityComponent extends Component
 	 * @param string|array $actions Actions list
 	 * @return void
 	 */
-	public function requireSecure($actions = null)
-	{
+	public function requireSecure($actions = null) {
 		$this->_requireMethod('Secure', (array)$actions);
 	}
 
@@ -162,8 +158,7 @@ class SecurityComponent extends Component
 	 * @param string|array $actions Actions list
 	 * @return void
 	 */
-	public function requireAuth($actions)
-	{
+	public function requireAuth($actions) {
 		$this->_requireMethod('Auth', (array)$actions);
 	}
 
@@ -178,8 +173,7 @@ class SecurityComponent extends Component
 	 * @link http://book.cakephp.org/3.0/en/controllers/components/security.html#handling-blackhole-callbacks
 	 * @throws \Cake\Network\Exception\BadRequestException
 	 */
-	public function blackHole(Controller $controller, $error = '')
-	{
+	public function blackHole(Controller $controller, $error = '') {
 		if (!$this->_config['blackHoleCallback']) {
 			throw new BadRequestException('The request has been black-holed');
 		}
@@ -193,8 +187,7 @@ class SecurityComponent extends Component
 	 * @param array $actions Controller actions to set the required HTTP method to.
 	 * @return void
 	 */
-	protected function _requireMethod($method, $actions = [])
-	{
+	protected function _requireMethod($method, $actions = []) {
 		if (isset($actions[0]) && is_array($actions[0])) {
 			$actions = $actions[0];
 		}
@@ -207,8 +200,7 @@ class SecurityComponent extends Component
 	 * @param Controller $controller Instantiating controller
 	 * @return bool true if secure connection required
 	 */
-	protected function _secureRequired(Controller $controller)
-	{
+	protected function _secureRequired(Controller $controller) {
 		if (is_array($this->_config['requireSecure']) &&
 			!empty($this->_config['requireSecure'])
 		) {
@@ -231,8 +223,7 @@ class SecurityComponent extends Component
 	 * @param Controller $controller Instantiating controller
 	 * @return bool true if authentication required
 	 */
-	protected function _authRequired(Controller $controller)
-	{
+	protected function _authRequired(Controller $controller) {
 		if (is_array($this->_config['requireAuth']) &&
 			!empty($this->_config['requireAuth']) &&
 			!empty($this->request->data)
@@ -274,8 +265,7 @@ class SecurityComponent extends Component
 	 * @param Controller $controller Instantiating controller
 	 * @return bool true if submitted form is valid
 	 */
-	protected function _validatePost(Controller $controller)
-	{
+	protected function _validatePost(Controller $controller) {
 		if (empty($controller->request->data)) {
 			return true;
 		}
@@ -365,8 +355,7 @@ class SecurityComponent extends Component
 	 * @param \Cake\Network\Request $request The request object to add into.
 	 * @return bool
 	 */
-	public function generateToken(Request $request)
-	{
+	public function generateToken(Request $request) {
 		if (isset($request->params['requested']) && $request->params['requested'] === 1) {
 			if ($this->session->check('_Token')) {
 				$request->params['_Token'] = $this->session->read('_Token');
@@ -395,8 +384,7 @@ class SecurityComponent extends Component
 	 * @return mixed Controller callback method's response
 	 * @throws \Cake\Network\Exception\BadRequestException When a the blackholeCallback is not callable.
 	 */
-	protected function _callback(Controller $controller, $method, $params = [])
-	{
+	protected function _callback(Controller $controller, $method, $params = []) {
 		if (!is_callable([$controller, $method])) {
 			throw new BadRequestException('The request has been black-holed');
 		}

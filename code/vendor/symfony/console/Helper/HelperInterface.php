@@ -16,8 +16,7 @@ namespace Symfony\Component\Console\Helper;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-interface HelperInterface
-{
+interface HelperInterface {
 	/**
 	 * Sets the helper set associated with this helper.
 	 *

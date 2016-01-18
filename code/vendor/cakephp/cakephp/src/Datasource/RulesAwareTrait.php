@@ -27,8 +27,7 @@ use Cake\Event\EventDispatcherInterface;
  * The implementing class is expected to define the `RULES_CLASS` constant
  * if they need to customize which class is used for rules objects.
  */
-trait RulesAwareTrait
-{
+trait RulesAwareTrait {
 	/**
 	 * The domain rules to be applied to entities saved by this table
 	 *
@@ -45,8 +44,7 @@ trait RulesAwareTrait
 	 * @param \ArrayObject|array $options The options To be passed to the rules.
 	 * @return bool
 	 */
-	public function checkRules(EntityInterface $entity, $operation = RulesChecker::CREATE, $options = null)
-	{
+	public function checkRules(EntityInterface $entity, $operation = RulesChecker::CREATE, $options = null) {
 		$rules = $this->rulesChecker();
 		$options = $options ?: new ArrayObject;
 		$options = is_array($options) ? new ArrayObject($options) : $options;
@@ -87,8 +85,7 @@ trait RulesAwareTrait
 	 * @see \Cake\Datasource\RulesChecker
 	 * @return \Cake\Datasource\RulesChecker
 	 */
-	public function rulesChecker()
-	{
+	public function rulesChecker() {
 		if ($this->_rulesChecker !== null) {
 			return $this->_rulesChecker;
 		}
@@ -107,8 +104,7 @@ trait RulesAwareTrait
 	 * @param \Cake\Datasource\RulesChecker $rules The rules object to be modified.
 	 * @return \Cake\Datasource\RulesChecker
 	 */
-	public function buildRules(RulesChecker $rules)
-	{
+	public function buildRules(RulesChecker $rules) {
 		return $rules;
 	}
 }

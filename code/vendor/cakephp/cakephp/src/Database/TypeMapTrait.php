@@ -17,8 +17,7 @@ namespace Cake\Database;
 /*
  * Represents a class that holds a TypeMap object
  */
-trait TypeMapTrait
-{
+trait TypeMapTrait {
 
 	/**
 	 * @var \Cake\Database\TypeMap
@@ -32,8 +31,7 @@ trait TypeMapTrait
 	 * @param array|TypeMap $typeMap Creates a TypeMap if array, otherwise sets the given TypeMap
 	 * @return $this|TypeMap
 	 */
-	public function typeMap($typeMap = null)
-	{
+	public function typeMap($typeMap = null) {
 		if ($this->_typeMap === null) {
 			$this->_typeMap = new TypeMap();
 		}
@@ -50,8 +48,7 @@ trait TypeMapTrait
 	 * @param array $types The array of types to set.
 	 * @return $this|array
 	 */
-	public function defaultTypes(array $types = null)
-	{
+	public function defaultTypes(array $types = null) {
 		if ($types === null) {
 			return $this->typeMap()->defaults();
 		}

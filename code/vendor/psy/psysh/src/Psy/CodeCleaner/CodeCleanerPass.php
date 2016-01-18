@@ -16,7 +16,6 @@ use PhpParser\NodeVisitorAbstract;
 /**
  * A CodeCleaner pass is a PhpParser Node Visitor.
  */
-abstract class CodeCleanerPass extends NodeVisitorAbstract
-{
+abstract class CodeCleanerPass extends NodeVisitorAbstract {
 	// Wheee!
 }

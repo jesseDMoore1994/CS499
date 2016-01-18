@@ -17,8 +17,7 @@ namespace Aura\Intl;
  * @package Aura.Intl
  *
  */
-class TranslatorLocator
-{
+class TranslatorLocator {
 	/**
 	 *
 	 * A registry to retain translator objects.
@@ -84,8 +83,7 @@ class TranslatorLocator
 		FormatterLocator $formatters,
 		TranslatorFactory $factory,
 		$locale
-	)
-	{
+	) {
 		$this->packages = $packages;
 		$this->factory = $factory;
 		$this->formatters = $formatters;
@@ -101,8 +99,7 @@ class TranslatorLocator
 	 * @return void
 	 *
 	 */
-	public function setLocale($locale)
-	{
+	public function setLocale($locale) {
 		$this->locale = $locale;
 	}
 
@@ -113,8 +110,7 @@ class TranslatorLocator
 	 * @return string
 	 *
 	 */
-	public function getLocale()
-	{
+	public function getLocale() {
 		return $this->locale;
 	}
 
@@ -124,8 +120,7 @@ class TranslatorLocator
 	 *
 	 * @return TranslatorFactory
 	 */
-	public function getFactory()
-	{
+	public function getFactory() {
 		return $this->factory;
 	}
 
@@ -136,8 +131,7 @@ class TranslatorLocator
 	 * @return PackagesInterface
 	 *
 	 */
-	public function getPackages()
-	{
+	public function getPackages() {
 		return $this->packages;
 	}
 
@@ -148,8 +142,7 @@ class TranslatorLocator
 	 * @return FormatterLocator
 	 *
 	 */
-	public function getFormatters()
-	{
+	public function getFormatters() {
 		return $this->formatters;
 	}
 
@@ -165,8 +158,7 @@ class TranslatorLocator
 	 * @return TranslatorInterface A translator object.
 	 *
 	 */
-	public function get($name, $locale = null)
-	{
+	public function get($name, $locale = null) {
 		if (!$name) {
 			return null;
 		}

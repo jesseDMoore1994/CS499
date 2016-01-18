@@ -25,8 +25,7 @@ use SessionHandlerInterface;
  * DatabaseSession provides methods to be used with Session.
  *
  */
-class DatabaseSession implements SessionHandlerInterface
-{
+class DatabaseSession implements SessionHandlerInterface {
 
 	/**
 	 * Reference to the table handling the session data
@@ -49,8 +48,7 @@ class DatabaseSession implements SessionHandlerInterface
 	 * @param array $config The configuration for this engine. It requires the 'model'
 	 * key to be present corresponding to the Table to use for managing the sessions.
 	 */
-	public function __construct(array $config = [])
-	{
+	public function __construct(array $config = []) {
 		$tableLocator = isset($config['tableLocator']) ? $config['tableLocator'] : TableRegistry::locator();
 
 		if (empty($config['model'])) {
@@ -70,8 +68,7 @@ class DatabaseSession implements SessionHandlerInterface
 	 * @param string $name The session name.
 	 * @return bool Success
 	 */
-	public function open($savePath, $name)
-	{
+	public function open($savePath, $name) {
 		return true;
 	}
 
@@ -80,8 +77,7 @@ class DatabaseSession implements SessionHandlerInterface
 	 *
 	 * @return bool Success
 	 */
-	public function close()
-	{
+	public function close() {
 		return true;
 	}
 
@@ -91,8 +87,7 @@ class DatabaseSession implements SessionHandlerInterface
 	 * @param int|string $id The key of the value to read
 	 * @return string The value of the key or empty if it does not exist
 	 */
-	public function read($id)
-	{
+	public function read($id) {
 		$result = $this->_table
 			->find('all')
 			->select(['data'])
@@ -118,8 +113,7 @@ class DatabaseSession implements SessionHandlerInterface
 	 * @param mixed $data The value of the data to be saved.
 	 * @return bool True for successful write, false otherwise.
 	 */
-	public function write($id, $data)
-	{
+	public function write($id, $data) {
 		if (!$id) {
 			return false;
 		}
@@ -136,8 +130,7 @@ class DatabaseSession implements SessionHandlerInterface
 	 * @param int $id ID that uniquely identifies session in database
 	 * @return bool True for successful delete, false otherwise.
 	 */
-	public function destroy($id)
-	{
+	public function destroy($id) {
 		return (bool)$this->_table->delete(new Entity(
 			[$this->_table->primaryKey() => $id],
 			['markNew' => false]
@@ -150,8 +143,7 @@ class DatabaseSession implements SessionHandlerInterface
 	 * @param string $maxlifetime Sessions that have not updated for the last maxlifetime seconds will be removed.
 	 * @return bool True on success, false on failure.
 	 */
-	public function gc($maxlifetime)
-	{
+	public function gc($maxlifetime) {
 		$this->_table->deleteAll(['expires <' => time() - $maxlifetime]);
 		return true;
 	}

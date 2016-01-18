@@ -16,8 +16,7 @@ use Psy\Exception\BreakException;
 /**
  * An array-based Readline emulation implementation.
  */
-class Transient implements Readline
-{
+class Transient implements Readline {
 	private $history;
 	private $historySize;
 	private $eraseDups;
@@ -27,16 +26,14 @@ class Transient implements Readline
 	 *
 	 * {@inheritdoc}
 	 */
-	public static function isSupported()
-	{
+	public static function isSupported() {
 		return true;
 	}
 
 	/**
 	 * Transient Readline constructor.
 	 */
-	public function __construct($historyFile = null, $historySize = 0, $eraseDups = false)
-	{
+	public function __construct($historyFile = null, $historySize = 0, $eraseDups = false) {
 		// don't do anything with the history file...
 		$this->history = array();
 		$this->historySize = $historySize;
@@ -46,8 +43,7 @@ class Transient implements Readline
 	/**
 	 * {@inheritdoc}
 	 */
-	public function addHistory($line)
-	{
+	public function addHistory($line) {
 		if ($this->eraseDups) {
 			if (($key = array_search($line, $this->history)) !== false) {
 				unset($this->history[$key]);
@@ -71,8 +67,7 @@ class Transient implements Readline
 	/**
 	 * {@inheritdoc}
 	 */
-	public function clearHistory()
-	{
+	public function clearHistory() {
 		$this->history = array();
 
 		return true;
@@ -81,16 +76,14 @@ class Transient implements Readline
 	/**
 	 * {@inheritdoc}
 	 */
-	public function listHistory()
-	{
+	public function listHistory() {
 		return $this->history;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function readHistory()
-	{
+	public function readHistory() {
 		return true;
 	}
 
@@ -101,8 +94,7 @@ class Transient implements Readline
 	 *
 	 * @return string
 	 */
-	public function readline($prompt = null)
-	{
+	public function readline($prompt = null) {
 		echo $prompt;
 
 		return rtrim(fgets($this->getStdin(), 1024));
@@ -111,16 +103,14 @@ class Transient implements Readline
 	/**
 	 * {@inheritdoc}
 	 */
-	public function redisplay()
-	{
+	public function redisplay() {
 		// noop
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function writeHistory()
-	{
+	public function writeHistory() {
 		return true;
 	}
 
@@ -131,8 +121,7 @@ class Transient implements Readline
 	 *
 	 * @return resource
 	 */
-	private function getStdin()
-	{
+	private function getStdin() {
 		if (!isset($this->stdin)) {
 			$this->stdin = fopen('php://stdin', 'r');
 		}

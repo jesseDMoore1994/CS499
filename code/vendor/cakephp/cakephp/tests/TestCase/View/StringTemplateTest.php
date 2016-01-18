@@ -18,16 +18,14 @@ use Cake\Core\Plugin;
 use Cake\TestSuite\TestCase;
 use Cake\View\StringTemplate;
 
-class StringTemplateTest extends TestCase
-{
+class StringTemplateTest extends TestCase {
 
 	/**
 	 * setUp
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->template = new StringTemplate();
 	}
@@ -37,8 +35,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testConstructorAdd()
-	{
+	public function testConstructorAdd() {
 		$templates = [
 			'link' => '<a href="{{url}}">{{text}}</a>'
 		];
@@ -51,8 +48,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testAdd()
-	{
+	public function testAdd() {
 		$templates = [
 			'link' => '<a href="{{url}}">{{text}}</a>'
 		];
@@ -71,8 +67,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRemove()
-	{
+	public function testRemove() {
 		$templates = [
 			'link' => '<a href="{{url}}">{{text}}</a>'
 		];
@@ -86,8 +81,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormat()
-	{
+	public function testFormat() {
 		$templates = [
 			'link' => '<a href="{{url}}">{{text}}</a>',
 			'text' => '{{text}}',
@@ -122,8 +116,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatArrayData()
-	{
+	public function testFormatArrayData() {
 		$templates = [
 			'link' => '<a href="{{url}}">{{text}}</a>'
 		];
@@ -147,8 +140,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoad()
-	{
+	public function testLoad() {
 		$this->template->remove('attribute');
 		$this->template->remove('compactAttribute');
 		$this->assertEquals([], $this->template->get());
@@ -161,8 +153,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testLoadPlugin()
-	{
+	public function testLoadPlugin() {
 		Plugin::load('TestPlugin');
 		$this->assertNull($this->template->load('TestPlugin.test_templates'));
 		$this->assertEquals('<em>{{text}}</em>', $this->template->get('italic'));
@@ -174,8 +165,7 @@ class StringTemplateTest extends TestCase
 	 * @expectedException \Cake\Core\Exception\Exception
 	 * @expectedExceptionMessage Could not load configuration file
 	 */
-	public function testLoadErrorNoFile()
-	{
+	public function testLoadErrorNoFile() {
 		$this->template->load('no_such_file');
 	}
 
@@ -184,8 +174,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatAttributesCompact()
-	{
+	public function testFormatAttributesCompact() {
 		$attrs = ['disabled' => true, 'selected' => 1, 'checked' => '1', 'multiple' => 'multiple'];
 		$result = $this->template->formatAttributes($attrs);
 		$this->assertEquals(
@@ -206,8 +195,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatAttributes()
-	{
+	public function testFormatAttributes() {
 		$attrs = ['name' => 'bruce', 'data-hero' => '<batman>', 'spellcheck' => 'true'];
 		$result = $this->template->formatAttributes($attrs);
 		$this->assertEquals(
@@ -242,8 +230,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testFormatAttributesArray()
-	{
+	public function testFormatAttributesArray() {
 		$attrs = ['name' => ['bruce', 'wayne']];
 		$result = $this->template->formatAttributes($attrs);
 		$this->assertEquals(
@@ -257,8 +244,7 @@ class StringTemplateTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testPushPopTemplates()
-	{
+	public function testPushPopTemplates() {
 		$this->template->add(['name' => '{{name}} is my name']);
 		$this->assertNull($this->template->push());
 

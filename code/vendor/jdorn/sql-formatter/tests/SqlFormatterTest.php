@@ -4,39 +4,34 @@ require __DIR__ . '/../lib/SqlFormatter.php';
 // Force SqlFormatter to run in non-CLI mode for tests
 SqlFormatter::$cli = false;
 
-class SqlFormatterTest extends PHPUnit_Framework_TestCase
-{
+class SqlFormatterTest extends PHPUnit_Framework_TestCase {
 	protected $sqlData;
 
 	/**
 	 * @dataProvider formatHighlightData
 	 */
-	function testFormatHighlight($sql, $html)
-	{
+	function testFormatHighlight($sql, $html) {
 		$this->assertEquals(trim($html), trim(SqlFormatter::format($sql)));
 	}
 
 	/**
 	 * @dataProvider formatData
 	 */
-	function testFormat($sql, $html)
-	{
+	function testFormat($sql, $html) {
 		$this->assertEquals(trim($html), trim(SqlFormatter::format($sql, false)));
 	}
 
 	/**
 	 * @dataProvider highlightData
 	 */
-	function testHighlight($sql, $html)
-	{
+	function testHighlight($sql, $html) {
 		$this->assertEquals(trim($html), trim(SqlFormatter::highlight($sql)));
 	}
 
 	/**
 	 * @dataProvider highlightCliData
 	 */
-	function testCliHighlight($sql, $html)
-	{
+	function testCliHighlight($sql, $html) {
 		SqlFormatter::$cli = true;
 		$this->assertEquals(trim($html), trim(SqlFormatter::format($sql)));
 		SqlFormatter::$cli = false;
@@ -45,13 +40,11 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @dataProvider compressData
 	 */
-	function testCompress($sql, $html)
-	{
+	function testCompress($sql, $html) {
 		$this->assertEquals(trim($html), trim(SqlFormatter::compress($sql)));
 	}
 
-	function testUsePre()
-	{
+	function testUsePre() {
 		SqlFormatter::$use_pre = false;
 		$actual = SqlFormatter::highlight("test");
 		$expected = '<span style="color: #333;">test</span>';
@@ -63,8 +56,7 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($actual, $expected);
 	}
 
-	function testSplitQuery()
-	{
+	function testSplitQuery() {
 		$expected = array(
 			"SELECT 'test' FROM MyTable;",
 			"SELECT Column2 FROM SomeOther Table WHERE (test = true);"
@@ -75,8 +67,7 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, $actual);
 	}
 
-	function testSplitQueryEmpty()
-	{
+	function testSplitQueryEmpty() {
 		$sql = "SELECT 1;SELECT 2;\n-- This is a comment\n;SELECT 3";
 		$expected = array("SELECT 1;", "SELECT 2;", "SELECT 3");
 		$actual = SqlFormatter::splitQuery($sql);
@@ -84,8 +75,7 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, $actual);
 	}
 
-	function testRemoveComments()
-	{
+	function testRemoveComments() {
 		$expected = SqlFormatter::format("SELECT\n * FROM\n MyTable", false);
 		$sql = "/* this is a comment */SELECT#This is another comment\n * FROM-- One final comment\n MyTable";
 		$actual = SqlFormatter::removeComments($sql);
@@ -93,14 +83,12 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($expected, $actual);
 	}
 
-	function testCacheStats()
-	{
+	function testCacheStats() {
 		$stats = SqlFormatter::getCacheStats();
 		$this->assertGreaterThan(1, $stats['hits']);
 	}
 
-	function formatHighlightData()
-	{
+	function formatHighlightData() {
 		$formatHighlightData = explode("\n\n", file_get_contents(__DIR__ . "/format-highlight.html"));
 		$sqlData = $this->sqlData();
 
@@ -115,8 +103,7 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 		return $return;
 	}
 
-	function highlightCliData()
-	{
+	function highlightCliData() {
 		$clidata = explode("\n\n", file_get_contents(__DIR__ . "/clihighlight.html"));
 		$sqlData = $this->sqlData();
 
@@ -131,8 +118,7 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 		return $return;
 	}
 
-	function formatData()
-	{
+	function formatData() {
 		$formatData = explode("\n\n", file_get_contents(__DIR__ . "/format.html"));
 		$sqlData = $this->sqlData();
 
@@ -147,8 +133,7 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 		return $return;
 	}
 
-	function compressData()
-	{
+	function compressData() {
 		$compressData = explode("\n\n", file_get_contents(__DIR__ . "/compress.html"));
 		$sqlData = $this->sqlData();
 
@@ -163,8 +148,7 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 		return $return;
 	}
 
-	function highlightData()
-	{
+	function highlightData() {
 		$highlightData = explode("\n\n", file_get_contents(__DIR__ . "/highlight.html"));
 		$sqlData = $this->sqlData();
 
@@ -180,8 +164,7 @@ class SqlFormatterTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	function sqlData()
-	{
+	function sqlData() {
 		if (!$this->sqlData) {
 			$this->sqlData = explode("\n\n", file_get_contents(__DIR__ . "/sql.sql"));
 		}

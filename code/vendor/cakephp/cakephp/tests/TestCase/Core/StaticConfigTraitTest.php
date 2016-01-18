@@ -20,8 +20,7 @@ use PHPUnit_Framework_Test;
 /**
  * TestConnectionManagerStaticConfig
  */
-class TestConnectionManagerStaticConfig
-{
+class TestConnectionManagerStaticConfig {
 
 	use StaticConfigTrait {
 		parseDsn as protected _parseDsn;
@@ -33,8 +32,7 @@ class TestConnectionManagerStaticConfig
 	 * @param string $config The config to parse.
 	 * @return array
 	 */
-	public static function parseDsn($config = null)
-	{
+	public static function parseDsn($config = null) {
 		$config = static::_parseDsn($config);
 
 		if (isset($config['path']) && empty($config['database'])) {
@@ -66,8 +64,7 @@ class TestConnectionManagerStaticConfig
 /**
  * TestCacheStaticConfig
  */
-class TestCacheStaticConfig
-{
+class TestCacheStaticConfig {
 
 	use StaticConfigTrait;
 
@@ -90,8 +87,7 @@ class TestCacheStaticConfig
 /**
  * TestEmailStaticConfig
  */
-class TestEmailStaticConfig
-{
+class TestEmailStaticConfig {
 
 	use StaticConfigTrait;
 
@@ -110,8 +106,7 @@ class TestEmailStaticConfig
 /**
  * TestLogStaticConfig
  */
-class TestLogStaticConfig
-{
+class TestLogStaticConfig {
 
 	use StaticConfigTrait;
 
@@ -131,16 +126,14 @@ class TestLogStaticConfig
  * StaticConfigTraitTest class
  *
  */
-class StaticConfigTraitTest extends TestCase
-{
+class StaticConfigTraitTest extends TestCase {
 
 	/**
 	 * setup method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->subject = $this->getObjectForTrait('Cake\Core\StaticConfigTrait');
 	}
@@ -150,8 +143,7 @@ class StaticConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		unset($this->subject);
 		parent::tearDown();
 	}
@@ -161,8 +153,7 @@ class StaticConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSimpleParseDsn()
-	{
+	public function testSimpleParseDsn() {
 		$className = get_class($this->subject);
 		$this->assertSame([], $className::parseDsn(''));
 	}
@@ -173,8 +164,7 @@ class StaticConfigTraitTest extends TestCase
 	 * @expectedException \InvalidArgumentException
 	 * @return void
 	 */
-	public function testParseBadType()
-	{
+	public function testParseBadType() {
 		$className = get_class($this->subject);
 		$className::parseDsn(['url' => 'http://:80']);
 	}
@@ -184,8 +174,7 @@ class StaticConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCustomParseDsn()
-	{
+	public function testCustomParseDsn() {
 		$dsn = 'mysql://localhost:3306/database';
 		$expected = [
 			'className' => 'Cake\Database\Connection',
@@ -256,8 +245,7 @@ class StaticConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseDsnClassnameDriver()
-	{
+	public function testParseDsnClassnameDriver() {
 		$dsn = 'mysql://localhost:3306/database';
 		$expected = [
 			'className' => 'Cake\Database\Connection',
@@ -320,8 +308,7 @@ class StaticConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseDsnQuerystring()
-	{
+	public function testParseDsnQuerystring() {
 		$dsn = 'file:///?url=test';
 		$expected = [
 			'className' => 'Cake\Log\Engine\FileLog',
@@ -411,8 +398,7 @@ class StaticConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testParseDsnPathSetting()
-	{
+	public function testParseDsnPathSetting() {
 		$dsn = 'file:///?path=/tmp/persistent/';
 		$expected = [
 			'className' => 'Cake\Log\Engine\FileLog',
@@ -427,8 +413,7 @@ class StaticConfigTraitTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testCanUpdateClassMap()
-	{
+	public function testCanUpdateClassMap() {
 		$expected = [
 			'console' => 'Cake\Log\Engine\ConsoleLog',
 			'file' => 'Cake\Log\Engine\FileLog',

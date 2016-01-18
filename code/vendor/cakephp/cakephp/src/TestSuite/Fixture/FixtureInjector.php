@@ -26,8 +26,7 @@ use PHPUnit_Framework_Warning;
  * Test listener used to inject a fixture manager in all tests that
  * are composed inside a Test Suite
  */
-class FixtureInjector implements PHPUnit_Framework_TestListener
-{
+class FixtureInjector implements PHPUnit_Framework_TestListener {
 
 	/**
 	 * The instance of the fixture manager to use
@@ -48,8 +47,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 *
 	 * @param \Cake\TestSuite\Fixture\FixtureManager $manager The fixture manager
 	 */
-	public function __construct(FixtureManager $manager)
-	{
+	public function __construct(FixtureManager $manager) {
 		if (isset($_SERVER['argv'])) {
 			$manager->setDebug(in_array('--debug', $_SERVER['argv']));
 		}
@@ -64,8 +62,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param \PHPUnit_Framework_TestSuite $suite The test suite
 	 * @return void
 	 */
-	public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
-	{
+	public function startTestSuite(PHPUnit_Framework_TestSuite $suite) {
 		if (empty($this->_first)) {
 			$this->_first = $suite;
 		}
@@ -78,8 +75,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param \PHPUnit_Framework_TestSuite $suite The test suite
 	 * @return void
 	 */
-	public function endTestSuite(PHPUnit_Framework_TestSuite $suite)
-	{
+	public function endTestSuite(PHPUnit_Framework_TestSuite $suite) {
 		if ($this->_first === $suite) {
 			$this->_fixtureManager->shutdown();
 		}
@@ -93,8 +89,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param float $time current time
 	 * @return void
 	 */
-	public function addError(PHPUnit_Framework_Test $test, Exception $e, $time)
-	{
+	public function addError(PHPUnit_Framework_Test $test, Exception $e, $time) {
 	}
 
 	/**
@@ -105,8 +100,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param float $time current time
 	 * @return void
 	 */
-	public function addWarning(PHPUnit_Framework_Test $test, PHPUnit_Framework_Warning $e, $time)
-	{
+	public function addWarning(PHPUnit_Framework_Test $test, PHPUnit_Framework_Warning $e, $time) {
 	}
 
 	/**
@@ -117,8 +111,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param float $time current time
 	 * @return void
 	 */
-	public function addFailure(PHPUnit_Framework_Test $test, PHPUnit_Framework_AssertionFailedError $e, $time)
-	{
+	public function addFailure(PHPUnit_Framework_Test $test, PHPUnit_Framework_AssertionFailedError $e, $time) {
 	}
 
 	/**
@@ -129,8 +122,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param float $time current time
 	 * @return void
 	 */
-	public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time)
-	{
+	public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time) {
 	}
 
 	/**
@@ -141,8 +133,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param float $time current time
 	 * @return void
 	 */
-	public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time)
-	{
+	public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time) {
 	}
 
 	/**
@@ -151,8 +142,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param \PHPUnit_Framework_Test $test The test case
 	 * @return void
 	 */
-	public function startTest(PHPUnit_Framework_Test $test)
-	{
+	public function startTest(PHPUnit_Framework_Test $test) {
 		$test->fixtureManager = $this->_fixtureManager;
 		if ($test instanceof TestCase) {
 			$this->_fixtureManager->fixturize($test);
@@ -167,8 +157,7 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param float $time current time
 	 * @return void
 	 */
-	public function endTest(PHPUnit_Framework_Test $test, $time)
-	{
+	public function endTest(PHPUnit_Framework_Test $test, $time) {
 		if ($test instanceof TestCase) {
 			$this->_fixtureManager->unload($test);
 		}
@@ -182,7 +171,6 @@ class FixtureInjector implements PHPUnit_Framework_TestListener
 	 * @param float $time current time
 	 * @return void
 	 */
-	public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time)
-	{
+	public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time) {
 	}
 }

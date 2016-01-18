@@ -28,11 +28,9 @@ use Cake\View\JsonView;
  * JsonViewTest
  *
  */
-class JsonViewTest extends TestCase
-{
+class JsonViewTest extends TestCase {
 
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('debug', false);
 	}
@@ -44,8 +42,7 @@ class JsonViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public static function renderWithoutViewProvider()
-	{
+	public static function renderWithoutViewProvider() {
 		return [
 			// Test render with a valid string in _serialize.
 			[
@@ -215,8 +212,7 @@ class JsonViewTest extends TestCase
 	 * @dataProvider renderWithoutViewProvider
 	 * @return void
 	 */
-	public function testRenderWithoutView($data, $serialize, $jsonOptions, $expected)
-	{
+	public function testRenderWithoutView($data, $serialize, $jsonOptions, $expected) {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -236,8 +232,7 @@ class JsonViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderSerializeNoHelpers()
-	{
+	public function testRenderSerializeNoHelpers() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -259,8 +254,7 @@ class JsonViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testJsonpResponse()
-	{
+	public function testJsonpResponse() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);
@@ -296,8 +290,7 @@ class JsonViewTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testRenderWithView()
-	{
+	public function testRenderWithView() {
 		$Request = new Request();
 		$Response = new Response();
 		$Controller = new Controller($Request, $Response);

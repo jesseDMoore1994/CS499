@@ -17,8 +17,7 @@ namespace Symfony\Component\Config\Resource;
  *
  * @author Matthias Pigulla <mp@webfactory.de>
  */
-interface SelfCheckingResourceInterface extends ResourceInterface
-{
+interface SelfCheckingResourceInterface extends ResourceInterface {
 	/**
 	 * Returns true if the resource has not been updated since the given timestamp.
 	 *

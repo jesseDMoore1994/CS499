@@ -22,16 +22,14 @@ use \PDO;
 /**
  * Test for the Uuid type.
  */
-class UuidTypeTest extends TestCase
-{
+class UuidTypeTest extends TestCase {
 
 	/**
 	 * Setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->type = Type::build('uuid');
 		$this->driver = $this->getMock('Cake\Database\Driver');
@@ -42,8 +40,7 @@ class UuidTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToPHP()
-	{
+	public function testToPHP() {
 		$this->assertNull($this->type->toPHP(null, $this->driver));
 
 		$result = $this->type->toPHP('some data', $this->driver);
@@ -58,8 +55,7 @@ class UuidTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToDatabase()
-	{
+	public function testToDatabase() {
 		$result = $this->type->toDatabase('some data', $this->driver);
 		$this->assertSame('some data', $result);
 
@@ -72,8 +68,7 @@ class UuidTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testToStatement()
-	{
+	public function testToStatement() {
 		$this->assertEquals(PDO::PARAM_STR, $this->type->toStatement('', $this->driver));
 	}
 
@@ -82,8 +77,7 @@ class UuidTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNewId()
-	{
+	public function testNewId() {
 		$one = $this->type->newId();
 		$two = $this->type->newId();
 
@@ -97,8 +91,7 @@ class UuidTypeTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMarshalEmptyString()
-	{
+	public function testMarshalEmptyString() {
 		$this->assertNull($this->type->marshal(''));
 	}
 }

@@ -27,16 +27,14 @@ use Cake\View\View;
  * RssHelperTest class
  *
  */
-class RssHelperTest extends TestCase
-{
+class RssHelperTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->View = new View();
 		$this->Rss = new RssHelper($this->View);
@@ -47,8 +45,7 @@ class RssHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		unset($this->Rss);
 	}
@@ -58,8 +55,7 @@ class RssHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDocument()
-	{
+	public function testDocument() {
 		$result = $this->Rss->document();
 		$expected = [
 			'rss' => [
@@ -93,8 +89,7 @@ class RssHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testChannel()
-	{
+	public function testChannel() {
 		$attrib = ['a' => '1', 'b' => '2'];
 		$elements = ['title' => 'Title'];
 		$content = 'content';
@@ -123,8 +118,7 @@ class RssHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testChannelElements()
-	{
+	public function testChannelElements() {
 		$attrib = [];
 		$elements = [
 			'title' => 'Title of RSS Feed',
@@ -170,8 +164,7 @@ class RssHelperTest extends TestCase
 		$this->assertHtml($expected, $result);
 	}
 
-	public function testChannelElementAttributes()
-	{
+	public function testChannelElementAttributes() {
 		$attrib = [];
 		$elements = [
 			'title' => 'Title of RSS Feed',
@@ -220,8 +213,7 @@ class RssHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testItems()
-	{
+	public function testItems() {
 		$items = [
 			['title' => 'title1', 'guid' => 'http://www.example.com/guid1', 'link' => 'http://www.example.com/link1', 'description' => 'description1'],
 			['title' => 'title2', 'guid' => 'http://www.example.com/guid2', 'link' => 'http://www.example.com/link2', 'description' => 'description2'],
@@ -290,8 +282,7 @@ class RssHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testItem()
-	{
+	public function testItem() {
 		$item = [
 			'title' => 'My title',
 			'description' => 'My description',
@@ -464,8 +455,7 @@ class RssHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testItemCdata()
-	{
+	public function testItemCdata() {
 		$item = [
 			'title' => [
 				'value' => 'My Title & more',
@@ -588,8 +578,7 @@ class RssHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testItemEnclosureLength()
-	{
+	public function testItemEnclosureLength() {
 		if (!is_writable(WWW_ROOT)) {
 			$this->markTestSkipped('Webroot is not writable.');
 		}
@@ -684,8 +673,7 @@ class RssHelperTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testElementAttrNotInParent()
-	{
+	public function testElementAttrNotInParent() {
 		$attributes = [
 			'title' => 'Some Title',
 			'link' => 'http://link.com',
@@ -708,8 +696,7 @@ class RssHelperTest extends TestCase
 		$this->assertHtml($expected, $result);
 	}
 
-	public function testElementNamespaceWithoutPrefix()
-	{
+	public function testElementNamespaceWithoutPrefix() {
 		$item = [
 			'creator' => 'Alex',
 		];
@@ -731,8 +718,7 @@ class RssHelperTest extends TestCase
 		$this->assertHtml($expected, $result, true);
 	}
 
-	public function testElementNamespaceWithPrefix()
-	{
+	public function testElementNamespaceWithPrefix() {
 		$item = [
 			'title' => 'Title',
 			'dc:creator' => 'Alex',

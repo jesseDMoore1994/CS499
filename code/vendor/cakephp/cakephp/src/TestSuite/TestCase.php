@@ -28,8 +28,7 @@ use PHPUnit_Framework_TestCase;
  * Cake TestCase class
  *
  */
-abstract class TestCase extends PHPUnit_Framework_TestCase
-{
+abstract class TestCase extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * The class responsible for managing the creation, loading and removing of fixtures
@@ -77,8 +76,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message The message to display.
 	 * @return bool
 	 */
-	public function skipIf($shouldSkip, $message = '')
-	{
+	public function skipIf($shouldSkip, $message = '') {
 		if ($shouldSkip) {
 			$this->markTestSkipped($message);
 		}
@@ -92,8 +90,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 
 		if (empty($this->_configure)) {
@@ -111,8 +108,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		if (!empty($this->_configure)) {
 			Configure::clear();
@@ -129,8 +125,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @see \Cake\TestSuite\TestCase::$autoFixtures
 	 * @throws \Exception when no fixture manager is available.
 	 */
-	public function loadFixtures()
-	{
+	public function loadFixtures() {
 		if (empty($this->fixtureManager)) {
 			throw new Exception('No fixture manager to load the test fixture');
 		}
@@ -149,8 +144,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message The message to use for failure.
 	 * @return void
 	 */
-	public function assertTextNotEquals($expected, $result, $message = '')
-	{
+	public function assertTextNotEquals($expected, $result, $message = '') {
 		$expected = str_replace(["\r\n", "\r"], "\n", $expected);
 		$result = str_replace(["\r\n", "\r"], "\n", $result);
 		$this->assertNotEquals($expected, $result, $message);
@@ -165,8 +159,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message The message to use for failure.
 	 * @return void
 	 */
-	public function assertTextEquals($expected, $result, $message = '')
-	{
+	public function assertTextEquals($expected, $result, $message = '') {
 		$expected = str_replace(["\r\n", "\r"], "\n", $expected);
 		$result = str_replace(["\r\n", "\r"], "\n", $result);
 		$this->assertEquals($expected, $result, $message);
@@ -181,8 +174,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message The message to use for failure.
 	 * @return void
 	 */
-	public function assertTextStartsWith($prefix, $string, $message = '')
-	{
+	public function assertTextStartsWith($prefix, $string, $message = '') {
 		$prefix = str_replace(["\r\n", "\r"], "\n", $prefix);
 		$string = str_replace(["\r\n", "\r"], "\n", $string);
 		$this->assertStringStartsWith($prefix, $string, $message);
@@ -197,8 +189,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message The message to use for failure.
 	 * @return void
 	 */
-	public function assertTextStartsNotWith($prefix, $string, $message = '')
-	{
+	public function assertTextStartsNotWith($prefix, $string, $message = '') {
 		$prefix = str_replace(["\r\n", "\r"], "\n", $prefix);
 		$string = str_replace(["\r\n", "\r"], "\n", $string);
 		$this->assertStringStartsNotWith($prefix, $string, $message);
@@ -213,8 +204,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message The message to use for failure.
 	 * @return void
 	 */
-	public function assertTextEndsWith($suffix, $string, $message = '')
-	{
+	public function assertTextEndsWith($suffix, $string, $message = '') {
 		$suffix = str_replace(["\r\n", "\r"], "\n", $suffix);
 		$string = str_replace(["\r\n", "\r"], "\n", $string);
 		$this->assertStringEndsWith($suffix, $string, $message);
@@ -229,8 +219,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message The message to use for failure.
 	 * @return void
 	 */
-	public function assertTextEndsNotWith($suffix, $string, $message = '')
-	{
+	public function assertTextEndsNotWith($suffix, $string, $message = '') {
 		$suffix = str_replace(["\r\n", "\r"], "\n", $suffix);
 		$string = str_replace(["\r\n", "\r"], "\n", $string);
 		$this->assertStringEndsNotWith($suffix, $string, $message);
@@ -246,8 +235,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param bool $ignoreCase Whether or not the search should be case-sensitive.
 	 * @return void
 	 */
-	public function assertTextContains($needle, $haystack, $message = '', $ignoreCase = false)
-	{
+	public function assertTextContains($needle, $haystack, $message = '', $ignoreCase = false) {
 		$needle = str_replace(["\r\n", "\r"], "\n", $needle);
 		$haystack = str_replace(["\r\n", "\r"], "\n", $haystack);
 		$this->assertContains($needle, $haystack, $message, $ignoreCase);
@@ -263,8 +251,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param bool $ignoreCase Whether or not the search should be case-sensitive.
 	 * @return void
 	 */
-	public function assertTextNotContains($needle, $haystack, $message = '', $ignoreCase = false)
-	{
+	public function assertTextNotContains($needle, $haystack, $message = '', $ignoreCase = false) {
 		$needle = str_replace(["\r\n", "\r"], "\n", $needle);
 		$haystack = str_replace(["\r\n", "\r"], "\n", $haystack);
 		$this->assertNotContains($needle, $haystack, $message, $ignoreCase);
@@ -279,8 +266,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @return void
 	 * @deprecated 3.0. Use assertHtml() instead.
 	 */
-	public function assertTags($string, $expected, $fullDebug = false)
-	{
+	public function assertTags($string, $expected, $fullDebug = false) {
 		trigger_error(
 			'assertTags() is deprecated, use assertHtml() instead.',
 			E_USER_DEPRECATED
@@ -332,8 +318,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param bool $fullDebug Whether or not more verbose output should be used.
 	 * @return bool
 	 */
-	public function assertHtml($expected, $string, $fullDebug = false)
-	{
+	public function assertHtml($expected, $string, $fullDebug = false) {
 		$regex = [];
 		$normalized = [];
 		foreach ((array)$expected as $key => $val) {
@@ -471,8 +456,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $string The HTML string to check.
 	 * @return string
 	 */
-	protected function _assertAttributes($assertions, $string)
-	{
+	protected function _assertAttributes($assertions, $string) {
 		$asserts = $assertions['attrs'];
 		$explains = $assertions['explains'];
 		$len = count($asserts);
@@ -501,8 +485,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $path Path separated by "/" slash.
 	 * @return string Normalized path separated by DS.
 	 */
-	protected function _normalizePath($path)
-	{
+	protected function _normalizePath($path) {
 		return str_replace('/', DS, $path);
 	}
 
@@ -517,8 +500,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message the text to display if the assertion is not correct
 	 * @return void
 	 */
-	protected static function assertWithinRange($expected, $result, $margin, $message = '')
-	{
+	protected static function assertWithinRange($expected, $result, $margin, $message = '') {
 		$upper = $result + $margin;
 		$lower = $result - $margin;
 		static::assertTrue((($expected <= $upper) && ($expected >= $lower)), $message);
@@ -533,8 +515,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message the text to display if the assertion is not correct
 	 * @return void
 	 */
-	protected static function assertNotWithinRange($expected, $result, $margin, $message = '')
-	{
+	protected static function assertNotWithinRange($expected, $result, $margin, $message = '') {
 		$upper = $result + $margin;
 		$lower = $result - $margin;
 		static::assertTrue((($expected > $upper) || ($expected < $lower)), $message);
@@ -548,8 +529,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message the text to display if the assertion is not correct
 	 * @return void
 	 */
-	protected static function assertPathEquals($expected, $result, $message = '')
-	{
+	protected static function assertPathEquals($expected, $result, $message = '') {
 		$expected = str_replace(DS, '/', $expected);
 		$result = str_replace(DS, '/', $result);
 		static::assertEquals($expected, $result, $message);
@@ -562,8 +542,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @param string $message Message for skip
 	 * @return bool
 	 */
-	protected function skipUnless($condition, $message = '')
-	{
+	protected function skipUnless($condition, $message = '') {
 		if (!$condition) {
 			$this->markTestSkipped($message);
 		}
@@ -581,8 +560,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase
 	 * @throws \Cake\ORM\Exception\MissingTableClassException
 	 * @return \Cake\ORM\Table|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	public function getMockForModel($alias, array $methods = [], array $options = [])
-	{
+	public function getMockForModel($alias, array $methods = [], array $options = []) {
 		if (empty($options['className'])) {
 			$class = Inflector::camelize($alias);
 			$className = App::className($class, 'Model/Table', 'Table');

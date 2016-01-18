@@ -24,16 +24,14 @@ use Locale;
 /**
  * Locale selector filter test.
  */
-class LocaleSelectorFilterTest extends TestCase
-{
+class LocaleSelectorFilterTest extends TestCase {
 
 	/**
 	 * setup
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		$this->locale = Locale::getDefault();
 	}
@@ -43,8 +41,7 @@ class LocaleSelectorFilterTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function tearDown()
-	{
+	public function tearDown() {
 		parent::tearDown();
 		Locale::setDefault($this->locale);
 	}
@@ -57,8 +54,7 @@ class LocaleSelectorFilterTest extends TestCase
 	 * @triggers name null, [request => $request])
 	 * @triggers name null, [request => $request])
 	 */
-	public function testSimpleSelection()
-	{
+	public function testSimpleSelection() {
 		$filter = new LocaleSelectorFilter();
 		$request = new Request([
 			'environment' => ['HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.8,es;q=0.6,da;q=0.4']
@@ -86,8 +82,7 @@ class LocaleSelectorFilterTest extends TestCase
 	 * @triggers name null, [request => $request])
 	 * @triggers name null, [request => $request])
 	 */
-	public function testWithWhitelist()
-	{
+	public function testWithWhitelist() {
 		Locale::setDefault('en_US');
 		$filter = new LocaleSelectorFilter([
 			'locales' => ['en_CA', 'en_IN', 'es_VE']

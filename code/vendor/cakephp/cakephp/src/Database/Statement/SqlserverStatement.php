@@ -21,8 +21,7 @@ use PDO;
  *
  * @internal
  */
-class SqlserverStatement extends PDOStatement
-{
+class SqlserverStatement extends PDOStatement {
 
 	/**
 	 * The SQL Server PDO driver requires that binary parameters be bound with the SQLSRV_ENCODING_BINARY attribute.
@@ -30,8 +29,7 @@ class SqlserverStatement extends PDOStatement
 	 *
 	 * {@inheritDoc}
 	 */
-	public function bindValue($column, $value, $type = 'string')
-	{
+	public function bindValue($column, $value, $type = 'string') {
 		if ($type === null) {
 			$type = 'string';
 		}

@@ -36,8 +36,7 @@ use Symfony\Component\Yaml\Yaml;
  * @package Phinx
  * @author Rob Morgan
  */
-class Config implements ConfigInterface
-{
+class Config implements ConfigInterface {
 	/**
 	 * @var array
 	 */
@@ -51,8 +50,7 @@ class Config implements ConfigInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function __construct(array $configArray, $configFilePath = null)
-	{
+	public function __construct(array $configArray, $configFilePath = null) {
 		$this->configFilePath = $configFilePath;
 		$this->values = $this->replaceTokens($configArray);
 	}
@@ -64,8 +62,7 @@ class Config implements ConfigInterface
 	 * @throws \RuntimeException
 	 * @return Config
 	 */
-	public static function fromYaml($configFilePath)
-	{
+	public static function fromYaml($configFilePath) {
 		$configFile = file_get_contents($configFilePath);
 		$configArray = Yaml::parse($configFile);
 
@@ -85,8 +82,7 @@ class Config implements ConfigInterface
 	 * @throws \RuntimeException
 	 * @return Config
 	 */
-	public static function fromJson($configFilePath)
-	{
+	public static function fromJson($configFilePath) {
 		$configArray = json_decode(file_get_contents($configFilePath), true);
 		if (!is_array($configArray)) {
 			throw new \RuntimeException(sprintf(
@@ -104,8 +100,7 @@ class Config implements ConfigInterface
 	 * @throws \RuntimeException
 	 * @return Config
 	 */
-	public static function fromPhp($configFilePath)
-	{
+	public static function fromPhp($configFilePath) {
 		ob_start();
 		/** @noinspection PhpIncludeInspection */
 		$configArray = include($configFilePath);
@@ -126,8 +121,7 @@ class Config implements ConfigInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getEnvironments()
-	{
+	public function getEnvironments() {
 		if (isset($this->values) && isset($this->values['environments'])) {
 			$environments = array();
 			foreach ($this->values['environments'] as $key => $value) {
@@ -145,8 +139,7 @@ class Config implements ConfigInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getEnvironment($name)
-	{
+	public function getEnvironment($name) {
 		$environments = $this->getEnvironments();
 
 		if (isset($environments[$name])) {
@@ -164,16 +157,14 @@ class Config implements ConfigInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function hasEnvironment($name)
-	{
+	public function hasEnvironment($name) {
 		return (null !== $this->getEnvironment($name));
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getDefaultEnvironment()
-	{
+	public function getDefaultEnvironment() {
 		// The $PHINX_ENVIRONMENT variable overrides all other default settings
 		$env = getenv('PHINX_ENVIRONMENT');
 		if (!empty($env)) {
@@ -216,24 +207,21 @@ class Config implements ConfigInterface
 	 *
 	 * @return string|null
 	 */
-	public function getAlias($alias)
-	{
+	public function getAlias($alias) {
 		return !empty($this->values['aliases'][$alias]) ? $this->values['aliases'][$alias] : null;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getConfigFilePath()
-	{
+	public function getConfigFilePath() {
 		return $this->configFilePath;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getMigrationPath()
-	{
+	public function getMigrationPath() {
 		if (!isset($this->values['paths']['migrations'])) {
 			throw new \UnexpectedValueException('Migrations path missing from config file');
 		}
@@ -247,8 +235,7 @@ class Config implements ConfigInterface
 	 * @param boolean $dropNamespace Return the base migration class name without the namespace.
 	 * @return string
 	 */
-	public function getMigrationBaseClassName($dropNamespace = true)
-	{
+	public function getMigrationBaseClassName($dropNamespace = true) {
 		$className = !isset($this->values['migration_base_class']) ? 'Phinx\Migration\AbstractMigration' : $this->values['migration_base_class'];
 
 		return $dropNamespace ? substr(strrchr($className, '\\'), 1) : $className;
@@ -257,8 +244,7 @@ class Config implements ConfigInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getSeedPath()
-	{
+	public function getSeedPath() {
 		if (!isset($this->values['paths']['seeds'])) {
 			throw new \UnexpectedValueException('Seeds path missing from config file');
 		}
@@ -271,8 +257,7 @@ class Config implements ConfigInterface
 	 *
 	 * @return string|false
 	 */
-	public function getTemplateFile()
-	{
+	public function getTemplateFile() {
 		if (!isset($this->values['templates']['file'])) {
 			return false;
 		}
@@ -285,8 +270,7 @@ class Config implements ConfigInterface
 	 *
 	 * @return string|false
 	 */
-	public function getTemplateClass()
-	{
+	public function getTemplateClass() {
 		if (!isset($this->values['templates']['class'])) {
 			return false;
 		}
@@ -300,8 +284,7 @@ class Config implements ConfigInterface
 	 * @param array $arr Array to replace
 	 * @return array
 	 */
-	protected function replaceTokens(array $arr)
-	{
+	protected function replaceTokens(array $arr) {
 		// Get environment variables
 		// $_ENV is empty because variables_order does not include it normally
 		$tokens = array();
@@ -326,8 +309,7 @@ class Config implements ConfigInterface
 	 * @param array $tokens Array of tokens to search for
 	 * @return array
 	 */
-	protected function recurseArrayForTokens($arr, $tokens)
-	{
+	protected function recurseArrayForTokens($arr, $tokens) {
 		$out = array();
 		foreach ($arr as $name => $value) {
 			if (is_array($value)) {
@@ -349,16 +331,14 @@ class Config implements ConfigInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function offsetSet($id, $value)
-	{
+	public function offsetSet($id, $value) {
 		$this->values[$id] = $value;
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function offsetGet($id)
-	{
+	public function offsetGet($id) {
 		if (!array_key_exists($id, $this->values)) {
 			throw new \InvalidArgumentException(sprintf('Identifier "%s" is not defined.', $id));
 		}
@@ -369,16 +349,14 @@ class Config implements ConfigInterface
 	/**
 	 * {@inheritdoc}
 	 */
-	public function offsetExists($id)
-	{
+	public function offsetExists($id) {
 		return isset($this->values[$id]);
 	}
 
 	/**
 	 * {@inheritdoc}
 	 */
-	public function offsetUnset($id)
-	{
+	public function offsetUnset($id) {
 		unset($this->values[$id]);
 	}
 }

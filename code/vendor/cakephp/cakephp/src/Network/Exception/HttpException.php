@@ -23,6 +23,5 @@ use Cake\Core\Exception\Exception;
  * throw new \Cake\Network\Exception\HttpException('HTTP Version Not Supported', 505);
  *
  */
-class HttpException extends Exception
-{
+class HttpException extends Exception {
 }

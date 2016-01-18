@@ -20,8 +20,7 @@ use Exception;
  * error handling system
  *
  */
-class PHP7ErrorException extends Exception
-{
+class PHP7ErrorException extends Exception {
 
 	/**
 	 * The wrapped error object
@@ -35,8 +34,7 @@ class PHP7ErrorException extends Exception
 	 *
 	 * @param Error $error the Error object
 	 */
-	public function __construct($error)
-	{
+	public function __construct($error) {
 		$this->_error = $error;
 		$message = $error->getMessage();
 		$code = $error->getCode();
@@ -48,8 +46,7 @@ class PHP7ErrorException extends Exception
 	 *
 	 * @return Error
 	 */
-	public function getError()
-	{
+	public function getError() {
 		return $this->_error;
 	}
 }

@@ -27,8 +27,7 @@ use LogicException;
  *
  * @internal
  */
-class OpenSsl
-{
+class OpenSsl {
 
 	/**
 	 * Not implemented
@@ -39,8 +38,7 @@ class OpenSsl
 	 * @throws \LogicException Rijndael compatibility does not exist with Openssl.
 	 * @return void
 	 */
-	public static function rijndael($text, $key, $operation)
-	{
+	public static function rijndael($text, $key, $operation) {
 		throw new LogicException('rijndael is not compatible with OpenSSL. Use mcrypt instead.');
 	}
 
@@ -57,8 +55,7 @@ class OpenSsl
 	 * @return string Encrypted data.
 	 * @throws \InvalidArgumentException On invalid data or key.
 	 */
-	public static function encrypt($plain, $key, $hmacSalt = null)
-	{
+	public static function encrypt($plain, $key, $hmacSalt = null) {
 		$method = 'AES-256-CBC';
 		$ivSize = openssl_cipher_iv_length($method);
 
@@ -74,8 +71,7 @@ class OpenSsl
 	 * @return string Decrypted data. Any trailing null bytes will be removed.
 	 * @throws \InvalidArgumentException On invalid data or key.
 	 */
-	public static function decrypt($cipher, $key)
-	{
+	public static function decrypt($cipher, $key) {
 		$method = 'AES-256-CBC';
 		$ivSize = openssl_cipher_iv_length($method);
 

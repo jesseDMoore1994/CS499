@@ -22,16 +22,14 @@ use Cake\Controller\Controller;
  * RequestHandlerTestController class
  *
  */
-class RequestHandlerTestController extends Controller
-{
+class RequestHandlerTestController extends Controller {
 
 	/**
 	 * test method for ajax redirection
 	 *
 	 * @return void
 	 */
-	public function destination()
-	{
+	public function destination() {
 		$this->viewBuilder()->templatePath('Posts');
 		$this->render('index');
 	}
@@ -43,8 +41,7 @@ class RequestHandlerTestController extends Controller
 	 * @param string|null $two
 	 * @return void
 	 */
-	public function param_method($one = null, $two = null)
-	{
+	public function param_method($one = null, $two = null) {
 		echo "one: $one two: $two";
 		$this->autoRender = false;
 	}
@@ -54,8 +51,7 @@ class RequestHandlerTestController extends Controller
 	 *
 	 * @return void
 	 */
-	public function ajax2_layout()
-	{
+	public function ajax2_layout() {
 		$this->viewBuilder()->layout('ajax2');
 		$this->destination();
 	}

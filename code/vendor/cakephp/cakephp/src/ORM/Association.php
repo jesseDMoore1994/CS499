@@ -28,8 +28,7 @@ use RuntimeException;
  * to configure and customize the way interconnected records are retrieved.
  *
  */
-abstract class Association
-{
+abstract class Association {
 
 	use ConventionsTrait;
 	use LocatorAwareTrait;
@@ -194,8 +193,7 @@ abstract class Association
 	 * @param string $alias The name given to the association
 	 * @param array $options A list of properties to be set on this object
 	 */
-	public function __construct($alias, array $options = [])
-	{
+	public function __construct($alias, array $options = []) {
 		$defaults = [
 			'cascadeCallbacks',
 			'className',
@@ -237,8 +235,7 @@ abstract class Association
 	 * @param string|null $name Name to be assigned
 	 * @return string
 	 */
-	public function name($name = null)
-	{
+	public function name($name = null) {
 		if ($name !== null) {
 			$this->_name = $name;
 		}
@@ -252,8 +249,7 @@ abstract class Association
 	 * @param bool|null $cascadeCallbacks cascade callbacks switch value
 	 * @return bool
 	 */
-	public function cascadeCallbacks($cascadeCallbacks = null)
-	{
+	public function cascadeCallbacks($cascadeCallbacks = null) {
 		if ($cascadeCallbacks !== null) {
 			$this->_cascadeCallbacks = $cascadeCallbacks;
 		}
@@ -267,8 +263,7 @@ abstract class Association
 	 * @param \Cake\ORM\Table|null $table the instance to be assigned as source side
 	 * @return \Cake\ORM\Table
 	 */
-	public function source(Table $table = null)
-	{
+	public function source(Table $table = null) {
 		if ($table === null) {
 			return $this->_sourceTable;
 		}
@@ -282,8 +277,7 @@ abstract class Association
 	 * @param \Cake\ORM\Table|null $table the instance to be assigned as target side
 	 * @return \Cake\ORM\Table
 	 */
-	public function target(Table $table = null)
-	{
+	public function target(Table $table = null) {
 		if ($table === null && $this->_targetTable) {
 			return $this->_targetTable;
 		}
@@ -318,8 +312,7 @@ abstract class Association
 	 * @see \Cake\Database\Query::where() for examples on the format of the array
 	 * @return array
 	 */
-	public function conditions($conditions = null)
-	{
+	public function conditions($conditions = null) {
 		if ($conditions !== null) {
 			$this->_conditions = $conditions;
 		}
@@ -335,8 +328,7 @@ abstract class Association
 	 * @param string|null $key the table field to be used to link both tables together
 	 * @return string|array
 	 */
-	public function bindingKey($key = null)
-	{
+	public function bindingKey($key = null) {
 		if ($key !== null) {
 			$this->_bindingKey = $key;
 		}
@@ -357,8 +349,7 @@ abstract class Association
 	 * @param string|null $key the key to be used to link both tables together
 	 * @return string|array
 	 */
-	public function foreignKey($key = null)
-	{
+	public function foreignKey($key = null) {
 		if ($key !== null) {
 			$this->_foreignKey = $key;
 		}
@@ -376,8 +367,7 @@ abstract class Association
 	 * @param bool|null $dependent Set the dependent mode. Use null to read the current state.
 	 * @return bool
 	 */
-	public function dependent($dependent = null)
-	{
+	public function dependent($dependent = null) {
 		if ($dependent !== null) {
 			$this->_dependent = $dependent;
 		}
@@ -390,8 +380,7 @@ abstract class Association
 	 * @param array $options custom options key that could alter the return value
 	 * @return bool
 	 */
-	public function canBeJoined(array $options = [])
-	{
+	public function canBeJoined(array $options = []) {
 		$strategy = isset($options['strategy']) ? $options['strategy'] : $this->strategy();
 		return $strategy == $this::STRATEGY_JOIN;
 	}
@@ -403,8 +392,7 @@ abstract class Association
 	 * @param string $type the join type to be used (e.g. INNER)
 	 * @return string
 	 */
-	public function joinType($type = null)
-	{
+	public function joinType($type = null) {
 		if ($type === null) {
 			return $this->_joinType;
 		}
@@ -419,8 +407,7 @@ abstract class Association
 	 * @param string|null $name The name of the association property. Use null to read the current value.
 	 * @return string
 	 */
-	public function property($name = null)
-	{
+	public function property($name = null) {
 		if ($name !== null) {
 			$this->_propertyName = $name;
 		}
@@ -441,8 +428,7 @@ abstract class Association
 	 * @return string
 	 * @throws \InvalidArgumentException When an invalid strategy is provided.
 	 */
-	public function strategy($name = null)
-	{
+	public function strategy($name = null) {
 		if ($name !== null) {
 			if (!in_array($name, $this->_validStrategies)) {
 				throw new InvalidArgumentException(
@@ -462,8 +448,7 @@ abstract class Association
 	 * @param string|null $finder the finder name to use
 	 * @return string
 	 */
-	public function finder($finder = null)
-	{
+	public function finder($finder = null) {
 		if ($finder !== null) {
 			$this->_finder = $finder;
 		}
@@ -477,8 +462,7 @@ abstract class Association
 	 * @param array $options List of options used for initialization
 	 * @return void
 	 */
-	protected function _options(array $options)
-	{
+	protected function _options(array $options) {
 	}
 
 	/**
@@ -510,8 +494,7 @@ abstract class Association
 	 * @throws \RuntimeException if the query builder passed does not return a query
 	 * object
 	 */
-	public function attachTo(Query $query, array $options = [])
-	{
+	public function attachTo(Query $query, array $options = []) {
 		$target = $this->target();
 		$joinType = empty($options['joinType']) ? $this->joinType() : $options['joinType'];
 		$options += [
@@ -566,8 +549,7 @@ abstract class Association
 	 * @param array $options Options array containing the `negateMatch` key.
 	 * @return void
 	 */
-	protected function _appendNotMatching($query, $options)
-	{
+	protected function _appendNotMatching($query, $options) {
 		$target = $this->_targetTable;
 		if (!empty($options['negateMatch'])) {
 			$primaryKey = $query->aliasFields((array)$target->primaryKey(), $this->_name);
@@ -589,8 +571,7 @@ abstract class Association
 	 *   with this association
 	 * @return array
 	 */
-	public function transformRow($row, $nestKey, $joined)
-	{
+	public function transformRow($row, $nestKey, $joined) {
 		$sourceAlias = $this->source()->alias();
 		$nestKey = $nestKey ?: $this->_name;
 		if (isset($row[$sourceAlias])) {
@@ -610,8 +591,7 @@ abstract class Association
 	 *   with this association
 	 * @return array
 	 */
-	public function defaultRowValue($row, $joined)
-	{
+	public function defaultRowValue($row, $joined) {
 		$sourceAlias = $this->source()->alias();
 		if (isset($row[$sourceAlias])) {
 			$row[$sourceAlias][$this->property()] = null;
@@ -630,8 +610,7 @@ abstract class Association
 	 * @see \Cake\ORM\Table::find()
 	 * @return \Cake\ORM\Query
 	 */
-	public function find($type = null, array $options = [])
-	{
+	public function find($type = null, array $options = []) {
 		$type = $type ?: $this->finder();
 		list($type, $opts) = $this->_extractFinder($type);
 		return $this->target()
@@ -648,8 +627,7 @@ abstract class Association
 	 * @see \Cake\ORM\Table::updateAll()
 	 * @return bool Success Returns true if one or more rows are affected.
 	 */
-	public function updateAll($fields, $conditions)
-	{
+	public function updateAll($fields, $conditions) {
 		$target = $this->target();
 		$expression = $target->query()
 			->where($this->conditions())
@@ -666,8 +644,7 @@ abstract class Association
 	 * @return bool Success Returns true if one or more rows are affected.
 	 * @see \Cake\ORM\Table::deleteAll()
 	 */
-	public function deleteAll($conditions)
-	{
+	public function deleteAll($conditions) {
 		$target = $this->target();
 		$expression = $target->query()
 			->where($this->conditions())
@@ -683,8 +660,7 @@ abstract class Association
 	 * @param \Cake\ORM\Query $query the query this association is attaching itself to
 	 * @return void
 	 */
-	protected function _dispatchBeforeFind($query)
-	{
+	protected function _dispatchBeforeFind($query) {
 		$query->triggerBeforeFind();
 	}
 
@@ -697,8 +673,7 @@ abstract class Association
 	 * @param array $options options passed to the method `attachTo`
 	 * @return void
 	 */
-	protected function _appendFields($query, $surrogate, $options)
-	{
+	protected function _appendFields($query, $surrogate, $options) {
 		$fields = $surrogate->clause('select') ?: $options['fields'];
 		$target = $this->_targetTable;
 		$autoFields = $surrogate->autoFields();
@@ -735,8 +710,7 @@ abstract class Association
 	 * @param array $options options passed to the method `attachTo`
 	 * @return void
 	 */
-	protected function _formatAssociationResults($query, $surrogate, $options)
-	{
+	protected function _formatAssociationResults($query, $surrogate, $options) {
 		$formatters = $surrogate->formatResults();
 
 		if (!$formatters || empty($options['propertyPath'])) {
@@ -766,8 +740,7 @@ abstract class Association
 	 * @param array $options options passed to the method `attachTo`
 	 * @return void
 	 */
-	protected function _bindNewAssociations($query, $surrogate, $options)
-	{
+	protected function _bindNewAssociations($query, $surrogate, $options) {
 		$loader = $surrogate->eagerLoader();
 		$contain = $loader->contain();
 		$matching = $loader->matching();
@@ -802,8 +775,7 @@ abstract class Association
 	 * @throws \RuntimeException if the number of columns in the foreignKey do not
 	 * match the number of columns in the source table primaryKey
 	 */
-	protected function _joinCondition($options)
-	{
+	protected function _joinCondition($options) {
 		$conditions = [];
 		$tAlias = $this->target()->alias();
 		$sAlias = $this->source()->alias();
@@ -845,8 +817,7 @@ abstract class Association
 	 * and options as value.
 	 * @return array
 	 */
-	protected function _extractFinder($finderData)
-	{
+	protected function _extractFinder($finderData) {
 		$finderData = (array)$finderData;
 
 		if (is_numeric(key($finderData))) {
@@ -864,8 +835,7 @@ abstract class Association
 	 * @return \Cake\ORM\Association
 	 * @throws \RuntimeException if no association with such name exists
 	 */
-	public function __get($property)
-	{
+	public function __get($property) {
 		return $this->target()->{$property};
 	}
 
@@ -876,8 +846,7 @@ abstract class Association
 	 * @param string $property the property name
 	 * @return bool true if the property exists
 	 */
-	public function __isset($property)
-	{
+	public function __isset($property) {
 		return isset($this->target()->{$property});
 	}
 
@@ -889,8 +858,7 @@ abstract class Association
 	 * @return mixed
 	 * @throws \BadMethodCallException
 	 */
-	public function __call($method, $argument)
-	{
+	public function __call($method, $argument) {
 		return call_user_func_array([$this->target(), $method], $argument);
 	}
 

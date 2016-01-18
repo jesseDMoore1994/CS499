@@ -23,8 +23,7 @@ use Cake\Utility\Inflector;
  * Task for symlinking / copying plugin assets to app's webroot.
  *
  */
-class AssetsTask extends Shell
-{
+class AssetsTask extends Shell {
 
 	/**
 	 * Attempt to symlink plugin assets to app's webroot. If symlinking fails it
@@ -35,8 +34,7 @@ class AssetsTask extends Shell
 	 *   If null all plugins will be processed.
 	 * @return void
 	 */
-	public function symlink($name = null)
-	{
+	public function symlink($name = null) {
 		$this->_process($this->_list($name));
 	}
 
@@ -48,8 +46,7 @@ class AssetsTask extends Shell
 	 *   If null all plugins will be processed.
 	 * @return void
 	 */
-	public function copy($name = null)
-	{
+	public function copy($name = null) {
 		$this->_process($this->_list($name), true);
 	}
 
@@ -60,8 +57,7 @@ class AssetsTask extends Shell
 	 *   If null all plugins will be processed.
 	 * @return array List of plugins with meta data.
 	 */
-	protected function _list($name = null)
-	{
+	protected function _list($name = null) {
 		if ($name === null) {
 			$pluginsList = Plugin::loaded();
 		} else {
@@ -114,8 +110,7 @@ class AssetsTask extends Shell
 	 * @param bool $copy Force copy mode. Default false.
 	 * @return void
 	 */
-	protected function _process($plugins, $copy = false)
-	{
+	protected function _process($plugins, $copy = false) {
 		foreach ($plugins as $plugin => $config) {
 			$this->out();
 			$this->out('For plugin: ' . $plugin);
@@ -163,8 +158,7 @@ class AssetsTask extends Shell
 	 * @param string $dir Directory name
 	 * @return bool
 	 */
-	protected function _createDirectory($dir)
-	{
+	protected function _createDirectory($dir) {
 		$old = umask(0);
 		// @codingStandardsIgnoreStart
 		$result = @mkdir($dir, 0755, true);
@@ -187,8 +181,7 @@ class AssetsTask extends Shell
 	 * @param string $link Link name
 	 * @return bool
 	 */
-	protected function _createSymlink($target, $link)
-	{
+	protected function _createSymlink($target, $link) {
 		// @codingStandardsIgnoreStart
 		$result = @symlink($target, $link);
 		// @codingStandardsIgnoreEnd
@@ -208,8 +201,7 @@ class AssetsTask extends Shell
 	 * @param string $destination Destination directory
 	 * @return bool
 	 */
-	protected function _copyDirectory($source, $destination)
-	{
+	protected function _copyDirectory($source, $destination) {
 		$folder = new Folder($source);
 		if ($folder->copy(['to' => $destination])) {
 			$this->out('Copied assets to directory ' . $destination);
@@ -225,8 +217,7 @@ class AssetsTask extends Shell
 	 *
 	 * @return \Cake\Console\ConsoleOptionParser
 	 */
-	public function getOptionParser()
-	{
+	public function getOptionParser() {
 		$parser = parent::getOptionParser();
 
 		$parser->addSubcommand('symlink', [

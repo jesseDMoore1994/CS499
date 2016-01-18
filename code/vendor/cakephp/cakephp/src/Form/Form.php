@@ -33,8 +33,7 @@ use Cake\Validation\Validator;
  *
  * Forms are conventionally placed in the `App\Form` namespace.
  */
-class Form
-{
+class Form {
 
 	/**
 	 * The schema used by this form.
@@ -67,8 +66,7 @@ class Form
 	 * @param \Cake\Form\Schema $schema The schema to set, or null.
 	 * @return \Cake\Form\Schema the schema instance.
 	 */
-	public function schema(Schema $schema = null)
-	{
+	public function schema(Schema $schema = null) {
 		if ($schema === null && empty($this->_schema)) {
 			$schema = $this->_buildSchema(new Schema());
 		}
@@ -88,8 +86,7 @@ class Form
 	 * @param \Cake\Form\Schema $schema The schema to customize.
 	 * @return \Cake\Form\Schema The schema to use.
 	 */
-	protected function _buildSchema(Schema $schema)
-	{
+	protected function _buildSchema(Schema $schema) {
 		return $schema;
 	}
 
@@ -103,8 +100,7 @@ class Form
 	 * @param \Cake\Validation\Validator $validator The validator to set, or null.
 	 * @return \Cake\Validation\Validator the validator instance.
 	 */
-	public function validator(Validator $validator = null)
-	{
+	public function validator(Validator $validator = null) {
 		if ($validator === null && empty($this->_validator)) {
 			$validator = $this->_buildValidator(new Validator());
 		}
@@ -124,8 +120,7 @@ class Form
 	 * @param \Cake\Validation\Validator $validator The validator to customize.
 	 * @return \Cake\Validation\Validator The validator to use.
 	 */
-	protected function _buildValidator(Validator $validator)
-	{
+	protected function _buildValidator(Validator $validator) {
 		return $validator;
 	}
 
@@ -135,8 +130,7 @@ class Form
 	 * @param array $data The data to check.
 	 * @return bool Whether or not the data is valid.
 	 */
-	public function validate(array $data)
-	{
+	public function validate(array $data) {
 		$validator = $this->validator();
 		$this->_errors = $validator->errors($data);
 		return count($this->_errors) === 0;
@@ -150,8 +144,7 @@ class Form
 	 *
 	 * @return array Last set validation errors.
 	 */
-	public function errors()
-	{
+	public function errors() {
 		return $this->_errors;
 	}
 
@@ -167,8 +160,7 @@ class Form
 	 * @return bool False on validation failure, otherwise returns the
 	 *   result of the `_execute()` method.
 	 */
-	public function execute(array $data)
-	{
+	public function execute(array $data) {
 		if (!$this->validate($data)) {
 			return false;
 		}
@@ -183,8 +175,7 @@ class Form
 	 * @param array $data Form data.
 	 * @return bool
 	 */
-	protected function _execute(array $data)
-	{
+	protected function _execute(array $data) {
 		return true;
 	}
 
@@ -193,8 +184,7 @@ class Form
 	 *
 	 * @return array
 	 */
-	public function __debugInfo()
-	{
+	public function __debugInfo() {
 		$special = [
 			'_schema' => $this->schema()->__debugInfo(),
 			'_errors' => $this->errors(),

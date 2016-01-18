@@ -15,10 +15,8 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\Definition\NodeInterface;
 
-class FinalizationTest extends \PHPUnit_Framework_TestCase
-{
-	public function testUnsetKeyWithDeepHierarchy()
-	{
+class FinalizationTest extends \PHPUnit_Framework_TestCase {
+	public function testUnsetKeyWithDeepHierarchy() {
 		$tb = new TreeBuilder();
 		$tree = $tb
 			->root('config', 'array')
@@ -63,8 +61,7 @@ class FinalizationTest extends \PHPUnit_Framework_TestCase
 		), $this->process($tree, array($a, $b)));
 	}
 
-	protected function process(NodeInterface $tree, array $configs)
-	{
+	protected function process(NodeInterface $tree, array $configs) {
 		$processor = new Processor();
 
 		return $processor->process($tree, $configs);

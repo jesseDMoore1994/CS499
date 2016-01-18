@@ -28,16 +28,14 @@ use TestApp\Controller\Component\OrangeComponent;
  * ComponentTest class
  *
  */
-class ComponentTest extends TestCase
-{
+class ComponentTest extends TestCase {
 
 	/**
 	 * setUp method
 	 *
 	 * @return void
 	 */
-	public function setUp()
-	{
+	public function setUp() {
 		parent::setUp();
 		Configure::write('App.namespace', 'TestApp');
 
@@ -49,8 +47,7 @@ class ComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInnerComponentConstruction()
-	{
+	public function testInnerComponentConstruction() {
 		$Collection = new ComponentRegistry();
 		$Component = new AppleComponent($Collection);
 
@@ -62,8 +59,7 @@ class ComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testNestedComponentLoading()
-	{
+	public function testNestedComponentLoading() {
 		$Collection = new ComponentRegistry();
 		$Apple = new AppleComponent($Collection);
 
@@ -78,8 +74,7 @@ class ComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testInnerComponentsAreNotEnabled()
-	{
+	public function testInnerComponentsAreNotEnabled() {
 		$mock = $this->getMock('Cake\Event\EventManager');
 		$controller = new Controller();
 		$controller->eventManager($mock);
@@ -99,8 +94,7 @@ class ComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testMultipleComponentInitialize()
-	{
+	public function testMultipleComponentInitialize() {
 		$Collection = new ComponentRegistry();
 		$Banana = $Collection->load('Banana');
 		$Orange = $Collection->load('Orange');
@@ -118,8 +112,7 @@ class ComponentTest extends TestCase
 	 * @expectedExceptionMessage The "Banana" alias has already been loaded with the following config:
 	 * @return void
 	 */
-	public function testDuplicateComponentInitialize()
-	{
+	public function testDuplicateComponentInitialize() {
 		$Collection = new ComponentRegistry();
 		$Collection->load('Banana', ['property' => ['closure' => function () {
 		}]]);
@@ -136,8 +129,7 @@ class ComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testSomethingReferencingCookieComponent()
-	{
+	public function testSomethingReferencingCookieComponent() {
 		$Controller = new ComponentTestController();
 		$Controller->loadComponent('SomethingWithCookie');
 		$Controller->startupProcess();
@@ -151,8 +143,7 @@ class ComponentTest extends TestCase
 	 *
 	 * @return void
 	 */
-	public function testDebugInfo()
-	{
+	public function testDebugInfo() {
 		$Collection = new ComponentRegistry();
 		$Component = new AppleComponent($Collection);
 

@@ -35,13 +35,11 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 
-class SeedCreate extends AbstractCommand
-{
+class SeedCreate extends AbstractCommand {
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function configure()
-	{
+	protected function configure() {
 		parent::configure();
 
 		$this->setName('seed:create')
@@ -60,8 +58,7 @@ class SeedCreate extends AbstractCommand
 	 *
 	 * @return ConfirmationQuestion
 	 */
-	protected function getCreateSeedDirectoryQuestion()
-	{
+	protected function getCreateSeedDirectoryQuestion() {
 		return new ConfirmationQuestion('Create seeds directory? [y]/n ', true);
 	}
 
@@ -74,8 +71,7 @@ class SeedCreate extends AbstractCommand
 	 * @throws \InvalidArgumentException
 	 * @return void
 	 */
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
 		$this->bootstrap($input, $output);
 
 		// get the seed path from the config
