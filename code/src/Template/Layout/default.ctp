@@ -13,6 +13,14 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+$this->start('navigation');
+echo $this->element('navigation/login_guest');
+echo $this->element('navigation/main');
+//echo $this->element('sidebar/recent_topics');
+//echo $this->element('sidebar/recent_comments');
+$this->end();
+
+
 $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
@@ -27,31 +35,30 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 	<?= $this->Html->meta('icon') ?>
 
 	<?= $this->Html->css('base.css') ?>
-	<?= $this->Html->css('cake.css') ?>
+	<!--<?= $this->Html->css('cake.css') ?>-->
+	<?= $this->Html->css('app.css') ?>
 
 	<?= $this->fetch('meta') ?>
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
 </head>
 <body>
-<nav class="top-bar expanded" data-topbar role="navigation">
-	<ul class="title-area large-3 medium-4 columns">
-		<li class="name">
-			<h1><a href=""><?= $this->fetch('title') ?></a></h1>
-		</li>
-	</ul>
-	<section class="top-bar-section">
-		<ul class="right">
-			<li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-			<li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
-		</ul>
-	</section>
-</nav>
-<?= $this->Flash->render() ?>
-<section class="container clearfix">
-	<?= $this->fetch('content') ?>
-</section>
-<footer>
-</footer>
+	<div class="wrap">
+		<div class="header">
+			<div class="navigation">
+				<div class="navigation-inner responsive-inner">
+					<?= $this->fetch('navigation') ?>
+				</div>
+			</div>
+		</div>
+		<div class="flash">
+			<div class="flash-inner responsive-inner">
+				<?= $this->Flash->render() ?>
+			</div>
+		</div>
+		<div class="body">
+			<?= $this->fetch('content') ?>
+		</div>
+	</div>
 </body>
 </html>

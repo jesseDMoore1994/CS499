@@ -1,0 +1,25 @@
+
+/*
+ * These CSS elements create the basis of the site's
+ * responsiveness.
+ */
+.responsive-inner {
+	max-width:1200px;
+	width:95%;
+	margin:auto;
+}
+
+/*
+ * These CSS elements implement the style for the navigation
+ * menu on basic web pages that do not override the default
+ * navigation behavior.
+ */
+.navigation {
+	background-color:black;
+	color:white;
+}
+
+.navigation-login {
+	float:right;
+}
+
