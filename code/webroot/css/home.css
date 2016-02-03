@@ -1,0 +1,116 @@
+
+/*
+ * =========================================================
+ * HOMEPAGE CSS
+ * ---------------------------------------------------------
+ * These are the CSS elements specific to the homepage.
+ * =========================================================
+ */
+
+/* This styles the heading at the top of the homepage */
+.homepage-theaters h1 {
+	font-size:200%;
+	margin:0px;
+	color:#595959;
+	text-transform:uppercase;
+	margin-top:15px;
+}
+
+/* This makes "Huntsville's" stand out */
+.homepage-theaters h1 strong {
+	color:#000000;
+	font-weight:normal;
+}
+
+/* This models the homepage tiles as a table */
+.homepage-tiles {
+	display:table;
+	width:100%;
+	margin-top:15px;
+}
+
+/* This models each individual homepage tile as a table cell */
+.homepage-tile {
+	display:table-cell;
+}
+
+/* The first tile gets padding to the right */
+.homepage-tile:first-of-type {
+	padding-right:10px;
+}
+
+/* The last tile gets padding to the left */
+.homepage-tile:last-of-type {
+	padding-left:10px;
+}
+
+/* This enlarges the link tag to make room for the image */
+.homepage-tile a {
+	display:block;
+	background:black;
+	padding-top:150px;
+	padding-bottom:5px;
+	padding-left:15px;
+	font-size:200%;
+	color:white;
+	background-position:center center;
+	background-size:100% auto;
+	text-shadow:1px 1px 1px black;
+	background-repeat:no-repeat;
+}
+
+.homepage-tile-ccph a {
+	background-image:url(../img/home/ccph.png);
+}
+
+.homepage-tile-ccch a {
+	background-image:url(../img/home/ccch.png);
+}
+
+/* ---------------------------------------------------------
+ * SMALL DESKTOP DESIGN:
+ * These media queries will optimize the homepage for display
+ * on desktop machines that have small displays, or tablets
+ * that have larger displays.
+ * ---------------------------------------------------------
+ */
+@media screen and (max-width: 1050px) and (min-width: 800px) {
+
+	/* Make the tiles a little bit smaller */
+	.homepage-tile a {
+		padding-top:100px;
+		font-size:150%;
+	}
+}
+
+/* ---------------------------------------------------------
+ * MOBILE DEVICE DESIGN:
+ * These media queries will optimize the homepage for display
+ * on tablets and mobile phones.
+ * ---------------------------------------------------------
+ */
+@media screen and (max-width: 799px) {
+
+	/* Make the title a bit smaller */
+	.homepage-theaters h1 {
+		font-size:100%;
+	}
+
+	/* Make the tiles render as a non-table */
+	.homepage-tiles {
+		display:block;
+	}
+
+	/* Make the tiles render as a non-table rather than cells */
+	.homepage-tile {
+		display:block;
+		padding:0px !important;
+		padding-bottom:10px !important;
+	}
+
+	/* Make the tiles even smaller, and with even smaller text */
+	.homepage-tile a {
+		padding-top:75px;
+		font-size:125%;
+	}
+}

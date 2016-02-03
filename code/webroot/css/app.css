@@ -1,7 +1,17 @@
 
 /*
+ * =========================================================
+ * APP CSS
+ * ---------------------------------------------------------
+ * These are the basic CSS elements for the app.
+ * =========================================================
+ */
+
+/* ---------------------------------------------------------
+ * RESPONSIVENESS:
  * These CSS elements create the basis of the site's
  * responsiveness.
+ * ---------------------------------------------------------
  */
 .responsive-inner {
 	max-width:1200px;
@@ -9,18 +19,18 @@
 	margin:auto;
 }
 
-/*
- * =========================================================
- * SITE NAVIGATION
- * ---------------------------------------------------------
+
+/* ---------------------------------------------------------
+ * SITE NAVIGATION:
  * These CSS elements implement the style for the navigation
  * menu on basic web pages that do not override the default
  * navigation behavior.
- * =========================================================
+ * ---------------------------------------------------------
  */
 
 /* This defines the site logo */
-.navigation-logo {
+.navigation-logo a {
+	display:block;
 	height:30px;
 	background-image:url(../img/logo.png);
 	width:302px;

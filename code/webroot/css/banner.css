@@ -19,3 +19,18 @@
 	background-image:url(../img/navbar.png);
 	border-bottom:1px solid black;
 }
+
+/* ---------------------------------------------------------
+ * MOBILE DEVICE DESIGN:
+ * These media queries will optimize the banner for display
+ * on tablets and mobile phones.
+ * ---------------------------------------------------------
+ */
+
+@media screen and (max-width: 799px) {
+
+	/* For small screens, fix the banner vertically rather than horizontally. */
+	.header {
+		background-size:auto 100%;
+	}
+}

@@ -1,3 +1,1 @@
-<div class="navigation-logo">
-
-</div>
+<div class="navigation-logo"><a href=""></a></div>
