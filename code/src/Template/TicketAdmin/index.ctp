@@ -11,7 +11,7 @@
 				<form>
 					<div class="admin-search-item admin-search-label"><label>Lookup a Ticket:</label></div>
 					<div class="admin-search-item"><input type="text" placeholder="" /></div>
-					<div class="admin-search-item"><select>
+					<div class="admin-search-item admin-search-select"><select>
 						<option>Ticket ID</option>
 					</select></div>
 					<div class="admin-search-item admin-search-submit"><input type="submit" value="Search" /></div>

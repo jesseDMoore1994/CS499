@@ -95,6 +95,14 @@
 	background-color:#B7B7B7;
 }
 
+.admin-search-select {
+	width:200px;
+}
+
+.admin-search-item.admin-search-submit {
+	width:39px;
+}
+
 .admin-search-item.admin-search-submit input {
 	/* Make the link text invisible */
 	line-height: 0;
