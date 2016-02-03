@@ -16,6 +16,7 @@
 $this->start('navigation');
 echo $this->element('navigation/login_guest');
 echo $this->element('navigation/main');
+echo $this->element('navigation/logo');
 //echo $this->element('sidebar/recent_topics');
 //echo $this->element('sidebar/recent_comments');
 $this->end();
