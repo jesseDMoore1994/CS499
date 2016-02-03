@@ -26,6 +26,9 @@ $this->end();
 	<?= $this->Html->css('base.css') ?>
 	<?= $this->Html->css('app.css') ?>
 	<?= $this->Html->css('admin.css') ?>
+	<?= $this->Html->script('jquery') ?>
+	<?= $this->Html->script('app.js') ?>
+	<?= $this->Html->script('responsive.js') ?>
 
 	<?php if (isset($css)) foreach ($css as $c) { ?>
 		<?= $this->Html->css($c) ?>
@@ -36,10 +39,12 @@ $this->end();
 	<?= $this->fetch('script') ?>
 </head>
 <body>
+<?= $this->element("responsive/menu") ?>
 <div class="wrap admin">
 	<div class="header">
 		<div class="navigation">
 			<div class="navigation-inner responsive-inner">
+				<div class="menu-responsive"><a href="#"></a></div>
 				<?= $this->fetch('navigation') ?>
 			</div>
 		</div>

@@ -73,3 +73,76 @@
 .navigation-item a {
 	color:white;
 }
+
+/* ---------------------------------------------------------
+ * RESPONSIVE NAVIGATION:
+ * These CSS elements implement a responsive design for
+ * site navigation
+ * ---------------------------------------------------------
+ */
+@media screen and (max-width: 799px) {
+
+	.navigation .navigation-item {
+		display:none;
+	}
+
+	.menu-responsive {
+		float:right;
+		padding-top:15px;
+	}
+
+	.menu-responsive a {
+		display:inline-block;
+		width:32px;
+		height:32px;
+		background-image:url(../img/menubars.png);
+		cursor:pointer;
+	}
+
+}
+
+.responsive-menu-body {
+	display:none;
+	background:black;
+	padding-bottom:10px;
+}
+
+.responsive-menu-body h1 {
+	color:#EEEEEE;
+	text-transform:uppercase;
+	border-bottom:1px solid #777777;
+	font-size:150%;
+	padding-top:10px;
+	margin:0px;
+}
+
+.responsive-menu-body .navigation-logo {
+	display:none;
+}
+
+.responsive-menu-body .navigation-item {
+	display:block;
+}
+
+.responsive-menu-body .navigation-login, .responsive-menu-body .navigation-main {
+	float:none !important;
+	padding:0px;
+}
+
+.responsive-menu-body a {
+	text-transform: none !important;
+	padding-top:10px;
+	padding-bottom:10px;
+	border-bottom:1px solid #444444;
+	display:block;
+}
+
+.responsive-tip {
+	display:none;
+}
+
+@media screen and (max-width: 799px) {
+	.responsive-tip {
+		display:inline;
+	}
+}

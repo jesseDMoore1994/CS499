@@ -78,6 +78,10 @@
 	display:block;
 }
 
+.admin-header-inner > .admin-menu:first-of-type {
+	padding-left:20px !important;
+}
+
 .admin-title h1 {
 	color:#EEEEEE;
 	border-bottom:1px solid #B2B2B2;
@@ -282,6 +286,7 @@
 
 @media screen and (max-width: 799px) {
 
+	/* These rules modify the admin header */
 	.admin .header {
 		background-color:#7F4C30;
 		background-image:none;
@@ -298,6 +303,51 @@
 	.admin-header .admin-menu {
 		display:block;
 		width:auto;
+	}
+
+	.admin-helplink {
+		float:none;
+		display:block;
+	}
+
+	/* These rules modify the search feature */
+	.admin-search-item.admin-search-label {
+		display:none !important;
+	}
+
+	.admin-search-select {
+		width:100px;
+	}
+
+	/* These rules modify the search results */
+	.admin-results-list table {
+		display:block;
+	}
+
+	.admin-results-list tr {
+		display:block;
+		border-bottom:1px solid #AAAAAA;
+	}
+
+	.admin-results-list tr.table-heading {
+		display:none;
+	}
+
+	.admin-results-list tbody {
+		display:block;
+	}
+
+	.admin-results-list th {
+		display:none;
+	}
+
+	.admin-results-list td {
+		display:block;
+		width:auto;
+	}
+
+	.admin-results-list td label {
+		font-weight:bold;
 	}
 
 }

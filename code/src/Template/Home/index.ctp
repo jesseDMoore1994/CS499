@@ -10,6 +10,7 @@ $this->end();
 <div class="header">
 	<div class="navigation">
 		<div class="navigation-inner responsive-inner">
+			<div class="menu-responsive"><a href="#"></a></div>
 			<?= $this->fetch('navigation') ?>
 		</div>
 	</div>

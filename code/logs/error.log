@@ -323,3 +323,50 @@ Stack Trace:
 #8 {main}
 
 
+2016-02-03 18:46:52 Warning: Warning (512): Method Cake\View\Helper\HtmlHelper::js does not exist in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/Helper.php, line 135]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\View\Helper::__call() - CORE/src/View/Helper.php, line 135
+Cake\View\Helper\HtmlHelper::js() - APP/Template/Layout/admin.ctp, line 30
+include - APP/Template/Layout/admin.ctp, line 30
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 620
+Cake\View\View::render() - CORE/src/View/View.php, line 580
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-02-03 18:46:52 Warning: Warning (512): Method Cake\View\Helper\HtmlHelper::js does not exist in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/Helper.php, line 135]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\View\Helper::__call() - CORE/src/View/Helper.php, line 135
+Cake\View\Helper\HtmlHelper::js() - APP/Template/Layout/admin.ctp, line 31
+include - APP/Template/Layout/admin.ctp, line 31
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 620
+Cake\View\View::render() - CORE/src/View/View.php, line 580
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-02-03 18:49:58 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Js could not be found.
+Exception Attributes: array (
+  'class' => 'Js',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/js/jquery.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+

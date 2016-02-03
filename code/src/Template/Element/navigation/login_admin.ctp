@@ -3,6 +3,6 @@
 		<a href="">Administration</a>
 	</div>
 	<div class="navigation-item">
-		<a href="">Sign In</a>
+		<a href="">Sign Out</a>
 	</div>
 </div>

@@ -11,23 +11,27 @@ $this->end();
 	<?= $this->Html->charset() ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
-		<?= $cakeDescription ?>:
 		<?= $this->fetch('title') ?>
 	</title>
 	<?= $this->Html->meta('icon') ?>
 
 	<?= $this->Html->css('base.css') ?>
 	<?= $this->Html->css('app.css') ?>
+	<?= $this->Html->script('jquery') ?>
+	<?= $this->Html->script('app.js') ?>
+	<?= $this->Html->script('responsive.js') ?>
 
 	<?= $this->fetch('meta') ?>
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
 </head>
 <body>
+	<?= $this->element("responsive/menu") ?>
 	<div class="wrap">
 		<div class="header">
 			<div class="navigation">
 				<div class="navigation-inner responsive-inner">
+					<div class="menu-responsive"><a href="#"></a></div>
 					<?= $this->fetch('navigation') ?>
 				</div>
 			</div>

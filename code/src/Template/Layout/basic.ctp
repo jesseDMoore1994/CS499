@@ -11,6 +11,9 @@
 	<?= $this->Html->css('base.css') ?>
 	<?= $this->Html->css('app.css') ?>
 	<?= $this->Html->css('banner.css') ?>
+	<?= $this->Html->script('jquery') ?>
+	<?= $this->Html->script('app.js') ?>
+	<?= $this->Html->script('responsive.js') ?>
 
 	<?php if (isset($css)) foreach ($css as $c) { ?>
 	<?= $this->Html->css($c) ?>
@@ -21,6 +24,7 @@
 	<?= $this->fetch('script') ?>
 </head>
 <body>
+<?= $this->element("responsive/menu") ?>
 <div class="wrap">
 	<?= $this->fetch("content") ?>
 </div>

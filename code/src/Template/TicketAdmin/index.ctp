@@ -26,7 +26,7 @@
 		<div class="admin-results-list responsive">
 			<div class="admin-results-list-inner responsive-inner">
 				<table>
-					<tr>
+					<tr class="table-heading">
 						<th>Seat #</th>
 						<th>Ticket ID</th>
 						<th>Performance</th>
@@ -37,14 +37,14 @@
 						<th></th>
 					</tr>
 					<tr>
-						<td>Seat F12</td>
-						<td>123456-F12</td>
-						<td>Macbeth</td>
-						<td>Today, 10:00 pm</td>
-						<td>Jane Doe</td>
-						<td class="status bad">Unpaid (Cash)</td>
-						<td><a href="">Mark as Paid</a></td>
-						<td><input type="checkbox" /></td>
+						<td><label class="responsive-tip">Seat #:</label> Seat F12</td>
+						<td><label class="responsive-tip">Ticket ID:</label> 123456-F12</td>
+						<td><label class="responsive-tip">Performance:</label> Macbeth</td>
+						<td><label class="responsive-tip">Valid For:</label> Today, 10:00 pm</td>
+						<td><label class="responsive-tip">Ticket Holder:</label> Jane Doe</td>
+						<td class="status bad"><label class="responsive-tip">Status:</label> Unpaid (Cash)</td>
+						<td><label class="responsive-tip">Actions:</label> <a href="">Mark as Paid</a></td>
+						<td><label class="responsive-tip">Select:</label> <input type="checkbox" /></td>
 					</tr>
 				</table>
 			</div>
