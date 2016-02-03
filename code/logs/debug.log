@@ -1,0 +1,139 @@
+2016-02-03 02:29:11 Notice: Strict (2048): Declaration of App\Controller\AdminController::beforeFilter() should be compatible with Cake\Controller\Controller::beforeFilter(Cake\Event\Event $event) in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php, line 7]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Controller/HomeController.php, line 7
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 391
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 283
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Cake\Core\App::_classExistsInBase() - CORE/src/Core/App.php, line 84
+Cake\Core\App::className() - CORE/src/Core/App.php, line 62
+Cake\Routing\Filter\ControllerFactoryFilter::_getController() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 79
+Cake\Routing\Filter\ControllerFactoryFilter::beforeDispatch() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 48
+Cake\Routing\DispatcherFilter::handle() - CORE/src/Routing/DispatcherFilter.php, line 141
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 378
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 345
+Cake\Routing\Dispatcher::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 75
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 60
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-02-03 02:29:33 Notice: Strict (2048): Declaration of App\Controller\AdminController::beforeFilter() should be compatible with Cake\Controller\Controller::beforeFilter(Cake\Event\Event $event) in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php, line 7]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Controller/HomeController.php, line 7
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 391
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 283
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Cake\Core\App::_classExistsInBase() - CORE/src/Core/App.php, line 84
+Cake\Core\App::className() - CORE/src/Core/App.php, line 62
+Cake\Routing\Filter\ControllerFactoryFilter::_getController() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 79
+Cake\Routing\Filter\ControllerFactoryFilter::beforeDispatch() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 48
+Cake\Routing\DispatcherFilter::handle() - CORE/src/Routing/DispatcherFilter.php, line 141
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 378
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 345
+Cake\Routing\Dispatcher::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 75
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 60
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-02-03 02:30:09 Notice: Strict (2048): Declaration of App\Controller\AdminController::beforeFilter() should be compatible with Cake\Controller\Controller::beforeFilter(Cake\Event\Event $event) in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php, line 8]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Controller/HomeController.php, line 8
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 391
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 283
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Cake\Core\App::_classExistsInBase() - CORE/src/Core/App.php, line 84
+Cake\Core\App::className() - CORE/src/Core/App.php, line 62
+Cake\Routing\Filter\ControllerFactoryFilter::_getController() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 79
+Cake\Routing\Filter\ControllerFactoryFilter::beforeDispatch() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 48
+Cake\Routing\DispatcherFilter::handle() - CORE/src/Routing/DispatcherFilter.php, line 141
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 378
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 345
+Cake\Routing\Dispatcher::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 75
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 60
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-02-03 02:30:53 Notice: Strict (2048): Declaration of App\Controller\AdminController::beforeFilter() should be compatible with Cake\Controller\Controller::beforeFilter(Cake\Event\Event $event) in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php, line 8]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Controller/HomeController.php, line 8
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 391
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 283
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Cake\Core\App::_classExistsInBase() - CORE/src/Core/App.php, line 84
+Cake\Core\App::className() - CORE/src/Core/App.php, line 62
+Cake\Routing\Filter\ControllerFactoryFilter::_getController() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 79
+Cake\Routing\Filter\ControllerFactoryFilter::beforeDispatch() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 48
+Cake\Routing\DispatcherFilter::handle() - CORE/src/Routing/DispatcherFilter.php, line 141
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 378
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 345
+Cake\Routing\Dispatcher::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 75
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 60
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-02-03 02:43:55 Notice: Strict (2048): Declaration of App\Controller\AdminController::beforeFilter() should be compatible with Cake\Controller\Controller::beforeFilter(Cake\Event\Event $event) in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AdminController.php, line 9]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Controller/AdminController.php, line 9
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 391
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 283
+spl_autoload_call - [internal], line ??
+include - APP/Controller/TicketAdminController.php, line 7
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 391
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 283
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Cake\Core\App::_classExistsInBase() - CORE/src/Core/App.php, line 84
+Cake\Core\App::className() - CORE/src/Core/App.php, line 62
+Cake\Routing\Filter\ControllerFactoryFilter::_getController() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 79
+Cake\Routing\Filter\ControllerFactoryFilter::beforeDispatch() - CORE/src/Routing/Filter/ControllerFactoryFilter.php, line 48
+Cake\Routing\DispatcherFilter::handle() - CORE/src/Routing/DispatcherFilter.php, line 141
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 378
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 345
+Cake\Routing\Dispatcher::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 75
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 60
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-02-03 02:43:55 Notice: Deprecated (16384): Controller::$layout is deprecated. Use $this->viewBuilder()->layout() instead. in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php, line 368]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\Controller\Controller::__set() - CORE/src/Controller/Controller.php, line 368
+App\Controller\AdminController::beforeFilter() - APP/Controller/AdminController.php, line 12
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 374
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 345
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 75
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 478
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 106
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-02-03 02:45:18 Notice: Deprecated (16384): Controller::$layout is deprecated. Use $this->viewBuilder()->layout() instead. in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php, line 368]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\Controller\Controller::__set() - CORE/src/Controller/Controller.php, line 368
+App\Controller\AdminController::beforeFilter() - APP/Controller/AdminController.php, line 10
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 374
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 345
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 75
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 478
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 106
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+

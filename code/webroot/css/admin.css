@@ -1,0 +1,181 @@
+
+/*
+ * =========================================================
+ * ADMIN CSS
+ * ---------------------------------------------------------
+ * These are the CSS elements that are common to all admin
+ * pages.
+ * =========================================================
+ */
+
+/* ---------------------------------------------------------
+ * ADMIN HEADER:
+ * These define the appearance of the admin header.
+ * ---------------------------------------------------------
+ */
+
+.admin .header {
+	background-image:url(../img/banner.png);
+	background-size:100% auto;
+	background-position:center center;
+	height:250px;
+}
+
+.admin .navigation {
+	background-color:transparent;
+	background-image:url(../img/navbar.png);
+	border-bottom:1px solid black;
+}
+
+.admin-top {
+	padding-top:15px;
+	padding-bottom:15px;
+}
+
+.admin-top h1 {
+	margin:0px;
+	font-size:200%;
+}
+
+.admin-helplink {
+	float:right;
+}
+
+/* ---------------------------------------------------------
+ * ADMIN RESULTS LIST:
+ * This defines the appearance of the admin result list
+ * construct.
+ * ---------------------------------------------------------
+ */
+
+.admin-results {
+	border-top:1px solid #989898;
+	border-bottom:1px solid #989898;
+}
+
+.admin-search {
+	padding-top:10px;
+	padding-bottom:10px;
+
+	background: #e8e8e8;
+	background: -moz-linear-gradient(top,  #e8e8e8 0%, #d1d1d1 100%);
+	background: -webkit-linear-gradient(top,  #e8e8e8 0%,#d1d1d1 100%);
+	background: linear-gradient(to bottom,  #e8e8e8 0%,#d1d1d1 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', endColorstr='#d1d1d1',GradientType=0 );
+}
+
+.admin-search-inner {
+}
+
+.admin-search-inner form {
+	display:table;
+	width:100%;
+}
+
+.admin-search-inner form input, .admin-search-inner form select {
+	margin:0px;
+	border:1px solid #969696;
+}
+
+.admin-search-item {
+	display:table-cell !important;
+	width:auto;
+	vertical-align:middle;
+}
+
+.admin-search-label {
+	width:200px;
+}
+
+.admin-search-item label {
+	font-size:125%;
+}
+
+.admin-search-item select {
+	background-color:#B7B7B7;
+}
+
+.admin-search-item.admin-search-submit input {
+	/* Make the link text invisible */
+	line-height: 0;
+	font-size: 0;
+	color: transparent;
+
+	width:37px;
+	height:37px;
+
+	background:#00bf0c;
+	background:-moz-linear-gradient(top,  #00bf0c 0%, #008709 100%);
+	background:-webkit-linear-gradient(top,  #00bf0c 0%,#008709 100%);
+	background:linear-gradient(to bottom,  #00bf0c 0%,#008709 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#00bf0c', endColorstr='#008709',GradientType=0 );
+
+	border:1px solid #005402;
+}
+
+.admin-results-title {
+	background:#C4C4C4;
+	border-top:1px solid #969696;
+	border-bottom:1px solid #969696;
+	padding-top:7px;
+	padding-bottom:7px;
+}
+
+.admin-results-title h2 {
+	font-size:100%;
+	margin:0px;
+}
+
+.admin-results-list {
+	background:#EFEFEF;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.admin-results-list table {
+	background:none;
+	border:0px solid black;
+	margin-bottom:0px;
+}
+
+.admin-results-list tr {
+	background:none !important;
+}
+
+.admin-results-list th {
+	color:#666666;
+	background:none;
+	font-weight:normal;
+	padding:0px;
+	line-hiehgt:1em;
+	padding-right:25px;
+}
+
+.admin-results-list td {
+	padding:0px;
+	line-height:1em;
+	padding-right:25px;
+	padding-top:7px;
+	padding-bottom:7px;
+	vertical-align:middle;
+}
+
+.admin-results-list td input {
+	margin:0px;
+}
+
+.admin-results-list td .status {
+	text-transform:uppercase;
+}
+
+.admin-results-list td .status.bad {
+	color:#843434;
+}
+
+.admin-results-list td .status.good {
+	color:#388733;
+}
+
+.admin-results-list td a {
+	text-transform:uppercase;
+}
