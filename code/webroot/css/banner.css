@@ -1,0 +1,21 @@
+/*
+ * =========================================================
+ * SITE BANNER
+ * ---------------------------------------------------------
+ * These CSS elements define the appearance for pages that
+ * contain the header banner.
+ * =========================================================
+ */
+
+.header {
+	background-image:url(../img/banner.png);
+	background-size:100% auto;
+	background-position:center center;
+	height:300px;
+}
+
+.navigation {
+	background-color:transparent;
+	background-image:url(../img/navbar.png);
+	border-bottom:1px solid black;
+}
