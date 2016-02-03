@@ -1,3 +1,8 @@
 <div class="navigation-login navigation-guest">
-	Guest
+	<div class="navigation-button navigation-item">
+		<a href="">Create Account</a>
+	</div>
+	<div class="navigation-item">
+		<a href="">Sign In</a>
+	</div>
 </div>

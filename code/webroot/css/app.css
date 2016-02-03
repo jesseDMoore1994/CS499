@@ -10,30 +10,56 @@
 }
 
 /*
+ * =========================================================
+ * SITE NAVIGATION
+ * ---------------------------------------------------------
  * These CSS elements implement the style for the navigation
  * menu on basic web pages that do not override the default
  * navigation behavior.
+ * =========================================================
  */
 
+/* This defines the site logo */
 .navigation-logo {
 	height:30px;
 	background-image:url(../img/logo.png);
 	width:302px;
-	height:54px; /* Image is 48 pixels high */
+	height:64px; /* Image itself is 48 pixels high */
 	background-repeat:no-repeat;
 	background-position: center center;
 }
 
+/* This defines the background color for the nav */
 .navigation {
-	background-color:black;
+	background-color:#111111;
 	color:white;
 }
 
-.navigation-main {
-	float:right;
+/* This defines the padding to center the menu items vertically */
+.navigation-main, .navigation-login {
+	padding-top:17px;
 }
 
+/* This makes the main navigation menu be pushed to the right */
+.navigation-main {
+	float:right;
+	margin-right:5px;
+}
+
+/* This pushes the login items to the right as well */
 .navigation-login {
 	float:right;
 }
 
+/* This defines the style for individual menu items on the nav */
+.navigation-item {
+	display:inline-block;
+	font-size:large;
+	text-transform:uppercase;
+	padding-right:10px;
+}
+
+/* This styles the links for nav items */
+.navigation-item a {
+	color:white;
+}
