@@ -9,5 +9,6 @@ use Cake\View\Exception\MissingTemplateException;
 class HomeController extends AppController {
 	function index() {
 		$this->viewBuilder()->layout("basic");
+		$this->set("css", ["home"]);
 	}
 }

@@ -7,6 +7,50 @@
  * =========================================================
  */
 
+/* ---------------------------------------------------------
+ * PLAYS:
+ * These CSS elements define the appearance of the plays
+ * list in the homepage header.
+ * ---------------------------------------------------------
+ */
+
+.homepage-play {
+	display:inline-block;
+	padding-right:10px;
+	margin-left:-10px;
+}
+
+.homepage-play a {
+	display:inline-block;
+	width:138px;
+	height:200px;
+
+	/* Make the link text invisible */
+	line-height: 0;
+	font-size: 0;
+	color: transparent;
+
+	/* Style the background image */
+	background-size:100% auto;
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
+.homepage-play-othello a {
+	background-image:url(../img/plays/othello.png);
+}
+
+.homepage-play-macbeth a {
+	background-image:url(../img/plays/macbeth.png);
+}
+
+/* ---------------------------------------------------------
+ * THEATERS:
+ * These CSS elements define the appearance of the theater
+ * list on the homepage.
+ * ---------------------------------------------------------
+ */
+
 /* This styles the heading at the top of the homepage */
 .homepage-theaters h1 {
 	font-size:200%;

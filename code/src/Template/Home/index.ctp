@@ -13,6 +13,12 @@ $this->end();
 			<?= $this->fetch('navigation') ?>
 		</div>
 	</div>
+	<div class="homepage-plays responsive">
+		<div class="homepage-plays-inner responsive-inner">
+			<div class="homepage-play homepage-play-othello"><a href="">Othello</a></div>
+			<div class="homepage-play homepage-play-macbeth"><a href="">Macbeth</a></div>
+		</div>
+	</div>
 </div>
 <div class="flash">
 	<div class="flash-inner responsive-inner">

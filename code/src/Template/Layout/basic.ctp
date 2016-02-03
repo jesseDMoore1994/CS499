@@ -12,7 +12,10 @@
 	<?= $this->Html->css('base.css') ?>
 	<?= $this->Html->css('app.css') ?>
 	<?= $this->Html->css('banner.css') ?>
-	<?= $this->Html->css('home.css') ?>
+
+	<?php if (isset($css)) foreach ($css as $c) { ?>
+	<?= $this->Html->css($c) ?>
+	<?php } ?>
 
 	<?= $this->fetch('meta') ?>
 	<?= $this->fetch('css') ?>
