@@ -8,6 +8,7 @@
  * =========================================================
  */
 
+
 /* ---------------------------------------------------------
  * ADMIN HEADER:
  * These define the appearance of the admin header.
@@ -18,7 +19,6 @@
 	background-image:url(../img/banner.png);
 	background-size:100% auto;
 	background-position:center center;
-	height:250px;
 }
 
 .admin .navigation {
@@ -27,14 +27,87 @@
 	border-bottom:1px solid black;
 }
 
+.admin-header {
+	padding-top:30px;
+	padding-bottom:30px;
+}
+
+.admin-header-inner {
+	display:table;
+}
+
+.admin-header-inner .admin-title {
+	display:table-cell;
+	background-image:url(../img/admin/titlebg.png);
+	vertical-align:top;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:10px;
+}
+
+.admin-header-inner .admin-title h1 {
+	text-transform:uppercase;
+	font-size:225%;
+	font-weight:normal;
+	margin:0px;
+}
+
+.admin-header-inner .admin-menu {
+	display:table-cell;
+	width:250px;
+	background-image:url(../img/admin/menubg.png);
+	padding-top:15px;
+	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:10px;
+	vertical-align:top;
+}
+
+.admin-header-inner .admin-menu h2 {
+	color:#7A7A7A;
+	border-bottom:1px solid #4C4C4C;
+	font-size:100%;
+	margin-bottom:5px;
+	margin-top:0px;
+}
+
+.admin-header-inner .admin-menu a {
+	color:#EEEEEE;
+	display:block;
+}
+
+.admin-title {
+	text-align:right;
+	padding-right:20px !important;
+}
+
+.admin-title h1 {
+	color:#EEEEEE;
+	border-bottom:1px solid #B2B2B2;
+	display:inline-block;
+	padding-bottom:3px;
+}
+
+.admin-title em {
+	color:#B2B2B2;
+	font-style:normal;
+	padding-top:5px;
+	display:inline-block;
+	text-transform: uppercase;
+}
+
 .admin-top {
 	padding-top:15px;
 	padding-bottom:15px;
 }
 
-.admin-top h1 {
+.admin-top h2 {
 	margin:0px;
 	font-size:200%;
+}
+
+.admin-top em {
+	font-style:normal;
 }
 
 .admin-helplink {

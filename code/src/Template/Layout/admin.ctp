@@ -4,6 +4,14 @@ echo $this->element('navigation/login_admin');
 echo $this->element('navigation/main');
 echo $this->element('navigation/logo');
 $this->end();
+
+$this->start('adminheader');
+echo $this->element('admin/menu/title');
+echo $this->element('admin/menu/module_tickets');
+echo $this->element('admin/menu/module_users');
+echo $this->element('admin/menu/module_setup');
+$this->end();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,8 +43,10 @@ $this->end();
 				<?= $this->fetch('navigation') ?>
 			</div>
 		</div>
-		<div class="admin-header">
-
+		<div class="admin-header responsive">
+			<div class="admin-header-inner responsive-inner">
+				<?= $this->fetch('adminheader') ?>
+			</div>
 		</div>
 	</div>
 	<div class="flash">
