@@ -28,8 +28,8 @@
 }
 
 .admin-header {
-	padding-top:30px;
-	padding-bottom:30px;
+	padding-top:20px;
+	padding-bottom:20px;
 }
 
 .admin-header-inner {
@@ -41,8 +41,9 @@
 	background-image:url(../img/admin/titlebg.png);
 	vertical-align:top;
 	padding-left:10px;
-	padding-right:10px;
+	padding-right:20px;
 	padding-top:10px;
+	text-align:right;
 }
 
 .admin-header-inner .admin-title h1 {
@@ -57,7 +58,7 @@
 	width:250px;
 	background-image:url(../img/admin/menubg.png);
 	padding-top:15px;
-	padding-bottom:10px;
+	padding-bottom:15px;
 	padding-left:10px;
 	padding-right:10px;
 	vertical-align:top;
@@ -69,6 +70,7 @@
 	font-size:100%;
 	margin-bottom:5px;
 	margin-top:0px;
+	text-transform: uppercase;
 }
 
 .admin-header-inner .admin-menu a {
@@ -76,16 +78,13 @@
 	display:block;
 }
 
-.admin-title {
-	text-align:right;
-	padding-right:20px !important;
-}
-
 .admin-title h1 {
 	color:#EEEEEE;
 	border-bottom:1px solid #B2B2B2;
 	display:inline-block;
 	padding-bottom:3px;
+	margin-top:10px;
+	margin-bottom:0px;
 }
 
 .admin-title em {
@@ -95,6 +94,12 @@
 	display:inline-block;
 	text-transform: uppercase;
 }
+
+/* ---------------------------------------------------------
+ * ADMIN TOP:
+ * This is the per-page header that also includes help links.
+ * ---------------------------------------------------------
+ */
 
 .admin-top {
 	padding-top:15px;
@@ -259,4 +264,40 @@
 
 .admin-results-list td a {
 	text-transform:uppercase;
+}
+
+/* ---------------------------------------------------------
+ * SMALL DESKTOP DESIGN:
+ * This defines the appearence of the admin interface in
+ * general for desktop machines with small monitors.
+ * ---------------------------------------------------------
+ */
+
+@media screen and (max-width: 1050px) and (min-width: 800px) {
+
+	.admin-header .admin-title {
+		display:none;
+	}
+}
+
+@media screen and (max-width: 799px) {
+
+	.admin .header {
+		background-color:#7F4C30;
+		background-image:none;
+	}
+
+	.admin-header .admin-title {
+		display:none;
+	}
+
+	.admin-header-inner {
+		display:block;
+	}
+
+	.admin-header .admin-menu {
+		display:block;
+		width:auto;
+	}
+
 }
