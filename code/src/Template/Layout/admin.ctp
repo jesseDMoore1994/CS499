@@ -29,6 +29,7 @@ $this->end();
 	<?= $this->Html->script('jquery') ?>
 	<?= $this->Html->script('app.js') ?>
 	<?= $this->Html->script('responsive.js') ?>
+	<?= $this->Html->script('admin.js') ?>
 
 	<?php if (isset($css)) foreach ($css as $c) { ?>
 		<?= $this->Html->css($c) ?>
