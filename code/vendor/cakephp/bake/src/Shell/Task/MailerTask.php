@@ -19,62 +19,68 @@ use Cake\Utility\Inflector;
 /**
  * Mailer code generator.
  */
-class MailerTask extends SimpleBakeTask {
-	/**
-	 * Task name used in path generation.
-	 *
-	 * @var string
-	 */
-	public $pathFragment = 'Mailer/';
+class MailerTask extends SimpleBakeTask
+{
+    /**
+     * Task name used in path generation.
+     *
+     * @var string
+     */
+    public $pathFragment = 'Mailer/';
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public function name() {
-		return 'mailer';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function name()
+    {
+        return 'mailer';
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public function fileName($name) {
-		return $name . 'Mailer.php';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function fileName($name)
+    {
+        return $name . 'Mailer.php';
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public function template() {
-		return 'Mailer/mailer';
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public function template()
+    {
+        return 'Mailer/mailer';
+    }
 
-	/**
-	 * Bake the Mailer class and html/text layout files.
-	 *
-	 * @param string $name The name of the mailer to make.
-	 * @return void
-	 */
-	public function bake($name) {
-		$this->bakeLayouts($name);
-		return parent::bake($name);
-	}
+    /**
+     * Bake the Mailer class and html/text layout files.
+     *
+     * @param string $name The name of the mailer to make.
+     * @return void
+     */
+    public function bake($name)
+    {
+        $this->bakeLayouts($name);
+        return parent::bake($name);
+    }
 
-	/**
-	 * Bake empty layout files for html/text emails.
-	 *
-	 * @param string $name The name of the mailer layouts are needed for.
-	 * @return void
-	 */
-	public function bakeLayouts($name) {
-		$restore = $this->pathFragment;
-		$layoutsPath = implode(DS, ['Template', 'Layout', 'Email']);
+    /**
+     * Bake empty layout files for html/text emails.
+     *
+     * @param string $name The name of the mailer layouts are needed for.
+     * @return void
+     */
+    public function bakeLayouts($name)
+    {
+        $restore = $this->pathFragment;
+        $layoutsPath = implode(DS, ['Template', 'Layout', 'Email']);
 
-		foreach (['html', 'text'] as $type) {
-			$this->pathFragment = implode(DS, [$layoutsPath, $type, Inflector::underscore($name) . '.ctp']);
-			$path = $this->getPath();
-			$this->createFile($path, '');
-		}
+        foreach (['html', 'text'] as $type) {
+            $this->pathFragment = implode(DS, [$layoutsPath, $type, Inflector::underscore($name) . '.ctp']);
+            $path = $this->getPath();
+            $this->createFile($path, '');
+        }
 
-		$this->pathFragment = $restore;
-	}
+        $this->pathFragment = $restore;
+    }
 }

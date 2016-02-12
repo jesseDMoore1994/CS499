@@ -218,8 +218,8 @@ return [
 			 */
 			//'port' => 'non_standard_port_number',
 			'username' => 'root',
-			'password' => 'root',
-			'database' => 'cs499',
+			'password' => '',
+			'database' => 'theater_ticket_manager_db',
 			'encoding' => 'utf8',
 			'timezone' => 'UTC',
 			'flags' => [],
