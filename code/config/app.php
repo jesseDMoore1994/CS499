@@ -218,7 +218,7 @@ return [
 			 */
 			//'port' => 'non_standard_port_number',
 			'username' => 'root',
-			'password' => '',
+			'password' => ((strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? "" : "root"),
 			'database' => 'theater_ticket_manager_db',
 			'encoding' => 'utf8',
 			'timezone' => 'UTC',
