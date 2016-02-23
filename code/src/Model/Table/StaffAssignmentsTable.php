@@ -27,6 +27,8 @@ class StaffAssignmentsTable extends Table
         parent::initialize($config);
 
         $this->table('staff_assignments');
+        $this->displayField('user_id');
+        $this->primaryKey('user_id');
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',

@@ -1,0 +1,44 @@
+2016-02-18 03:26:22 Error: [Cake\Database\Exception] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*' at line 1
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', '*', Array, Object(Cake\Database\Schema\Table))
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(61): Cake\Database\Schema\Collection->describe('*', Array)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\ORM\Table.php(413): Cake\Database\Schema\CachedCollection->describe('*')
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\ORM\Table.php(486): Cake\ORM\Table->schema()
+#4 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), '*', '*')
+#7 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('*')
+#8 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\BakeShell.php(250): Bake\Shell\Task\ModelTask->main('*')
+#9 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Collection\CollectionTrait.php(49): Bake\Shell\BakeShell->Bake\Shell\{closure}('*', 0)
+#10 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\BakeShell.php(253): Cake\Collection\Collection->each(Object(Closure))
+#11 [internal function]: Bake\Shell\BakeShell->all('*')
+#12 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Console\Shell.php(431): call_user_func_array(Array, Array)
+#13 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(203): Cake\Console\Shell->runCommand(Array, true, Array)
+#14 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(171): Cake\Console\ShellDispatcher->_dispatch(Array)
+#15 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(121): Cake\Console\ShellDispatcher->dispatch(Array)
+#16 C:\wamp\www\CS499\CS499\code\bin\cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#17 {main}
+
+
+2016-02-23 00:02:58 Error: [Cake\Database\Exception] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*' at line 1
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', '*', Array, Object(Cake\Database\Schema\Table))
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(61): Cake\Database\Schema\Collection->describe('*', Array)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\ORM\Table.php(413): Cake\Database\Schema\CachedCollection->describe('*')
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\ORM\Table.php(486): Cake\ORM\Table->schema()
+#4 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), '*', '*')
+#7 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('*')
+#8 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\BakeShell.php(250): Bake\Shell\Task\ModelTask->main('*')
+#9 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Collection\CollectionTrait.php(49): Bake\Shell\BakeShell->Bake\Shell\{closure}('*', 0)
+#10 C:\wamp\www\CS499\CS499\code\vendor\cakephp\bake\src\Shell\BakeShell.php(253): Cake\Collection\Collection->each(Object(Closure))
+#11 [internal function]: Bake\Shell\BakeShell->all('*')
+#12 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Console\Shell.php(431): call_user_func_array(Array, Array)
+#13 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(203): Cake\Console\Shell->runCommand(Array, true, Array)
+#14 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(171): Cake\Console\ShellDispatcher->_dispatch(Array)
+#15 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(121): Cake\Console\ShellDispatcher->dispatch(Array)
+#16 C:\wamp\www\CS499\CS499\code\bin\cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#17 {main}
+
+

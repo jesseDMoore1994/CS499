@@ -20,6 +20,9 @@ class StaffAssignmentsFixture extends TestFixture
         'user_id' => ['type' => 'integer', 'length' => 12, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'theater_id' => ['type' => 'integer', 'length' => 12, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'access_level' => ['type' => 'boolean', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        '_constraints' => [
+            'primary' => ['type' => 'primary', 'columns' => ['user_id'], 'length' => []],
+        ],
         '_options' => [
             'engine' => 'InnoDB',
             'collation' => 'latin1_swedish_ci'
