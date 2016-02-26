@@ -22,7 +22,7 @@
             <tr>
                 <td><?= $staffAssignment->has('user') ? $this->Html->link($staffAssignment->user->id, ['controller' => 'Users', 'action' => 'view', $staffAssignment->user->id]) : '' ?></td>
                 <td><?= $this->Number->format($staffAssignment->theater_id) ?></td>
-                <td><?= h($staffAssignment->access_level) ?></td>
+                <td><?= $this->Number->format($staffAssignment->access_level) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $staffAssignment->user_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $staffAssignment->user_id]) ?>

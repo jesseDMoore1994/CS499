@@ -73,7 +73,7 @@ class <%= $name %>Table extends Table
 <% foreach ($behaviors as $behavior => $behaviorData): %>
         $this->addBehavior('<%= $behavior %>'<%= $behaviorData ? ", [" . implode(', ', $behaviorData) . ']' : '' %>);
 <% endforeach %>
-<% if (!empty($associations['belongsTo']) || !empty($associations['hasMany']) || !empty($associations['belongsToMany'])): %>
+<% if (!empty($associations)): %>
 
 <% endif; %>
 <% foreach ($associations as $type => $assocs): %>

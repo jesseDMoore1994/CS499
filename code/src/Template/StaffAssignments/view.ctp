@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <th><?= __('Access Level') ?></th>
-            <td><?= $staffAssignment->access_level ? __('Yes') : __('No'); ?></td>
-         </tr>
+            <td><?= $this->Number->format($staffAssignment->access_level) ?></td>
+        </tr>
     </table>
 </div>

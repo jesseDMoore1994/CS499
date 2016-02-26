@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\User $user
  * @property int $theater_id
  * @property \App\Model\Entity\Theater $theater
- * @property bool $access_level
+ * @property int $access_level
  */
 class StaffAssignment extends Entity
 {
@@ -28,4 +28,34 @@ class StaffAssignment extends Entity
         '*' => true,
         'user_id' => false,
     ];
+
+    protected function _getUserId()
+    {
+        return $this->user_id;
+    }
+
+    protected function _getUser()
+    {
+        return $this->user;
+    }
+
+    protected function _getAccessLevel()
+    {
+        return $this->access_level;
+    }
+
+    protected function _setUserId($value)
+    {
+        return $value;
+    }
+
+    protected function _setUser($value)
+    {
+        return $value;
+    }
+
+    protected function _setAccessLevel($value)
+    {
+        return $value;
+    }
 }

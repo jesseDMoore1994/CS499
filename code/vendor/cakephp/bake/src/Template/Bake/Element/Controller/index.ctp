@@ -17,7 +17,7 @@
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @return void
      */
     public function index()
     {
@@ -27,8 +27,6 @@
             'contain' => [<%= $this->Bake->stringifyList($belongsTo, ['indent' => false]) %>]
         ];
 <% endif; %>
-        $<%= $pluralName %> = $this->paginate($this-><%= $currentModelName %>);
-
-        $this->set(compact('<%= $pluralName %>'));
+        $this->set('<%= $pluralName %>', $this->paginate($this-><%= $currentModelName %>));
         $this->set('_serialize', ['<%= $pluralName %>']);
     }
