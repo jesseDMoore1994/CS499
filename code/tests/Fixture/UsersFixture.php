@@ -49,21 +49,56 @@ class UsersFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => 1,
-            'last_name' => 'Lorem ipsum dolor ',
-            'first_name' => 'Lorem ipsum dolor ',
-            'middle_initial' => 'Lorem ipsum dolor sit ame',
-            'street' => 'Lorem ipsum dolor sit amet',
-            'city' => 'Lorem ipsum dolor sit amet',
-            'state' => 'Lorem ipsum dolor sit amet',
-            'zip' => 'Lorem ipsu',
-            'phone_no' => 'Lorem ip',
-            'email' => 'Lorem ipsum dolor sit amet',
-            'password' => 'Lorem ipsum dolor sit amet',
-            'is_super_admin' => 1,
-            'season_ticket' => 1,
-            'date_created' => '2016-02-23 00:06:21',
-            'date_modified' => '2016-02-23 00:06:21'
+            'id' => 2,
+            'last_name' => 'A',
+            'first_name' => 'B',
+            'middle_initial' => 'C',
+            'street' => '2211 renau rd.',
+            'city' => 'huntsville',
+            'state' => 'AL',
+            'zip' => '35801',
+            'phone_no' => '2565553214',
+            'email' => 'yolo@x.com',
+            'password' => 'aaaaaaa',
+            'is_super_admin' => 0,
+            'season_ticket' => 0,
+            'date_created' => '2016-02-24 00:12:00',
+            'date_modified' => '2016-02-24 00:18:30'
         ],
+        [
+            'id' => 1,
+            'last_name' => 'Admin',
+            'first_name' => 'Admin',
+            'middle_initial' => 'A',
+            'street' => '9000 baudway cir.',
+            'city' => 'Circuit',
+            'state' => 'Motherboard',
+            'zip' => '1337',
+            'phone_no' => '1234567890',
+            'email' => 'admin@ticketangel.com',
+            'password' => '1337H4X0R~',
+            'is_super_admin' => 1,
+            'season_ticket' => 0,
+            'date_created' => '1970-01-01 00:00:01',
+            'date_modified' => '1970-01-01 00:00:01'
+        ],
+
+        [
+            'id' => 3,
+            'last_name' => 'Doe',
+            'first_name' => 'John',
+            'middle_initial' => 'A',
+            'street' => '321 street way',
+            'city' => 'Generic',
+            'state' => 'Place',
+            'zip' => '123456',
+            'phone_no' => '5555555555',
+            'email' => 'john.doe@yohoo.net',
+            'password' => 'password',
+            'is_super_admin' => 0,
+            'season_ticket' => 1,
+            'date_created' => '2016-02-25 00:12:00',
+            'date_modified' => '2016-02-25 00:18:30'
+        ]
     ];
 }

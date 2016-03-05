@@ -42,3 +42,19 @@ Stack Trace:
 #17 {main}
 
 
+2016-02-26 01:25:52 Error: [UnexpectedValueException] Referenced fixture class "App\Test\Fixture\TheatersFixture" not found. Fixture "app.theaters" was referenced in test case "App\Test\TestCase\Controller\StaffAssignmentsControllerTest".
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\TestSuite\Fixture\FixtureManager.php(97): Cake\TestSuite\Fixture\FixtureManager->_loadFixtures(Object(App\Test\TestCase\Controller\StaffAssignmentsControllerTest))
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\TestSuite\Fixture\FixtureInjector.php(148): Cake\TestSuite\Fixture\FixtureManager->fixturize(Object(App\Test\TestCase\Controller\StaffAssignmentsControllerTest))
+#2 C:\wamp\www\CS499\CS499\code\vendor\phpunit\phpunit\src\Framework\TestResult.php(327): Cake\TestSuite\Fixture\FixtureInjector->startTest(Object(App\Test\TestCase\Controller\StaffAssignmentsControllerTest))
+#3 C:\wamp\www\CS499\CS499\code\vendor\phpunit\phpunit\src\Framework\TestResult.php(552): PHPUnit_Framework_TestResult->startTest(Object(App\Test\TestCase\Controller\StaffAssignmentsControllerTest))
+#4 C:\wamp\www\CS499\CS499\code\vendor\phpunit\phpunit\src\Framework\TestCase.php(724): PHPUnit_Framework_TestResult->run(Object(App\Test\TestCase\Controller\StaffAssignmentsControllerTest))
+#5 C:\wamp\www\CS499\CS499\code\vendor\phpunit\phpunit\src\Framework\TestSuite.php(747): PHPUnit_Framework_TestCase->run(Object(PHPUnit_Framework_TestResult))
+#6 C:\wamp\www\CS499\CS499\code\vendor\phpunit\phpunit\src\Framework\TestSuite.php(747): PHPUnit_Framework_TestSuite->run(Object(PHPUnit_Framework_TestResult))
+#7 C:\wamp\www\CS499\CS499\code\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(440): PHPUnit_Framework_TestSuite->run(Object(PHPUnit_Framework_TestResult))
+#8 C:\wamp\www\CS499\CS499\code\vendor\phpunit\phpunit\src\TextUI\Command.php(149): PHPUnit_TextUI_TestRunner->doRun(Object(PHPUnit_Framework_TestSuite), Array)
+#9 C:\wamp\www\CS499\CS499\code\vendor\phpunit\phpunit\src\TextUI\Command.php(100): PHPUnit_TextUI_Command->run(Array, true)
+#10 C:\wamp\www\CS499\CS499\code\vendor\phpunit\phpunit\phpunit(47): PHPUnit_TextUI_Command::main()
+#11 {main}
+
+

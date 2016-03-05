@@ -49,17 +49,47 @@ class TicketsFixture extends TestFixture
         [
             'id' => 1,
             'customer_id' => 1,
-            'show_name' => 'Lorem ipsum dolor sit amet',
+            'show_name' => 'Romeo & Juliet',
             'show_date' => '2016-02-23',
-            'start_time' => '00:05:28',
-            'end_time' => '00:05:28',
-            'theater' => 'Lorem ipsum dolor sit amet',
-            'section' => 'Lorem ipsum do',
-            'row' => 'Lorem ipsum dolor sit ame',
-            'seat' => 1,
+            'start_time' => '00:17:30',
+            'end_time' => '00:20:00',
+            'theater' => 'theater 1',
+            'section' => 'Mezzanine',
+            'row' => 'E',
+            'seat' => 12,
+            'accessible_seat' => 0,
+            'paid' => 1,
+            'payment_method' => 'Cash'
+        ],
+        [
+            'id' => 2,
+            'customer_id' => 2,
+            'show_name' => 'Othello',
+            'show_date' => '2016-02-24',
+            'start_time' => '00:17:30',
+            'end_time' => '00:20:00',
+            'theater' => 'theater 2',
+            'section' => 'box',
+            'row' => 'E',
+            'seat' => 7,
+            'accessible_seat' => 0,
+            'paid' => 0,
+            'payment_method' => ''
+        ],
+        [
+            'id' => 3,
+            'customer_id' => 3,
+            'show_name' => 'A Midsummer Night\'s Dream',
+            'show_date' => '2016-02-25',
+            'start_time' => '00:17:30',
+            'end_time' => '00:20:00',
+            'theater' => 'theater 3',
+            'section' => 'Front',
+            'row' => 'A',
+            'seat' => 7,
             'accessible_seat' => 1,
             'paid' => 1,
-            'payment_method' => 'Lorem ipsum dolor sit amet'
-        ],
+            'payment_method' => 'Credit'
+        ]
     ];
 }

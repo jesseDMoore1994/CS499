@@ -34,6 +34,18 @@ class StaffAssignmentsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+        $options = array(
+            // Refer to php.net fgetcsv for more information
+            'length' => 0,
+            'delimiter' => ',',
+            'enclosure' => '"',
+            'escape' => '\\',
+            // Generates a Model.field headings row from the csv file
+            'headers' => true,
+            // If true, String $content is the data, not a path to the file
+            'text' => false,
+        );
+        $this->addBehavior('CakePHPCSV.Csv', $options);
     }
 
     /**
