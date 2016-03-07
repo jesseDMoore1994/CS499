@@ -110,4 +110,40 @@ class TicketsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function findId($ids)
+    {
+        $targetTicket = $this->Tickets->find('id', [
+            'id' => $ids
+        ]);
+
+        $this->set([
+            'tickets' => $targetTicket,
+            'ids' => $ids
+        ]);
+    }
+
+    public function import($fileName, $fileType = ".csv", $fields = array(), $options = array())
+    {
+        if($fileType === ".csv") {
+            $this->Tickets->behaviors()->call("importCsv",
+                [$fileName,
+                    $fields,
+                    $options]);
+        }else {}
+    }
+
+    public function export($fileName, $fileType = ".csv", $fields = array(), $options = array())
+    {
+
+        $data = $this->Tickets->find()->all();
+
+        if($fileType === ".csv") {
+            $this->Tickets->behaviors()->call("exportCsv",
+                [$fileName,
+                    $data,
+                    $fields,
+                    $options]);
+        }else {}
+    }
 }

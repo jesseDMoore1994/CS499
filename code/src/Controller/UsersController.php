@@ -105,4 +105,28 @@ class UsersController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function import($fileName, $fileType = ".csv", $fields = array(), $options = array())
+    {
+        if($fileType === ".csv") {
+            $this->Users->behaviors()->call("importCsv",
+                [$fileName,
+                    $fields,
+                    $options]);
+        }else {}
+    }
+
+    public function export($fileName, $fileType = ".csv", $fields = array(), $options = array())
+    {
+
+        $data = $this->Users->find()->all();
+
+        if($fileType === ".csv") {
+            $this->Users->behaviors()->call("exportCsv",
+                [$fileName,
+                    $data,
+                    $fields,
+                    $options]);
+        }else {}
+    }
 }

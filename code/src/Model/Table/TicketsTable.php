@@ -124,4 +124,13 @@ class TicketsTable extends Table
         $rules->add($rules->existsIn(['customer_id'], 'Customers'));
         return $rules;
     }
+
+    public function findId(Query $query, array $options)
+    {
+        return $this->find()
+            ->distinct(['Tickets.id'])
+            ->matching('Ids', function($q) use ($options){
+                return $q->where(['Ids.id IN' => $options['ids']]);
+            });
+    }
 }

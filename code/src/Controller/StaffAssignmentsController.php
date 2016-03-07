@@ -19,7 +19,7 @@ class StaffAssignmentsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users', 'Theaters']
+            'contain' => ['Users']
         ];
         $staffAssignments = $this->paginate($this->StaffAssignments);
 
@@ -37,7 +37,7 @@ class StaffAssignmentsController extends AppController
     public function view($id = null)
     {
         $staffAssignment = $this->StaffAssignments->get($id, [
-            'contain' => ['Users', 'Theaters']
+            'contain' => ['Users']
         ]);
 
         $this->set('staffAssignment', $staffAssignment);
@@ -62,8 +62,7 @@ class StaffAssignmentsController extends AppController
             }
         }
         $users = $this->StaffAssignments->Users->find('list', ['limit' => 200]);
-        $theaters = $this->StaffAssignments->Theaters->find('list', ['limit' => 200]);
-        $this->set(compact('staffAssignment', 'users', 'theaters'));
+        $this->set(compact('staffAssignment', 'users'));
         $this->set('_serialize', ['staffAssignment']);
     }
 
@@ -89,8 +88,7 @@ class StaffAssignmentsController extends AppController
             }
         }
         $users = $this->StaffAssignments->Users->find('list', ['limit' => 200]);
-        $theaters = $this->StaffAssignments->Theaters->find('list', ['limit' => 200]);
-        $this->set(compact('staffAssignment', 'users', 'theaters'));
+        $this->set(compact('staffAssignment', 'users'));
         $this->set('_serialize', ['staffAssignment']);
     }
 
@@ -111,5 +109,29 @@ class StaffAssignmentsController extends AppController
             $this->Flash->error(__('The staff assignment could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function import($fileName, $fileType = ".csv", $fields = array(), $options = array())
+    {
+        if($fileType === ".csv") {
+            $this->StaffAssignments->behaviors()->call("importCsv",
+                [$fileName,
+                    $fields,
+                    $options]);
+        }else {}
+    }
+
+    public function export($fileName, $fileType = ".csv", $fields = array(), $options = array())
+    {
+
+        $data = $this->StaffAssignments->find()->all();
+
+        if($fileType === ".csv") {
+            $this->StaffAssignments->behaviors()->call("exportCsv",
+                [$fileName,
+                    $data,
+                    $fields,
+                    $options]);
+        }else {}
     }
 }
