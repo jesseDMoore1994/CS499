@@ -370,3 +370,323 @@ Stack Trace:
 #1 {main}
 
 
+2016-03-16 22:26:50 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Auth could not be found.
+Exception Attributes: array (
+  'class' => 'Auth',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/auth/register/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-16 22:26:56 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Auth could not be found.
+Exception Attributes: array (
+  'class' => 'Auth',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/auth/login/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-16 22:27:41 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Theaters could not be found.
+Exception Attributes: array (
+  'class' => 'Theaters',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/theaters/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-16 22:29:00 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.tickets' doesn't exist
+Request URL: /cs499/CS499/Code/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'tickets', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('tickets', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('tickets')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(169): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(129): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\TicketsTable))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1198): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\TicketsTable))
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(908): Cake\ORM\Table->query()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Component/PaginatorComponent.php(163): Cake\ORM\Table->find('all', Array)
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(668): Cake\Controller\Component\PaginatorComponent->paginate(Object(App\Model\Table\TicketsTable), Array)
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketsController.php(24): Cake\Controller\Controller->paginate(Object(App\Model\Table\TicketsTable))
+#10 [internal function]: App\Controller\TicketsController->index()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketsController))
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-03-16 22:29:11 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Theaters could not be found.
+Exception Attributes: array (
+  'class' => 'Theaters',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/theaters/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-16 22:29:14 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.tickets' doesn't exist
+Request URL: /cs499/CS499/Code/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'tickets', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('tickets', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('tickets')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(169): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(129): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\TicketsTable))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1198): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\TicketsTable))
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(908): Cake\ORM\Table->query()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Component/PaginatorComponent.php(163): Cake\ORM\Table->find('all', Array)
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(668): Cake\Controller\Component\PaginatorComponent->paginate(Object(App\Model\Table\TicketsTable), Array)
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketsController.php(24): Cake\Controller\Controller->paginate(Object(App\Model\Table\TicketsTable))
+#10 [internal function]: App\Controller\TicketsController->index()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketsController))
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-03-16 22:30:44 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.customers' doesn't exist
+Request URL: /cs499/CS499/Code/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'customers', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('customers', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('customers')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(486): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(326): Cake\ORM\Table->primaryKey()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(305): Cake\ORM\Query->_addAssociationsToTypeMap(Object(App\Model\Table\TicketsTable), Object(Cake\Database\TypeMap), Array)
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(623): Cake\ORM\Query->contain(Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1710): Cake\ORM\Query->applyOptions(Array)
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(910): Cake\ORM\Table->callFinder('all', Object(Cake\ORM\Query), Array)
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Component/PaginatorComponent.php(163): Cake\ORM\Table->find('all', Array)
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(668): Cake\Controller\Component\PaginatorComponent->paginate(Object(App\Model\Table\TicketsTable), Array)
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketsController.php(24): Cake\Controller\Controller->paginate(Object(App\Model\Table\TicketsTable))
+#12 [internal function]: App\Controller\TicketsController->index()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketsController))
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-03-16 22:31:39 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Tickets/index.ctp, line 23]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Tickets/index.ctp, line 23
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-16 22:31:46 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Tickets/index.ctp, line 23]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Tickets/index.ctp, line 23
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-16 22:32:03 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Tickets/index.ctp, line 23]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Tickets/index.ctp, line 23
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-16 22:32:05 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Tickets/index.ctp, line 23]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Tickets/index.ctp, line 23
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-16 22:32:43 Error: [Cake\Controller\Exception\MissingActionException] Action TicketsController::add() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'TicketsController',
+  'action' => 'add',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/tickets/add
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketsController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-03-16 22:32:53 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Tickets/index.ctp, line 23]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Tickets/index.ctp, line 23
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-16 22:33:48 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.customers' doesn't exist
+Request URL: /cs499/CS499/Code/tickets?sort=theater&direction=asc
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'customers', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('customers', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('customers')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(486): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(326): Cake\ORM\Table->primaryKey()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(305): Cake\ORM\Query->_addAssociationsToTypeMap(Object(App\Model\Table\TicketsTable), Object(Cake\Database\TypeMap), Array)
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(623): Cake\ORM\Query->contain(Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1710): Cake\ORM\Query->applyOptions(Array)
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(910): Cake\ORM\Table->callFinder('all', Object(Cake\ORM\Query), Array)
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Component/PaginatorComponent.php(163): Cake\ORM\Table->find('all', Array)
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(668): Cake\Controller\Component\PaginatorComponent->paginate(Object(App\Model\Table\TicketsTable), Array)
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketsController.php(24): Cake\Controller\Controller->paginate(Object(App\Model\Table\TicketsTable))
+#12 [internal function]: App\Controller\TicketsController->index()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketsController))
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-03-16 22:34:44 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.customers' doesn't exist
+Request URL: /cs499/CS499/Code/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'customers', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('customers', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('customers')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(486): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(326): Cake\ORM\Table->primaryKey()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(305): Cake\ORM\Query->_addAssociationsToTypeMap(Object(App\Model\Table\TicketsTable), Object(Cake\Database\TypeMap), Array)
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(623): Cake\ORM\Query->contain(Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1710): Cake\ORM\Query->applyOptions(Array)
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(910): Cake\ORM\Table->callFinder('all', Object(Cake\ORM\Query), Array)
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Component/PaginatorComponent.php(163): Cake\ORM\Table->find('all', Array)
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(668): Cake\Controller\Component\PaginatorComponent->paginate(Object(App\Model\Table\TicketsTable), Array)
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketsController.php(24): Cake\Controller\Controller->paginate(Object(App\Model\Table\TicketsTable))
+#12 [internal function]: App\Controller\TicketsController->index()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketsController))
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-03-16 22:35:19 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Theaters could not be found.
+Exception Attributes: array (
+  'class' => 'Theaters',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/theaters/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-16 22:37:37 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.customers' doesn't exist
+Request URL: /cs499/CS499/Code/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'customers', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('customers', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('customers')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(486): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(326): Cake\ORM\Table->primaryKey()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(305): Cake\ORM\Query->_addAssociationsToTypeMap(Object(App\Model\Table\TicketsTable), Object(Cake\Database\TypeMap), Array)
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(623): Cake\ORM\Query->contain(Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1710): Cake\ORM\Query->applyOptions(Array)
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(910): Cake\ORM\Table->callFinder('all', Object(Cake\ORM\Query), Array)
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Component/PaginatorComponent.php(163): Cake\ORM\Table->find('all', Array)
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(668): Cake\Controller\Component\PaginatorComponent->paginate(Object(App\Model\Table\TicketsTable), Array)
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketsController.php(24): Cake\Controller\Controller->paginate(Object(App\Model\Table\TicketsTable))
+#12 [internal function]: App\Controller\TicketsController->index()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketsController))
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
+2016-03-16 22:37:41 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Theaters could not be found.
+Exception Attributes: array (
+  'class' => 'Theaters',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/theaters/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-16 23:37:17 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.customers' doesn't exist
+Request URL: /cs499/CS499/Code/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'customers', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('customers', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('customers')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(486): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(326): Cake\ORM\Table->primaryKey()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(305): Cake\ORM\Query->_addAssociationsToTypeMap(Object(App\Model\Table\TicketsTable), Object(Cake\Database\TypeMap), Array)
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(623): Cake\ORM\Query->contain(Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1710): Cake\ORM\Query->applyOptions(Array)
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(910): Cake\ORM\Table->callFinder('all', Object(Cake\ORM\Query), Array)
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Component/PaginatorComponent.php(163): Cake\ORM\Table->find('all', Array)
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(668): Cake\Controller\Component\PaginatorComponent->paginate(Object(App\Model\Table\TicketsTable), Array)
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketsController.php(24): Cake\Controller\Controller->paginate(Object(App\Model\Table\TicketsTable))
+#12 [internal function]: App\Controller\TicketsController->index()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketsController))
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#17 {main}
+
+
