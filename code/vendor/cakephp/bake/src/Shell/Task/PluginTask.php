@@ -112,9 +112,6 @@ class PluginTask extends BakeTask
         $this->hr();
         $this->out(sprintf('<success>Created:</success> %s in %s', $plugin, $this->path . $plugin), 2);
 
-        $emptyFile = $this->path . 'empty';
-        $this->_deleteEmptyFile($emptyFile);
-
         return true;
     }
 

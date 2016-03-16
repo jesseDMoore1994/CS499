@@ -370,13 +370,20 @@ Stack Trace:
 #1 {main}
 
 
+<<<<<<< HEAD
 2016-03-16 22:26:50 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Auth could not be found.
 Exception Attributes: array (
   'class' => 'Auth',
+=======
+2016-02-22 23:59:55 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Cs499 could not be found.
+Exception Attributes: array (
+  'class' => 'Cs499',
+>>>>>>> origin/master
   'plugin' => NULL,
   'prefix' => NULL,
   '_ext' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /cs499/CS499/Code/auth/register/
 Stack Trace:
 #0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
@@ -386,10 +393,22 @@ Stack Trace:
 2016-03-16 22:26:56 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Auth could not be found.
 Exception Attributes: array (
   'class' => 'Auth',
+=======
+Request URL: /CS499/CS499/code/cs499/CS499/code/
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-02-23 00:00:01 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Cs499 could not be found.
+Exception Attributes: array (
+  'class' => 'Cs499',
+>>>>>>> origin/master
   'plugin' => NULL,
   'prefix' => NULL,
   '_ext' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /cs499/CS499/Code/auth/login/
 Stack Trace:
 #0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
@@ -690,3 +709,11 @@ Stack Trace:
 #17 {main}
 
 
+=======
+Request URL: /CS499/CS499/code/cs499/CS499/code/
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+>>>>>>> origin/master

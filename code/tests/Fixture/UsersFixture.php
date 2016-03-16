@@ -62,8 +62,8 @@ class UsersFixture extends TestFixture
             'password' => 'Lorem ipsum dolor sit amet',
             'is_super_admin' => 1,
             'season_ticket' => 1,
-            'date_created' => '2016-02-10 23:58:02',
-            'date_modified' => '2016-02-10 23:58:02'
+            'date_created' => '2016-02-23 00:06:21',
+            'date_modified' => '2016-02-23 00:06:21'
         ],
     ];
 }

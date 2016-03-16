@@ -7,8 +7,6 @@ use Cake\ORM\Entity;
  * Ticket Entity.
  *
  * @property int $id
- * @property int $customer_id
- * @property \App\Model\Entity\Customer $customer
  * @property string $show_name
  * @property \Cake\I18n\Time $show_date
  * @property \Cake\I18n\Time $start_time
@@ -37,4 +35,124 @@ class Ticket extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    protected function _getId()
+    {
+        return $this->id;
+    }
+
+    protected function _getShowName()
+    {
+        return $this->show_name;
+    }
+
+    protected function _getShowDate()
+    {
+        return $this->show_date;
+    }
+
+    protected function _getStartTime()
+    {
+        return $this->start_time;
+    }
+
+    protected function _getEndTime()
+    {
+        return $this->end_time;
+    }
+
+    protected function _getTheater()
+    {
+        return $this->theater;
+    }
+
+    protected function _getSection()
+    {
+        return $this->section;
+    }
+
+    protected function _getRow()
+    {
+        return $this->row;
+    }
+
+    protected function _getSeat()
+    {
+        return $this->seat;
+    }
+
+    protected function _getAccessibleSeat()
+    {
+        return $this->accessible_seat;
+    }
+
+    protected function _getPaid()
+    {
+        return $this->paid;
+    }
+
+    protected function _getPaymentMethod()
+    {
+        return $this->payment_method;
+    }
+
+    protected function _setId($value)
+    {
+        return $value;
+    }
+
+    protected function _setShowName($value)
+    {
+        return $value;
+    }
+
+    protected function _setShowDate($value)
+    {
+        return $value;
+    }
+
+    protected function _setStartTime($value)
+    {
+        return $value;
+    }
+
+    protected function _setEndTime($value)
+    {
+        return $value;
+    }
+
+    protected function _setTheater($value)
+    {
+        return $value;
+    }
+
+    protected function _setSection($value)
+    {
+        return $value;
+    }
+
+    protected function _setRow($value)
+    {
+        return $value;
+    }
+
+    protected function _setSeat($value)
+    {
+        return $value;
+    }
+
+    protected function _setAccessibleSeat($value)
+    {
+        return $value;
+    }
+
+    protected function _setPaid($value)
+    {
+        return $value;
+    }
+
+    protected function _setPaymentMethod($value)
+    {
+        return $value;
+    }
 }

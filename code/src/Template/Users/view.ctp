@@ -89,11 +89,11 @@
                 <td><?= h($staffAssignments->theater_id) ?></td>
                 <td><?= h($staffAssignments->access_level) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'StaffAssignments', 'action' => 'view', $staffAssignments->]) ?>
+                    <?= $this->Html->link(__('View'), ['controller' => 'StaffAssignments', 'action' => 'view', $staffAssignments->user_id]) ?>
 
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'StaffAssignments', 'action' => 'edit', $staffAssignments->]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'StaffAssignments', 'action' => 'edit', $staffAssignments->user_id]) ?>
 
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'StaffAssignments', 'action' => 'delete', $staffAssignments->], ['confirm' => __('Are you sure you want to delete # {0}?', $staffAssignments->)]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'StaffAssignments', 'action' => 'delete', $staffAssignments->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $staffAssignments->user_id)]) ?>
 
                 </td>
             </tr>

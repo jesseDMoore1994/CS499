@@ -27,13 +27,11 @@ class StaffAssignmentsTable extends Table
         parent::initialize($config);
 
         $this->table('staff_assignments');
+        $this->displayField('user_id');
+        $this->primaryKey('user_id');
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('Theaters', [
-            'foreignKey' => 'theater_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -47,7 +45,7 @@ class StaffAssignmentsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('access_level', 'valid', ['rule' => 'boolean'])
+            ->add('access_level', 'valid', ['rule' => 'numeric'])
             ->requirePresence('access_level', 'create')
             ->notEmpty('access_level');
 
@@ -64,7 +62,6 @@ class StaffAssignmentsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
-        $rules->add($rules->existsIn(['theater_id'], 'Theaters'));
         return $rules;
     }
 }
