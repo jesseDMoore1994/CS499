@@ -21,6 +21,10 @@ $this->end();
 	<?= $this->Html->script('app.js') ?>
 	<?= $this->Html->script('responsive.js') ?>
 
+	<?php if (isset($css)) foreach ($css as $c) { ?>
+		<?= $this->Html->css($c) ?>
+	<?php } ?>
+
 	<?= $this->fetch('meta') ?>
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>

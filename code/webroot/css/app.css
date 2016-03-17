@@ -77,6 +77,11 @@
 	text-transform:uppercase;
 }
 
+.navigation-item .icomoon {
+	margin-right:3px;
+	display:inline-block;
+}
+
 .navigation-item a {
 	display:inline-block;
 	padding-left:10px;

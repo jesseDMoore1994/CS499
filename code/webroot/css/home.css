@@ -7,154 +7,73 @@
  * =========================================================
  */
 
-/* ---------------------------------------------------------
- * PLAYS:
- * These CSS elements define the appearance of the plays
- * list in the homepage header.
- * ---------------------------------------------------------
- */
-
-.homepage-play {
-	display:inline-block;
-	padding-right:10px;
-	margin-left:-10px;
-}
-
-.homepage-play a {
-	display:inline-block;
-	width:138px;
-	height:200px;
-
-	/* Make the link text invisible */
-	line-height: 0;
-	font-size: 0;
-	color: transparent;
-
-	/* Style the background image */
+.banner {
 	background-size:100% auto;
+	height:243px;
+	padding-top:177px;
 	background-repeat:no-repeat;
-	background-position:center center;
 }
 
-.homepage-play-othello a {
-	background-image:url(../img/plays/othello.png);
+.banner-text {
+	background-image:url(../img/home/banner_gradient.png);
+	height:66px;
 }
 
-.homepage-play-macbeth a {
-	background-image:url(../img/plays/macbeth.png);
-}
-
-/* ---------------------------------------------------------
- * THEATERS:
- * These CSS elements define the appearance of the theater
- * list on the homepage.
- * ---------------------------------------------------------
- */
-
-/* This styles the heading at the top of the homepage */
-.homepage-theaters h1 {
-	font-size:200%;
+.banner-text h2, .banner-text h3 {
+	color:white;
 	margin:0px;
-	color:#595959;
-	text-transform:uppercase;
-	margin-top:15px;
 }
 
-/* This makes "Huntsville's" stand out */
-.homepage-theaters h1 strong {
-	color:#000000;
+.banner-text h2 {
+	font-size:140%;
+}
+
+.banner-text h3 {
+	font-size:100%;
+	text-transform: uppercase;
+	color:#D8D8D8;
+}
+
+.content-block h2 {
+	color:#595959;
+	font-size:150%;
+	margin:0px;
+	margin-bottom:15px;
+}
+
+.content-block h2 strong {
+	color:black;
 	font-weight:normal;
 }
 
-/* This models the homepage tiles as a table */
-.homepage-tiles {
-	display:table;
-	width:100%;
-	margin-top:15px;
+.content-block {
+	padding-top:10px;
+	padding-bottom:10px;
 }
 
-/* This models each individual homepage tile as a table cell */
-.homepage-tile {
-	display:table-cell;
+.content-list-item {
+	display:inline-block;
+	width:200px;
 }
 
-/* The first tile gets padding to the right */
-.homepage-tile:first-of-type {
-	padding-right:10px;
+.content-list-item h3 {
+	color:#60221B;
+	margin:0px;
+	padding-top:10px;
 }
 
-/* The last tile gets padding to the left */
-.homepage-tile:last-of-type {
-	padding-left:10px;
+.button.call-to-action {
+	background:#245E1B;
+	padding:0px;
 }
 
-/* This enlarges the link tag to make room for the image */
-.homepage-tile a {
-	display:block;
-	background:black;
-	padding-top:150px;
-	padding-bottom:5px;
-	padding-left:15px;
-	font-size:200%;
+.button.call-to-action a {
 	color:white;
-	background-position:center center;
-	background-size:100% auto;
-	text-shadow:1px 1px 1px black;
-	background-repeat:no-repeat;
+	display:inline-block;
+	padding:10px 15px 10px 15px;
 }
 
-.homepage-tile-ccph a {
-	background-image:url(../img/home/ccph.png);
-}
-
-.homepage-tile-ccch a {
-	background-image:url(../img/home/ccch.png);
-}
-
-/* ---------------------------------------------------------
- * SMALL DESKTOP DESIGN:
- * These media queries will optimize the homepage for display
- * on desktop machines that have small displays, or tablets
- * that have larger displays.
- * ---------------------------------------------------------
- */
-@media screen and (max-width: 1050px) and (min-width: 800px) {
-
-	/* Make the tiles a little bit smaller */
-	.homepage-tile a {
-		padding-top:100px;
-		font-size:150%;
-	}
-}
-
-/* ---------------------------------------------------------
- * MOBILE DEVICE DESIGN:
- * These media queries will optimize the homepage for display
- * on tablets and mobile phones.
- * ---------------------------------------------------------
- */
-@media screen and (max-width: 799px) {
-
-	/* Make the title a bit smaller */
-	.homepage-theaters h1 {
-		font-size:100%;
-	}
-
-	/* Make the tiles render as a non-table */
-	.homepage-tiles {
-		display:block;
-	}
-
-	/* Make the tiles render as a non-table rather than cells */
-	.homepage-tile {
-		display:block;
-		padding:0px !important;
-		padding-bottom:10px !important;
-	}
-
-	/* Make the tiles even smaller, and with even smaller text */
-	.homepage-tile a {
-		padding-top:75px;
-		font-size:125%;
-	}
+.content-list-item .details {
+	padding-bottom:10px;
+	font-size:80%;
 }
