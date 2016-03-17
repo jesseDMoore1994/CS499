@@ -1,1 +1,1 @@
-<div class="navigation-logo"><a href=""></a></div>
+<div class="navigation-logo"><a href="<?= $this->Url->build('/', true) ?>"></a></div>

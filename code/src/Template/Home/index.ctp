@@ -33,10 +33,10 @@ $this->end();
 				<h1><strong>Huntsville's</strong> Finest Productions...</h1>
 				<div class="homepage-tiles">
 					<div class="homepage-tile homepage-tile-ccph">
-						<a href="">Civic Center Playhouse</a>
+						<a href="<?= $this->Url->build('/performances/view/ccph/civic-center-playhouse/', true) ?>">Civic Center Playhouse</a>
 					</div>
 					<div class="homepage-tile homepage-tile-ccch">
-						<a href="">Civic Center Concert Hall</a>
+						<a href="<?= $this->Url->build('/performances/view/ccch/civic-center-concert-hall/', true) ?>">Civic Center Concert Hall</a>
 					</div>
 				</div>
 			</div>
