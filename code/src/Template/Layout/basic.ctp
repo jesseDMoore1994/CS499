@@ -23,7 +23,7 @@
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
 </head>
-<body>
+<body class="layout-basic">
 <?= $this->element("responsive/menu") ?>
 <div class="wrap">
 	<?= $this->fetch("content") ?>

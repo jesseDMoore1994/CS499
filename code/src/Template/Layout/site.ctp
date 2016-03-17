@@ -32,7 +32,7 @@ $this->end();
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
 </head>
-<body>
+<body class="layout-site">
 <?= $this->element("responsive/menu") ?>
 <div class="wrap">
 	<div class="header">

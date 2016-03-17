@@ -7,6 +7,10 @@
  * =========================================================
  */
 
+.layout-default .navigation-item:hover {
+	background:#333333;
+}
+
 .banner {
 	background-size:100% auto;
 	height:243px;

@@ -29,7 +29,7 @@ $this->end();
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
 </head>
-<body>
+<body class="layout-default">
 	<?= $this->element("responsive/menu") ?>
 	<div class="wrap">
 		<div class="header">
@@ -48,6 +48,10 @@ $this->end();
 		<div class="body">
 			<?= $this->fetch('content') ?>
 		</div>
+		<div class="push"></div>
+	</div>
+	<div class="footer">
+		<?= $this->element('footer/footer') ?>
 	</div>
 </body>
 </html>
