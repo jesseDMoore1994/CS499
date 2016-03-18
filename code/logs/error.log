@@ -1346,3 +1346,29 @@ Stack Trace:
 #5 {main}
 
 
+2016-03-18 06:07:32 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Auth could not be found.
+Exception Attributes: array (
+  'class' => 'Auth',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/auth/register/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-18 06:08:02 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Theater could not be found.
+Exception Attributes: array (
+  'class' => 'Theater',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/theater/view/ccph/civic-center-playhouse/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+

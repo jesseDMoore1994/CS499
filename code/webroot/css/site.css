@@ -385,3 +385,68 @@
 	background:#F2F2F2;
 	padding:10px 20px 10px 20px;
 }
+
+.site-performance-rows-section {
+	padding-right:20px;
+}
+
+.site-performance-rows-section, .site-prefrowsec-row {
+	display:inline-block;
+	vertical-align:middle;
+}
+
+.site-perfrowsec-right {
+	float:right;
+}
+
+.site-perfrowsec-right, .site-perfrowsec-left {
+	padding-bottom:5px;
+}
+
+.site-prefrowsec-row {
+	background:white;
+	width:50px;
+	text-align:center;
+	border:2px solid #ECECEC;
+	margin-right:4px;
+}
+
+.site-prefrowsec-row:hover {
+	border-color:#AAAAAA;
+	background:#F2F2F2;
+}
+
+.site-prefrowsec-row.selected {
+	border-color:#000066;
+	background:#DDDDDD;
+}
+
+.site-prefrowsec-rowid {
+	font-size:150%;
+}
+
+.site-prefrowsec-rowid a {
+	height:40px;
+	width:50px;
+	color:black;
+	display:inline-block;
+}
+
+.site-prefrowsec-seats a {
+	width:50px;
+	height:20px;
+	color:black;
+	display:inline-block;
+}
+
+.site-prefrowsec-seats.good {
+	background:#44B23B;
+}
+
+.site-prefrowsec-seats.warning {
+	background:#AFAF3C;
+}
+
+.site-prefrowsec-seats.bad {
+	background:#AF3C3C;
+}
