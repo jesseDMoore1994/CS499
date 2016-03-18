@@ -203,13 +203,14 @@
 }
 
 .footer, .push {
-	height: 36px;
+	height: 40px;
 }
 
 .footer {
 	color:black;
 	background:#EEEEEE;
-	padding-top:4px;
+	padding-top:8px;
+	padding-bottom:8px;
 }
 
 .footer-links a {

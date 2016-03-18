@@ -1465,3 +1465,179 @@ Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
 
 
 
+2016-03-18 20:23:13 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Auth could not be found.
+Exception Attributes: array (
+  'class' => 'Auth',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/auth/register/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-18 20:23:45 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Auth could not be found.
+Exception Attributes: array (
+  'class' => 'Auth',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/auth/register/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-18 20:24:25 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Auth could not be found.
+Exception Attributes: array (
+  'class' => 'Auth',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/auth/register/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-18 22:00:10 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Auth could not be found.
+Exception Attributes: array (
+  'class' => 'Auth',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/auth/login/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-18 22:02:07 Error: [Cake\View\Exception\MissingTemplateException] Template file "Auth/login.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Auth/login.ctp',
+)
+Request URL: /cs499/CS499/Code/auth/login/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AuthController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-18 22:06:06 Error: [Cake\View\Exception\MissingTemplateException] Template file "Auth/login.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Auth/login.ctp',
+)
+Request URL: /cs499/CS499/Code/auth/login/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AuthController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-18 22:14:22 Error: [Cake\View\Exception\MissingTemplateException] Template file "Auth/login.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Auth/login.ctp',
+)
+Request URL: /cs499/CS499/Code/auth/login/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AuthController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-18 22:21:58 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/css/auth.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-18 22:28:03 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/css/auth.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-18 22:28:34 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/css/auth.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-18 22:29:11 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Css could not be found.
+Exception Attributes: array (
+  'class' => 'Css',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/css/auth.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-18 23:04:16 Error: [Cake\Controller\Exception\MissingActionException] Action AuthController::register() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AuthController',
+  'action' => 'register',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/auth/register/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AuthController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-03-18 23:17:33 Error: [Cake\Controller\Exception\MissingActionException] Action AuthController::register() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AuthController',
+  'action' => 'register',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/auth/register/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AuthController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
