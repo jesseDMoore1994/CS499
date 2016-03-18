@@ -10,7 +10,7 @@
 			<?php foreach ($theaters as $theater) { ?>
 			<div class="site_picturelist_item">
 				<div class="site_piclistitem_left">
-					<a href="<?= $this->Url->build("/performances/view/$theater[0]/$theater[1]/", true) ?>"><img src="<?= $this->Url->build('/img/home/'.$theater[0].'.png', true) ?>" /></a>
+					<a href="<?= $this->Url->build("/theater/view/$theater[0]/$theater[1]/", true) ?>"><img src="<?= $this->Url->build('/img/home/'.$theater[0].'.png', true) ?>" /></a>
 				</div>
 
 				<div class="site_piclistitem_center">
@@ -22,10 +22,10 @@
 
 					<div class="site_piclistitem_buttons">
 						<div class="site_piclistitem_button site_piclistitem_button_emphasis">
-							<a href="<?= $this->Url->build("/performances/view/$theater[0]/$theater[1]/", true) ?>">View Performances</a>
+							<a href="<?= $this->Url->build("/theaters/view/$theater[0]/$theater[1]/", true) ?>">View Performances</a>
 						</div>
 						<div class="site_piclistitem_button">
-							<a href="<?= $this->Url->build("/performances/view/$theater[0]/$theater[1]/", true) ?>">Buy Season Tickets</a>
+							<a href="<?= $this->Url->build("/theaters/view/$theater[0]/$theater[1]/", true) ?>">Buy Season Tickets</a>
 						</div>
 					</div>
 				</div>
