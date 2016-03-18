@@ -2,7 +2,7 @@
 	<div class="site-tickets-inner responsive-inner">
 		<div class="site-tickets-top">
 			<div class="site-tickets-logo">
-				<span class="icomoon">&#xe939;</span>
+				<a href="<?= $this->Url->build('/performances/', true) ?>"><span class="icomoon">&#xe939;</span></a>
 			</div>
 			<div class="site-tickets-nav site-tickets-nav-right">
 				<?php foreach ($tabs as $tab) if ($tab[2] == "right") { ?>
@@ -45,7 +45,7 @@
 								<span class="bad">0 seats available</span>
 								<?php } ?>
 							</td>
-							<td><a href="" class="caps">Buy Tickets</a></td>
+							<td><a href="<?= $this->Url->build('/performances/view/'.$performance[0].'/'.$performance[4].'/', true) ?>" class="caps">Buy Tickets</a></td>
 						</tr>
 						<?php } ?>
 					</table>

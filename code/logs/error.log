@@ -1318,3 +1318,31 @@ Stack Trace:
 #3 {main}
 
 
+2016-03-18 01:11:02 Error: [Cake\View\Exception\MissingTemplateException] Template file "Performances/view.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Performances/view.ctp',
+)
+Request URL: /cs499/CS499/Code/performances/view/1/the-tragedy-of-othello-the-moor-of-venice/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PerformancesController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-18 01:12:05 Error: [Cake\View\Exception\MissingTemplateException] Template file "Performances/view.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Performances/view.ctp',
+)
+Request URL: /cs499/CS499/Code/performances/view/1/the-tragedy-of-othello-the-moor-of-venice/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PerformancesController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a72adce4-c48e-4a29-bf43-fc950aadf886" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Template/Performances/index.ctp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/code/src/Template/Performances/view.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Theaters/view.ctp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Template/Performances/view.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_panels" afterPath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_panels" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_requests" afterPath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_requests" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s" />
@@ -11,12 +10,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" afterPath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/logs/debug.log" afterPath="$PROJECT_DIR$/code/logs/debug.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/logs/error.log" afterPath="$PROJECT_DIR$/code/logs/error.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Controller/PerformancesController.php" afterPath="$PROJECT_DIR$/code/src/Controller/PerformancesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Controller/TheatersController.php" afterPath="$PROJECT_DIR$/code/src/Controller/TheatersController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Element/navigation/main.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Element/navigation/main.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Theaters/index.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Theaters/index.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Performances/index.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Performances/index.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/webroot/css/site.css" afterPath="$PROJECT_DIR$/code/webroot/css/site.css" />
     </list>
     <ignored path="CS499.iws" />
@@ -41,11 +37,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.4078125">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="PerformancesController.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="PerformancesController.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/code/src/Controller/PerformancesController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-21.605263">
-                  <caret line="35" column="83" selection-start-line="35" selection-start-column="83" selection-end-line="35" selection-end-column="83" />
+                <state vertical-scroll-proportion="0.5475177">
+                  <caret line="49" column="50" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
                   <folding />
                 </state>
               </provider>
@@ -61,11 +57,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="site.css" pinned="false" current-in-tab="true">
+          <file leaf-file-name="site.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/code/webroot/css/site.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.71205676">
-                  <caret line="272" column="19" selection-start-line="272" selection-start-column="19" selection-end-line="272" selection-end-column="19" />
+                <state vertical-scroll-proportion="-10.921053">
+                  <caret line="374" column="23" selection-start-line="374" selection-start-column="23" selection-end-line="374" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -76,7 +72,12 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="-10.684211">
                   <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-                  <folding />
+                  <folding>
+                    <marker date="1458263373000" expanded="true" signature="468:582" placeholder="..." />
+                    <marker date="1458263373000" expanded="true" signature="974:2037" placeholder="..." />
+                    <marker date="1458263373000" expanded="true" signature="1110:1202" placeholder="..." />
+                    <marker date="1458263373000" expanded="true" signature="1297:1407" placeholder="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -85,11 +86,21 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/code/src/Template/Performances/index.ctp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.65815604">
-                  <caret line="16" column="88" selection-start-line="16" selection-start-column="88" selection-end-line="16" selection-end-column="88" />
+                <state vertical-scroll-proportion="-2.2894738">
+                  <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="5" selection-end-column="18" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="view.ctp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/code/src/Template/Performances/view.ctp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.506383">
+                  <caret line="28" column="87" selection-start-line="28" selection-start-column="87" selection-end-line="28" selection-end-column="87" />
                   <folding />
                 </state>
               </provider>
@@ -143,7 +154,6 @@
         <option value="$PROJECT_DIR$/code/src/Template/Element/navigation/login_guest.ctp" />
         <option value="$PROJECT_DIR$/code/src/Controller/TicketsController.php" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/navigation/logo.ctp" />
-        <option value="$PROJECT_DIR$/code/src/Template/Performances/view.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/footer/footer.ctp" />
         <option value="$PROJECT_DIR$/code/webroot/css/app.css" />
         <option value="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" />
@@ -156,9 +166,10 @@
         <option value="$PROJECT_DIR$/code/src/Controller/TheatersController.php" />
         <option value="$PROJECT_DIR$/code/src/Template/Theaters/index.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/navigation/main.ctp" />
-        <option value="$PROJECT_DIR$/code/src/Controller/PerformancesController.php" />
         <option value="$PROJECT_DIR$/code/src/Template/Performances/index.ctp" />
         <option value="$PROJECT_DIR$/code/webroot/css/site.css" />
+        <option value="$PROJECT_DIR$/code/src/Template/Performances/view.ctp" />
+        <option value="$PROJECT_DIR$/code/src/Controller/PerformancesController.php" />
       </list>
     </option>
   </component>
@@ -642,17 +653,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_8.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="872" column="9" selection-start-line="872" selection-start-column="9" selection-end-line="872" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Console/Installer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.897712">
@@ -982,14 +988,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Controller/PerformancesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.605263">
-          <caret line="35" column="83" selection-start-line="35" selection-start-column="83" selection-end-line="35" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Template/Element/navigation/main.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.5263158">
@@ -1002,14 +1000,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.684211">
           <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-          <folding />
+          <folding>
+            <marker date="1458263373000" expanded="true" signature="468:582" placeholder="..." />
+            <marker date="1458263373000" expanded="true" signature="974:2037" placeholder="..." />
+            <marker date="1458263373000" expanded="true" signature="1110:1202" placeholder="..." />
+            <marker date="1458263373000" expanded="true" signature="1297:1407" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/webroot/css/site.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71205676">
-          <caret line="272" column="19" selection-start-line="272" selection-start-column="19" selection-end-line="272" selection-end-column="19" />
+        <state vertical-scroll-proportion="-10.921053">
+          <caret line="374" column="23" selection-start-line="374" selection-start-column="23" selection-end-line="374" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Performances/view.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.506383">
+          <caret line="28" column="87" selection-start-line="28" selection-start-column="87" selection-end-line="28" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Controller/PerformancesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5475177">
+          <caret line="49" column="50" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
           <folding />
         </state>
       </provider>

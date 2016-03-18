@@ -212,6 +212,10 @@
 	vertical-align:middle;
 }
 
+.site-tickets-logo a {
+	color:white;
+}
+
 .site-tickets-nav-right {
 	float:right;
 }
@@ -296,4 +300,88 @@
 .site-tickets-play-body td {
 	padding-top:7px;
 	padding-left:0px;
+}
+
+
+
+.site-performance-body {
+	border-bottom:7px solid #E2E2E2;
+}
+
+
+.site-performance {
+	margin-top:-200px;
+}
+
+.site-performance-top {
+	background-color:transparent;
+	background-image:url(../img/navbar.png);
+	padding:10px 20px 10px 20px;
+}
+
+.site-performance-logo, .site-tickets-nav {
+	display:inline-block;
+}
+
+.site-performance-logo {
+	color:white;
+	font-size:150%;
+	vertical-align:middle;
+}
+
+.site-performance-logo a {
+	color:white;
+}
+
+.site-performance-breadcrumbs {
+	display:inline-block;
+	vertical-align:middle;
+}
+
+.site-performance-breadcrumb, .site-performance-breadcrumb-separator {
+	color:white;
+	display:inline-block;
+	padding-left:15px;
+	font-size:130%;
+	vertical-align:middle;
+}
+
+.site-performance-play {
+	background:#F2F2F2;
+	padding:10px 20px 10px 20px;
+}
+
+.site-performance-play h1 {
+	color:#60221B;
+	font-size:180%;
+}
+
+.site-performance-play-image {
+	float:left;
+	margin-right:20px;
+}
+
+.site-performance-play-image img {
+	height:200px;
+	width:auto;
+}
+
+.site-performance-play {
+	min-height:230px;
+	border-bottom:1px solid #DDDDDD;
+}
+
+.site-performance-play p {
+	margin-bottom:10px;
+}
+
+.site-performance-rows {
+	background:#ECECEC;
+	border-bottom:1px solid #DDDDDD;
+	padding:10px 20px 10px 20px;
+}
+
+.site-performance-seats {
+	background:#F2F2F2;
+	padding:10px 20px 10px 20px;
 }
