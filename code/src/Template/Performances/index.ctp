@@ -1,4 +1,4 @@
-<div class="site-tickets">
+<div class="site-tickets site-page">
 	<div class="site-tickets-inner responsive-inner">
 		<div class="site-tickets-top">
 			<div class="site-tickets-logo">

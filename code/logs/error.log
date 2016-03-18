@@ -1372,3 +1372,96 @@ Stack Trace:
 #1 {main}
 
 
+2016-03-18 19:03:07 Error: Fatal Error (4): syntax error, unexpected '[', expecting '}' in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Performances/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-18 19:03:07 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '[', expecting '}'
+Request URL: /cs499/CS499/Code/performances/view/1/the-tragedy-of-othello-the-moor-of-venice/3/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', '/Applications/M...', 67)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-18 19:33:18 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/PerformancesController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 76
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-18 19:33:18 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/PerformancesController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 76
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-18 19:33:18 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/PerformancesController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 76
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-18 19:33:18 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/PerformancesController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 76
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-18 19:33:18 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/PerformancesController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 76
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-18 19:33:18 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/PerformancesController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 76
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-03-18 19:33:18 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/PerformancesController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 76
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+

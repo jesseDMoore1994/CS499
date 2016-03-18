@@ -1,4 +1,4 @@
-<div class="site_content">
+<div class="site_content site-page">
 	<div class="site_picturelist responsive-inner">
 
 		<div class="site_picturelist_top">

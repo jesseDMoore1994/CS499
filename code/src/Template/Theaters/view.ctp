@@ -1,4 +1,4 @@
-<div class="site_content">
+<div class="site_content site-page">
 	<div class="site_itemlist responsive-inner">
 
 		<div class="site_itemlist_top">

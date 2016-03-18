@@ -70,6 +70,10 @@
 	float:right;
 }
 
+.navigation-cart {
+	float:right;
+}
+
 /* This defines the style for individual menu items on the nav */
 .navigation-item {
 	display:inline-block;
@@ -101,6 +105,10 @@
 /* This styles the links for nav items */
 .navigation-item a {
 	color:white;
+}
+
+.navigation-item-cart a {
+	font-size:125%;
 }
 
 /* ---------------------------------------------------------

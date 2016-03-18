@@ -3,6 +3,10 @@
 	margin-top:-200px;
 }
 
+.site-page {
+	margin-bottom:30px;
+}
+
 .site_picturelist {
 
 }
@@ -346,6 +350,10 @@
 	vertical-align:middle;
 }
 
+.site-performance-breadcrumb a {
+	color:white;
+}
+
 .site-performance-play {
 	background:#F2F2F2;
 	padding:10px 20px 10px 20px;
@@ -384,6 +392,10 @@
 .site-performance-seats {
 	background:#F2F2F2;
 	padding:10px 20px 10px 20px;
+}
+
+.site-performance-seats h2 {
+	font-size:150%;
 }
 
 .site-performance-rows-section {
@@ -449,4 +461,26 @@
 
 .site-prefrowsec-seats.bad {
 	background:#AF3C3C;
+}
+
+.site-performance-seat-cart, .site-performance-seat-price, .site-performance-seat-availability {
+	float:right;
+	padding-left:20px;
+	text-align:right;
+}
+
+.site-performance-seat-price {
+	width:55px;
+}
+
+.site-performance-seat-cart {
+	width:150px;
+}
+
+.site-performance-seat-availability .good {
+	color:#44B23B;
+}
+
+.site-performance-seat-availability .bad {
+	color:#AF3C3C;
 }

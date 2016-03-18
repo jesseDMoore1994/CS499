@@ -1,5 +1,6 @@
 <?php
 $this->start('navigation');
+echo $this->element('navigation/cart');
 echo $this->element('navigation/login_guest');
 echo $this->element('navigation/main');
 echo $this->element('navigation/logo');
