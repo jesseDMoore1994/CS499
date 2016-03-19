@@ -83,3 +83,11 @@ body {
 .create-account-notice {
 	text-align:center;
 }
+
+.requirement {
+	float:right;
+	font-size:small;
+	padding-top:4px;
+	color:#999999;
+	cursor:default;
+}
