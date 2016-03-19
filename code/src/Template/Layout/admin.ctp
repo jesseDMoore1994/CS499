@@ -41,33 +41,56 @@ $this->end();
 	<?= $this->fetch('script') ?>
 </head>
 <body>
-<?= $this->element("responsive/menu") ?>
 <div class="wrap admin">
-	<div class="header">
-		<div class="navigation">
-			<div class="navigation-inner responsive-inner">
-				<div class="menu-responsive"><a href="#"></a></div>
-				<?= $this->fetch('navigation') ?>
+	<div class="admin-container">
+		<div class="admin-nav">
+			<div class="admin-header">
+				<h1>Management Console</h1>
+			</div>
+			<div class="admin-picker">
+				<select>
+					<option>Civic Center Playhouse</option>
+					<option>Civic Center Concert Hall</option>
+					<option>Super Administrator Console</option>
+				</select>
+			</div>
+			<div class="admin-tabs">
+				<div class="admin-tabs-group">
+					<h2>Customer Management</h2>
+					<div class="admin-tabs-group-items">
+						<div class="admin-tab">
+							<a href=""><span class="icomoon">&#xe939;</span> <span>Ticket Search</span></a>
+						</div>
+						<div class="admin-tab">
+							<a href=""><span class="icomoon">&#xe971;</span> <span>Ticket Search</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="admin-tabs">
+				<div class="admin-tabs-group">
+					<h2>Theater Management</h2>
+					<div class="admin-tabs-group-items">
+						<div class="admin-tab">
+							<a href=""><span class="icomoon">&#xe953;</span> <span>Theater Schedule</span></a>
+						</div>
+						<div class="admin-tab">
+							<a href=""><span class="icomoon">&#xe90d;</span> <span>Theater Setup</span></a>
+						</div>
+						<div class="admin-tab">
+							<a href=""><span class="icomoon">&#xe976;</span> <span>Staff Accounts</span></a>
+						</div>
+						<div class="admin-tab">
+							<a href=""><span class="icomoon">&#xe994;</span> <span>General Settings</span></a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="admin-header responsive">
-			<div class="admin-header-inner responsive-inner">
-				<?= $this->fetch('adminheader') ?>
-			</div>
+		<div class="admin-body">
+			<?= $this->fetch('content') ?>
 		</div>
 	</div>
-	<div class="flash">
-		<div class="flash-inner responsive-inner">
-			<?= $this->Flash->render() ?>
-		</div>
-	</div>
-	<div class="body">
-		<?= $this->fetch("content") ?>
-	</div>
-	<div class="push"></div>
-</div>
-<div class="footer">
-	<?= $this->element('footer/footer') ?>
 </div>
 </body>
 </html>

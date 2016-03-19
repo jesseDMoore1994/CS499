@@ -1,28 +1,28 @@
 <div class="admin-page">
-	<?= $this->element("admin/top",[
-		"title" => "Ticket Search",
-		"description" => "View information on tickets here",
-		"help" => "Hello, World!"
-	]) ?>
+	<div class="admin-page-top">
+		<h1>Ticket Search</h1>
+
+		<form class="admin-search">
+			<div class="admin-controls">
+				<div class="admin-controls-search">
+					<input type="text" name="search" />
+				</div>
+				<div class="admin-controls-button black marginless" style="width:32px;">
+					<input type="submit" class="search icomoon" value="&#xe986;" />
+				</div>
+				<div class="admin-controls-button green" style="width:150px;">
+					<a href=""><span class="icomoon">&#xea0a;</span> Create Ticket</a>
+				</div>
+			</div>
+		</form>
+	</div>
 
 	<div class="admin-results">
-		<div class="admin-search responsive">
-			<div class="admin-search-inner responsive-inner">
-				<form>
-					<div class="admin-search-item admin-search-label"><label>Lookup a Ticket:</label></div>
-					<div class="admin-search-item"><input type="text" placeholder="" /></div>
-					<div class="admin-search-item admin-search-select"><select>
-						<option>Ticket ID</option>
-					</select></div>
-					<div class="admin-search-item admin-search-submit"><input type="submit" value="Search" /></div>
-				</form>
-			</div>
-		</div>
-		<div class="admin-results-title responsive">
+		<!--<div class="admin-results-title responsive">
 			<div class="admin-results-title-inner responsive-inner">
 				<h2>Most Recently Purchased Tickets</h2>
 			</div>
-		</div>
+		</div>-->
 		<div class="admin-results-list responsive">
 			<div class="admin-results-list-inner responsive-inner">
 				<table>
