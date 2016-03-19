@@ -25,7 +25,7 @@
 
 				<input type="submit" value="Sign Up" class="submit" />
 				<div class="create-account-notice">
-					or <a href="<?= $this->Url->build('/auth/login/', true) ?>">sign into an existing account</a>
+					or <a href="<?= $this->Url->build('/auth/login/', true) ?>">log into an existing account</a>
 				</div>
 			</form>
 		</div>

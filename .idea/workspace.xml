@@ -8,10 +8,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_debug_kit_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_debug_kit_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" afterPath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/logs/error.log" afterPath="$PROJECT_DIR$/code/logs/error.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Auth/signup.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Auth/signup.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Element/navigation/login_guest.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Element/navigation/login_guest.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/webroot/css/auth.css" afterPath="$PROJECT_DIR$/code/webroot/css/auth.css" />
     </list>
     <ignored path="CS499.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,8 +75,8 @@
           <file leaf-file-name="signup.ctp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/signup.ctp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.41687346">
-                  <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+                <state vertical-scroll-proportion="0.56079406">
+                  <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
                   <folding />
                 </state>
               </provider>
@@ -1083,8 +1080,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/signup.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41687346">
-          <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.56079406">
+          <caret line="27" column="83" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
           <folding />
         </state>
       </provider>
