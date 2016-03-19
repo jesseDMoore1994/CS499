@@ -19,4 +19,9 @@ class AuthController extends AppController
 	{
 		$this->viewBuilder()->layout("auth");
 	}
+
+	public function forgot()
+	{
+		$this->viewBuilder()->layout("auth");
+	}
 }

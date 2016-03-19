@@ -253,6 +253,7 @@
 
 .site-tickets-main {
 	background:#FAFAFA;
+	border-bottom:7px solid #E2E2E2;
 }
 
 .site-tickets-play {
@@ -483,4 +484,73 @@
 
 .site-performance-seat-availability .bad {
 	color:#AF3C3C;
+}
+
+
+
+
+.cart {
+	margin-top:-200px;
+}
+
+.cart-top {
+	background-color:transparent;
+	background-image:url(../img/navbar.png);
+	padding:10px 20px 10px 20px;
+}
+
+.cart-icon {
+	display:inline-block;
+	color:white;
+	font-size:150%;
+	vertical-align:middle;
+}
+
+.cart-icon a {
+	color:white;
+}
+
+.cart-main {
+	min-height:300px;
+	background:#FAFAFA;
+	border-bottom:7px solid #E2E2E2;
+}
+
+.cart-item {
+	padding:10px 20px 10px 20px;
+	border-bottom:1px solid #EEEEEE;
+}
+
+.cart-text {
+	color:white;
+	display:inline-block;
+	padding-left:15px;
+	font-size:130%;
+	vertical-align:middle;
+}
+
+.cart-item-text strong {
+	font-size:120%;
+	color:#60221B;
+	font-weight:normal;
+}
+
+.cart-price, .cart-actions {
+	float:right;
+	padding-left:20px;
+}
+
+.cart-total {
+	padding:10px 20px 10px 20px;
+	border-bottom:1px solid #EEEEEE;
+	text-align:right;
+}
+
+.cart-checkout {
+	text-align: center;
+	padding:20px 20px 0px 20px;
+}
+
+.cart-checkout .button.call-to-action {
+	background:#205B0C;
 }

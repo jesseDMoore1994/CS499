@@ -1671,3 +1671,29 @@ Stack Trace:
 #3 {main}
 
 
+2016-03-19 21:14:24 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Cart could not be found.
+Exception Attributes: array (
+  'class' => 'Cart',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-19 21:19:08 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Cart could not be found.
+Exception Attributes: array (
+  'class' => 'Cart',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
