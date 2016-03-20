@@ -1,14 +1,14 @@
-<div class="cart site-page">
+<div class="cart site-page page">
 	<div class="cart-inner responsive-inner">
-		<div class="cart-top">
-			<div class="cart-icon">
+		<div class="cart-top page-top">
+			<div class="cart-icon page-icon">
 				<span class="icomoon">&#xe93a;</span>
 			</div>
-			<div class="cart-text">
+			<div class="cart-text page-text">
 				Shopping Cart
 			</div>
 		</div>
-		<div class="cart-main">
+		<div class="cart-main page-main">
 			<?php foreach ($cart as $item) { ?>
 			<div class="cart-item">
 				<div class="cart-item-text">
@@ -40,7 +40,7 @@
 
 			<div class="cart-checkout">
 				<div class="button call-to-action">
-					Proceed to Checkout
+					<a href="<?= $this->Url->build("/checkout/") ?>">Proceed to Checkout</a>
 				</div>
 			</div>
 		</div>

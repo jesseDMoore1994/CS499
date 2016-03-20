@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a72adce4-c48e-4a29-bf43-fc950aadf886" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Controller/CartController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Template/Auth/forgot.ctp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Template/Cart/index.ctp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Controller/CheckoutController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Template/Checkout/index.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_panels" afterPath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_panels" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_requests" afterPath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_requests" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s" />
@@ -13,9 +12,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" afterPath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/logs/error.log" afterPath="$PROJECT_DIR$/code/logs/error.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Controller/AuthController.php" afterPath="$PROJECT_DIR$/code/src/Controller/AuthController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Auth/login.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Auth/login.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Element/navigation/cart.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Element/navigation/cart.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Cart/index.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Cart/index.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/webroot/css/site.css" afterPath="$PROJECT_DIR$/code/webroot/css/site.css" />
     </list>
     <ignored path="CS499.iws" />
@@ -37,7 +34,7 @@
     <favorites_list name="CS499" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.53">
+    <splitter split-orientation="vertical" split-proportion="0.56">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="login.ctp" pinned="false" current-in-tab="false">
@@ -50,11 +47,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/code/src/Template/Cart/index.ctp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7063291">
-                  <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="37" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="4" selection-end-column="53" />
                   <folding />
                 </state>
               </provider>
@@ -65,6 +62,16 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/code/src/Template/Checkout/index.ctp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.39140812">
+                  <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
@@ -84,11 +91,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="site.css" pinned="false" current-in-tab="true">
+          <file leaf-file-name="site.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/code/webroot/css/site.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.72897196">
-                  <caret line="550" column="22" selection-start-line="550" selection-start-column="22" selection-end-line="550" selection-end-column="22" />
+                <state vertical-scroll-proportion="-2.2222223">
+                  <caret line="517" column="0" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CheckoutController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/code/src/Controller/CheckoutController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.3580247">
+                  <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -98,7 +115,7 @@
             <entry file="file://$PROJECT_DIR$/code/src/Controller/AuthController.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="45" />
+                  <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
@@ -128,7 +145,7 @@
             <entry file="file://$PROJECT_DIR$/code/src/Controller/CartController.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="15" column="116" selection-start-line="15" selection-start-column="116" selection-end-line="15" selection-end-column="116" />
+                  <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="10" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -151,8 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/code/src/Template/Pages/home.ctp" />
-        <option value="$PROJECT_DIR$/code/src/Template/Layout/home.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Layout/html.ctp" />
         <option value="$PROJECT_DIR$/code/config/routes.php" />
         <option value="$PROJECT_DIR$/code/src/Controller/AdminController.php" />
@@ -200,8 +215,10 @@
         <option value="$PROJECT_DIR$/code/src/Template/Auth/forgot.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/navigation/cart.ctp" />
         <option value="$PROJECT_DIR$/code/src/Controller/CartController.php" />
-        <option value="$PROJECT_DIR$/code/src/Template/Cart/index.ctp" />
         <option value="$PROJECT_DIR$/code/webroot/css/site.css" />
+        <option value="$PROJECT_DIR$/code/src/Template/Cart/index.ctp" />
+        <option value="$PROJECT_DIR$/code/src/Controller/CheckoutController.php" />
+        <option value="$PROJECT_DIR$/code/src/Template/Checkout/index.ctp" />
       </list>
     </option>
   </component>
@@ -457,89 +474,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Element" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS499" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS499" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Element" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="navigation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS499" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS499" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Cart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS499" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS499" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Auth" />
+              <option name="myItemId" value="Checkout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -692,20 +627,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Element/admin/menu/module_setup.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="58" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Element/admin/menu/title.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/webroot/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1002,18 +923,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Controller/AuthController.php">
+    <entry file="file://$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="45" />
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/webroot/css/admin.css">
+    <entry file="file://$PROJECT_DIR$/code/webroot/css/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2222223">
+          <caret line="517" column="0" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/login.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+          <caret line="11" column="84" selection-start-line="11" selection-start-column="84" selection-end-line="11" selection-end-column="84" />
           <folding />
         </state>
       </provider>
@@ -1026,18 +955,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp">
+    <entry file="file://$PROJECT_DIR$/code/src/Controller/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/login.ctp">
+    <entry file="file://$PROJECT_DIR$/code/webroot/css/admin.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="84" selection-start-line="11" selection-start-column="84" selection-end-line="11" selection-end-column="84" />
+          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Cart/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="4" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -1053,23 +990,23 @@
     <entry file="file://$PROJECT_DIR$/code/src/Controller/CartController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="116" selection-start-line="15" selection-start-column="116" selection-end-line="15" selection-end-column="116" />
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="10" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Cart/index.ctp">
+    <entry file="file://$PROJECT_DIR$/code/src/Controller/CheckoutController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7063291">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.3580247">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/webroot/css/site.css">
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Checkout/index.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72897196">
-          <caret line="550" column="22" selection-start-line="550" selection-start-column="22" selection-end-line="550" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.39140812">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
           <folding />
         </state>
       </provider>

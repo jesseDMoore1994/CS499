@@ -1697,3 +1697,30 @@ Stack Trace:
 #1 {main}
 
 
+2016-03-19 22:00:05 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Checkout could not be found.
+Exception Attributes: array (
+  'class' => 'Checkout',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/checkout/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-19 22:04:41 Error: [Cake\View\Exception\MissingTemplateException] Template file "Checkout/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Checkout/index.ctp',
+)
+Request URL: /cs499/CS499/Code/checkout/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CheckoutController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
