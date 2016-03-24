@@ -23,10 +23,14 @@
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
 </head>
-<body>
+<body class="layout-basic">
 <?= $this->element("responsive/menu") ?>
 <div class="wrap">
 	<?= $this->fetch("content") ?>
+	<div class="push"></div>
+</div>
+<div class="footer">
+	<?= $this->element('footer/footer') ?>
 </div>
 </body>
 </html>

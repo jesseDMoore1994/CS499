@@ -8,134 +8,151 @@
  * =========================================================
  */
 
-
-/* ---------------------------------------------------------
- * ADMIN HEADER:
- * These define the appearance of the admin header.
- * ---------------------------------------------------------
- */
-
-.admin .header {
-	background-image:url(../img/banner.png);
-	background-size:100% auto;
-	background-position:center center;
+.wrap, body, html {
+	height:100% !important;
 }
 
-.admin .navigation {
-	background-color:transparent;
-	background-image:url(../img/navbar.png);
-	border-bottom:1px solid black;
+.admin-container {
+	display:table;
+	width:100%;
+	height:100%;
+}
+
+.admin-nav, .admin-body {
+	display:table-cell;
+	vertical-align:top;
+}
+
+.admin-nav {
+	width:300px;
+	background:#222222;
 }
 
 .admin-header {
-	padding-top:20px;
-	padding-bottom:20px;
+	background:#60221B;
+	padding:10px 7px 10px 7px;
 }
 
-.admin-header-inner {
-	display:table;
+.admin-header h1 {
+	color:white;
+	font-size:130%;
+	margin:0px;
 }
 
-.admin-header-inner .admin-title {
-	display:table-cell;
-	background-image:url(../img/admin/titlebg.png);
-	vertical-align:top;
-	padding-left:10px;
-	padding-right:20px;
-	padding-top:10px;
-	text-align:right;
+.admin-picker {
+	padding:7px;
+	background:#000000;
+	line-height:1em;
 }
 
-.admin-header-inner .admin-title h1 {
-	text-transform:uppercase;
-	font-size:225%;
+.admin-picker select {
+	background:#1E1E1E;
+	border:0px;
+	color:#DDDDDD;
+	margin:0px;
+}
+
+.admin-tabs h2 {
+	background:#111111;
+	color:white;
+	margin:0px;
+	font-size:100%;
+	padding:7px 7px 7px 7px;
+}
+
+.admin-tabs-group-items {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.admin-tab a {
+	color:#DDDDDD;
+	display:inline-block;
+	width:100%;
+}
+
+.admin-tab a span {
+	vertical-align: middle;
+	display:inline-block;
+	padding:5px 0px 5px 7px;
+}
+
+.admin-tab a .icomoon {
+	font-size:120%;
+}
+
+
+
+.admin-page-top {
+	background:#FAFAFA;
+	padding:7px 7px 7px 7px;
+	border-bottom:1px solid #D3D3D3;
+}
+
+.admin-page-top h1 {
+	font-size:120%;
 	font-weight:normal;
 	margin:0px;
 }
 
-.admin-header-inner .admin-menu {
-	display:table-cell;
-	width:250px;
-	background-image:url(../img/admin/menubg.png);
-	padding-top:15px;
-	padding-bottom:15px;
-	padding-left:10px;
-	padding-right:10px;
-	vertical-align:top;
-}
 
-.admin-header-inner .admin-menu h2 {
-	color:#7A7A7A;
-	border-bottom:1px solid #4C4C4C;
-	font-size:100%;
-	margin-bottom:5px;
-	margin-top:0px;
-	text-transform: uppercase;
-}
-
-.admin-header-inner .admin-menu a {
-	color:#EEEEEE;
-	display:block;
-}
-
-.admin-header-inner > .admin-menu:first-of-type {
-	padding-left:20px !important;
-}
-
-.admin-title h1 {
-	color:#EEEEEE;
-	border-bottom:1px solid #B2B2B2;
-	display:inline-block;
+.admin-controls {
+	width:100%;
+	display:table;
+	padding-top:7px;
 	padding-bottom:3px;
-	margin-top:10px;
-	margin-bottom:0px;
 }
 
-.admin-title em {
-	color:#B2B2B2;
-	font-style:normal;
-	padding-top:5px;
+.admin-controls-search, .admin-controls-button {
+	display:table-cell;
+	vertical-align: middle;
+}
+
+.admin-controls-button {
+	padding-left:7px;
+}
+
+.admin-controls-button.marginless {
+	padding-left:0px;
+}
+
+.admin-controls-button a, .admin-controls-button input {
+	background:black !important;
+}
+
+.admin-controls-button.green a, .admin-controls-button.green input {
+	background:#2A5E1B !important;
+}
+
+.admin-controls-button input {
+	background:none;
+	color:white;
+	border:0px solid black !important;
+	padding:6px 10px 6px 10px !important;
 	display:inline-block;
-	text-transform: uppercase;
 }
 
-/* ---------------------------------------------------------
- * ADMIN TOP:
- * This is the per-page header that also includes help links.
- * ---------------------------------------------------------
- */
-
-.admin-top {
-	padding-top:15px;
-	padding-bottom:15px;
+.admin-controls-button a {
+	color:white;
+	padding:5px 10px 5px 10px !important;
 }
 
-.admin-top h2 {
+.admin-controls-button a .icomoon {
+	font-size:80%;
+	display:inline-block;
+	margin-right:5px;
+}
+
+
+.admin-search input {
+	display:block;
+	border:1px solid #D3D3D3;
+	box-shadow:none;
+	padding:5px 5px 5px 5px;
 	margin:0px;
-	font-size:200%;
-}
-
-.admin-top em {
-	font-style:normal;
-}
-
-.admin-helplink {
-	float:right;
-}
-
-/* Inline help */
-.help-dropdown {
-	display:none;
-	border:1px solid #165E99;
-	padding:20px;
-	padding-left:50px;
-	margin-top:10px;
-}
-
-.help-dropdown h3 {
-	color:#165E99;
-	margin:0px;
-	font-size:150%;
+	line-height:1em;
+	height:auto;
+	width:100%;
 }
 
 /* ---------------------------------------------------------
@@ -148,74 +165,6 @@
 .admin-results {
 	border-top:1px solid #989898;
 	border-bottom:1px solid #989898;
-}
-
-.admin-search {
-	padding-top:10px;
-	padding-bottom:10px;
-
-	background: #e8e8e8;
-	background: -moz-linear-gradient(top,  #e8e8e8 0%, #d1d1d1 100%);
-	background: -webkit-linear-gradient(top,  #e8e8e8 0%,#d1d1d1 100%);
-	background: linear-gradient(to bottom,  #e8e8e8 0%,#d1d1d1 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', endColorstr='#d1d1d1',GradientType=0 );
-}
-
-.admin-search-inner {
-}
-
-.admin-search-inner form {
-	display:table;
-	width:100%;
-}
-
-.admin-search-inner form input, .admin-search-inner form select {
-	margin:0px;
-	border:1px solid #969696;
-}
-
-.admin-search-item {
-	display:table-cell !important;
-	width:auto;
-	vertical-align:middle;
-}
-
-.admin-search-label {
-	width:200px;
-}
-
-.admin-search-item label {
-	font-size:125%;
-}
-
-.admin-search-item select {
-	background-color:#B7B7B7;
-}
-
-.admin-search-select {
-	width:200px;
-}
-
-.admin-search-item.admin-search-submit {
-	width:39px;
-}
-
-.admin-search-item.admin-search-submit input {
-	/* Make the link text invisible */
-	line-height: 0;
-	font-size: 0;
-	color: transparent;
-
-	width:37px;
-	height:37px;
-
-	background:#00bf0c;
-	background:-moz-linear-gradient(top,  #00bf0c 0%, #008709 100%);
-	background:-webkit-linear-gradient(top,  #00bf0c 0%,#008709 100%);
-	background:linear-gradient(to bottom,  #00bf0c 0%,#008709 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#00bf0c', endColorstr='#008709',GradientType=0 );
-
-	border:1px solid #005402;
 }
 
 .admin-results-title {

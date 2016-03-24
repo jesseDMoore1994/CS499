@@ -327,7 +327,7 @@ class ViewTest extends TestCase {
 		$result = $ThemeView->getViewFileName('home');
 		$this->assertPathEquals($expected, $result);
 
-		$expected = Plugin::path('TestTheme') . 'src' . DS . 'Template' . DS . 'Posts' . DS . 'index.ctp';
+		$expected = Plugin::path('TestTheme') . 'src' . DS . 'Template' . DS . 'Posts' . DS . 'export.ctp';
 		$result = $ThemeView->getViewFileName('/Posts/index');
 		$this->assertPathEquals($expected, $result);
 
@@ -367,7 +367,7 @@ class ViewTest extends TestCase {
 
 		$View = new TestView(null, null, null, $viewOptions);
 
-		$expected = Plugin::path('TestPlugin') . 'src' . DS . 'Template' . DS . 'Tests' . DS . 'index.ctp';
+		$expected = Plugin::path('TestPlugin') . 'src' . DS . 'Template' . DS . 'Tests' . DS . 'export.ctp';
 		$result = $View->getViewFileName('index');
 		$this->assertEquals($expected, $result);
 
@@ -396,7 +396,7 @@ class ViewTest extends TestCase {
 		$request->params['pass'] = ['home'];
 
 		$view = new TestView(null, null, null, $viewOptions);
-		$expected = TEST_APP . 'Plugin' . DS . 'Company' . DS . 'TestPluginThree' . DS . 'src' . DS . 'Template' . DS . 'Pages' . DS . 'index.ctp';
+		$expected = TEST_APP . 'Plugin' . DS . 'Company' . DS . 'TestPluginThree' . DS . 'src' . DS . 'Template' . DS . 'Pages' . DS . 'export.ctp';
 		$result = $view->getViewFileName('Company/TestPluginThree./Pages/index');
 		$this->assertPathEquals($expected, $result);
 
@@ -419,7 +419,7 @@ class ViewTest extends TestCase {
 		$ThemeView = new TestView(null, null, null, $viewOptions);
 		$themePath = Plugin::path('TestTheme') . 'src' . DS . 'Template' . DS;
 
-		$expected = $themePath . 'Plugin' . DS . 'TestPlugin' . DS . 'Tests' . DS . 'index.ctp';
+		$expected = $themePath . 'Plugin' . DS . 'TestPlugin' . DS . 'Tests' . DS . 'export.ctp';
 		$result = $ThemeView->getViewFileName('index');
 		$this->assertPathEquals($expected, $result);
 
@@ -504,7 +504,7 @@ class ViewTest extends TestCase {
 
 		$pluginPath = Plugin::path('TestPlugin');
 		$expected = TEST_APP . 'Plugin' . DS . 'TestPlugin' . DS . 'src' . DS .
-			'Template' . DS . 'Tests' . DS . 'index.ctp';
+			'Template' . DS . 'Tests' . DS . 'export.ctp';
 		$result = $View->getViewFileName('index');
 		$this->assertPathEquals($expected, $result);
 
@@ -533,11 +533,11 @@ class ViewTest extends TestCase {
 		$result = $View->getViewFileName('home');
 		$this->assertPathEquals($expected, $result);
 
-		$expected = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Posts' . DS . 'index.ctp';
+		$expected = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Posts' . DS . 'export.ctp';
 		$result = $View->getViewFileName('/Posts/index');
 		$this->assertPathEquals($expected, $result);
 
-		$expected = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Posts' . DS . 'index.ctp';
+		$expected = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Posts' . DS . 'export.ctp';
 		$result = $View->getViewFileName('../Posts/index');
 		$this->assertPathEquals($expected, $result);
 
@@ -552,7 +552,7 @@ class ViewTest extends TestCase {
 
 		$View->templatePath('Tests');
 		$expected = TEST_APP . 'Plugin' . DS . 'TestPlugin' . DS . 'src' . DS .
-			'Template' . DS . 'Tests' . DS . 'index.ctp';
+			'Template' . DS . 'Tests' . DS . 'export.ctp';
 		$result = $View->getViewFileName('TestPlugin.index');
 		$this->assertPathEquals($expected, $result);
 	}
@@ -1309,10 +1309,10 @@ class ViewTest extends TestCase {
 		$View->templatePath('Posts');
 
 		$result = $View->getViewFileName('index');
-		$this->assertRegExp('/Posts(\/|\\\)index.ctp/', $result);
+		$this->assertRegExp('/Posts(\/|\\\)export.ctp/', $result);
 
 		$result = $View->getViewFileName('TestPlugin.index');
-		$this->assertRegExp('/Posts(\/|\\\)index.ctp/', $result);
+		$this->assertRegExp('/Posts(\/|\\\)export.ctp/', $result);
 
 		$result = $View->getViewFileName('/Pages/home');
 		$this->assertRegExp('/Pages(\/|\\\)home.ctp/', $result);
@@ -1320,7 +1320,7 @@ class ViewTest extends TestCase {
 		$result = $View->getViewFileName('../Element/test_element');
 		$this->assertRegExp('/Element(\/|\\\)test_element.ctp/', $result);
 
-		$expected = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Posts' . DS . 'index.ctp';
+		$expected = TEST_APP . 'TestApp' . DS . 'Template' . DS . 'Posts' . DS . 'export.ctp';
 		$result = $View->getViewFileName('../Posts/index');
 		$this->assertPathEquals($expected, $result);
 	}

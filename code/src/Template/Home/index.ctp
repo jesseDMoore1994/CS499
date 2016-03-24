@@ -1,45 +1,29 @@
-<?php
-
-$this->start('navigation');
-echo $this->element('navigation/login_guest');
-echo $this->element('navigation/main');
-echo $this->element('navigation/logo');
-$this->end();
-
-?>
-<div class="header">
-	<div class="navigation">
-		<div class="navigation-inner responsive-inner">
-			<div class="menu-responsive"><a href="#"></a></div>
-			<?= $this->fetch('navigation') ?>
-		</div>
-	</div>
-	<div class="homepage-plays responsive">
-		<div class="homepage-plays-inner responsive-inner">
-			<div class="homepage-play homepage-play-othello"><a href="">Othello</a></div>
-			<div class="homepage-play homepage-play-macbeth"><a href="">Macbeth</a></div>
+<div class="banner" style="background-image:url(<?= $this->Url->build('/img/banners/'.$banner_image.'.png', true) ?>)">
+	<div class="banner-text">
+		<div class="responsive-inner">
+			<h2><?php echo $banner_title ?></h2>
+			<h3><?php echo $banner_subtitle ?></h3>
 		</div>
 	</div>
 </div>
-<div class="flash">
-	<div class="flash-inner responsive-inner">
-		<?= $this->Flash->render() ?>
-	</div>
-</div>
-<div class="body">
-	<div class="homepage responsive">
-		<div class="homepage-inner responsive-inner">
-			<div class="homepage-theaters">
-				<h1><strong>Huntsville's</strong> Finest Productions...</h1>
-				<div class="homepage-tiles">
-					<div class="homepage-tile homepage-tile-ccph">
-						<a href="">Civic Center Playhouse</a>
-					</div>
-					<div class="homepage-tile homepage-tile-ccch">
-						<a href="">Civic Center Concert Hall</a>
+<div class="content-block content-list">
+	<div class="responsive-inner">
+		<h2><strong>Upcoming</strong> Performances</h2>
+
+		<?php foreach ($performances as $p) { ?>
+			<div class="content-list-item">
+				<img src="<?= $this->Url->build('/img/plays/square/'.$p[0].".png", true) ?>" />
+				<h3><?= $p[1] ?></h3>
+				<div class="details">
+					<strong><?= $p[2] ?></strong><br />
+					<span><?= $p[3] ?></span>
+				</div>
+				<div>
+					<div class="button call-to-action">
+						<a href="">Buy Tickets</a>
 					</div>
 				</div>
 			</div>
-		</div>
+		<?php } ?>
 	</div>
 </div>

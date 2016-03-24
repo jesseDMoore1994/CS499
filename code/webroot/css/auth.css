@@ -1,0 +1,93 @@
+
+body {
+	background-image:url(../img/auth/background.png);
+	background-position:center center;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+}
+
+.footer {
+	color:white;
+	background:url(../img/auth/overlay.png);
+}
+
+.footer a {
+	color:white;
+}
+
+.auth-outer {
+	padding-top:100px;
+}
+
+.auth {
+	width:500px;
+	margin:0px auto 0px auto;
+	background:white;
+}
+
+.auth-body {
+	padding:10px 10px 10px 10px;
+}
+
+.auth-top {
+	background:black;
+	padding:5px 5px 5px 5px;
+}
+
+.auth-logo {
+	line-height:1em;
+}
+
+.auth-logo a {
+	background:url(../img/logo.png);
+	background-size:cover;
+	width:200px;
+	height:32px;
+	margin:0px;
+	display:inline-block;
+}
+
+.auth-cancel {
+	background:#222222;
+	padding:3px 10px 3px 10px;
+	text-transform:uppercase;
+	margin-top:2px;
+	margin-right:5px;
+	float:right;
+}
+
+.auth-cancel a {
+	color:#E2E2E2;
+}
+
+.auth-form input {
+	margin-bottom:5px;
+}
+
+.auth-form label {
+	padding-bottom:5px;
+	display:inline-block;
+
+}
+
+.auth-form input.submit {
+	background:#245E1B;
+	color:white;
+	width:100%;
+	padding:10px;
+	border:0px solid black;
+	margin-top:10px;
+}
+
+.create-account-notice {
+	text-align:center;
+}
+
+.requirement {
+	float:right;
+	font-size:small;
+	padding-top:4px;
+	color:#999999;
+	cursor:default;
+}

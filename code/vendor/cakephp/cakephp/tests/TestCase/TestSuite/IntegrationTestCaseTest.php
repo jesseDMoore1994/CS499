@@ -171,7 +171,7 @@ class IntegrationTestCaseTest extends IntegrationTestCase {
 	public function testRequestSetsProperties() {
 		$this->post('/posts/index');
 		$this->assertInstanceOf('Cake\Controller\Controller', $this->_controller);
-		$this->assertContains('Template' . DS . 'Posts' . DS . 'index.ctp', $this->_viewName);
+		$this->assertContains('Template' . DS . 'Posts' . DS . 'export.ctp', $this->_viewName);
 		$this->assertContains('Template' . DS . 'Layout' . DS . 'default.ctp', $this->_layoutName);
 
 		$this->assertTemplate('index');

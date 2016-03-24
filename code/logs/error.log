@@ -396,3 +396,1612 @@ Stack Trace:
 #1 {main}
 
 
+2016-03-19 21:03:22 Warning: Warning (4096): Object of class App\View\AppView could not be converted to string in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 301]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 301
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 280
+Cake\View\Widget\RadioWidget::_renderInput() - CORE\src\View\Widget\RadioWidget.php, line 183
+Cake\View\Widget\RadioWidget::render() - CORE\src\View\Widget\RadioWidget.php, line 112
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2484
+Cake\View\Helper\FormHelper::radio() - CORE\src\View\Helper\FormHelper.php, line 1405
+include - APP/Template\Element\admin\importexport\radioselector.ctp, line 9
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::_renderElement() - CORE\src\View\View.php, line 1285
+Cake\View\View::element() - CORE\src\View\View.php, line 484
+include - APP/Template\ImportExportAdmin\index.ctp, line 15
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::render() - CORE\src\View\View.php, line 575
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-19 21:03:22 Warning: Warning (4096): Object of class App\View\AppView could not be converted to string in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 301]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 301
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 280
+Cake\View\Widget\RadioWidget::_renderInput() - CORE\src\View\Widget\RadioWidget.php, line 183
+Cake\View\Widget\RadioWidget::render() - CORE\src\View\Widget\RadioWidget.php, line 112
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2484
+Cake\View\Helper\FormHelper::radio() - CORE\src\View\Helper\FormHelper.php, line 1405
+include - APP/Template\Element\admin\importexport\radioselector.ctp, line 9
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::_renderElement() - CORE\src\View\View.php, line 1285
+Cake\View\View::element() - CORE\src\View\View.php, line 484
+include - APP/Template\ImportExportAdmin\index.ctp, line 15
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::render() - CORE\src\View\View.php, line 575
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-19 21:03:22 Warning: Warning (4096): Object of class App\View\AppView could not be converted to string in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 301]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 301
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 280
+Cake\View\Widget\RadioWidget::_renderInput() - CORE\src\View\Widget\RadioWidget.php, line 183
+Cake\View\Widget\RadioWidget::render() - CORE\src\View\Widget\RadioWidget.php, line 112
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2484
+Cake\View\Helper\FormHelper::radio() - CORE\src\View\Helper\FormHelper.php, line 1405
+include - APP/Template\Element\admin\importexport\radioselector.ctp, line 9
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::_renderElement() - CORE\src\View\View.php, line 1285
+Cake\View\View::element() - CORE\src\View\View.php, line 484
+include - APP/Template\ImportExportAdmin\index.ctp, line 15
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::render() - CORE\src\View\View.php, line 575
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-19 21:03:22 Warning: Warning (4096): Object of class App\View\AppView could not be converted to string in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 301]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 301
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 280
+Cake\View\Widget\RadioWidget::_renderInput() - CORE\src\View\Widget\RadioWidget.php, line 183
+Cake\View\Widget\RadioWidget::render() - CORE\src\View\Widget\RadioWidget.php, line 112
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2484
+Cake\View\Helper\FormHelper::radio() - CORE\src\View\Helper\FormHelper.php, line 1405
+include - APP/Template\Element\admin\importexport\radioselector.ctp, line 9
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::_renderElement() - CORE\src\View\View.php, line 1285
+Cake\View\View::element() - CORE\src\View\View.php, line 484
+include - APP/Template\ImportExportAdmin\index.ctp, line 15
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::render() - CORE\src\View\View.php, line 575
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-19 21:04:35 Warning: Warning (4096): Object of class App\View\AppView could not be converted to string in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 301]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 301
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 280
+Cake\View\Widget\RadioWidget::_renderInput() - CORE\src\View\Widget\RadioWidget.php, line 183
+Cake\View\Widget\RadioWidget::render() - CORE\src\View\Widget\RadioWidget.php, line 112
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2484
+Cake\View\Helper\FormHelper::radio() - CORE\src\View\Helper\FormHelper.php, line 1405
+include - APP/Template\Element\admin\importexport\radioselector.ctp, line 9
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::_renderElement() - CORE\src\View\View.php, line 1285
+Cake\View\View::element() - CORE\src\View\View.php, line 484
+include - APP/Template\ImportExportAdmin\index.ctp, line 10
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::render() - CORE\src\View\View.php, line 575
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-19 21:04:35 Warning: Warning (4096): Object of class App\View\AppView could not be converted to string in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 301]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 301
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 280
+Cake\View\Widget\RadioWidget::_renderInput() - CORE\src\View\Widget\RadioWidget.php, line 183
+Cake\View\Widget\RadioWidget::render() - CORE\src\View\Widget\RadioWidget.php, line 112
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2484
+Cake\View\Helper\FormHelper::radio() - CORE\src\View\Helper\FormHelper.php, line 1405
+include - APP/Template\Element\admin\importexport\radioselector.ctp, line 9
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::_renderElement() - CORE\src\View\View.php, line 1285
+Cake\View\View::element() - CORE\src\View\View.php, line 484
+include - APP/Template\ImportExportAdmin\index.ctp, line 10
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::render() - CORE\src\View\View.php, line 575
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-19 21:04:35 Warning: Warning (4096): Object of class App\View\AppView could not be converted to string in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 301]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 301
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 280
+Cake\View\Widget\RadioWidget::_renderInput() - CORE\src\View\Widget\RadioWidget.php, line 183
+Cake\View\Widget\RadioWidget::render() - CORE\src\View\Widget\RadioWidget.php, line 112
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2484
+Cake\View\Helper\FormHelper::radio() - CORE\src\View\Helper\FormHelper.php, line 1405
+include - APP/Template\Element\admin\importexport\radioselector.ctp, line 9
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::_renderElement() - CORE\src\View\View.php, line 1285
+Cake\View\View::element() - CORE\src\View\View.php, line 484
+include - APP/Template\ImportExportAdmin\index.ctp, line 10
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::render() - CORE\src\View\View.php, line 575
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-19 21:04:35 Warning: Warning (4096): Object of class App\View\AppView could not be converted to string in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\StringTemplate.php, line 301]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\View\StringTemplate::_formatAttribute() - CORE\src\View\StringTemplate.php, line 301
+Cake\View\StringTemplate::formatAttributes() - CORE\src\View\StringTemplate.php, line 280
+Cake\View\Widget\RadioWidget::_renderInput() - CORE\src\View\Widget\RadioWidget.php, line 183
+Cake\View\Widget\RadioWidget::render() - CORE\src\View\Widget\RadioWidget.php, line 112
+Cake\View\Helper\FormHelper::widget() - CORE\src\View\Helper\FormHelper.php, line 2484
+Cake\View\Helper\FormHelper::radio() - CORE\src\View\Helper\FormHelper.php, line 1405
+include - APP/Template\Element\admin\importexport\radioselector.ctp, line 9
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::_renderElement() - CORE\src\View\View.php, line 1285
+Cake\View\View::element() - CORE\src\View\View.php, line 484
+include - APP/Template\ImportExportAdmin\index.ctp, line 10
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 960
+Cake\View\View::_render() - CORE\src\View\View.php, line 921
+Cake\View\View::render() - CORE\src\View\View.php, line 575
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-19 21:50:53 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Importexport could not be found.
+Exception Attributes: array (
+  'class' => 'Importexport',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /CS499/CS499/code/importexport/i
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-19 21:52:37 Error: [Cake\View\Exception\MissingTemplateException] Template file "ImportExportAdmin\set_import_export_select.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'ImportExportAdmin\\set_import_export_select.ctp',
+)
+Request URL: /CS499/CS499/code/admin/importexport/i
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ImportExportAdminController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-19 22:05:25 Error: [Cake\View\Exception\MissingTemplateException] Template file "ImportExportAdmin\set_import_export_select.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'ImportExportAdmin\\set_import_export_select.ctp',
+)
+Request URL: /CS499/CS499/code/admin/importexport/i
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ImportExportAdminController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-19 22:15:15 Error: Fatal Error (4): syntax error, unexpected 'if' (T_IF) in [C:\wamp\www\CS499\CS499\code\src\Template\ImportExportAdmin\set_import_export_select.ctp, line 14]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-19 22:15:16 Error: [Cake\Error\FatalErrorException] syntax error, unexpected 'if' (T_IF)
+Request URL: /CS499/CS499/code/admin/importexport/e
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 14)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:15:59 Error: [Cake\Routing\Exception\MissingControllerException] Controller class DataAdmin could not be found.
+Exception Attributes: array (
+  'class' => 'DataAdmin',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /CS499/CS499/code/admin/data/
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-22 01:16:07 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::importexport() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'importexport',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /CS499/CS499/code/admin/importexport/e
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-03-22 01:16:14 Error: [Cake\Routing\Exception\MissingControllerException] Controller class DataAdmin could not be found.
+Exception Attributes: array (
+  'class' => 'DataAdmin',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /CS499/CS499/code/admin/data/export
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-03-22 01:17:01 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:02 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/admin/data/
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:02 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:03 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/0e5e8efc-06b0-4e5b-b653-0657601e594a
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:03 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:04 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/8177275e-6319-425e-8a67-4e4578860633
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:05 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:05 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/b7d58ee4-648a-4ff1-91e5-511ad91c0f57
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:06 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:06 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/9bc98446-d4d7-4630-b00b-524375af17d3
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:07 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:08 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/4ff3b223-64f7-4253-9980-19b4ba38aa1a
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:08 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:09 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/af654527-634f-4a3d-9ecb-89db6603e264
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:10 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:11 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/67b72f51-b49b-4c44-bd52-592670464071
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:11 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:12 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/7a54c9f5-6704-481a-99c8-63b9617e1b34
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:12 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:13 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/6b722da2-9fd6-43f4-aab2-5f4bd46b0fa9
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:13 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:14 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/36d6705d-b2f3-4579-820e-f8e516fac283
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:15 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:16 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/2e94df46-2c76-483c-8e6d-0c46475d8085
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:16 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:17 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:17 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/026c49f0-0863-4593-be3a-d8e5df0ee829
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:17 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:18 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/admin/data
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:19 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/04ab2bd8-9cfd-4e6a-a0b0-a322378bda9f
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:19 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:20 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/96b0b163-c1ca-428a-adea-90884387da4d
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:20 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:21 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/666d678b-1d2c-4488-952e-cd646cb8e5cc
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:21 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:22 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/f0bfd43a-9ace-432f-8210-7b795e2abbcb
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:22 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:23 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/99f9599a-75c6-4e39-a006-8967f48c65c4
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:23 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:24 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/0554a5e7-905e-414a-a72b-ff57490e4028
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:25 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:25 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/c524a697-dc01-48d6-bc43-472efda0fdf1
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:26 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:27 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/80b68b32-d348-437c-b3fd-797a4af90572
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:27 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:28 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/a44e3602-14a4-4f71-bfad-923b2dc607b1
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:29 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:30 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/503fe3ba-9a5c-41f0-b704-8e2406966575
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:30 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:31 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/1f15be49-9fe0-473e-b072-07503e316655
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:32 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:32 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/98f9c96b-64f3-4917-b6d5-45e53cb582e7
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:33 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:34 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/19dde1d7-da8f-4ab8-bdfd-5dd3c6c861cd
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:34 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:35 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/eef80769-0c3b-46c8-8b43-54bf2c313570
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:35 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:36 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/3c84e117-1fe3-4ead-81ab-1183d0171ab8
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:36 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:37 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/c53bac92-8fe9-493a-ad43-3f71db371fc7
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:37 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:38 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/57285794-375b-4553-b0d0-78c9355d6774
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:39 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:39 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/aec5008d-1807-42c8-8615-300b950aea3d
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:40 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:41 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/b5f65a61-7802-46ad-ba0d-08df7776aeae
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:41 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:42 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/391da7b1-f6ae-4362-8c84-28195ceae5cd
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:42 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:43 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/d4b55de0-0231-413e-85c3-560e11301450
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:44 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:44 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/1f11e0e3-0c87-4814-a29b-9d2ec22a71c8
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:45 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:46 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/8a6c0c87-c1fe-42ed-8dec-0886d80f0761
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:46 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:47 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/e9a7f052-8d12-480f-a58a-0bd09f102561
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:47 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:48 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/78c8b185-f785-4457-9380-853781a48464
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:48 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:49 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/e5beac1b-2b29-4285-aa39-ae960326e172
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:50 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:51 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/9047d780-558d-409d-9906-5171993c4e46
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:51 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:52 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/a3e8b263-fb79-4826-92c8-0cae8d94e283
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:53 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:54 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/48db107a-6d24-45c8-85f4-2aeb36bd2770
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:54 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:55 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/4094e7d1-0cb4-40ac-969a-0a9d8a69f310
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:56 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:56 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/dca248e4-b4d4-44ee-b977-00c69c2a66cd
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:57 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:58 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/5a046e63-48c7-41f6-b07f-884dd17d40e5
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:58 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:17:59 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/6fae1aec-64bb-4150-a51a-88791189de8e
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:17:59 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:00 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/f30ae980-4af8-484c-ac2b-21175c082815
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:01 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:02 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/e4fa60fc-03ab-4ee5-acb1-572ffa502158
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:02 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:03 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/453740c1-2d35-4538-8478-e47a7f61ddcd
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:03 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:04 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/4ca31842-5f6c-45a5-b262-ab591020c0fa
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:05 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:06 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/70bb2429-b3e8-43bf-a5a0-02d839d27e55
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:06 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:07 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/d1a53eb7-1ad5-43a2-a3df-5e25b5b1e755
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:07 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:08 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/60fa4635-f24b-4334-ac93-2bc0cd92383d
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:08 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:09 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/3ac01ee3-c8f5-4ca0-84b3-d66b0596974f
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:10 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:10 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/925e955d-1a8f-42a8-93d8-3ebfc50945aa
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:11 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:12 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/a3e48bb9-f0a7-4d45-8244-e2de90c35e0b
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:12 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:13 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/eb8bafae-5fba-4497-a806-0266c1975ef9
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:13 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:14 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/c3efc0be-682d-4e85-8d4e-ba6d66066693
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:15 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:16 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/972120ab-55c4-463e-a3f2-3086ea78758d
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:16 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:17 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/40b123e1-8dd0-4c4f-8ea4-953c567ca42b
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:17 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:18 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/abf7cf06-fe13-4249-8555-02bd49713816
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:19 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:19 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/c36b3e6a-71a9-43d0-a3e2-ec065abf67c6
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:20 Error: Fatal Error (4): syntax error, unexpected ':' in [C:\wamp\www\CS499\CS499\code\config\routes.php, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-03-22 01:18:21 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ':'
+Request URL: /CS499/CS499/code/debug_kit/toolbar/8442bee4-966d-48c2-8861-3121105a4c55
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\CS4...', 59)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-03-22 01:18:24 Warning: Warning (2): Missing argument 1 for App\Controller\AdminDataController::export() in [C:\wamp\www\CS499\CS499\code\src\Controller\AdminDataController.php, line 24]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+App\Controller\AdminDataController::export() - APP/Controller\AdminDataController.php, line 24
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-22 01:18:24 Warning: Warning (2): Missing argument 2 for App\Controller\AdminDataController::export() in [C:\wamp\www\CS499\CS499\code\src\Controller\AdminDataController.php, line 24]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+App\Controller\AdminDataController::export() - APP/Controller\AdminDataController.php, line 24
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-22 01:18:24 Warning: Warning (2): Missing argument 3 for App\Controller\AdminDataController::export() in [C:\wamp\www\CS499\CS499\code\src\Controller\AdminDataController.php, line 24]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+App\Controller\AdminDataController::export() - APP/Controller\AdminDataController.php, line 24
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-22 01:18:25 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminData\export.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminData\\export.ctp',
+)
+Request URL: /CS499/CS499/code/admin/data
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminDataController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-22 01:19:30 Warning: Warning (2): Missing argument 1 for App\Controller\AdminDataController::export() in [C:\wamp\www\CS499\CS499\code\src\Controller\AdminDataController.php, line 24]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+App\Controller\AdminDataController::export() - APP/Controller\AdminDataController.php, line 24
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-22 01:19:30 Warning: Warning (2): Missing argument 2 for App\Controller\AdminDataController::export() in [C:\wamp\www\CS499\CS499\code\src\Controller\AdminDataController.php, line 24]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+App\Controller\AdminDataController::export() - APP/Controller\AdminDataController.php, line 24
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-22 01:19:30 Warning: Warning (2): Missing argument 3 for App\Controller\AdminDataController::export() in [C:\wamp\www\CS499\CS499\code\src\Controller\AdminDataController.php, line 24]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+App\Controller\AdminDataController::export() - APP/Controller\AdminDataController.php, line 24
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-22 01:21:59 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminData\index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminData\\index.ctp',
+)
+Request URL: /CS499/CS499/code/admin/data/import
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminDataController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-22 01:22:06 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminData\index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminData\\index.ctp',
+)
+Request URL: /CS499/CS499/code/admin/data/export
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminDataController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-22 01:23:44 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminData\index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminData\\index.ctp',
+)
+Request URL: /CS499/CS499/code/admin/data/import
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminDataController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-22 01:24:30 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminData\index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminData\\index.ctp',
+)
+Request URL: /CS499/CS499/code/admin/data/import
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminDataController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-22 04:30:55 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminData\index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminData\\index.ctp',
+)
+Request URL: /CS499/CS499/code/admin/data/import
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminDataController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-22 04:32:56 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::export() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'export',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /CS499/CS499/code/admin/export
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-03-22 04:33:11 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::import() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'import',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /CS499/CS499/code/admin/import
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-03-22 04:55:19 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminData\index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminData\\index.ctp',
+)
+Request URL: /CS499/CS499/code/admin/data/import/
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminDataController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-22 05:03:32 Warning: Warning (2): call_user_func_array() expects parameter 1 to be a valid callback, second array member is not a valid method in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php, line 555]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\Controller\Controller::setAction() - CORE\src\Controller\Controller.php, line 555
+App\Controller\AdminDataController::index() - APP/Controller\AdminDataController.php, line 13
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-22 05:03:33 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminData\.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminData\\.ctp',
+)
+Request URL: /CS499/CS499/code/admin/data/import/
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminDataController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-22 05:03:49 Warning: Warning (2): Missing argument 1 for App\Controller\AdminDataController::index() in [C:\wamp\www\CS499\CS499\code\src\Controller\AdminDataController.php, line 9]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+App\Controller\AdminDataController::index() - APP/Controller\AdminDataController.php, line 9
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-22 05:04:15 Warning: Warning (2): call_user_func_array() expects parameter 1 to be a valid callback, second array member is not a valid method in [C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php, line 555]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 137
+Cake\Controller\Controller::setAction() - CORE\src\Controller\Controller.php, line 555
+App\Controller\AdminDataController::index() - APP/Controller\AdminDataController.php, line 13
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 85
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2016-03-22 05:04:16 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminData\.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminData\\.ctp',
+)
+Request URL: /CS499/CS499/code/admin/data/import/
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\View\View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Controller\Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminDataController))
+#4 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-03-22 06:15:23 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::data() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'data',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /CS499/CS499/code/admin/data
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-03-22 06:16:21 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::data() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'data',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /CS499/CS499/code/admin/data/import/
+Stack Trace:
+#0 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\CS499\CS499\code\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 C:\wamp\www\CS499\CS499\code\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+

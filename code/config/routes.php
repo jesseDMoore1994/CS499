@@ -50,6 +50,8 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/admin/tickets', ['controller' => 'TicketAdmin', 'action' => 'index']);
 	$routes->connect('/admin/tickets/*', ['controller' => 'TicketAdmin']);
 
+    $routes->connect('/admindata', ['controller' => 'AdminData', 'action' => 'index']);
+    //$routes->connect('/admindata/*', ['controller' => 'AdminData']);
 	/**
 	 * Connect catchall routes for all controllers.
 	 *

@@ -1,5 +1,6 @@
 <?php
 $this->start('navigation');
+echo $this->element('navigation/cart');
 echo $this->element('navigation/login_guest');
 echo $this->element('navigation/main');
 echo $this->element('navigation/logo');
@@ -21,11 +22,15 @@ $this->end();
 	<?= $this->Html->script('app.js') ?>
 	<?= $this->Html->script('responsive.js') ?>
 
+	<?php if (isset($css)) foreach ($css as $c) { ?>
+		<?= $this->Html->css($c) ?>
+	<?php } ?>
+
 	<?= $this->fetch('meta') ?>
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
 </head>
-<body>
+<body class="layout-default">
 	<?= $this->element("responsive/menu") ?>
 	<div class="wrap">
 		<div class="header">
@@ -44,6 +49,10 @@ $this->end();
 		<div class="body">
 			<?= $this->fetch('content') ?>
 		</div>
+		<div class="push"></div>
+	</div>
+	<div class="footer">
+		<?= $this->element('footer/footer') ?>
 	</div>
 </body>
 </html>

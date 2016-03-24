@@ -7,18 +7,27 @@
  * =========================================================
  */
 
+@font-face {
+	font-family: IcoMoon-Free;
+	src: url(../ttf/IcoMoon-Free.ttf);
+}
+
+.caps {
+	text-transform: uppercase;
+}
+
 /* ---------------------------------------------------------
  * RESPONSIVENESS:
  * These CSS elements create the basis of the site's
  * responsiveness.
  * ---------------------------------------------------------
  */
+
 .responsive-inner {
 	max-width:1200px;
 	width:95%;
 	margin:auto;
 }
-
 
 /* ---------------------------------------------------------
  * SITE NAVIGATION:
@@ -47,7 +56,7 @@
 
 /* This defines the padding to center the menu items vertically */
 .navigation-main, .navigation-login {
-	padding-top:17px;
+
 }
 
 /* This makes the main navigation menu be pushed to the right */
@@ -61,17 +70,45 @@
 	float:right;
 }
 
+.navigation-cart {
+	float:right;
+}
+
 /* This defines the style for individual menu items on the nav */
 .navigation-item {
 	display:inline-block;
 	font-size:large;
 	text-transform:uppercase;
-	padding-right:10px;
+}
+
+.navigation-item .icomoon {
+	margin-right:3px;
+	display:inline-block;
+}
+
+.navigation-item a {
+	display:inline-block;
+	padding-left:10px;
+	padding-right:15px;
+	padding-top:19px;
+	padding-bottom:18px;
+}
+
+.navigation-item:hover {
+	background:black;
+}
+
+.navigation-item .icomoon {
+	font-size:80%;
 }
 
 /* This styles the links for nav items */
 .navigation-item a {
 	color:white;
+}
+
+.navigation-item-cart a {
+	font-size:125%;
 }
 
 /* ---------------------------------------------------------
@@ -145,4 +182,50 @@
 	.responsive-tip {
 		display:inline;
 	}
+}
+
+.icomoon {
+	font-family: IcoMoon-Free;
+}
+
+
+/* ---------------------------------------------------------
+ * FOOTER:
+ * This defines the look and feel of the footer
+ * ---------------------------------------------------------
+ */
+
+.wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -40px;
+}
+
+.footer, .push {
+	height: 40px;
+}
+
+.footer {
+	color:black;
+	background:#EEEEEE;
+	padding-top:8px;
+	padding-bottom:8px;
+}
+
+.footer-links a {
+	color:black;
+	margin-right:10px;
+	text-transform:lowercase;
+}
+
+.footer-copyright {
+	float:right;
+	color:#888888;
+	text-transform:lowercase;
+}
+
+.footer-link-bold {
+	text-transform:uppercase !important;
+	font-weight:bold !important;
 }
