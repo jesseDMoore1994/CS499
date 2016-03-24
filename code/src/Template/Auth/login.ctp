@@ -9,6 +9,7 @@
 			<form class="auth-form">
 				<label for="email">Email Address:</label>
 				<input type="text" name="email" id="email" />
+				<em class="requirement"><a href="<?= $this->Url->build('/auth/forgot/', true) ?>">Forgot password?</a></em>
 				<label for="password">Password:</label>
 				<input type="password" name="passowrd" id="password" />
 				<input type="submit" value="Login In" class="submit" />

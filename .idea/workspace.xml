@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a72adce4-c48e-4a29-bf43-fc950aadf886" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Controller/CheckoutController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Template/Checkout/index.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_panels" afterPath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_panels" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_requests" afterPath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_requests" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_debug_kit_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_debug_kit_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" afterPath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp" afterPath="$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/webroot/css/admin.css" afterPath="$PROJECT_DIR$/code/webroot/css/admin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/logs/error.log" afterPath="$PROJECT_DIR$/code/logs/error.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Cart/index.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Cart/index.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/webroot/css/site.css" afterPath="$PROJECT_DIR$/code/webroot/css/site.css" />
     </list>
     <ignored path="CS499.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,28 +34,45 @@
     <favorites_list name="CS499" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.53">
+    <splitter split-orientation="vertical" split-proportion="0.56">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="admin.ctp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/code/src/Template/Layout/admin.ctp">
+          <file leaf-file-name="login.ctp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/login.ctp">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="54" />
+                  <caret line="11" column="84" selection-start-line="11" selection-start-column="84" selection-end-line="11" selection-end-column="84" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/code/src/Template/Cart/index.ctp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="4" selection-end-column="53" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="cart.ctp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/code/src/Template/Element/navigation/cart.ctp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="index.ctp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp">
+            <entry file="file://$PROJECT_DIR$/code/src/Template/Checkout/index.ctp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.14683545">
-                  <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-                  <folding>
-                    <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                  </folding>
+                <state vertical-scroll-proportion="0.39140812">
+                  <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -61,11 +81,41 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="admin.css" pinned="false" current-in-tab="true">
+          <file leaf-file-name="admin.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/code/webroot/css/admin.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5833333">
-                  <caret line="102" column="23" selection-start-line="102" selection-start-column="23" selection-end-line="102" selection-end-column="23" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="site.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/code/webroot/css/site.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-2.2222223">
+                  <caret line="517" column="0" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CheckoutController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/code/src/Controller/CheckoutController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.3580247">
+                  <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AuthController.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/code/src/Controller/AuthController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
@@ -76,6 +126,26 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
                   <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CartController.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/code/src/Controller/CartController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="10" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -98,11 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/code/src/View/AppView.php" />
-        <option value="$PROJECT_DIR$/code/src/View/AjaxView.php" />
-        <option value="$PROJECT_DIR$/code/src/View/Home/index.ctp" />
-        <option value="$PROJECT_DIR$/code/src/Template/Pages/home.ctp" />
-        <option value="$PROJECT_DIR$/code/src/Template/Layout/home.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Layout/html.ctp" />
         <option value="$PROJECT_DIR$/code/config/routes.php" />
         <option value="$PROJECT_DIR$/code/src/Controller/AdminController.php" />
@@ -128,13 +193,10 @@
         <option value="$PROJECT_DIR$/code/src/Template/Element/navigation/main.ctp" />
         <option value="$PROJECT_DIR$/code/src/Controller/PerformancesController.php" />
         <option value="$PROJECT_DIR$/code/src/Template/Layout/site.ctp" />
-        <option value="$PROJECT_DIR$/code/src/Template/Element/navigation/cart.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Performances/view.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Performances/index.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Theaters/view.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Theaters/index.ctp" />
-        <option value="$PROJECT_DIR$/code/webroot/css/site.css" />
-        <option value="$PROJECT_DIR$/code/src/Controller/AuthController.php" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/head.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Layout/default.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Layout/basic.ctp" />
@@ -142,13 +204,21 @@
         <option value="$PROJECT_DIR$/code/webroot/css/app.css" />
         <option value="$PROJECT_DIR$/code/src/Template/Layout/auth.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/footer/footer.ctp" />
-        <option value="$PROJECT_DIR$/code/src/Template/Auth/login.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/navigation/login_guest.ctp" />
         <option value="$PROJECT_DIR$/code/webroot/css/auth.css" />
         <option value="$PROJECT_DIR$/code/src/Template/Auth/signup.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" />
-        <option value="$PROJECT_DIR$/code/webroot/css/admin.css" />
         <option value="$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp" />
+        <option value="$PROJECT_DIR$/code/webroot/css/admin.css" />
+        <option value="$PROJECT_DIR$/code/src/Controller/AuthController.php" />
+        <option value="$PROJECT_DIR$/code/src/Template/Auth/login.ctp" />
+        <option value="$PROJECT_DIR$/code/src/Template/Auth/forgot.ctp" />
+        <option value="$PROJECT_DIR$/code/src/Template/Element/navigation/cart.ctp" />
+        <option value="$PROJECT_DIR$/code/src/Controller/CartController.php" />
+        <option value="$PROJECT_DIR$/code/webroot/css/site.css" />
+        <option value="$PROJECT_DIR$/code/src/Template/Cart/index.ctp" />
+        <option value="$PROJECT_DIR$/code/src/Controller/CheckoutController.php" />
+        <option value="$PROJECT_DIR$/code/src/Template/Checkout/index.ctp" />
       </list>
     </option>
   </component>
@@ -404,7 +474,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="TicketAdmin" />
+              <option name="myItemId" value="Checkout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -557,41 +627,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/config/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="71" selection-start-line="50" selection-start-column="71" selection-end-line="50" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Element/admin/menu/module_users.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Element/admin/menu/module_tickets.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Element/admin/menu/module_setup.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="58" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Element/admin/menu/title.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/webroot/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -742,13 +777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Element/navigation/cart.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7631579">
-          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Template/Performances/index.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -767,14 +795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.8157895">
           <caret line="0" column="34" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/webroot/css/site.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5789475">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -811,14 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7701613">
           <caret line="68" column="24" selection-start-line="68" selection-start-column="24" selection-end-line="69" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Controller/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -863,14 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/login.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Template/Element/navigation/main.ctp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -903,6 +907,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/forgot.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Layout/admin.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6329114">
+          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/webroot/css/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2222223">
+          <caret line="517" column="0" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/login.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="84" selection-start-line="11" selection-start-column="84" selection-end-line="11" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Controller/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -911,30 +955,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Layout/admin.ctp">
+    <entry file="file://$PROJECT_DIR$/code/src/Controller/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="54" />
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/webroot/css/admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5833333">
-          <caret line="102" column="23" selection-start-line="102" selection-start-column="23" selection-end-line="102" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp">
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Cart/index.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14683545">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="4" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Element/navigation/cart.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Controller/CartController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="10" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Controller/CheckoutController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3580247">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Checkout/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39140812">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
