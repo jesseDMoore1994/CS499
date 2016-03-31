@@ -24,8 +24,9 @@
 }
 
 .admin-nav {
-	width:300px;
+	width:275px;
 	background:#222222;
+	background-image:url(../img/patterns/triangles.png);
 }
 
 .admin-header {
@@ -81,11 +82,17 @@
 	font-size:120%;
 }
 
+.admin-tab a:hover {
+	background:#222222;
+}
 
+.admin-tab a:active {
+	background:#000000;
+}
 
 .admin-page-top {
 	background:#FAFAFA;
-	padding:7px 7px 7px 7px;
+	padding:7px 15px 7px 15px;
 	border-bottom:1px solid #D3D3D3;
 }
 
@@ -163,8 +170,7 @@
  */
 
 .admin-results {
-	border-top:1px solid #989898;
-	border-bottom:1px solid #989898;
+
 }
 
 .admin-results-title {
@@ -181,15 +187,14 @@
 }
 
 .admin-results-list {
-	background:#EFEFEF;
-	padding-top:10px;
-	padding-bottom:10px;
+
 }
 
 .admin-results-list table {
 	background:none;
 	border:0px solid black;
 	margin-bottom:0px;
+	width:100%;
 }
 
 .admin-results-list tr {
@@ -198,20 +203,26 @@
 
 .admin-results-list th {
 	color:#666666;
-	background:none;
+	background:#F4F4F4;
 	font-weight:normal;
 	padding:0px;
 	line-hiehgt:1em;
 	padding-right:25px;
+	padding-left:15px;
+	padding-top:8px;
+	padding-bottom:8px;
+	border-bottom:1px solid #D3D3D3;
 }
 
 .admin-results-list td {
 	padding:0px;
 	line-height:1em;
 	padding-right:25px;
-	padding-top:7px;
-	padding-bottom:7px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:15px;
 	vertical-align:middle;
+	border-bottom:1px solid #EEEEEE;
 }
 
 .admin-results-list td input {
@@ -232,6 +243,20 @@
 
 .admin-results-list td a {
 	text-transform:uppercase;
+	display:inline-block;
+	padding-right:7px;
+}
+
+.admin-results-list td a .icomoon {
+	font-size:80%;
+}
+
+.admin-results-list td .good {
+	color:#660000;
+}
+
+.admin-results-list td .bad {
+	color:#006600;
 }
 
 

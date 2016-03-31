@@ -23,8 +23,8 @@
 				<h2>Most Recently Purchased Tickets</h2>
 			</div>
 		</div>-->
-		<div class="admin-results-list responsive">
-			<div class="admin-results-list-inner responsive-inner">
+		<div class="admin-results-list">
+			<div class="admin-results-list-inner">
 				<table>
 					<tr class="table-heading">
 						<th>Seat #</th>
@@ -36,16 +36,18 @@
 						<th>Actions</th>
 						<th></th>
 					</tr>
+					<?php foreach ($tickets as $ticket) { ?>
 					<tr>
-						<td><label class="responsive-tip">Seat #:</label> Seat F12</td>
-						<td><label class="responsive-tip">Ticket ID:</label> 123456-F12</td>
-						<td><label class="responsive-tip">Performance:</label> Macbeth</td>
-						<td><label class="responsive-tip">Valid For:</label> Today, 10:00 pm</td>
-						<td><label class="responsive-tip">Ticket Holder:</label> Jane Doe</td>
-						<td class="status bad"><label class="responsive-tip">Status:</label> Unpaid (Cash)</td>
-						<td><label class="responsive-tip">Actions:</label> <a href="">Mark as Paid</a></td>
+						<td><label class="responsive-tip">Seat #:</label> <?= $ticket["seat"] ?></td>
+						<td><label class="responsive-tip">Ticket ID:</label> <?= $ticket["id"] ?></td>
+						<td><label class="responsive-tip">Performance:</label> <?= $ticket["performance_name"] ?></td>
+						<td><label class="responsive-tip">Valid For:</label> <?= $ticket["performance_time"] ?></td>
+						<td><label class="responsive-tip">Ticket Holder:</label> <?= $ticket["person_name"] ?></td>
+						<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $ticket["payment_state"] ?>"><?= $ticket["payment_status"] ?></span></td>
+						<td><label class="responsive-tip">Actions:</label> <a href="">Mark as Paid</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
 						<td><label class="responsive-tip">Select:</label> <input type="checkbox" /></td>
 					</tr>
+					<?php } ?>
 				</table>
 			</div>
 		</div>
