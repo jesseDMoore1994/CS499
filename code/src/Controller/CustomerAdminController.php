@@ -13,6 +13,7 @@ class CustomerAdminController extends AdminController {
 				"customer_last" => "Doe",
 				"customer_state" => "good",
 				"customer_status" => "Active",
+				"customer_joined" => "Today, 10:00am",
 				"customer_email" => "jdoe456@example.com",
 			],
 			[
@@ -21,6 +22,7 @@ class CustomerAdminController extends AdminController {
 				"customer_last" => "Doe",
 				"customer_state" => "good",
 				"customer_status" => "Active",
+				"customer_joined" => "Today, 10:00am",
 				"customer_email" => "jdoe456@example.com"
 			],
 			[
@@ -29,6 +31,7 @@ class CustomerAdminController extends AdminController {
 				"customer_last" => "Doe",
 				"customer_state" => "good",
 				"customer_status" => "Active",
+				"customer_joined" => "Today, 10:00am",
 				"customer_email" => "jdoe456@example.com"
 			],
 		]);

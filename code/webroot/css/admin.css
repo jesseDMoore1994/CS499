@@ -344,3 +344,19 @@ html, body {
 	}
 
 }
+
+.admin-footer {
+	background:black;
+	color:#CCCCCC;
+	padding:7px 15px 7px 15px;
+}
+
+.admin-footer strong {
+	font-weight:normal;
+	color:white;
+	text-transform: uppercase;
+}
+
+.admin-footer em {
+	font-style:normal;
+}

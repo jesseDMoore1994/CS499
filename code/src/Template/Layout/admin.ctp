@@ -85,6 +85,14 @@ function startsWith($haystack, $needle) {
 			<?= $this->fetch('content') ?>
 		</div>
 	</div>
+	<div class="push"></div>
+</div>
+<div class="footer admin-footer">
+	<div class="product">
+		<strong>TicketAngel</strong>
+		Theater Management Console
+		<em>1.0.0</em>
+	</div>
 </div>
 </body>
 </html>
