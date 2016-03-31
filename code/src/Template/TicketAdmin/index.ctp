@@ -1,11 +1,9 @@
 <div class="admin-page">
 	<div class="admin-page-top">
-		<h1>Ticket Search</h1>
-
 		<form class="admin-search">
 			<div class="admin-controls">
 				<div class="admin-controls-search">
-					<input type="text" name="search" />
+					<input type="text" name="search" placeholder="Enter the name of a ticket holder, performance, or ticket ID..." />
 				</div>
 				<div class="admin-controls-button black marginless" style="width:32px;">
 					<input type="submit" class="search icomoon" value="&#xe986;" />

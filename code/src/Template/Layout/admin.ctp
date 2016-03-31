@@ -43,48 +43,37 @@ $this->end();
 <body>
 <div class="wrap admin">
 	<div class="admin-container">
+		<div class="admin-logo">
+			<h1>Theater Management Console</h1>
+		</div>
 		<div class="admin-nav">
-			<div class="admin-header">
-				<h1>Management Console</h1>
+			<div class="admin-tools">
+				<div class="admin-tool">
+					<span class="icomoon"><a href="" title="Sign out and return to site">&#xea14;</a></span>
+				</div>
 			</div>
-			<div class="admin-picker">
+			<div class="admin-panel-select">
 				<select>
-					<option>Civic Center Playhouse</option>
-					<option>Civic Center Concert Hall</option>
-					<option>Super Administrator Console</option>
+					<optgroup label="Theaters">
+						<option>Civic Center Playhouse</option>
+						<option>Civic Center Concert Hall</option>
+					</optgroup>
+					<optgroup label="Administrator Tools">
+						<option>Site Administration Console</option>
+					</optgroup>
 				</select>
 			</div>
-			<div class="admin-tabs">
-				<div class="admin-tabs-group">
-					<h2>Customer Management</h2>
-					<div class="admin-tabs-group-items">
-						<div class="admin-tab">
-							<a href=""><span class="icomoon">&#xe939;</span> <span>Ticket Search</span></a>
-						</div>
-						<div class="admin-tab">
-							<a href=""><span class="icomoon">&#xe971;</span> <span>Ticket Search</span></a>
-						</div>
-					</div>
-				</div>
+			<div class="admin-tab selected">
+				<a href="<?= $this->Url->build("/admin/tickets/", true) ?>"><span class="icomoon">&#xe939;</span> <span>Ticket Search</span></a>
 			</div>
-			<div class="admin-tabs">
-				<div class="admin-tabs-group">
-					<h2>Theater Management</h2>
-					<div class="admin-tabs-group-items">
-						<div class="admin-tab">
-							<a href=""><span class="icomoon">&#xe953;</span> <span>Theater Schedule</span></a>
-						</div>
-						<div class="admin-tab">
-							<a href=""><span class="icomoon">&#xe90d;</span> <span>Theater Setup</span></a>
-						</div>
-						<div class="admin-tab">
-							<a href=""><span class="icomoon">&#xe976;</span> <span>Staff Accounts</span></a>
-						</div>
-						<div class="admin-tab">
-							<a href=""><span class="icomoon">&#xe994;</span> <span>General Settings</span></a>
-						</div>
-					</div>
-				</div>
+			<div class="admin-tab">
+				<a href="<?= $this->Url->build("/admin/tickets/", true) ?>"><span class="icomoon">&#xe971;</span> <span>Customer Search</span></a>
+			</div>
+			<div class="admin-tab">
+				<a href="<?= $this->Url->build("/admin/schedule/", true) ?>"><span class="icomoon">&#xe953;</span> <span>Theater Schedule</span></a>
+			</div>
+			<div class="admin-tab">
+				<a href="<?= $this->Url->build("/admin/setup/", true) ?>"><span class="icomoon">&#xe994;</span> <span>Theater Setup</span> <span class="icomoon lock">&#xe98f;</span></a>
 			</div>
 		</div>
 		<div class="admin-body">
