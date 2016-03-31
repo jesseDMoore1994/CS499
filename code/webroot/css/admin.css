@@ -251,11 +251,11 @@ html, body {
 	font-size:80%;
 }
 
-.admin-results-list td .good {
+.admin-results-list td .bad {
 	color:#660000;
 }
 
-.admin-results-list td .bad {
+.admin-results-list td .good {
 	color:#006600;
 }
 

@@ -13,6 +13,11 @@ echo $this->element('admin/menu/module_users');
 echo $this->element('admin/menu/module_setup');
 $this->end();
 
+function startsWith($haystack, $needle) {
+	// search backwards starting from haystack length characters from the end
+	return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,16 +68,16 @@ $this->end();
 					</optgroup>
 				</select>
 			</div>
-			<div class="admin-tab selected">
+			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/tickets/", true))) echo " selected"; ?>">
 				<a href="<?= $this->Url->build("/admin/tickets/", true) ?>"><span class="icomoon">&#xe939;</span> <span>Ticket Search</span></a>
 			</div>
-			<div class="admin-tab">
-				<a href="<?= $this->Url->build("/admin/tickets/", true) ?>"><span class="icomoon">&#xe971;</span> <span>Customer Search</span></a>
+			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/customers/", true))) echo " selected"; ?>">
+				<a href="<?= $this->Url->build("/admin/customers/", true) ?>"><span class="icomoon">&#xe971;</span> <span>Customer Search</span></a>
 			</div>
-			<div class="admin-tab">
+			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/schedule/", true))) echo " selected"; ?>">
 				<a href="<?= $this->Url->build("/admin/schedule/", true) ?>"><span class="icomoon">&#xe953;</span> <span>Theater Schedule</span></a>
 			</div>
-			<div class="admin-tab">
+			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/setup/", true))) echo " selected"; ?>">
 				<a href="<?= $this->Url->build("/admin/setup/", true) ?>"><span class="icomoon">&#xe994;</span> <span>Theater Setup</span> <span class="icomoon lock">&#xe98f;</span></a>
 			</div>
 		</div>

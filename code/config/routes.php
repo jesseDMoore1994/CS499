@@ -50,6 +50,9 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/admin/tickets', ['controller' => 'TicketAdmin', 'action' => 'index']);
 	$routes->connect('/admin/tickets/*', ['controller' => 'TicketAdmin']);
 
+	$routes->connect('/admin/customers', ['controller' => 'CustomerAdmin', 'action' => 'index']);
+	$routes->connect('/admin/customers/*', ['controller' => 'CustomerAdmin']);
+
     $routes->connect('/admindata', ['controller' => 'AdminData', 'action' => 'index']);
     //$routes->connect('/admindata/*', ['controller' => 'AdminData']);
 	/**
