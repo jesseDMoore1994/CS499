@@ -42,7 +42,7 @@
 						<td><label class="responsive-tip">Valid For:</label> <?= $ticket["performance_time"] ?></td>
 						<td><label class="responsive-tip">Ticket Holder:</label> <?= $ticket["person_name"] ?></td>
 						<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $ticket["payment_state"] ?>"><?= $ticket["payment_status"] ?></span></td>
-						<td><label class="responsive-tip">Actions:</label> <a href="">Mark as Paid</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
+						<td><label class="responsive-tip">Actions:</label> <a href="" class="caps">Mark as Paid</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
 						<td><label class="responsive-tip">Select:</label> <input type="checkbox" /></td>
 					</tr>
 					<?php } ?>

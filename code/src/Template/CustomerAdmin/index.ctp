@@ -25,20 +25,20 @@
 			<div class="admin-results-list-inner">
 				<table>
 					<tr class="table-heading">
-						<th>Customer #</th>
+						<th style="width:200px;">Customer #</th>
 						<th>Full Name</th>
-						<th>Email</th>
-						<th>Status</th>
+						<th style="width:300px;">Email</th>
+						<th style="width:100px;">Status</th>
 						<th style="width:200px;">Actions</th>
-						<th></th>
+						<th style="width:20px;"></th>
 					</tr>
 					<?php foreach ($customers as $customer) { ?>
 						<tr>
 							<td><label class="responsive-tip">Customer #:</label> <?= $customer["customer_id"] ?></td>
 							<td><label class="responsive-tip">Full Name:</label> <?= $customer["customer_first"] ?> <?= $customer["customer_last"] ?></td>
-							<td><label class="responsive-tip">Email:</label> <?= $customer["customer_email"] ?></td>
+							<td><label class="responsive-tip">Email:</label> <a href="mailto:<?= $customer["customer_email"] ?>" class="email"><?= $customer["customer_email"] ?></a></td>
 							<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $customer["customer_state"] ?>"><?= $customer["customer_status"] ?></span></td>
-							<td><label class="responsive-tip">Actions:</label> <a href="">Close Account</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
+							<td><label class="responsive-tip">Actions:</label> <a href="" class="caps">Edit Account</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
 							<td><label class="responsive-tip">Select:</label> <input type="checkbox" /></td>
 						</tr>
 					<?php } ?>

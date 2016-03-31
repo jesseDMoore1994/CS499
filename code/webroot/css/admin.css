@@ -242,9 +242,12 @@ html, body {
 }
 
 .admin-results-list td a {
-	text-transform:uppercase;
 	display:inline-block;
 	padding-right:7px;
+}
+
+.admin-results-list td a.email {
+	color:black;
 }
 
 .admin-results-list td a .icomoon {

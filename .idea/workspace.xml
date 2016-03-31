@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a72adce4-c48e-4a29-bf43-fc950aadf886" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Controller/CustomerAdminController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Template/CustomerAdmin/index.ctp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/src/Controller/ScheduleAdminController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_panels" afterPath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_panels" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_requests" afterPath="$PROJECT_DIR$/code/tmp/cache/models/myapp_cake_model_debug_kit_requests" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_cake_en__u_s" />
@@ -11,10 +10,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" afterPath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/config/routes.php" afterPath="$PROJECT_DIR$/code/config/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/logs/debug.log" afterPath="$PROJECT_DIR$/code/logs/debug.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/logs/error.log" afterPath="$PROJECT_DIR$/code/logs/error.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/CustomerAdmin/index.ctp" afterPath="$PROJECT_DIR$/code/src/Template/CustomerAdmin/index.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp" afterPath="$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/webroot/css/admin.css" afterPath="$PROJECT_DIR$/code/webroot/css/admin.css" />
     </list>
     <ignored path="CS499.iws" />
@@ -49,11 +47,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="admin.ctp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="admin.ctp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/code/src/Template/Layout/admin.ctp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.71253073">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="79" column="116" selection-start-line="79" selection-start-column="116" selection-end-line="79" selection-end-column="116" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ScheduleAdminController.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/code/src/Controller/ScheduleAdminController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -69,11 +77,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
+          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="0" column="24" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+                <state vertical-scroll-proportion="0.6412777">
+                  <caret line="42" column="87" selection-start-line="42" selection-start-column="87" selection-end-line="42" selection-end-column="87" />
                   <folding />
                 </state>
               </provider>
@@ -83,10 +91,14 @@
             <entry file="file://$PROJECT_DIR$/code/src/Template/CustomerAdmin/index.ctp">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+                  <caret line="40" column="115" selection-start-line="40" selection-start-column="115" selection-end-line="40" selection-end-column="115" />
                   <folding>
                     <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#th#2;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#th#3;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#th#4;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#th#5;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -99,8 +111,8 @@
           <file leaf-file-name="admin.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/code/webroot/css/admin.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.4315476">
-                  <caret line="257" column="28" selection-start-line="257" selection-start-column="28" selection-end-line="257" selection-end-column="28" />
+                <state vertical-scroll-proportion="0.7410714">
+                  <caret line="249" column="16" selection-start-line="249" selection-start-column="16" selection-end-line="249" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -120,7 +132,7 @@
             <entry file="file://$PROJECT_DIR$/code/src/Controller/CustomerAdminController.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="35" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -143,7 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/code/src/Template/Element/admin/menu/module_tickets.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/admin/menu/module_users.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/admin/menu/module_setup.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/Element/admin/menu/title.ctp" />
@@ -188,12 +199,13 @@
         <option value="$PROJECT_DIR$/code/src/Controller/CheckoutController.php" />
         <option value="$PROJECT_DIR$/code/src/Template/Checkout/index.ctp" />
         <option value="$PROJECT_DIR$/code/src/Controller/TicketAdminController.php" />
-        <option value="$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp" />
         <option value="$PROJECT_DIR$/code/config/routes.php" />
         <option value="$PROJECT_DIR$/code/src/Controller/CustomerAdminController.php" />
+        <option value="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" />
+        <option value="$PROJECT_DIR$/code/src/Controller/ScheduleAdminController.php" />
         <option value="$PROJECT_DIR$/code/webroot/css/admin.css" />
         <option value="$PROJECT_DIR$/code/src/Template/CustomerAdmin/index.ctp" />
-        <option value="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" />
+        <option value="$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp" />
       </list>
     </option>
   </component>
@@ -396,33 +408,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS499" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS499" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CustomerAdmin" />
+              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -554,13 +540,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Element/admin/top.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11709287">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/vendor/cakephp/cakephp/src/I18n/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5347518">
@@ -878,46 +857,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/login.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Controller/CustomerAdminController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="35" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="24" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/webroot/css/admin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4315476">
-          <caret line="257" column="28" selection-start-line="257" selection-start-column="28" selection-end-line="257" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/CustomerAdmin/index.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#4;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -929,10 +873,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Controller/ScheduleAdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Template/Layout/admin.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71253073">
+        <state vertical-scroll-proportion="0.0">
           <caret line="79" column="116" selection-start-line="79" selection-start-column="116" selection-end-line="79" selection-end-column="116" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Auth/login.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/webroot/css/admin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7410714">
+          <caret line="249" column="16" selection-start-line="249" selection-start-column="16" selection-end-line="249" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/CustomerAdmin/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="115" selection-start-line="40" selection-start-column="115" selection-end-line="40" selection-end-column="115" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#2;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#3;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#4;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#5;n#tr#0;n#table#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6412777">
+          <caret line="42" column="87" selection-start-line="42" selection-start-column="87" selection-end-line="42" selection-end-column="87" />
           <folding />
         </state>
       </provider>
