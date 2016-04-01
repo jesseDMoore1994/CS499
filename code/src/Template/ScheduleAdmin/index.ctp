@@ -9,9 +9,30 @@
 					<input type="submit" class="search icomoon" value="&#xe986;" />
 				</div>
 				<div class="admin-controls-button green" style="width:220px;">
-					<a href=""><span class="icomoon">&#xea0a;</span> Schedule Performance</a>
+					<a href="javascript:showPerformanceDialog()"><span class="icomoon">&#xea0a;</span> Schedule Performance</a>
 				</div>
 			</div>
+		</form>
+	</div>
+
+	<div class="performance-creator dialog" title="Schedule Performance">
+		<form class="dialog-form">
+			<label>Performance Of:</label>
+			<select>
+				<option>The Tragedy of Othello</option>
+			</select>
+			<label>Date:</label>
+			<input type="text" class="datepicker" />
+			<label>Time:</label>
+			<select>
+				<?php for ($i = 8; $i < 12; $i++) { ?>
+				<option value="<?= $i ?>"><?= $i ?>:00 am</option>
+				<?php } ?>
+				<option value="12">12:00 pm</option>
+				<?php for ($i = 1; $i <= 12; $i++) { ?>
+					<option value="<?= 12+$i ?>"><?= $i ?>:00 pm</option>
+				<?php } ?>
+			</select>
 		</form>
 	</div>
 

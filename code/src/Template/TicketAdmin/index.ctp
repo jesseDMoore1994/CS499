@@ -9,9 +9,64 @@
 					<input type="submit" class="search icomoon" value="&#xe986;" />
 				</div>
 				<div class="admin-controls-button green" style="width:150px;">
-					<a href=""><span class="icomoon">&#xea0a;</span> Create Ticket</a>
+					<a href="javascript:showTicketDialog()"><span class="icomoon">&#xea0a;</span> Create Ticket</a>
 				</div>
 			</div>
+		</form>
+	</div>
+
+	<div class="ticket-creator dialog" title="Create Ticket">
+		<form class="dialog-form">
+			<label>First Name:</label>
+			<input type="text" placeholder="Jane" />
+			<label>Last Name:</label>
+			<input type="text" placeholder="Doe" />
+			<label>Payment Status:</label>
+			<select id="ticket-creator-payment-select">
+				<option value="paid">Paid</option>
+				<option value="paid">Paid (Cash)</option>
+				<option value="paid-credit">Unpaid (Credit); Enter credit card now</option>
+				<option value="unpaid-cash">Unpaid (Cash); Customer must pay at door</option>
+			</select>
+			<div id="ticket-creator-payment">
+				<hr />
+				<label>Credit Card Number:</label>
+				<input type="text" placeholder="1234 5678 9012 3456" />
+				<label>Expiration Month:</label>
+				<select>
+					<option>January (1)</option>
+					<option>February (2)</option>
+					<option>March (3)</option>
+					<option>April (4)</option>
+					<option>May (5)</option>
+					<option>June (6)</option>
+					<option>July (7)</option>
+					<option>August (8)</option>
+					<option>September (9)</option>
+					<option>October (10)</option>
+					<option>November (11)</option>
+					<option>December (12)</option>
+				</select>
+				<label>Expiration Day:</label>
+				<select id="ticket-dialog-expiration">
+					<?php for ($i = 1; $i <= 31; $i++) { ?>
+					<option><?= $i ?></option>
+					<?php } ?>
+				</select>
+				<label>Expiration Year:</label>
+				<input type="text" placeholder="2018" />
+				<label>CVV:</label>
+				<input type="text" placeholder="123" />
+				<hr />
+			</div>
+			<label>Performance:</label>
+			<select>
+
+			</select>
+			<label>Seat Number:</label>
+			<select>
+
+			</select>
 		</form>
 	</div>
 

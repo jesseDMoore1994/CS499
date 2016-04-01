@@ -32,7 +32,10 @@ function startsWith($haystack, $needle) {
 	<?= $this->Html->css('base.css') ?>
 	<?= $this->Html->css('app.css') ?>
 	<?= $this->Html->css('admin.css') ?>
+	<?= $this->Html->css('../js/jquery-ui/jquery-ui') ?>
+	<?= $this->Html->css('../js/jquery-ui/jquery-ui.theme.css') ?>
 	<?= $this->Html->script('jquery') ?>
+	<?= $this->Html->script('jquery-ui/jquery-ui') ?>
 	<?= $this->Html->script('app.js') ?>
 	<?= $this->Html->script('responsive.js') ?>
 	<?= $this->Html->script('admin.js') ?>
