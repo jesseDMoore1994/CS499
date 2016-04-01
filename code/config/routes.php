@@ -53,6 +53,9 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/admin/customers', ['controller' => 'CustomerAdmin', 'action' => 'index']);
 	$routes->connect('/admin/customers/*', ['controller' => 'CustomerAdmin']);
 
+	$routes->connect('/admin/schedule', ['controller' => 'ScheduleAdmin', 'action' => 'index']);
+	$routes->connect('/admin/schedule/*', ['controller' => 'ScheduleAdmin']);
+
     $routes->connect('/admindata', ['controller' => 'AdminData', 'action' => 'index']);
     //$routes->connect('/admindata/*', ['controller' => 'AdminData']);
 	/**

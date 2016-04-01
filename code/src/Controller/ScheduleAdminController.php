@@ -4,33 +4,29 @@ namespace App\Controller;
 
 use Cake\Core\Configure;
 
-class CustomerAdminController extends AdminController {
+class ScheduleAdminController extends AdminController {
 	public function index() {
-		$this->set("customers", [
+		$this->set("performances", [
 			[
-				"customer_id" => "1234",
-				"customer_first" => "Jane",
-				"customer_last" => "Doe",
-				"customer_state" => "good",
-				"customer_status" => "Active",
-				"customer_email" => "jdoe456@example.com",
+				"performance_id" => "1234",
+				"performance_name" => "The Tragedy of Macbeth",
+				"performance_time" => "Today, 2:00pm",
+				"performance_state" => "good",
+				"performance_status" => "Active",
+				"performance_sales_state" => "good",
+				"performance_sales" => "50",
+				"performance_capacity" => "100",
 			],
 			[
-				"customer_id" => "1234",
-				"customer_first" => "Jane",
-				"customer_last" => "Doe",
-				"customer_state" => "good",
-				"customer_status" => "Active",
-				"customer_email" => "jdoe456@example.com"
-			],
-			[
-				"customer_id" => "1234",
-				"customer_first" => "Jane",
-				"customer_last" => "Doe",
-				"customer_state" => "good",
-				"customer_status" => "Active",
-				"customer_email" => "jdoe456@example.com"
-			],
+				"performance_id" => "1234",
+				"performance_name" => "The Tragedy of Macbeth",
+				"performance_time" => "Today, 2:00pm",
+				"performance_state" => "good",
+				"performance_status" => "Active",
+				"performance_sales_state" => "bad",
+				"performance_sales" => "20",
+				"performance_capacity" => "100",
+			]
 		]);
 	}
 }

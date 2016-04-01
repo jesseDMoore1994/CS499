@@ -2277,3 +2277,29 @@ Stack Trace:
 #3 {main}
 
 
+2016-03-31 23:52:54 Error: [Cake\Routing\Exception\MissingControllerException] Controller class ScheduleAdmin could not be found.
+Exception Attributes: array (
+  'class' => 'ScheduleAdmin',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/schedule/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-04-01 00:04:34 Error: [Cake\Routing\Exception\MissingControllerException] Controller class ScheduleAdmin could not be found.
+Exception Attributes: array (
+  'class' => 'ScheduleAdmin',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/schedule/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
