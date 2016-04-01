@@ -68,8 +68,8 @@ html, body {
 
 .admin-panel-select {
 	float:right;
-	padding-right:5px;
-	padding-left:5px;
+	padding-right:10px;
+	padding-left:0px;
 	background:#222222;
 }
 
@@ -278,21 +278,31 @@ html, body {
 
 .admin-page-tab {
 	display:inline-block;
+	font-size:90%;
 }
 
 .admin-page-tab a {
 	color:black;
-	padding:3px 15px 3px 15px;
+	padding:3px 15px 5px 15px;
 	display:inline-block;
 }
 
 .admin-page-tab a .icomoon {
 	font-size:70%;
+	display:inline-block;
+	padding-right:2px;
+	vertical-align:middle;
+	padding-top:2px;
+}
+
+.admin-page-tab a span {
+	vertical-align:middle;
 }
 
 .admin-page-tab.selected a {
-	background: #306027;
-	color:white;
+	/*background: #306027;*/
+	background:#EEEEEE;
+	color:#60221B;
 	border-radius:5px;
 }
 
