@@ -56,6 +56,9 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/admin/schedule', ['controller' => 'ScheduleAdmin', 'action' => 'index']);
 	$routes->connect('/admin/schedule/*', ['controller' => 'ScheduleAdmin']);
 
+	$routes->connect('/admin/setup', ['controller' => 'SetupAdmin', 'action' => 'index']);
+	$routes->connect('/admin/setup/*', ['controller' => 'SetupAdmin']);
+
     $routes->connect('/admindata', ['controller' => 'AdminData', 'action' => 'index']);
     //$routes->connect('/admindata/*', ['controller' => 'AdminData']);
 	/**

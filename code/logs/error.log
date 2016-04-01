@@ -2318,3 +2318,63 @@ Stack Trace:
 #3 {main}
 
 
+2016-04-01 00:30:39 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 00:37:47 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 00:41:07 Error: [Cake\View\Exception\MissingTemplateException] Template file "SetupAdmin/index.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'SetupAdmin/index.ctp',
+)
+Request URL: /cs499/CS499/Code/admin/setup/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-01 00:54:40 Error: Fatal Error (1): Call to undefined function startsWith() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/SetupAdmin/index.ctp, line 5]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-01 00:54:40 Error: [Cake\Error\FatalErrorException] Call to undefined function startsWith()
+Request URL: /cs499/CS499/Code/admin/setup/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 5)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+

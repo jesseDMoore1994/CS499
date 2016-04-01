@@ -263,6 +263,40 @@ html, body {
 }
 
 
+
+.admin-top-border {
+	border-bottom:1px solid #D3D3D3;
+}
+
+.admin-page-tabs {
+	padding:4px 0px 2px 0px;
+}
+
+.admin-page-tab {
+	display:inline-block;
+}
+
+.admin-page-tab a {
+	color:black;
+	padding:3px 15px 3px 15px;
+	display:inline-block;
+}
+
+.admin-page-tab a .icomoon {
+	font-size:70%;
+}
+
+.admin-page-tab.selected a {
+	background:#60221B;
+	color:white;
+	border-radius:5px;
+}
+
+.admin-page-tabs-right {
+	float:right;
+}
+
+
 /* ---------------------------------------------------------
  * SMALL DESKTOP DESIGN:
  * This defines the appearence of the admin interface in
