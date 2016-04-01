@@ -8,6 +8,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_debug_kit_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_debug_kit_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" afterPath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/webroot/css/admin.css" afterPath="$PROJECT_DIR$/code/webroot/css/admin.css" />
     </list>
     <ignored path="CS499.iws" />
@@ -32,11 +33,21 @@
     <splitter split-orientation="vertical" split-proportion="0.545">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.ctp" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/code/src/Template/SetupAdmin/index.ctp">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.35872236">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="23" column="103" selection-start-line="23" selection-start-column="103" selection-end-line="23" selection-end-column="103" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="admin.ctp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/code/src/Template/Layout/admin.ctp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.71253073">
+                  <caret line="80" column="262" selection-start-line="80" selection-start-column="262" selection-end-line="80" selection-end-column="262" />
                   <folding />
                 </state>
               </provider>
@@ -49,18 +60,8 @@
           <file leaf-file-name="admin.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/code/webroot/css/admin.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.56845236">
-                  <caret line="289" column="24" selection-start-line="289" selection-start-column="24" selection-end-line="289" selection-end-column="24" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="admin.ctp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/code/src/Template/Layout/admin.ctp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+                <state vertical-scroll-proportion="0.7410714">
+                  <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
                   <folding />
                 </state>
               </provider>
@@ -149,11 +150,11 @@
         <option value="$PROJECT_DIR$/code/src/Template/CustomerAdmin/index.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/ScheduleAdmin/index.ctp" />
         <option value="$PROJECT_DIR$/code/src/Template/TicketAdmin/index.ctp" />
-        <option value="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" />
         <option value="$PROJECT_DIR$/code/config/routes.php" />
         <option value="$PROJECT_DIR$/code/src/Controller/SetupAdminController.php" />
         <option value="$PROJECT_DIR$/code/src/Template/SetupAdmin/index.ctp" />
         <option value="$PROJECT_DIR$/code/webroot/css/admin.css" />
+        <option value="$PROJECT_DIR$/code/src/Template/Layout/admin.ctp" />
       </list>
     </option>
   </component>
@@ -966,17 +967,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Template/Layout/admin.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Template/SetupAdmin/index.ctp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35872236">
+        <state vertical-scroll-proportion="0.0">
           <caret line="23" column="103" selection-start-line="23" selection-start-column="103" selection-end-line="23" selection-end-column="103" />
           <folding />
         </state>
@@ -984,8 +977,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/webroot/css/admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56845236">
-          <caret line="289" column="24" selection-start-line="289" selection-start-column="24" selection-end-line="289" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.7410714">
+          <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Template/Layout/admin.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.71253073">
+          <caret line="80" column="262" selection-start-line="80" selection-start-column="262" selection-end-line="80" selection-end-column="262" />
           <folding />
         </state>
       </provider>

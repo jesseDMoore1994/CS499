@@ -62,6 +62,10 @@ html, body {
 	padding-left:10px;
 }
 
+.admin-tab.selected .icomoon.lock {
+	color:#BBBBBB;
+}
+
 .admin-panel-select {
 	float:right;
 	padding-right:5px;
