@@ -54,7 +54,7 @@ function startsWith($haystack, $needle) {
 		<div class="admin-nav">
 			<div class="admin-tools">
 				<div class="admin-tool">
-					<span class="icomoon"><a href="" title="Sign out and return to site">&#xea14;</a></span>
+					<span class="icomoon"><a href="<?= $this->Url->build("/", true) ?>" title="Sign out and return to site">&#xea14;</a></span>
 				</div>
 			</div>
 			<div class="admin-panel-select">

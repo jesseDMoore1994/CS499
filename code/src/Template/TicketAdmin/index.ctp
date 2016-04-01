@@ -25,19 +25,19 @@
 			<div class="admin-results-list-inner">
 				<table>
 					<tr class="table-heading">
-						<th>Seat #</th>
-						<th>Ticket ID</th>
+						<th style="width:150px;">Ticket #</th>
+						<th>Seat</th>
 						<th>Performance</th>
 						<th>Valid For</th>
 						<th>Ticket Holder</th>
 						<th>Status</th>
 						<th>Actions</th>
-						<th></th>
+						<th style="width:20px;"></th>
 					</tr>
 					<?php foreach ($tickets as $ticket) { ?>
 					<tr>
-						<td><label class="responsive-tip">Seat #:</label> <?= $ticket["seat"] ?></td>
-						<td><label class="responsive-tip">Ticket ID:</label> <?= $ticket["id"] ?></td>
+						<td><label class="responsive-tip">Ticket #:</label> <?= $ticket["id"] ?></td>
+						<td><label class="responsive-tip">Seat:</label> <?= $ticket["seat"] ?></td>
 						<td><label class="responsive-tip">Performance:</label> <?= $ticket["performance_name"] ?></td>
 						<td><label class="responsive-tip">Valid For:</label> <?= $ticket["performance_time"] ?></td>
 						<td><label class="responsive-tip">Ticket Holder:</label> <?= $ticket["person_name"] ?></td>

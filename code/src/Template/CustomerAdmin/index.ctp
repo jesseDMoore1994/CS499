@@ -25,7 +25,7 @@
 			<div class="admin-results-list-inner">
 				<table>
 					<tr class="table-heading">
-						<th style="width:200px;">Customer #</th>
+						<th style="width:150px;">Customer #</th>
 						<th>Full Name</th>
 						<th style="width:200px;">Email</th>
 						<th style="width:200px;">Join Date</th>

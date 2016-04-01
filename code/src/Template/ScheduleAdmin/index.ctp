@@ -20,7 +20,7 @@
 			<div class="admin-results-list-inner">
 				<table>
 					<tr class="table-heading">
-						<th style="width:200px;">Seat #</th>
+						<th style="width:150px;">Seat #</th>
 						<th>Performance of</th>
 						<th style="width:200px;">Scheduled Time</th>
 						<th style="width:100px;">Sales</th>
