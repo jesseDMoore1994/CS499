@@ -88,7 +88,6 @@ html, body {
 .admin-tool {
 	float:right;
 	padding:5px 0px 5px 15px;
-	cursor:pointer;
 }
 
 .admin-tool a {
@@ -198,6 +197,7 @@ html, body {
 	border:0px solid black;
 	margin-bottom:0px;
 	width:100%;
+	border-collapse:separate;
 }
 
 .admin-results-list tr {
@@ -227,6 +227,10 @@ html, body {
 	padding-left:15px;
 	vertical-align:middle;
 	border-bottom:1px solid #EEEEEE;
+}
+
+.admin-results-list tr.last td {
+	border-bottom:0px solid black;
 }
 
 .admin-results-list td input {
@@ -308,6 +312,104 @@ html, body {
 
 .admin-page-tabs-right {
 	float:right;
+}
+
+
+
+.admin-sections {
+	padding:15px 15px 15px 15px;
+}
+
+.admin-section {
+	border:1px solid #DDDDDD;
+	border-bottom-width:2px;
+	background:#FCFCFC;
+	padding:10px 15px 10px 15px;
+	margin:0px 0px 10px 0px;
+
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f7f7f7 33%);
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f7f7f7 33%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#f7f7f7 33%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 );
+
+	background:#FAFAFA;
+
+}
+
+.admin-section h1 {
+	font-size:120%;
+	color:#60221B;
+	margin:0px;
+	margin-bottom:10px;
+}
+
+.admin-section .admin-row-add {
+	text-transform:uppercase;
+	font-size:90%;
+	text-align:right;
+	margin-top:-22px;
+}
+
+.admin-section .admin-row strong {
+	display:inline-block;
+	width:75px;
+}
+
+.admin-row .indent {
+	width:75px;
+	display:inline-block;
+}
+
+.admin-section .admin-add-row .icomoon {
+	font-size:70%;
+}
+
+.admin-seat {
+	width:40px;
+	display:inline-block;
+}
+
+.admin-seat.icomoon {
+	font-size:70%;
+	display:inline-block;
+	padding-left:10px;
+
+}
+
+.admin-buttonpanel {
+	margin-top:-15px;
+	text-align:right;
+	padding-right:15px;
+}
+
+.admin-buttonpanel .button {
+	background:#2A5E1B;
+	padding:7px 15px 10px 15px;
+}
+
+.admin-buttonpanel .button .icomoon {
+	font-size:70%;
+	display:inline-block;
+	margin-right:5px;
+	vertical-align: middle;
+}
+
+.admin-buttonpanel .button:hover {
+	background: #2d7622;
+}
+
+.admin-buttonpanel .button:active {
+	background: #11310b;
+}
+
+.admin-buttonpanel span {
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.staff-table th {
+	border-top:0px solid black;
 }
 
 

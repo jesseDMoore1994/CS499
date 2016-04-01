@@ -25,17 +25,24 @@
 						<th style="width:200px;">Scheduled Time</th>
 						<th style="width:100px;">Sales</th>
 						<th style="width:100px;">Status</th>
-						<th style="width:250px;">Actions</th>
+						<th style="width:200px;">Actions</th>
 						<th style="width:20px;"></th>
 					</tr>
 					<?php foreach ($performances as $performance) { ?>
+
+						<?php if (count($performance) == 0) { if ($separatorEnabled) { ?>
 						<tr>
+							<th colspan="7">Concluded Performances</th>
+						</tr>
+						<?php } continue; } ?>
+
+						<tr<?php if ($separatorEnabled && array_key_exists("last", $performance) && $performance["last"]) echo " class='last'" ?>>
 							<td><label class="responsive-tip">Performance #:</label> <?= $performance["performance_id"] ?></td>
 							<td><label class="responsive-tip">Performance of:</label> <?= $performance["performance_name"] ?></td>
 							<td><label class="responsive-tip">Scheduled for:</label> <?= $performance["performance_time"] ?></td>
 							<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $performance["performance_sales_state"] ?>"><?= $performance["performance_sales"] ?></span> / <?= $performance["performance_capacity"] ?></td>
 							<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $performance["performance_state"] ?>"><?= $performance["performance_status"] ?></span></td>
-							<td><label class="responsive-tip">Actions:</label> <a href="" class="caps">EDIT PERFORMANCE</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
+							<td><label class="responsive-tip">Actions:</label> <a href="" class="caps">Cancel</a> <a href="" class="caps">Edit</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
 							<td><label class="responsive-tip">Select:</label> <input type="checkbox" /></td>
 						</tr>
 					<?php } ?>

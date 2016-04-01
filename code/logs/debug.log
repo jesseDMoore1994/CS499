@@ -754,3 +754,129 @@ Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
 
 
 
+2016-04-01 04:40:38 Notice: Notice (8): Undefined index: performance_id in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/ScheduleAdmin/index.ctp, line 40]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/ScheduleAdmin/index.ctp, line 40
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-01 04:40:38 Notice: Notice (8): Undefined index: performance_name in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/ScheduleAdmin/index.ctp, line 41]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/ScheduleAdmin/index.ctp, line 41
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-01 04:40:38 Notice: Notice (8): Undefined index: performance_time in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/ScheduleAdmin/index.ctp, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/ScheduleAdmin/index.ctp, line 42
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-01 04:40:38 Notice: Notice (8): Undefined index: performance_sales_state in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/ScheduleAdmin/index.ctp, line 43]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/ScheduleAdmin/index.ctp, line 43
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-01 04:40:38 Notice: Notice (8): Undefined index: performance_sales in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/ScheduleAdmin/index.ctp, line 43]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/ScheduleAdmin/index.ctp, line 43
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-01 04:40:38 Notice: Notice (8): Undefined index: performance_capacity in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/ScheduleAdmin/index.ctp, line 43]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/ScheduleAdmin/index.ctp, line 43
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-01 04:40:38 Notice: Notice (8): Undefined index: performance_state in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/ScheduleAdmin/index.ctp, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/ScheduleAdmin/index.ctp, line 44
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-01 04:40:38 Notice: Notice (8): Undefined index: performance_status in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/ScheduleAdmin/index.ctp, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/ScheduleAdmin/index.ctp, line 44
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-01 06:45:46 Notice: Notice (8): Undefined variable: tickets in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/SetupAdmin/staff.ctp, line 30]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/SetupAdmin/staff.ctp, line 30
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+

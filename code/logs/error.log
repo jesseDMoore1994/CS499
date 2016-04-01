@@ -2378,3 +2378,240 @@ Stack Trace:
 #2 {main}
 
 
+2016-04-01 02:53:28 Error: [Cake\View\Exception\MissingElementException] Element/admin/setup.ctp
+Request URL: /cs499/CS499/Code/admin/setup/seats/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/SetupAdmin/index.ctp(12): Cake\View\View->element('admin/setup')
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(960): include('/Applications/M...')
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(921): Cake\View\View->_evaluate('/Applications/M...', Array)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(575): Cake\View\View->_render('/Applications/M...')
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#8 {main}
+
+
+2016-04-01 02:55:42 Error: [Cake\View\Exception\MissingTemplateException] Template file "SetupAdmin/seats.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'SetupAdmin/seats.ctp',
+)
+Request URL: /cs499/CS499/Code/admin/setup/seats/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-01 03:21:38 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/availability/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 04:15:03 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/import/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 04:18:28 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/availability/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 04:41:40 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/availability/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 05:36:31 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/availability/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 05:49:08 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/availability/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 05:49:12 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/staff/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 05:54:02 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/availability/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 05:55:11 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/availability/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 06:12:12 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/availability/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 06:14:25 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/seats/test/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 06:41:49 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/staff/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-01 06:45:46 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/SetupAdmin/staff.ctp, line 30]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/SetupAdmin/staff.ctp, line 30
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-01 06:52:25 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/import/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
