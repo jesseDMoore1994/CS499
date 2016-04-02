@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="performance-creator dialog" title="Schedule Performance">
-		<form class="dialog-form">
+		<form class="dialog-form" action="<?= $this->Url->build("/admin/schedule/api_create/", true) ?>">
 			<label>Performance Of:</label>
 			<select>
 				<option>The Tragedy of Othello</option>

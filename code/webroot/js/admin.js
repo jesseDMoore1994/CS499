@@ -54,7 +54,7 @@ function showTicketDialog() {
 }
 
 function createTicket() {
-
+	
 }
 
 

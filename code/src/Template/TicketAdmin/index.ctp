@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="ticket-creator dialog" title="Create Ticket">
-		<form class="dialog-form">
+		<form class="dialog-form" action="<?= $this->Url->build("/admin/tickets/api_create/", true) ?>">
 			<label>First Name:</label>
 			<input type="text" placeholder="Jane" />
 			<label>Last Name:</label>
