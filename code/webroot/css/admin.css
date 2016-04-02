@@ -417,6 +417,36 @@ html, body {
 }
 
 
+
+.admin-page-actionbutton {
+	float:right;
+	margin-top:5px;
+}
+
+.admin-page-actionbutton .button {
+	background:#2A5E1B;
+	padding:0px;
+	margin:0px;
+}
+
+.admin-page-actionbutton .button a {
+	display:inline-block;
+	padding:2px 15px 6px 15px;
+	color:white;
+}
+
+.admin-page-actionbutton .button .icomoon {
+	display:inline-block;
+	padding-right:10px;
+	font-size:70%;
+}
+
+.admin-page-actionbutton .button span {
+	display:inline-block;
+	vertical-align: middle;
+}
+
+
 /* ---------------------------------------------------------
  * SMALL DESKTOP DESIGN:
  * This defines the appearence of the admin interface in

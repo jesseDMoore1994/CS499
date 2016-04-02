@@ -29,7 +29,7 @@
 				<option value="<?= $i ?>"><?= $i ?>:00 am</option>
 				<?php } ?>
 				<option value="12">12:00 pm</option>
-				<?php for ($i = 1; $i <= 12; $i++) { ?>
+				<?php for ($i = 1; $i <= 11; $i++) { ?>
 					<option value="<?= 12+$i ?>"><?= $i ?>:00 pm</option>
 				<?php } ?>
 			</select>

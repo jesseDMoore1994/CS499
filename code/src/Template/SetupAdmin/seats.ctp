@@ -1,6 +1,10 @@
 <div class="admin-page">
 	<div class="admin-page-top">
 
+		<div class="admin-page-actionbutton">
+			<div class="button"><a href=""><span class="icomoon">&#xea0a;</span><span>Create Section</span></a></div>
+		</div>
+
 		<div class="admin-page-tabs">
 			<?= $this->element("admin/setup") ?>
 		</div>
@@ -27,9 +31,10 @@
 		</div>
 		<?php } ?>
 	</div>
+	<!--
 	<div class="section-create admin-buttonpanel">
 		<div class="button call-to-action">
 			<span class="icomoon">&#xea0a;</span> <span>Create Section</span>
 		</div>
-	</div>
+	</div>-->
 </div>
