@@ -46,6 +46,7 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
 	$routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
+	$routes->connect('/admin', ['controller' => 'TicketAdmin', 'action' => 'index']);
 
 	$routes->connect('/admin/tickets', ['controller' => 'TicketAdmin', 'action' => 'index']);
 	$routes->connect('/admin/tickets/*', ['controller' => 'TicketAdmin']);

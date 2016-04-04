@@ -71,7 +71,7 @@ function startsWith($haystack, $needle) {
 					</optgroup>
 				</select>
 			</div>
-			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/tickets/", true))) echo " selected"; ?>">
+			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/tickets/", true)) || $this->Url->build(null, true) == $this->Url->build("/admin/", true)) echo " selected"; ?>">
 				<a href="<?= $this->Url->build("/admin/tickets/", true) ?>"><span class="icomoon">&#xe939;</span> <span>Ticket Search</span></a>
 			</div>
 			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/customers/", true))) echo " selected"; ?>">

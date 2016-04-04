@@ -321,23 +321,11 @@ html, body {
 
 
 .admin-sections {
-	padding:15px 15px 15px 15px;
 }
 
 .admin-section {
-	border:1px solid #DDDDDD;
-	border-bottom-width:2px;
-	background:#FCFCFC;
+	border-bottom:1px solid #DDDDDD;
 	padding:10px 15px 10px 15px;
-	margin:0px 0px 10px 0px;
-
-	background: #ffffff;
-	background: -moz-linear-gradient(top,  #ffffff 0%, #f7f7f7 33%);
-	background: -webkit-linear-gradient(top,  #ffffff 0%,#f7f7f7 33%);
-	background: linear-gradient(to bottom,  #ffffff 0%,#f7f7f7 33%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 );
-
-	background:#FAFAFA;
 
 }
 
