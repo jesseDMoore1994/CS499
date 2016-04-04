@@ -204,6 +204,10 @@ html, body {
 	border-collapse:separate;
 }
 
+.admin-results-list table .data {
+	display:none;
+}
+
 .admin-results-list tr {
 	background:none !important;
 }

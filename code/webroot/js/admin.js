@@ -72,17 +72,33 @@ function initCustomerDialog() {
 	});
 }
 
-function showCustomerDialog() {
+function showCustomerDialog(staff) {
 	customerDialog.dialog( "open" );
 	$(".customer-creator-edit").hide();
 	$(".customer-creator-new").show();
+
+	if (staff) {
+		$("#access-level[value=0]").hide();
+	} else {
+		$("#access-level[value=0]").show();
+	}
 }
 
-function showCustomerEditDialog() {
+function showCustomerEditDialog(staff, id) {
 	customerDialog.dialog( "open" );
 	$(".customer-creator-edit").show();
 	$(".customer-creator-new").hide();
 	$("#customer-creator-changepasswordoptions").hide();
+
+	if (staff) {
+		$("#access-level[value=0]").hide();
+	} else {
+		$("#access-level[value=0]").show();
+	}
+
+	json = JSON.parse($("#staff-"+id+" .data").text());
+	$(".customer-creator .customer-name").val(json["name"]);
+	$(".customer-creator .customer-email").val(json["email"]);
 }
 
 function createCustomer() {

@@ -58,11 +58,13 @@ class SetupAdminController extends AdminController {
 	public function staff() {
 		$staff = [
 			[
+				"id" => "1",
 				"name" => "Matt Eskridge",
 				"email" => "matt@matteskridge.com",
 				"access" => "Administrator"
 			],
 			[
+				"id" => "2",
 				"name" => "Jane Doe",
 				"email" => "jdoe456@example.com",
 				"access" => "Cashier"
