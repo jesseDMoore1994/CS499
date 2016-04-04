@@ -7,10 +7,10 @@
 		<label>Email:</label>
 		<input type="text" placeholder="jdoe456@example.com" class="customer-email" />
 		<label>Access Level:</label>
-		<select id="access-level">
+		<select id="access-level" class="access-level">
 			<option value="0">Customer</option>
-			<option>Cashier</option>
-			<option>Administrator</option>
+			<option value="1">Cashier</option>
+			<option value="2">Administrator</option>
 		</select>
 
 		<div class="customer-creator-new">

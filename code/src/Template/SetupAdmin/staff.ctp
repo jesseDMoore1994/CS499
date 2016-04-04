@@ -31,7 +31,7 @@
 						<th style="width:20px;"></th>
 					</tr>
 					<?php foreach ($staff as $member) { ?>
-						<tr id="staff-<?= $member["id"] ?>">
+						<tr id="customer-<?= $member["id"] ?>">
 							<td><label class="responsive-tip">Name:</label> <?= $member["name"] ?></td>
 							<td><label class="responsive-tip">Email:</label> <a href="mailto:<?= $member["email"] ?>" class="email"><?= $member["email"] ?></a></td>
 							<td><label class="responsive-tip">Access:</label> <?= $member["access"] ?></td>

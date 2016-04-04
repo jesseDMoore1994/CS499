@@ -8,31 +8,24 @@ class CustomerAdminController extends AdminController {
 	public function index() {
 		$this->set("customers", [
 			[
-				"customer_id" => "1234",
-				"customer_first" => "Jane",
-				"customer_last" => "Doe",
-				"customer_state" => "good",
-				"customer_status" => "Active",
-				"customer_joined" => "Today, 10:00am",
-				"customer_email" => "jdoe456@example.com",
+				"id" => "1",
+				"name" => "Matt Eskridge",
+				"email" => "matt@matteskridge.com",
+				"access" => "Administrator",
+				"joined" => "Today, 10:00am",
+				"state" => "good",
+				"status" => "Active",
+				"access_level" => "2"
 			],
 			[
-				"customer_id" => "1234",
-				"customer_first" => "Jane",
-				"customer_last" => "Doe",
-				"customer_state" => "good",
-				"customer_status" => "Active",
-				"customer_joined" => "Today, 10:00am",
-				"customer_email" => "jdoe456@example.com"
-			],
-			[
-				"customer_id" => "1234",
-				"customer_first" => "Jane",
-				"customer_last" => "Doe",
-				"customer_state" => "good",
-				"customer_status" => "Active",
-				"customer_joined" => "Today, 10:00am",
-				"customer_email" => "jdoe456@example.com"
+				"id" => "2",
+				"name" => "Jane Doe",
+				"email" => "jdoe456@gmail.com",
+				"access" => "Cashier",
+				"joined" => "Today, 10:00am",
+				"state" => "good",
+				"status" => "Active",
+				"access_level" => "1"
 			],
 		]);
 	}

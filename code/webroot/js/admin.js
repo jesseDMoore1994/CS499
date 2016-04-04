@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 	ticketDialog = createDialog(".ticket-creator", 520);
 	customerDialog = createDialog(".customer-creator", 520);
-	performanceDialog = createDialog(".performance-creator", 380);
+	performanceDialog = createDialog(".performance-creator", 520);
 	initTicketDialog();
 	initCustomerDialog();
 
@@ -53,6 +53,14 @@ function showTicketDialog() {
 	ticketDialog.dialog( "open" );
 }
 
+function showTicketEditDialog(id) {
+	ticketDialog.dialog( "open" );
+
+	json = JSON.parse($("#ticket-"+id+" .data").text());
+	$(".ticket-creator .full-name").val(json["person_name"]);
+	$(".ticket-creator #ticket-creator-payment-select").val(json["payment_status_value"]);
+}
+
 function createTicket() {
 	
 }
@@ -96,9 +104,10 @@ function showCustomerEditDialog(staff, id) {
 		$("#access-level[value=0]").show();
 	}
 
-	json = JSON.parse($("#staff-"+id+" .data").text());
+	json = JSON.parse($("#customer-"+id+" .data").text());
 	$(".customer-creator .customer-name").val(json["name"]);
 	$(".customer-creator .customer-email").val(json["email"]);
+	$(".customer-creator .access-level").val(json["access_level"]);
 }
 
 function createCustomer() {
@@ -110,3 +119,14 @@ function createCustomer() {
 function showPerformanceDialog() {
 	performanceDialog.dialog( "open" );
 }
+
+function showPerformanceEditDialog(id) {
+	performanceDialog.dialog( "open" );
+
+	json = JSON.parse($("#performance-"+id+" .data").text());
+	$(".performance-creator .date").val(json["performance_date"]);
+	$(".performance-creator #time").val(json["performance_hour"]);
+	$(".performance-creator .open").val(json["performance_open"]);
+	$(".performance-creator .canceled").val(json["performance_canceled"]);
+}
+

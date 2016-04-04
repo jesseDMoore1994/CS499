@@ -22,9 +22,9 @@
 				<option>The Tragedy of Othello</option>
 			</select>
 			<label>Date:</label>
-			<input type="text" class="datepicker" />
+			<input type="text" class="datepicker date" />
 			<label>Time:</label>
-			<select>
+			<select id="time">
 				<?php for ($i = 8; $i < 12; $i++) { ?>
 				<option value="<?= $i ?>"><?= $i ?>:00 am</option>
 				<?php } ?>
@@ -32,6 +32,16 @@
 				<?php for ($i = 1; $i <= 11; $i++) { ?>
 					<option value="<?= 12+$i ?>"><?= $i ?>:00 pm</option>
 				<?php } ?>
+			</select>
+			<label>Sales Open?:</label>
+			<select class="open">
+				<option value="1">Yes</option>
+				<option value="0">No</option>
+			</select>
+			<label>Canceled?:</label>
+			<select class="canceled">
+				<option value="1">Yes</option>
+				<option value="0">No</option>
 			</select>
 		</form>
 	</div>
@@ -57,14 +67,14 @@
 						</tr>
 						<?php } continue; } ?>
 
-						<tr<?php if ($separatorEnabled && array_key_exists("last", $performance) && $performance["last"]) echo " class='last'" ?>>
+						<tr<?php if ($separatorEnabled && array_key_exists("last", $performance) && $performance["last"]) echo " class='last'" ?> id="performance-<?= $performance["performance_id"] ?>">
 							<td><label class="responsive-tip">Performance #:</label> <?= $performance["performance_id"] ?></td>
 							<td><label class="responsive-tip">Performance of:</label> <?= $performance["performance_name"] ?></td>
 							<td><label class="responsive-tip">Scheduled for:</label> <?= $performance["performance_time"] ?></td>
 							<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $performance["performance_sales_state"] ?>"><?= $performance["performance_sales"] ?></span> / <?= $performance["performance_capacity"] ?></td>
 							<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $performance["performance_state"] ?>"><?= $performance["performance_status"] ?></span></td>
-							<td><label class="responsive-tip">Actions:</label> <a href="" class="caps">Cancel</a> <a href="" class="caps">Edit</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
-							<td><label class="responsive-tip">Select:</label> <input type="checkbox" /></td>
+							<td><label class="responsive-tip">Actions:</label> <a href="" class="caps">Cancel</a> <a href="javascript:showPerformanceEditDialog(<?= $performance["performance_id"] ?>)" class="caps">Edit</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
+							<td><label class="responsive-tip">Select:</label> <input type="checkbox" /> <div class="data"><?= json_encode($performance) ?></div></td>
 						</tr>
 					<?php } ?>
 				</table>

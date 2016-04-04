@@ -61,13 +61,15 @@ class SetupAdminController extends AdminController {
 				"id" => "1",
 				"name" => "Matt Eskridge",
 				"email" => "matt@matteskridge.com",
-				"access" => "Administrator"
+				"access" => "Administrator",
+				"access_level" => "2"
 			],
 			[
 				"id" => "2",
 				"name" => "Jane Doe",
 				"email" => "jdoe456@example.com",
-				"access" => "Cashier"
+				"access" => "Cashier",
+				"access_level" => "1"
 			]
 		];
 

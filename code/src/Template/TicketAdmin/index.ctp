@@ -17,14 +17,12 @@
 
 	<div class="ticket-creator dialog" title="Create Ticket">
 		<form class="dialog-form" action="<?= $this->Url->build("/admin/tickets/api_create/", true) ?>">
-			<label>First Name:</label>
-			<input type="text" placeholder="Jane" />
-			<label>Last Name:</label>
-			<input type="text" placeholder="Doe" />
+			<label>Ticket Holder Name:</label>
+			<input type="text" placeholder="Jane Doe" class="full-name" />
 			<label>Payment Status:</label>
 			<select id="ticket-creator-payment-select">
 				<option value="paid">Paid</option>
-				<option value="paid">Paid (Cash)</option>
+				<option value="paid-casb">Paid (Cash)</option>
 				<option value="paid-credit">Unpaid (Credit); Enter credit card now</option>
 				<option value="unpaid-cash">Unpaid (Cash); Customer must pay at door</option>
 			</select>
@@ -90,15 +88,15 @@
 						<th style="width:20px;"></th>
 					</tr>
 					<?php foreach ($tickets as $ticket) { ?>
-					<tr>
+					<tr id="ticket-<?= $ticket["id"] ?>">
 						<td><label class="responsive-tip">Ticket #:</label> <?= $ticket["id"] ?></td>
 						<td><label class="responsive-tip">Seat:</label> <?= $ticket["seat"] ?></td>
 						<td><label class="responsive-tip">Performance:</label> <?= $ticket["performance_name"] ?></td>
 						<td><label class="responsive-tip">Valid For:</label> <?= $ticket["performance_time"] ?></td>
 						<td><label class="responsive-tip">Ticket Holder:</label> <?= $ticket["person_name"] ?></td>
 						<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $ticket["payment_state"] ?>"><?= $ticket["payment_status"] ?></span></td>
-						<td><label class="responsive-tip">Actions:</label> <a href="" class="caps">Mark as Paid</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
-						<td><label class="responsive-tip">Select:</label> <input type="checkbox" /></td>
+						<td><label class="responsive-tip">Actions:</label> <a href="" class="caps">Mark as Paid</a> <a href="javascript:showTicketEditDialog('<?= $ticket["id"] ?>')">EDIT</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
+						<td><label class="responsive-tip">Select:</label> <input type="checkbox" /><div class="data"><?= json_encode($ticket) ?></div></td>
 					</tr>
 					<?php } ?>
 				</table>
