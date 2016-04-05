@@ -3,6 +3,8 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
+require_once(ROOT . DS . 'vendor' . DS  . 'theater-ticket' . DS . 'time_elapsed_string.php');
+
 /**
  * Ticket Entity.
  *
@@ -37,6 +39,40 @@ class Ticket extends Entity
 
     public function getSeatName() {
         return "Seat ".$this->section->code.$this->row->code."-".$this->seat->code;
+    }
+
+    function ticketStatusColor() {
+        switch ($this->status) {
+            case "paid":
+                return "good";
+            case "paid-cash":
+                return "good";
+            case "unpaid":
+                return "bad";
+            case "unpaid-cash":
+                return "bad";
+            default:
+                return "bad";
+        }
+    }
+
+    function ticketStatusName() {
+        switch ($this->status) {
+            case "paid":
+                return "Paid";
+            case "paid-cash":
+                return "Paid (Cash)";
+            case "unpaid":
+                return "Unpaid";
+            case "unpaid-cash":
+                return "Unpaid (Cash)";
+            default:
+                return "bad";
+        }
+    }
+
+    function ticketTime() {
+        return time_format($this->performance->time);
     }
 
 }

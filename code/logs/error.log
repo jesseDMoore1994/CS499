@@ -3326,3 +3326,286 @@ Stack Trace:
 #20 {main}
 
 
+2016-04-05 04:58:29 Warning: Warning (2): Missing argument 1 for App\Model\Entity\Ticket::ticketStatusName(), called in /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php on line 23 and defined in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 57]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Ticket::ticketStatusName() - APP/Model/Entity/Ticket.php, line 57
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 23
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-05 04:58:29 Warning: Warning (2): Missing argument 1 for App\Model\Entity\Ticket::ticketStatusColor(), called in /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php on line 25 and defined in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Ticket::ticketStatusColor() - APP/Model/Entity/Ticket.php, line 42
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 25
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-05 05:14:41 Error: Fatal Error (1): Call to undefined function App\Model\Entity\time_elapsed_string() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 73]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-05 05:14:41 Error: [Cake\Error\FatalErrorException] Call to undefined function App\Model\Entity\time_elapsed_string()
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 73)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-05 05:17:14 Error: Fatal Error (1): Call to undefined function App\Model\Entity\time_elapsed_string() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 73]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-05 05:17:15 Error: [Cake\Error\FatalErrorException] Call to undefined function App\Model\Entity\time_elapsed_string()
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 73)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-05 05:17:24 Error: Fatal Error (1): Call to undefined function App\Model\Entity\time_elapsed_string() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 73]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-05 05:17:24 Error: [Cake\Error\FatalErrorException] Call to undefined function App\Model\Entity\time_elapsed_string()
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 73)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-05 05:18:21 Error: Fatal Error (1): Call to undefined function App\Model\Entity\time_elapsed_string() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 73]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-05 05:18:21 Error: [Cake\Error\FatalErrorException] Call to undefined function App\Model\Entity\time_elapsed_string()
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 73)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-05 05:18:36 Error: Fatal Error (1): Call to undefined function App\Model\Entity\time_elapsed_string() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 73]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-05 05:18:36 Error: [Cake\Error\FatalErrorException] Call to undefined function App\Model\Entity\time_elapsed_string()
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 73)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-05 05:21:58 Warning: Warning (2): require_once(vendor/theater-ticket/time_elapsed_string.php): failed to open stream: No such file or directory in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 6]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+require_once - APP/Model/Entity/Ticket.php, line 6
+include - APP/Model/Entity/Ticket.php, line 6
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 412
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 301
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Cake\ORM\Table::entityClass() - CORE/src/ORM/Table.php, line 539
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 176
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 858
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 263
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 811
+Cake\ORM\Query::getIterator() - CORE/src/Datasource/QueryTrait.php, line 127
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 15
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-05 05:23:12 Warning: Warning (2): require_once(../../../vendor/theater-ticket/time_elapsed_string.php): failed to open stream: No such file or directory in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 6]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+require_once - APP/Model/Entity/Ticket.php, line 6
+include - APP/Model/Entity/Ticket.php, line 6
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 412
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 301
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Cake\ORM\Table::entityClass() - CORE/src/ORM/Table.php, line 539
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 176
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 858
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 263
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 811
+Cake\ORM\Query::getIterator() - CORE/src/Datasource/QueryTrait.php, line 127
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 15
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-05 05:23:18 Warning: Warning (2): require_once(../../../../vendor/theater-ticket/time_elapsed_string.php): failed to open stream: No such file or directory in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 6]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+require_once - APP/Model/Entity/Ticket.php, line 6
+include - APP/Model/Entity/Ticket.php, line 6
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 412
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 301
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Cake\ORM\Table::entityClass() - CORE/src/ORM/Table.php, line 539
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 176
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 858
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 263
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 811
+Cake\ORM\Query::getIterator() - CORE/src/Datasource/QueryTrait.php, line 127
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 15
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-05 05:25:10 Error: Fatal Error (1): Class 'App\Model\Entity\App' not found in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 6]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-05 05:25:10 Error: [Cake\Error\FatalErrorException] Class 'App\Model\Entity\App' not found
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\Mode...', '/Applications/M...', 6)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-05 05:28:27 Warning: Warning (2): require_once(/Applications/MAMP/htdocs/cs499/CS499/Codevendor/theater-ticket/time_elapsed_string.php): failed to open stream: No such file or directory in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 6]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+require_once - APP/Model/Entity/Ticket.php, line 6
+include - APP/Model/Entity/Ticket.php, line 6
+Composer\Autoload\includeFile - ROOT/vendor/composer/ClassLoader.php, line 412
+Composer\Autoload\ClassLoader::loadClass() - ROOT/vendor/composer/ClassLoader.php, line 301
+spl_autoload_call - [internal], line ??
+class_exists - [internal], line ??
+Cake\ORM\Table::entityClass() - CORE/src/ORM/Table.php, line 539
+Cake\ORM\ResultSet::__construct() - CORE/src/ORM/ResultSet.php, line 176
+Cake\ORM\Query::_execute() - CORE/src/ORM/Query.php, line 858
+Cake\ORM\Query::_all() - CORE/src/Datasource/QueryTrait.php, line 263
+Cake\ORM\Query::all() - CORE/src/ORM/Query.php, line 811
+Cake\ORM\Query::getIterator() - CORE/src/Datasource/QueryTrait.php, line 127
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 15
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-05 05:34:48 Error: Fatal Error (1): Class 'Time' not found in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/theater-ticket/time_elapsed_string.php, line 61]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-05 05:34:48 Error: [Cake\Error\FatalErrorException] Class 'Time' not found
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'Time' no...', '/Applications/M...', 61)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-05 05:45:08 Error: Fatal Error (4): syntax error, unexpected ')', expecting ']' in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 18]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-05 05:45:08 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ')', expecting ']'
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', '/Applications/M...', 18)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-05 05:45:19 Error: [Cake\ORM\Exception\MissingBehaviorException] Behavior class CsvBehavior could not be found.
+Exception Attributes: array (
+  'class' => 'CsvBehavior',
+  'plugin' => 'CakePHPCSV',
+)
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Core/ObjectRegistry.php(89): Cake\ORM\BehaviorRegistry->_throwMissingClassError('Csv', 'CakePHPCSV')
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(581): Cake\Core\ObjectRegistry->load('CakePHPCSV.Csv', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Table/StaffAssignmentsTable.php(48): Cake\ORM\Table->addBehavior('CakePHPCSV.Csv', Array)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(280): App\Model\Table\StaffAssignmentsTable->initialize(Array)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Locator/TableLocator.php(196): Cake\ORM\Table->__construct(Array)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Locator/TableLocator.php(166): Cake\ORM\Locator\TableLocator->_create(Array)
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/TableRegistry.php(105): Cake\ORM\Locator\TableLocator->get('StaffAssignment...', Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php(11): Cake\ORM\TableRegistry::get('StaffAssignment...')
+#8 [internal function]: App\Controller\CustomerAdminController->index()
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CustomerAdminController))
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-04-05 05:48:15 Error: Fatal Error (1): Cannot use object of type Cake\ORM\Query as array in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 24]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-05 05:48:15 Error: [Cake\Error\FatalErrorException] Cannot use object of type Cake\ORM\Query as array
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Cannot use obje...', '/Applications/M...', 24)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+

@@ -45,7 +45,7 @@ class StaffAssignmentsTable extends Table
             // If true, String $content is the data, not a path to the file
             'text' => false,
         );
-        $this->addBehavior('CakePHPCSV.Csv', $options);
+        //$this->addBehavior('CakePHPCSV.Csv', $options);
     }
 
     /**

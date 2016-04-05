@@ -8,19 +8,37 @@ use Cake\ORM\TableRegistry;
 class CustomerAdminController extends AdminController {
 	public function index() {
 		$users = TableRegistry::get('Users');
+		$staff = TableRegistry::get('StaffAssignments');
 		$pass = [];
 		$query = $users->find();
 
 		foreach ($query as $row) {
+
+			$assignment = $staff->find("all")
+				->where(['theater_id' => 1, 'user_id' => $row->id])
+				->all();
+
+			$staff_name = "Customer";
+			$staff_level = "0";
+
+			if (count($assignment) > 0) {
+				$staff_level = $assignment[0]->access_level;
+				if ($staff_level == 1) {
+					$staff_name = "Cashier";
+				} else if ($staff_level == 2) {
+					$staff_name = "Administrator";
+				}
+			}
+
 			$pass[] = [
 				"id" => $row->id,
 				"name" => $row->name,
 				"email" => $row->email,
-				"access" => "Customer",
-				"joined" => "Today, 10:00am",
+				"access" => $staff_name,
+				"joined" => $row->date_created,
 				"state" => "good",
 				"status" => "Active",
-				"access_level" => "2"
+				"access_level" => $staff_level
 			];
 		}
 
