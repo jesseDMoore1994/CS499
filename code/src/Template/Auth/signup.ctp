@@ -6,7 +6,8 @@
 			<div class="auth-logo"><a href="<?= $this->Url->build('/', true) ?>"></a></div>
 		</div>
 		<div class="auth-body">
-			<form class="auth-form">
+			<?= $this->Flash->render('flash'); ?>
+			<form class="auth-form" action="" method="post">
 				<em class="requirement">i.e. John Doe</em>
 				<label for="name">Full Name:</label>
 				<input type="text" name="name" id="name" />
@@ -17,7 +18,7 @@
 
 				<em class="requirement">Must be at least 5 characters</em>
 				<label for="password">Password:</label>
-				<input type="password" name="passowrd" id="password" />
+				<input type="password" name="password" id="password" />
 
 				<em class="requirement">Re-type your password here</em>
 				<label for="confirm_password">Confirm Password:</label>

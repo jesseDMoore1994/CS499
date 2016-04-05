@@ -48,4 +48,14 @@ class User extends Entity
     protected $_hidden = [
         'password'
     ];
+
+    public function isValid() {
+        return
+            strlen($this->name) > 3 &&
+            strlen($this->email) > 3;
+    }
+
+	public function makeKey() {
+		return sha1($this->id.$this->email.$this->salt.$this->password);
+	}
 }

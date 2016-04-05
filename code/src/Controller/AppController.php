@@ -16,6 +16,9 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
+
+require_once(ROOT . DS . 'vendor' . DS  . 'theater-ticket' . DS . 'pbkdf2.php');
 
 /**
  * Application Controller
@@ -26,6 +29,8 @@ use Cake\Event\Event;
  * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	public $components = array('Cookie');
 
 	/**
 	 * Initialization hook method.
@@ -41,6 +46,34 @@ class AppController extends Controller {
 
 		$this->loadComponent('RequestHandler');
 		$this->loadComponent('Flash');
+	}
+
+	public function beforeFilter(Event $event) {
+		parent::beforeFilter($event);
+
+		if ($this->Cookie->read('ta_login_id') !== null) {
+			$login_id = $this->Cookie->read('ta_login_id');
+			$login_email = $this->Cookie->read('ta_login_email');
+			$login_key = $this->Cookie->read('ta_login_key');
+
+			$table = TableRegistry::get("Users");
+			$user = $table->find('all')
+				->where(["id" => $login_id, "email" => $login_email])->all();
+
+			if ($user->count() > 0) {
+				if ($user->first()->makeKey() == $login_key) {
+					$this->loggedIn = true;
+					$this->user = $user->first();
+				} else {
+					$this->loggedIn = true;
+					$this->user = null;
+				}
+			}
+
+			$this->set("loggedIn", $this->loggedIn);
+			$this->set("me", $this->user);
+		}
+
 	}
 
 	/**
