@@ -2764,3 +2764,565 @@ Stack Trace:
 #8 {main}
 
 
+2016-04-04 18:34:45 Error: Fatal Error (1): Class 'App\Controller\TableRegistry' not found in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 9]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-04 18:34:45 Error: [Cake\Error\FatalErrorException] Class 'App\Controller\TableRegistry' not found
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\Cont...', '/Applications/M...', 9)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-04 18:35:09 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.user' doesn't exist
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'user', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('user', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('user')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(169): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(129): Cake\ORM\Query->addDefaultTypes(Object(Cake\ORM\Table))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1198): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(Cake\ORM\Table))
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(908): Cake\ORM\Table->query()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php(12): Cake\ORM\Table->find()
+#8 [internal function]: App\Controller\CustomerAdminController->index()
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CustomerAdminController))
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-04-04 18:35:22 Error: [Cake\ORM\Exception\MissingBehaviorException] Behavior class CsvBehavior could not be found.
+Exception Attributes: array (
+  'class' => 'CsvBehavior',
+  'plugin' => 'CakePHPCSV',
+)
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Core/ObjectRegistry.php(89): Cake\ORM\BehaviorRegistry->_throwMissingClassError('Csv', 'CakePHPCSV')
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(581): Cake\Core\ObjectRegistry->load('CakePHPCSV.Csv', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Table/UsersTable.php(46): Cake\ORM\Table->addBehavior('CakePHPCSV.Csv', Array)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(280): App\Model\Table\UsersTable->initialize(Array)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Locator/TableLocator.php(196): Cake\ORM\Table->__construct(Array)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Locator/TableLocator.php(166): Cake\ORM\Locator\TableLocator->_create(Array)
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/TableRegistry.php(105): Cake\ORM\Locator\TableLocator->get('Users', Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php(10): Cake\ORM\TableRegistry::get('Users')
+#8 [internal function]: App\Controller\CustomerAdminController->index()
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CustomerAdminController))
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-04-04 18:56:59 Error: Fatal Error (1): Class 'App\Controller\TableRegistry' not found in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php, line 10]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-04 18:57:00 Error: [Cake\Error\FatalErrorException] Class 'App\Controller\TableRegistry' not found
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\Cont...', '/Applications/M...', 10)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-04 18:57:11 Error: [Cake\ORM\Exception\MissingBehaviorException] Behavior class CsvBehavior could not be found.
+Exception Attributes: array (
+  'class' => 'CsvBehavior',
+  'plugin' => 'CakePHPCSV',
+)
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Core/ObjectRegistry.php(89): Cake\ORM\BehaviorRegistry->_throwMissingClassError('Csv', 'CakePHPCSV')
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(581): Cake\Core\ObjectRegistry->load('CakePHPCSV.Csv', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Table/TicketsTable.php(47): Cake\ORM\Table->addBehavior('CakePHPCSV.Csv', Array)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(280): App\Model\Table\TicketsTable->initialize(Array)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Locator/TableLocator.php(196): Cake\ORM\Table->__construct(Array)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Locator/TableLocator.php(166): Cake\ORM\Locator\TableLocator->_create(Array)
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/TableRegistry.php(105): Cake\ORM\Locator\TableLocator->get('Tickets', Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(11): Cake\ORM\TableRegistry::get('Tickets')
+#8 [internal function]: App\Controller\TicketAdminController->index()
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 {main}
+
+
+2016-04-04 22:49:19 Error: Fatal Error (4): syntax error, unexpected '$pass' (T_VARIABLE) in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php, line 17]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-04 22:49:20 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '$pass' (T_VARIABLE)
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', '/Applications/M...', 17)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-04 22:53:09 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Seats.seat_id' in 'on clause'
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\TicketAdminController->index()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-04-04 22:54:12 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Rows.row_id' in 'on clause'
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#10 [internal function]: App\Controller\TicketAdminController->index()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#15 {main}
+
+
+2016-04-04 22:56:49 Error: Fatal Error (4): syntax error, unexpected '}' in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 18]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-04 22:56:49 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '}'
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', '/Applications/M...', 18)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-04 22:57:54 Error: Fatal Error (1): Call to undefined method App\Model\Entity\Ticket::getName() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php, line 18]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-04 22:57:54 Error: [Cake\Error\FatalErrorException] Call to undefined method App\Model\Entity\Ticket::getName()
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 18)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-04 23:00:30 Error: [InvalidArgumentException] Tickets is not associated with Performance
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performance', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\TicketAdminController->index()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-04-04 23:01:47 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.performance' doesn't exist
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'performance', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('performance', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('performance')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(486): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(326): Cake\ORM\Table->primaryKey()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(305): Cake\ORM\Query->_addAssociationsToTypeMap(Object(App\Model\Table\TicketsTable), Object(Cake\Database\TypeMap), Array)
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(13): Cake\ORM\Query->contain(Array)
+#7 [internal function]: App\Controller\TicketAdminController->index()
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2016-04-04 23:01:56 Error: [InvalidArgumentException] Tickets is not associated with Performance
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performance', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\TicketAdminController->index()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-04-05 00:02:59 Error: [InvalidArgumentException] Tickets is not associated with Performance
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performance', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\TicketAdminController->index()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-04-05 00:05:36 Error: [InvalidArgumentException] Tickets is not associated with Performance
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performance', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\TicketAdminController->index()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-04-05 00:05:55 Error: [InvalidArgumentException] Tickets is not associated with Performance
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performance', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\TicketAdminController->index()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-04-05 00:06:14 Error: [InvalidArgumentException] Tickets is not associated with Performance
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performance', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\TicketAdminController->index()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-04-05 00:07:02 Error: [InvalidArgumentException] Tickets is not associated with Performance
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performance', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#14 [internal function]: App\Controller\TicketAdminController->index()
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#19 {main}
+
+
+2016-04-05 00:07:35 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(439): Cake\ORM\EagerLoader->_normalizeContain(Object(Cake\ORM\Table), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performances', Array, Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#15 [internal function]: App\Controller\TicketAdminController->index()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#19 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#20 {main}
+
+
+2016-04-05 00:08:10 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(439): Cake\ORM\EagerLoader->_normalizeContain(Object(Cake\ORM\Table), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performances', Array, Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#15 [internal function]: App\Controller\TicketAdminController->index()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#19 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#20 {main}
+
+
+2016-04-05 00:08:18 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(439): Cake\ORM\EagerLoader->_normalizeContain(Object(Cake\ORM\Table), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performances', Array, Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#15 [internal function]: App\Controller\TicketAdminController->index()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#19 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#20 {main}
+
+
+2016-04-05 00:08:46 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(439): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performances', Array, Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#15 [internal function]: App\Controller\TicketAdminController->index()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#19 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#20 {main}
+
+
+2016-04-05 00:08:51 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(439): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performances', Array, Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#15 [internal function]: App\Controller\TicketAdminController->index()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#19 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#20 {main}
+
+
+2016-04-05 00:09:17 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(439): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performances', Array, Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#15 [internal function]: App\Controller\TicketAdminController->index()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#19 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#20 {main}
+
+
+2016-04-05 00:13:25 Error: [InvalidArgumentException] Performances is not associated with Plays
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(439): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Plays', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\TicketsTable), 'Performances', Array, Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\TicketsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\TicketsTable))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\TicketsTable), true)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(15): Cake\ORM\Query->getIterator()
+#15 [internal function]: App\Controller\TicketAdminController->index()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#19 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#20 {main}
+
+

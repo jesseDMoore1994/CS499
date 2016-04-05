@@ -29,10 +29,36 @@ class TicketsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->belongsTo('Customers', [
+        $this->belongsTo('Users', [
             'foreignKey' => 'customer_id',
             'joinType' => 'INNER'
         ]);
+
+        $this->hasOne('Theaters', [
+            'foreignKey' => 'id',
+            'joinType' => 'INNER'
+        ]);
+
+        $this->hasOne('Sections', [
+            'foreignKey' => 'id',
+            'joinType' => 'INNER'
+        ]);
+
+        $this->hasOne('Rows', [
+            'foreignKey' => 'id',
+            'joinType' => 'INNER'
+        ]);
+
+        $this->hasOne('Seats', [
+            'foreignKey' => 'id',
+            'joinType' => 'INNER'
+        ]);
+
+        $this->hasOne('Performances', [
+            'foreignKey' => 'id',
+            'joinType' => 'INNER'
+        ]);
+
         $options = array(
             // Refer to php.net fgetcsv for more information
             'length' => 0,
@@ -44,7 +70,7 @@ class TicketsTable extends Table
             // If true, String $content is the data, not a path to the file
             'text' => false,
         );
-        $this->addBehavior('CakePHPCSV.Csv', $options);
+        //$this->addBehavior('CakePHPCSV.Csv', $options);
     }
 
     /**

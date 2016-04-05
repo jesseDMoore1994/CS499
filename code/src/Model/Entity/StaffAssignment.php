@@ -26,7 +26,6 @@ class StaffAssignment extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'user_id' => false,
     ];
 
     protected function _getUserId()
