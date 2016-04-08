@@ -57,7 +57,7 @@
 				<?php } ?>
 			</div>
 			<div class="site-performance-seats">
-				<h2>Available Seats for Row <?= $seat_options[0] ?></h2>
+				<h2>Available Seats for Row <?= (count($seat_options) > 0) ? $seat_options[0] : "N" ?></h2>
 				<?php if (count($seat_options) >= 2) for ($i = 0; $i < count($seat_options[2]); $i++) { ?>
 				<div class="site-performance-seat">
 					<div class="site-performance-seat-cart caps">

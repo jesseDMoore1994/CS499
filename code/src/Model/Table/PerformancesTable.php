@@ -24,6 +24,18 @@ class PerformancesTable extends Table
 
 		$this->hasOne('Plays', [
 			'foreignKey' => 'id',
+			'bindingKey' => 'play_id',
+			'propertyName' => 'play'
+		]);
+
+		$this->hasOne('Theaters', [
+			'foreignKey' => 'id',
+			'bindingKey' => 'theater_id'
+		]);
+
+		$this->hasMany("Tickets", [
+			"foreignKey" => "performance_id",
+			'bindingKey' => 'id',
 			'joinType' => 'INNER'
 		]);
 	}

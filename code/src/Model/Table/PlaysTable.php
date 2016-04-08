@@ -22,6 +22,11 @@ class PlaysTable extends Table
 		$this->displayField('id');
 		$this->primaryKey('id');
 
+		$this->hasMany("Performances", [
+			"foreignKey" => "play_id",
+			'bindingKey' => 'id',
+			'joinType' => 'INNER'
+		]);
 
 	}
 

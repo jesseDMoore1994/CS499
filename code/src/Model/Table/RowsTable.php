@@ -31,6 +31,11 @@ class RowsTable extends Table
 			'foreignKey' => 'section',
 			'joinType' => 'INNER'
 		]);
+
+		$this->hasMany("Seats", [
+			"foreignKey" => "row",
+			"bindingKey" => "id"
+		]);
 	}
 
 }

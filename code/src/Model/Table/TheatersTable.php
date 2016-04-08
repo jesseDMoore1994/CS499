@@ -21,6 +21,16 @@ class TheatersTable extends Table
 		$this->table('theaters');
 		$this->displayField('id');
 		$this->primaryKey('id');
+
+		$this->hasMany("Sections", [
+			"foreignKey" => "theater",
+			"bindingKey" => "id",
+			"propertyName" => "sections"
+		]);
+
+		$this->hasMany("Seats", [
+			"foreignKey" => "theater"
+		]);
 	}
 
 }

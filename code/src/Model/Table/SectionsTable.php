@@ -24,12 +24,19 @@ class SectionsTable extends Table
 
 		$this->belongsTo('Theaters', [
 			'foreignKey' => 'theater',
+			"bindingKey" => "id",
 			'joinType' => 'INNER'
 		]);
 
 		$this->hasOne('Theaters', [
 			'foreignKey' => 'theater_id',
+			"bindingKey" => "id",
 			'joinType' => 'INNER'
+		]);
+
+		$this->hasMany("Rows", [
+			"foreignKey" => "section",
+			"bindingKey" => "id",
 		]);
 	}
 

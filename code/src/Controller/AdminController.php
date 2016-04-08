@@ -5,6 +5,7 @@ namespace App\Controller;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Cake\Network\Exception\ForbiddenException;
 
 class AdminController extends AppController {
 
@@ -14,8 +15,7 @@ class AdminController extends AppController {
 
 		// Display an error if the user is not logged in
 		if (!($this->loggedIn && $this->admin)) {
-			$this->response->statusCode(403);
-			return $this->response;
+			throw new ForbiddenException();
 		}
 
 		// Handle selection of the admin control panel
