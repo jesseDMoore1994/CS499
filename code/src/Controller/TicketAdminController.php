@@ -17,7 +17,7 @@ class TicketAdminController extends AdminController {
 				->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays']);
 		} else {
 			$query = $tickets->find()
-				->where(["theater_id" => $this->adminTheater])
+				->where(["Tickets.theater_id" => $this->adminTheater])
 				->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays']);
 		}
 

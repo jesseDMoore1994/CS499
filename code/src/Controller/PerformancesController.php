@@ -57,7 +57,7 @@ class PerformancesController extends AppController {
 				// If it should be shown, add to performance list
 				if ($show) $performances[] = [
 					$performance->id,
-					$performance->start_time,
+					date("M d Y, h:i", $performance->start_time),
 					$performance->theater->name,
 					$available,
 					$play->name
@@ -186,6 +186,7 @@ class PerformancesController extends AppController {
 				}
 			}
 
+			// If no row has available seats, set to first
 			if ($row == -1) $row = 0;
 		}
 

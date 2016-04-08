@@ -17,17 +17,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_debug_kit_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_debug_kit_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" afterPath="$PROJECT_DIR$/code/tmp/cache/persistent/myapp_cake_core_translations_default_en__u_s" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" afterPath="$PROJECT_DIR$/code/tmp/debug_kit.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/logs/debug.log" afterPath="$PROJECT_DIR$/code/logs/debug.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/logs/error.log" afterPath="$PROJECT_DIR$/code/logs/error.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Controller/AdminController.php" afterPath="$PROJECT_DIR$/code/src/Controller/AdminController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Controller/PerformancesController.php" afterPath="$PROJECT_DIR$/code/src/Controller/PerformancesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Model/Table/PerformancesTable.php" afterPath="$PROJECT_DIR$/code/src/Model/Table/PerformancesTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Model/Table/PlaysTable.php" afterPath="$PROJECT_DIR$/code/src/Model/Table/PlaysTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Model/Table/RowsTable.php" afterPath="$PROJECT_DIR$/code/src/Model/Table/RowsTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Model/Table/SectionsTable.php" afterPath="$PROJECT_DIR$/code/src/Model/Table/SectionsTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Model/Table/TheatersTable.php" afterPath="$PROJECT_DIR$/code/src/Model/Table/TheatersTable.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Template/Performances/view.ctp" afterPath="$PROJECT_DIR$/code/src/Template/Performances/view.ctp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/src/Controller/TicketAdminController.php" afterPath="$PROJECT_DIR$/code/src/Controller/TicketAdminController.php" />
     </list>
     <ignored path="CS499.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,14 +41,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PerformancesController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PerformancesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/src/Controller/PerformancesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6619171">
-              <caret line="154" column="68" selection-start-line="154" selection-start-column="68" selection-end-line="154" selection-end-column="68" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="59" column="64" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="64" />
               <folding>
                 <element signature="e#33#66#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TicketAdminController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code/src/Controller/TicketAdminController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.48834196">
+              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -127,7 +129,6 @@
         <option value="$PROJECT_DIR$/code/config/routes.php" />
         <option value="$PROJECT_DIR$/code/src/Controller/AdminSettingsController.php" />
         <option value="$PROJECT_DIR$/code/src/Controller/CustomerAdminController.php" />
-        <option value="$PROJECT_DIR$/code/src/Controller/TicketAdminController.php" />
         <option value="$PROJECT_DIR$/code/src/Model/Table/PlaysTable.php" />
         <option value="$PROJECT_DIR$/code/src/Model/Table/TicketsTable.php" />
         <option value="$PROJECT_DIR$/code/src/Model/Table/RowsTable.php" />
@@ -137,6 +138,7 @@
         <option value="$PROJECT_DIR$/code/src/Model/Table/TheatersTable.php" />
         <option value="$PROJECT_DIR$/code/src/Model/Table/PerformancesTable.php" />
         <option value="$PROJECT_DIR$/code/src/Controller/PerformancesController.php" />
+        <option value="$PROJECT_DIR$/code/src/Controller/TicketAdminController.php" />
       </list>
     </option>
   </component>
@@ -819,14 +821,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/Controller/TicketAdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Model/Table/StaffAssignmentsTable.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -911,11 +905,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/src/Controller/PerformancesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6619171">
-          <caret line="154" column="68" selection-start-line="154" selection-start-column="68" selection-end-line="154" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="64" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="64" />
           <folding>
             <element signature="e#33#66#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/Controller/TicketAdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48834196">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
