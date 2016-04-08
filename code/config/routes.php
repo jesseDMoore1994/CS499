@@ -66,6 +66,8 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/admin/setup/staff/', ['controller' => 'SetupAdmin', 'action' => 'staff']);
 	$routes->connect('/admin/setup/staff/*', ['controller' => 'SetupAdmin', 'action' => 'staff']);
 
+	$routes->connect('/admin/settings/select/*', ['controller' => 'AdminSettings', 'action' => 'select']);
+
     $routes->connect('/admindata', ['controller' => 'AdminData', 'action' => 'index']);
     //$routes->connect('/admindata/*', ['controller' => 'AdminData']);
 	/**

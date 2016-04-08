@@ -1,7 +1,9 @@
 <?php
 $this->start('navigation');
 echo $this->element('navigation/cart');
-echo $this->element('navigation/login_guest');
+if (!$loggedIn) echo $this->element('navigation/login_guest');
+if ($loggedIn && !$admin) echo $this->element('navigation/login_member');
+if ($loggedIn && $admin) echo $this->element('navigation/login_admin');
 echo $this->element('navigation/main');
 echo $this->element('navigation/logo');
 $this->end();

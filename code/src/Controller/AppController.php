@@ -51,28 +51,58 @@ class AppController extends Controller {
 	public function beforeFilter(Event $event) {
 		parent::beforeFilter($event);
 
-		if ($this->Cookie->read('ta_login_id') !== null) {
+		$this->loggedIn = false;
+		$this->user = null;
+		$this->admin = false;
+		$this->superAdmin = false;
+		$this->adminTheaters = [];
+
+		if ($this->Cookie->read('ta_login_id') !== null && $this->Cookie->read('ta_login_id') != 0) {
+
+			// Pull data from session cookies
 			$login_id = $this->Cookie->read('ta_login_id');
 			$login_email = $this->Cookie->read('ta_login_email');
 			$login_key = $this->Cookie->read('ta_login_key');
 
+			// Select the user that the user is supposedly logged in as
 			$table = TableRegistry::get("Users");
 			$user = $table->find('all')
 				->where(["id" => $login_id, "email" => $login_email])->all();
 
+			// If the user exists
 			if ($user->count() > 0) {
+
+				// If the user session cookie is valid
 				if ($user->first()->makeKey() == $login_key) {
+
+					// Set basic login variables
 					$this->loggedIn = true;
 					$this->user = $user->first();
-				} else {
-					$this->loggedIn = true;
-					$this->user = null;
+					$this->superAdmin = $this->user->is_super_admin;
+
+					// Retrieve admin status
+					$staffTable = TableRegistry::get("StaffAssignments");
+					$assignments = $staffTable->find()
+						->where(["user_id" => $this->user->id])
+						->contain(["Theaters"]);
+
+					// Store all admin assignments
+					foreach ($assignments as $assign) {
+						$this->adminTheaters[] = $assign;
+					}
+
+					// Store whether the user is an admin of any theater
+					$this->admin = $this->user->is_super_admin = $this->superAdmin || count($this->adminTheaters) > 0;
+
 				}
 			}
-
-			$this->set("loggedIn", $this->loggedIn);
-			$this->set("me", $this->user);
 		}
+
+		$this->set("loggedIn", $this->loggedIn);
+		$this->set("me", $this->user);
+		$this->set("admin", $this->admin);
+		$this->set("superAdmin", $this->superAdmin);
+		$this->set("adminTheaters", $this->adminTheaters);
 
 	}
 

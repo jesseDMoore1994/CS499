@@ -6,13 +6,6 @@ echo $this->element('navigation/main');
 echo $this->element('navigation/logo');
 $this->end();
 
-$this->start('adminheader');
-echo $this->element('admin/menu/title');
-echo $this->element('admin/menu/module_tickets');
-echo $this->element('admin/menu/module_users');
-echo $this->element('admin/menu/module_setup');
-$this->end();
-
 function startsWith($haystack, $needle) {
 	// search backwards starting from haystack length characters from the end
 	return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
@@ -48,7 +41,7 @@ function startsWith($haystack, $needle) {
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
 </head>
-<body>
+<body data-urlbase="<?= $this->Url->build("/", true) ?>">
 <div class="wrap admin">
 	<div class="admin-container">
 		<div class="admin-logo">
@@ -61,14 +54,22 @@ function startsWith($haystack, $needle) {
 				</div>
 			</div>
 			<div class="admin-panel-select">
-				<select>
+				<select class="admin-theater-switcher">
+
+					<?php if (count($adminTheaters) > 0) { ?>
 					<optgroup label="Theaters">
-						<option>Civic Center Playhouse</option>
-						<option>Civic Center Concert Hall</option>
+						<?php foreach ($adminTheaters as $assignment) { ?>
+							<option value="<?= $assignment->theater_id ?>"<?php if ($adminTheater == $assignment->theater_id) { echo " selected='yes'"; } ?>><?= $assignment->theater->name ?></option>
+						<?php } ?>
 					</optgroup>
+					<?php } ?>
+
+					<?php if ($superAdmin) { ?>
 					<optgroup label="Administrator Tools">
-						<option>Site Administration Console</option>
+						<option value="0"<?php if ($adminTheater == 0) { echo " selected='yes'"; } ?>>Site Administration Console</option>
 					</optgroup>
+					<?php } ?>
+
 				</select>
 			</div>
 			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/tickets/", true)) || $this->Url->build(null, true) == $this->Url->build("/admin/", true)) echo " selected"; ?>">

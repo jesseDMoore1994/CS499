@@ -34,6 +34,13 @@ class StaffAssignmentsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'
         ]);
+
+        $this->hasOne('Theaters', [
+            'foreignKey' => 'id',
+			'bindingKey' => 'theater_id',
+			'propertyName' => 'theater'
+        ]);
+
         $options = array(
             // Refer to php.net fgetcsv for more information
             'length' => 0,

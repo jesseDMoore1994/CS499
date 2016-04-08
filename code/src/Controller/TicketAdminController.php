@@ -10,7 +10,16 @@ class TicketAdminController extends AdminController {
 	public function index() {
 		$tickets = TableRegistry::get('Tickets');
 		$pass = [];
-		$query = $tickets->find()->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays']);
+		$query = null;
+
+		if ($this->adminTheater == 0) {
+			$query = $tickets->find()
+				->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays']);
+		} else {
+			$query = $tickets->find()
+				->where(["theater_id" => $this->adminTheater])
+				->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays']);
+		}
 
 		foreach ($query as $row) {
 			$pass[] = [

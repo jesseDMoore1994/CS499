@@ -15,14 +15,14 @@ class CustomerAdminController extends AdminController {
 		foreach ($query as $row) {
 
 			$assignment = $staff->find("all")
-				->where(['theater_id' => 1, 'user_id' => $row->id])
+				->where(['theater_id' => $this->adminTheater, 'user_id' => $row->id])
 				->all();
 
 			$staff_name = "Customer";
 			$staff_level = "0";
 
-			if (count($assignment) > 0) {
-				$staff_level = $assignment[0]->access_level;
+			if ($assignment->count() > 0) {
+				$staff_level = $assignment->first()->access_level;
 				if ($staff_level == 1) {
 					$staff_name = "Cashier";
 				} else if ($staff_level == 2) {

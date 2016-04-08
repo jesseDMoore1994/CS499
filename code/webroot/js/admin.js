@@ -8,6 +8,7 @@ $(document).ready(function() {
 	performanceDialog = createDialog(".performance-creator", 520);
 	initTicketDialog();
 	initCustomerDialog();
+	initTheaterSwitcher();
 
 	$( ".datepicker" ).datepicker();
 
@@ -130,3 +131,11 @@ function showPerformanceEditDialog(id) {
 	$(".performance-creator .canceled").val(json["performance_canceled"]);
 }
 
+
+
+function initTheaterSwitcher() {
+	$(".admin-theater-switcher").change(function() {
+		urlbase = $("body").attr("data-urlbase");
+		window.location = urlbase + "admin/settings/select/" + $(this).val() + "/";
+	});
+}

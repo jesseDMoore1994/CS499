@@ -4109,3 +4109,477 @@ Stack Trace:
 #2 {main}
 
 
+2016-04-07 18:24:35 Error: Fatal Error (1): Call to a member function deny() on boolean in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AdminController.php, line 13]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-07 18:24:35 Error: [Cake\Error\FatalErrorException] Call to a member function deny() on boolean
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 13)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-07 18:24:59 Error: Fatal Error (1): Call to a member function deny() on boolean in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AdminController.php, line 16]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-07 18:24:59 Error: [Cake\Error\FatalErrorException] Call to a member function deny() on boolean
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 16)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-07 18:47:58 Error: Fatal Error (1): Call to undefined method App\Controller\TicketAdminController::_stop() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AdminController.php, line 15]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-07 18:48:01 Error: [Cake\Error\FatalErrorException] Call to undefined method App\Controller\TicketAdminController::_stop()
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 15)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-07 21:10:12 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::login() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /CS499/CS499/Code/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CS499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/CS499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#2 /Applications/MAMP/htdocs/CS499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-07 21:10:32 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::login() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /CS499/CS499/Code/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CS499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/CS499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#2 /Applications/MAMP/htdocs/CS499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-07 21:10:48 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::login() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'login',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /CS499/CS499/Code/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CS499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/CS499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\UsersController))
+#2 /Applications/MAMP/htdocs/CS499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-07 21:14:45 Error: Fatal Error (1): Call to a member function statusCode() on null in [/Applications/MAMP/htdocs/CS499/CS499/Code/src/Controller/AdminController.php, line 16]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-07 21:14:46 Error: [Cake\Error\FatalErrorException] Call to a member function statusCode() on null
+Request URL: /CS499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CS499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 16)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-07 21:15:01 Error: Fatal Error (1): Call to a member function statusCode() on null in [/Applications/MAMP/htdocs/CS499/CS499/Code/src/Controller/AdminController.php, line 16]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-07 21:15:01 Error: [Cake\Error\FatalErrorException] Call to a member function statusCode() on null
+Request URL: /CS499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CS499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 16)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-07 21:15:11 Error: Fatal Error (1): Call to a member function statusCode() on null in [/Applications/MAMP/htdocs/CS499/CS499/Code/src/Controller/AdminController.php, line 16]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-07 21:15:11 Error: [Cake\Error\FatalErrorException] Call to a member function statusCode() on null
+Request URL: /CS499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/CS499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 16)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-07 21:32:32 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Signout could not be found.
+Exception Attributes: array (
+  'class' => 'Signout',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/signout/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-04-07 21:33:44 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Signout could not be found.
+Exception Attributes: array (
+  'class' => 'Signout',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/signout/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-04-07 21:34:30 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Signout could not be found.
+Exception Attributes: array (
+  'class' => 'Signout',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/signout/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-04-07 21:34:34 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Signout could not be found.
+Exception Attributes: array (
+  'class' => 'Signout',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/signout/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-04-07 21:34:38 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Logout could not be found.
+Exception Attributes: array (
+  'class' => 'Logout',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/logout/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-04-07 21:34:55 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Logout could not be found.
+Exception Attributes: array (
+  'class' => 'Logout',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/logout/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-04-07 21:35:05 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Logout could not be found.
+Exception Attributes: array (
+  'class' => 'Logout',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Request URL: /cs499/CS499/Code/logout/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#1 {main}
+
+
+2016-04-07 21:37:13 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/import/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-07 23:17:36 Error: [InvalidArgumentException] StaffAssignments is not associated with Theater
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\StaffAssignmentsTable), 'Theater', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\StaffAssignmentsTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\StaffAssignmentsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\StaffAssignmentsTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AppController.php(90): Cake\ORM\Query->getIterator()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AdminController.php(12): App\Controller\AppController->beforeFilter(Object(Cake\Event\Event))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Event/EventManager.php(374): App\Controller\AdminController->beforeFilter(Object(Cake\Event\Event))
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Event/EventManager.php(345): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Event/EventDispatcherTrait.php(75): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(478): Cake\Controller\Controller->dispatchEvent('Controller.init...')
+#19 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(106): Cake\Controller\Controller->startupProcess()
+#20 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#21 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#22 {main}
+
+
+2016-04-07 23:20:36 Error: [InvalidArgumentException] StaffAssignments is not associated with Theater
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\StaffAssignmentsTable), 'Theater', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\StaffAssignmentsTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\StaffAssignmentsTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\StaffAssignmentsTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(127): Cake\ORM\Query->all()
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AppController.php(90): Cake\ORM\Query->getIterator()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AdminController.php(12): App\Controller\AppController->beforeFilter(Object(Cake\Event\Event))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Event/EventManager.php(374): App\Controller\AdminController->beforeFilter(Object(Cake\Event\Event))
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Event/EventManager.php(345): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Event/EventDispatcherTrait.php(75): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#18 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(478): Cake\Controller\Controller->dispatchEvent('Controller.init...')
+#19 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(106): Cake\Controller\Controller->startupProcess()
+#20 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#21 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#22 {main}
+
+
+2016-04-07 23:33:55 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Layout/admin.ctp, line 59]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Layout/admin.ctp, line 59
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 620
+Cake\View\View::render() - CORE/src/View/View.php, line 580
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-08 00:05:18 Error: Fatal Error (1): Cannot use object of type Cake\ORM\ResultSet as array in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 25]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-08 00:05:18 Error: [Cake\Error\FatalErrorException] Cannot use object of type Cake\ORM\ResultSet as array
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Cannot use obje...', '/Applications/M...', 25)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-08 00:14:50 Error: Fatal Error (1): Cannot use object of type Cake\ORM\ResultSet as array in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 25]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-08 00:14:50 Error: [Cake\Error\FatalErrorException] Cannot use object of type Cake\ORM\ResultSet as array
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Cannot use obje...', '/Applications/M...', 25)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-08 00:14:55 Error: Fatal Error (1): Cannot use object of type Cake\ORM\ResultSet as array in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 25]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-08 00:14:55 Error: [Cake\Error\FatalErrorException] Cannot use object of type Cake\ORM\ResultSet as array
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Cannot use obje...', '/Applications/M...', 25)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-08 00:15:59 Error: Fatal Error (1): Cannot use object of type Cake\ORM\ResultSet as array in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 25]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-08 00:16:00 Error: [Cake\Error\FatalErrorException] Cannot use object of type Cake\ORM\ResultSet as array
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Cannot use obje...', '/Applications/M...', 25)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-08 00:17:04 Error: Fatal Error (1): Cannot use object of type Cake\ORM\ResultSet as array in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 25]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-08 00:17:05 Error: [Cake\Error\FatalErrorException] Cannot use object of type Cake\ORM\ResultSet as array
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Cannot use obje...', '/Applications/M...', 25)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-08 00:17:13 Error: [Cake\Controller\Exception\MissingActionException] Action AdminSettingsController::index() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminSettingsController',
+  'action' => 'index',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/settings/select/1/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminSettingsController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-08 00:18:25 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::settings() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'settings',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/settings/select/1/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-08 00:18:36 Error: [Cake\View\Exception\MissingTemplateException] Template file "AdminSettings/select.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'AdminSettings/select.ctp',
+)
+Request URL: /cs499/CS499/Code/admin/settings/select/1/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminSettingsController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-08 00:20:25 Error: Fatal Error (1): Cannot use object of type Cake\ORM\ResultSet as array in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 25]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-08 00:20:25 Error: [Cake\Error\FatalErrorException] Cannot use object of type Cake\ORM\ResultSet as array
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Cannot use obje...', '/Applications/M...', 25)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-08 00:21:17 Error: Fatal Error (1): Call to undefined method Cake\ORM\ResultSet::size() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 24]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-08 00:21:17 Error: [Cake\Error\FatalErrorException] Call to undefined method Cake\ORM\ResultSet::size()
+Request URL: /cs499/CS499/Code/admin/customers/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 24)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+

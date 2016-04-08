@@ -6,12 +6,13 @@
 			<div class="auth-logo"><a href="<?= $this->Url->build('/', true) ?>"></a></div>
 		</div>
 		<div class="auth-body">
-			<form class="auth-form">
+			<?= $this->Flash->render('flash'); ?>
+			<form class="auth-form" action="" method="post">
 				<label for="email">Email Address:</label>
 				<input type="text" name="email" id="email" />
 				<em class="requirement"><a href="<?= $this->Url->build('/auth/forgot/', true) ?>">Forgot password?</a></em>
 				<label for="password">Password:</label>
-				<input type="password" name="passowrd" id="password" />
+				<input type="password" name="password" id="password" />
 				<input type="submit" value="Login In" class="submit" />
 				<div class="create-account-notice">
 					or <a href="<?= $this->Url->build('/auth/signup/', true) ?>">sign up for an account</a>

@@ -14,7 +14,7 @@
  * This implementation of PBKDF2 was originally created by https://defuse.ca
  * With improvements by http://www.variations-of-shadow.com
  */
-function pbkdf2($algorithm, $password, $salt = null, $count = 10000, $key_length = 128, $raw_output = false)
+function pbkdf2($algorithm, $password, $salt = null, $count = 10000, $key_length = 64, $raw_output = false)
 {
 	if ($salt == null) {
 		$salt = uniqid(mt_rand(), true);
