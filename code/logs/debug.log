@@ -3686,3 +3686,29 @@ Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
 
 
 
+2016-04-09 18:39:22 Notice: Deprecated (16384): Controller::$layout is deprecated. Use $this->viewBuilder()->layout() instead. in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php, line 368]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\Controller\Controller::__set() - CORE/src/Controller/Controller.php, line 368
+App\Controller\CartController::apiAdd() - APP/Controller/CartController.php, line 40
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-09 19:16:57 Notice: Notice (8): Use of undefined constant Math - assumed 'Math' in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AppController.php, line 104]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\AppController::beforeFilter() - APP/Controller/AppController.php, line 104
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 374
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 345
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 75
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 478
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 106
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+

@@ -35,7 +35,7 @@ $this->end();
 	<?= $this->fetch('css') ?>
 	<?= $this->fetch('script') ?>
 </head>
-<body class="layout-site">
+<body class="layout-site" data-urlbase="<?= $this->Url->build("/", true) ?>">
 <?= $this->element("responsive/menu") ?>
 <div class="wrap">
 	<div class="header">

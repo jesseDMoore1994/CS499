@@ -98,6 +98,12 @@ class AppController extends Controller {
 			}
 		}
 
+		// Generate the user's shopping cart key
+		if ($this->Cookie->read('ta_cart_id') === null) {
+			// Composition: cart_ + high-entropy unique-id + random 32-bit key
+			$this->Cookie->write("ta_cart_id", uniqid("cart_", true).".".dechex(mt_rand(0,pow(2,32))));
+		}
+
 		$this->set("loggedIn", $this->loggedIn);
 		$this->set("me", $this->user);
 		$this->set("admin", $this->admin);

@@ -85,6 +85,7 @@ class PerformancesController extends AppController {
 
 		// Get the table ready for queries
 		$table = TableRegistry::get("Performances");
+		$cartTable = TableRegistry::get("CartItems");
 
 		// Select the performance and other info from the database
 		$performances = $table
@@ -94,6 +95,15 @@ class PerformancesController extends AppController {
 				"Theaters", "Tickets", "Theaters.Sections",
 				"Theaters.Sections.Rows", "Theaters.Sections.Rows.Seats",
 				"Plays", "Tickets"
+			])
+			->all();
+
+		// Load the user's shopping cart
+		$cart = $cartTable
+			->find()
+			->where([
+				"cart_id" => $this->Cookie->read("ta_cart_id"),
+				"performance_id" => $id
 			])
 			->all();
 
@@ -126,6 +136,8 @@ class PerformancesController extends AppController {
 				// Set up a few arrays to populate with seats
 				$seat_names = [];
 				$seat_prices = [];
+				$seat_ids = [];
+				$seat_cart_statuses = [];
 				$seat_count = 0;
 
 				// For each seat in the theater
@@ -139,38 +151,30 @@ class PerformancesController extends AppController {
 						}
 					}
 
+					$cart_status = false;
+					foreach ($cart as $item) {
+						if ($item->seat_id == $seat->id) {
+							$cart_status = true;
+						}
+					}
+
 					// Add the seat to the structure
 					$seat_names[] = $section->code.$r->code."-".$seat->code;
 					$seat_prices[] = (($available) ? $seat->price : false);;
+					$seat_ids[] = $seat->id;
+					$seat_cart_statuses[] = $cart_status;
 
 					// Increment the seat count if available
 					$seat_count += (($available) ? 1 : 0);
 				}
 
 				// Add to the list of rows
-				$rows[] = [$r->code, $seat_count, $seat_names, $seat_prices];
+				$rows[] = [$r->code, $seat_count, $seat_names, $seat_prices, $seat_ids, $seat_cart_statuses, $performance->id];
 			}
 
 			// Add to the list of sections
 			$sections[] = [$section->front_text, $section->back_text, $rows];
 		}
-
-		// Define the theater's seats
-		/*$sections = [
-			["Front", "Back", [
-				["A", 0, ["A1", "A2", "A3", "A4", "A5"], [false, false, false, false, false]],
-				["B", 2, ["B1", "B2", "B3", "B4", "B5"], [15, 15, false, false, false]],
-				["C", 5, ["C1", "C2", "C3", "C4", "C5"], [15, 15, 15, 15, 15]],
-			]],
-			["Balcony", "&nbsp;", [
-				["U", 5, ["U1", "U2", "U3", "U4", "U5"], [15, 15, 15, 15, 15]],
-				["V", 5, ["V1", "V2", "V3", "V4", "V5"], [15, 15, 15, 15, 15]],
-				["W", 5, ["W1", "W2", "W3", "W4", "W5"], [15, 15, 15, 15, 15]],
-			]],
-			["&nbsp;", "&nbsp;", [
-				["<span class='icomoon'>&#xe9b2;</span>", 2, ["AC1", "AC2", "AC3", "AC4", "AC5"], [false, false, 15, 15, false]],
-			]]
-		];*/
 
 		// If no row selected, select the first row with open seats.
 		if ($row == -1) {

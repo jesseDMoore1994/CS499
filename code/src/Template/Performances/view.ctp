@@ -62,7 +62,11 @@
 				<div class="site-performance-seat">
 					<div class="site-performance-seat-cart caps">
 						<?php if ($seat_options[3][$i]) { ?>
-						<a href="">Add to Cart</a>
+							<?php if ($seat_options[5][$i]) { ?>
+							<a href="javascript:removeTicketFromCart('<?= $seat_options[4][$i] ?>', '<?= $seat_options[6] ?>')" id="addcart-<?= $seat_options[4][$i] ?>-<?= $seat_options[6] ?>">Remove</a>
+							<?php } else { ?>
+							<a href="javascript:addTicketToCart('<?= $seat_options[4][$i] ?>', '<?= $seat_options[6] ?>')" id="addcart-<?= $seat_options[4][$i] ?>-<?= $seat_options[6] ?>">Add to Cart</a>
+							<?php } ?>
 						<?php } else { ?>
 						--
 						<?php } ?>

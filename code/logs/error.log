@@ -5466,3 +5466,654 @@ Stack Trace:
 #15 {main}
 
 
+2016-04-08 23:07:28 Error: [InvalidArgumentException] Performances is not associated with Performances
+Request URL: /cs499/CS499/Code/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Performances', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\PerformancesTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\PerformancesTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\PerformancesTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php(30): Cake\ORM\Query->all()
+#13 [internal function]: App\Controller\HomeController->index()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\HomeController))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-04-08 23:07:51 Error: [InvalidArgumentException] Performances is not associated with Performances
+Request URL: /cs499/CS499/Code/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Performances', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\PerformancesTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\PerformancesTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\PerformancesTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php(30): Cake\ORM\Query->all()
+#13 [internal function]: App\Controller\HomeController->index()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\HomeController))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-04-08 23:07:53 Error: [InvalidArgumentException] Performances is not associated with Performances
+Request URL: /cs499/CS499/Code/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Performances', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\PerformancesTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\PerformancesTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\PerformancesTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php(30): Cake\ORM\Query->all()
+#13 [internal function]: App\Controller\HomeController->index()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\HomeController))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-04-09 00:20:10 Error: [InvalidArgumentException] Performances is not associated with Performances
+Request URL: /cs499/CS499/Code/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Performances', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\PerformancesTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\PerformancesTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\PerformancesTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php(30): Cake\ORM\Query->all()
+#13 [internal function]: App\Controller\HomeController->index()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\HomeController))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-04-09 00:20:28 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\PerformancesTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\PerformancesTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\PerformancesTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php(30): Cake\ORM\Query->all()
+#13 [internal function]: App\Controller\HomeController->index()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\HomeController))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-04-09 01:07:58 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\PerformancesTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\PerformancesTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\PerformancesTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php(30): Cake\ORM\Query->all()
+#13 [internal function]: App\Controller\HomeController->index()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\HomeController))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-04-09 01:08:29 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\PerformancesTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\PerformancesTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\PerformancesTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php(30): Cake\ORM\Query->all()
+#13 [internal function]: App\Controller\HomeController->index()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\HomeController))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-04-09 01:08:50 Error: [InvalidArgumentException] Performances is not associated with Play
+Request URL: /cs499/CS499/Code/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(246): Cake\ORM\EagerLoader->_normalizeContain(Object(App\Model\Table\PerformancesTable), 'Play', Array, Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(359): Cake\ORM\EagerLoader->normalized(Object(App\Model\Table\PerformancesTable))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/EagerLoader.php(331): Cake\ORM\EagerLoader->attachableAssociations(Object(App\Model\Table\PerformancesTable))
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(881): Cake\ORM\EagerLoader->attachAssociations(Object(Cake\ORM\Query), Object(App\Model\Table\PerformancesTable), true)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(839): Cake\ORM\Query->_transformQuery()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(117): Cake\ORM\Query->sql()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(206): Cake\Database\Driver\Mysql->prepare(Object(Cake\ORM\Query))
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(255): Cake\Database\Connection->prepare(Object(Cake\ORM\Query))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/HomeController.php(30): Cake\ORM\Query->all()
+#13 [internal function]: App\Controller\HomeController->index()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#16 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\HomeController))
+#17 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#18 {main}
+
+
+2016-04-09 18:33:02 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiAdd() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiAdd',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 18:33:38 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiAdd() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiAdd',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 18:34:06 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiAdd() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiAdd',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 18:34:08 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiAdd() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiAdd',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 18:34:19 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiAdd() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiAdd',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 18:34:37 Error: [Cake\View\Exception\MissingTemplateException] Template file "Cart/api_add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Cart/api_add.ctp',
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-09 18:35:20 Error: [Cake\View\Exception\MissingTemplateException] Template file "Cart/api_add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Cart/api_add.ctp',
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1.json
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-09 18:36:48 Error: [Cake\View\Exception\MissingTemplateException] Template file "Cart/api_add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Cart/api_add.ctp',
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1.json
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-09 18:39:22 Error: [Cake\View\Exception\MissingTemplateException] Template file "Cart/api_add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Cart/api_add.ctp',
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1.json
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-09 18:40:35 Error: [Cake\View\Exception\MissingTemplateException] Template file "Cart/api_add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Cart/api_add.ctp',
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1.json
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-09 18:41:07 Error: [Cake\View\Exception\MissingTemplateException] Template file "Cart/api_add.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'Cart/api_add.ctp',
+)
+Request URL: /cs499/CS499/Code/cart/api_add/2/1.json
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-09 18:47:11 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.cart_item' doesn't exist
+Request URL: /cs499/CS499/Code/cart/apiAdd/1/2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'cart_item', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('cart_item', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('cart_item')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Marshaller.php(111): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1920): Cake\ORM\Marshaller->one(Array, Array)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php(46): Cake\ORM\Table->newEntity(Array)
+#6 [internal function]: App\Controller\CartController->apiAdd('1', '2')
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 {main}
+
+
+2016-04-09 19:05:16 Error: Fatal Error (1): Call to undefined method Cake\ORM\Entity::save() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 73]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-09 19:05:16 Error: [Cake\Error\FatalErrorException] Call to undefined method Cake\ORM\Entity::save()
+Request URL: /cs499/CS499/Code/cart/apiAdd/1/2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 73)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-09 19:05:51 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cart_id' cannot be null
+Request URL: /cs499/CS499/Code/cart/apiAdd/1/2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(Cake\ORM\Entity), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(Cake\ORM\Entity), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php(73): Cake\ORM\Table->save(Object(Cake\ORM\Entity))
+#11 [internal function]: App\Controller\CartController->apiAdd('1', '2')
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-09 19:07:35 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cart_id' cannot be null
+Request URL: /cs499/CS499/Code/cart/api_add/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(Cake\ORM\Entity), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(Cake\ORM\Entity), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php(73): Cake\ORM\Table->save(Object(Cake\ORM\Entity))
+#11 [internal function]: App\Controller\CartController->apiAdd('2', '1')
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-09 19:07:45 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cart_id' cannot be null
+Request URL: /cs499/CS499/Code/cart/apiAdd/1/2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(Cake\ORM\Entity), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(Cake\ORM\Entity), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php(73): Cake\ORM\Table->save(Object(Cake\ORM\Entity))
+#11 [internal function]: App\Controller\CartController->apiAdd('1', '2')
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-09 19:07:47 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cart_id' cannot be null
+Request URL: /cs499/CS499/Code/cart/apiAdd/1/2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(Cake\ORM\Entity), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(Cake\ORM\Entity), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php(73): Cake\ORM\Table->save(Object(Cake\ORM\Entity))
+#11 [internal function]: App\Controller\CartController->apiAdd('1', '2')
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-09 19:08:22 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cart_id' cannot be null
+Request URL: /cs499/CS499/Code/cart/apiAdd/1/2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(Cake\ORM\Entity), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(Cake\ORM\Entity), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php(75): Cake\ORM\Table->save(Object(Cake\ORM\Entity))
+#11 [internal function]: App\Controller\CartController->apiAdd('1', '2')
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-09 19:08:32 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'cart_id' cannot be null
+Request URL: /cs499/CS499/Code/cart/apiAdd/1/2/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(Cake\ORM\Entity), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(Cake\ORM\Entity), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php(73): Cake\ORM\Table->save(Object(Cake\ORM\Entity))
+#11 [internal function]: App\Controller\CartController->apiAdd('1', '2')
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-09 19:16:57 Warning: Warning (2): mt_rand() expects parameter 2 to be long, string given in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/AppController.php, line 104]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+mt_rand - [internal], line ??
+App\Controller\AppController::beforeFilter() - APP/Controller/AppController.php, line 104
+Cake\Event\EventManager::_callListener() - CORE/src/Event/EventManager.php, line 374
+Cake\Event\EventManager::dispatch() - CORE/src/Event/EventManager.php, line 345
+Cake\Controller\Controller::dispatchEvent() - CORE/src/Event/EventDispatcherTrait.php, line 75
+Cake\Controller\Controller::startupProcess() - CORE/src/Controller/Controller.php, line 478
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 106
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-09 19:44:49 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiRemove() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiRemove',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_remove/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 19:45:14 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiRemove() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiRemove',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_remove/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 19:47:03 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiRemove() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiRemove',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_remove/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 19:47:41 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiRemove() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiRemove',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_remove/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 19:47:53 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiRemove() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiRemove',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_remove/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 19:47:58 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiRemove() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiRemove',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_remove/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 19:48:05 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiRemove() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiRemove',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_remove/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-09 19:48:11 Error: [Cake\Controller\Exception\MissingActionException] Action CartController::apiRemove() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'CartController',
+  'action' => 'apiRemove',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/cart/api_remove/2/1
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CartController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+

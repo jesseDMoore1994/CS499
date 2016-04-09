@@ -20,7 +20,7 @@
 				</div>
 				<div>
 					<div class="button call-to-action">
-						<a href="">Buy Tickets</a>
+						<a href="<?= $this->Url->build($p[4], true) ?>">Buy Tickets</a>
 					</div>
 				</div>
 			</div>
