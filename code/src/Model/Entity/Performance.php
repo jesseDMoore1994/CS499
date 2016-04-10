@@ -23,6 +23,6 @@ class Performance extends Entity
 
 	function timeHour() {
 		$time = Time::createFromTimestamp($this->start_time);
-		return $time->i18nFormat('G');
+		return date('g:i a', $time->timestamp);
 	}
 }

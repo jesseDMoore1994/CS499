@@ -50,12 +50,18 @@ Router::scope('/', function ($routes) {
 
 	$routes->connect('/admin/tickets', ['controller' => 'TicketAdmin', 'action' => 'index']);
 	$routes->connect('/admin/tickets/*', ['controller' => 'TicketAdmin']);
+	$routes->connect('/admin/tickets/api_manage/', ['controller' => 'TicketAdmin', 'action' => 'apiManage']);
+	$routes->connect('/admin/tickets/api_manage/*', ['controller' => 'TicketAdmin', 'action' => 'apiManage']);
 
 	$routes->connect('/admin/customers', ['controller' => 'CustomerAdmin', 'action' => 'index']);
 	$routes->connect('/admin/customers/*', ['controller' => 'CustomerAdmin']);
+	$routes->connect('/admin/customers/api_manage/', ['controller' => 'CustomerAdmin', 'action' => 'apiManage']);
+	$routes->connect('/admin/customers/api_manage/*', ['controller' => 'CustomerAdmin', 'action' => 'apiManage']);
 
 	$routes->connect('/admin/schedule', ['controller' => 'ScheduleAdmin', 'action' => 'index']);
 	$routes->connect('/admin/schedule/*', ['controller' => 'ScheduleAdmin']);
+	$routes->connect('/admin/schedule/api_manage/', ['controller' => 'ScheduleAdmin', 'action' => 'apiManage']);
+	$routes->connect('/admin/schedule/api_manage/*', ['controller' => 'ScheduleAdmin', 'action' => 'apiManage']);
 
 	$routes->connect('/admin/setup', ['controller' => 'SetupAdmin', 'action' => 'index']);
 

@@ -128,20 +128,46 @@ function saveCustomer() {
 
 function showPerformanceDialog() {
 	performanceDialog.dialog( "open" );
+	$(".performance-creator").attr("data-performance", 0);
 }
 
 function showPerformanceEditDialog(id) {
 	performanceDialog.dialog( "open" );
+	$(".performance-creator").attr("data-performance", id);
 
 	json = JSON.parse($("#performance-"+id+" .data").text());
 	$(".performance-creator .date").val(json["performance_date"]);
-	$(".performance-creator #time").val(json["performance_hour"]);
+	$(".performance-creator .time").val(json["performance_hour"]);
+	$(".performance-creator .season").val(json["performance_season"]);
 	$(".performance-creator .open").val(json["performance_open"]);
 	$(".performance-creator .canceled").val(json["performance_canceled"]);
 }
 
 function savePerformance() {
+	var base = $("body").attr("data-urlbase");
+	var edit = $(".performance-creator").attr("data-performance");
 
+	var data = {
+		play: $(".performance-creator .play").val(),
+		date: $(".performance-creator .date").val(),
+		time: $(".performance-creator .time").val(),
+		season: $(".performance-creator .season").val(),
+		open: $(".performance-creator .open").val(),
+		canceled: $(".performance-creator .canceled").val()
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/schedule/api_manage/"+((edit == 0) ? "" : edit),
+		data: data,
+		success: function() {
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			//$("body").html(xhr.responseText);
+			alert("Could not create performance.");
+		}
+	});
 }
 
 
@@ -180,7 +206,7 @@ function saveSeason() {
 		start: $(".seasons-creator .start").val(),
 		end: $(".seasons-creator .end").val(),
 		price: $(".seasons-creator .price").val()
-	}
+	};
 
 	$.ajax({
 		method: "POST",

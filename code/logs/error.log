@@ -7464,3 +7464,369 @@ Stack Trace:
 #2 {main}
 
 
+2016-04-10 18:42:26 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'ticket_price' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_season_manage/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(Cake\ORM\Entity), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(Cake\ORM\Entity), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(90): Cake\ORM\Table->save(Object(Cake\ORM\Entity))
+#11 [internal function]: App\Controller\SetupAdminController->apiSeasonManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:20:59 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(88): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:21:16 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(88): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:23:35 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(86): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:24:20 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(86): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:24:36 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(86): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:25:36 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(93): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:26:20 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(96): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:29:55 Error: Fatal Error (1): Call to a member function getTimestamp() on boolean in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 19:29:55 Error: [Cake\Error\FatalErrorException] Call to a member function getTimestamp() on boolean
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 60)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 19:30:11 Error: Fatal Error (1): Call to a member function getTimestamp() on boolean in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 19:30:11 Error: [Cake\Error\FatalErrorException] Call to a member function getTimestamp() on boolean
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 60)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 19:32:40 Error: Fatal Error (1): Call to a member function getTimestamp() on boolean in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php, line 62]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 19:32:40 Error: [Cake\Error\FatalErrorException] Call to a member function getTimestamp() on boolean
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 62)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 19:34:50 Error: Fatal Error (1): Call to a member function getTimestamp() on boolean in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php, line 63]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 19:34:50 Error: [Cake\Error\FatalErrorException] Call to a member function getTimestamp() on boolean
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 63)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 19:35:03 Error: Fatal Error (1): Call to a member function getTimestamp() on boolean in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php, line 63]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 19:35:03 Error: [Cake\Error\FatalErrorException] Call to a member function getTimestamp() on boolean
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 63)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 19:38:51 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(99): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:45:38 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(106): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:45:56 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(107): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:46:31 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'start_time' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(107): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 19:47:28 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'open' cannot be null
+Request URL: /cs499/CS499/Code/admin/schedule/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Performance), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Performance), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/ScheduleAdminController.php(95): Cake\ORM\Table->save(Object(App\Model\Entity\Performance))
+#11 [internal function]: App\Controller\ScheduleAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ScheduleAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+

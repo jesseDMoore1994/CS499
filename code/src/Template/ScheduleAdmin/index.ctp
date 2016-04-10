@@ -18,19 +18,28 @@
 	<div class="performance-creator dialog" title="Schedule Performance">
 		<form class="dialog-form" action="<?= $this->Url->build("/admin/schedule/api_create/", true) ?>">
 			<label>Performance Of:</label>
-			<select>
-				<option>The Tragedy of Othello</option>
+			<select class="play">
+				<?php foreach ($plays as $play) { ?>
+				<option value="<?= $play->id ?>"><?= $play->name ?></option>
+				<?php } ?>
 			</select>
 			<label>Date:</label>
 			<input type="text" class="datepicker date" />
 			<label>Time:</label>
-			<select id="time">
+			<select id="time" class="time">
 				<?php for ($i = 8; $i < 12; $i++) { ?>
-				<option value="<?= $i ?>"><?= $i ?>:00 am</option>
+				<option><?= $i ?>:00 am</option>
 				<?php } ?>
 				<option value="12">12:00 pm</option>
 				<?php for ($i = 1; $i <= 11; $i++) { ?>
-					<option value="<?= 12+$i ?>"><?= $i ?>:00 pm</option>
+					<option><?= $i ?>:00 pm</option>
+				<?php } ?>
+			</select>
+			<label>Season:</label>
+			<select class="season">
+				<option value="0">No Season</option>
+				<?php foreach ($seasons as $season) { ?>
+				<option value="<?= $season->id ?>"><?= $season->name ?></option>
 				<?php } ?>
 			</select>
 			<label>Sales Open?:</label>
@@ -41,7 +50,7 @@
 			<label>Canceled?:</label>
 			<select class="canceled">
 				<option value="1">Yes</option>
-				<option value="0">No</option>
+				<option value="0" selected="yes">No</option>
 			</select>
 		</form>
 	</div>
@@ -51,7 +60,7 @@
 			<div class="admin-results-list-inner">
 				<table>
 					<tr class="table-heading">
-						<th style="width:150px;">Seat #</th>
+						<th style="width:150px;">Performance #</th>
 						<th>Performance of</th>
 						<th style="width:200px;">Scheduled Time</th>
 						<th style="width:100px;">Sales</th>
