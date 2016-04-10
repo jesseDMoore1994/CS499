@@ -90,6 +90,7 @@ function showCustomerDialog(staff) {
 	customerDialog.dialog( "open" );
 	$(".customer-creator-edit").hide();
 	$(".customer-creator-new").show();
+	$(".customer-creator").attr("data-customer", 0);
 
 	if (staff) {
 		$("#access-level[value=0]").hide();
@@ -103,6 +104,7 @@ function showCustomerEditDialog(staff, id) {
 	$(".customer-creator-edit").show();
 	$(".customer-creator-new").hide();
 	$("#customer-creator-changepasswordoptions").hide();
+	$(".customer-creator").attr("data-customer", id);
 
 	if (staff) {
 		$("#access-level[value=0]").hide();
@@ -116,12 +118,30 @@ function showCustomerEditDialog(staff, id) {
 	$(".customer-creator .access-level").val(json["access_level"]);
 }
 
-function createCustomer() {
-
-}
-
 function saveCustomer() {
+	var base = $("body").attr("data-urlbase");
+	var edit = $(".customer-creator").attr("data-customer");
 
+	var data = {
+		name: $(".customer-creator .customer-name").val(),
+		email: $(".customer-creator .customer-email").val(),
+		access_level: $(".customer-creator .access-level").val(),
+		password: $(".customer-creator .password").val(),
+		password_confirm: $(".customer-creator .password_confirm").val()
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/customers/api_manage/"+((edit == 0) ? "" : edit),
+		data: data,
+		success: function() {
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			//$("body").html(xhr.responseText);
+			alert("Could not save.");
+		}
+	});
 }
 
 

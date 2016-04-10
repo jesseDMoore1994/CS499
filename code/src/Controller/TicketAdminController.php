@@ -9,6 +9,7 @@ class TicketAdminController extends AdminController {
 
 	public function index() {
 		$tickets = TableRegistry::get('Tickets');
+		$seatTable = TableRegistry::get('Seats');
 		$pass = [];
 		$query = null;
 
@@ -23,18 +24,22 @@ class TicketAdminController extends AdminController {
 
 		foreach ($query as $row) {
 			$pass[] = [
-					"id" => $row->id,
-					"seat" => $row->getSeatName(),
-					"number" => "123456-F12",
-					"performance_name" => $row->performance->play->name,
-					"performance_time" => $row->ticketTime(),
-					"person_name" => $row->customer_name,
-					"payment_status" => $row->ticketStatusName(),
-					"payment_status_value" => $row->status,
-					"payment_state" => $row->ticketStatusColor()
-				];
+				"id" => $row->id,
+				"seat" => $row->getSeatName(),
+				"number" => $row->ticket_number,
+				"performance_name" => $row->performance->play->name,
+				"performance_time" => $row->ticketTime(),
+				"person_name" => $row->customer_name,
+				"payment_status" => $row->ticketStatusName(),
+				"payment_status_value" => $row->status,
+				"payment_state" => $row->ticketStatusColor()
+			];
 		}
 
+		$this->set("seats", TableRegistry::get("Seats")
+			->find()->where(["Seats.theater" => $this->adminTheater])->contain(["Rows", "Rows.Sections"])->all());
+		$this->set("performances", TableRegistry::get("Performances")
+			->find()->where(["Performances.theater_id" => $this->adminTheater])->contain(["Plays"])->all());
 		$this->set("tickets", $pass);
 
 	}

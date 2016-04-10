@@ -7830,3 +7830,158 @@ Stack Trace:
 #16 {main}
 
 
+2016-04-10 21:26:26 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'theater' in where clause is ambiguous
+Request URL: /cs499/CS499/Code/admin/tickets/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(40): Cake\ORM\Query->all()
+#9 [internal function]: App\Controller\TicketAdminController->index()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#14 {main}
+
+
+2016-04-10 21:54:08 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'theater_ticket_manager_db.customers' doesn't exist
+Request URL: /cs499/CS499/Code/admin/customers/api_manage/undefined
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(92): Cake\Database\Schema\Collection->_reflect('Column', 'customers', Array, Object(Cake\Database\Schema\Table))
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(61): Cake\Database\Schema\Collection->describe('customers', Array)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(413): Cake\Database\Schema\CachedCollection->describe('customers')
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Marshaller.php(111): Cake\ORM\Table->schema()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1920): Cake\ORM\Marshaller->one(Array, Array)
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php(76): Cake\ORM\Table->newEntity(Array)
+#6 [internal function]: App\Controller\CustomerAdminController->apiManage('undefined')
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CustomerAdminController))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#11 {main}
+
+
+2016-04-10 21:55:51 Error: Fatal Error (1): Class 'App\Controller\Time' not found in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 21:55:51 Error: [Cake\Error\FatalErrorException] Class 'App\Controller\Time' not found
+Request URL: /cs499/CS499/Code/admin/customers/api_manage/undefined
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\Cont...', '/Applications/M...', 76)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 21:56:26 Error: Fatal Error (1): Class 'App\Controller\Time' not found in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 21:56:26 Error: [Cake\Error\FatalErrorException] Class 'App\Controller\Time' not found
+Request URL: /cs499/CS499/Code/admin/customers/api_manage/undefined
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\Cont...', '/Applications/M...', 76)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 21:59:54 Error: Fatal Error (1): Class 'App\Controller\Time' not found in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 21:59:54 Error: [Cake\Error\FatalErrorException] Class 'App\Controller\Time' not found
+Request URL: /cs499/CS499/Code/admin/customers/api_manage/undefined
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\Cont...', '/Applications/M...', 76)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 22:05:53 Error: Fatal Error (1): Class 'App\Controller\Time' not found in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 82]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 22:05:53 Error: [Cake\Error\FatalErrorException] Class 'App\Controller\Time' not found
+Request URL: /cs499/CS499/Code/admin/customers/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Class 'App\\Cont...', '/Applications/M...', 82)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 22:07:22 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'name' cannot be null
+Request URL: /cs499/CS499/Code/admin/customers/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\User), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\User), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php(100): Cake\ORM\Table->save(Object(App\Model\Entity\User))
+#11 [internal function]: App\Controller\CustomerAdminController->apiManage()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CustomerAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-10 22:17:28 Error: Fatal Error (1): Call to undefined method App\Model\Entity\StaffAssignment::save() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 109]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 22:17:28 Error: [Cake\Error\FatalErrorException] Call to undefined method App\Model\Entity\StaffAssignment::save()
+Request URL: /cs499/CS499/Code/admin/customers/api_manage/undefined
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 109)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-10 22:20:24 Error: Fatal Error (1): Call to undefined method App\Model\Entity\StaffAssignment::save() in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CustomerAdminController.php, line 115]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-10 22:20:24 Error: [Cake\Error\FatalErrorException] Call to undefined method App\Model\Entity\StaffAssignment::save()
+Request URL: /cs499/CS499/Code/admin/customers/api_manage
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 115)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+

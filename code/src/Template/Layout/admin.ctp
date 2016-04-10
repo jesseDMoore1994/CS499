@@ -75,6 +75,7 @@ function startsWith($haystack, $needle) {
 			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/tickets/", true)) || $this->Url->build(null, true) == $this->Url->build("/admin/", true)) echo " selected"; ?>">
 				<a href="<?= $this->Url->build("/admin/tickets/", true) ?>"><span class="icomoon">&#xe939;</span> <span>Ticket Search</span></a>
 			</div>
+			<?php if ($canManage) { ?>
 			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/customers/", true))) echo " selected"; ?>">
 				<a href="<?= $this->Url->build("/admin/customers/", true) ?>"><span class="icomoon">&#xe971;</span> <span>Customer Search</span></a>
 			</div>
@@ -84,6 +85,7 @@ function startsWith($haystack, $needle) {
 			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/setup/", true))) echo " selected"; ?>">
 				<a href="<?= $this->Url->build("/admin/setup/", true) ?>"><span class="icomoon">&#xe994;</span> <span>Theater Setup</span> <span class="icomoon lock"><?= (startsWith($this->Url->build(null, true), $this->Url->build("/admin/setup/", true))) ? "&#xe990;" : "&#xe98f;"; ?></span></a>
 			</div>
+			<?php } ?>
 		</div>
 		<div class="admin-body">
 			<?= $this->fetch('content') ?>
