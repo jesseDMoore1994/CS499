@@ -45,11 +45,56 @@
 								<span class="bad">0 seats available</span>
 								<?php } ?>
 							</td>
-							<td><a href="<?= $this->Url->build('/performances/view/'.$performance[0].'/'.$performance[4].'/', true) ?>" class="caps">Buy Tickets</a></td>
+							<td style="text-align:right;"><a href="<?= $this->Url->build('/performances/view/'.$performance[0].'/'.$performance[4].'/', true) ?>" class="caps">Buy Tickets</a></td>
 						</tr>
 						<?php } ?>
 					</table>
 				</div>
+			</div>
+			<?php } ?>
+
+			<?php if (isset($seasons)) { ?>
+			<div class="season-tickets-wrap">
+
+				<?php if (count($seasons) > 0) { ?>
+				<h2>Current Seasons</h2>
+				<table class="season-tickets">
+					<tr>
+						<th>Season Name</th>
+						<th style="width:200px;">Sales Begin</th>
+						<th style="width:200px;">Sales End</th>
+						<th style="width:100px;"></th>
+					</tr>
+					<?php foreach($seasons as $season) { ?>
+						<tr>
+							<td><?= $season->name ?></td>
+							<td><?= date("M d Y, h:i", $season->start_time) ?></td>
+							<td><?= date("M d Y, h:i", $season->end_time) ?></td>
+							<td style="text-align:right;"><a href="<?= $this->Url->build("/season/view/".$season->id, true) ?>" class="caps">Buy Tickets</a></td>
+						</tr>
+					<?php } ?>
+				</table>
+				<?php } ?>
+
+				<?php if (count($past_seasons) > 0) { ?>
+				<h2>Past Seasons</h2>
+				<table class="season-tickets">
+					<tr>
+						<th>Season Name</th>
+						<th style="width:200px;">Sales Begin</th>
+						<th style="width:200px;">Sales End</th>
+						<th style="width:100px;"></th>
+					</tr>
+					<?php foreach($past_seasons as $season) { ?>
+						<tr>
+							<td><?= $season->name ?></td>
+							<td><?= date("M d Y, h:i", $season->start_time) ?></td>
+							<td><?= date("M d Y, h:i", $season->end_time) ?></td>
+							<td style="text-align:right;"><a href="<?= $this->Url->build("/season/view/".$season->id, true) ?>" class="caps">Buy Tickets</a></td>
+						</tr>
+					<?php } ?>
+				</table>
+				<?php } ?>
 			</div>
 			<?php } ?>
 		</div>

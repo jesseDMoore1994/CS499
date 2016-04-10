@@ -1,11 +1,12 @@
 
-var ticketDialog, customerDialog, performanceDialog;
+var ticketDialog, customerDialog, performanceDialog, seasonDialog;
 
 $(document).ready(function() {
 
-	ticketDialog = createDialog(".ticket-creator", 520);
-	customerDialog = createDialog(".customer-creator", 520);
-	performanceDialog = createDialog(".performance-creator", 520);
+	ticketDialog = createDialog(".ticket-creator", 520, saveTicket);
+	customerDialog = createDialog(".customer-creator", 520, saveCustomer);
+	performanceDialog = createDialog(".performance-creator", 520, savePerformance);
+	seasonDialog = createDialog(".seasons-creator", 520, saveSeason);
 	initTicketDialog();
 	initCustomerDialog();
 	initTheaterSwitcher();
@@ -14,15 +15,15 @@ $(document).ready(function() {
 
 });
 
-function createDialog(selector, height) {
-	dialog = $(selector).dialog({
+function createDialog(selector, height, callback) {
+	var dialog = $(selector).dialog({
 		autoOpen: false,
 		height: height,
 		width: 600,
 		modal: true,
 		buttons: {
 			"Save Changes": function() {
-
+				callback();
 			},
 			Cancel: function() {
 				dialog.dialog( "close" );
@@ -64,6 +65,10 @@ function showTicketEditDialog(id) {
 
 function createTicket() {
 	
+}
+
+function saveTicket() {
+
 }
 
 
@@ -115,6 +120,10 @@ function createCustomer() {
 
 }
 
+function saveCustomer() {
+
+}
+
 
 
 function showPerformanceDialog() {
@@ -131,11 +140,58 @@ function showPerformanceEditDialog(id) {
 	$(".performance-creator .canceled").val(json["performance_canceled"]);
 }
 
+function savePerformance() {
+
+}
+
 
 
 function initTheaterSwitcher() {
 	$(".admin-theater-switcher").change(function() {
 		urlbase = $("body").attr("data-urlbase");
 		window.location = urlbase + "admin/settings/select/" + $(this).val() + "/";
+	});
+}
+
+
+
+function showSeasonDialog() {
+	seasonDialog.dialog( "open" );
+	$(".seasons-creator").attr("data-season", "0");
+}
+
+function showSeasonEditDialog(id) {
+	seasonDialog.dialog( "open" );
+	$(".seasons-creator").attr("data-season", id);
+
+	json = JSON.parse($("#season-"+id+" .data").text());
+	$(".seasons-creator .name").val(json["name"]);
+	$(".seasons-creator .start").val(json["start"]);
+	$(".seasons-creator .end").val(json["end"]);
+	$(".seasons-creator .price").val(json["price"]);
+}
+
+function saveSeason() {
+	var base = $("body").attr("data-urlbase");
+	var edit = $(".seasons-creator").attr("data-season");
+
+	var data = {
+		name: $(".seasons-creator .name").val(),
+		start: $(".seasons-creator .start").val(),
+		end: $(".seasons-creator .end").val(),
+		price: $(".seasons-creator .price").val()
+	}
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_season_manage/"+((edit == 0) ? "" : edit),
+		data: data,
+		success: function() {
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			//$("body").html(xhr.responseText);
+			alert("Could not create season.");
+		}
 	});
 }

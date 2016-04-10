@@ -9,8 +9,9 @@
 			</div>
 		</div>
 		<div class="cart-main page-main">
+			<?php if (count($cart) > 0) { ?>
 			<?php foreach ($cart as $item) { ?>
-			<div class="cart-item">
+			<div class="cart-item" id="cart-<?= $item[6] ?>-<?= $item[7] ?>">
 				<div class="cart-item-text">
 					<strong><?= $item[1] ?></strong>
 				</div>
@@ -18,7 +19,7 @@
 					$<?= $item[0] ?>
 				</div>
 				<div class="cart-actions">
-					<a href="" class="caps">remove</a>
+					<a href="javascript:removeTicketFromCartPage('<?= $item[6] ?>', '<?= $item[7] ?>')" class="caps" id="cart-link-<?= $item[6] ?>-<?= $item[7] ?>">Remove</a>
 				</div>
 				<div class="cart-item-text">
 					<?= $item[3] ?>. <?= $item[4] ?>. <?= $item[2] ?>, Seat <?= $item[5] ?>
@@ -43,6 +44,13 @@
 					<a href="<?= $this->Url->build("/checkout/") ?>">Proceed to Checkout</a>
 				</div>
 			</div>
+			<?php } else { ?>
+			<div class="cart-empty">
+				<p>
+					Your cart is empty.
+				</p>
+			</div>
+			<?php } ?>
 		</div>
 	</div>
 </div>

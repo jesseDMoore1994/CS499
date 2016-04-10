@@ -22,16 +22,9 @@ class SectionsTable extends Table
 		$this->displayField('id');
 		$this->primaryKey('id');
 
-		$this->belongsTo('Theaters', [
-			'foreignKey' => 'theater',
-			"bindingKey" => "id",
-			'joinType' => 'INNER'
-		]);
-
 		$this->hasOne('Theaters', [
-			'foreignKey' => 'theater_id',
-			"bindingKey" => "id",
-			'joinType' => 'INNER'
+			'foreignKey' => 'theater',
+			"bindingKey" => "id"
 		]);
 
 		$this->hasMany("Rows", [

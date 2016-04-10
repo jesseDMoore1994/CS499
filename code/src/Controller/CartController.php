@@ -17,21 +17,46 @@ class CartController extends AppController
 		$this->viewBuilder()->layout("site");
 		$this->set("css", ["site"]);
 
-		// Load the cart contents
-		$cart = [
-			[15, "The Tragedy of Othello, the Moor", "Civil Center Playhouse", "January 1st, 2016", "10:00 PM", "F12"],
-			[15, "The Tragedy of Othello, the Moor", "Civil Center Playhouse", "January 1st, 2016", "10:00 PM", "F13"],
-		];
+		// Get the table ready
+		$table = TableRegistry::get("CartItems");
+
+		$cart = $table
+			->find()
+			->where(["CartItems.cart_id" => $this->Cookie->read("ta_cart_id")])
+			->contain([
+				"Performances", "Performances.Plays",
+				"Performances.Theaters",
+				"Seats", "Seats.Rows", "Seats.Rows.Sections",
+			])
+			->all();
+
+		$pass = [];
+
+		foreach ($cart as $item) {
+			$pass[] = [
+				$item->seat->price,
+				$item->performance->play->name,
+				$item->performance->theater->name,
+				date("M d Y", $item->performance->start_time),
+				date("h:i", $item->performance->start_time),
+				$item->seat->orow->osection->code.
+					$item->seat->orow->code.
+					"-".
+					$item->seat->code,
+				$item->seat->id,
+				$item->performance->id
+			];
+		}
 
 		// Add up the cart total
 		$pre_tax = 0;
-		foreach ($cart as $item) { $pre_tax += $item[0]; }
+		foreach ($pass as $item) { $pre_tax += $item[0]; }
 
 		// Compute Tax
 		$tax = $pre_tax * 0.09;
 
 		// Pass the cart and total to the view
-		$this->set("cart", $cart);
+		$this->set("cart", $pass);
 		$this->set("pre_tax", $pre_tax);
 		$this->set("tax", $tax);
 		$this->set("total", $pre_tax + $tax);

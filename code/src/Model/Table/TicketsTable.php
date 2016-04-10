@@ -30,33 +30,33 @@ class TicketsTable extends Table
         $this->primaryKey('id');
 
         $this->belongsTo('Users', [
-            'foreignKey' => 'customer_id',
-            'joinType' => 'INNER'
+            'foreignKey' => 'id',
+            'bindingKey' => 'customer_id',
         ]);
 
         $this->hasOne('Theaters', [
             'foreignKey' => 'id',
-            'joinType' => 'INNER'
+            'bindingKey' => 'theater_id'
         ]);
 
         $this->hasOne('Sections', [
             'foreignKey' => 'id',
-            'joinType' => 'INNER'
+            'bindingKey' => "section_id"
         ]);
 
         $this->hasOne('Rows', [
             'foreignKey' => 'id',
-            'joinType' => 'INNER'
+            'bindingKey' => "row_id"
         ]);
 
         $this->hasOne('Seats', [
             'foreignKey' => 'id',
-            'joinType' => 'INNER'
+            'bindingKey' => "seat_id"
         ]);
 
         $this->hasOne('Performances', [
             'foreignKey' => 'id',
-            'joinType' => 'INNER'
+            'bindingKey' => "performance_id"
         ]);
 
         $options = array(
@@ -73,78 +73,7 @@ class TicketsTable extends Table
         //$this->addBehavior('CakePHPCSV.Csv', $options);
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator)
-    {
-        $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('id', 'create');
-
-        $validator
-            ->requirePresence('show_name', 'create')
-            ->notEmpty('show_name');
-
-        $validator
-            ->add('show_date', 'valid', ['rule' => 'date'])
-            ->requirePresence('show_date', 'create')
-            ->notEmpty('show_date');
-
-        $validator
-            ->add('start_time', 'valid', ['rule' => 'time'])
-            ->requirePresence('start_time', 'create')
-            ->notEmpty('start_time');
-
-        $validator
-            ->add('end_time', 'valid', ['rule' => 'time'])
-            ->requirePresence('end_time', 'create')
-            ->notEmpty('end_time');
-
-        $validator
-            ->requirePresence('theater', 'create')
-            ->notEmpty('theater');
-
-        $validator
-            ->requirePresence('section', 'create')
-            ->notEmpty('section');
-
-        $validator
-            ->requirePresence('row', 'create')
-            ->notEmpty('row');
-
-        $validator
-            ->add('seat', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('seat', 'create')
-            ->notEmpty('seat');
-
-        $validator
-            ->add('accessible_seat', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('accessible_seat', 'create')
-            ->notEmpty('accessible_seat');
-
-        $validator
-            ->add('paid', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('paid', 'create')
-            ->notEmpty('paid');
-
-        $validator
-            ->requirePresence('payment_method', 'create')
-            ->notEmpty('payment_method');
-
-        return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
+    /*
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['customer_id'], 'Customers'));
@@ -158,5 +87,5 @@ class TicketsTable extends Table
             ->matching('Ids', function($q) use ($options){
                 return $q->where(['Ids.id IN' => $options['ids']]);
             });
-    }
+    }*/
 }

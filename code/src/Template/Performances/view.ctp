@@ -1,3 +1,21 @@
+<div class="proceed-to-checkout">
+	<div class="responsive-inner">
+		<div class="button"><a href="<?= $this->Url->build("/checkout/", true) ?>">Proceed to Checkout</a></div>
+		<p>
+			Ready to finish your purchase? Click the
+			Proceed to Checkout button to buy your tickets.
+		</p>
+	</div>
+</div>
+
+<?php if ($ready_for_checkout) { ?>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".proceed-to-checkout").show();
+	});
+</script>
+<?php } ?>
+
 <div class="site-performance site-page">
 	<div class="site-performance-inner responsive-inner">
 		<div class="site-performance-top">

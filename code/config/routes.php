@@ -65,6 +65,11 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/admin/setup/availability/*', ['controller' => 'SetupAdmin', 'action' => 'availability']);
 	$routes->connect('/admin/setup/staff/', ['controller' => 'SetupAdmin', 'action' => 'staff']);
 	$routes->connect('/admin/setup/staff/*', ['controller' => 'SetupAdmin', 'action' => 'staff']);
+	$routes->connect('/admin/setup/seasons/', ['controller' => 'SetupAdmin', 'action' => 'seasons']);
+	$routes->connect('/admin/setup/seasons/*', ['controller' => 'SetupAdmin', 'action' => 'seasons']);
+
+	$routes->connect('/admin/setup/api_season_manage/', ['controller' => 'SetupAdmin', 'action' => 'apiSeasonManage']);
+	$routes->connect('/admin/setup/api_season_manage/*', ['controller' => 'SetupAdmin', 'action' => 'apiSeasonManage']);
 
 	$routes->connect('/admin/settings/select/*', ['controller' => 'AdminSettings', 'action' => 'select']);
 

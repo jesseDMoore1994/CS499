@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Network\Exception\NotFoundException;
+use Cake\ORM\TableRegistry;
 
 /**
  * Theaters Controller
@@ -15,8 +17,8 @@ class TheatersController extends AppController {
 		$this->set("css", ["site"]);
 
 		$this->set("theaters", [
-			["ccph", "civic-center-playhouse", "Civic Center Playhouse", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut sem dapibus, fermentum neque quis, tincidunt massa. Pellentesque vel elementum turpis. Quisque id elementum ante. Mauris sit amet ipsum consequat, maximus risus id, porta enim."],
-			["ccch", "civic-center-conference-hall", "Civic Center Conference Hall", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut sem dapibus, fermentum neque quis, tincidunt massa. Pellentesque vel elementum turpis. Quisque id elementum ante. Mauris sit amet ipsum consequat, maximus risus id, porta enim."]
+			["1", "ccph", "civic-center-playhouse", "Civic Center Playhouse", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut sem dapibus, fermentum neque quis, tincidunt massa. Pellentesque vel elementum turpis. Quisque id elementum ante. Mauris sit amet ipsum consequat, maximus risus id, porta enim."],
+			["2", "ccch", "civic-center-concert-hall", "Civic Center Conference Hall", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut sem dapibus, fermentum neque quis, tincidunt massa. Pellentesque vel elementum turpis. Quisque id elementum ante. Mauris sit amet ipsum consequat, maximus risus id, porta enim."]
 		]);
 
 	}
@@ -27,36 +29,38 @@ class TheatersController extends AppController {
 		$this->viewBuilder()->layout("site");
 		$this->set("css", ["site"]);
 
-		if ($theater_id == "ccch") {
+		$table = TableRegistry::get("Theaters");
+		$theater = $table
+			->find()
+			->where(["id" => $theater_id])
+			->contain(["Performances", "Performances.Plays"])
+			->all();
 
-			$this->set("theater_id", "ccch");
-			$this->set("theater_name", "Civic Center Conference Hall");
-			$this->set("theater_location", "Von Braun Civic Center. Huntsville, Alabama.");
-			$this->set("theater_about", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus lobortis nisi, et suscipit mi malesuada eget. Vivamus eu urna neque. Phasellus felis orci, commodo in felis id, aliquam placerat nibh. Suspendisse viverra a elit id condimentum. Integer vestibulum tristique augue vitae rutrum. Etiam et vehicula ipsum, sed faucibus lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempus a arcu et interdum. Vivamus auctor malesuada lectus, vel bibendum orci finibus in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam rutrum viverra elit eu eleifend. Pellentesque vestibulum augue purus, vel maximus nunc porttitor in. Aenean vel nisi at ante euismod placerat vitae vel velit. Morbi accumsan orci quis nulla semper rhoncus. Aliquam erat volutpat. Nullam sit amet nunc dictum, iaculis risus non, aliquet purus.");
-
-			$this->set("theater_performances", [
-				["Macbeth", "William Shakespeare", "January 4th 2016", "10:00 PM"],
-				["Macbeth", "William Shakespeare", "January 4th 2016", "10:00 PM"],
-				["Macbeth", "William Shakespeare", "January 4th 2016", "10:00 PM"],
-				["Macbeth", "William Shakespeare", "January 4th 2016", "10:00 PM"],
-			]);
-
-		} else if ($theater_id == "ccph") {
-
-			$this->set("theater_id", "ccph");
-			$this->set("theater_name", "Civic Center Playhouse");
-			$this->set("theater_location", "Von Braun Civic Center. Huntsville, Alabama.");
-			$this->set("theater_about", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rhoncus lobortis nisi, et suscipit mi malesuada eget. Vivamus eu urna neque. Phasellus felis orci, commodo in felis id, aliquam placerat nibh. Suspendisse viverra a elit id condimentum. Integer vestibulum tristique augue vitae rutrum. Etiam et vehicula ipsum, sed faucibus lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempus a arcu et interdum. Vivamus auctor malesuada lectus, vel bibendum orci finibus in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam rutrum viverra elit eu eleifend. Pellentesque vestibulum augue purus, vel maximus nunc porttitor in. Aenean vel nisi at ante euismod placerat vitae vel velit. Morbi accumsan orci quis nulla semper rhoncus. Aliquam erat volutpat. Nullam sit amet nunc dictum, iaculis risus non, aliquet purus.");
-
-			$this->set("theater_performances", [
-				["Macbeth", "William Shakespeare", "January 4th 2016", "10:00 PM"],
-				["Macbeth", "William Shakespeare", "January 4th 2016", "10:00 PM"],
-				["Macbeth", "William Shakespeare", "January 4th 2016", "10:00 PM"],
-				["Macbeth", "William Shakespeare", "January 4th 2016", "10:00 PM"],
-			]);
-
+		if ($theater->count() > 0) {
+			$theater = $theater->first();
+		} else {
+			throw new NotFoundException();
 		}
 
+		$this->set("theater_id", $theater->id);
+		$this->set("theater_artwork", $theater->artwork);
+		$this->set("theater_name", $theater->name);
+		$this->set("theater_location", $theater->location);
+		$this->set("theater_about", $theater->description);
+
+		$perf = [];
+		foreach ($theater->performances as $performance) {
+			$perf[] = [
+				$performance->play->name,
+				$performance->play->author,
+				date("M d Y", $performance->start_time),
+				date("h:i a", $performance->start_time),
+				$performance->id,
+				$performance->artwork
+			];
+		}
+
+		$this->set("theater_performances", $perf);
 	}
 
 }

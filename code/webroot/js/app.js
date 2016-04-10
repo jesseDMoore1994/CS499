@@ -24,6 +24,7 @@ function addTicketToCart(seat, performance) {
 				alert("This ticket was purchased by someone else while you were viewing this page.");
 				location.reload();
 			} else if (json.status == "200") {
+				$(".proceed-to-checkout").show();
 				link.text("Remove");
 				link.attr("href", "javascript:removeTicketFromCart('"+seat+"', '"+performance+"')");
 				link.css({cursor: "pointer"});
@@ -55,6 +56,35 @@ function removeTicketFromCart(seat, performance) {
 				link.text("Add to Cart");
 				link.attr("href", "javascript:addTicketToCart('"+seat+"', '"+performance+"')");
 				link.css({cursor: "pointer"});
+			}
+		},
+		error: function() {
+			alert("Could not remove from cart.");
+			location.reload();
+		}
+	});
+}
+
+function removeTicketFromCartPage(seat, performance) {
+	var elem = $("#cart-"+seat+"-"+performance);
+	var link = $("#cart-link-"+seat+"-"+performance);
+	var base = $("body").attr("data-urlbase");
+
+	link.text("Removing...");
+	link.css({cursor: "default"});
+	link.attr("href", "#");
+
+	$.ajax({
+		url: base+"cart/api_remove/"+seat+"/"+performance,
+		success: function(data) {
+			var json = JSON.parse(data);
+			if (json.status == "410") {
+				// Ticket wasn't in cart. Something's off. Reload page.
+				location.reload();
+			} else if (json.status == "200") {
+				elem.slideUp(500, function(){
+					location.reload();
+				});
 			}
 		},
 		error: function() {

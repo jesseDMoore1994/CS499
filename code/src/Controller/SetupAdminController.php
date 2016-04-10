@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Cake\Core\Configure;
+use Cake\ORM\TableRegistry;
 
 class SetupAdminController extends AdminController {
 	public function index() {
@@ -30,6 +31,75 @@ class SetupAdminController extends AdminController {
 		];
 
 		$this->set("sections", $sections);
+	}
+
+	public function seasons() {
+		$table = TableRegistry::get("Seasons");
+
+		$seasons = $table
+			->find()
+			->where(["theater_id" => $this->adminTheater])
+			->all();
+
+		$this->set("seasons", $seasons);
+	}
+
+	public function apiSeasonManage($edit = 0) {
+		$this->viewBuilder()->layout("ajax");
+		$this->render(false);
+
+		$name = $this->request->data("name");
+		$start = $this->request->data("start");
+		$end = $this->request->data("end");
+		$theater = $this->adminTheater;
+		$price = $this->request->data("price");
+
+		$table = TableRegistry::get("Seasons");
+
+		$season = null;
+
+		if ($edit == 0) {
+			$season = $table->newEntity([
+				"name" => $name,
+				"start_time" => strtotime($start),
+				"end_time" => strtotime($end),
+				"theater_id" => $theater,
+				"ticket_price" => $price
+			]);
+		} else {
+			$season = $table
+				->find()
+				->where(["id" => $edit])
+				->all();
+
+			if ($season->count() < 1) {
+				echo json_encode([
+					"status" => "400", // HTTP 400: Client Error
+					"response" => "Could not save season"
+				]);
+				return;
+			} else {
+				$season = $season->first();
+				$season->name = $name;
+				$season->start_time = strtotime($start);
+				$season->end_time = strtotime($end);
+				$season->ticket_price = $price;
+			}
+		}
+
+		if ($table->save($season)) {
+			echo json_encode([
+				"status" => "200", // HTTP 200: Okay
+				"response" => "Season saved"
+			]);
+			return;
+		} else {
+			echo json_encode([
+				"status" => "400", // HTTP 400: Client Error
+				"response" => "Could not save season"
+			]);
+			return;
+		}
 	}
 
 	public function availability() {

@@ -29,55 +29,71 @@ class PerformancesController extends AppController {
 			["season", "Season Tickets", "right"],
 		]);
 
-		// Select a list of plays, including their performances
-		$plays = TableRegistry::get("Plays")
-			->find()
-			->contain(["Performances", "Performances.Theaters", "Performances.Tickets", "Performances.Theaters.Seats"])
-			->all();
+		if ($mode == "season") {
 
-		// Build the 'pass' list to pass to the view
-		$pass = [];
-		foreach ($plays as $play) {
+			$this->set("seasons", TableRegistry::get("Seasons")
+				->find()
+				->where(["start_time < " => time(), "end_time > " => time()])
+				->all());
 
-			// Build the list of performances
-			$performances = [];
-			foreach ($play->performances as $performance) {
+			$this->set("past_seasons", TableRegistry::get("Seasons")
+				->find()
+				->where(["end_time < " => time()])
+				->all());
 
-				// Compute the number of available seats
-				$available = count($performance->theater->seats)-count($performance->tickets);
+		} else {
 
-				// Determine whether or not to show this performance
-				$show = (
-					($mode == "open" && $available > 0 && $performance->start_time > time()) ||
-					($mode == "closed" && $available < 1) ||
-					($mode == "finished" && $performance->start_time < time()) ||
-					($mode == "all")
-				);
+			// Select a list of plays, including their performances
+			$plays = TableRegistry::get("Plays")
+				->find()
+				->contain(["Performances", "Performances.Theaters", "Performances.Tickets", "Performances.Theaters.Seats"])
+				->all();
 
-				// If it should be shown, add to performance list
-				if ($show) $performances[] = [
-					$performance->id,
-					date("M d Y, h:i", $performance->start_time),
-					$performance->theater->name,
-					$available,
-					$play->name
+			// Build the 'pass' list to pass to the view
+			$pass = [];
+			foreach ($plays as $play) {
+
+				// Build the list of performances
+				$performances = [];
+				foreach ($play->performances as $performance) {
+
+					// Compute the number of available seats
+					$available = count($performance->theater->seats) - count($performance->tickets);
+
+					// Determine whether or not to show this performance
+					$show = (
+						($mode == "open" && $available > 0 && $performance->start_time > time()) ||
+						($mode == "closed" && $available < 1) ||
+						($mode == "finished" && $performance->start_time < time()) ||
+						($mode == "all")
+					);
+
+					// If it should be shown, add to performance list
+					if ($show) $performances[] = [
+						$performance->id,
+						date("M d Y, h:i", $performance->start_time),
+						$performance->theater->name,
+						$available,
+						$play->name
+					];
+				}
+
+				// Add to the pass array if there are performances
+				if (count($performances > 0)) $pass[] = [
+					$play->artwork,
+					$play->name,
+					$performances
 				];
 			}
 
-			// Add to the pass array if there are performances
-			if (count($performances > 0)) $pass[] = [
-				$play->artwork,
-				$play->name,
-				$performances
-			];
-		}
+			// Pass the list of plays to the view
+			$this->set("plays", $pass);
 
-		// Pass the list of plays to the view
-		$this->set("plays", $pass);
+		}
 
 	}
 
-	public function view($id, $slug, $row = -1) {
+	public function view($id, $slug = "", $row = -1) {
 
 		// Set the layout template
 		$this->viewBuilder()->layout("site");
@@ -94,7 +110,7 @@ class PerformancesController extends AppController {
 			->contain([
 				"Theaters", "Tickets", "Theaters.Sections",
 				"Theaters.Sections.Rows", "Theaters.Sections.Rows.Seats",
-				"Plays", "Tickets"
+				"Plays"
 			])
 			->all();
 
@@ -198,6 +214,7 @@ class PerformancesController extends AppController {
 		$this->set("selected_row", $row);
 		$this->set("sections", $sections);
 		$this->set("seat_options", []);
+		$this->set("ready_for_checkout", $cart->count() > 0);
 
 		// Load the selected row and pass it to the view.
 		$i = 0;

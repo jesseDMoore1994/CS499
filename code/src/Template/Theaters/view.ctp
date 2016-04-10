@@ -4,7 +4,7 @@
 		<div class="site_itemlist_top">
 
 			<div class="site_itemlist_topleft">
-				<img src="<?= $this->Url->build('/img/home/'.$theater_id.'.png', true) ?>" />
+				<img src="<?= $this->Url->build('/img/home/'.$theater_artwork.'.png', true) ?>" />
 			</div>
 
 			<div class="site_itemlist_topcenter">
@@ -33,7 +33,7 @@
 					<td><?= $performance[2] ?></td>
 					<td><?= $performance[3] ?></td>
 					<td>
-						<a href="<?= $this->Url->build('/', true) ?>" class="caps">Buy Tickets</a>
+						<a href="<?= $this->Url->build('/performances/view/'.$performance[4]."/".$performance[5]."/", true) ?>" class="caps">Buy Tickets</a>
 					</td>
 				</tr>
 				<?php } ?>

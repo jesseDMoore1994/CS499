@@ -23,18 +23,20 @@ class SeatsTable extends Table
 		$this->primaryKey('id');
 
 		$this->belongsTo('Theaters', [
-			'foreignKey' => 'theater',
-			'joinType' => 'INNER'
+			'foreignKey' => 'id',
+			'bindingKey' => "theater",
 		]);
 
 		$this->hasOne('Sections', [
-			'foreignKey' => 'section',
-			'joinType' => 'INNER'
+			'foreignKey' => 'id',
+			'bindingKey' => "section",
+			'propertyName' => "osection",
 		]);
 
 		$this->hasOne('Rows', [
-			'foreignKey' => 'row',
-			'joinType' => 'INNER'
+			'foreignKey' => 'id',
+			'bindingKey' => "row",
+			'propertyName' => "orow",
 		]);
 	}
 
