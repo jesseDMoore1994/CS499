@@ -21,9 +21,9 @@
 					<table>
 						<tr>
 							<th style="width:150px;">Ticket Number</th>
-							<th style="width:300px;">Theater</th>
+							<th style="width:200px;">Theater</th>
 							<th style="width:150px;">Seat</th>
-							<th style="width:150px;">Performance</th>
+							<th>Performance</th>
 							<th style="width:200px;">Time</th>
 							<th style="width:150px;">Status</th>
 						</tr>
@@ -39,10 +39,14 @@
 								<?= $ticket->section->code.$ticket->row->code."-".$ticket->seat->code ?>
 							</td>
 							<td>
-								<?= $ticket->performance->play->name ?>
+								<?= ($ticket->performance_id == 0) ? $ticket->season->name : $ticket->performance->play->name ?>
 							</td>
 							<td>
+								<?php if ($ticket->performance_id != 0) { ?>
 								<?= date("M d Y, h:i", $ticket->performance->start_time) ?>
+								<?php } else { ?>
+								--
+								<?php } ?>
 							</td>
 							<td>
 								<?= ucfirst($ticket->status) ?>

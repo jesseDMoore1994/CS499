@@ -72,7 +72,11 @@ class Ticket extends Entity
     }
 
     function ticketTime() {
-        return time_format($this->performance->time);
+        if ($this->performance_id != 0) {
+            return time_format($this->performance->time);
+        } else {
+            return time_format($this->season->start_time);
+        }
     }
 
 }

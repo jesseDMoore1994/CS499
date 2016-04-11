@@ -110,7 +110,7 @@ class PerformancesController extends AppController {
 			->contain([
 				"Theaters", "Tickets", "Theaters.Sections",
 				"Theaters.Sections.Rows", "Theaters.Sections.Rows.Seats",
-				"Plays"
+				"Plays", "Seasons"
 			])
 			->all();
 
@@ -160,12 +160,7 @@ class PerformancesController extends AppController {
 				foreach ($r->seats as $seat) {
 
 					// Determine whether this seat is available
-					$available = true;
-					foreach ($performance->tickets as $ticket) {
-						if ($ticket->seat_id == $seat->id) {
-							$available = false;
-						}
-					}
+					$available = $seat->isAvailablePerformance($performance);
 
 					$cart_status = false;
 					foreach ($cart as $item) {

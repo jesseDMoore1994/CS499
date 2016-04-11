@@ -5715,3 +5715,2601 @@ Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
 
 
 
+2016-04-10 23:08:25 Notice: Notice (8): Undefined variable: ready_for_checkout in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 11]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 11
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Undefined variable: season in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 33]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 33]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Undefined variable: season in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 33]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 33]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 33
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Undefined variable: season in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 39]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 39
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 39]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 39
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Undefined variable: season in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 41]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 41
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 41]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 41
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Undefined variable: season in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 44
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 44
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 44
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Undefined variable: sections in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 48]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 48
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Undefined variable: seat_options in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 75]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 75
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:08:25 Notice: Notice (8): Undefined variable: seat_options in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 76]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 76
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:18:30 Notice: Notice (8): Undefined property: Cake\ORM\ResultSet::$count in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 28]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 28
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:18:48 Notice: Notice (8): Undefined variable: row in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 97]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 97
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:18:48 Notice: Notice (8): Undefined variable: row in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 115]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 115
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:19:32 Notice: Notice (8): Undefined variable: row in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 101]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 101
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:19:32 Notice: Notice (8): Undefined variable: row in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 119]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 119
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:20:22 Notice: Notice (8): Undefined variable: row in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 97]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 97
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:20:22 Notice: Notice (8): Undefined variable: row in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 115]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 115
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: performance in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 89]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 89
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 89]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 89
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: performance in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 89]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 89
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SeasonController.php, line 89]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 89
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: performance_id in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: performance_id in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: performance_id in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: performance_id in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:22:58 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: performance_id in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: performance_id in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: performance_id in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: performance_id in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:23:20 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:31 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:31 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:31 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:31 Notice: Notice (8): Undefined variable: play_slug in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 67]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 67
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:31 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:31 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:42 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:42 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:49 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:49 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:53 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:24:53 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:25:05 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:25:05 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:25:09 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:25:09 Notice: Notice (8): Undefined variable: play_theater in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Season/view.ctp, line 96]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Season/view.ctp, line 96
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:36:18 Notice: Notice (8): Undefined variable: season in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailableSeason() - APP/Model/Entity/Seat.php, line 44
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 69
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:36:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailableSeason() - APP/Model/Entity/Seat.php, line 44
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 69
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:36:18 Notice: Notice (8): Undefined variable: season in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 53]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailableSeason() - APP/Model/Entity/Seat.php, line 53
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 69
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:36:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 53]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailableSeason() - APP/Model/Entity/Seat.php, line 53
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 69
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:36:18 Notice: Notice (8): Undefined variable: season in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailableSeason() - APP/Model/Entity/Seat.php, line 44
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 69
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:36:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailableSeason() - APP/Model/Entity/Seat.php, line 44
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 69
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:36:18 Notice: Notice (8): Undefined variable: season in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 53]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailableSeason() - APP/Model/Entity/Seat.php, line 53
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 69
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:36:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 53]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailableSeason() - APP/Model/Entity/Seat.php, line 53
+App\Controller\SeasonController::view() - APP/Controller/SeasonController.php, line 69
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:41:38 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 163
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-10 23:41:38 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 163
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:39:51 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\CartController::apiAdd() - APP/Controller/CartController.php, line 94
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:40:26 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\CartController::apiAdd() - APP/Controller/CartController.php, line 94
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:43:00 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\CartController::apiAdd() - APP/Controller/CartController.php, line 98
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:43:37 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\CartController::apiAdd() - APP/Controller/CartController.php, line 98
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:55:53 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 36]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 36
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:55:53 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 36]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 36
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:55:53 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:55:53 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:55:53 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 38]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 38
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:55:53 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 39]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 39
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:55:53 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 45
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:32 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 36]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 36
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:32 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 36]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 36
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:32 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:32 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:32 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 38]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 38
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:32 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 39]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 39
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:32 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 45
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:34 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 40]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 40
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:34 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 40]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 40
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:34 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 41]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 41
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:34 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 41]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 41
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:34 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:34 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 43]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 43
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:56:34 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 49]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 49
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:59:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 40]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 40
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:59:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 40]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 40
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:59:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 41]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 41
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:59:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 41]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 41
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:59:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:59:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 43]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 43
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 00:59:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 49]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 49
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:00:28 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 41]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 41
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:00:28 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 41]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 41
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:00:28 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:00:28 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:00:28 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 43]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 43
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:00:28 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 44
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:00:28 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 50]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 50
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:01:31 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:01:31 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 43]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 43
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:01:31 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 44]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 44
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:01:31 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 50]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 50
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:01:55 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:01:55 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 50]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 50
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:02:27 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:02:27 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 50]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 50
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:03:53 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:04:16 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:04:24 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 42
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:05:12 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CartController.php, line 40]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CartController::index() - APP/Controller/CartController.php, line 40
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:04 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 36]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 36
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:04 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 36]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 36
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:04 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:04 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:04 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 38]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 38
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:04 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 39]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 39
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:04 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 45
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:09 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 36]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 36
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:09 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 36]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 36
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:09 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:09 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:09 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 38]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 38
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:09 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 39]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 39
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:11:09 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 45
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:15:56 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 35]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 35
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:15:56 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 36]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 36
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:15:56 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:15:56 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 37]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 37
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:15:56 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 38]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 38
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:15:56 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 39]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 39
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:15:56 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::index() - APP/Controller/CheckoutController.php, line 45
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:32:50 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 163
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:32:50 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 163
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:41:13 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 158]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::process() - APP/Controller/CheckoutController.php, line 158
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:41:13 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 158]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::process() - APP/Controller/CheckoutController.php, line 158
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:42:24 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 158]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::process() - APP/Controller/CheckoutController.php, line 158
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:42:24 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php, line 158]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\CheckoutController::process() - APP/Controller/CheckoutController.php, line 158
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:43:30 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 42
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:43:30 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 42
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:43:30 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 45
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:46:32 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 42
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:46:32 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 45
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:46:36 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 42
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:46:36 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 45
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:46:58 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 42
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:46:58 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 45
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:47:05 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 42
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:47:05 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 45
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:47:24 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 42]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 42
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:47:24 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 45
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:48:59 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 45]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 45
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:49:42 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 46]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 46
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:49:46 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/success.ctp, line 46]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/success.ctp, line 46
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:51:19 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/printer.ctp, line 57]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/printer.ctp, line 57
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:51:19 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/printer.ctp, line 57]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/printer.ctp, line 57
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:51:19 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/printer.ctp, line 60]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/printer.ctp, line 60
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:51:54 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/printer.ctp, line 57]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/printer.ctp, line 57
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:54:05 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php, line 30]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 30
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:54:05 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php, line 30]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 30
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:54:05 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 75]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Ticket::ticketTime() - APP/Model/Entity/Ticket.php, line 75
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 31
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:54:11 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php, line 30]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 30
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:54:11 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php, line 30]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 30
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:54:11 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 75]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Ticket::ticketTime() - APP/Model/Entity/Ticket.php, line 75
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 31
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:55:15 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php, line 30]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 30
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:55:15 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 75]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Ticket::ticketTime() - APP/Model/Entity/Ticket.php, line 75
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 31
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:55:35 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 75]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Ticket::ticketTime() - APP/Model/Entity/Ticket.php, line 75
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 31
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 01:58:53 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Ticket.php, line 75]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Ticket::ticketTime() - APP/Model/Entity/Ticket.php, line 75
+App\Controller\TicketAdminController::index() - APP/Controller/TicketAdminController.php, line 31
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:15:19 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 163
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:15:19 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 163
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:16:36 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 163
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:16:36 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Model/Entity/Seat.php, line 26]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Model\Entity\Seat::isAvailablePerformance() - APP/Model/Entity/Seat.php, line 26
+App\Controller\PerformancesController::view() - APP/Controller/PerformancesController.php, line 163
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 81]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 81
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 81]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 81
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 83]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 83
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 83]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 83
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 85]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 85
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 85]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 85
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 87]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 87
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 87]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 87
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 89]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 89
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 89]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 89
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 91]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 91
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 05:59:45 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 91]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 91
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 81]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 81
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 81]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 81
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 83]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 83
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 83]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 83
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 85]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 85
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 85]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 85
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 87]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 87
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 87]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 87
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 89]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 89
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 89]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 89
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Undefined variable: user in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 91]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 91
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 06:00:18 Notice: Notice (8): Trying to get property of non-object in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/Checkout/index.ctp, line 91]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+include - APP/Template/Checkout/index.ctp, line 91
+Cake\View\View::_evaluate() - CORE/src/View/View.php, line 960
+Cake\View\View::_render() - CORE/src/View/View.php, line 921
+Cake\View\View::render() - CORE/src/View/View.php, line 575
+Cake\Controller\Controller::render() - CORE/src/Controller/Controller.php, line 594
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 117
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+

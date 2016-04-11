@@ -31,6 +31,11 @@ class CartItemsTable extends Table
 			'foreignKey' => 'id',
 			'bindingKey' => 'performance_id'
 		]);
+
+		$this->hasOne('Seasons', [
+			'foreignKey' => 'id',
+			'bindingKey' => 'season_id'
+		]);
 	}
 
 }

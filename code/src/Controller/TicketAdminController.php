@@ -19,7 +19,7 @@ class TicketAdminController extends AdminController {
 		} else {
 			$query = $tickets->find()
 				->where(["Tickets.theater_id" => $this->adminTheater])
-				->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays']);
+				->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays', 'Seasons']);
 		}
 
 		foreach ($query as $row) {
@@ -27,7 +27,7 @@ class TicketAdminController extends AdminController {
 				"id" => $row->id,
 				"seat" => $row->getSeatName(),
 				"number" => $row->ticket_number,
-				"performance_name" => $row->performance->play->name,
+				"performance_name" => ($row->performance_id == 0) ? $row->season->name : $row->performance->play->name,
 				"performance_time" => $row->ticketTime(),
 				"person_name" => $row->customer_name,
 				"payment_status" => $row->ticketStatusName(),

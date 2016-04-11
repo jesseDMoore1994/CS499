@@ -8,9 +8,11 @@ use Cake\ORM\TableRegistry;
 class ScheduleAdminController extends AdminController {
 	public function index() {
 
-		$users = TableRegistry::get('Performances');
+		$table = TableRegistry::get('Performances');
 		$pass = [];
-		$query = $users->find()->contain(["Plays"]);
+		$query = $table->find()
+			->where(["theater_id" => $this->adminTheater])
+			->contain(["Plays"]);
 
 		foreach ($query as $row) {
 			$pass[] = [
