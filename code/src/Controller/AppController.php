@@ -105,6 +105,7 @@ class AppController extends Controller {
 		}
 
 		$this->set("loggedIn", $this->loggedIn);
+		$this->set("user", $this->user);
 		$this->set("me", $this->user);
 		$this->set("admin", $this->admin);
 		$this->set("superAdmin", $this->superAdmin);

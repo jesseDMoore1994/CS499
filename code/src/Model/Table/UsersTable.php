@@ -32,6 +32,7 @@ class UsersTable extends Table
         $this->hasMany('StaffAssignments', [
             'foreignKey' => 'user_id'
         ]);
+
         $options = array(
             // Refer to php.net fgetcsv for more information
             'length' => 0,
@@ -44,18 +45,5 @@ class UsersTable extends Table
             'text' => false,
         );
         //$this->addBehavior('CakePHPCSV.Csv', $options);
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->isUnique(['email']));
-        return $rules;
     }
 }

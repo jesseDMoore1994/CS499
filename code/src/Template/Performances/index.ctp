@@ -20,7 +20,7 @@
 			</div>
 		</div>
 		<div class="site-tickets-main">
-			<?php if (isset($plays)) foreach ($plays as $play) { ?>
+			<?php if (isset($plays)) foreach ($plays as $play) if (count($play[2]) > 0) { ?>
 			<div class="site-tickets-play">
 				<div class="site-tickets-play-image">
 					<img src="<?= $this->Url->build('/img/plays/'.$play[0].'.png', true) ?>" />
@@ -30,9 +30,9 @@
 					<table>
 						<tr>
 							<th>Performance Time</th>
-							<th>Theater</th>
-							<th>Seating</th>
-							<th></th>
+							<th style="width:250px;">Theater</th>
+							<th style="width:200px;">Seating</th>
+							<th style="width:100px;"></th>
 						</tr>
 						<?php foreach ($play[2] as $performance) { ?>
 						<tr>

@@ -59,6 +59,11 @@ class TicketsTable extends Table
             'bindingKey' => "performance_id"
         ]);
 
+        $this->hasOne('Seasons', [
+            'foreignKey' => 'id',
+            'bindingKey' => "season_id"
+        ]);
+
         $options = array(
             // Refer to php.net fgetcsv for more information
             'length' => 0,

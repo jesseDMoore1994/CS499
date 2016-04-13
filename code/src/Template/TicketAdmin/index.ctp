@@ -8,9 +8,6 @@
 				<div class="admin-controls-button black marginless" style="width:32px;">
 					<input type="submit" class="search icomoon" value="&#xe986;" />
 				</div>
-				<div class="admin-controls-button green" style="width:150px;">
-					<a href="javascript:showTicketDialog()"><span class="icomoon">&#xea0a;</span> Create Ticket</a>
-				</div>
 			</div>
 		</form>
 	</div>
@@ -59,12 +56,16 @@
 			</div>
 			<label>Performance:</label>
 			<select>
-
+				<?php foreach ($performances as $performance) { ?>
+				<option value="<?= $performance->id ?>"><?= $performance->play->name ?>: <?= date("M d Y, h:i a", $performance->start_time) ?></option>
+				<?php } ?>
 			</select>
-			<label>Seat Number:</label>
+			<!--<label>Seat Number:</label>
 			<select>
-
-			</select>
+				<?php foreach ($seats as $seat) { ?>
+				<option value="<?= $seat->id ?>"><?= $seat->orow->osection->code.$seat->orow->code."-".$seat->code ?></option>
+				<?php } ?>
+			</select>-->
 		</form>
 	</div>
 

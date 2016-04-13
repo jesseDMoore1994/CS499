@@ -33,6 +33,12 @@ class PerformancesTable extends Table
 			'bindingKey' => 'theater_id'
 		]);
 
+		$this->hasOne('Seasons', [
+			'foreignKey' => 'id',
+			'bindingKey' => 'season_id',
+			'propertyName' => 'season'
+		]);
+
 		$this->hasMany("Tickets", [
 			"foreignKey" => "performance_id",
 			'bindingKey' => 'id',
