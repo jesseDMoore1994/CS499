@@ -23,10 +23,6 @@
             echo "Pick a table to Import.";
             echo $this->Form->select('table', ['Tickets','Staff Assignments','Users','Theaters','Sections','Seats','Seasons','Rows',
                                                 'Plays','Performances','Cart Items']);
-            echo "Pick which fields to Import.";
-            echo $this->Form->select('fields', ['all']);
-            echo "Pick file format.";
-            echo $this->Form->select('format', ['.csv']);
 
             echo $file_status;
 

@@ -154,8 +154,6 @@ class SetupAdminController extends AdminController {
 	{
 		$submissionFile = '';
 		$table = '';
-		$fields = '';
-		$format = '';
 
 
 
@@ -164,8 +162,6 @@ class SetupAdminController extends AdminController {
 		{
 			$submissionFile = $this->request->data['submissionFile'];
 			$table = $this->request->data['table'];
-			$fields = $this->request->data['fields'];
-			$format = $this->request->data['format'];
 		} endif;
 
 		//process
@@ -375,17 +371,12 @@ class SetupAdminController extends AdminController {
 	{
         $tableName = '';
         $table = '';
-        $fields = '';
-        $format = '';
-
 
 
         //get form data
         if($this->request->is('post')):
         {
             $table = $this->request->data['table'];
-            $fields = $this->request->data['fields'];
-            $format = $this->request->data['format'];
         } endif;
 
         //process
