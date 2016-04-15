@@ -23,12 +23,12 @@ class SectionsTable extends Table
 		$this->primaryKey('id');
 
 		$this->hasOne('Theaters', [
-			'foreignKey' => 'theater',
+			'foreignKey' => 'theater_id',
 			"bindingKey" => "id"
 		]);
 
 		$this->hasMany("Rows", [
-			"foreignKey" => "section",
+			"foreignKey" => "section_id",
 			"bindingKey" => "id",
 		]);
 	}

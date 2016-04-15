@@ -439,6 +439,26 @@ html, body {
 }
 
 
+
+.admin-setting {
+	padding: 10px 10px 10px 10px;
+	border-bottom:1px solid #EEEEEE;
+}
+
+.admin-setting-name {
+	width:250px;
+}
+
+.admin-setting-name, .admin-setting-value {
+	display:inline-block;
+}
+
+.admin-setting-edit {
+	float:right;
+	display:none;
+}
+
+
 /* ---------------------------------------------------------
  * SMALL DESKTOP DESIGN:
  * This defines the appearence of the admin interface in

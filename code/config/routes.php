@@ -76,6 +76,15 @@ Router::scope('/', function ($routes) {
 
 	$routes->connect('/admin/setup/api_season_manage/', ['controller' => 'SetupAdmin', 'action' => 'apiSeasonManage']);
 	$routes->connect('/admin/setup/api_season_manage/*', ['controller' => 'SetupAdmin', 'action' => 'apiSeasonManage']);
+	$routes->connect('/admin/setup/api_create_section/', ['controller' => 'SetupAdmin', 'action' => 'apiCreateSection']);
+	$routes->connect('/admin/setup/api_create_row/', ['controller' => 'SetupAdmin', 'action' => 'apiCreateRow']);
+	$routes->connect('/admin/setup/api_create_seat/', ['controller' => 'SetupAdmin', 'action' => 'apiCreateSeat']);
+	$routes->connect('/admin/setup/api_edit_row/', ['controller' => 'SetupAdmin', 'action' => 'apiEditRow']);
+	$routes->connect('/admin/setup/api_edit_seat/', ['controller' => 'SetupAdmin', 'action' => 'apiEditSeat']);
+	$routes->connect('/admin/setup/api_edit_section/', ['controller' => 'SetupAdmin', 'action' => 'apiEditSection']);
+	$routes->connect('/admin/setup/api_delete_row/', ['controller' => 'SetupAdmin', 'action' => 'apiDeleteRow']);
+	$routes->connect('/admin/setup/api_delete_seat/', ['controller' => 'SetupAdmin', 'action' => 'apiDeleteSeat']);
+	$routes->connect('/admin/setup/api_delete_section/', ['controller' => 'SetupAdmin', 'action' => 'apiDeleteSection']);
 
 	$routes->connect('/admin/settings/select/*', ['controller' => 'AdminSettings', 'action' => 'select']);
 

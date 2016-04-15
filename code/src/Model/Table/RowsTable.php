@@ -23,18 +23,18 @@ class RowsTable extends Table
 		$this->primaryKey('id');
 
 		$this->belongsTo('Theaters', [
-			'foreignKey' => 'theater',
+			'foreignKey' => 'theater_id',
 			'bindingKey' => 'id'
 		]);
 
 		$this->hasOne('Sections', [
 			'foreignKey' => 'id',
-			'bindingKey' => 'section',
-			'propertyName' => "osection"
+			'bindingKey' => 'section_id',
+			'propertyName' => "section"
 		]);
 
 		$this->hasMany("Seats", [
-			'foreignKey' => 'row',
+			'foreignKey' => 'row_id',
 			'bindingKey' => 'id',
 		]);
 	}

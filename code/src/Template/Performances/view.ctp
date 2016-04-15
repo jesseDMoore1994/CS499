@@ -93,7 +93,7 @@
 						<?= ($seat_options[3][$i]) ? "$".$seat_options[3][$i] : "--" ; ?>
 					</div>
 					<div class="site-performance-seat-availability">
-						<a href=""><?= ($seat_options[3][$i]) ? "<span class='good'>Available</span>" : "<span class='bad'>Unavailable</span>" ; ?></a>
+						<?= ($seat_options[3][$i]) ? "<span class='good'>Available</span>" : "<span class='bad'>Unavailable</span>" ; ?>
 					</div>
 					<div class="site-performance-seat-name">
 						<?= $play_theater ?>,

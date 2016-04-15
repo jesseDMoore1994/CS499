@@ -42,8 +42,8 @@ class CartController extends AppController
 				($item->performance == null) ? $item->season->theater->name : $item->performance->theater->name,
 				($item->performance == null) ? date("M d Y", $item->season->start_time) : date("M d Y", $item->performance->start_time),
 				($item->performance == null) ? date("h:i", $item->season->start_time) : date("h:i", $item->performance->start_time),
-				$item->seat->orow->osection->code.
-					$item->seat->orow->code.
+				$item->seat->row->section->code.
+					$item->seat->row->code.
 					"-".
 					$item->seat->code,
 				$item->seat->id,

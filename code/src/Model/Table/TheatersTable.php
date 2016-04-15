@@ -23,13 +23,13 @@ class TheatersTable extends Table
 		$this->primaryKey('id');
 
 		$this->hasMany("Sections", [
-			"foreignKey" => "theater",
+			"foreignKey" => "theater_id",
 			"bindingKey" => "id",
 			"propertyName" => "sections"
 		]);
 
 		$this->hasMany("Rows", [
-			"foreignKey" => "row",
+			"foreignKey" => "theater_id",
 			"bindingKey" => "id",
 			"propertyName" => "rows"
 		]);
@@ -41,7 +41,8 @@ class TheatersTable extends Table
 		]);
 
 		$this->hasMany("Seats", [
-			"foreignKey" => "theater"
+			"foreignKey" => "theater_id",
+			'bindingKey' => 'id'
 		]);
 	}
 

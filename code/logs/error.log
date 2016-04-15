@@ -8632,3 +8632,564 @@ Stack Trace:
 #2 {main}
 
 
+2016-04-11 15:04:46 Error: [Cake\Controller\Exception\MissingActionException] Action AdminController::setup() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'AdminController',
+  'action' => 'setup',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\AdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-11 15:11:00 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'theater' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Section), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Section), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(169): Cake\ORM\Table->save(Object(App\Model\Entity\Section))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSection()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 15:11:58 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'theater' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Section), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Section), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(169): Cake\ORM\Table->save(Object(App\Model\Entity\Section))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSection()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 15:15:16 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'theater' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Section), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Section), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(171): Cake\ORM\Table->save(Object(App\Model\Entity\Section))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSection()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 15:16:05 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'theater' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Section), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Section), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(176): Cake\ORM\Table->save(Object(App\Model\Entity\Section))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSection()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 15:16:37 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'theater' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Section), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Section), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(174): Cake\ORM\Table->save(Object(App\Model\Entity\Section))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSection()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 15:18:15 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'theater' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Section), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Section), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(174): Cake\ORM\Table->save(Object(App\Model\Entity\Section))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSection()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 15:18:25 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'theater' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Section), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Section), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(174): Cake\ORM\Table->save(Object(App\Model\Entity\Section))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSection()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 15:18:42 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'theater' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Row), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Row), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(183): Cake\ORM\Table->save(Object(App\Model\Entity\Row))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSection()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 15:19:00 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'theater' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Section), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Section), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(174): Cake\ORM\Table->save(Object(App\Model\Entity\Section))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSection()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 15:20:19 Error: [Cake\View\Exception\MissingTemplateException] Template file "SetupAdmin/api_create_section.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'SetupAdmin/api_create_section.ctp',
+)
+Request URL: /cs499/CS499/Code/admin/setup/api_create_section/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/View/View.php(572): Cake\View\View->_getViewFileName(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(594): Cake\View\View->render(NULL, NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(117): Cake\Controller\Controller->render()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 {main}
+
+
+2016-04-11 15:23:17 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Seats.theater' in 'where clause'
+Request URL: /cs499/CS499/Code/admin/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(40): Cake\ORM\Query->all()
+#9 [internal function]: App\Controller\TicketAdminController->index()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#14 {main}
+
+
+2016-04-11 15:25:01 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Seats.theater' in 'where clause'
+Request URL: /cs499/CS499/Code/admin/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(857): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Datasource/QueryTrait.php(263): Cake\ORM\Query->_execute()
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Query.php(811): Cake\ORM\Query->_all()
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/TicketAdminController.php(40): Cake\ORM\Query->all()
+#9 [internal function]: App\Controller\TicketAdminController->index()
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#11 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\TicketAdminController))
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#14 {main}
+
+
+2016-04-11 17:28:47 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'section_id' cannot be null
+Request URL: /cs499/CS499/Code/checkout/process/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Ticket), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Ticket), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/CheckoutController.php(212): Cake\ORM\Table->save(Object(App\Model\Entity\Ticket))
+#11 [internal function]: App\Controller\CheckoutController->process()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\CheckoutController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 18:05:32 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'code' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_row/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Row), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Row), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(230): Cake\ORM\Table->save(Object(App\Model\Entity\Row))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateRow()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 18:09:44 Error: [Cake\Controller\Exception\MissingActionException] Action SetupAdminController::apiCreateSeat() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'SetupAdminController',
+  'action' => 'apiCreateSeat',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /cs499/CS499/Code/admin/setup/api_create_seat/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 {main}
+
+
+2016-04-11 18:11:21 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'row_id' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_seat/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Seat), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Seat), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(270): Cake\ORM\Table->save(Object(App\Model\Entity\Seat))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSeat()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 18:12:31 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'row_id' cannot be null
+Request URL: /cs499/CS499/Code/admin/setup/api_create_seat/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(34): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(162): Cake\Database\Statement\MysqlStatement->execute(NULL)
+#2 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Log/LoggingStatement.php(54): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(257): Cake\Database\Log\LoggingStatement->execute()
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Query.php(170): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1494): Cake\Database\Query->execute()
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1411): Cake\ORM\Table->_insert(Object(App\Model\Entity\Seat), Array)
+#7 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1343): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Seat), Object(ArrayObject))
+#8 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Database/Connection.php(527): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#9 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php(1344): Cake\Database\Connection->transactional(Object(Closure))
+#10 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(270): Cake\ORM\Table->save(Object(App\Model\Entity\Seat))
+#11 [internal function]: App\Controller\SetupAdminController->apiCreateSeat()
+#12 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#13 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#14 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#15 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#16 {main}
+
+
+2016-04-11 18:27:07 Error: Fatal Error (4): syntax error, unexpected '?>' in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Template/SetupAdmin/seats.ctp, line 86]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-11 18:27:07 Error: [Cake\Error\FatalErrorException] syntax error, unexpected '?>'
+Request URL: /cs499/CS499/Code/admin/setup/seats/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', '/Applications/M...', 86)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-11 18:27:31 Error: [BadMethodCallException] Unknown method "where"
+Request URL: /cs499/CS499/Code/admin/setup/api_edit_row/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(290): Cake\ORM\Table->__call('where', Array)
+#1 /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php(290): App\Model\Table\RowsTable->where(Array)
+#2 [internal function]: App\Controller\SetupAdminController->apiEditRow()
+#3 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Controller/Controller.php(420): call_user_func_array(Array, Array)
+#4 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(111): Cake\Controller\Controller->invokeAction()
+#5 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(85): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\SetupAdminController))
+#6 /Applications/MAMP/htdocs/cs499/CS499/Code/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 {main}
+
+
+2016-04-11 18:28:20 Warning: Warning (2): Creating default object from empty value in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php, line 316]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SetupAdminController::apiEditSeat() - APP/Controller/SetupAdminController.php, line 316
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 18:28:20 Warning: Warning (4096): Argument 1 passed to Cake\ORM\Table::save() must implement interface Cake\Datasource\EntityInterface, instance of stdClass given, called in /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php on line 318 and defined in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1323]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\ORM\Table::save() - CORE/src/ORM/Table.php, line 1323
+App\Controller\SetupAdminController::apiEditSeat() - APP/Controller/SetupAdminController.php, line 318
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 18:28:20 Error: Fatal Error (1): Call to undefined method stdClass::errors() in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1332]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-11 18:28:20 Error: [Cake\Error\FatalErrorException] Call to undefined method stdClass::errors()
+Request URL: /cs499/CS499/Code/admin/setup/api_edit_seat/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 1332)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-11 18:28:29 Warning: Warning (2): Creating default object from empty value in [/Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php, line 316]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+App\Controller\SetupAdminController::apiEditSeat() - APP/Controller/SetupAdminController.php, line 316
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 18:28:29 Warning: Warning (4096): Argument 1 passed to Cake\ORM\Table::save() must implement interface Cake\Datasource\EntityInterface, instance of stdClass given, called in /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php on line 318 and defined in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1323]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\ORM\Table::save() - CORE/src/ORM/Table.php, line 1323
+App\Controller\SetupAdminController::apiEditSeat() - APP/Controller/SetupAdminController.php, line 318
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 18:28:29 Error: Fatal Error (1): Call to undefined method stdClass::errors() in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1332]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-11 18:28:29 Error: [Cake\Error\FatalErrorException] Call to undefined method stdClass::errors()
+Request URL: /cs499/CS499/Code/admin/setup/api_edit_seat/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', '/Applications/M...', 1332)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-11 18:37:20 Warning: Warning (4096): Argument 1 passed to Cake\ORM\Table::delete() must implement interface Cake\Datasource\EntityInterface, null given, called in /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php on line 339 and defined in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1596]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\ORM\Table::delete() - CORE/src/ORM/Table.php, line 1596
+App\Controller\SetupAdminController::apiDeleteSeat() - APP/Controller/SetupAdminController.php, line 339
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 18:37:20 Error: Fatal Error (1): Call to a member function isNew() on null in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1639]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-11 18:37:21 Error: [Cake\Error\FatalErrorException] Call to a member function isNew() on null
+Request URL: /cs499/CS499/Code/admin/setup/api_delete_seat/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 1639)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-11 18:37:45 Warning: Warning (4096): Argument 1 passed to Cake\ORM\Table::delete() must implement interface Cake\Datasource\EntityInterface, null given, called in /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php on line 360 and defined in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1596]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\ORM\Table::delete() - CORE/src/ORM/Table.php, line 1596
+App\Controller\SetupAdminController::apiDeleteRow() - APP/Controller/SetupAdminController.php, line 360
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 18:37:45 Error: Fatal Error (1): Call to a member function isNew() on null in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1639]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-11 18:37:45 Error: [Cake\Error\FatalErrorException] Call to a member function isNew() on null
+Request URL: /cs499/CS499/Code/admin/setup/api_delete_row/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 1639)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-04-11 18:37:51 Warning: Warning (4096): Argument 1 passed to Cake\ORM\Table::delete() must implement interface Cake\Datasource\EntityInterface, null given, called in /Applications/MAMP/htdocs/cs499/CS499/Code/src/Controller/SetupAdminController.php on line 360 and defined in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1596]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 137
+Cake\ORM\Table::delete() - CORE/src/ORM/Table.php, line 1596
+App\Controller\SetupAdminController::apiDeleteRow() - APP/Controller/SetupAdminController.php, line 360
+Cake\Controller\Controller::invokeAction() - CORE/src/Controller/Controller.php, line 420
+Cake\Routing\Dispatcher::_invoke() - CORE/src/Routing/Dispatcher.php, line 111
+Cake\Routing\Dispatcher::dispatch() - CORE/src/Routing/Dispatcher.php, line 85
+[main] - ROOT/webroot/index.php, line 37
+
+
+
+2016-04-11 18:37:51 Error: Fatal Error (1): Call to a member function isNew() on null in [/Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/ORM/Table.php, line 1639]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE/src/Error/BaseErrorHandler.php, line 202
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE/src/Error/BaseErrorHandler.php, line 90
+[main] - [internal], line ??
+
+
+
+2016-04-11 18:37:51 Error: [Cake\Error\FatalErrorException] Call to a member function isNew() on null
+Request URL: /cs499/CS499/Code/admin/setup/api_delete_row/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/cs499/CS499/Code/vendor/cakephp/cakephp/src/Error/BaseErrorHandler.php(90): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to a membe...', '/Applications/M...', 1639)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+

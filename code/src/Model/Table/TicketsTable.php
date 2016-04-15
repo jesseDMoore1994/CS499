@@ -46,12 +46,14 @@ class TicketsTable extends Table
 
         $this->hasOne('Rows', [
             'foreignKey' => 'id',
-            'bindingKey' => "row_id"
+            'bindingKey' => "row_id",
+            'propertyName' => 'row'
         ]);
 
         $this->hasOne('Seats', [
             'foreignKey' => 'id',
-            'bindingKey' => "seat_id"
+            'bindingKey' => "seat_id",
+            'propertyName' => 'seat'
         ]);
 
         $this->hasOne('Performances', [

@@ -24,19 +24,19 @@ class SeatsTable extends Table
 
 		$this->belongsTo('Theaters', [
 			'foreignKey' => 'id',
-			'bindingKey' => "theater",
+			'bindingKey' => "theater_id",
 		]);
 
 		$this->hasOne('Sections', [
 			'foreignKey' => 'id',
-			'bindingKey' => "section",
-			'propertyName' => "osection",
+			'bindingKey' => "section_id",
+			'propertyName' => "section",
 		]);
 
 		$this->hasOne('Rows', [
 			'foreignKey' => 'id',
-			'bindingKey' => "row",
-			'propertyName' => "orow",
+			'bindingKey' => "row_id",
+			'propertyName' => "row",
 		]);
 	}
 

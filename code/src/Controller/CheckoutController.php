@@ -40,8 +40,8 @@ class CheckoutController extends AppController
 				($item->performance == null) ? $item->season->theater->name : $item->performance->theater->name,
 				($item->performance == null) ? date("M d Y", $item->season->start_time) : date("M d Y", $item->performance->start_time),
 				($item->performance == null) ? date("h:i", $item->season->start_time) : date("h:i", $item->performance->start_time),
-				$item->seat->orow->osection->code.
-				$item->seat->orow->code.
+				$item->seat->row->section->code.
+				$item->seat->row->code.
 				"-".
 				$item->seat->code,
 				$item->seat->id,
@@ -183,7 +183,7 @@ class CheckoutController extends AppController
 					$table->delete($item);
 
 					// Display an error to the user
-					$this->Flash->set("The seat ".$item->seat->orow->osection->code.$item->seat->orow->code."-".$item->seat->code." has already been taken.", [
+					$this->Flash->set("The seat ".$item->seat->row->section->code.$item->seat->row->code."-".$item->seat->code." has already been taken.", [
 						'element' => 'error'
 					]);
 
@@ -195,8 +195,8 @@ class CheckoutController extends AppController
 				// Create the ticket
 				$ticket = $ticketTable->newEntity([
 					"theater_id" => $item->performance->theater->id,
-					"section_id" => $item->seat->orow->osection->id,
-					"row_id" => $item->seat->orow->id,
+					"section_id" => $item->seat->row->section->id,
+					"row_id" => $item->seat->row->id,
 					"seat_id" => $item->seat->id,
 					"status" => "paid",
 					"customer_id" => (($item->loggedIn) ? $item->user->id : 0),
@@ -224,7 +224,7 @@ class CheckoutController extends AppController
 					$table->delete($item);
 
 					// Display an error to the user
-					$this->Flash->set("The seat ".$item->seat->orow->osection->code.$item->seat->orow->code."-".$item->seat->code." has already been taken.", [
+					$this->Flash->set("The seat ".$item->seat->row->section->code.$item->seat->row->code."-".$item->seat->code." has already been taken.", [
 						'element' => 'error'
 					]);
 
@@ -236,8 +236,8 @@ class CheckoutController extends AppController
 				// Create the ticket
 				$ticket = $ticketTable->newEntity([
 					"theater_id" => $item->season->theater->id,
-					"section_id" => $item->seat->orow->osection->id,
-					"row_id" => $item->seat->orow->id,
+					"section_id" => $item->seat->row->osection->id,
+					"row_id" => $item->seat->oow->id,
 					"seat_id" => $item->seat->id,
 					"status" => "paid",
 					"customer_id" => (($item->loggedIn) ? $item->user->id : 0),

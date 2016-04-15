@@ -37,7 +37,7 @@ class TicketAdminController extends AdminController {
 		}
 
 		$this->set("seats", TableRegistry::get("Seats")
-			->find()->where(["Seats.theater" => $this->adminTheater])->contain(["Rows", "Rows.Sections"])->all());
+			->find()->where(["Seats.theater_id" => $this->adminTheater])->contain(["Rows", "Rows.Sections"])->all());
 		$this->set("performances", TableRegistry::get("Performances")
 			->find()->where(["Performances.theater_id" => $this->adminTheater])->contain(["Plays"])->all());
 		$this->set("tickets", $pass);

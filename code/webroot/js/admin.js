@@ -1,5 +1,7 @@
 
 var ticketDialog, customerDialog, performanceDialog, seasonDialog;
+var sectionDialog, rowDialog, seatDialog;
+var seatEditor, rowEditor, sectionEditor;
 
 $(document).ready(function() {
 
@@ -7,6 +9,13 @@ $(document).ready(function() {
 	customerDialog = createDialog(".customer-creator", 520, saveCustomer);
 	performanceDialog = createDialog(".performance-creator", 520, savePerformance);
 	seasonDialog = createDialog(".seasons-creator", 520, saveSeason);
+	sectionDialog = createDialog(".section-creator", 520, createSection);
+	rowDialog = createDialog(".row-creator", 450, createRow);
+	seatDialog = createDialog(".seat-creator", 300, saveSeat);
+	sectionEditor = createDeleteDialog(".section-editor", 300, editSection, deleteSection);
+	rowEditor = createDeleteDialog(".row-editor", 225, editRow, deleteRow);
+	seatEditor = createDeleteDialog(".seat-editor", 300, editSeat, deleteSeat);
+
 	initTicketDialog();
 	initCustomerDialog();
 	initTheaterSwitcher();
@@ -24,6 +33,32 @@ function createDialog(selector, height, callback) {
 		buttons: {
 			"Save Changes": function() {
 				callback();
+			},
+			Cancel: function() {
+				dialog.dialog( "close" );
+			}
+		},
+		close: function() {
+			$(".dialog-form")[0].reset();
+		}
+	});
+	return dialog;
+}
+
+function createDeleteDialog(selector, height, callback, deleteCallback) {
+	var dialog = $(selector).dialog({
+		autoOpen: false,
+		height: height,
+		width: 600,
+		modal: true,
+		buttons: {
+			"Save Changes": function() {
+				callback();
+			},
+			"Delete": function() {
+				if (confirm("Are you sure you want to delete this item?")) {
+					deleteCallback();
+				}
 			},
 			Cancel: function() {
 				dialog.dialog( "close" );
@@ -238,6 +273,296 @@ function saveSeason() {
 		error: function(xhr, status, error) {
 			//$("body").html(xhr.responseText);
 			alert("Could not create season.");
+		}
+	});
+}
+
+
+
+function showSectionDialog() {
+	sectionDialog.dialog( "open" );
+	$(".section-creator").attr("data-section", "0");
+}
+
+function createSection() {
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		name: $(".section-creator .name").val(),
+		rows: $(".section-creator .rows").val(),
+		seats: $(".section-creator .seats").val(),
+		code: $(".section-creator .code").val(),
+		price: $(".section-creator .price").val(),
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_create_section/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not create section.");
+		}
+	});
+}
+
+function showRowDialog(section) {
+	rowDialog.dialog( "open" );
+	$(".row-creator").attr("data-section", section);
+}
+
+function showSeatDialog(section, row) {
+	seatDialog.dialog( "open" );
+	$(".seat-creator").attr("data-section", section);
+	$(".seat-creator").attr("data-row", row);
+}
+
+function showRowEditorDialog(row, code) {
+	rowEditor.dialog("open");
+	$(".row-editor").attr("data-row", row);
+
+	$(".row-editor .code").val(code);
+}
+
+function showSeatEditorDialog(seat, price, code) {
+	seatEditor.dialog("open");
+	$(".seat-editor").attr("data-seat", seat);
+
+	$(".seat-editor .code").val(code);
+	$(".seat-editor .price").val(price);
+}
+
+function showSectionEditorDialog(section, name, code) {
+	sectionEditor.dialog("open");
+	$(".section-editor").attr("data-section", section);
+
+	$(".section-editor .name").val(name);
+	$(".section-editor .code").val(code);
+}
+
+function saveSeat() {
+	var section = $(".seat-creator").attr("data-section");
+	var row = $(".seat-creator").attr("data-row");
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		section: section,
+		row: row,
+		code: $(".seat-creator .code").val(),
+		price: $(".seat-creator .price").val(),
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_create_seat/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not create section.");
+		}
+	});
+}
+
+function createRow() {
+	var section = $(".row-creator").attr("data-section");
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		section: section,
+		seats: $(".row-creator .seats").val(),
+		code: $(".row-creator .code").val(),
+		price: $(".row-creator .price").val(),
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_create_row/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not create section.");
+		}
+	});
+}
+
+function saveSeat() {
+	var section = $(".seat-creator").attr("data-section");
+	var row = $(".seat-creator").attr("data-row");
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		section: section,
+		row: row,
+		code: $(".seat-creator .code").val(),
+		price: $(".seat-creator .price").val(),
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_create_seat/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not create section.");
+		}
+	});
+}
+
+function editSection() {
+	var section = $(".section-editor").attr("data-section");
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		section: section,
+		code: $(".section-editor .code").val(),
+		name: $(".section-editor .name").val(),
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_edit_section/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not create section.");
+		}
+	});
+}
+
+function editRow() {
+	var row = $(".row-editor").attr("data-row");
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		row: row,
+		code: $(".row-editor .code").val(),
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_edit_row/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not create section.");
+		}
+	});
+}
+
+function editSeat() {
+	var seat = $(".seat-editor").attr("data-seat");
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		seat: seat,
+		code: $(".seat-editor .code").val(),
+		price: $(".seat-editor .price").val(),
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_edit_seat/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not create section.");
+		}
+	});
+}
+
+function deleteRow() {
+	var row = $(".row-editor").attr("data-row");
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		row: row,
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_delete_row/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not delete.");
+		}
+	});
+}
+
+function deleteSeat() {
+	var seat = $(".seat-editor").attr("data-seat");
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		seat: seat,
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_delete_seat/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not delete.");
+		}
+	});
+}
+
+function deleteSection() {
+	var section = $(".section-editor").attr("data-section");
+	var base = $("body").attr("data-urlbase");
+
+	var data = {
+		section: section,
+	};
+
+	$.ajax({
+		method: "POST",
+		url: base + "admin/setup/api_delete_section/",
+		data: data,
+		success: function(html) {
+			//$("body").html(html);
+			location.reload();
+		},
+		error: function(xhr, status, error) {
+			$("body").html(xhr.responseText);
+			alert("Could not delete.");
 		}
 	});
 }
