@@ -15,6 +15,7 @@ class HomeController extends AppController {
 		$this->set("banner_image", "carol");
 		$this->set("banner_title", "A Christmas Carol");
 		$this->set("banner_subtitle", "Tickets now on sale. Civic Center Playhouse. Huntaville, Alabama.");
+		$this->set("banner_link", "/performances/view/10/carol/");
 
 		$table = TableRegistry::get("Performances");
 		$performances = $table
@@ -27,6 +28,7 @@ class HomeController extends AppController {
 			->contain([
 				"Plays", "Theaters"
 			])
+			->orderAsc("start_time")
 			->all();
 
 		$data = [];
@@ -36,7 +38,8 @@ class HomeController extends AppController {
 				$performance->play->name,
 				$performance->theater->name,
 				date("M d Y, h:i", $performance->start_time),
-				"/performances/view/".$performance->id."/".$performance->play->artwork."/"
+				"/performances/view/".$performance->id."/".$performance->play->artwork."/",
+				$performance->play->shortname
 			];
 		}
 

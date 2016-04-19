@@ -42,7 +42,7 @@
 							<td><label class="responsive-tip">Join Date:</label><?= $customer["joined"] ?></td>
 							<td><label class="responsive-tip">Email:</label> <a href="mailto:<?= $customer["email"] ?>" class="email"><?= $customer["email"] ?></a></td>
 							<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $customer["state"] ?>"><?= $customer["status"] ?></span></td>
-							<td><label class="responsive-tip">Actions:</label> <a href="javascript:showCustomerEditDialog(false, <?= $customer["id"] ?>)" class="caps">Edit</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
+							<td><label class="responsive-tip">Actions:</label> <a href="javascript:showCustomerEditDialog(false, <?= $customer["id"] ?>)" class="caps">Edit</a> <!--<a href=""><span class="icomoon">&#xea43;</span></a>--></td>
 							<td><label class="responsive-tip">Select:</label> <input type="checkbox" /><div class="data"><?= json_encode($customer) ?></div></td>
 						</tr>
 					<?php } ?>

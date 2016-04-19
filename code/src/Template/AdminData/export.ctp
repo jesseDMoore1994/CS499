@@ -13,7 +13,7 @@
 
     <br>
     <br>
-    <div align="center"><strong>BE AWARE, DEVELOPERS TAKE NO RESPONSIBILITY FOR DATA LOSS/CORRUPTION.</strong></div>
+    <div align="center"><strong>BE AWARE, THIS TOOL MAY RESULT IN DATA LOSS OR CORRUPTION.</strong></div>
     <br>
     <br>
 

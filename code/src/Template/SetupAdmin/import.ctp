@@ -8,14 +8,9 @@
 	</div>
 	<div class="admin-top-border"></div>
 
-	<?= $this->Element("admin/form_account") ?>
-
-	</div>
-
+	<div class="responsive-inner">
         <br>
-        <br>
-        <div align="center"><strong>BE AWARE, DEVELOPERS TAKE NO RESPONSIBILITY FOR DATA LOSS/CORRUPTION.</strong></div>
-        <br>
+		<div align="center"><strong>BE AWARE, USING THIS TOOL MAY RESULT IN DATA LOSS/CORRUPTION.</strong></div>
         <br>
 
         <?php
@@ -32,5 +27,6 @@
 
         echo $this->Form->end();
         ?>
+	</div>
 
 </div>

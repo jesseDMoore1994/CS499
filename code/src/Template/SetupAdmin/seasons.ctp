@@ -45,7 +45,7 @@
 							<td><label class="responsive-tip">Name:</label> <?= $season->name ?></td>
 							<td><label class="responsive-tip">Name:</label> <?= date("M d Y, h:i", $season->start_time) ?></td>
 							<td><label class="responsive-tip">Name:</label> <?= date("M d Y, h:i", $season->end_time) ?></td>
-							<td><label class="responsive-tip">Actions:</label> <a href="javascript:showSeasonEditDialog(<?= $season->id ?>)" class="caps">Edit</a> <a href=""><span class="icomoon">&#xea43;</span></a><div class="data"><?= json_encode([
+							<td><label class="responsive-tip">Actions:</label> <a href="javascript:showSeasonEditDialog(<?= $season->id ?>)" class="caps">Edit</a> <!--<a href=""><span class="icomoon">&#xea43;</span></a>--><div class="data"><?= json_encode([
 										"name" => $season->name,
 										"start" => date("m/d/Y", $season->start_time),
 										"end" => date("m/d/Y", $season->end_time),

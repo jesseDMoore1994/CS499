@@ -83,8 +83,11 @@ function startsWith($haystack, $needle) {
 				<a href="<?= $this->Url->build("/admin/schedule/", true) ?>"><span class="icomoon">&#xe953;</span> <span>Theater Schedule</span></a>
 			</div>
 			<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/setup/", true))) echo " selected"; ?>">
-				<a href="<?= $this->Url->build("/admin/setup/", true) ?>"><span class="icomoon">&#xe994;</span> <span>Theater Setup</span> <span class="icomoon lock"><?= (startsWith($this->Url->build(null, true), $this->Url->build("/admin/setup/", true))) ? "&#xe990;" : "&#xe98f;"; ?></span></a>
+				<a href="<?= $this->Url->build("/admin/setup/", true) ?>"><span class="icomoon">&#xe994;</span> <span>Theater Setup</span><!-- <span class="icomoon lock"><?= (startsWith($this->Url->build(null, true), $this->Url->build("/admin/setup/", true))) ? "&#xe990;" : "&#xe98f;"; ?></span>--></a>
 			</div>
+				<div class="admin-tab<?php if (startsWith($this->Url->build(null, true), $this->Url->build("/admin/help/", true))) echo " selected"; ?>">
+					<a href="<?= $this->Url->build("/admin/help/", true) ?>"><span class="icomoon">&#xea0c;</span> <span>Help</span></a>
+				</div>
 			<?php } ?>
 		</div>
 		<div class="admin-body">

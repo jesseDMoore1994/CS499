@@ -19,12 +19,14 @@ class CustomerAdminController extends AdminController {
         }else{$searchTerm = '';}
 
         if($searchTerm == '') {
-            $query = $users->find();
+            $query = $query = $users->find()
+                ->orderDesc("id");
         }else {
             $query = $users->find()
                 ->where(['name' => $searchTerm])
                 ->orWhere(['email' => $searchTerm])
-                ->orWhere(['id' => $searchTerm]);
+                ->orWhere(['id' => $searchTerm])
+                ->orderDesc("id");
         }
 
         Debugger::dump($query->toArray());

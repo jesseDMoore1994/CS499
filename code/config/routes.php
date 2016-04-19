@@ -62,6 +62,7 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/admin/schedule/*', ['controller' => 'ScheduleAdmin']);
 	$routes->connect('/admin/schedule/api_manage/', ['controller' => 'ScheduleAdmin', 'action' => 'apiManage']);
 	$routes->connect('/admin/schedule/api_manage/*', ['controller' => 'ScheduleAdmin', 'action' => 'apiManage']);
+	$routes->connect('/admin/help', ['controller' => 'HelpAdmin', 'action' => 'index']);
 
 	$routes->connect('/admin/setup', ['controller' => 'SetupAdmin', 'action' => 'index']);
 
