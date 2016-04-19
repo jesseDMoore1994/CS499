@@ -29,8 +29,6 @@ class CustomerAdminController extends AdminController {
                 ->orderDesc("id");
         }
 
-        Debugger::dump($query->toArray());
-
 		foreach ($query as $row) {
 
 			$assignment = $staff->find("all")
