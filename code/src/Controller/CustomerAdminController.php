@@ -5,19 +5,37 @@ namespace App\Controller;
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\Time;
+use Cake\Error\Debugger;
 
 class CustomerAdminController extends AdminController {
 	public function index() {
 		$users = TableRegistry::get('Users');
 		$staff = TableRegistry::get('StaffAssignments');
 		$pass = [];
-		$query = $users->find();
+        $searchTerm = null;
+
+        if(isset($this->request->query['search'])) {
+            $searchTerm = $this->request->query['search'];
+        }else{$searchTerm = '';}
+
+        if($searchTerm == '') {
+            $query = $users->find();
+        }else {
+            $query = $users->find()
+                ->where(['name' => $searchTerm])
+                ->orWhere(['email' => $searchTerm])
+                ->orWhere(['id' => $searchTerm]);
+        }
+
+        Debugger::dump($query->toArray());
 
 		foreach ($query as $row) {
 
 			$assignment = $staff->find("all")
 				->where(['theater_id' => $this->adminTheater, 'user_id' => $row->id])
 				->all();
+
+
 
 			$staff_name = "Customer";
 			$staff_level = "0";

@@ -99,7 +99,7 @@ function showTicketEditDialog(id) {
 }
 
 function createTicket() {
-	
+	ticketDialog.dialog( "open" );
 }
 
 function saveTicket() {

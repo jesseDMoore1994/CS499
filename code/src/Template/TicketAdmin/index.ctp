@@ -8,6 +8,9 @@
 				<div class="admin-controls-button black marginless" style="width:32px;">
 					<input type="submit" class="search icomoon" value="&#xe986;" />
 				</div>
+				<div class="admin-controls-button green" style="width:175px;">
+					<a href="javascript:showTicketDialog(false)"><span class="icomoon">&#xea0a;</span> Create Ticket</a>
+				</div>
 			</div>
 		</form>
 	</div>
@@ -19,7 +22,7 @@
 			<label>Payment Status:</label>
 			<select id="ticket-creator-payment-select">
 				<option value="paid">Paid</option>
-				<option value="paid-casb">Paid (Cash)</option>
+				<option value="paid-cash">Paid (Cash)</option>
 				<option value="paid-credit">Unpaid (Credit); Enter credit card now</option>
 				<option value="unpaid-cash">Unpaid (Cash); Customer must pay at door</option>
 			</select>
@@ -63,7 +66,7 @@
 			<!--<label>Seat Number:</label>
 			<select>
 				<?php foreach ($seats as $seat) { ?>
-				<option value="<?= $seat->id ?>"><?= $seat->orow->osection->code.$seat->orow->code."-".$seat->code ?></option>
+				<option value="<?= $seat->id ?>"><?= $seat->row->section->code.$seat->row->code."-".$seat->code ?></option>
 				<?php } ?>
 			</select>-->
 		</form>

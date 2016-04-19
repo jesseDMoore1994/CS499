@@ -4,22 +4,46 @@ namespace App\Controller;
 
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
+use Cake\Error\Debugger;
 
 class TicketAdminController extends AdminController {
 
 	public function index() {
 		$tickets = TableRegistry::get('Tickets');
-		$seatTable = TableRegistry::get('Seats');
 		$pass = [];
 		$query = null;
+        $searchTerm = null;
+
+
+        if(isset($this->request->query['search'])) {
+            $searchTerm = $this->request->query['search'];
+        }else{$searchTerm == '';}
 
 		if ($this->adminTheater == 0) {
-			$query = $tickets->find()
-				->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays']);
+            if($searchTerm == '') {
+                $query = $tickets->find()
+                    ->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays']);
+            }else{
+                $query = $tickets->find()
+                    ->where(["Tickets.customer_name" => $searchTerm])
+                    ->orWhere(["Tickets.id" => $searchTerm])
+                    ->orWhere(["Plays.name" => $searchTerm])
+                    ->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays']);
+
+            }
 		} else {
-			$query = $tickets->find()
-				->where(["Tickets.theater_id" => $this->adminTheater])
-				->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays', 'Seasons']);
+            if($searchTerm == '') {
+                $query = $tickets->find()
+                    ->where(["Tickets.theater_id" => $this->adminTheater])
+                    ->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays', 'Seasons']);
+            }else{
+                $query = $tickets->find()
+                    ->where(["Tickets.theater_id" => $this->adminTheater])
+                    ->andWhere(["Tickets.customer_name" => $searchTerm])
+                    ->orWhere(["Plays.name" => $searchTerm])
+                    ->contain(['Seats', 'Rows', 'Sections', 'Performances', 'Performances.Plays', 'Seasons']);
+
+            }
 		}
 
 		foreach ($query as $row) {

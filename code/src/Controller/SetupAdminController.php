@@ -537,7 +537,7 @@ class SetupAdminController extends AdminController {
                         $section->id = $dataFields[0];
                         $section->name = $dataFields[1];
                         $section->code = $dataFields[2];
-                        $section->theater = $dataFields[3];
+                        $section->theater_id = $dataFields[3];
                         $section->accessible_section = $dataFields[4];
                         $section->front_text = $dataFields[5];
                         $section->back_text = $dataFields[6];
@@ -551,9 +551,9 @@ class SetupAdminController extends AdminController {
                         $dataFields = Text::tokenize($line);
                         $seat = $seatsTable->newEntity();
                         $seat->id = $dataFields[0];
-                        $seat->theater = $dataFields[1];
-                        $seat->section = $dataFields[2];
-                        $seat->row = $dataFields[3];
+                        $seat->theater_id = $dataFields[1];
+                        $seat->section_id = $dataFields[2];
+                        $seat->row_id = $dataFields[3];
                         $seat->code = $dataFields[4];
                         $seat->price = $dataFields[5];
                         $seatsTable->save($seat);
@@ -571,6 +571,7 @@ class SetupAdminController extends AdminController {
                         $season->end_time = $dataFields[3];
                         $season->ticket_price = $dataFields[4];
                         $season->theater_id = $dataFields[5];
+                        $season->about = $dataFields[6];
                         $seasonsTable->save($season);
                     }
 
@@ -581,8 +582,8 @@ class SetupAdminController extends AdminController {
                         $dataFields = Text::tokenize($line);
                         $row = $rowsTable->newEntity();
                         $row->id = $dataFields[0];
-                        $row->theater = $dataFields[1];
-                        $row->section = $dataFields[2];
+                        $row->theater_id = $dataFields[1];
+                        $row->section_id = $dataFields[2];
                         $row->code = $dataFields[3];
                         $rowsTable->save($row);
                     }
@@ -598,6 +599,7 @@ class SetupAdminController extends AdminController {
                         $play->artwork = $dataFields[2];
                         $play->description = $dataFields[3];
                         $play->author = $dataFields[4];
+                        $play->shortname = $dataFields[5];
                         $playsTable->save($play);
                     }
 
@@ -627,7 +629,7 @@ class SetupAdminController extends AdminController {
                         $cart_items->cart_id = $dataFields[1];
                         $cart_items->performance_id = $dataFields[2];
                         $cart_items->seat_id = $dataFields[3];
-                        $cart_items->season_ticket = $dataFields[4];
+                        $cart_items->season_id = $dataFields[4];
                         $cart_itemsTable->save($cart_items);
                     }
 
@@ -759,7 +761,7 @@ class SetupAdminController extends AdminController {
                 $tableName = 'sections';
                 $sectionsTable = TableRegistry::get('sections');
                 $query = $sectionsTable->find('all');
-                $str = "id".","."name".","."code".","."theater".","."accessible_section".","."front_text".","."back_text\r\n";
+                $str = "id".","."name".","."code".","."theater_id".","."accessible_section".","."front_text".","."back_text\r\n";
 
                 $results = $query->toArray();
 
@@ -785,9 +787,9 @@ class SetupAdminController extends AdminController {
 
                 forEach($results as $item) {
                     $str .= $item->id . ",";
-                    $str .= $item->theater . ",";
-                    $str .= $item->section . ",";
-                    $str .= $item->row . ",";
+                    $str .= $item->theater_id . ",";
+                    $str .= $item->section_id . ",";
+                    $str .= $item->row_id . ",";
                     $str .= "\"" . $item->code . "\"" . ",";
                     $str .= $item->price;
                     $str .= "\r\n";
@@ -808,7 +810,8 @@ class SetupAdminController extends AdminController {
                     $str .= $item->start_time . ",";
                     $str .= $item->end_time . ",";
                     $str .= $item->ticket_price . ",";
-                    $str .= $item->theater_id;
+                    $str .= $item->theater_id . ",";
+                    $str .= "\"" . $item->about . "\"";
                     $str .= "\r\n";
                 }
 
@@ -823,8 +826,8 @@ class SetupAdminController extends AdminController {
 
                 forEach($results as $item) {
                     $str .= $item->id . ",";
-                    $str .= $item->theater . ",";
-                    $str .= $item->section . ",";
+                    $str .= $item->theater_id . ",";
+                    $str .= $item->section_id . ",";
                     $str .= "\"" . $item->code . "\"";
                     $str .= "\r\n";
                 }
@@ -843,7 +846,8 @@ class SetupAdminController extends AdminController {
                     $str .= "\"" . $item->name . "\"" . ",";
                     $str .= "\"" . $item->artwork . "\"" . ",";
                     $str .= "\"" . $item->description . "\"" . ",";
-                    $str .= "\"" . $item->author . "\"";
+                    $str .= "\"" . $item->author . "\"" . ",";
+                    $str .= "\"" . $item->shortname . "\"";
                     $str .= "\r\n";
                 }
 
@@ -881,7 +885,7 @@ class SetupAdminController extends AdminController {
                     $str .= "\"" . $item->cart_id . "\"" . ",";
                     $str .= "\"" . $item->performance_id . "\"" . ",";
                     $str .= $item->seat_id . ",";
-                    $str .= $item->season_ticket;
+                    $str .= $item->season_id;
                     $str .= "\r\n";
                 }
 
