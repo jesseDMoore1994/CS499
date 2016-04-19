@@ -541,6 +541,37 @@ html, body {
 
 }
 
+.usermanual {
+	padding:20px 0px 20px 0px;
+}
+
+.usermanual-icon {
+	text-align:center;
+	font-size:72px;
+}
+
+.usermanual-text {
+	text-align:center;
+	width:450px;
+	margin:auto;
+	font-size:90%;
+}
+
+.usermanual-button {
+	text-align:center;
+	padding-top:20px;
+}
+
+.usermanual-button .button {
+	padding:0px;
+}
+
+.usermanual-button .button a {
+	color:white;
+	display:inline-block;
+	padding:10px 15px 10px 15px;
+}
+
 .admin-footer {
 	background:black;
 	color:#CCCCCC;

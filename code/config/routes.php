@@ -62,6 +62,7 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/admin/schedule/*', ['controller' => 'ScheduleAdmin']);
 	$routes->connect('/admin/schedule/api_manage/', ['controller' => 'ScheduleAdmin', 'action' => 'apiManage']);
 	$routes->connect('/admin/schedule/api_manage/*', ['controller' => 'ScheduleAdmin', 'action' => 'apiManage']);
+	$routes->connect('/admin/help', ['controller' => 'HelpAdmin', 'action' => 'index']);
 
 	$routes->connect('/admin/setup', ['controller' => 'SetupAdmin', 'action' => 'index']);
 
@@ -73,6 +74,10 @@ Router::scope('/', function ($routes) {
 	$routes->connect('/admin/setup/staff/*', ['controller' => 'SetupAdmin', 'action' => 'staff']);
 	$routes->connect('/admin/setup/seasons/', ['controller' => 'SetupAdmin', 'action' => 'seasons']);
 	$routes->connect('/admin/setup/seasons/*', ['controller' => 'SetupAdmin', 'action' => 'seasons']);
+	$routes->connect('/admin/setup/import/', ['controller' => 'SetupAdmin', 'action' => 'import']);
+	$routes->connect('/admin/setup/import/*', ['controller' => 'SetupAdmin', 'action' => 'import']);
+	$routes->connect('/admin/setup/export/', ['controller' => 'SetupAdmin', 'action' => 'export']);
+	$routes->connect('/admin/setup/export/*', ['controller' => 'SetupAdmin', 'action' => 'export']);
 
 	$routes->connect('/admin/setup/api_season_manage/', ['controller' => 'SetupAdmin', 'action' => 'apiSeasonManage']);
 	$routes->connect('/admin/setup/api_season_manage/*', ['controller' => 'SetupAdmin', 'action' => 'apiSeasonManage']);

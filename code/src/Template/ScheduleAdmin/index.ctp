@@ -63,7 +63,7 @@
 						<th style="width:150px;">Performance #</th>
 						<th>Performance of</th>
 						<th style="width:200px;">Scheduled Time</th>
-						<th style="width:100px;">Sales</th>
+						<!--<th style="width:100px;">Sales</th>-->
 						<th style="width:100px;">Status</th>
 						<th style="width:200px;">Actions</th>
 						<th style="width:20px;"></th>
@@ -80,9 +80,9 @@
 							<td><label class="responsive-tip">Performance #:</label> <?= $performance["performance_id"] ?></td>
 							<td><label class="responsive-tip">Performance of:</label> <?= $performance["performance_name"] ?></td>
 							<td><label class="responsive-tip">Scheduled for:</label> <?= $performance["performance_time"] ?></td>
-							<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $performance["performance_sales_state"] ?>"><?= $performance["performance_sales"] ?></span> / <?= $performance["performance_capacity"] ?></td>
+							<!--<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $performance["performance_sales_state"] ?>"><?= $performance["performance_sales"] ?></span> / <?= $performance["performance_capacity"] ?></td>-->
 							<td class="status bad"><label class="responsive-tip">Status:</label> <span class="<?= $performance["performance_state"] ?>"><?= $performance["performance_status"] ?></span></td>
-							<td><label class="responsive-tip">Actions:</label> <a href="" class="caps">Cancel</a> <a href="javascript:showPerformanceEditDialog(<?= $performance["performance_id"] ?>)" class="caps">Edit</a> <a href=""><span class="icomoon">&#xea43;</span></a></td>
+							<td><label class="responsive-tip">Actions:</label> <!--<a href="" class="caps">Cancel</a>--> <a href="javascript:showPerformanceEditDialog(<?= $performance["performance_id"] ?>)" class="caps">Edit</a> <!--<a href=""><span class="icomoon">&#xea43;</span></a>--></td>
 							<td><label class="responsive-tip">Select:</label> <input type="checkbox" /> <div class="data"><?= json_encode($performance) ?></div></td>
 						</tr>
 					<?php } ?>

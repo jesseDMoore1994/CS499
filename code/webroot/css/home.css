@@ -16,6 +16,11 @@
 	height:243px;
 	padding-top:177px;
 	background-repeat:no-repeat;
+	cursor:pointer;
+}
+
+.banner a {
+	color:white !important;
 }
 
 .banner-text {
@@ -57,7 +62,8 @@
 
 .content-list-item {
 	display:inline-block;
-	width:200px;
+	width:20%;
+	margin-bottom:10px;
 }
 
 .content-list-item h3 {

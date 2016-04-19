@@ -1,9 +1,9 @@
 <div class="admin-page">
 	<div class="admin-page-top">
 
-		<div class="admin-page-actionbutton">
+		<!--<div class="admin-page-actionbutton">
 			<div class="button"><a href=""><span class="icomoon">&#xe991;</span><span>Edit Settings</span></a></div>
-		</div>
+		</div>-->
 
 		<div class="admin-page-tabs">
 			<?= $this->element("admin/setup") ?>

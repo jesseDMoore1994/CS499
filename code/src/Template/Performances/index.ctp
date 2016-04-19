@@ -1,3 +1,6 @@
+<?php
+$content = false;
+?>
 <div class="site-tickets site-page">
 	<div class="site-tickets-inner responsive-inner">
 		<div class="site-tickets-top">
@@ -20,7 +23,7 @@
 			</div>
 		</div>
 		<div class="site-tickets-main">
-			<?php if (isset($plays)) foreach ($plays as $play) if (count($play[2]) > 0) { ?>
+			<?php if (isset($plays)) foreach ($plays as $play) if (count($play[2]) > 0) { $content = true; ?>
 			<div class="site-tickets-play">
 				<div class="site-tickets-play-image">
 					<img src="<?= $this->Url->build('/img/plays/'.$play[0].'.png', true) ?>" />
@@ -56,7 +59,7 @@
 			<?php if (isset($seasons)) { ?>
 			<div class="season-tickets-wrap">
 
-				<?php if (count($seasons) > 0) { ?>
+				<?php if (count($seasons) > 0) { $content = true; ?>
 				<h2>Current Seasons</h2>
 				<table class="season-tickets">
 					<tr>
@@ -96,6 +99,17 @@
 				</table>
 				<?php } ?>
 			</div>
+			<?php } ?>
+
+			<?php if (!$content) { ?>
+				<div class="nodata">
+					<div class="nodata-icon">
+						<span class="icomoon">&#xea08;</span>
+					</div>
+					<div class="nodata-message">
+						There are no performances to display in this category.
+					</div>
+				</div>
 			<?php } ?>
 		</div>
 	</div>

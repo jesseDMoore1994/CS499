@@ -11,7 +11,8 @@ class CustomerAdminController extends AdminController {
 		$users = TableRegistry::get('Users');
 		$staff = TableRegistry::get('StaffAssignments');
 		$pass = [];
-		$query = $users->find();
+		$query = $users->find()
+			->orderDesc("id");
 
 		foreach ($query as $row) {
 

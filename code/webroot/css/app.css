@@ -189,6 +189,19 @@
 }
 
 
+.nodata {
+	padding:30px 0px 50px 0px;
+}
+
+.nodata-icon, .nodata-message {
+	text-align:center;
+}
+
+.nodata-icon {
+	font-size:64px;
+}
+
+
 /* ---------------------------------------------------------
  * FOOTER:
  * This defines the look and feel of the footer

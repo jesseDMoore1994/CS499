@@ -1,26 +1,32 @@
 <div class="admin-page">
-    <?= $this->element("admin/top",[
-        "title" => "Import / Export",
-        "description" => "Page for Import of Database Information."
-    ]) ?>
+    <div class="admin-results-title responsive">
 
-    <div class="admin-results">
-        <div class="admin-results-title responsive">
-            <div class="admin-results-title responsive-inner">
                 <?= $this->element("admin/data/importExportLinks",[
                 ]) ?>
 
+        <div class="responsive-inner">
+            <br>
+            <div align="center"><strong>BE AWARE, THIS TOOL MAY RESULT IN DATA LOSS OR CORRUPTION.</strong></div>
+            <br>
 
-            </div>
-        </div>
-    </div>
-    Pick a table to Import.
-    <?= $this->Form->select('table', ['Tickets','Staff Assignments', 'Users']) ?>
+    <?php
+        echo $this->Form->create();
+        echo "Pick a table to Import.";
+        echo $this->Form->select('table', ['Tickets','Staff Assignments', 'Users']);
+        echo "Pick which fields to Import.";
+        echo $this->Form->select('fields', ['all']);
+        echo "Pick file format.";
+        echo $this->Form->select('format', ['.csv']);
 
+        echo $file_status;
 
-    <?php echo $this->Html->link(
-        'Import Table',
-        '/admindata/export/',
-        ['controller' => 'AdminData', 'action' => 'export']);
+        echo $this->Form->input('submissionFile', ['type' => 'file']);
+
+        echo $this->Form->submit('import', array('class'=>'button'));
+
+        echo $this->Form->end();
     ?>
+
+</div>
+</div>
 </div>

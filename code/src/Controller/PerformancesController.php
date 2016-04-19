@@ -34,11 +34,13 @@ class PerformancesController extends AppController {
 			$this->set("seasons", TableRegistry::get("Seasons")
 				->find()
 				->where(["start_time < " => time(), "end_time > " => time()])
+				->orderAsc("start_time")
 				->all());
 
 			$this->set("past_seasons", TableRegistry::get("Seasons")
 				->find()
 				->where(["end_time < " => time()])
+				->orderAsc("start_time")
 				->all());
 
 		} else {
