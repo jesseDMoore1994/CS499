@@ -51,14 +51,14 @@
     - In the newly uploaded site, open config/app.php
     - On line 220, fine the following:
     
-          'username' => 'root',
-          'password' => ((strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? "" : "root"),
+          'username' => 'root',  
+          'password' => ((strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? "" : "root"),  
           'database' => 'theater_ticket_manager_db',
           
     - Upadte to include the MySQL access information
 
-          'username' => 'root',
-          'password' => 'thepassowrd',
+          'username' => 'root',  
+          'password' => 'thepassowrd',  
           'database' => 'ticketangel',
           
 7. Access the site
